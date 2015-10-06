@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/45405 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:06:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #45405: Uncaught Exception in DynamicRoutePart - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/45405.atom" rel="alternate" title="TYPO3.Flow - Bug #45405: Uncaught Exception in DynamicRoutePart" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2172">Kim Lang</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-45405-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #45405</h2>
+
+<div class="issue status-2 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Uncaught Exception in DynamicRoutePart</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/37356">Marco Falkenberg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-02-12" title="2013-02-12 11:57">over 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 11:19">over 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Accepted</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-02-12</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">MVC - Routing</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.4</td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+	<th>Affected Flow version:</th><td>Git master</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>In line 184 of the DynamicRoutePart a notice is thrown if the incoming value is an array. This happens for PHP Versions > 5.4.0 (see <a class="external" href="../../external.html?link=http://php.net/ChangeLog-5.php">http://php.net/ChangeLog-5.php</a>).</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/26184/uriFor.png" class="icon icon-attachment">uriFor.png</a>  
+  
+  <span class="size">(127.5 kB)</span>
+  
+  
+    <span class="author">Adrian Föder, 2014-03-05 11:19</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-152198" class="journal has-notes has-details">
+    <h4><a href="45405.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-02-22" title="2013-02-22 10:51">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Bastian Waidelich</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-152198-notes"><p>Hi Marco, thanks for reporting!<br />Can you please add more details on when you get this issue?<br />The value should never be an array in the first place I think – when does this happen?</p></div>
+  </div>
+  
+
+  <div id="change-154511" class="journal has-notes">
+    <h4><a href="45405.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37356">Marco Falkenberg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-14" title="2013-03-14 14:21">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154511-notes"><p>Sorry, i cannot replicate this error anymore. Maybe due to the recent changes in Flow.<br />I guess this happens when having a named route part, whose name is also found in the request body arguments which then could be an array.</p></div>
+  </div>
+  
+
+  <div id="change-154513" class="journal has-notes has-details">
+    <h4><a href="45405.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-14" title="2013-03-14 14:43">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-154513-notes"><p>Marco Falkenberg wrote:</p>
+
+
+<blockquote>
+
+	<p>Sorry, i cannot replicate this error anymore. Maybe due to the recent changes in Flow.</p>
+
+
+</blockquote>
+
+	<p>No problem, thanks for reporting back!<br />I close this issue for now – feel free to re-open if the exception occurs again</p></div>
+  </div>
+  
+
+  <div id="change-206441" class="journal has-notes has-details">
+    <h4><a href="45405.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 11:19">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/26184/uriFor.png">uriFor.png</a> added</li>
+      
+       <li><strong>Status</strong> changed from <i>Closed</i> to <i>Accepted</i></li>
+      
+       <li><strong>Affected Flow version</strong> changed from <i>Flow 2.0.0 beta 1</i> to <i>Git master</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-206441-notes"><p>Luckily I found this one, just happenened to me. It seems to occur if I</p>
+
+
+	<ol>
+	<li>invoke a URI like example.org/acme.stuff/plan/show?plan[__identity=abcde-123456]</li>
+		<li>...this is secured and I am redirected to the WebEntryPoint</li>
+		<li>...and I successfully authenticate and "it" tries to redirect me to the initial URI.</li>
+	</ol>
+
+
+	<p>Take the attached stack trace screen shot into account; and,</p>
+
+
+<pre>
+Uncaught exception #1: Warning: urlencode() expects parameter 1 to be string, array given in C:\Users\afoeder\PhpstormProjects\acme\Distribution\Data\Temporary\Development\Cache\Code\Flow_Object_Classes\TYPO3_Flow_Mvc_Routing_DynamicRoutePart.php line 184
+
+51 TYPO3\Flow\Error\ErrorHandler::handleError(2, "urlencode() expects parameter 1 to be string, array given", "C:\Users\afoeder\PhpstormProjects\acme\Distribution\Data\Temporary\Development\Cache\Code\Flow_Object_Classes\TYPO3_Flow_Mvc_Routing_DynamicRoutePart.php", 184, array|1|)
+50 urlencode(array|1|)
+49 TYPO3\Flow\Mvc\Routing\DynamicRoutePart_Original::resolveValue(array|1|)
+                                                                       / \
+              ---------------------------------------------------------   -------------------
+             /                                                                               \
+               array(1)
+               string "__identity" (10) =&gt; string "40329e63-3984-c80b-13eb-5e0c4e59e7fc" (36)
+
+48 TYPO3\Flow\Mvc\Routing\DynamicRoutePart_Original::resolve(array|5|)
+47 TYPO3\Flow\Mvc\Routing\Route_Original::resolves(array|5|)
+46 TYPO3\Flow\Mvc\Routing\Router_Original::resolve(array|5|)
+45 TYPO3\Flow\Mvc\Routing\UriBuilder_Original::build(array|5|)
+                                                          / \
+     -----------------------------------------------------   -------------------------
+    /                                                                                  \
+      array(5)
+      string "plan" (4) =&gt; array(1)
+         string "__identity" (10) =&gt; string "40329e63-3984-c80b-13eb-5e0c4e59e7fc" (36)
+      string "@action" (7) =&gt; string "pickplan" (8)
+      string "@controller" (11) =&gt; string "plangeneration" (14)
+      string "@package" (8) =&gt; string "acme.core" (14)
+      string "@format" (7) =&gt; string "html" (4)
+
+44 TYPO3\Flow\Mvc\Routing\UriBuilder_Original::uriFor("pickPlan", array|1|, "PlanGeneration", "Acme.Core", NULL)
+43 TYPO3\Flow\Mvc\Routing\UriBuilder::uriFor("pickPlan", array|1|, "PlanGeneration", "Acme.Core", NULL)
+                                                              / \
+                     -----------------------------------------   --------------------------------------
+                    /                                                                                  \
+                      array(1)
+                      string "plan" (4) =&gt; array(1)
+                         string "__identity" (10) =&gt; string "40329e63-3984-c80b-13eb-5e0c4e59e7fc" (36)
+
+42 call_user_func_array(array|2|, array|5|)
+41 TYPO3\Flow\Mvc\Routing\UriBuilder::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+40 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+39 TYPO3\Neos\Aspects\PluginUriAspect_Original::rewritePluginViewUris(TYPO3\Flow\Aop\JoinPoint)
+38 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+37 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+36 TYPO3\Flow\Mvc\Routing\UriBuilder::uriFor("pickPlan", array|1|, "PlanGeneration", "Acme.Core", NULL)
+35 TYPO3\Flow\Mvc\Controller\AbstractController::redirect("pickPlan", "PlanGeneration", "Acme.Core", array|1|, 0, 303, "html")
+34 TYPO3\Flow\Mvc\Controller\AbstractController::redirectToRequest(TYPO3\Flow\Mvc\ActionRequest)
+33 Acme\Core\Controller\AuthenticationController_Original::onAuthenticationSuccess(TYPO3\Flow\Mvc\ActionRequest)
+32 TYPO3\Flow\Security\Authentication\Controller\AbstractAuthenticationController_Original::authenticateAction()
+31 TYPO3\Flow\Security\Authentication\Controller\AbstractAuthenticationController::authenticateAction()
+30 call_user_func_array(array|2|, array|0|)
+29 TYPO3\Flow\Security\Authentication\Controller\AbstractAuthenticationController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+28 Acme\Core\Controller\AuthenticationController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+27 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+26 TYPO3\Flow\Security\Aspect\PolicyEnforcementAspect_Original::enforcePolicy(TYPO3\Flow\Aop\JoinPoint)
+25 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+24 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+23 TYPO3\Flow\Security\Authentication\Controller\AbstractAuthenticationController::authenticateAction()
+22 Acme\Core\Controller\AuthenticationController::authenticateAction()
+21 call_user_func_array(array|2|, array|0|)
+20 Acme\Core\Controller\AuthenticationController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+19 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+18 TYPO3\Flow\Security\Aspect\PolicyEnforcementAspect_Original::enforcePolicy(TYPO3\Flow\Aop\JoinPoint)
+17 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+16 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+15 Acme\Core\Controller\AuthenticationController::authenticateAction()
+14 call_user_func_array(array|2|, array|0|)
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+9 call_user_func_array(array|2|, array|2|)
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+HTTP REQUEST:
+POST /app/authentication/authenticate HTTP/1.1
+Content-Length: 950
+Content-Type: application/x-www-form-urlencoded
+Connection: keep-alive
+Referer: http://dev.internal.acme.com/app/authentication/login
+Accept-Encoding: gzip, deflate
+Accept-Language: de,en-us;q=0.7,en;q=0.3
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0
+Host: dev.internal.acme.com
+
+__referrer%5B%40package%5D=Acme.Core&#38;__referrer%5B%40subpackage%5D=&#38;__referrer%5B%40controller%5D=Authentication&#38;__referrer%5B%40action%5D=login&#38;__referrer%5Barguments%5D=YTowOnt95df6766b3c5056d6b108e8973d7d15e58e74af49&#38;__trustedP[......]
+
+HTTP RESPONSE:
+[response was empty]
+</pre>
+
+	<p>Hope that helps!</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-45405-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/45405.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="45405.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/45405 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:06:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

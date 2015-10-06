@@ -1,0 +1,1049 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/48673 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:15:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #48673: Changed language overlay behaviour in TYPO3 6.* - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/48673.atom" rel="alternate" title="Core - Bug #48673: Changed language overlay behaviour in TYPO3 6.*" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (20)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/3049">Rainer Becker</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36894">Phat Hoang</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2231">Gunther Schöbinger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36783">Matthias Secker</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/21541">Stephan Lucas</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39904">Thomas Schwarz</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4205">Roland Waldner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4002">Christian Ludwig</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2016">Hartmut Steglich</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3426">Paul Hansen</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3519">Marco Antonioli</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36404">Michael Schreiner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2981">Felix Nagel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3612">Cornel Widmer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39034">Mathias Bruckmoser</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-48673-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #48673</h2>
+
+<div class="issue status-2 priority-1 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Changed language overlay behaviour in TYPO3 6.*</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3049">Rainer Becker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-30" title="2013-05-30 14:37">about 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-25" title="2015-07-25 12:50">10 days</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Accepted</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-05-30</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Frontend</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td>Remote Sprint</td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>nightmare</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Create this records:</p>
+
+
+<pre>
+- 0A All languages
+- 1A Default Language
+  - 1B Default Language translated
+- 2A Default Language (hidden)
+  - 2B Default Language translated
+- 3A Default Language
+  - 3B Default Language translated (hidden)
+- 4A Default Language
+- 5B Default Language translated
+</pre>
+
+	<p>Setting: sys_language_overlay = hideNonTranslated</p>
+
+
+	<p>In FE / default language / TYPO3 V6 these will be shown:<br />0A, 1A, 3A, 4A (which is correct in my opinion)</p>
+
+
+	<p>In FE / other language / TYPO3 V6 these will be shown:<br />0A, 1B (which is incorrect in my opinion; 2B and 5B are missing)</p>
+
+
+	<p>In FE / other language / TYPO3 V4.5 these will be shown:<br />0A, 1B, 5B (which is still incorrect in my opinion; 2B is missing)</p>
+
+
+	<p>Is this change intended? If yes: Where is this documented? This is a major change in one of the most crucial enterprise features of TYPO3...<br />Btw: If records are fetched via extbase in V6 all translated records (0A, 1B, 2B, 5B) show up. <br />In TYPO3 6.1 the behaviour is unchanged.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/24110/TYPO3_6.0_LanguageModes.pdf" class="icon icon-attachment">TYPO3_6.0_LanguageModes.pdf</a>  
+   - Test results
+  <span class="size">(118.7 kB)</span>
+  
+  
+    <span class="author">Rainer Becker, 2013-06-03 09:35</span>
+  
+  </p>
+
+<p><a href="../attachments/download/24118/l10ntest.zip" class="icon icon-attachment">l10ntest.zip</a>  
+   - Language test suite
+  <span class="size">(1 MB)</span>
+  
+  
+    <span class="author">Rainer Becker, 2013-06-04 11:43</span>
+  
+  </p>
+
+<p><a href="../attachments/download/26114/test.jpg" class="icon icon-attachment">test.jpg</a>  
+   - comparison of all constellations (only as paperscan - sorry)
+  <span class="size">(107.1 kB)</span>
+  
+  
+    <span class="author">Gernot Ploiner, 2014-02-24 21:01</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-8763">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="17354" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="17354.html" class="issue status-6 priority-2">Bug #17354</a>: fallback for menus. &quot;content_fallback;1,0&quot; has no affect ...
+</td>
+<td class="status">Under Review</td>
+<td class="start_date">2007-07-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-8764">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19114" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="19114.html" class="issue status-6 priority-2">Bug #19114</a>: sys_language_mode does not work
+</td>
+<td class="status">Under Review</td>
+<td class="start_date">2008-07-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10998">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="49106" /></td>
+<td class="subject">related to 
+    TypoScript Reference (TSref) - 
+    <a href="49106.html" class="issue status-7 priority-2 closed">Feature #49106</a>: Add new option &quot;includeRecordsWithoutDefaultTranslation&quot; ...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-06-13</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-13147">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="63684" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="63684.html" class="issue status-1 priority-2">Bug #63684</a>: sys_language_uid and sys_language_content are always the ...
+</td>
+<td class="status">New</td>
+<td class="start_date">2014-12-08</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9749">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="52960" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="52960.html" class="issue status-1 priority-2">Bug #52960</a>: FE Language overlay differs from BE
+</td>
+<td class="status">New</td>
+<td class="start_date">2013-10-18</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-13092">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="33734" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="33734.html" class="issue status-1 priority-1">Feature #33734</a>: Domain - Language mapping
+</td>
+<td class="status">New</td>
+<td class="start_date">2012-02-07</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11391">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="39798" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="39798.html" class="issue status-2 priority-1">Bug #39798</a>: Language changes on re-ordering of Content Elements
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2012-08-14</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11392">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="34823" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="34823.html" class="issue status-7 priority-2 closed">Feature #34823</a>: Remove language &quot;default&quot; from Alternative Page Language ...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-03-14</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11417">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="60052" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="60052.html" class="issue status-9 priority-1 closed">Bug #60052</a>: sys_language_mode=content_fallback only supports language...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-07-02</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11390">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="56351" /></td>
+<td class="subject">precedes 
+    Core - 
+    <a href="56351.html" class="issue status-1 priority-2">Bug #56351</a>: view page in another language than default language from ...
+</td>
+<td class="status">New</td>
+<td class="start_date">2014-02-26</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/48673/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/48673/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=48673&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-167477" class="journal has-notes has-details">
+    <h4><a href="48673.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-31" title="2013-05-31 12:29">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-167477-notes"><p>Not showing 5B is correct behavior for "hideNonTranslated":<br /><pre>
+“ Hide default translation of the page” incompatible with content binding: When using the “Binding” method (ie. “config.sys_language_overlay = 1 / hideNonTranslated”) you must supply placeholder records in the default language if you use the “Localization setting” for pages “Hide default translation of the page”.
+</pre></p>
+
+
+	<p><a class="external" href="../../external.html?link=http://docs.typo3.org/typo3cms/FrontendLocalizationGuide/LocalizedContent/ContentBinding/Index.html">http://docs.typo3.org/typo3cms/FrontendLocalizationGuide/LocalizedContent/ContentBinding/Index.html</a><br />As sxw: <a class="external" href="../../external.html?link=http://typo3.org/documentation/document-library/guides/doc_l10nguide/1.1.0/sxw/?no_cache=1">http://typo3.org/documentation/document-library/guides/doc_l10nguide/1.1.0/sxw/?no_cache=1</a> as some Tables are broken in the HTML Version.</p>
+
+
+	<p>Not showing 2B is IMHO also correct, as the page is hidden.</p>
+
+
+	<p>Does this hint solve your problem?</p></div>
+  </div>
+  
+
+  <div id="change-167479" class="journal has-notes">
+    <h4><a href="48673.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3049">Rainer Becker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-31" title="2013-05-31 12:43">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-167479-notes"><p>My case is just about content elements, the page is visible in both languages - sorry, I didn’t mention that.</p>
+
+
+	<p>So 2B should show up - no matter that it’s orignal 2A is hidden.</p>
+
+
+	<p>Ok, the 5B case is documented then. In my opinion this is not very intuitive (my clients think so too). In large scale translated projects there are cases, where an english page consists of different content elements than the german one. Telling the editor to either link records which have different meanings in de/en is no good solution; why shouldn’t it be possible to create a record just in EN?</p></div>
+  </div>
+  
+
+  <div id="change-167719" class="journal has-notes">
+    <h4><a href="48673.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-01" title="2013-06-01 11:29">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-167719-notes"><p>Then maybe you need another translation mode.</p></div>
+  </div>
+  
+
+  <div id="change-168141" class="journal has-notes has-details">
+    <h4><a href="48673.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3049">Rainer Becker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-03" title="2013-06-03 09:35">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/24110/TYPO3_6.0_LanguageModes.pdf">TYPO3_6.0_LanguageModes.pdf</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-168141-notes"><p>I tried all combinations of sys_language_modes (not set, strict, ignore, content_fallback, content_fallback;1,0) against sys_language_overlay (not set,hideNonTranslated, 1). <br />No one leads to the desired result. I attached my test matrix results (green background means: this one should show up in my opinion).<br />Or which other language related setting did I miss?</p>
+
+
+	<p>Why does Extbase fetch data in another way than styles.content.get()? (It show all the records I want to see in strict/hideNonTranslated mode)</p></div>
+  </div>
+  
+
+  <div id="change-168146" class="journal has-notes">
+    <h4><a href="48673.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-03" title="2013-06-03 10:26">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-168146-notes"><p>Hi!</p>
+
+
+	<p>I agree that the translation stuff has some flaws. Especially the fallback mechanism is not doing so well.<br />I didn't inspect your report in detail yet, but I'll try to bring some attention to this crucial part of TYPO3.</p>
+
+
+	<p>Thanks for you tests. Could you also upload your test setup as t3d? This would help to compare your test setup against mine.</p></div>
+  </div>
+  
+
+  <div id="change-168229" class="journal has-notes has-details">
+    <h4><a href="48673.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3049">Rainer Becker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-04" title="2013-06-04 11:43">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/24118/l10ntest.zip">l10ntest.zip</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-168229-notes"><p>I created a little test suite. You can see and change the language settings (sys_language_uid, sys_language_mode, sys_language_overlay). I created icons to visualize the results. Results are splitted in contents fetched by TypoScript, contents fetched by Extbase (for this to work you need to install the attached ext) and all contents.<br />Please have a look at it and tell me, if this works for you.<br />Btw: the results are... interesting.</p></div>
+  </div>
+  
+
+  <div id="change-169003" class="journal has-notes has-details">
+    <h4><a href="48673.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-11" title="2013-06-11 15:59">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Priority</strong> changed from <i>Should have</i> to <i>Must have</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-169003-notes"><p>Raise priority as I think this should be fixed for LTS.</p></div>
+  </div>
+  
+
+  <div id="change-169817" class="journal has-details">
+    <h4><a href="48673.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-18" title="2013-06-18 10:54">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>New</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-190928" class="journal has-notes">
+    <h4><a href="48673.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36783">Matthias Secker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-20" title="2013-11-20 13:03">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-190928-notes"><p>I totally agree that this is a must have for LTS.<br />In most multilingual websites I use</p>
+
+
+	<ul>
+	<li>sys_language_mode = content_fallback</li>
+		<li>sys_language_overlay = hideNonTranslated</li>
+	</ul>
+
+
+	<p>Since TYPO3 6 I'm not able to add some extra CEs to a tranlated page, but I think this is a necessary feature.<br />For now I deactive sys_language_overlay, but I face some side effects e.g. TS CONTENT objects will not be overlayed.</p>
+
+
+	<p>Furthermore I got problems with l10n_mode in TCA. Using the data from original language CE by using "exclude" or "mergeIfNotBlank" will not deliver the data in my extbase extension , so I have to fill out every CE field for every language, even if the content is the same. Tried this with and without sys_language_overlay. Can anybody confirm this behavior?</p>
+
+
+	<p>Would be great to see some improvements in LTS.</p></div>
+  </div>
+  
+
+  <div id="change-190934" class="journal has-notes has-details">
+    <h4><a href="48673.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-20" title="2013-11-20 13:34">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>TYPO3 Version</strong> changed from <i>6.1</i> to <i>6.2</i></li>
+      
+       <li><strong>Is Regression</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-190934-notes"><p>I invested quite some time to investigate the status quo.</p>
+
+
+	<p>Together with others we came to the conclusion that is unfortunately by far not trivial to fix and even more the concept behind translation in TYPO3 CMS has to be re-thought.<br />There are ideas from Oliver Hader and there are working patches like [1], but neither can this patch be backported, nor does it really fit with improvements desirable for 6.2 and later.</p>
+
+
+	<p>The last decision was that Olly will implement his ideas into 6.2, but nobody can guarantee if this works out in the remaining time.</p>
+
+
+	<p>[1] <a class="external" href="../../external.html?link=https://review.typo3.org/9937">https://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-190937" class="journal has-notes has-details">
+    <h4><a href="48673.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2231">Gunther Schöbinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-20" title="2013-11-20 13:57">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>next-patchlevel</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-190937-notes"><p>In my option the working patch is no solution. The output in the frontend of TYPO3 is buggy and it does not show 1:1 the translations from the backend. This still confuse the editors:</p>
+
+
+1. sys_language_overlay = 0
+	<ul>
+	<li>the frontend displays content-elements with a separate language (pdf: only NL)</li>
+		<li>the frontend <strong>did not show</strong> content-elements with the label "all languages"</li>
+	</ul>
+
+
+2. sys_language_overlay = 1 / hideNonTranslated
+	<ul>
+	<li>the frontend <strong>did not show</strong> displays content-elements with a separate language (pdf: only NL)</li>
+		<li>the frontend displays content-elements with the label "all languages"</li>
+	</ul>
+
+
+	<p>Both possibilities("all languages" and separate contentelements) are available/visible in the backend, but only one of these could be visible at the frontend.</p></div>
+  </div>
+  
+
+  <div id="change-205115" class="journal has-notes has-details">
+    <h4><a href="48673.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3179">Gernot Ploiner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-24" title="2014-02-24 21:01">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/26114/test.jpg">test.jpg</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-205115-notes"><p>Same Problem here. Tested with TYPO3 4.5.30 and 6.1.7! So the Problem exists much longer than 6.x!</p>
+
+
+	<p>I create Content as following:<br />- default language with translations (de+en)<br />- standalone default language (de)<br />- standalone translation (en)<br />- all languages (de+en)<br />The Backend-View looks like as expected.<br />In the Frontend it is not possible to get the same contellation.</p>
+
+
+	<p>I understand the backport problem. Whats about new fixed TypoScript Keywords (e.g.: sysLanguageMode / sysLanguageOverlay) and set the sys_language_mode and sys_language_overlay to deprecated?</p>
+
+
+	<p>With Templavoila the Problem doesn't exist. But at this time a lot of people switch from TV to other solutions and meet this problem. So it is very important to fix it as soon as possible.</p>
+
+
+	<p>My TypoScript:</p>
+
+
+	<p>config {<br />  sys_language_uid = 0<br />  locale_all = de_AT<br />  language = de<br />  htmlTag_langKey = de</p>
+
+
+	<pre><code>#column1:<br />  sys_language_mode = strict<br />  #sys_language_mode = content_fallback<br />  #sys_language_mode = ignore</code></pre>
+
+
+	<pre><code>#column2:<br />  #sys_language_overlay = 1<br />  #sys_language_overlay = hideNonTranslated<br />  #sys_language_overlay = 0<br />}</code></pre>
+
+
+	<p>[globalVar = GP:L = 1]<br />config {<br />  sys_language_uid = 1<br />  language = en<br />  locale_all = en_GB<br />  htmlTag_langKey = en<br />}<br />[end]</p>
+
+
+	<p>page = PAGE<br />page {<br />  10 = CONTENT<br />  10 {<br />    table = tt_content<br />    select {<br />      pidInList = this<br />      orderBy = sorting<br />      #column3:<br />      languageField=sys_language_uid<br />    }<br />  }<br />}</p></div>
+  </div>
+  
+
+  <div id="change-210461" class="journal has-notes">
+    <h4><a href="48673.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3179">Gernot Ploiner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-25" title="2014-03-25 21:00">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-210461-notes"><p>Thank you TYPO3 6.2<br />select.includeRecordsWithoutDefaultTranslation = 1<br />Not tested yet, but i think this is what i need :-)</p></div>
+  </div>
+  
+
+  <div id="change-213450" class="journal has-notes">
+    <h4><a href="48673.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-18" title="2014-04-18 13:13">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-213450-notes"><p>includeRecordsWithoutDefaultTranslation was added in <a href="49106.html" class="issue status-7 priority-2 closed" title="Add new option &quot;includeRecordsWithoutDefaultTranslation&quot; for select() function (Resolved)">#49106</a></p></div>
+  </div>
+  
+
+  <div id="change-228303" class="journal has-notes">
+    <h4><a href="48673.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4002">Christian Ludwig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-28" title="2014-08-28 21:36">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228303-notes"><p>Are there any news about this bug?<br />We are running a site with 6.2.4 still having problems with the translation.</p>
+
+
+	<p>Our setup:<br /><pre>
+# Default (German)
+config {
+    sys_language_uid = 0
+
+    locale_all = de_DE.UTF-8
+    language = de
+    language_alt = de
+    htmlTag_langKey = de-DE
+}
+
+# English /en/
+[globalVar = GP:L = 2]
+config {
+    sys_language_uid = 2
+
+    locale_all = en_GB.UTF-8
+    language = en
+    language_alt = en
+    htmlTag_langKey = en-GB
+}
+[global]
+
+# Chinese /cn/
+[globalVar = GP:L = 3]
+config {
+    sys_language_uid = 3
+
+    locale_all = zh_CN.UTF-8
+    language = zh
+    language_alt = zh
+    htmlTag_langKey = zh-CN
+}
+[global]
+</pre></p>
+
+
+	<p>We have translated all pages 1:1 (German:English) and only some Chinese pages are missing. Here the german content gets displayed (menus are shown in Chinese, TS-Content in German, see description at the end of my post).</p>
+
+
+	<p>No we need to change the fallback language to English (L=2) with these additional settings:</p>
+
+
+<pre>
+config.sys_language_mode = content_fallback; 2,0
+config.sys_language_overlay = 1
+</pre>
+
+	<p>Everything seems to work fine, but contents from a custom fluid extension with IRRE elements suddenly disappear from every page.</p>
+
+
+	<p>An other problem that existed before is that content (global footer) added by TypoScipt to the template (Fluid cObject ViewHelper) with styles.content.get is displayed in the fallback language instead of the exiting content. I tried select.includeRecordsWithoutDefaultTranslation = 1, without success.</p>
+
+
+<pre>
+lib.footer &lt; styles.content.get
+lib.footer {
+    select.pidInList = 16
+    select.where = colPos=0
+    select.includeRecordsWithoutDefaultTranslation = 1
+}
+</pre></div>
+  </div>
+  
+
+  <div id="change-230254" class="journal has-notes">
+    <h4><a href="48673.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-18" title="2014-09-18 12:59">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230254-notes"><p>@Rainer<br />I'm just reading your PDF file again.</p>
+
+
+A few questions:
+	<ul>
+	<li>Which language had which UID?</li>
+		<li>What does a crossed-out language mean?</li>
+		<li>What language did you request for each testcase? L=?</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-230271" class="journal has-notes">
+    <h4><a href="48673.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3049">Rainer Becker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-18" title="2014-09-18 14:28">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230271-notes"><p>DE is sysLangUid 0 (default), <br />NL is sysLangUid 2</p>
+
+
+	<p>Green backgrounds mean "This record should show up", check means "it did show up". <br />Columns "DE" mean "page is called with L=0, "NL" means page is called with "L=2" <br />Crossed out means "record exists but is hidden"</p>
+
+
+Left column: 
+	<ul>
+	<li>* = ContentRecord for language=ALL</li>
+		<li>DE+NL = ContentRecord is created for DE and translated to NL</li>
+		<li>DE (crossedout) + NL = ContentRecord is created for DE and translated to NL, DE is hidden</li>
+		<li>DE + NL (crossedout) = ContentRecord is created for DE and translated to NL, NL is hidden</li>
+		<li>DE = ContentRecord is created only for DE</li>
+		<li>NL = ContentRecord is created only for NL</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-232222" class="journal has-notes">
+    <h4><a href="48673.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37962">Andreas Allacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-08" title="2014-10-08 09:19">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232222-notes"><p>Bug #49176 <br />does not yet work for me with 6.2.5</p>
+
+
+	<p>Not sure where it checks regarding l10n_mode exclude. <br />The problem here es specifically the addSysLanguageStatement and if I query against a l10n_mode exclude field. Especially, if I want to mix l10n_mode exclude fields with non excluded.<br />Details regarding this I posted in the ticket: #49176#note-13</p></div>
+  </div>
+  
+
+  <div id="change-242072" class="journal has-notes">
+    <h4><a href="48673.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-23" title="2014-12-23 12:27">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-242072-notes"><p>Andreas Allacher wrote:</p>
+
+
+<blockquote>
+
+	<p>Bug #49176 <br />does not yet work for me with 6.2.5</p>
+
+
+</blockquote>
+
+	<p>Confirmed. The same issue is hitting us currently in Extbase.</p>
+
+
+<blockquote>
+
+	<p>Not sure where it checks regarding l10n_mode exclude.</p>
+
+
+</blockquote>
+
+	<p>Nowhere. There is not a single occurrence of this in the Extbase persistence layer.</p></div>
+  </div>
+  
+
+  <div id="change-257180" class="journal has-notes">
+    <h4><a href="48673.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-04-30" title="2015-04-30 09:34">3 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-257180-notes"><p>Please delete the last comment as it's clearly spam.</p></div>
+  </div>
+  
+
+  <div id="change-268477" class="journal has-details">
+    <h4><a href="48673.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-25" title="2015-07-25 12:50">10 days</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Frontend</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Markus Klein</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>next-patchlevel</i></strike>)</li>
+      
+       <li><strong>Complexity</strong> set to <i>nightmare</i></li>
+      
+       <li><strong>Sprint Focus</strong> set to <i>Remote Sprint</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-48673-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/48673.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="48673.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/48673 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:15:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

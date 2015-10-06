@@ -1,0 +1,679 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/46257 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:07:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #46257: Add escape sequence support for Fluid - TYPO3.Fluid - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:#FFFFFF;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/46257.atom" rel="alternate" title="TYPO3.Fluid - Feature #46257: Add escape sequence support for Fluid" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-color:#FFFFFF;background-image:url(../headerimages/517.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" accesskey="4" style="color:#FFFFFF">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Fluid</h1>
+        <div id="quicklinks"><p>Wiki of the <a href="../../external.html?link=http://forge.typo3.org/projects/typo3v4-mvc/wiki" class="external">Extbase Project</a></p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 current sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=195" class="query">1.0 beta 1</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (4)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2208">Christian Müller</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39709">Hannes Lau</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-46257-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #46257</h2>
+
+<div class="issue status-6 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Add escape sequence support for Fluid</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/38109">Rafael Kähm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-03-14" title="2013-03-14 09:01">over 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2015-01-26" title="2015-01-26 09:00">6 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Under Review</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-03-14</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Core</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>In some cases you need to print some characters to rendered view, which Fluid uses.<br />f.e.:
+{{object}} should output {value} but Fluid renders this to {{object}}</p>
+
+
+	<p>i have patch for this, which make it possible following possible:<br />\{{object}\} renders to {value}<br />\\\{{object}\\\} renders to \{value\}</p>
+
+
+	<p>please make gerrit from following gist:<br /><a class="external" href="../../external.html?link=https://gist.github.com/RafaelKa/5159642">https://gist.github.com/RafaelKa/5159642</a></p>
+
+
+	<p>there are 54,55,56 , 119-123 and 455,456 lines interesting</p>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-154460" class="journal has-notes">
+    <h4><a href="46257.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38109">Rafael Kähm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-03-14" title="2013-03-14 09:45">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154460-notes"><p>yes it is a copy of CDATA but most convenient:</p>
+
+
+	<p>CDATA:<br />&lt;![CDATA[{]]&gt;{object}&lt;![CDATA[}]]&gt; renders to {value}</p>
+
+
+	<p>vs</p>
+
+
+	<p>escape sequenze:<br />\{{object}\} renders to {value}</p></div>
+  </div>
+  
+
+  <div id="change-154467" class="journal has-notes has-details">
+    <h4><a href="46257.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-03-14" title="2013-03-14 10:27">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Core</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-154467-notes"><p>To be honest, I'm not so sure that we should adjust the parser for this. Wouldn't<br /><pre>
+<code class="html syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="entity">&amp;#123;</span>{object}<span class="entity">&amp;#125;</span>
+</span></code><br /></pre><br />work in your case?</p></div>
+  </div>
+  
+
+  <div id="change-154470" class="journal has-notes">
+    <h4><a href="46257.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38109">Rafael Kähm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-03-14" title="2013-03-14 11:06">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154470-notes"><p>Bastian SGML/HTML/XML entity will not work <br />output is</p>
+
+
+<code>&amp;#123;value&amp;#125;</code>
+
+	<p>and i think this is good so as it is -> maybe you need to print SGML/HTML/XML to</p>
+
+
+	<p>Escape sequence is usefull for StandaloneView. <br />Here is a demo<br /><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span>   <span class="comment">/**</span>
+<span class="line-numbers"> 2</span><span class="comment">     * An example command to render views with escape sequenze</span>
+<span class="line-numbers"> 3</span><span class="comment">     *</span>
+<span class="line-numbers"> 4</span><span class="comment">     * This renders a view with Fluid to String and print this to your shell</span>
+<span class="line-numbers"> 5</span><span class="comment">     *</span>
+<span class="line-numbers"> 6</span><span class="comment">     * @return void</span>
+<span class="line-numbers"> 7</span><span class="comment">     */</span>
+<span class="line-numbers"> 8</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">escapeSequenzeDemoCommand</span>() {
+<span class="line-numbers"> 9</span>
+<span class="line-numbers"><strong>10</strong></span>        <span class="local-variable">$templateSource</span> = <span class="string"><span class="delimiter">'</span><span class="content"></span></span>
+<span class="line-numbers">11</span><span class="string"><span class="content">cdata            &lt;![CDATA[{]]&gt;{object.property1}&lt;![CDATA[}]]&gt;</span></span>
+<span class="line-numbers">12</span><span class="string"><span class="content">escapeSequence    </span><span class="content">\{</span><span class="content">{object.property1}</span><span class="content">\}</span><span class="content"></span></span>
+<span class="line-numbers">13</span><span class="string"><span class="content">                &lt;!</span><span class="content">\[</span><span class="content">CDATA[</span><span class="content">\{</span><span class="content">]]&gt;{object.property1}&lt;!</span><span class="content">\[</span><span class="content">CDATA[</span><span class="content">\}</span><span class="content">]]</span></span>
+<span class="line-numbers">14</span><span class="string"><span class="content">                &lt;!</span><span class="content">\[</span><span class="content">CDATA[{]]&gt;{object.property1}&lt;!</span><span class="content">\[</span><span class="content">CDATA[}]]</span></span>
+<span class="line-numbers">15</span><span class="string"><span class="content">XML entity        &amp;#123;{object.property1}&amp;#125;</span></span>
+<span class="line-numbers">16</span><span class="string"><span class="content"></span><span class="delimiter">'</span></span>;
+<span class="line-numbers">17</span>
+<span class="line-numbers">18</span>        <span class="local-variable">$view</span> = <span class="keyword">new</span> \<span class="constant">TYPO3</span>\<span class="constant">Fluid</span>\<span class="constant">View</span>\<span class="constant">StandaloneView</span>();
+<span class="line-numbers">19</span>        <span class="local-variable">$view</span>-&gt;setTemplateSource(<span class="local-variable">$templateSource</span>);
+<span class="line-numbers"><strong>20</strong></span>
+<span class="line-numbers">21</span>        <span class="local-variable">$object</span> = <span class="predefined">array</span>(<span class="string"><span class="delimiter">'</span><span class="content">property1</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span>);
+<span class="line-numbers">22</span>        <span class="local-variable">$view</span>-&gt;assign(<span class="string"><span class="delimiter">'</span><span class="content">object</span><span class="delimiter">'</span></span>, <span class="local-variable">$object</span>);
+<span class="line-numbers">23</span>        <span class="predefined">echo</span> <span class="local-variable">$view</span>-&gt;render() . <span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">24</span>
+<span class="line-numbers">25</span>    }</span></code></p>
+
+
+	<p>output:</p>
+
+
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span>    cdata                {value}
+<span class="line-numbers">2</span>    escapeSequence        {value}
+<span class="line-numbers">3</span>                        &lt;![<span class="constant">CDATA</span>[{]]&gt;value&lt;![<span class="constant">CDATA</span>[}]]
+<span class="line-numbers">4</span>                        &lt;![<span class="constant">CDATA</span>[{]]&gt;value&lt;![<span class="constant">CDATA</span>[}]]
+<span class="line-numbers">5</span>    <span class="constant">XML</span> entity            &amp;<span class="comment">#123;value&amp;#125;</span></span></code></div>
+  </div>
+  
+
+  <div id="change-155130" class="journal has-notes">
+    <h4><a href="46257.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-03-19" title="2013-03-19 14:30">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-155130-notes"><p>TBH I just discovered another use case for my very own, I needed to</p>
+
+
+<pre><code class="html syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="tag">&lt;f:form.hidden</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">message[recipient]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{recipientIdentifier}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+</span></code></pre>
+
+	<p>while the value should literally be <code>{recipientIdentifier}</code> (it's for JavaScript substitution lateron).<br />Any ideas how to achieve this currently?</p></div>
+  </div>
+  
+
+  <div id="change-156068" class="journal has-notes">
+    <h4><a href="46257.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38109">Rafael Kähm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-03-24" title="2013-03-24 11:39">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-156068-notes"><p>Adrian Föder wrote:</p>
+
+
+<blockquote>
+
+	<p>TBH I just discovered another use case for my very own, I needed to</p>
+
+
+	<p>[...]</p>
+
+
+	<p>while the value should literally be <code>{recipientIdentifier}</code> (it's for JavaScript substitution lateron).<br />Any ideas how to achieve this currently?</p>
+
+
+</blockquote>
+
+<hr />
+
+
+	<p>currently you can use CDATA</p>
+
+
+<code class="html syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="tag">&lt;f:form.hidden</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">message[recipient]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;![CDATA[{recipientIdentifier}]]</span></span><span class="error">&gt;</span>&quot; /<span class="error">&gt;</span></span></code>
+
+<hr />
+
+
+<hr />
+
+
+	<p>i tried your example with my solution of escape sequenze as follows:</p>
+
+
+<code class="html syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="tag">&lt;f:form.hidden</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">message[recipient]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">\{recipientIdentifier\} /</span></span><span class="error">&gt;</span></span></code>
+
+	<p>and Fluid prints:</p>
+
+
+<code class="html syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hidden</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">message[recipient]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{recipientIdentifier}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></span></code></div>
+  </div>
+  
+
+  <div id="change-156112" class="journal has-notes">
+    <h4><a href="46257.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38109">Rafael Kähm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-03-24" title="2013-03-24 16:53">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-156112-notes"><p>with on <a class="external" href="../../external.html?link=https://gist.github.com/RafaelKa/5159642">https://gist.github.com/RafaelKa/5159642</a> code kickstarter breaks</p>
+
+
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span>... 
+<span class="line-numbers">2</span><span class="keyword">use</span> <span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Annotations</span> <span class="keyword">as</span> <span class="constant">Flow</span>;
+<span class="line-numbers">3</span>...</span></code>
+
+	<p>to</p>
+
+
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span>...
+<span class="line-numbers">2</span><span class="keyword">use</span> <span class="constant">TYPO3FlowAnnotations</span> <span class="keyword">as</span> <span class="constant">Flow</span>;
+<span class="line-numbers">3</span>...</span></code>
+
+	<p>in <br /><a class="external" href="../../external.html?link=https://gist.github.com/RafaelKa/5232405">https://gist.github.com/RafaelKa/5232405</a></p>
+
+
+	<p>i added a list of to escaped characters <code>[ ] { } \ </code></p>
+
+
+	<p>are there some more characters to be escaped by Fluid?</p></div>
+  </div>
+  
+
+  <div id="change-156162" class="journal has-notes">
+    <h4><a href="46257.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38197">Tarcisio Fedrizzi</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-03-25" title="2013-03-25 11:49">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-156162-notes"><p>Rafael Kähm wrote:</p>
+
+
+<blockquote>
+
+	<p>with on <a class="external" href="../../external.html?link=https://gist.github.com/RafaelKa/5159642">https://gist.github.com/RafaelKa/5159642</a> code kickstarter breaks</p>
+
+
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span>... 
+<span class="line-numbers">2</span>&gt; <span class="keyword">use</span> <span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Annotations</span> <span class="keyword">as</span> <span class="constant">Flow</span>;
+<span class="line-numbers">3</span>&gt; ...</span></code>
+
+	<p>to</p>
+
+
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span>...
+<span class="line-numbers">2</span>&gt; <span class="keyword">use</span> <span class="constant">TYPO3FlowAnnotations</span> <span class="keyword">as</span> <span class="constant">Flow</span>;
+<span class="line-numbers">3</span>&gt; ...</span></code>
+
+	<p>in <br /><a class="external" href="../../external.html?link=https://gist.github.com/RafaelKa/5232405">https://gist.github.com/RafaelKa/5232405</a></p>
+
+
+	<p>i added a list of to escaped characters <code>[ ] { } \ </code></p>
+
+
+	<p>are there some more characters to be escaped by Fluid?</p>
+
+
+</blockquote>
+
+	<p>This works as well (I know that is not so clean but):</p>
+
+
+	<p>In the controller:<br /><pre>
+$this-&gt;view-&gt;assign('oBrc', '{');
+$this-&gt;view-&gt;assign('cBrc', '}');
+</pre></p>
+
+
+	<p>In the view:<br /><pre>
+{oBrc}MyValue{cBrc}
+</pre></p>
+
+
+	<p>you can write the literal closing brace and you obtain the same value. Like this:</p>
+
+
+<pre>
+{oBrc}MyValue}
+</pre>
+
+	<p>The use case that Adrian points out can be worked out in a simpler way like this:<br />controller:<br /><pre>
+$this-&gt;view-&gt;assign('recipientIdentifier', '{recipientIdentifier}');
+</pre></p>
+
+
+	<p>view:<br /><pre>
+&lt;f:form.hidden name="message[recipient]" value="{recipientIdentifier}" /&gt;
+</pre></p>
+
+
+	<p>Of course if you have to print out many literal values (or to produce for example a JSON template) the ability to escape braces would be the best way to achieve it.</p></div>
+  </div>
+  
+
+  <div id="change-183550" class="journal has-notes">
+    <h4><a href="46257.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39497">Artus Kolanowski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-09-20" title="2013-09-20 01:09">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-183550-notes"><p>Tarcisio Fedrizzi wrote:</p>
+
+
+<blockquote>
+
+	<p>This works as well (I know that is not so clean but):</p>
+
+
+	<p>In the controller:<br />[...]</p>
+
+
+	<p>In the view:<br />[...]</p>
+
+
+	<p>you can write the literal closing brace and you obtain the same value. Like this:</p>
+
+
+	<p>[...]</p>
+
+
+	<p>The use case that Adrian points out can be worked out in a simpler way like this:<br />controller:<br />[...]</p>
+
+
+	<p>view:<br />[...]</p>
+
+
+	<p>Of course if you have to print out many literal values (or to produce for example a JSON template) the ability to escape braces would be the best way to achieve it.</p>
+
+
+</blockquote>
+
+	<p>I think this is currently the most usable workaround. But instead of using a controller you can also use <code>f:alias</code> in a template.</p>
+
+
+<pre>
+&lt;f:alias map="{ocb: '{', ccb: '}'}"&gt;
+    &lt;f:uri.action arguments="{start: '{ocb}start{ccb}'}" [...] /&gt;
+&lt;/f:alias&gt;
+</pre>
+
+	<p>Anyway such a feature would make some templates much more cleaner.</p></div>
+  </div>
+  
+
+  <div id="change-187439" class="journal has-notes has-details">
+    <h4><a href="46257.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-10-18" title="2013-10-18 15:51">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-187439-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/24898">https://review.typo3.org/24898</a></p></div>
+  </div>
+  
+
+  <div id="change-226981" class="journal has-notes">
+    <h4><a href="46257.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39709">Hannes Lau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-08-12" title="2014-08-12 11:26">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-226981-notes"><p>To my eyes, it would be better to escape single { characters, so one can still use Fluid variables inside a pair of escaped curly braces.</p>
+
+
+	<p>As an example, I am trying to use Fluid to produce some CSS code like this:</p>
+
+
+<pre>
+&lt;n:headerData&gt;
+    &lt;style type="text/css"&gt;
+        .article-{newsItem.uid} \{
+            background-image: url('{f:uri.image(src: "{mediaElement.uid}")}');
+        \}
+    &lt;/style&gt;
+&lt;/n:headerData&gt;
+</pre>
+
+	<p>This would not work with the \{escaped} approach.</p></div>
+  </div>
+  
+
+  <div id="change-246799" class="journal has-notes">
+    <h4><a href="46257.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2015-01-26" title="2015-01-26 09:00">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-246799-notes"><p>@Hannes: An escaped opening brace \{ can immediately be followed by another opening brace (for the variable). So imho you could do: \{{variable}}<br />It could be discussed whether escaping the closing brace as well would make it easier to read. But it's not mandatory since with no active opening brace at that point the closing brace is just regarded as text.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-46257-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/46257.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="46257.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/46257 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:07:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

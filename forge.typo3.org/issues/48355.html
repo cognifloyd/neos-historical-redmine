@@ -1,0 +1,659 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/48355 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:10:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #48355: Assign output of viewhelper to template variable for further processing. - TYPO3.Fluid - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:#FFFFFF;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/48355.atom" rel="alternate" title="TYPO3.Fluid - Feature #48355: Assign output of viewhelper to template variable for further processing." type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-color:#FFFFFF;background-image:url(../headerimages/517.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" accesskey="4" style="color:#FFFFFF">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Fluid</h1>
+        <div id="quicklinks"><p>Wiki of the <a href="../../external.html?link=http://forge.typo3.org/projects/typo3v4-mvc/wiki" class="external">Extbase Project</a></p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 current sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=195" class="query">1.0 beta 1</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-48355-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #48355</h2>
+
+<div class="issue status-1 priority-3 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Assign output of viewhelper to template variable for further processing.</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-17" title="2013-05-17 17:28">about 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-07-06" title="2013-07-06 18:05">about 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">New</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-05-17</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Could have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>Has patch:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>It would be nice if it was possible to "assign" the output of a viewhelper to a template variable with an assign attribute for usage elsewhere in the template. When assign is set the output of the viewhelper is suppressed.</p>
+
+
+	<p>For example the template:<br /><pre>
+
+&lt;f:format.date format="d.m.Y - H:i:s" assign="myDate"&gt;\@{your_timestamp}&lt;/f:format.date&gt;
+&lt;p&gt;Here is my date: {myDate}&lt;/p&gt;
+&lt;p&gt;Here is again my date: {myDate}&lt;/p&gt;
+
+</pre></p>
+
+
+	<p>Would output:<br /><pre>
+
+Here is my date: 1.1.2013 - 12:00:00
+Here is again my date: 1.1.2013 - 12:00:00
+
+</pre></p>
+
+
+	<p>I know &lt;f:alias&gt; exists but the kind of assignment I am suggesting would by faster to parse by not having to call the viewhelper multiple times to output the same value.</p>
+
+
+	<p>The "assign" should be a universal attribute to all Viewhelpers.</p>
+
+
+	<p>Then you can do things also like this:<br /><pre>
+
+&lt;f:for each="{myCollection}" as="collectionItem" assign="myList"&gt;
+  &lt;f:render partial="Some/Item"  /&gt;
+&lt;/f:for&gt;
+
+&lt;div class="top list"&gt;{myList}&lt;/div&gt;
+&lt;div class="content"&gt;{myOtherContent}&lt;/div&gt;
+&lt;div class="bottom list"&gt;{myList}&lt;/div&gt;
+
+</pre></p>
+
+
+	<p>The advantages I think is clear when applied to looped elements. You don't have to process the same content twice or more.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-165982" class="journal has-notes">
+    <h4><a href="48355.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-17" title="2013-05-17 18:46">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-165982-notes"><p>This would need to go to upstream first:<br /><a class="external" href="../../external.html?link=http://forge.typo3.org/projects/package-typo3-fluid">http://forge.typo3.org/projects/package-typo3-fluid</a></p></div>
+  </div>
+  
+
+  <div id="change-166019" class="journal has-notes has-details">
+    <h4><a href="48355.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-17" title="2013-05-17 23:11">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>Fluid</i> to <i>TYPO3.Fluid</i></li>
+      
+       <li><strong>Category</strong> deleted (<strike><i>Fluid: Core</i></strike>)</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-166019-notes"><p>Just upstreaming this issue from Typo3_CMS->Core->Fluid</p></div>
+  </div>
+  
+
+  <div id="change-166137" class="journal has-notes">
+    <h4><a href="48355.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-19" title="2013-05-19 14:28">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-166137-notes"><p>I don't quite get what would be the benefit over the f:alias viewhelper:</p>
+
+
+<pre>
+&lt;f:alias map="{myDate: '{f:format.date(subject: \'\@{your_timestamp}\', format: \'d.m.Y - H:i:s\')}'}"&gt;
+  &lt;p&gt;Here is my date: {myDate}&lt;/p&gt;
+  &lt;p&gt;Here is again my date: {myDate}&lt;/p&gt;
+&lt;/f:alias&gt;
+</pre><br />Depending on the content of the f:alias viewHelper it would anyway be recommended to use a partial instead - see the following.
+
+	<p>Also, I'm not sure what your partial rendering example is supposed to achieve:<br /><pre>
+&lt;f:for each="{myCollection}" as="collectionItem" assign="myList"&gt;
+  &lt;f:render partial="Some/Item"  /&gt;
+&lt;/f:for&gt;
+</pre><br />This would not work, as you need to assign variables to the partial explicitly via the "arguments" attribute, or  else the variable scope inside the partial would be empty.</p>
+
+
+	<p>However, the assign would do nothing of benefit in this case, as the following would achieve the same:<br /><pre>
+&lt;f:for each="{myCollection}" as="collectionItem"&gt;
+  &lt;f:render partial="Some/Item" arguments="{myList: collectionItem}" /&gt;
+&lt;/f:for&gt;
+</pre></p>
+
+
+	<p>Please provide more information on what is supposed to be achieved and what the use cases are.</p></div>
+  </div>
+  
+
+  <div id="change-166214" class="journal has-notes">
+    <h4><a href="48355.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-20" title="2013-05-20 10:19">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-166214-notes"><p>In my mind the benefits are clear.</p>
+
+
+	<ul>
+	<li>Cleaner, simpler template markup.</li>
+		<li>Faster to write templates.</li>
+		<li>Less processing for the parser.</li>
+	</ul>
+
+
+	<p>Alias is clumsy, and time consuming.<br />Inline templating is difficult to write and read when it gets complex.</p>
+
+
+	<p>It is not at first glance obvious what a map is doing when written inline.<br />Multiple mappings of different variables in the same alias complicate it even further.<br />It is not user friendly for someone trying to figure out someone elses code.</p>
+
+
+	<p>Trying mapping a complex "for loop" containing multiple if conditions in a alias map.</p>
+
+
+	<p>Off the top of my head, a use case could be with adding a paginator in multiparts of the same template.<br />That is a classic for-loop scenario. But there are countless uses for repeating a variable multiple times.</p>
+
+
+	<p>Alexander Berl wrote:</p>
+
+
+<blockquote>
+
+	<p>However, the assign would do nothing of benefit in this case, as the following would achieve the same:</p>
+
+
+</blockquote>
+
+	<p><strong>Actually you have edited my example snippet to push your argument</strong> <br />Maybe you have really mis-read the code, or have a misunderstanding of what it means to assign the output of a viewhelper to a template variable.</p>
+
+
+	<p>In this example I am not concerned in pushing "myList" into the "Some/Item" partial.<br />My intention is to repeat the processing of the for-loop without having to process it again.</p>
+
+
+	<p>The original snippet was this (see parent post to compare):<br /><pre>
+
+&lt;f:for each="{myCollection}" as="collectionItem" assign="myList"&gt;
+  &lt;f:render partial="Some/Item"  /&gt;
+&lt;/f:for&gt;
+
+&lt;div class="top list"&gt;{myList}&lt;/div&gt;
+&lt;div class="content"&gt;{myOtherContent}&lt;/div&gt;
+&lt;div class="bottom list"&gt;{myList}&lt;/div&gt;
+
+</pre></p>
+
+
+	<p>If I was to write that snippet to achieve the same result in Fluid today it would look like this:<br /><pre>
+
+&lt;div class="top list"&gt;
+  &lt;f:for each="{myCollection}" as="collectionItem"&gt;
+    &lt;f:render partial="Some/Item"  /&gt;
+  &lt;/f:for&gt;
+&lt;/div&gt;
+&lt;div class="content"&gt;{myOtherContent}&lt;/div&gt;
+&lt;div class="bottom list"&gt;
+  &lt;f:for each="{myCollection}" as="collectionItem"&gt;
+    &lt;f:render partial="Some/Item"  /&gt;
+  &lt;/f:for&gt;
+&lt;/div&gt;
+
+</pre></p>
+
+
+	<p>It increased the template code by 5 lines, and calls the "for" and "render" viewhelpers twice, when it should only be neccesary to process it once. You are making the server work harder than necessary.</p>
+
+
+	<p>Also assigning template variables in such a way has been used in Smarty templating, somebody coming from Smarty would be familiar with the concept. The concept of assigning variables in templates in such a way has been in Smarty for a long time. Fluid even uses the word "assign" for the template variable "setting" method in viewhelpers. So assigning template variables in such a way has a historical and even sub-conscience precedence. I think doing it the same way has it's benefits for somebody new to Fluid who has experience in Smarty.</p>
+
+
+	<p>In fact the logical step of this would be to additionally create a assign viewhelper.</p>
+
+
+<pre>
+ &lt;f:assign name="myVar" value="Hello World!" /&gt;
+</pre>
+
+	<p>It would not require a closing tag block to be used like alias.</p>
+
+
+	<p>I am not suggesting something new, just something powerfully convenient for templating that has proven production value in other templating systems.</p></div>
+  </div>
+  
+
+  <div id="change-166218" class="journal has-notes">
+    <h4><a href="48355.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-20" title="2013-05-20 11:28">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-166218-notes"><p>BTW if you also intend to add a assign viewhelper, please make sure it has a <strong>cast</strong> attribute with type "string" being default:</p>
+
+
+	<p>Examples:<br /><pre>
+
+ &lt;f:assign name="myName" value="Dave" /&gt;
+ &lt;f:assign name="myVar" value="true" /&gt;
+ &lt;f:assign name="myVar2" value="true" cast="boolean" /&gt;
+ &lt;f:assign name="myVar3" value="1.5" cast="float" /&gt;
+ &lt;f:assign name="myVar4" value="cat,dog,mouse" cast="array" /&gt;
+ &lt;f:assign name="myVar5" value="{myClassInitParams}" cast="\My\Cool\CustomClass" /&gt;
+
+{myName}&lt;br /&gt;
+{myVar}&lt;br /&gt;
+{myVar2}&lt;br /&gt;
+{myVar3}&lt;br /&gt;
+{myVar4}&lt;br /&gt;
+{myVar5-&gt;publicMethodDoSomethingAwesome({myName})}
+
+</pre></p>
+
+
+	<p>This would output:<br /><pre>
+
+Dave
+true
+1
+1.5
+Array()
+Dave was 'ere!
+
+</pre></p>
+
+
+	<p>Assigning variables is <strong>primitive</strong> in templating. It is all about that.<br />This would have been the first viewhelper I would have written when creating a new templating system.<br />I am quite amazed you don't have it this far in.</p>
+
+
+	<p>If fluid could do this it would be awesome. It is not too late.</p>
+
+
+	<p>As a second thought imagine this, "dynamic" ViewHelpers.<br />Just for the abstraction value:</p>
+
+
+<pre>
+
+ &lt;f:assign name="myViewHelper" value="{myClassInitParams}" cast="\TYPO3\CMS\Fluid\Core\ViewHelper\ForViewHelper" /&gt;
+ &lt;f:myViewHelper each="{foo} as="bar"&gt;{bar}&lt;/f:myViewHelper&gt;
+
+</pre>
+
+	<p>That would be in my book really damn amazing if that was possible.</p></div>
+  </div>
+  
+
+  <div id="change-166223" class="journal has-notes">
+    <h4><a href="48355.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-20" title="2013-05-20 12:40">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-166223-notes"><p>Sorry just thinking about possibilities....<br />You could even cast variables as native PHP functions.</p>
+
+
+<pre>
+
+ &lt;f:assign name="microtime" cast="\PHP\microtime" /&gt;
+ &lt;f:microtime /&gt;
+
+ &lt;f:assign name="upperCase" cast="\PHP\strtoupper" /&gt;
+ &lt;f:upperCase&gt;lower case text&lt;/f:upperCase&gt;
+
+</pre>
+
+	<p>The power it would bring to Fluid is the entire PHP API at your fingertips if you need it.<br />If some viewhelper functionality is missing in the Fluid Core or extension it shouldn't be a problem to instantly solve the problem using a assigned variable with a cast.</p>
+
+
+	<p>IMHO That would make Fluid incredibly powerful. <br />Better than Smarty.</p>
+
+
+	<p>Anyway that is my 2c..</p></div>
+  </div>
+  
+
+  <div id="change-171863" class="journal has-notes">
+    <h4><a href="48355.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-07-04" title="2013-07-04 21:24">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-171863-notes"><p>I see your point now. What I don't like about it, is that the assigned variable will be "global" scope, which might cause undesired variable name clashes and just contradicts the whole Fluid philosophy of scoped contexts. Also I'm still unsure if it brings that much benefit to assign rendered content to a variable instead of just wrapping it in a(nother) partial which will get cached. I guess that would need some benchmarking, but in the end this could easily be achieved by a custom viewhelper as follows:<br /><pre>
+class AssignViewHelper extends AbstractViewHelper {
+    ...
+    public function render($name, $value = NULL) {
+        if ($value === NULL) {
+            $value = $this-&gt;renderChildren();
+        }
+        $this-&gt;viewHelperVariableContainer-&gt;add($name, $value);
+    }
+}
+</pre><br />You might want to add checks for existence of a variable with that name though and handle the conflict case appropriately plus add your casting option. I doubt something like this will go into Fluid though, but that's not my decision, so I'll leave further discussion up to the core team.</p></div>
+  </div>
+  
+
+  <div id="change-172271" class="journal has-notes">
+    <h4><a href="48355.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-07-06" title="2013-07-06 18:05">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-172271-notes"><p>Alexander Berl wrote:</p>
+
+
+<blockquote>
+
+	<p>I see your point now. What I don't like about it, is that the assigned variable will be "global" scope, which might cause undesired variable name clashes and just contradicts the whole Fluid philosophy of scoped contexts.</p>
+
+
+</blockquote>
+
+	<p>I am sure if you want your variables scoped you can just add a scope attribute to the viewhelper abstract. <br />That is a small issue that can be easily fixed with a little thought. Though undesired variable name clashes is a human construct problem and not something you should massively worry about.  If I use common reserved keywords for my variable names I should understand the potential pitfalls and consequences, this is common sense in all mark-up/languages. To explain this best I like to use the "douche" example: If I take a douche (<a class="external" href="../../external.html?link=http://en.wikipedia.org/wiki/Douche">http://en.wikipedia.org/wiki/Douche</a>) in the UK, it is not the same thing as if I take a douche in France or Germany. You only make that mistake once. :-)</p>
+
+
+	<p>BTW is there a Fluid philosophy written somewhere I can read? I haven't found one.</p>
+
+
+	<p>This is my philosophy: Fluid should be fluid. <br />It should flow off my fingers like water off a ducks back, at the moment it is very convoluted and constrained in functionality. I always have to dig around in viewhelper classes to see if something has been implemented (in most cases generally not and in some cases duplicated under different names). This breaks the flow of template writing. With every extension I write or modify, I don't want to write custom viewhelper classes to replicate some native PHP functionality that is not declared in a core viewhelper file.  I tell you.. my duck keeps drowning everytime I do this. Poor ducky. :-(</p>
+
+
+	<p>That IMHO is NOT a fluid process to template writing.  It is just plain silly. It is like reinventing the wheel over and over.</p>
+
+
+	<p>By assigning variables and implementing casting to access the PHP API directly, it would eliminate most of the core viewhelpers that need to be written. It would save the project a lot of time and effort, as all the fuctionality already exists in native PHP.  The only time you should need to write a custom viewhelper class is when you are dealing with some complex business logic that requires more than a few single worded PHP function calls to get the desired output. Basically anything that PHP doesn't do in a one liner.</p>
+
+
+	<p>BTW PHP is a "Hypertext Preprocessor" which are just fancy words for templating language. <br />That makes Fluid a templating language coded in a templating language.</p>
+
+
+	<p>Hold that thought for a second. Whoah dude! What are we smoking? That is deep. ;-)</p>
+
+
+	<p>So maybe we should keep to the PHP metal as close as possible just for the sake of performance and to keep our options open.</p>
+
+
+	<p>We could even have a native PHP fallback. If I write &lt;f:strtoupper&gt;foo&lt;/f:strtoupper&gt; in my template and the viewhelper class does not exist, check if a native PHP function exists with the same name and if it does use that as the preprocessor. Surely this would not take so much to implement as compared to writing multitudes of redundant viewhelpers.</p>
+
+
+	<p>At the moment Fluid has a kind of very chunky custard consistency about it and it is clogging the drains.  <br />I hope to see Fluid become more "fluid", assigning variables and "in-template" casting would make it flow better.</p>
+
+
+	<p>my 2c. <br />BTW I hope the core team reads this. Think of the ducks. :-)</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-48355-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/48355.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="48355.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/48355 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:10:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

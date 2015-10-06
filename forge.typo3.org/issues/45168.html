@@ -1,0 +1,936 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/45168 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:33:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #45168: Wrong image displayed in FE if not resized - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/45168.atom" rel="alternate" title="Core - Bug #45168: Wrong image displayed in FE if not resized" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (3)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/4957">Max Roesch</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3426">Paul Hansen</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-45168-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #45168</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Wrong image displayed in FE if not resized</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-05" title="2013-02-05 11:57">over 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-08" title="2013-10-08 09:24">almost 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-02-05</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2120">6.0.2</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.0</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I recentyl stumpled upon a strange bug.</p>
+
+
+	<p>In a CE text with image an image "file-a.jpg" is inserted and the preview image showes the right one.<br />But in FE a completly wrong "file-b.jpg" is displayed.</p>
+
+
+	<p>I can not say whats going wrong here, but if i resize the image (Original File is e.g. 500x200px) to a width of 500px the right one gets rendered.</p>
+
+
+	<p>I am really confused - a few days ago this worked like expected. Maybe related with the update from  6.0.0 to 6.0.1?</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10903">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="57585" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="57585.html" class="issue status-7 priority-2 closed">Bug #57585</a>: Wrong Picture in FE
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-04-03</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7953">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="44988" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="44988.html" class="issue status-7 priority-1 closed">Bug #44988</a>: Arbitrary image is shown, if all images are set to hidden
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-01-30</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7954">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="44073" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="44073.html" class="issue status-7 priority-2 closed">Bug #44073</a>: Checksum needs to be updated after file processing
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-12-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-8114">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="46020" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="46020.html" class="issue status-9 priority-1 closed">Bug #46020</a>: Image size is 0 when not scaled
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-03-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7970">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="45308" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="45308.html" class="issue status-7 priority-1 closed">Bug #45308</a>: uid of processed file is sometimes updated during processing
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-02-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7952">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="44616" /></td>
+<td class="subject">duplicates 
+    Core - 
+    <a href="44616.html" class="issue status-9 priority-1 closed">Bug #44616</a>: Image caching broken for im_noScaleUp = 1
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-01-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/45168/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/45168/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=45168&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/5516c309ad6196a6664b0e8d52f5073da846b352" title="Revision 5516c309">Revision 5516c309</a><br />
+        <span class="author">Added by Andreas Wolf  <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-09" title="2013-02-09 12:09">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Processed files get corrupted when regenerated</p>
+
+
+	<p>After a file is being (re)processed, the information about it is updated<br />in the database by the ProcessedFileRepository. The repository gathers<br />information for the update from the processed file.</p>
+
+
+	<p>For unprocessed files (i.e. those where the original file should be<br />used), the ProcessedFile class does a fallback to the original file<br />object. Unfortunately, this fallback is also applied for the uid<br />property, which makes the repository overwrite a random record in<br />sys_file_processedfile. This leads to wrong images being displayed in<br />the frontend.</p>
+
+
+	<p>This patch makes the processed file only return its own uid.</p>
+
+
+	<p>IMPORTANT: To make sure your sys_file_processedfile data is not<br />corrupted, empty the table and your processed files folder (usually<br />fileadmin/_processed_/). This will slow down your site as all processed<br />files are regenerated, but afterwards all data will be correct.</p>
+
+
+	<p>Change-Id: I40685d5748a5a0fcf015c7d876a374f42154831d<br />Resolves: <a href="45308.html" class="issue status-7 priority-1 closed" title="uid of processed file is sometimes updated during processing (Resolved)">#45308</a><br />Related: <a href="44616.html" class="issue status-9 priority-1 closed" title="Image caching broken for im_noScaleUp = 1 (Closed)">#44616</a> <a href="45168.html" class="issue status-7 priority-1 closed" title="Wrong image displayed in FE if not resized (Resolved)">#45168</a><br />Releases: 6.1, 6.0<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/18145">https://review.typo3.org/18145</a><br />Reviewed-by: Helmut Hummel<br />Tested-by: Helmut Hummel<br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/91a1d0a35fd6b7eedabc90b1238a8c6b0a5074f5" title="Revision 91a1d0a3">Revision 91a1d0a3</a><br />
+        <span class="author">Added by Andreas Wolf  <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-09" title="2013-02-09 12:23">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Processed files get corrupted when regenerated</p>
+
+
+	<p>After a file is being (re)processed, the information about it is updated<br />in the database by the ProcessedFileRepository. The repository gathers<br />information for the update from the processed file.</p>
+
+
+	<p>For unprocessed files (i.e. those where the original file should be<br />used), the ProcessedFile class does a fallback to the original file<br />object. Unfortunately, this fallback is also applied for the uid<br />property, which makes the repository overwrite a random record in<br />sys_file_processedfile. This leads to wrong images being displayed in<br />the frontend.</p>
+
+
+	<p>This patch makes the processed file only return its own uid.</p>
+
+
+	<p>IMPORTANT: To make sure your sys_file_processedfile data is not<br />corrupted, empty the table and your processed files folder (usually<br />fileadmin/_processed_/). This will slow down your site as all processed<br />files are regenerated, but afterwards all data will be correct.</p>
+
+
+	<p>Change-Id: I40685d5748a5a0fcf015c7d876a374f42154831d<br />Resolves: <a href="45308.html" class="issue status-7 priority-1 closed" title="uid of processed file is sometimes updated during processing (Resolved)">#45308</a><br />Related: <a href="44616.html" class="issue status-9 priority-1 closed" title="Image caching broken for im_noScaleUp = 1 (Closed)">#44616</a> <a href="45168.html" class="issue status-7 priority-1 closed" title="Wrong image displayed in FE if not resized (Resolved)">#45168</a><br />Releases: 6.1, 6.0<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/18153">https://review.typo3.org/18153</a><br />Reviewed-by: Andreas Wolf<br />Tested-by: Andreas Wolf</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-150142" class="journal has-notes">
+    <h4><a href="45168.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4957">Max Roesch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-05" title="2013-02-05 13:17">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150142-notes"><p>Similar problem here.</p>
+
+
+	<p>Normale CE Textpic:</p>
+
+
+	<p>Image in Backend is correct but frontend renders preview image (thumbnail) of a totally different image.</p>
+
+
+	<p>ClearCache all and clearing proccessed images didn't help.</p>
+
+
+	<p>What's really strange is, when I hide the image and image of the ext-icon from about module is rendered in the frontend.</p>
+
+
+	<p>Investing further on this, trying introduction package and one by one adding extension we use in the current project.</p>
+
+
+	<p>Update:</p>
+
+
+	<p>sys_file:uid:1 => /typo3/sysext/about/ext_icon.gif</p>
+
+
+	<p>First entry of the table</p></div>
+  </div>
+  
+
+  <div id="change-150145" class="journal has-notes">
+    <h4><a href="45168.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4957">Max Roesch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-05" title="2013-02-05 13:37">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150145-notes"><p>Reproducible:</p>
+
+
+	<p>Fresh introduction package, goto examples "text and images" open CE "Position: In text, left" and just hide the image.</p>
+
+
+	<p>All of the sudden Kasper appears...</p>
+
+
+	<p>Update:</p>
+
+
+	<p>sys_file:uid:1 => kasper-skarhoj1_01.jpeg</p>
+
+
+	<p>On the introduction package, seems there is some kind of fallback if reference is hidden.</p></div>
+  </div>
+  
+
+  <div id="change-150146" class="journal has-notes">
+    <h4><a href="45168.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-05" title="2013-02-05 13:41">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150146-notes"><p>Strange.<br />I can confirm the mentioned behavior from Max.</p></div>
+  </div>
+  
+
+  <div id="change-150161" class="journal has-notes">
+    <h4><a href="45168.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-05" title="2013-02-05 15:12">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150161-notes"><p>FAL is still so buggy :(<br />Extension-Manager shows a product image from the webpage instead of the ext-icon from the extension.</p>
+
+
+	<p>I think something is here completely wrong.</p></div>
+  </div>
+  
+
+  <div id="change-150162" class="journal has-notes">
+    <h4><a href="45168.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4957">Max Roesch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-05" title="2013-02-05 15:13">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150162-notes"><p>Yep. Found that one to, dbal extension had some nice big fat image :-/</p>
+
+
+	<p>Tried to find some mixed up relation by checking UIDs but did't find a pattern yet</p></div>
+  </div>
+  
+
+  <div id="change-150171" class="journal has-notes">
+    <h4><a href="45168.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-05" title="2013-02-05 16:41">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150171-notes"><p>this happens to me too but so far i only noticed it when im_noScaleUp is set to 1 in the install tool. (see bug 44616#note-5)</p></div>
+  </div>
+  
+
+  <div id="change-150358" class="journal has-notes">
+    <h4><a href="45168.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4957">Max Roesch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-07" title="2013-02-07 17:40">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150358-notes"><p>[[<a class="external" href="44988.html">http://forge.typo3.org/issues/44988</a>]]</p>
+
+
+	<p>^This one fixed the problem with the hidden image showing another one. Investigating if it also fixes the rendering of the wrong preview image</p></div>
+  </div>
+  
+
+  <div id="change-150409" class="journal has-notes">
+    <h4><a href="45168.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-07" title="2013-02-07 21:43">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150409-notes"><p>Could anyone of you who experiences this error run the following SQL query and report on the results?</p>
+
+
+	<p><code>SELECT s.uid, f.storage, s.name AS processedname, s.identifier AS processedidentifier, f.name AS origname, f.identifier AS origidentifier, s.checksum FROM sys_file_processedfile AS s LEFT JOIN sys_file AS f ON s.uid=f.uid WHERE LOCATE(s.checksum, s.name) = 0</code></p>
+
+
+	<p>The interesting part is if the name in <code>processedname</code> does not contain (parts of) <code>origname</code>. Then you experience a bug I found today with the help of Camelia.</p>
+
+
+	<p>I am not sure what causes the bug, but its pretty obvious that at some point the uids of the processed file and the original file get mixed up and the database ends corrupted. This is however no problem, as we can simply flush the processed file cache once this bug is fixed.</p></div>
+  </div>
+  
+
+  <div id="change-150456" class="journal has-notes">
+    <h4><a href="45168.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4957">Max Roesch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 08:33">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150456-notes"><p>Total found 86 results</p>
+
+
+	<p>Most of them have origname ext_icon.gif if the doen't contain any part of the origname.<br />Then we have some mixed up ones like processedname contains "...seite05.." while origname is "seite22.jpg"</p></div>
+  </div>
+  
+
+  <div id="change-150458" class="journal has-notes">
+    <h4><a href="45168.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4957">Max Roesch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 08:51">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150458-notes"><p>Maybe this helps finding the bug. The installation was started with 6.0.0 Core and moved to 6.0.1.</p></div>
+  </div>
+  
+
+  <div id="change-150459" class="journal has-notes">
+    <h4><a href="45168.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 08:51">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150459-notes"><p>Total found 24 results.</p>
+
+
+	<p>Same here, processedname does not contain parts of origname.<br />The Original File in Frontend should be ...fruehling.jpg but is ...twister.jpg - exactly what is found in Database with your select-query.</p>
+
+
+	<p>Applying the above mentions patch from Max didn`t solve this problem. EDIT: but it solves for sure the issue with disabling images /EDIT</p>
+
+
+	<p>Andreas which "processed file cache" do you mean? Database table sys_file_processedfile or the folder in the file system?</p></div>
+  </div>
+  
+
+  <div id="change-150460" class="journal has-notes">
+    <h4><a href="45168.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4957">Max Roesch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 08:54">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150460-notes"><p>Yep the patch didn't fix the wrong preview images, but fixes the wrong image being displayed when the image is hidden in backend. Seems that truncating the sys_file_proccessedfile table fixes the problems temporarily, maybe until there are new images added by editors.</p></div>
+  </div>
+  
+
+  <div id="change-150462" class="journal has-notes has-details">
+    <h4><a href="45168.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 09:18">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Andreas Wolf</i></li>
+      
+       <li><strong>Target version</strong> set to <i>6.0.2</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>medium</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-150462-notes"><p>Max Roesch wrote:</p>
+
+
+<blockquote>
+
+	<p>Maybe this helps finding the bug. The installation was started with 6.0.0 Core and moved to 6.0.1.</p>
+
+
+</blockquote>
+
+	<p>And it definitely worked with 6.0.0? Or did you add lots of contents since then, so the uid clashes only started to appear then? Please check what uids your conflicting entries (the ones you found with my SQL query have). If they are distributed over the whole range of uids, then the problem seems to have been there before. Otherwise, it might also be new in 6.0.1.</p>
+
+
+	<p>Max Roesch wrote:</p>
+
+
+<blockquote>
+
+	<p>Yep the patch didn't fix the wrong preview images, but fixes the wrong image being displayed when the image is hidden in backend. Seems that truncating the sys_file_proccessedfile table fixes the problems temporarily, maybe until there are new images added by editors.</p>
+
+
+</blockquote>
+
+	<p>Truncating the table will regenerate the cache and fix the problem until the uids are mixed up again. I still don't know when exactly this happens, but I guess that we can find it out.</p>
+
+
+	<p>Henrik Ziegenhain wrote:</p>
+
+
+<blockquote>
+
+	<p>Andreas which "processed file cache" do you mean? Database table sys_file_processedfile or the folder in the file system?</p>
+
+
+</blockquote>
+
+	<p>Both of these are part of the cache, but I only meant the table. The files will still be around when you truncate the table, but that's only a matter of diskspace, it does not do any harm. You could of course also empty the folder fileadmin/_processed_/, but that's not strictly required.</p></div>
+  </div>
+  
+
+  <div id="change-150465" class="journal has-notes">
+    <h4><a href="45168.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4957">Max Roesch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 09:35">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150465-notes"><p>Andreas Wolf wrote:</p>
+
+
+<blockquote>
+
+	<p>And it definitely worked with 6.0.0? Or did you add lots of contents since then, so the uid clashes only started to appear then? Please check what uids your conflicting entries (the ones you found with my SQL query have). If they are distributed over the whole range of uids, then the problem seems to have been there before. Otherwise, it might also be new in 6.0.1.</p>
+
+
+</blockquote>
+
+	<p>Can't tell for sure anymore but I think we did find two or three images on 6.0.0 but switched to 6.0.1 on rollout</p>
+
+
+	<p>UIDs are ascending in blocks (i.e. the ext_icon ones run from 1 to 65)</p></div>
+  </div>
+  
+
+  <div id="change-150466" class="journal has-notes">
+    <h4><a href="45168.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 09:53">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150466-notes"><p>Andreas Wolf wrote:</p>
+
+
+<blockquote>
+
+	<p>Max Roesch wrote:</p>
+
+
+<blockquote>
+
+	<p>Maybe this helps finding the bug. The installation was started with 6.0.0 Core and moved to 6.0.1.</p>
+
+
+</blockquote>
+
+	<p>And it definitely worked with 6.0.0?</p>
+
+
+</blockquote>
+
+	<p>I also can`t tell you for sure if it worked correctly with 6.0.0. But we also started with 6.0.0 and did the update to 6.0.1 when it came out. There then we discovered the issue.</p></div>
+  </div>
+  
+
+  <div id="change-150469" class="journal has-notes">
+    <h4><a href="45168.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 09:56">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150469-notes"><p>Max Roesch wrote:</p>
+
+
+<blockquote>
+
+	<p>Andreas Wolf wrote:</p>
+
+
+<blockquote>
+
+	<p>And it definitely worked with 6.0.0? Or did you add lots of contents since then, so the uid clashes only started to appear then? Please check what uids your conflicting entries (the ones you found with my SQL query have). If they are distributed over the whole range of uids, then the problem seems to have been there before. Otherwise, it might also be new in 6.0.1.</p>
+
+
+</blockquote>
+
+	<p>Can't tell for sure anymore but I think we did find two or three images on 6.0.0 but switched to 6.0.1 on rollout</p>
+
+
+</blockquote>
+
+	<p>Ok. I just checked the changes that were made to FAL from 6.0.0 to 6.0.1 - there is no change I could easily identify as the cause of this bug. So I still think this bug is in since 6.0.0 (or most likely even the RCs).</p>
+
+
+<blockquote>
+
+	<p>UIDs are ascending in blocks (i.e. the ext_icon ones run from 1 to 65)</p>
+
+
+</blockquote>
+
+	<p>Ok, but are the uids you found with my query only in a specific range or over the whole spectrum of uids in sys_file_processedfile (maybe also check what the highest uid is)?</p></div>
+  </div>
+  
+
+  <div id="change-150472" class="journal has-notes">
+    <h4><a href="45168.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 10:04">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150472-notes"><p>I also updated to 6.0.1 from 6.0 but if my memory does not fail me, I think the bug was there before also. Anyway, I know the exact time of the update to 6.0.1 so I think it should not be very hard for me to figure if images from before the update were messed also. I'll check and post back in a few</p></div>
+  </div>
+  
+
+  <div id="change-150474" class="journal has-notes">
+    <h4><a href="45168.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 10:18">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150474-notes"><p>So I did check and I'm afraid my memory did fail me :(<br />I had a full backup of the database right before the update so I run the query from Andreas on it and it returns 0 results (although both tables have several hundreds records). I also checked how 'im_noScaleUp' was set and it was set to 1 (I also have full backup of files since I use a versioning system for both db and files). So at least for me it seems that the problem is related to the updated to 6.0.1</p></div>
+  </div>
+  
+
+  <div id="change-150484" class="journal has-notes">
+    <h4><a href="45168.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 12:35">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150484-notes"><p>Ok, it seems I was wrong about the cause for this problem. The modified checksum comes from the patch for <a href="44073.html" class="issue status-7 priority-2 closed" title="Checksum needs to be updated after file processing (Resolved)">#44073</a> - this is perfectly ok, though the filename should have been updated.</p>
+
+
+	<p>I'll keep trying to track this down - thanks to everybody who helps with this.</p></div>
+  </div>
+  
+
+  <div id="change-150652" class="journal has-notes">
+    <h4><a href="45168.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-09" title="2013-02-09 11:20">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150652-notes"><p>This should be fixed with my patch for <a href="45308.html" class="issue status-7 priority-1 closed" title="uid of processed file is sometimes updated during processing (Resolved)">#45308</a>. It would be great if you could test this patch (after emptying sys_file_processedfile) and give feedback.</p></div>
+  </div>
+  
+
+  <div id="change-150653" class="journal has-details">
+    <h4><a href="45168.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-09" title="2013-02-09 11:20">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-150862" class="journal has-notes">
+    <h4><a href="45168.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-11" title="2013-02-11 07:28">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150862-notes"><p>Yeb. Problem seems to be resolved. Thank you.</p></div>
+  </div>
+  
+
+  <div id="change-150999" class="journal has-notes has-details">
+    <h4><a href="45168.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-12" title="2013-02-12 09:54">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-150999-notes"><p>Closing this is as it is apparently fixed. If you experience a similar problem, please open a new bug report and link it to this one (or mention this issue's ID in the description).</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-45168-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/45168.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="45168.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/45168 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:33:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

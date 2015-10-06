@@ -1,0 +1,1533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/42176 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:02:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #42176: Improve resolving of view - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/42176.atom" rel="alternate" title="TYPO3.Flow - Feature #42176: Improve resolving of view" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-42176-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #42176</h2>
+
+<div class="issue status-7 priority-2 closed child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="45013.html" class="issue status-7 priority-2 closed parent">Work Package #45013</a>: Flexible plugin integration (TODO: Reviews)</p><div><h3>Improve resolving of view</h3></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-10-19" title="2012-10-19 15:24">almost 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-08" title="2013-08-08 11:06">almost 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-10-19</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">MVC</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+    <th class="estimated-hours">Estimated time:</th><td class="estimated-hours">120.00 hours</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Currently the resolution of a view class and the respective (fluid) template happens really early in the MVC dispatching and is not extensible from the "outside".<br />The actual view &#38; template shold only be resolved while <strong>rendering</strong> the action, so one can intervene <strong>in the action</strong>.<br />Besides view options (e.g. template/layout/widget root paths, view class name, ...) should be overridable via YAML.</p>
+
+
+	<p>Following steps are required:</p>
+
+
+	<ul>
+	<li>View::canRender() should not be called in ActionController::resolveView() (also remove it from API!)</li>
+		<li>remove “NotFoundView”, instead the View should throw an exception while <strong>rendering</strong> (see <a href="40888.html" class="issue status-7 priority-2 closed" title="Add ViewNotFoundException (Resolved)">#40888</a>)</li>
+		<li>documentation! (also include a section on how to use the template of a <strong>different</strong> action)</li>
+	</ul>
+
+
+	<p><code>Views.yaml</code> ( can be easily added through: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/11982/">https://review.typo3.org/#/c/11982/</a> ):<br /><pre>
+<code class="yaml syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span>
+<span class="line-numbers"> 2</span><span class="comment"># Change the template root path for all packages!</span>
+<span class="line-numbers"> 3</span>-
+<span class="line-numbers"> 4</span>  <span class="key">options</span>:
+<span class="line-numbers"> 5</span>    <span class="key">templateRootPaths</span>: <span class="string"><span class="content">['resource://My.App/Private/Templates']</span></span>
+<span class="line-numbers"> 6</span>
+<span class="line-numbers"> 7</span><span class="comment"># Add layout lookup path for all actions of the &quot;Foo&quot; controller in &quot;Some.Package&quot; </span>
+<span class="line-numbers"> 8</span>-
+<span class="line-numbers"> 9</span>  <span class="key">requestFilter</span>: <span class="string"><span class="content">'isPackage(&quot;Some.Package&quot;) &#38;&#38; isController(&quot;Foo&quot;)'</span></span>
+<span class="line-numbers"><strong>10</strong></span>  <span class="key">options</span>:
+<span class="line-numbers">11</span>    <span class="key">layoutRootPaths</span>: <span class="string"><span class="content">['resource://Other.Package/Private/Layouts', 'resource://Some.Package/Private/Layouts']</span></span>
+<span class="line-numbers">12</span>
+<span class="line-numbers">13</span><span class="comment"># Use a custom view for all actions of &quot;Some.Package&quot; if the requested format is &quot;json&quot; </span>
+<span class="line-numbers">14</span>-
+<span class="line-numbers">15</span>  <span class="key">requestFilter</span>: <span class="string"><span class="content">'isPackage(&quot;Some.Package&quot;) &#38;&#38; isFormat(&quot;json&quot;)'</span></span>
+<span class="line-numbers">16</span>  <span class="key">viewObjectName</span>: <span class="string"><span class="content">'Other\Package\View\CustomView'</span></span>
+</span></code><br /></pre></p>
+
+
+	<p>Note: The previous configuration format we envisioned was something like:<br /><pre>
+My:
+  Package:
+    viewClassName: TemplateView / TypoScriptView
+    options:
+      templateRootPath: resources://Other.Package/...
+      layoutRootPath: ...
+    controllers:
+      'List':
+        options:
+           # ...
+       widget:
+         'TYPO3\TypoScript\ViewHelpers\Widget\Paginate':
+           templateRootPath: ...
+
+        actions:
+          'some':
+            #...
+</pre></p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/23151/Views.schema.yaml" class="icon icon-attachment">Views.schema.yaml</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/23151/Views.schema.yaml"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+   - YAML schema for the mentioned configuration format
+  <span class="size">(1.8 kB)</span>
+  
+  
+    <span class="author">Bastian Waidelich, 2013-01-16 12:21</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-7663">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="40888" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="40888.html" class="issue status-7 priority-2 closed">Bug #40888</a>: Add ViewNotFoundException
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-09-13</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7607">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="33487" /></td>
+<td class="subject">related to 
+    TYPO3.Fluid - 
+    <a href="33487.html" class="issue status-9 priority-3 closed">Feature #33487</a>: Configure from what package to use Templates/Partial/Layouts
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2012-01-27</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7608">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="39870" /></td>
+<td class="subject">related to 
+    TYPO3.Fluid - 
+    <a href="39870.html" class="issue status-7 priority-3 closed">Feature #39870</a>: Allow configuration of template path fallbacks
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-08-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7661">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="40857" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="40857.html" class="issue status-7 priority-2 closed">Feature #40857</a>: When template is automatically retrieved but not found, a...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-09-12</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7676">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="43930" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="43930.html" class="issue status-4 priority-2">Task #43930</a>: Remove canRender() completely?!
+</td>
+<td class="status">Needs Feedback</td>
+<td class="start_date">2012-12-12</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7777">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="44417" /></td>
+<td class="subject">related to 
+    TYPO3.TypoScript - 
+    <a href="44417.html" class="issue status-7 priority-2 closed">Feature #44417</a>: Enable multiple TypoScriptPaths in the TypoScriptView
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-01-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/42176/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/42176/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=42176&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/9f99c840136955d14f5c39f0de8ac0a5f7ee1913" title="Revision 9f99c840">Revision 9f99c840</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-12-10" title="2012-12-10 17:26">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Throw ViewNotFoundException if view could not be resolved</p>
+
+
+	<p>This improves the resolving of views by removing the canRender()<br />checks from ActionController::resolveView as discussed in <a href="42176.html" class="issue status-7 priority-2 closed child" title="Improve resolving of view (Resolved)">#42176</a>.</p>
+
+
+	<p>Besides this skips the creation of the obsolete NotFoundView in favor<br />of throwing a ViewNotFoundException.</p>
+
+
+	<p>This also adds overdue unit tests for the ActionController.</p>
+
+
+	<p>Change-Id: I27cba20836d695e46fe355bd1e4168a6fd86eb76<br />Fixes: <a href="40888.html" class="issue status-7 priority-2 closed" title="Add ViewNotFoundException (Resolved)">#40888</a><br />Fixes: <a href="40857.html" class="issue status-7 priority-2 closed" title="When template is automatically retrieved but not found, a hint about the tried location should be... (Resolved)">#40857</a><br />Related: <a href="42176.html" class="issue status-7 priority-2 closed child" title="Improve resolving of view (Resolved)">#42176</a><br />Releases: 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/6f03a9a448b7d9981c0cc2bc40dea5f4be863ae4" title="Revision 6f03a9a4">Revision 6f03a9a4</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-12-12" title="2012-12-12 15:56">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove API annotation from View::canRender()</p>
+
+
+	<p>With <a href="40888.html" class="issue status-7 priority-2 closed" title="Add ViewNotFoundException (Resolved)">#40888</a> View::canRender() is no longer called from within<br />ActionController::resolveView().<br />As the framework no longer relies on that method to exist the<br />@api annotation is removed.</p>
+
+
+	<p>Besides this marks EmptyView deprecated.</p>
+
+
+	<p>Change-Id: Ia10809aed5829ee2ed2308965a0f87cfca6d182b<br />Related: <a href="40888.html" class="issue status-7 priority-2 closed" title="Add ViewNotFoundException (Resolved)">#40888</a><br />Related: <a href="42176.html" class="issue status-7 priority-2 closed child" title="Improve resolving of view (Resolved)">#42176</a><br />Releases: 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/dc39b58dabe448f69ed6b896572e9b3bbbff14e7" title="Revision dc39b58d">Revision dc39b58d</a><br />
+        <span class="author">Added by Marc Neuhaus  <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-05" title="2013-08-05 15:42">almost 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Allow view configuration via Views.yaml</p>
+
+
+	<p>This patch adds a new Configuration called ``Views.yaml``<br />to set/override various settings for Views, just<br />like the template path to use or controller options.</p>
+
+
+	<p>Example ``Views.yaml``::</p>
+
+
+	<pre><code>-<br />      requestFilter: 'isPackage("My.Package")'<br />      viewClassName: 'TYPO3\TypoScript\View\TypoScriptView'<br />      options:<br />        typoScriptPathPattern: 'resource://My.Package/Private/TypoScripts'</code></pre>
+
+
+	<p>Change I7596f6fc7f8349f3c43d05e6b5916b7946d412d5 in<br />Fluid takes care about this with rearranging the TemplateView.</p>
+
+
+	<p>Additionally this change introduces a dependency to TYPO3.Eel.</p>
+
+
+	<p>Change-Id: I93acc3ed3d9578a5d00d494b367aa7201138255b<br />Resolves: <a href="42176.html" class="issue status-7 priority-2 closed child" title="Improve resolving of view (Resolved)">#42176</a><br />Releases: master</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base/repository/revisions/0346b3eff6d4350a05dd8a2138318c87d3e22791" title="Revision 0346b3ef">Revision 0346b3ef</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-09" title="2013-08-09 14:49">almost 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Use @dev version of TYPO3.Eel</p>
+
+
+	<p>Change-Id: I5b860b36f70e34afa09a2ad5bd7ae693808a5f3f<br />Related: <a href="42176.html" class="issue status-7 priority-2 closed child" title="Improve resolving of view (Resolved)">#42176</a><br />Releases: master</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-140008" class="journal has-notes has-details">
+    <h4><a href="42176.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-11" title="2012-11-11 02:29">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-140008-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16392">http://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-140009" class="journal has-notes">
+    <h4><a href="42176.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-11" title="2012-11-11 02:49">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140009-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16393">http://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-140117" class="journal has-notes">
+    <h4><a href="42176.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-12" title="2012-11-12 11:30">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140117-notes"><p>I've created a basic WIP implementation and pushed it to gerrit.<br />So far it only works for ActionController, not Widgets, i've been thinking about how to <br />configure Widgets and got the idea, that we should use the SubRequests Namespaces here<br />to make it as flexible and understandable as possible:</p>
+
+
+<pre>
+My:
+  Package:
+    controllers:
+      MyController:
+        actions:
+          someAction:
+            subrequests:
+              widgetNamespace:
+                Some:
+                  Package:
+                    controllers:
+                      SomeWidgetController:
+                        actions:
+                          first:
+                            options: ...
+</pre>
+
+	<p>What i don' really like, is that this become quite long and verbose :/</p></div>
+  </div>
+  
+
+  <div id="change-140183" class="journal has-notes">
+    <h4><a href="42176.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-12" title="2012-11-12 23:42">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140183-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16392">http://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-140188" class="journal has-notes">
+    <h4><a href="42176.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-13" title="2012-11-13 00:05">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140188-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16393">http://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-140194" class="journal has-notes">
+    <h4><a href="42176.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-13" title="2012-11-13 00:58">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140194-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16392">http://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-140196" class="journal has-notes">
+    <h4><a href="42176.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-13" title="2012-11-13 02:18">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140196-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16393">http://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-140806" class="journal has-notes">
+    <h4><a href="42176.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-17" title="2012-11-17 01:52">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140806-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16392">http://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-141209" class="journal has-notes">
+    <h4><a href="42176.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-19" title="2012-11-19 15:47">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-141209-notes"><p>Patch set 5 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16392">http://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-142017" class="journal has-notes">
+    <h4><a href="42176.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-25" title="2012-11-25 22:43">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-142017-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16393">http://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-142546" class="journal has-notes">
+    <h4><a href="42176.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-27" title="2012-11-27 23:50">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-142546-notes"><p>Patch set 6 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16392">http://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-143278" class="journal has-notes">
+    <h4><a href="42176.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-12-03" title="2012-12-03 02:14">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-143278-notes"><p>Patch set 7 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16392">http://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-144724" class="journal has-details">
+    <h4><a href="42176.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-12-10" title="2012-12-10 13:13">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>2.0 beta 1</i> to <i>2.1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-147903" class="journal has-notes has-details">
+    <h4><a href="42176.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-16" title="2013-01-16 12:21">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/23151/Views.schema.yaml">Views.schema.yaml</a><a href="../../external.html?link=https://forge.typo3.org/attachments/23151/Views.schema.yaml"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-147903-notes"><p>Hi Marc,</p>
+
+
+	<p>I've started adjusting your patch to the current version and tweaking the configuration format (attached you'll find a simplified YAML schema for it):<br /><pre>
+<code class="yaml syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="key">My</span>:
+<span class="line-numbers"> 2</span>  <span class="key">Package</span>:
+<span class="line-numbers"> 3</span>    <span class="key">viewClassName</span>: <span class="string"><span class="content">'My\Custom\View'</span></span> <span class="comment"># all views that are rendered in package &quot;My.Package&quot; </span>
+<span class="line-numbers"> 4</span>    <span class="key">controllers</span>:
+<span class="line-numbers"> 5</span>      <span class="key"><span class="delimiter">'</span><span class="content">My\Package\Controller\FooController</span><span class="delimiter">'</span></span>:
+<span class="line-numbers"> 6</span>        <span class="key">viewClassName</span>: <span class="string"><span class="content">'My\Custom\View'</span></span> <span class="comment"># all views that are rendered in FooController of package &quot;My.Package&quot; </span>
+<span class="line-numbers"> 7</span>        <span class="key">actions</span>:
+<span class="line-numbers"> 8</span>          <span class="key"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>:
+<span class="line-numbers"> 9</span>            <span class="key">viewClassName</span>: <span class="string"><span class="content">'My\Custom\View'</span></span> <span class="comment"># all views that are rendered in indexAction of FooController of package &quot;My.Package&quot; </span>
+<span class="line-numbers"><strong>10</strong></span>    <span class="key">subRequests</span>:
+<span class="line-numbers">11</span>      <span class="key">viewClassName</span>: <span class="string"><span class="content">'My\Custom\View'</span></span> <span class="comment"># all views that are rendered in sub requests of package &quot;My.Package&quot; </span>
+<span class="line-numbers">12</span>      <span class="key">controllers</span>:
+<span class="line-numbers">13</span>        <span class="key"><span class="delimiter">'</span><span class="content">Other\Package\Controller\BarController</span><span class="delimiter">'</span></span>:
+<span class="line-numbers">14</span>          <span class="key">viewClassName</span>: <span class="string"><span class="content">'My\Custom\View'</span></span> <span class="comment"># all views that are rendered in BarController of package &quot;Other.Package&quot; and are sub requests within &quot;My.Package&quot; </span>
+<span class="line-numbers">15</span>          <span class="key">actions</span>:
+<span class="line-numbers">16</span>            <span class="key"><span class="delimiter">'</span><span class="content">index</span><span class="delimiter">'</span></span>:
+<span class="line-numbers">17</span>              <span class="key">viewClassName</span>: <span class="string"><span class="content">'TYPO3\Fluid\View\TemplateView'</span></span> <span class="comment"># all views that are rendered in indexAction of BarController of package &quot;Other.Package&quot; and are sub requests within &quot;My.Package&quot; </span>
+</span></code><br /></pre></p>
+
+
+	<p>In order to make this really flexible though, the <strong>subRequests</strong> key need to be allowed under "PackageKey", "controller" and "action" recursively.<br />This leads to a very "expensive" check for each request, especially in nested requests.<br />For a simple widget requests (calling "SubPackage.SubController.SubAction" in a parent request "RootPackage.RootController.RootAction") those 12 paths would need to be checked and merged:<br /><pre>
+&lt;RootPackage&gt;.controllers.&lt;RootController&gt;.actions.&lt;RootAction&gt;.subRequests.controllers.&lt;SubController&gt;.actions.&lt;SubAction&gt;
+&lt;RootPackage&gt;.controllers.&lt;RootController&gt;.actions.&lt;RootAction&gt;.subRequests.controllers.&lt;SubController&gt;
+&lt;RootPackage&gt;.controllers.&lt;RootController&gt;.actions.&lt;RootAction&gt;.subRequests
+&lt;RootPackage&gt;.controllers.&lt;RootController&gt;.subRequests.controllers.&lt;SubController&gt;.actions.&lt;SubAction&gt;
+&lt;RootPackage&gt;.controllers.&lt;RootController&gt;.subRequests.controllers.&lt;SubController&gt;
+&lt;RootPackage&gt;.controllers.&lt;RootController&gt;.subRequests
+&lt;RootPackage&gt;.subRequests.controllers.&lt;SubController&gt;.actions.&lt;Sub1Action&gt;
+&lt;RootPackage&gt;.subRequests.controllers.&lt;SubController&gt;
+&lt;RootPackage&gt;.subRequests
+&lt;SubPackage&gt;.controllers.&lt;SubController&gt;.actions.&lt;SubAction&gt;
+&lt;SubPackage&gt;.controllers.&lt;SubController&gt;
+&lt;SubPackage&gt;
+</pre></p>
+
+
+	<p>for more nesting levels (e.g. widget within plugin within neos page) the number of checks increases exponentially.</p>
+
+
+	<p>The more I think about it the more I'm convinced that we need some kind of pattern syntax here, similar to the Policy.yaml pointcut expressions. It's all about matching a certain request based on package, controller &#38; action and possibly its parent request(s).</p>
+
+
+	<p>The question is: how can we make this deterministic, easy to comprehend and especially easy to override?</p></div>
+  </div>
+  
+
+  <div id="change-149042" class="journal has-notes">
+    <h4><a href="42176.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-29" title="2013-01-29 10:03">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149042-notes"><p>Patch set 8 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-149452" class="journal has-notes">
+    <h4><a href="42176.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 15:31">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149452-notes"><p>Patch set 6 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-149454" class="journal has-notes">
+    <h4><a href="42176.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 15:34">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149454-notes"><p>Patch set 9 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-149460" class="journal has-notes">
+    <h4><a href="42176.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 16:09">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149460-notes"><p>Patch set 10 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-149462" class="journal has-notes">
+    <h4><a href="42176.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 16:12">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149462-notes"><p>Patch set 11 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-149463" class="journal has-notes">
+    <h4><a href="42176.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 16:16">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149463-notes"><p>Patch set 12 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-149464" class="journal has-notes">
+    <h4><a href="42176.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 16:31">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149464-notes"><p>Patch set 13 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-149465" class="journal has-notes">
+    <h4><a href="42176.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 16:36">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149465-notes"><p>Patch set 14 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-149466" class="journal has-notes">
+    <h4><a href="42176.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 16:39">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149466-notes"><p>Patch set 15 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-149468" class="journal has-notes">
+    <h4><a href="42176.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 17:02">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149468-notes"><p>Patch set 7 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-149469" class="journal has-notes">
+    <h4><a href="42176.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 17:08">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149469-notes"><p>Patch set 8 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-149479" class="journal has-notes">
+    <h4><a href="42176.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 17:51">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149479-notes"><p>Patch set 16 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-149547" class="journal has-notes">
+    <h4><a href="42176.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-02-01" title="2013-02-01 09:19">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149547-notes"><p>Patch set 9 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-150446" class="journal has-notes">
+    <h4><a href="42176.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-02-08" title="2013-02-08 00:13">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150446-notes"><p>Patch set 17 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-150468" class="journal has-notes">
+    <h4><a href="42176.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-02-08" title="2013-02-08 09:55">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150468-notes"><p>Patch set 18 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-150470" class="journal has-notes">
+    <h4><a href="42176.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-02-08" title="2013-02-08 09:59">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150470-notes"><p>Patch set 19 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-152189" class="journal has-notes">
+    <h4><a href="42176.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-02-22" title="2013-02-22 10:20">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-152189-notes"><p>Update for devs watching this issue:<br />We decided to go for a DSL (domain specific language) – probably based on <a href="../../external.html?link=http://forge.typo3.org/projects/package-typo3-eel" class="external">TYPO3 Eel</a> – for the configuration format in order to reduce the amount of configuration to write while increasing the flexibility massively. More details asap, stay tuned</p></div>
+  </div>
+  
+
+  <div id="change-153622" class="journal has-notes">
+    <h4><a href="42176.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-06" title="2013-03-06 13:52">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-153622-notes"><p>Patch set 20 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-154665" class="journal has-notes">
+    <h4><a href="42176.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-15" title="2013-03-15 13:19">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154665-notes"><p>We (Bastian, Sebastian and Me) just had a little Hangout about the Syntax we're going to use:</p>
+
+
+	<p>General Syntax:</p>
+
+
+<pre>
+-
+  options: 
+     layoutRootPath: ‘foo/bar’
+     ...
+  requestFilter: ‘...’
+</pre>
+
+	<p>Available filters:<br /><pre>
+- isPackage()  1
+- isController() 10
+- isAction() 100
+- isFormat() 1000
+- mainRequest() 10000
+- parentRequest() 100000
+
+isPackage() || isPackage() =&gt; 1
+isPackage() &#38;&#38; parentRequest.isPackage() =&gt; 100001
+</pre><br />→ Score wird NUR hochgezählt, wenn einzelner Key zutrifft! → bei OR werden nur die matchenden Teile gezählt.<br />→ aufsteigend sortieren.</p>
+
+
+	<p>Use cases:</p>
+
+
+	<p>Use case 1: “Change the layout of a package (in Flow)”<br /><pre>
+-
+  options:
+     layoutRootPath: ‘foo/bar’
+  requestFilter: ‘’isPackage(‘Some.Package”) &#38;&#38; isFormat(‘html’)”
+</pre></p>
+
+
+	<p>Use case 2: “Add TypoScriptPaths to an TypoScriptView (e.g. Expose)”</p>
+
+
+<pre>
+-
+  options: 
+     layoutRootPath: ‘foo/bar’
+  requestFilter: ‘’isPackage(‘TYPO3.Expose”)”
+</pre><br />Use case 3: “Change the layout of a package only in a sub request (in Neos)”<br /><pre>
+-
+  options: 
+     layoutRootPath: ‘foo/bar’
+  requestFilter: ‘’isPackage(‘Some.Package”) &#38;&#38; isFormat(‘html’) &#38;&#38; mainRequest.isPackage(‘TYPO3.Neos’)”
+</pre></div>
+  </div>
+  
+
+  <div id="change-154734" class="journal has-notes">
+    <h4><a href="42176.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-15" title="2013-03-15 18:02">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154734-notes"><p>Patch set 21 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-154809" class="journal has-notes">
+    <h4><a href="42176.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-16" title="2013-03-16 00:45">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154809-notes"><p>Patch set 22 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-154810" class="journal has-notes">
+    <h4><a href="42176.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-16" title="2013-03-16 00:47">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154810-notes"><p>Patch set 23 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-154882" class="journal has-notes">
+    <h4><a href="42176.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-17" title="2013-03-17 01:18">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154882-notes"><p>Patch set 24 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-155001" class="journal has-notes">
+    <h4><a href="42176.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-18" title="2013-03-18 11:37">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-155001-notes"><p>Patch set 25 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-155025" class="journal has-details">
+    <h4><a href="42176.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-18" title="2013-03-18 15:01">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>90</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>medium</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-155026" class="journal has-details">
+    <h4><a href="42176.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3326">Aske Ertmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-18" title="2013-03-18 15:03">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#45013</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-156467" class="journal has-notes">
+    <h4><a href="42176.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-26" title="2013-03-26 23:17">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-156467-notes"><p>Patch set 26 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-157419" class="journal has-details">
+    <h4><a href="42176.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3326">Aske Ertmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-28" title="2013-03-28 16:31">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Estimated time</strong> set to <i>120.00</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-157434" class="journal has-notes">
+    <h4><a href="42176.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-28" title="2013-03-28 18:27">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157434-notes"><p>Patch set 27 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-157997" class="journal has-notes">
+    <h4><a href="42176.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-04-04" title="2013-04-04 09:42">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157997-notes"><p>Patch set 28 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-157998" class="journal has-notes">
+    <h4><a href="42176.html#note-45" class="journal-link">#45</a>
+    
+    <a name="note-45"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-04-04" title="2013-04-04 09:48">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157998-notes"><p>Patch set 29 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-159312" class="journal has-notes">
+    <h4><a href="42176.html#note-46" class="journal-link">#46</a>
+    
+    <a name="note-46"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-04-11" title="2013-04-11 15:58">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-159312-notes"><p>Patch set 30 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-159573" class="journal has-notes">
+    <h4><a href="42176.html#note-47" class="journal-link">#47</a>
+    
+    <a name="note-47"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-04-12" title="2013-04-12 15:50">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-159573-notes"><p>Patch set 10 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-160086" class="journal has-notes">
+    <h4><a href="42176.html#note-48" class="journal-link">#48</a>
+    
+    <a name="note-48"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-04-15" title="2013-04-15 15:31">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-160086-notes"><p>Patch set 31 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-160088" class="journal has-notes">
+    <h4><a href="42176.html#note-49" class="journal-link">#49</a>
+    
+    <a name="note-49"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-04-15" title="2013-04-15 15:42">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-160088-notes"><p>Patch set 11 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-165028" class="journal has-notes">
+    <h4><a href="42176.html#note-50" class="journal-link">#50</a>
+    
+    <a name="note-50"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-05-13" title="2013-05-13 15:13">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-165028-notes"><p>Patch set 32 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-165029" class="journal has-notes">
+    <h4><a href="42176.html#note-51" class="journal-link">#51</a>
+    
+    <a name="note-51"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-05-13" title="2013-05-13 15:13">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-165029-notes"><p>Patch set 12 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-165107" class="journal has-notes">
+    <h4><a href="42176.html#note-52" class="journal-link">#52</a>
+    
+    <a name="note-52"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-05-14" title="2013-05-14 09:01">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-165107-notes"><p>Patch set 33 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-166446" class="journal has-details">
+    <h4><a href="42176.html#note-53" class="journal-link">#53</a>
+    
+    <a name="note-53"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-05-21" title="2013-05-21 13:28">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> deleted (<strike><i>2.1</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-168436" class="journal has-notes">
+    <h4><a href="42176.html#note-54" class="journal-link">#54</a>
+    
+    <a name="note-54"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-05" title="2013-06-05 12:21">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-168436-notes"><p>Patch set 13 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-168462" class="journal has-notes">
+    <h4><a href="42176.html#note-55" class="journal-link">#55</a>
+    
+    <a name="note-55"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-05" title="2013-06-05 15:42">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-168462-notes"><p>Patch set 34 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-168506" class="journal has-notes">
+    <h4><a href="42176.html#note-56" class="journal-link">#56</a>
+    
+    <a name="note-56"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-05" title="2013-06-05 22:42">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-168506-notes"><p>Patch set 14 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-168525" class="journal has-notes">
+    <h4><a href="42176.html#note-57" class="journal-link">#57</a>
+    
+    <a name="note-57"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-06" title="2013-06-06 09:55">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-168525-notes"><p>Patch set 15 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-168833" class="journal has-notes">
+    <h4><a href="42176.html#note-58" class="journal-link">#58</a>
+    
+    <a name="note-58"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-10" title="2013-06-10 22:21">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-168833-notes"><p>Patch set 35 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-168856" class="journal has-notes">
+    <h4><a href="42176.html#note-59" class="journal-link">#59</a>
+    
+    <a name="note-59"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-10" title="2013-06-10 23:10">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-168856-notes"><p>Patch set 36 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-168972" class="journal has-notes">
+    <h4><a href="42176.html#note-60" class="journal-link">#60</a>
+    
+    <a name="note-60"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-11" title="2013-06-11 11:36">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-168972-notes"><p>Patch set 37 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-169909" class="journal has-notes">
+    <h4><a href="42176.html#note-61" class="journal-link">#61</a>
+    
+    <a name="note-61"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-19" title="2013-06-19 10:13">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-169909-notes"><p>Patch set 38 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-170642" class="journal has-notes">
+    <h4><a href="42176.html#note-62" class="journal-link">#62</a>
+    
+    <a name="note-62"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-25" title="2013-06-25 21:40">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-170642-notes"><p>Patch set 39 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-170649" class="journal has-notes">
+    <h4><a href="42176.html#note-63" class="journal-link">#63</a>
+    
+    <a name="note-63"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-25" title="2013-06-25 22:14">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-170649-notes"><p>Patch set 40 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-170655" class="journal has-notes">
+    <h4><a href="42176.html#note-64" class="journal-link">#64</a>
+    
+    <a name="note-64"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-25" title="2013-06-25 22:53">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-170655-notes"><p>Patch set 16 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-170670" class="journal has-notes">
+    <h4><a href="42176.html#note-65" class="journal-link">#65</a>
+    
+    <a name="note-65"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-26" title="2013-06-26 07:56">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-170670-notes"><p>will this ported to TYPO3 CMS as well? There is an extension called view made by Claus Due, which adds similar functionality :\</p></div>
+  </div>
+  
+
+  <div id="change-170697" class="journal has-notes">
+    <h4><a href="42176.html#note-66" class="journal-link">#66</a>
+    
+    <a name="note-66"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-26" title="2013-06-26 11:03">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-170697-notes"><p>This could be backported. Main issue/thing that would need to be discussed is, if Eel will be backported as well, or if the configuration will be done in typoscript somehow.</p></div>
+  </div>
+  
+
+  <div id="change-175803" class="journal has-notes">
+    <h4><a href="42176.html#note-67" class="journal-link">#67</a>
+    
+    <a name="note-67"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-07-31" title="2013-07-31 12:55">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-175803-notes"><p>Patch set 41 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-175809" class="journal has-notes">
+    <h4><a href="42176.html#note-68" class="journal-link">#68</a>
+    
+    <a name="note-68"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-07-31" title="2013-07-31 13:10">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-175809-notes"><p>Patch set 42 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-176384" class="journal has-notes">
+    <h4><a href="42176.html#note-69" class="journal-link">#69</a>
+    
+    <a name="note-69"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-05" title="2013-08-05 15:23">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-176384-notes"><p>Patch set 17 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-176386" class="journal has-notes">
+    <h4><a href="42176.html#note-70" class="journal-link">#70</a>
+    
+    <a name="note-70"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-05" title="2013-08-05 15:42">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-176386-notes"><p>Patch set 43 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16392">https://review.typo3.org/16392</a></p></div>
+  </div>
+  
+
+  <div id="change-176827" class="journal has-notes">
+    <h4><a href="42176.html#note-71" class="journal-link">#71</a>
+    
+    <a name="note-71"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-07" title="2013-08-07 15:21">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-176827-notes"><p>Patch set 18 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/16393">https://review.typo3.org/16393</a></p></div>
+  </div>
+  
+
+  <div id="change-176924" class="journal has-details">
+    <h4><a href="42176.html#note-72" class="journal-link">#72</a>
+    
+    <a name="note-72"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-08" title="2013-08-08 11:07">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>90</i> to <i>100</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-42176-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/42176.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="42176.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/42176 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:02:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

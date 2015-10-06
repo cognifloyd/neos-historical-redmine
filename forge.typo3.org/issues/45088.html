@@ -1,0 +1,825 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/45088 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:06:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Work Package #45088: Improved REST support - Base Distribution - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/45088.atom" rel="alternate" title="Base Distribution - Work Package #45088: Improved REST support" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 current sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Base Distribution</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/rb/master_backlog/typo3neos-distribution-base" class="rb-master-backlogs">Backlogs</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="level-1 current sorting-0">Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-form" class="level-2 sorting-0">TYPO3.Form</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-imagine" class="level-2 sorting-0">TYPO3.Imagine</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-media" class="level-2 sorting-0">TYPO3.Media</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="level-2 sorting-0">TYPO3.Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos-nodetypes" class="level-2 sorting-0">TYPO3.Neos.NodeTypes</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-party" class="level-2 sorting-0">TYPO3.Party</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-setup" class="level-2 sorting-0">TYPO3.Setup</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-sitekickstarter" class="level-2 sorting-0">TYPO3.SiteKickstarter</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-twitter-bootstrap" class="level-2 sorting-0">TYPO3.Twitter.Bootstrap</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr" class="level-2 sorting-0">TYPO3.TYPO3CR</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-typoscript" class="level-2 sorting-0">TYPO3.TypoScript</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-coordination" class="level-1 sorting-0">Coordination Group</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-website-communication" class="level-1 sorting-0">Website and Communication</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues/report">Summary</a><br />
+
+
+
+
+
+
+            <div id="backlogs_view_issues_sidebar"></div>
+            <script type="text/javascript">
+              jQuery(document).ready(function() {
+                jQuery('#backlogs_view_issues_sidebar').load('../../external.html?link=https://forge.typo3.org/rb/hooks/sidebar/project/typo3neos-distribution-base');
+              });
+            </script>
+          
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=434" class="query">! Stories This Sprint</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=435" class="query">! Work Packages</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-45088-watcher"></span>
+
+
+</div>
+
+
+<h2>Work Package #45088</h2>
+
+<div class="issue status-7 priority-2 closed parent details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Improved REST support</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-01" title="2013-02-01 19:06">over 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2014-02-09" title="2014-02-09 16:16">over 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2011-05-29</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date">2013-04-13</td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">General / Project</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time"><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues/45088/time_entries">108.00 hours</a></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1939">1.0 beta 1</a></td>
+    
+    <th class="estimated-hours">Estimated time:</th><td class="estimated-hours">108.00 hours</td>
+    
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <a name="Improved-REST-support"></a>
+<h1 >Improved REST support<a href="#Improved-REST-support" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li>Target Audience: <strong>developers</strong> who want to use Neos</li>
+		<li>Responsible: <a href="../../external.html?link=http://forge.typo3.org/users/61" title="click to contact" class="external">Bastian Waidelich</a></li>
+		<li>Implemented by: <a href="../../external.html?link=http://forge.typo3.org/users/61" title="click to contact" class="external">Bastian Waidelich</a>, <a href="../../external.html?link=http://forge.typo3.org/users/19" title="click to contact" class="external">Andreas Förthner</a></li>
+		<li>Amount: 18 work days</li>
+		<li>Version: <strong>must have</strong> for 1.0</li>
+		<li>Planned Implementation Timeframe: week 7 to 14, 2013</li>
+	</ul>
+
+
+	<a name="Motivation"></a>
+<h2 >Motivation<a href="#Motivation" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>A solid webservice interface provides countless possibilities. With a proper foundation it would easily be possible to expose the TYPO3 Content Repository as service for instance. This would allow other systems to interact with arbitrary nodes (e.g. mobile clients creating pages, a simple plugin creating content nodes, ...).<br />Another use case are custom service APIs for the clients business logic. Flow already provides basic support for that, but there are some important parts missing.</p>
+
+
+	<a name="Goal"></a>
+<h2 >Goal<a href="#Goal" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>The goal is to have a solid foundation to easily provide custom REST APIs. What has been started at <a href="37604.html" class="issue status-7 priority-2 closed" title="Make Flow RestController useless by improving MVC stack (Resolved)">#37604</a> will be used as base for this.</p>
+
+
+	<a name="Deliverables"></a>
+<h2 >Deliverables<a href="#Deliverables" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><strong>MUST</strong>: more flexible request handling
+	<ul>
+	<li>Reworked argument merging <a href="45290.html" class="issue status-9 priority-2 closed child" title="Body arguments should not be merged before property mapping takes place (Closed)">#45290</a> - this is required in order to fix argument mapping with non-GET requests</li>
+		<li>More flexible parsing of body arguments <a href="45293.html" class="issue status-7 priority-2 closed child" title="More flexible parsing of body arguments (Resolved)">#45293</a> - this is required in order to support custom request formats</li>
+	</ul>
+	</li>
+		<li><strong>MUST</strong>: Routing improvements
+	<ul>
+	<li>Global route constraints <a href="27117.html" class="issue status-7 priority-2 closed child" title="Bind routes to HTTP request methods (Resolved)">#27117</a> - this is required in order to match requests based on the request method and/or arbitrary request headers</li>
+		<li>Nested sub routes <a href="43966.html" class="issue status-7 priority-2 closed child" title="Allow all routes to include sub routes (Resolved)">#43966</a> - this is required in order to allow developers to easily include "RESTful" routes</li>
+	</ul>
+	</li>
+		<li><strong>MUST</strong>: session-less authentication <a href="45282.html" class="issue status-7 priority-2 closed child" title="Support for &quot;sessionless authentication&quot; (Resolved)">#45282</a> - currently Flow creates a session for every authentication, this is incompatible with REST</li>
+		<li><strong>MUST</strong>: solid test coverage</li>
+		<li><strong>MUST</strong>: documentation</li>
+		<li><strong>COULD</strong>: improved error handling <a href="43569.html" class="issue status-9 priority-2 closed" title="Exception Handler should respect format (Closed)">#43569</a> - currently exceptions are rendered independently from the requested format (HTML for all web requests)</li>
+		<li><strong>COULD</strong>: exemplary (mobile) client that interacts with the TYPO3CR</li>
+	</ul>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/23378/typo3neos-distribution-base-45088.pdf" class="icon icon-attachment">typo3neos-distribution-base-45088.pdf</a>  
+  
+  <span class="size">(5.3 kB)</span>
+  
+  
+    <span class="author">Sebastian Kurfuerst, 2013-02-16 15:11</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+<hr />
+<div id="issue_tree">
+<div class="contextual">
+  
+</div>
+<p><strong>Subtasks</strong></p>
+<form><table class="list issues"><tr class="issue issue-45282 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="45282" /></td><td class="subject"><a href="45282.html" class="issue status-7 priority-2 closed child">Feature #45282</a>: Support for &quot;sessionless authentication&quot;</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-43966 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="43966" /></td><td class="subject"><a href="43966.html" class="issue status-7 priority-2 closed child">Feature #43966</a>: Allow all routes to include sub routes</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-27117 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="27117" /></td><td class="subject"><a href="27117.html" class="issue status-7 priority-2 closed child">Feature #27117</a>: Bind routes to HTTP request methods</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-45293 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="45293" /></td><td class="subject"><a href="45293.html" class="issue status-7 priority-2 closed child">Feature #45293</a>: More flexible parsing of body arguments</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-45290 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="45290" /></td><td class="subject"><a href="45290.html" class="issue status-9 priority-2 closed child">Bug #45290</a>: Body arguments should not be merged before property mappi...</td><td>Closed</td><td><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr></table></form>
+</div>
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-7916">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="37604" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="37604.html" class="issue status-7 priority-2 closed">Feature #37604</a>: Make Flow RestController useless by improving MVC stack
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-05-30</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7915">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="44913" /></td>
+<td class="subject">related to 
+    Base Distribution - 
+    <a href="44913.html" class="issue status-5 priority-2 parent">Story #44913</a>: RESTful NodeController for easy comment creation
+</td>
+<td class="status">On Hold</td>
+<td class="start_date"></td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-8505">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="43569" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="43569.html" class="issue status-9 priority-2 closed">Feature #43569</a>: Exception Handler should respect format
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2012-12-04</td>
+<td class="due_date">2013-04-13</td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/45088/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/45088/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=45088&amp;project_id=typo3neos-distribution-base')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-150320" class="journal has-notes">
+    <h4><a href="45088.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/19">Andreas Förthner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-07" title="2013-02-07 11:02">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150320-notes"><p>Just a short commet regarding the session-less authentication: This is already possible as long as none of your configured authentication providers starts a session (@Flow\Session(autoStart=true) at the authenticate() method). We simply need a provider without this annotation and no session should be started/needed.</p></div>
+  </div>
+  
+
+  <div id="change-150327" class="journal has-notes">
+    <h4><a href="45088.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-07" title="2013-02-07 12:05">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150327-notes"><p>Andreas Förthner wrote:</p>
+
+
+<blockquote>
+
+	<p>Just a short commet regarding the session-less authentication: This is already possible as long as none of your configured authentication providers starts a session [...]</p>
+
+
+</blockquote>
+
+	<p>I don't think so, I already found 3 places where Flow relies on a session to be active ("AuthenticationProviderManager::emitAuthenticatedToken()", "AuthenticationProviderManager::isAuthenticated()" and "RequestDispatchingAspect::setInterceptedRequest()"). For the latter Christopher already came up with a solution: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/17967/">https://review.typo3.org/#/c/17967/</a></p></div>
+  </div>
+  
+
+  <div id="change-150560" class="journal has-details">
+    <h4><a href="45088.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-08" title="2013-02-08 17:29">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>[WIP] Improved REST support</i> to <i>Improved REST support</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-151029" class="journal has-notes">
+    <h4><a href="45088.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-12" title="2013-02-12 14:25">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-151029-notes"><p>Discussion during EAB / Neos meeting:</p>
+
+
+	<ul>
+	<li>Bastian estimates that 25% of this whole package is documentation.</li>
+		<li>the documentation also should include easy-to-run examples (f.e. how to create pages using the REST API); f.e. with curl or guzzle</li>
+		<li>proper REST support would also be the basis for implementing e.g. CMIS standard lateron</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-151409" class="journal has-details">
+    <h4><a href="45088.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-16" title="2013-02-16 14:59">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-151417" class="journal has-notes has-details">
+    <h4><a href="45088.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-16" title="2013-02-16 15:11">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Due date</strong> set to <i>2013-03-29</i></li>
+      
+       <li><strong>Start date</strong> changed from <i>2013-01-31</i> to <i>2013-02-16</i></li>
+      
+       <li><strong>Estimated time</strong> set to <i>108.00</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-151417-notes"><p>Has been discussed with Jan-Hendrik from the EAB on 12.02.2013; and has been <strong>accepted</strong> on 15.02.2013 by the EAB.<br />(The attached PDF is a snapshot of this work package at the time of acceptance.)</p>
+
+
+	<p>So, Bastian and Andi, you can schedule this work package in your day-to-day calendar and implement it then -- can't wait to see it in Neos 1.0 :-)</p>
+
+
+	<p>Another side-note: Please do not forget to add comments to this work package and update "% done" while you are working on this package.</p>
+
+
+	<p>Greets, Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-151418" class="journal has-details">
+    <h4><a href="45088.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-16" title="2013-02-16 15:11">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/23378/typo3neos-distribution-base-45088.pdf">typo3neos-distribution-base-45088.pdf</a> added</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-152187" class="journal has-notes has-details">
+    <h4><a href="45088.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-22" title="2013-02-22 10:14">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>10</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-152187-notes"><p>Status update: "sessionless authentication" is under review: <a href="45282.html" class="issue status-7 priority-2 closed child" title="Support for &quot;sessionless authentication&quot; (Resolved)">#45282</a></p></div>
+  </div>
+  
+
+  <div id="change-152540" class="journal has-notes">
+    <h4><a href="45088.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-02-26" title="2013-02-26 13:55">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-152540-notes"><p>Status update: "Nested sub routes" is under review: <a href="43966.html" class="issue status-7 priority-2 closed child" title="Allow all routes to include sub routes (Resolved)">#43966</a></p></div>
+  </div>
+  
+
+  <div id="change-157411" class="journal has-details">
+    <h4><a href="45088.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3326">Aske Ertmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-03-28" title="2013-03-28 16:22">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Estimated time</strong> set to <i>108.00</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-157822" class="journal has-notes">
+    <h4><a href="45088.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3326">Aske Ertmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-04-02" title="2013-04-02 11:00">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157822-notes"><p>Would it make sense to set the due date to the end of week 14?</p></div>
+  </div>
+  
+
+  <div id="change-157833" class="journal has-notes">
+    <h4><a href="45088.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-04-02" title="2013-04-02 13:15">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157833-notes"><p>Aske Ertmann wrote:</p>
+
+
+<blockquote>
+
+	<p>Would it make sense to set the due date to the end of week 14?</p>
+
+
+</blockquote>
+
+	<p>Mh, that seems not to be possible with "child tickets"!?</p></div>
+  </div>
+  
+
+  <div id="change-157842" class="journal has-notes">
+    <h4><a href="45088.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-04-02" title="2013-04-02 13:18">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157842-notes"><p>Bastian Waidelich wrote:</p>
+
+
+<blockquote><blockquote>
+
+	<p>Would it make sense to set the due date to the end of week 14?</p>
+
+
+</blockquote></blockquote>
+
+<blockquote>
+
+	<p>Mh, that seems not to be possible with "child tickets"!?</p>
+
+
+</blockquote>
+
+	<p>It seems, it is in fact – by setting the due date of all open sub tasks</p></div>
+  </div>
+  
+
+  <div id="change-158170" class="journal has-notes">
+    <h4><a href="45088.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-04-05" title="2013-04-05 16:28">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-158170-notes"><p>FYI: The date selector of forge shows the wrong week number, I therefore expected the deadline by the end of <strong>next</strong> week (and set the due date accordingly)</p></div>
+  </div>
+  
+
+  <div id="change-163329" class="journal has-notes">
+    <h4><a href="45088.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-05-06" title="2013-05-06 10:30">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-163329-notes"><p>Status update: I have some local prototypes for the remaining two issues (<a href="45293.html" class="issue status-7 priority-2 closed child" title="More flexible parsing of body arguments (Resolved)">#45293</a> and <a href="45290.html" class="issue status-9 priority-2 closed child" title="Body arguments should not be merged before property mapping takes place (Closed)">#45290</a>) but they still need to be discussed with the team as they probably contain breaking changes. I'll update the status again after the <a href="../../external.html?link=http://wiki.typo3.org/Neos_Code_Sprint_May_2013" class="external">Code Sprint</a></p></div>
+  </div>
+  
+
+  <div id="change-165492" class="journal has-details">
+    <h4><a href="45088.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-05-16" title="2013-05-16 10:11">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Improved REST support</i> to <i>Improved REST support (TODO: Mostly Reviews)</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-183830" class="journal has-notes has-details">
+    <h4><a href="45088.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2013-09-23" title="2013-09-23 14:47">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Improved REST support (TODO: Mostly Reviews)</i> to <i>Improved REST support</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-183830-notes"><a name="Status-of-deliverables"></a>
+<h1 >Status of deliverables<a href="#Status-of-deliverables" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li><strong>MUST</strong>: more flexible request handling</li>
+	</ul>
+
+
+	<p>Request handling has been greatly improved with the "more flexible parsing of body arguments" (<a href="45293.html" class="issue status-7 priority-2 closed child" title="More flexible parsing of body arguments (Resolved)">#45293</a>, under review).<br />With this change the parsing of custom media types can be achieved by using/implementing a TypeConverter. Support for basic XML/JSON based content is already built-in.<br />The type conversion is only invoked as soon as the arguments are really accessed. This will also improve performance in some cases.</p>
+
+
+	<ul>
+	<li><strong>MUST</strong>: Routing improvements</li>
+	</ul>
+
+
+	<p>With the possibility to "bind routes to HTTP methods" (<a href="27117.html" class="issue status-7 priority-2 closed child" title="Bind routes to HTTP request methods (Resolved)">#27117</a>, merged) it is possible to create RESTful services without having to use the experimental RestController provided by Flow.<br />In conjunction with the "nested SubRoutes" feature (<a href="43966.html" class="issue status-7 priority-2 closed child" title="Allow all routes to include sub routes (Resolved)">#43966</a>, merged) it's easy to create an application with RESTful URIs for multiple resources without having to specify all CRUD routes multiple times.</p>
+
+
+	<p>In addition the RestController will be cleaned up and marked deprecated with <a class="external" href="../../external.html?link=https://review.typo3.org/11704/">https://review.typo3.org/11704/</a></p>
+
+
+	<ul>
+	<li><strong>MUST</strong>: session-less authentication</li>
+	</ul>
+
+
+	<p>With <a href="45282.html" class="issue status-7 priority-2 closed child" title="Support for &quot;sessionless authentication&quot; (Resolved)">#45282</a> Flow now only starts a session if the configured authentication mechanism needs it allowing developers to create custom (e.g. header based) authentication implementations that won't create a session cookie.</p>
+
+
+	<ul>
+	<li><strong>MUST</strong>: solid test coverage</li>
+	</ul>
+
+
+	<p>All new code is properly covered with unit tests and (where applicable) functional tests</p>
+
+
+	<ul>
+	<li><strong>MUST</strong>: documentation</li>
+	</ul>
+
+
+	<p>All new code is properly documented in code. New/modified behavior was added/adjusted on <a class="external" href="../../external.html?link=http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/">http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/</a></p>
+
+
+	<ul>
+	<li><strong>COULD</strong>: improved error handling</li>
+	</ul>
+
+
+	<p>Even though this is technically a very easy thing to do, I haven't yet found a good standard for non-HTML based exceptions. See comments at <a href="43569.html" class="issue status-9 priority-2 closed" title="Exception Handler should respect format (Closed)">#43569</a></p>
+
+
+	<ul>
+	<li><strong>COULD</strong>: exemplary (mobile) client that interacts with the TYPO3CR</li>
+	</ul>
+
+
+	<p>I didn't come around creating a client for the TYPO3CR yet. But I created quite some github repositories demonstrating how to consume/expose REST APIs (<a class="external" href="../../external.html?link=https://github.com/bwaidelich/">https://github.com/bwaidelich/</a>). "Official" examples will follow</p>
+
+
+	<a name="conclusion"></a>
+<h2 >conclusion<a href="#conclusion" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>This work package caused me quite a lot of fun and headache. I'm convinced that we have a much stronger request handling foundation now and while dealing on the "bowels" of Flow I stumbled upon many other (partly related) issues and challenges leading to a total number of > 20 merges.<br />There is still a lot to improve, I'll definitely keep working on REST support also in regards to Neos!</p></div>
+  </div>
+  
+
+  <div id="change-203139" class="journal has-details">
+    <h4><a href="45088.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2014-02-09" title="2014-02-09 16:16">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-45088-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/45088.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="45088.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/45088 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:06:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

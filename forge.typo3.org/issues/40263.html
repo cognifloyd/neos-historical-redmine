@@ -1,0 +1,748 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/40263 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:01:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #40263: Code migration script destroys method name in Resource\Resource - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/40263.atom" rel="alternate" title="TYPO3.Flow - Bug #40263: Code migration script destroys method name in Resource\Resource" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/4937">Cedric Ziel</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-40263-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #40263</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Code migration script destroys method name in Resource\Resource</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/4937">Cedric Ziel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:12">almost 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-09-12" title="2012-09-12 10:10">almost 3 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-08-27</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">- Migrations -</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1848">TYPO3 Flow Base Distribution - 1.1.1</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+	<th>Affected Flow version:</th><td>FLOW3 1.1.0</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Okay, please be kind in case i missed something..<br />I am new to FLOW3 an just wanted to migrate my small Package to 1.1.</p>
+
+
+	<p>Everything went fine an changes took place after core:migrate.</p>
+
+
+	<p>The problem I see is, in the mentioned Class, there is a doublette for method getMediaType() which the parser (5.3.10) doesnt like very much :-)</p>
+
+
+	<p>The compatibility version of PHP is (according to the download page) 5.3.2-5.4.x so there should be no redeclarations in the code.</p>
+
+
+	<p>It should be safe to remove the first doublette. Afterwards, the project compiled fine.</p>
+
+
+	<p>Here's the old method:<br /><pre>
+    /**
+     * Returns the mime type for this resource
+     *
+     * @return string The mime type
+     * @deprecated since 1.1.0
+     * @see getMediaType()
+     */
+    public function getMediaType() {
+        return $this-&gt;getMediaType();
+    }
+</pre></p>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/d8d6fee4ae3e177c5b4f4509126c266f5410ef68" title="Revision d8d6fee4">Revision d8d6fee4</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 15:23">almost 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Loop confuses variable check on migrating</p>
+
+
+	<p>When migrating code and not specifying a package to work on, the code<br />would get confused after the first available migration, because the<br />internal loop used $packageKey as well.</p>
+
+
+	<p>Change-Id: Ie680e8b54f4ffc069edc6b1896b803e53cfacb0c<br />Related: <a href="40263.html" class="issue status-7 priority-1 closed" title="Code migration script destroys method name in Resource\Resource (Resolved)">#40263</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/6656833beaf7812d85dc1f9e450b07fa07dfe574" title="Revision 6656833b">Revision 6656833b</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-28" title="2012-08-28 15:28">almost 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Loop confuses variable check on migrating</p>
+
+
+	<p>When migrating code and not specifying a package to work on, the code<br />would get confused after the first available migration, because the<br />internal loop used $packageKey as well.</p>
+
+
+	<p>Change-Id: Ie680e8b54f4ffc069edc6b1896b803e53cfacb0c<br />Related: <a href="40263.html" class="issue status-7 priority-1 closed" title="Code migration script destroys method name in Resource\Resource (Resolved)">#40263</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-129835" class="journal has-notes">
+    <h4><a href="40263.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4937">Cedric Ziel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:13">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129835-notes"><p>It's not the old, but the doublette-sorry.</p></div>
+  </div>
+  
+
+  <div id="change-129837" class="journal has-notes">
+    <h4><a href="40263.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:17">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129837-notes"><p>Cedric, this is strange, the method you've mentioned should be "getMimeType", hence not a duplicate is present.</p>
+
+
+	<p>the Code I have is</p>
+
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span>    <span class="comment">/**</span>
+<span class="line-numbers"> 2</span><span class="comment">     * Returns the mime type for this resource</span>
+<span class="line-numbers"> 3</span><span class="comment">     *</span>
+<span class="line-numbers"> 4</span><span class="comment">     * @return string The mime type</span>
+<span class="line-numbers"> 5</span><span class="comment">     * @deprecated since 1.1.0</span>
+<span class="line-numbers"> 6</span><span class="comment">     * @see getMediaType()</span>
+<span class="line-numbers"> 7</span><span class="comment">     */</span>
+<span class="line-numbers"> 8</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">getMimeType</span>() {
+<span class="line-numbers"> 9</span>        <span class="keyword">return</span> <span class="local-variable">$this</span>-&gt;getMediaType();
+<span class="line-numbers"><strong>10</strong></span>    }
+<span class="line-numbers">11</span>
+<span class="line-numbers">12</span>    <span class="comment">/**</span>
+<span class="line-numbers">13</span><span class="comment">     * Returns the Media Type for this resource</span>
+<span class="line-numbers">14</span><span class="comment">     *</span>
+<span class="line-numbers">15</span><span class="comment">     * @return string The IANA Media Type</span>
+<span class="line-numbers">16</span><span class="comment">     */</span>
+<span class="line-numbers">17</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">getMediaType</span>() {
+<span class="line-numbers">18</span>        <span class="keyword">return</span> <span class="constant">MediaTypes</span>::getMediaTypeFromFilename(<span class="string"><span class="delimiter">'</span><span class="content">x.</span><span class="delimiter">'</span></span> . <span class="local-variable">$this</span>-&gt;getFileExtension());
+<span class="line-numbers">19</span>    }
+</span></code></pre>
+
+	<p>can you confirm you are on lastest master [correction: the correct 1.1, if so] and didn't mistaken something?<br />Also 1.1 is correct in code: <a class="external" href="../../external.html?link=http://git.typo3.org/FLOW3/Packages/TYPO3.FLOW3.git?a=blob;f=Classes/Resource/Resource.php;h=1cddf03e289659b32dfac879ab60e93095f23885;hb=FLOW3-1.1#l111">http://git.typo3.org/FLOW3/Packages/TYPO3.FLOW3.git?a=blob;f=Classes/Resource/Resource.php;h=1cddf03e289659b32dfac879ab60e93095f23885;hb=FLOW3-1.1#l111</a></p></div>
+  </div>
+  
+
+  <div id="change-129838" class="journal has-details">
+    <h4><a href="40263.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:19">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Resource</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Adrian Föder</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-129839" class="journal has-notes">
+    <h4><a href="40263.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4937">Cedric Ziel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:22">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129839-notes"><p>Hello,</p>
+
+
+	<p>thanks for your response. Is there any chance, the migrate task is involved?</p>
+
+
+	<p>I double-checked it and can confirm this method doesn't exist in the src-package I downloaded.</p></div>
+  </div>
+  
+
+  <div id="change-129840" class="journal has-notes">
+    <h4><a href="40263.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:24">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129840-notes"><p>hey that's a good point, thanks for that hint, I will check this.</p></div>
+  </div>
+  
+
+  <div id="change-129841" class="journal has-notes">
+    <h4><a href="40263.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4937">Cedric Ziel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:27">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129841-notes"><p>I double-checked it-the migrate task replaces getMimeType with getMediaType in the method signature.</p></div>
+  </div>
+  
+
+  <div id="change-129842" class="journal has-notes has-details">
+    <h4><a href="40263.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:27">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+       <li><strong>Priority</strong> changed from <i>Should have</i> to <i>Must have</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-129842-notes"><p>well yes of course, that's it pretty surely:</p>
+
+
+	<p><a class="external" href="../../external.html?link=http://git.typo3.org/FLOW3/Packages/TYPO3.FLOW3.git?a=blob;f=Migrations/Code/Version201205292145.php;h=05dc0c5d2a3514bcda2b4d3de124ac262e59c6e0;hb=FLOW3-1.1#l28">http://git.typo3.org/FLOW3/Packages/TYPO3.FLOW3.git?a=blob;f=Migrations/Code/Version201205292145.php;h=05dc0c5d2a3514bcda2b4d3de124ac262e59c6e0;hb=FLOW3-1.1#l28</a></p></div>
+  </div>
+  
+
+  <div id="change-129843" class="journal has-details">
+    <h4><a href="40263.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:28">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Doubled function getMediaType() in TYPO3\FLOW3\Resource\Resource</i> to <i>Code migration script destroys method name in Resource\Resource</i></li>
+      
+       <li><strong>Assigned To</strong> deleted (<strike><i>Adrian Föder</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-129844" class="journal has-notes has-details">
+    <h4><a href="40263.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:36">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-129844-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/14133">http://review.typo3.org/14133</a></p></div>
+  </div>
+  
+
+  <div id="change-129845" class="journal has-notes">
+    <h4><a href="40263.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:37">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129845-notes"><p>Cedric, if you are able to do, may I please to to test whether the provided patch resolves your issue?<br />If so, feel free to review the patch set.<br />Thanks a lot for your help!</p></div>
+  </div>
+  
+
+  <div id="change-129846" class="journal has-notes has-details">
+    <h4><a href="40263.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:46">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> changed from <i>Resource</i> to <i>- Migrations -</i></li>
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Karsten Dambekalns</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-129846-notes"><p>Well, anything inside "Framework" is skipped by the migration tool, so I wonder why it even worked on that piece of code.</p></div>
+  </div>
+  
+
+  <div id="change-129847" class="journal has-notes">
+    <h4><a href="40263.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4937">Cedric Ziel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 14:54">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129847-notes"><p>Hmm well what information do You need?</p>
+
+
+	<p>I read the Upgrade.txt, moved copied over the new Source Files and did the migration task. That's all for reproducing the issue ^^</p></div>
+  </div>
+  
+
+  <div id="change-129848" class="journal has-notes">
+    <h4><a href="40263.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 15:00">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129848-notes"><p>Your FLOW3 package is in <code>Packages/Framework</code>? Do you still have the output of the migrate command?</p></div>
+  </div>
+  
+
+  <div id="change-129850" class="journal has-notes">
+    <h4><a href="40263.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4937">Cedric Ziel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 15:19">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129850-notes"><p>Yes. Packages/Framework</p>
+
+
+	<p>Here's the output befor the patch (it was not the first try..As you can see in my Package. But better than nothing.-It shows the relevant part.)</p>
+
+
+<pre>
+➜  f3finances git:(master) ./flow3 core:migrate
+Applying TYPO3.FLOW3-201201261636
+  Migrating Cziel.F3finances
+    No changes were committed.
+
+  -------------------------------------------------------------------------------
+   Notes
+  -------------------------------------------------------------------------------
+  * \TYPO3\FLOW3\MVC\Web\RequestBuilder does not exist anymore. If you need to
+    create requests, do "new ActionRequest($parentRequest)".
+  * \TYPO3\FLOW3\MVC\Web\SubRequestBuilder does not exist anymore. If you need to
+    create sub requests, do "new ActionRequest($parentRequest)".
+  * \TYPO3\FLOW3\MVC\RequestInterface has been removed, use
+    \TYPO3\FLOW3\Mvc\ActionRequest instead - e.g. if you implemented your own
+    token.
+  * Handling of NULL values in the database has changed, add
+    "@ORM\Column(nullable=true)" to properties that need to be nullable or give
+    them a non-NULL default.
+  * All persistence repositories must be of scope "singleton", this is now
+    enforced. Add "@FLOW3\Scope("singleton")" if not already present.
+  * $supportedRequestTypes are not needed anymore in a controller.
+  * Validators now accept empty values by default, if you need the previous
+    behavior, add "@FLOW3\Validate(type="NotEmpty")" where needed.
+  * Settings.yaml: The previously shipped "DefaultProvider" authentication provider
+    configuration has been removed, you must configure all providers yourself now.
+  * Settings.yaml: "providerClass" is deprecated, use "provider" instead. Provider
+    options are now given in "providerOptions".
+  * Settings.yaml: Authentication "entryPoint" configuration needs to be changed
+    from:
+     entryPoint:
+       WebRedirect:
+         uri: login.html
+    to:
+     entryPoint: 'WebRedirect'
+     entryPointOptions:
+       uri: 'login.html'
+  * Routes.yaml: Widget configuration needs to be adjusted to refer to the correct
+    widget id, see upgrading instructions.
+  -------------------------------------------------------------------------------
+
+  -------------------------------------------------------------------------------
+   Warnings
+  -------------------------------------------------------------------------------
+  * Class names in pointcut expressions might not be fully qualified, check
+    manually whether (more) adjustments are needed.
+  -------------------------------------------------------------------------------
+Done with TYPO3.FLOW3-201201261636
+
+Applying TYPO3.Fluid-201205031303
+  Migrating TYPO3.FLOW3
+    No changes were committed.
+
+  -------------------------------------------------------------------------------
+   Notes
+  -------------------------------------------------------------------------------
+  * Widget configuration has changed, you might want to add "widgetId" attributes
+    to your widget inclusions in Fluid templates. Adjust Routes.yaml as needed!
+  -------------------------------------------------------------------------------
+Done with TYPO3.Fluid-201205031303
+
+Applying TYPO3.FLOW3-201205292145
+  Migrating TYPO3.FLOW3
+    [master af18deb] [TASK] Apply migration TYPO3.FLOW3-201205292145
+     1 file changed, 1 insertion(+), 1 deletion(-)
+Done with TYPO3.FLOW3-201205292145
+
+Applying TYPO3.FLOW3-201206271128
+  Migrating TYPO3.FLOW3
+    No changes were committed.
+Done with TYPO3.FLOW3-201206271128
+
+➜  f3finances git:(master) ./flow3
+PHP Fatal error:  Cannot redeclare TYPO3\FLOW3\Resource\Resource::getMediaType() in /home/cziel/src/f3finances/Packages/Framework/TYPO3.FLOW3/Classes/Resource/Resource.php on line 120
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-129853" class="journal has-notes has-details">
+    <h4><a href="40263.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 15:23">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Under Review</i></li>
+      
+       <li><strong>Target version</strong> set to <i>1.1.1</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-129853-notes"><p>Ok, please check <a class="external" href="../../external.html?link=https://review.typo3.org/14134">https://review.typo3.org/14134</a> and see if that helps. Classic looping error… :/</p></div>
+  </div>
+  
+
+  <div id="change-129866" class="journal has-notes">
+    <h4><a href="40263.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-27" title="2012-08-27 16:29">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129866-notes"><p>but, just asking: the SearchAndReplace, does this really a brute force string replacement? If so, looking for actual invocations by <code>-></code> is worth a consideration IMO.<br />But I don't know if the migration manager already does some magic on its own regarding this.</p></div>
+  </div>
+  
+
+  <div id="change-129936" class="journal has-notes">
+    <h4><a href="40263.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-28" title="2012-08-28 11:07">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129936-notes"><p>Adrian Föder wrote:</p>
+
+
+<blockquote>
+
+	<p>but, just asking: the SearchAndReplace, does this really a brute force string replacement? If so, looking for actual invocations by <code>-></code> is worth a consideration IMO.</p>
+
+
+</blockquote>
+
+	<p>Yes, SearchAndReplace does exactly what you tell it to do. I just commented on the first change in Gerrit regarding this.</p></div>
+  </div>
+  
+
+  <div id="change-132015" class="journal has-details">
+    <h4><a href="40263.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-09-12" title="2012-09-12 10:10">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-40263-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/40263.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="40263.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/40263 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:01:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

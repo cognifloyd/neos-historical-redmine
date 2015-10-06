@@ -1,0 +1,751 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/47756 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:43:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Task #47756: Remove require / require_once fallback layers for namespaced classes - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/47756.atom" rel="alternate" title="Core - Task #47756: Remove require / require_once fallback layers for namespaced classes" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-47756-watcher"></span>
+
+
+</div>
+
+
+<h2>Task #47756</h2>
+
+<div class="issue status-7 priority-2 closed parent details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Remove require / require_once fallback layers for namespaced classes</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-04-30" title="2013-04-30 19:11">over 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-09" title="2014-02-09 15:30">over 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-04-30</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Code Cleanup</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2261">6.2.0</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>This umbrella issue should be set as parent / umbrella issue for all issues related to the removal of 'dummy' require_once files that are removed with 6.2</p>
+  </div>
+
+
+
+
+
+
+<hr />
+<div id="issue_tree">
+<div class="contextual">
+  
+</div>
+<p><strong>Subtasks</strong></p>
+<form><table class="list issues"><tr class="issue issue-47754 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47754" /></td><td class="subject"><a href="47754.html" class="issue status-7 priority-2 closed child">Bug #47754</a>: Cleanup dummy files from t3lib</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47761 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47761" /></td><td class="subject"><a href="47761.html" class="issue status-7 priority-2 closed child">Bug #47761</a>: Remove deprecated classes from t3lib</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47763 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47763" /></td><td class="subject"><a href="47763.html" class="issue status-7 priority-2 closed child">Bug #47763</a>: Remove dummy files from ext:adodb</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47769 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47769" /></td><td class="subject"><a href="47769.html" class="issue status-7 priority-2 closed child">Bug #47769</a>: Remove typo3/classes/</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47791 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47791" /></td><td class="subject"><a href="47791.html" class="issue status-7 priority-2 closed child">Bug #47791</a>: Fix mentions of old class names</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47792 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47792" /></td><td class="subject"><a href="47792.html" class="issue status-7 priority-2 closed child">Bug #47792</a>: Remove dummy files from ext:cms</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47793 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47793" /></td><td class="subject"><a href="47793.html" class="issue status-7 priority-2 closed child">Bug #47793</a>: Remove dummy files from various extensions</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47795 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47795" /></td><td class="subject"><a href="47795.html" class="issue status-7 priority-2 closed child">Bug #47795</a>: Remove dummy files from ext:rsaauth</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47797 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47797" /></td><td class="subject"><a href="47797.html" class="issue status-7 priority-2 closed child">Bug #47797</a>: Remove dummy files in typo3/classes/</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47798 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47798" /></td><td class="subject"><a href="47798.html" class="issue status-7 priority-2 closed child">Bug #47798</a>: Remove dummy files in typo3/interfaces/</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47799 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47799" /></td><td class="subject"><a href="47799.html" class="issue status-7 priority-2 closed child">Bug #47799</a>: Remove dummy files from ext:rtehtmlarea</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47800 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47800" /></td><td class="subject"><a href="47800.html" class="issue status-7 priority-2 closed child">Bug #47800</a>: Remove dummy files from ext:saltedpasswords</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47801 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47801" /></td><td class="subject"><a href="47801.html" class="issue status-7 priority-2 closed child">Bug #47801</a>: Remove dummy files from ext:scheduler</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47802 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47802" /></td><td class="subject"><a href="47802.html" class="issue status-7 priority-2 closed child">Bug #47802</a>: Remove dummy files in EXT:form</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47833 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47833" /></td><td class="subject"><a href="47833.html" class="issue status-7 priority-2 closed child">Bug #47833</a>: Remove dummy files from ext:linkvalidator</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47838 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47838" /></td><td class="subject"><a href="47838.html" class="issue status-7 priority-2 closed child">Bug #47838</a>: Remove dummy files from ext:dbal</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47841 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47841" /></td><td class="subject"><a href="47841.html" class="issue status-7 priority-2 closed child">Bug #47841</a>: Remove dummy files from ext:version</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47843 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47843" /></td><td class="subject"><a href="47843.html" class="issue status-7 priority-2 closed child">Bug #47843</a>: Remove dummy files from ext:workspaces</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47848 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47848" /></td><td class="subject"><a href="47848.html" class="issue status-7 priority-2 closed child">Bug #47848</a>: Remove dummy files from ext:install</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-47852 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="47852" /></td><td class="subject"><a href="47852.html" class="issue status-7 priority-2 closed child">Bug #47852</a>: Remove dummy files from ext:indexed_search</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-48155 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="48155" /></td><td class="subject"><a href="48155.html" class="issue status-7 priority-2 closed child">Bug #48155</a>: Remove dummy files from ext:wizard_crpages and wizard_sor...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-48157 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="48157" /></td><td class="subject"><a href="48157.html" class="issue status-7 priority-2 closed child">Bug #48157</a>: Remove dummy files from ext:tstemplate_* extensions</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-49989 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="49989" /></td><td class="subject"><a href="49989.html" class="issue status-7 priority-2 closed child">Bug #49989</a>: Cleanup ext:func</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-49992 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="49992" /></td><td class="subject"><a href="49992.html" class="issue status-7 priority-2 closed child">Task #49992</a>: Cleanup ext:info and ext:info_pagetsconfig</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-51593 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="51593" /></td><td class="subject"><a href="51593.html" class="issue status-7 priority-2 closed child">Task #51593</a>: Cleanup ext:sv</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-51599 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="51599" /></td><td class="subject"><a href="51599.html" class="issue status-7 priority-2 closed child">Task #51599</a>: Remove old class files in ext:extensionmanager</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-51594 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="51594" /></td><td class="subject"><a href="51594.html" class="issue status-7 priority-2 closed child">Task #51594</a>: Remove old class files in ext:taskcenter</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-51595 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="51595" /></td><td class="subject"><a href="51595.html" class="issue status-7 priority-2 closed child">Task #51595</a>: Remove old class files in ext:sys_action</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-51597 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="51597" /></td><td class="subject"><a href="51597.html" class="issue status-7 priority-2 closed child">Task #51597</a>: Remove old class files in ext:perm</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-51596 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="51596" /></td><td class="subject"><a href="51596.html" class="issue status-7 priority-2 closed child">Task #51596</a>: Remove old class files in ext:rsaauth</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55792 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55792" /></td><td class="subject"><a href="55792.html" class="issue status-7 priority-2 closed child">Task #55792</a>: Remove dummy files from ext:t3editor</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55804 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55804" /></td><td class="subject"><a href="55804.html" class="issue status-7 priority-2 closed child">Task #55804</a>: Remove old class files from ext:recycler</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55808 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55808" /></td><td class="subject"><a href="55808.html" class="issue status-7 priority-2 closed child">Task #55808</a>: Remove old class files from ext:openid</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr></table></form>
+</div>
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10279">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="55446" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="55446.html" class="issue status-7 priority-2 closed child">Task #55446</a>: Obsolete code in saltedpasswords
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-01-29</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/47756/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/47756/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=47756&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/797a8e5127e2132906a7790f9e948e42c886a7fe" title="Revision 797a8e51">Revision 797a8e51</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 18:06">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy require files from ext:adodb</p>
+
+
+	<p>Change-Id: Ia1d98cfbd904934c651946ad30ab6dcba367dc3f<br />Resolves: <a href="47763.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:adodb (Resolved)">#47763</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20367">https://review.typo3.org/20367</a><br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring<br />Reviewed-by: Philipp Gampe<br />Tested-by: Philipp Gampe<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/e112df3a336d6a626658535f123f741c7f76f7eb" title="Revision e112df3a">Revision e112df3a</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 19:46">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:cms</p>
+
+
+	<p>This catches most old empty class files from ext:cms. The rest<br />needs to be taken care of in single patches.<br />The patch also changes all old mentions of the old class names,<br />mostly comments are affected.</p>
+
+
+	<p>Change-Id: I2b8ebfad178001c7bc8def967c01a56ae113c029<br />Resolves: <a href="47792.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:cms (Resolved)">#47792</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20381">https://review.typo3.org/20381</a><br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters<br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/b2fd7c288e33ace5b655a27c278f72be6c0b9ce0" title="Revision b2fd7c28">Revision b2fd7c28</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 20:02">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:rsaauth</p>
+
+
+	<p>Change-Id: I2b063ebeb88f1d059900c1eb75f8c22308753fb3<br />Resolves: <a href="47795.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:rsaauth (Resolved)">#47795</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20386">https://review.typo3.org/20386</a><br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring<br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/8ff9ca2556f47410d76ab05bc3253a4725e9e009" title="Revision 8ff9ca25">Revision 8ff9ca25</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 21:19">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from various extensions</p>
+
+
+	<p>Affected extensions: extra_page_cm_options, feedit, func_wizards,<br />impexp, lang, lowlevel, reports</p>
+
+
+	<p>Change-Id: I5f2a232d0fc27b66c3c1efbd6258a1055366ed14<br />Resolves: <a href="47793.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from various extensions (Resolved)">#47793</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20383">https://review.typo3.org/20383</a><br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring<br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/875c65b184e5132d4e20ed757a480744a6207b36" title="Revision 875c65b1">Revision 875c65b1</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 21:55">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:rtehtmlarea</p>
+
+
+	<p>Change-Id: Idb2fe1df112c3794e6852f270f742cfe51b2c480<br />Resolves: <a href="47799.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:rtehtmlarea (Resolved)">#47799</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20390">https://review.typo3.org/20390</a><br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/0e7a8dd05cf5a7bdc3cd50e4e5499ea47e770f36" title="Revision 0e7a8dd0">Revision 0e7a8dd0</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 21:59">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files in typo3/interfaces/</p>
+
+
+	<p>Change-Id: I87fb4e00b5810d98ac2bc70aa90830e66deb8a88<br />Resolves: <a href="47798.html" class="issue status-7 priority-2 closed child" title="Remove dummy files in typo3/interfaces/ (Resolved)">#47798</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20389">https://review.typo3.org/20389</a><br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/b166e9bc672019cda6e98dbc92a334e44823f419" title="Revision b166e9bc">Revision b166e9bc</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 22:11">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files in typo3/classes/</p>
+
+
+	<p>Change-Id: I8ee215e43b60dae0da04087d510771479aaaaa04<br />Resolves: <a href="47797.html" class="issue status-7 priority-2 closed child" title="Remove dummy files in typo3/classes/ (Resolved)">#47797</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20388">https://review.typo3.org/20388</a><br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/b01e39976163b185199143e3e19c97f63dcf021e" title="Revision b01e3997">Revision b01e3997</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 23:49">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASk] Remove dummy files from ext:saltedpasswords</p>
+
+
+	<p>Change-Id: I41a31d60e2038f0677548e01cec93942818b06ed<br />Resolves: <a href="47800.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:saltedpasswords (Resolved)">#47800</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20394">https://review.typo3.org/20394</a><br />Reviewed-by: Alexander Opitz<br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters<br />Reviewed-by: Felix Kopp<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/6f1fc228688ef4e2220111a778215a1f281460f7" title="Revision 6f1fc228">Revision 6f1fc228</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 23:49">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:scheduler</p>
+
+
+	<p>Change-Id: Ic6a76ca3a2c78041a3357a5f0ec8ae5dcecca97b<br />Resolves: <a href="47801.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:scheduler (Resolved)">#47801</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20396">https://review.typo3.org/20396</a><br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters<br />Reviewed-by: Felix Kopp<br />Tested-by: Felix Kopp<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/5f370695823d52e132ed3fcba1ee8752b28b454c" title="Revision 5f370695">Revision 5f370695</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-01" title="2013-05-01 23:55">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files in EXT:form</p>
+
+
+	<p>Change-Id: I80169971a48e43f1aa82d01dfb7a328807a74f30<br />Resolves: <a href="47802.html" class="issue status-7 priority-2 closed child" title="Remove dummy files in EXT:form (Resolved)">#47802</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20397">https://review.typo3.org/20397</a><br />Reviewed-by: Felix Kopp<br />Tested-by: Felix Kopp<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator/repository/revisions/12cae40109f94d2b72e34becfc4cf904f293aa81" title="Revision 12cae401">Revision 12cae401</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-02" title="2013-05-02 15:27">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:linkvalidator</p>
+
+
+	<p>Change-Id: Idecc7408ddd0a799c0e239f2585ee993b7293fc6<br />Resolves: <a href="47833.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:linkvalidator (Resolved)">#47833</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20417">https://review.typo3.org/20417</a><br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/376a40a345fd73759ccc37bb05dddf56378f8c15" title="Revision 376a40a3">Revision 376a40a3</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-02" title="2013-05-02 15:27">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:linkvalidator</p>
+
+
+	<p>Change-Id: Idecc7408ddd0a799c0e239f2585ee993b7293fc6<br />Resolves: <a href="47833.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:linkvalidator (Resolved)">#47833</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20417">https://review.typo3.org/20417</a><br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/2ee60b7fe61735a7851b4e8a057b2dba78b98b9b" title="Revision 2ee60b7f">Revision 2ee60b7f</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-02" title="2013-05-02 15:38">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:extbase</p>
+
+
+	<p>Change-Id: I2627bcbbbc98caec6e63fd2fcea52a380c3c21a0<br />Resolves: #47830<br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20416">https://review.typo3.org/20416</a><br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn<br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/cc1ae8758449702ae34bf3424e7bff866b8c5c87" title="Revision cc1ae875">Revision cc1ae875</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-02" title="2013-05-02 17:14">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:dbal</p>
+
+
+	<p>Change-Id: I62715d95f7453aa0e86dddc299aba4dc9cbe19d1<br />Resolves: <a href="47838.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:dbal (Resolved)">#47838</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Related: <a href="47836.html" class="issue status-7 priority-2 closed" title="Simplify load logic of dbal autoloader in install tool (Resolved)">#47836</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20423">https://review.typo3.org/20423</a><br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/4b26443a247b06d57f67b9a2b464b1e2b9d64f10" title="Revision 4b26443a">Revision 4b26443a</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-02" title="2013-05-02 18:05">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:version</p>
+
+
+	<p>Change-Id: I1f7b91c5734d63ebb66436790ef7d3cea6d038c7<br />Resolves: <a href="47841.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:version (Resolved)">#47841</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20430">https://review.typo3.org/20430</a><br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/71b366b12a5249414478d1cb1eb0e2db4d424b68" title="Revision 71b366b1">Revision 71b366b1</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-02" title="2013-05-02 18:54">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:workspaces</p>
+
+
+	<p>Change-Id: I631889db332b001da62d23d29401891746b223e2<br />Resolves: <a href="47843.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:workspaces (Resolved)">#47843</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20434">https://review.typo3.org/20434</a><br />Reviewed-by: Wouter Wolters<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/a35b7653c5a4d26cb9a224bc962e5b59886c49b5" title="Revision a35b7653">Revision a35b7653</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-04" title="2013-05-04 10:11">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:install</p>
+
+
+	<p>The install tool is always bootstrap'ed by typo3/install/index.php,<br />we can rely on the class loader to find files, so the removed<br />require_once calls are ok.<br />The eidHandler for the random key calculation runs through FE<br />bootstrap, so this is also ok to not require manually.</p>
+
+
+	<p>Change-Id: I45ed37a19039418b1edc440b735809182833ce2d<br />Resolves: <a href="47848.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:install (Resolved)">#47848</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releeases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20441">https://review.typo3.org/20441</a><br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters<br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/772d7379e8f0368ae992923f3bd2cf5eda5b8a4c" title="Revision 772d7379">Revision 772d7379</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-27" title="2013-05-27 23:35">about 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:tstemplate_* extensions</p>
+
+
+	<ul>
+	<li>Remove dummy files from ext:tstemplate_* extensions</li>
+		<li>Remove old class names to the new ones</li>
+		<li>Adjust function names for the backend module</li>
+		<li>Adjust AJAX save type</li>
+	</ul>
+
+
+	<p>Change-Id: I560c1c0e7bceb271eaba1a1d660cec71614df64a<br />Resolves: <a href="48157.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:tstemplate_* extensions (Resolved)">#48157</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20766">https://review.typo3.org/20766</a><br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/43b657d225488554a1a091e4c8b3c202d230ffaa" title="Revision 43b657d2">Revision 43b657d2</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-22" title="2013-06-22 14:27">about 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:wizard_crpages and wizard_sortpages</p>
+
+
+	<ul>
+	<li>Remove dummy files</li>
+		<li>Rename old class names to the new ones</li>
+	</ul>
+
+
+	<p>Change-Id: I77ea8d6a48d10bc56031231a00999655cbecb487<br />Resolves: <a href="48155.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:wizard_crpages and wizard_sortpages (Resolved)">#48155</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20765">https://review.typo3.org/20765</a><br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn<br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/6e6096e19d6803d7fe20bbdb85e8ea8ce63cc79b" title="Revision 6e6096e1">Revision 6e6096e1</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-05" title="2013-07-05 16:53">about 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove dummy files from ext:indexed_search</p>
+
+
+	<ul>
+	<li>The pi1 script still lives as dummy file since the addPItoST43<br />  registration fails otherwise.</li>
+		<li>modfunc1 and modfunc2 class files still live as dummy files as<br />  the sub-sub module handling in core fails otherwise.</li>
+	</ul>
+
+
+	<p>Change-Id: I21b92a07e7ff83cd1dd3f12b0e15bef7f84691e9<br />Resolves: <a href="47852.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:indexed_search (Resolved)">#47852</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/20442">https://review.typo3.org/20442</a><br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn<br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/682d1a044e8299a25838549d340bdc400cc1e4e4" title="Revision 682d1a04">Revision 682d1a04</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-08" title="2014-02-08 19:27">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove old class files from ext:t3editor</p>
+
+
+	<p>Change-Id: Id7cd8fdaecf663462b8d02a4bf2ca272293cea4f<br />Resolves: <a href="55792.html" class="issue status-7 priority-2 closed child" title="Remove dummy files from ext:t3editor (Resolved)">#55792</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/27460">https://review.typo3.org/27460</a><br />Reviewed-by: Marcin Sągol<br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring<br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/5b802d681a9bc6f660267cb4435722eabb1969cf" title="Revision 5b802d68">Revision 5b802d68</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-09" title="2014-02-09 13:27">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove old class files from ext:recycler</p>
+
+
+	<p>Change-Id: I5d2233c5eb0860740e1858bf2f96a919fee26e5e<br />Resolves: <a href="55804.html" class="issue status-7 priority-2 closed child" title="Remove old class files from ext:recycler (Resolved)">#55804</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/27505">https://review.typo3.org/27505</a><br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters<br />Reviewed-by: Oliver Klee<br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/c5741aa9f3514d7e82caadf24f959555c2a5ae7f" title="Revision c5741aa9">Revision c5741aa9</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-09" title="2014-02-09 14:47">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Remove old class files from ext:openid</p>
+
+
+	<p>Removes old class files from ext:openid except the two<br />current entry points for _eid and _return.</p>
+
+
+	<p>Change-Id: Ibdeca07881aad92af28c9f0e81c42a4ee1b600c2<br />Resolves: <a href="55808.html" class="issue status-7 priority-2 closed child" title="Remove old class files from ext:openid (Resolved)">#55808</a><br />Related: <a href="47756.html" class="issue status-7 priority-2 closed parent" title="Remove require / require_once fallback layers for namespaced classes (Resolved)">#47756</a><br />Releases: 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/27507">https://review.typo3.org/27507</a><br />Reviewed-by: Oliver Klee<br />Reviewed-by: Marcin Sągol<br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-161993" class="journal has-details">
+    <h4><a href="47756.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-04-30" title="2013-04-30 19:12">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Estimated time</strong> set to <i>0.00</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-179341" class="journal has-notes has-details">
+    <h4><a href="47756.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-08-28" title="2013-08-28 02:46">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Estimated time</strong> set to <i>0.00</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-179341-notes"><p>@Christian, so this is "done", I guess?</p></div>
+  </div>
+  
+
+  <div id="change-179342" class="journal has-details">
+    <h4><a href="47756.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-08-28" title="2013-08-28 02:47">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Christian Kuhn</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-180170" class="journal has-details">
+    <h4><a href="47756.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-08-31" title="2013-08-31 11:45">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Resolved</i></li>
+      
+       <li><strong>Estimated time</strong> set to <i>0.00</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-223912" class="journal has-details">
+    <h4><a href="47756.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-09" title="2014-02-09 15:30">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Estimated time</strong> deleted (<strike><i>0.00</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-47756-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/47756.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="47756.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/47756 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:43:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

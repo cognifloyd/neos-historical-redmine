@@ -1,0 +1,714 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/43104 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:03:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #43104: Add Confirm- Radio- CheckBoxDialog to CommandController(CLI) - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/43104.atom" rel="alternate" title="TYPO3.Flow - Feature #43104: Add Confirm- Radio- CheckBoxDialog to CommandController(CLI)" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (3)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2208">Christian Müller</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-43104-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #43104</h2>
+
+<div class="issue status-10 priority-3 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Add Confirm- Radio- CheckBoxDialog to CommandController(CLI)</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/38109">Rafael Kähm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-19" title="2012-11-19 16:25">over 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-12-18" title="2012-12-18 15:06">over 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Rejected</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-11-19</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Could have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 30%;"></td><td class="todo" style="width: 70%;"></td></tr></table><p class="pourcent">30%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Cli</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>For interactive confirmation or multiple choice by Commands (CLI).</p>
+
+
+	<p>for example: the same code is on <a class="external" href="../../external.html?link=https://gist.github.com/4111197">https://gist.github.com/4111197</a><br /><strong>sorry for doccomments</strong></p>
+
+
+	<p><ins><strong>Settings as assoc-array is not comfortably for developers, please comment or speak your ideas about settings!</strong></ins></p>
+
+
+<pre>
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">  1</span><span class="inline-delimiter">&lt;?php</span>
+<span class="line-numbers">  2</span><span class="keyword">namespace</span> ........... ;
+<span class="line-numbers">  3</span>
+<span class="line-numbers">  4</span><span class="comment">/*                                                                        *</span>
+<span class="line-numbers">  5</span><span class="comment"> * This script belongs to the TYPO3 Flow package '............'.        *</span>
+<span class="line-numbers">  6</span><span class="comment"> *                                                                        *</span>
+<span class="line-numbers">  7</span><span class="comment"> *                                                                        */</span>
+<span class="line-numbers">  8</span>
+<span class="line-numbers">  9</span><span class="keyword">use</span> <span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Annotations</span> <span class="keyword">as</span> <span class="constant">Flow</span>;
+<span class="line-numbers"> <strong>10</strong></span>
+<span class="line-numbers"> 11</span><span class="comment">/**</span>
+<span class="line-numbers"> 12</span><span class="comment"> * ConfirmationDialog command controller for the Train2Web.Core package</span>
+<span class="line-numbers"> 13</span><span class="comment"> * @todo ANSI FOREGROUNDS and BLINK &#38; co.  </span>
+<span class="line-numbers"> 14</span><span class="comment"> * @Flow\Scope(&quot;singleton&quot;)</span>
+<span class="line-numbers"> 15</span><span class="comment"> */</span>
+<span class="line-numbers"> 16</span><span class="keyword">class</span> <span class="class">ConfirmationDialogCommandController</span> <span class="keyword">extends</span> \<span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Cli</span>\<span class="constant">CommandController</span> {
+<span class="line-numbers"> 17</span>
+<span class="line-numbers"> 18</span>        <span class="comment">/**</span>
+<span class="line-numbers"> 19</span><span class="comment">         * Constants for anwer pattern</span>
+<span class="line-numbers"> <strong>20</strong></span><span class="comment">         */</span> 
+<span class="line-numbers"> 21</span>        <span class="keyword">const</span> <span class="constant">PATTERN_USER_INPUT_YES</span> = <span class="string"><span class="delimiter">'</span><span class="content">/^(y|yes|j|ja|si)$/i</span><span class="delimiter">'</span></span>;
+<span class="line-numbers"> 22</span>        <span class="keyword">const</span> <span class="constant">PATTERN_USER_INPUT_NO</span> = <span class="string"><span class="delimiter">'</span><span class="content">/^(n|no|nein)$/i</span><span class="delimiter">'</span></span>;
+<span class="line-numbers"> 23</span>        <span class="keyword">const</span> <span class="constant">PATTERN_USER_INPUT_CANCEL</span> = <span class="string"><span class="delimiter">'</span><span class="content">/^(c|cancel|abort|abbrechen|abortire|abortar)$/i</span><span class="delimiter">'</span></span>;
+<span class="line-numbers"> 24</span>
+<span class="line-numbers"> 25</span>        <span class="comment">/**</span>
+<span class="line-numbers"> 26</span><span class="comment">     * A simpliest example for confirm dialog</span>
+<span class="line-numbers"> 27</span><span class="comment">         * </span>
+<span class="line-numbers"> 28</span><span class="comment">         * if (user puts yes) {do something} else { do something else } </span>
+<span class="line-numbers"> 29</span><span class="comment">         * also if user puts n, no, c, cancel then is it else</span>
+<span class="line-numbers"> <strong>30</strong></span><span class="comment">         * </span>
+<span class="line-numbers"> 31</span><span class="comment">     * @return void</span>
+<span class="line-numbers"> 32</span><span class="comment">     */</span>
+<span class="line-numbers"> 33</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">exampleCommand</span>() {
+<span class="line-numbers"> 34</span>            <span class="keyword">if</span> (<span class="local-variable">$this</span>-&gt;confirmDialog()) {
+<span class="line-numbers"> 35</span>                <span class="predefined">echo</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">I will continue.</span><span class="delimiter">&quot;</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers"> 36</span>            } <span class="keyword">else</span> {
+<span class="line-numbers"> 37</span>                <span class="predefined">echo</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">I will not continue.</span><span class="delimiter">&quot;</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers"> 38</span>            }
+<span class="line-numbers"> 39</span>    }
+<span class="line-numbers"> <strong>40</strong></span>
+<span class="line-numbers"> 41</span>        <span class="comment">/**</span>
+<span class="line-numbers"> 42</span><span class="comment">     * A simple example confirm dialog with cancel</span>
+<span class="line-numbers"> 43</span><span class="comment">         * </span>
+<span class="line-numbers"> 44</span><span class="comment">         * Please note that switch case provide == comparison and not === &lt;br&gt;</span>
+<span class="line-numbers"> 45</span><span class="comment">         * also if you use == instead of === you can't differentiate between no and cancel!!!</span>
+<span class="line-numbers"> 46</span><span class="comment">         * </span>
+<span class="line-numbers"> 47</span><span class="comment">     * @return void</span>
+<span class="line-numbers"> 48</span><span class="comment">     */</span>
+<span class="line-numbers"> 49</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">example2Command</span>() {
+<span class="line-numbers"> <strong>50</strong></span>            <span class="local-variable">$usersChoice</span> = <span class="local-variable">$this</span>-&gt;confirmDialog();
+<span class="line-numbers"> 51</span>            <span class="keyword">if</span> (<span class="local-variable">$usersChoice</span>) {
+<span class="line-numbers"> 52</span>                <span class="predefined">echo</span> <span class="string"><span class="delimiter">'</span><span class="content">You typed &quot;yes&quot;!</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>;     
+<span class="line-numbers"> 53</span>            } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="local-variable">$usersChoice</span> === <span class="predefined-constant">NULL</span>) {
+<span class="line-numbers"> 54</span>                <span class="predefined">echo</span> <span class="string"><span class="delimiter">'</span><span class="content">You typed &quot;cancel&quot;!</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers"> 55</span>            } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="local-variable">$usersChoice</span> === <span class="predefined-constant">FALSE</span>) {
+<span class="line-numbers"> 56</span>                <span class="predefined">echo</span> <span class="string"><span class="delimiter">'</span><span class="content">You typed &quot;no&quot;!</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers"> 57</span>            }
+<span class="line-numbers"> 58</span>    }
+<span class="line-numbers"> 59</span>
+<span class="line-numbers"> <strong>60</strong></span>        <span class="comment">/**</span>
+<span class="line-numbers"> 61</span><span class="comment">     * An example confirm dialog with $optionalSettings[], answer depends messages and callbacks  </span>
+<span class="line-numbers"> 62</span><span class="comment">         * </span>
+<span class="line-numbers"> 63</span><span class="comment">         * Please note that $optionalSettings['*'] - array has priority </span>
+<span class="line-numbers"> 64</span><span class="comment">         * </span>
+<span class="line-numbers"> 65</span><span class="comment">     * @return void</span>
+<span class="line-numbers"> 66</span><span class="comment">     */</span>
+<span class="line-numbers"> 67</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">demoCommand</span>() {
+<span class="line-numbers"> 68</span>            <span class="local-variable">$settings</span> = <span class="predefined">array</span>(
+<span class="line-numbers"> 69</span>                <span class="string"><span class="delimiter">'</span><span class="content">confirmationMessage</span><span class="delimiter">'</span></span>       =&gt; <span class="string"><span class="delimiter">'</span><span class="content">Please put &quot;y&quot; or &quot;n&quot; or &quot;c&quot; or nothing to use &quot;%1$s&quot; and press enter: </span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> <strong>70</strong></span>                <span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>            =&gt; <span class="string"><span class="delimiter">'</span><span class="content">yes</span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 71</span>                <span class="string"><span class="delimiter">'</span><span class="content">messageByYes</span><span class="delimiter">'</span></span>              =&gt; <span class="string"><span class="delimiter">'</span><span class="content">You typed &quot;%2$s&quot;, i will run one callback for &quot;AGREEMENT&quot; but only if it is declared!</span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 72</span>                <span class="string"><span class="delimiter">'</span><span class="content">messageByNo</span><span class="delimiter">'</span></span>               =&gt; <span class="string"><span class="delimiter">'</span><span class="content">You typed &quot;%2$s&quot;, i will run one callback for &quot;REJECTION&quot; but only if it is declared!</span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 73</span>                <span class="string"><span class="delimiter">'</span><span class="content">messageByCancel</span><span class="delimiter">'</span></span>           =&gt; <span class="string"><span class="delimiter">'</span><span class="content">You typed &quot;%2$s&quot;, i will run one callback for &quot;RESET&quot; but only if it is declared!</span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 74</span>                <span class="string"><span class="delimiter">'</span><span class="content">messageByWrongInput</span><span class="delimiter">'</span></span>       =&gt; <span class="string"><span class="delimiter">'</span><span class="content">Wrong input; &quot;%2$s&quot;!!!</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>.<span class="string"><span class="delimiter">'</span><span class="content">You will be asked for so long, until correct entry is detected.</span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 75</span>                <span class="string"><span class="delimiter">'</span><span class="content">callBackByYes</span><span class="delimiter">'</span></span>             =&gt; <span class="predefined">array</span>(<span class="predefined">array</span>(<span class="local-variable">$this</span>, <span class="string"><span class="delimiter">'</span><span class="content">callBackForYes</span><span class="delimiter">'</span></span>), <span class="predefined">array</span>()),
+<span class="line-numbers"> 76</span>                <span class="string"><span class="delimiter">'</span><span class="content">callBackByNo</span><span class="delimiter">'</span></span>              =&gt; <span class="predefined">array</span>(<span class="predefined">array</span>(<span class="local-variable">$this</span>, <span class="string"><span class="delimiter">'</span><span class="content">callBackForNo</span><span class="delimiter">'</span></span>), <span class="predefined">array</span>()),
+<span class="line-numbers"> 77</span>                <span class="string"><span class="delimiter">'</span><span class="content">callBackByCancel</span><span class="delimiter">'</span></span>          =&gt; <span class="predefined">array</span>(<span class="predefined">array</span>(<span class="local-variable">$this</span>, <span class="string"><span class="delimiter">'</span><span class="content">callBackForCancel</span><span class="delimiter">'</span></span>), <span class="predefined">array</span>()),
+<span class="line-numbers"> 78</span>                <span class="string"><span class="delimiter">'</span><span class="content">callBackByWrongInput</span><span class="delimiter">'</span></span>      =&gt; <span class="predefined">array</span>(<span class="predefined">array</span>(<span class="local-variable">$this</span>, <span class="string"><span class="delimiter">'</span><span class="content">callBackForWrongInput</span><span class="delimiter">'</span></span>), <span class="predefined">array</span>())
+<span class="line-numbers"> 79</span>            );
+<span class="line-numbers"> <strong>80</strong></span>            <span class="local-variable">$this</span>-&gt;confirmDialog(<span class="string"><span class="delimiter">'</span><span class="content">This message will be overwritten if $optionalSettings[</span><span class="char">\'</span><span class="content">confirmationMessage</span><span class="char">\'</span><span class="content">] is set.</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">NO</span><span class="delimiter">'</span></span>, <span class="local-variable">$settings</span>);
+<span class="line-numbers"> 81</span>    }
+<span class="line-numbers"> 82</span>
+<span class="line-numbers"> 83</span>        <span class="comment">/**</span>
+<span class="line-numbers"> 84</span><span class="comment">     * An example &lt;b&gt;DEMO for callbacks returnvalue&lt;/b&gt; based on &lt;b&gt;confirmationdialog:demo&lt;/b&gt; </span>
+<span class="line-numbers"> 85</span><span class="comment">         * </span>
+<span class="line-numbers"> 86</span><span class="comment">         * </span>
+<span class="line-numbers"> 87</span><span class="comment">         * Please note that $optionalSettings['*'] - array has priority </span>
+<span class="line-numbers"> 88</span><span class="comment">         * </span>
+<span class="line-numbers"> 89</span><span class="comment">     * @return void</span>
+<span class="line-numbers"> <strong>90</strong></span><span class="comment">     */</span>
+<span class="line-numbers"> 91</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">demo2Command</span>() {
+<span class="line-numbers"> 92</span>            <span class="local-variable">$settings</span> = <span class="predefined">array</span>(
+<span class="line-numbers"> 93</span>                <span class="string"><span class="delimiter">'</span><span class="content">confirmationMessage</span><span class="delimiter">'</span></span>       =&gt; <span class="string"><span class="delimiter">'</span><span class="content">Please put &quot;y&quot; or &quot;n&quot; or &quot;c&quot; or nothing to use &quot;%1$s&quot; and press enter: </span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 94</span>                <span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>            =&gt; <span class="string"><span class="delimiter">'</span><span class="content">yes</span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 95</span>                <span class="string"><span class="delimiter">'</span><span class="content">messageByYes</span><span class="delimiter">'</span></span>              =&gt; <span class="string"><span class="delimiter">'</span><span class="content">You typed &quot;%2$s&quot;, i will run one callback for &quot;AGREEMENT&quot; but only if it is declared!</span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 96</span>                <span class="string"><span class="delimiter">'</span><span class="content">messageByNo</span><span class="delimiter">'</span></span>               =&gt; <span class="string"><span class="delimiter">'</span><span class="content">You typed &quot;%2$s&quot;, i will run one callback for &quot;REJECTION&quot; but only if it is declared!</span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 97</span>                <span class="string"><span class="delimiter">'</span><span class="content">messageByCancel</span><span class="delimiter">'</span></span>           =&gt; <span class="string"><span class="delimiter">'</span><span class="content">You typed &quot;%2$s&quot;, i will run one callback for &quot;RESET&quot; but only if it is declared!</span><span class="delimiter">'</span></span>,
+<span class="line-numbers"> 98</span>
+<span class="line-numbers"> 99</span>                <span class="string"><span class="delimiter">'</span><span class="content">callBackByYes</span><span class="delimiter">'</span></span>             =&gt; <span class="predefined">array</span>(<span class="predefined">array</span>(<span class="local-variable">$this</span>, <span class="string"><span class="delimiter">'</span><span class="content">callBackForYes</span><span class="delimiter">'</span></span>), <span class="predefined">array</span>()),
+<span class="line-numbers"><strong>100</strong></span>                <span class="string"><span class="delimiter">'</span><span class="content">callBackByNo</span><span class="delimiter">'</span></span>              =&gt; <span class="predefined">array</span>(<span class="predefined">array</span>(<span class="local-variable">$this</span>, <span class="string"><span class="delimiter">'</span><span class="content">callBackForNo</span><span class="delimiter">'</span></span>), <span class="predefined">array</span>()),
+<span class="line-numbers">101</span>                <span class="string"><span class="delimiter">'</span><span class="content">callBackByCancel</span><span class="delimiter">'</span></span>          =&gt; <span class="predefined">array</span>(<span class="predefined">array</span>(<span class="local-variable">$this</span>, <span class="string"><span class="delimiter">'</span><span class="content">callBackForCancel</span><span class="delimiter">'</span></span>), <span class="predefined">array</span>()),
+<span class="line-numbers">102</span>                <span class="string"><span class="delimiter">'</span><span class="content">callBackByWrongInput</span><span class="delimiter">'</span></span>      =&gt; <span class="predefined">array</span>(<span class="predefined">array</span>(<span class="local-variable">$this</span>, <span class="string"><span class="delimiter">'</span><span class="content">callBackForWrongInput2</span><span class="delimiter">'</span></span>), <span class="predefined">array</span>())
+<span class="line-numbers">103</span>            );
+<span class="line-numbers">104</span>            <span class="local-variable">$this</span>-&gt;confirmDialog(<span class="string"><span class="delimiter">'</span><span class="content">This message will be overwritten if $optionalSettings[</span><span class="char">\'</span><span class="content">confirmationMessage</span><span class="char">\'</span><span class="content">] is set.</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">NO</span><span class="delimiter">'</span></span>, <span class="local-variable">$settings</span>);
+<span class="line-numbers">105</span>    }
+<span class="line-numbers">106</span>
+<span class="line-numbers">107</span>    <span class="comment">/**</span>
+<span class="line-numbers">108</span><span class="comment">     * Shows confirmation message and reads users answer from command line. </span>
+<span class="line-numbers">109</span><span class="comment">     *  </span>
+<span class="line-numbers"><strong>110</strong></span><span class="comment">     * &lt;b&gt;WARNING: don't set anything if you do not want to use it, it will cause one error. &lt;br&gt;</span>
+<span class="line-numbers">111</span><span class="comment">     * ALL PARAMETERS ARE OPTIONAL. &lt;br&gt;</span>
+<span class="line-numbers">112</span><span class="comment">     * ATTENTION: all settings in array $optionalSettings have priority.&lt;/b&gt;&lt;br&gt;</span>
+<span class="line-numbers">113</span><span class="comment">     * </span>
+<span class="line-numbers">114</span><span class="comment">     * &lt;b&gt;$optionalSettings&lt;/b&gt; = array (&lt;br&gt;</span>
+<span class="line-numbers">115</span><span class="comment">     * &lt;b&gt;'confirmationMessage'&lt;/b&gt;     =&gt; 'You can use %1$s as placeholder for your &quot;standardAnswer&quot;.',&lt;br&gt;</span>
+<span class="line-numbers">116</span><span class="comment">     * &lt;b&gt;'standardAnswer'&lt;/b&gt;          =&gt; $standardAnswer,&lt;br&gt;</span>
+<span class="line-numbers">117</span><span class="comment">     * &lt;b&gt;'messageByYes'&lt;/b&gt;            =&gt; 'You can use %2$s as placeholder for users input string.',&lt;br&gt;</span>
+<span class="line-numbers">118</span><span class="comment">     * &lt;b&gt;'messageByNo'&lt;/b&gt;             =&gt; 'Please see &quot;messageByYes&quot;.',&lt;br&gt;</span>
+<span class="line-numbers">119</span><span class="comment">     * &lt;b&gt;'messageByCancel'&lt;/b&gt;         =&gt; 'Please see &quot;messageByYes&quot;.',&lt;br&gt;</span>
+<span class="line-numbers"><strong>120</strong></span><span class="comment">     * &lt;b&gt;'messageByWrongInput'&lt;/b&gt;     =&gt; 'Please see &quot;messageByYes&quot;.',&lt;br&gt;</span>
+<span class="line-numbers">121</span><span class="comment">     * &lt;b&gt;'callBackByYes'&lt;/b&gt;           =&gt; array (array($object, 'functionName'), array($param1, $param2, 'otherParam')), // if your callback return one value then confirmDialog return this instead of standard return of confirmDialog&lt;br&gt;</span>
+<span class="line-numbers">122</span><span class="comment">     * &lt;b&gt;'callBackByNo'&lt;/b&gt;            =&gt; '', // can also be emppty, confirmDialog will print messageBy{yes|no|cancel} and then returns standard value for this answer.&lt;br&gt;</span>
+<span class="line-numbers">123</span><span class="comment">     * &lt;b&gt;'callBackByCancel'&lt;/b&gt;        =&gt; 'please see &quot;callBackByYes&quot; and &quot;callBackByNo&quot;',&lt;br&gt;</span>
+<span class="line-numbers">124</span><span class="comment">     * &lt;b&gt;'callBackByWrongInput'&lt;/b&gt;    =&gt; 'please see &quot;callBackByYes&quot; and &quot;callBackByNo&quot;', // if return is void then : will ask for so long, until correct entry is detected.&lt;br&gt;</span>
+<span class="line-numbers">125</span><span class="comment">     * &lt;b&gt;'infiniteLoopByWrongInput'&lt;/b&gt; =&gt; TRUE, // if FALSE and callBackByWrongInput is void then throws \InvalidArgumentException with code 1352747275&lt;br&gt;</span>
+<span class="line-numbers">126</span><span class="comment">     * &lt;b&gt;'vsprintfVars'&lt;/b&gt;            =&gt; array($your, $own, $vars) &lt;br&gt;</span>
+<span class="line-numbers">127</span><span class="comment">     * );</span>
+<span class="line-numbers">128</span><span class="comment">     * </span>
+<span class="line-numbers">129</span><span class="comment">     * @param string $confirmationMessage = &lt;b&gt;'Would you like to perform this command? [yes|no|cancel] [%1$s] : '&lt;/b&gt;</span>
+<span class="line-numbers"><strong>130</strong></span><span class="comment">     * @param string $standardAnswer = &lt;b&gt;'no'&lt;/b&gt;</span>
+<span class="line-numbers">131</span><span class="comment">     * @param array $optionalSettings &lt;b&gt;have priority for $confirmationMessage and $standardAnswer&lt;/b&gt;</span>
+<span class="line-numbers">132</span><span class="comment">     * @return boolean|NULL|yourOwnType this function will return your own type if your callback returns one value and if not then callbackBy{&lt;br&gt;Yes returns &lt;b&gt;TRUE&lt;/b&gt;&lt;br&gt;No returns &lt;b&gt;FALSE&lt;/b&gt;&lt;br&gt;Cancel returns &lt;b&gt;NULL&lt;/b&gt;&lt;br&gt;WrongInput throws &lt;b&gt;\InvalidArgumentException&lt;/b&gt;&lt;br&gt;}.</span>
+<span class="line-numbers">133</span><span class="comment">     * @throws \InvalidArgumentException (code: 1353073679) if this function will be called with wrong settings </span>
+<span class="line-numbers">134</span><span class="comment">     */</span>
+<span class="line-numbers">135</span>    <span class="keyword">protected</span> <span class="keyword">function</span> <span class="function">confirmDialog</span>(<span class="local-variable">$confirmationMessage</span> = <span class="string"><span class="delimiter">'</span><span class="content">Would you like to perform this command? [yes|no|cancel] [%1$s] : </span><span class="delimiter">'</span></span>, <span class="local-variable">$standardAnswer</span> = <span class="string"><span class="delimiter">'</span><span class="content">no</span><span class="delimiter">'</span></span>, <span class="predefined">array</span> <span class="local-variable">$optionalSettings</span> = <span class="predefined-constant">NULL</span>){
+<span class="line-numbers">136</span>        <span class="comment">// search patterns</span>
+<span class="line-numbers">137</span>
+<span class="line-numbers">138</span>        <span class="comment">//| prepare and set $optionalSettings</span>
+<span class="line-numbers">139</span>        <span class="comment">//| </span>
+<span class="line-numbers"><strong>140</strong></span>        <span class="comment">//|// set needed DEFAULTSETTINGS -&gt; can be overwritten with array $optionalSettings</span>
+<span class="line-numbers">141</span>        <span class="local-variable">$defaultSettings</span> = <span class="predefined">array</span>(
+<span class="line-numbers">142</span>            <span class="string"><span class="delimiter">'</span><span class="content">confirmationMessage</span><span class="delimiter">'</span></span>           =&gt; <span class="local-variable">$confirmationMessage</span>,
+<span class="line-numbers">143</span>            <span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>                =&gt; <span class="local-variable">$standardAnswer</span>,
+<span class="line-numbers">144</span>            <span class="comment">// by infiniteLoopByWrongInput == TRUE prints messageByWrongInput</span>
+<span class="line-numbers">145</span>            <span class="string"><span class="delimiter">'</span><span class="content">messageByWrongInput</span><span class="delimiter">'</span></span>           =&gt; <span class="string"><span class="delimiter">'</span><span class="content">Wrong input: %2$s</span><span class="delimiter">'</span></span>,
+<span class="line-numbers">146</span>            <span class="string"><span class="delimiter">'</span><span class="content">callBackByWrongInput</span><span class="delimiter">'</span></span>          =&gt; <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
+<span class="line-numbers">147</span>            <span class="comment">// set to TRUE to prevent \InvalidArgumentException by wrong input -&gt; will cause infinite loop to the same confirm dialog. Prints &quot;Wrong input: %3$s&quot; and confirmationMessage again</span>
+<span class="line-numbers">148</span>            <span class="string"><span class="delimiter">'</span><span class="content">infiniteLoopByWrongInput</span><span class="delimiter">'</span></span>      =&gt; <span class="predefined-constant">TRUE</span>,
+<span class="line-numbers">149</span>            <span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>                  =&gt; <span class="predefined">array</span> (
+<span class="line-numbers"><strong>150</strong></span>                                                <span class="local-variable">$standardAnswer</span>,
+<span class="line-numbers">151</span>                                                <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span> <span class="comment">// placeholder for current users input, can be used in 'wrongInputMessage'</span>
+<span class="line-numbers">152</span>                                               ) 
+<span class="line-numbers">153</span>        );
+<span class="line-numbers">154</span>
+<span class="line-numbers">155</span>        <span class="comment">//|//| overwrite DEFAULTSETTINGS with users SETTINGS if nacessary ($optionalSettings) </span>
+<span class="line-numbers">156</span>        <span class="keyword">if</span> (<span class="local-variable">$optionalSettings</span> === <span class="predefined-constant">NULL</span>) {
+<span class="line-numbers">157</span>            <span class="local-variable">$settings</span> = <span class="local-variable">$defaultSettings</span>;
+<span class="line-numbers">158</span>        } <span class="keyword">else</span> {
+<span class="line-numbers">159</span>            <span class="local-variable">$settings</span> = <span class="predefined">array_merge</span>(<span class="local-variable">$defaultSettings</span>, <span class="local-variable">$optionalSettings</span>);
+<span class="line-numbers"><strong>160</strong></span>        <span class="comment">//|//|//| set 'vsprintfVars' properly -&gt; this will force priority for entire settings array</span>
+<span class="line-numbers">161</span>            <span class="keyword">if</span> (!<span class="predefined">empty</span>(<span class="local-variable">$optionalSettings</span>[<span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>])) {
+<span class="line-numbers">162</span>                <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>][<span class="integer">0</span>] = <span class="local-variable">$optionalSettings</span>[<span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>];
+<span class="line-numbers">163</span>            }
+<span class="line-numbers">164</span>        }
+<span class="line-numbers">165</span>        <span class="comment">// analyse developers set of $optionalSettings['standardAnswer']</span>
+<span class="line-numbers">166</span>        <span class="local-variable">$developersStandardAnswerIsYes</span> = <span class="predefined">preg_match</span>(<span class="predefined-constant">self</span>::<span class="constant">PATTERN_USER_INPUT_YES</span>, <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>]);
+<span class="line-numbers">167</span>        <span class="local-variable">$developersStandardAnswerIsNo</span> = <span class="predefined">preg_match</span>(<span class="predefined-constant">self</span>::<span class="constant">PATTERN_USER_INPUT_NO</span>, <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>]);
+<span class="line-numbers">168</span>        <span class="local-variable">$developersStandardAnswerIsCancel</span> = <span class="predefined">preg_match</span>(<span class="predefined-constant">self</span>::<span class="constant">PATTERN_USER_INPUT_CANCEL</span>, <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>]);
+<span class="line-numbers">169</span>
+<span class="line-numbers"><strong>170</strong></span>        <span class="comment">// throw an exception, if this function will be called with wrong parameter</span>
+<span class="line-numbers">171</span>        <span class="comment">//</span>
+<span class="line-numbers">172</span>        <span class="comment">// developers standardAnswer must be set correctly and can not be empty</span>
+<span class="line-numbers">173</span>        <span class="local-variable">$developersStandardAnswerIsCorrect</span> = <span class="local-variable">$developersStandardAnswerIsYes</span> || <span class="local-variable">$developersStandardAnswerIsNo</span> || <span class="local-variable">$developersStandardAnswerIsCancel</span>;
+<span class="line-numbers">174</span>        <span class="keyword">if</span> (!<span class="local-variable">$developersStandardAnswerIsCorrect</span>) {
+<span class="line-numbers">175</span>            <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="predefined-constant">Exception</span>(<span class="string"><span class="delimiter">'</span><span class="content">Developer has set $settings[</span><span class="char">\'</span><span class="content">standardAnswer</span><span class="char">\'</span><span class="content">] as </span><span class="delimiter">'</span></span>.<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>]. <span class="string"><span class="delimiter">'</span><span class="content"> please set this in your code properly</span><span class="delimiter">'</span></span>, <span class="integer">1352736688</span>);
+<span class="line-numbers">176</span>        }
+<span class="line-numbers">177</span>        <span class="local-variable">$messages</span> = <span class="predefined">array</span>();
+<span class="line-numbers">178</span>        <span class="keyword">foreach</span> (<span class="local-variable">$settings</span> <span class="keyword">as</span> <span class="local-variable">$key</span> =&gt; <span class="local-variable">$value</span>) {
+<span class="line-numbers">179</span>            <span class="comment">// Texts validation: will trying to render defined mesage by fail developer can see it immediately</span>
+<span class="line-numbers"><strong>180</strong></span>            <span class="keyword">if</span> (<span class="predefined">preg_match</span>(<span class="string"><span class="delimiter">'</span><span class="content">/^message/</span><span class="delimiter">'</span></span>, <span class="local-variable">$key</span>) &#38;&#38; !<span class="predefined">empty</span>(<span class="local-variable">$value</span>)) { 
+<span class="line-numbers">181</span>                <span class="local-variable">$messages</span>[<span class="local-variable">$key</span>] = \<span class="predefined">vsprintf</span>(<span class="local-variable">$settings</span>[<span class="local-variable">$key</span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>]);
+<span class="line-numbers">182</span>            }
+<span class="line-numbers">183</span>            <span class="comment">// CallBack: throw an Exceptions immediately if something is wrong with callBacks </span>
+<span class="line-numbers">184</span>            <span class="keyword">if</span> (<span class="predefined">preg_match</span>(<span class="string"><span class="delimiter">'</span><span class="content">/^callBack/</span><span class="delimiter">'</span></span>, <span class="local-variable">$key</span>) &#38;&#38; !<span class="predefined">empty</span>(<span class="local-variable">$value</span>) 
+<span class="line-numbers">185</span>                &#38;&#38; !method_exists(<span class="local-variable">$value</span>[<span class="integer">0</span>][<span class="integer">0</span>], <span class="local-variable">$value</span>[<span class="integer">0</span>][<span class="integer">1</span>])) {
+<span class="line-numbers">186</span>
+<span class="line-numbers">187</span>                <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="constant">InvalidArgumentException</span>(
+<span class="line-numbers">188</span>                        <span class="string"><span class="delimiter">'</span><span class="content">function &quot;</span><span class="delimiter">'</span></span>.<span class="local-variable">$value</span>[<span class="integer">0</span>][<span class="integer">1</span>].<span class="string"><span class="delimiter">'</span><span class="content">&quot; for &quot;</span><span class="delimiter">'</span></span>.<span class="local-variable">$key</span>.<span class="string"><span class="delimiter">'</span><span class="content">&quot; not exists or can not be called.</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>.
+<span class="line-numbers">189</span>                        <span class="string"><span class="delimiter">'</span><span class="content">See: call_user_func_array()</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>.
+<span class="line-numbers"><strong>190</strong></span>                        <span class="string"><span class="delimiter">'</span><span class="content">http://php.net/manual/en/function.call-user-func-array.php</span><span class="delimiter">'</span></span>, 
+<span class="line-numbers">191</span>                        <span class="integer">1353073679</span>
+<span class="line-numbers">192</span>                );
+<span class="line-numbers">193</span>            }
+<span class="line-numbers">194</span>        }
+<span class="line-numbers">195</span>
+<span class="line-numbers">196</span>        <span class="comment">// render output for question</span>
+<span class="line-numbers">197</span>        <span class="local-variable">$output</span> = <span class="predefined">vsprintf</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">confirmationMessage</span><span class="delimiter">'</span></span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>]);
+<span class="line-numbers">198</span>        <span class="predefined">echo</span> <span class="local-variable">$output</span>.<span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>;
+<span class="line-numbers">199</span>
+<span class="line-numbers"><strong>200</strong></span>        <span class="local-variable">$usersInput</span> = <span class="predefined">rtrim</span>(<span class="predefined">fgets</span>(<span class="constant">STDIN</span>));
+<span class="line-numbers">201</span>        <span class="comment">// set 'vsprintfVars' properly</span>
+<span class="line-numbers">202</span>        <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>][<span class="integer">1</span>] = <span class="local-variable">$usersInput</span>;
+<span class="line-numbers">203</span>        <span class="keyword">if</span> (<span class="predefined">empty</span>(<span class="local-variable">$usersInput</span>)) {
+<span class="line-numbers">204</span>            <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>][<span class="integer">1</span>] = <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>];
+<span class="line-numbers">205</span>        } 
+<span class="line-numbers">206</span>        <span class="comment">// prepare users answer</span>
+<span class="line-numbers">207</span>        <span class="local-variable">$userAnsweredWithYes</span> = <span class="predefined">preg_match</span>(<span class="predefined-constant">self</span>::<span class="constant">PATTERN_USER_INPUT_YES</span>, <span class="local-variable">$usersInput</span>) 
+<span class="line-numbers">208</span>                || <span class="predefined">empty</span>(<span class="local-variable">$usersInput</span>) &#38;&#38; <span class="local-variable">$developersStandardAnswerIsYes</span>;
+<span class="line-numbers">209</span>        <span class="local-variable">$userAnsweredWithNo</span> = <span class="predefined">preg_match</span>(<span class="predefined-constant">self</span>::<span class="constant">PATTERN_USER_INPUT_NO</span>, <span class="local-variable">$usersInput</span>) 
+<span class="line-numbers"><strong>210</strong></span>                || <span class="predefined">empty</span>(<span class="local-variable">$usersInput</span>) &#38;&#38; <span class="local-variable">$developersStandardAnswerIsNo</span>;
+<span class="line-numbers">211</span>        <span class="local-variable">$userAnsweredWithCancel</span> = <span class="predefined">preg_match</span>(<span class="predefined-constant">self</span>::<span class="constant">PATTERN_USER_INPUT_CANCEL</span>, <span class="local-variable">$usersInput</span>)
+<span class="line-numbers">212</span>                || <span class="predefined">empty</span>(<span class="local-variable">$usersInput</span>) &#38;&#38; <span class="local-variable">$developersStandardAnswerIsCancel</span>;
+<span class="line-numbers">213</span>
+<span class="line-numbers">214</span>        <span class="local-variable">$usersInputIsCorrect</span> = <span class="local-variable">$userAnsweredWithYes</span> || <span class="local-variable">$userAnsweredWithNo</span> || <span class="local-variable">$userAnsweredWithCancel</span> || <span class="predefined">empty</span>(<span class="local-variable">$usersInput</span>);
+<span class="line-numbers">215</span>
+<span class="line-numbers">216</span>        <span class="keyword">if</span> (<span class="predefined">empty</span>(<span class="local-variable">$usersInput</span>)) {
+<span class="line-numbers">217</span>            <span class="local-variable">$usersInput</span> = <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">standardAnswer</span><span class="delimiter">'</span></span>];
+<span class="line-numbers">218</span>        }
+<span class="line-numbers">219</span>        <span class="comment">// evaluate</span>
+<span class="line-numbers"><strong>220</strong></span>        <span class="keyword">if</span> (<span class="local-variable">$usersInputIsCorrect</span>) {
+<span class="line-numbers">221</span>            <span class="comment">// for YES</span>
+<span class="line-numbers">222</span>            <span class="keyword">if</span> (<span class="local-variable">$userAnsweredWithYes</span>) {
+<span class="line-numbers">223</span>                <span class="keyword">if</span> (!<span class="predefined">empty</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">messageByYes</span><span class="delimiter">'</span></span>])) { 
+<span class="line-numbers">224</span>                    <span class="predefined">echo</span> <span class="predefined">vsprintf</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">messageByYes</span><span class="delimiter">'</span></span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>]).<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">225</span>                }
+<span class="line-numbers">226</span>                <span class="keyword">if</span> (!<span class="predefined">empty</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByYes</span><span class="delimiter">'</span></span>])) {
+<span class="line-numbers">227</span>                    <span class="local-variable">$returnValueByYes</span> = <span class="predefined">call_user_func_array</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByYes</span><span class="delimiter">'</span></span>][<span class="integer">0</span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByYes</span><span class="delimiter">'</span></span>][<span class="integer">1</span>]);
+<span class="line-numbers">228</span>                }
+<span class="line-numbers">229</span>                <span class="keyword">if</span> (<span class="predefined">isset</span>(<span class="local-variable">$returnValueByYes</span>)) {
+<span class="line-numbers"><strong>230</strong></span>                    <span class="keyword">return</span> <span class="local-variable">$returnValueByYes</span>;
+<span class="line-numbers">231</span>                }
+<span class="line-numbers">232</span>                <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+<span class="line-numbers">233</span>            }
+<span class="line-numbers">234</span>            <span class="comment">// for NO</span>
+<span class="line-numbers">235</span>            <span class="keyword">if</span> (<span class="local-variable">$userAnsweredWithNo</span>) {
+<span class="line-numbers">236</span>                <span class="keyword">if</span> (!<span class="predefined">empty</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">messageByNo</span><span class="delimiter">'</span></span>])) { 
+<span class="line-numbers">237</span>                    <span class="predefined">echo</span> <span class="predefined">vsprintf</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">messageByNo</span><span class="delimiter">'</span></span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>]).<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">238</span>                }
+<span class="line-numbers">239</span>                <span class="keyword">if</span> (!<span class="predefined">empty</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByNo</span><span class="delimiter">'</span></span>])) {
+<span class="line-numbers"><strong>240</strong></span>                    <span class="local-variable">$returnValueByNo</span> = <span class="predefined">call_user_func_array</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByNo</span><span class="delimiter">'</span></span>][<span class="integer">0</span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByNo</span><span class="delimiter">'</span></span>][<span class="integer">1</span>]);
+<span class="line-numbers">241</span>                }
+<span class="line-numbers">242</span>                <span class="keyword">if</span> (<span class="predefined">isset</span>(<span class="local-variable">$returnValueByNo</span>)) {
+<span class="line-numbers">243</span>                    <span class="keyword">return</span> <span class="local-variable">$returnValueByNo</span>;
+<span class="line-numbers">244</span>                }
+<span class="line-numbers">245</span>                <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+<span class="line-numbers">246</span>            }
+<span class="line-numbers">247</span>            <span class="comment">// for CANCEL</span>
+<span class="line-numbers">248</span>            <span class="keyword">if</span> (<span class="local-variable">$userAnsweredWithCancel</span>) {
+<span class="line-numbers">249</span>                <span class="keyword">if</span> (!<span class="predefined">empty</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">messageByCancel</span><span class="delimiter">'</span></span>])) { 
+<span class="line-numbers"><strong>250</strong></span>                    <span class="predefined">echo</span> <span class="predefined">vsprintf</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">messageByCancel</span><span class="delimiter">'</span></span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>]).<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">251</span>                } 
+<span class="line-numbers">252</span>                <span class="keyword">if</span> (!<span class="predefined">empty</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByCancel</span><span class="delimiter">'</span></span>])) {
+<span class="line-numbers">253</span>                    <span class="local-variable">$returnValueByCancel</span> = <span class="predefined">call_user_func_array</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByCancel</span><span class="delimiter">'</span></span>][<span class="integer">0</span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByCancel</span><span class="delimiter">'</span></span>][<span class="integer">1</span>]);
+<span class="line-numbers">254</span>                }
+<span class="line-numbers">255</span>                <span class="keyword">if</span> (<span class="predefined">isset</span>(<span class="local-variable">$returnValueByCancel</span>)) {
+<span class="line-numbers">256</span>                    <span class="keyword">return</span> <span class="local-variable">$returnValueByCancel</span>;
+<span class="line-numbers">257</span>                }
+<span class="line-numbers">258</span>                <span class="keyword">return</span> <span class="predefined-constant">NULL</span>;
+<span class="line-numbers">259</span>            }
+<span class="line-numbers"><strong>260</strong></span>        } <span class="keyword">else</span> { 
+<span class="line-numbers">261</span>            <span class="comment">// for wrong input</span>
+<span class="line-numbers">262</span>            <span class="keyword">if</span> (!<span class="predefined">empty</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">messageByWrongInput</span><span class="delimiter">'</span></span>])) { 
+<span class="line-numbers">263</span>                <span class="predefined">echo</span> <span class="predefined">vsprintf</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">messageByWrongInput</span><span class="delimiter">'</span></span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">vsprintfVars</span><span class="delimiter">'</span></span>]).<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">264</span>            }
+<span class="line-numbers">265</span>            <span class="keyword">if</span> (!<span class="predefined">empty</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByWrongInput</span><span class="delimiter">'</span></span>])) {
+<span class="line-numbers">266</span>                <span class="local-variable">$returnValueByWrongInput</span> = <span class="predefined">call_user_func_array</span>(<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByWrongInput</span><span class="delimiter">'</span></span>][<span class="integer">0</span>], <span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">callBackByCancel</span><span class="delimiter">'</span></span>][<span class="integer">1</span>]);
+<span class="line-numbers">267</span>            }
+<span class="line-numbers">268</span>            <span class="keyword">if</span> (<span class="predefined">isset</span>(<span class="local-variable">$returnValueByWrongInput</span>)) {
+<span class="line-numbers">269</span>                <span class="keyword">return</span> <span class="local-variable">$returnValueByWrongInput</span>;
+<span class="line-numbers"><strong>270</strong></span>            } 
+<span class="line-numbers">271</span>            <span class="comment">// throws  Exception, if developer will no infinite loops</span>
+<span class="line-numbers">272</span>            <span class="keyword">if</span> (!<span class="local-variable">$settings</span>[<span class="string"><span class="delimiter">'</span><span class="content">infiniteLoopByWrongInput</span><span class="delimiter">'</span></span>]) {
+<span class="line-numbers">273</span>                <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="constant">InvalidArgumentException</span>(<span class="string"><span class="delimiter">'</span><span class="content">User has made incorrect input and you have not caught this exception in your confirmation dialog.  TIPP: You can set $optionalSettings[</span><span class="char">\'</span><span class="content">infiniteLoopByWrongInput</span><span class="char">\'</span><span class="content">]</span><span class="delimiter">'</span></span>, <span class="integer">1352747275</span>);
+<span class="line-numbers">274</span>            }
+<span class="line-numbers">275</span>        }
+<span class="line-numbers">276</span>        <span class="comment">// will give rise to infinite looping by incorrect user's input if $optionalSettings['infiniteLoopByWrongInput'] == TRUE</span>
+<span class="line-numbers">277</span>        <span class="keyword">return</span> <span class="local-variable">$this</span>-&gt;confirmDialog(<span class="local-variable">$confirmationMessage</span>, <span class="local-variable">$standardAnswer</span>, <span class="local-variable">$settings</span>);
+<span class="line-numbers">278</span>    }
+<span class="line-numbers">279</span>
+<span class="line-numbers"><strong>280</strong></span>    <span class="keyword">private</span> <span class="keyword">function</span> <span class="function">callBackForYes</span>() {
+<span class="line-numbers">281</span>        <span class="predefined">echo</span> <span class="string"><span class="delimiter">'</span><span class="content">You called </span><span class="delimiter">'</span></span>.<span class="predefined-constant">__FUNCTION__</span>.<span class="string"><span class="delimiter">'</span><span class="content">().</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">282</span>    }
+<span class="line-numbers">283</span>    <span class="keyword">private</span> <span class="keyword">function</span> <span class="function">callBackForNo</span>() {
+<span class="line-numbers">284</span>        <span class="predefined">echo</span> <span class="string"><span class="delimiter">'</span><span class="content">You called </span><span class="delimiter">'</span></span>.<span class="predefined-constant">__FUNCTION__</span>.<span class="string"><span class="delimiter">'</span><span class="content">().</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">285</span>    }
+<span class="line-numbers">286</span>    <span class="keyword">private</span> <span class="keyword">function</span> <span class="function">callBackForCancel</span>() {
+<span class="line-numbers">287</span>        <span class="predefined">echo</span> <span class="string"><span class="delimiter">'</span><span class="content">You called </span><span class="delimiter">'</span></span>.<span class="predefined-constant">__FUNCTION__</span>.<span class="string"><span class="delimiter">'</span><span class="content">().</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">288</span>    }
+<span class="line-numbers">289</span>    <span class="keyword">private</span> <span class="keyword">function</span> <span class="function">callBackForWrongInput</span>() {
+<span class="line-numbers"><strong>290</strong></span>        <span class="predefined">echo</span> <span class="string"><span class="delimiter">'</span><span class="content">You called </span><span class="delimiter">'</span></span>.<span class="predefined-constant">__FUNCTION__</span>.<span class="string"><span class="delimiter">'</span><span class="content">().</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">291</span>    }
+<span class="line-numbers">292</span>    <span class="comment">/**</span>
+<span class="line-numbers">293</span><span class="comment">     * as you can see this function has return value</span>
+<span class="line-numbers">294</span><span class="comment">     * </span>
+<span class="line-numbers">295</span><span class="comment">     * confirmDialog() will return calbacks return value</span>
+<span class="line-numbers">296</span><span class="comment">     */</span>
+<span class="line-numbers">297</span>    <span class="keyword">private</span> <span class="keyword">function</span> <span class="function">callBackForWrongInput2</span>() {
+<span class="line-numbers">298</span>        <span class="predefined">echo</span> <span class="string"><span class="delimiter">'</span><span class="content">You called </span><span class="delimiter">'</span></span>.<span class="predefined-constant">__FUNCTION__</span>.<span class="string"><span class="delimiter">'</span><span class="content">().</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers">299</span>        <span class="predefined">echo</span> <span class="string"><span class="delimiter">'</span><span class="content">Wrong input is not allowed, I will cancel this command.</span><span class="delimiter">'</span></span>.<span class="predefined-constant">PHP_EOL</span>;
+<span class="line-numbers"><strong>300</strong></span>        <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">blockish</span><span class="delimiter">'</span></span>;
+<span class="line-numbers">301</span>    }       
+<span class="line-numbers">302</span>
+<span class="line-numbers">303</span>}
+<span class="line-numbers">304</span>
+<span class="line-numbers">305</span><span class="inline-delimiter">?&gt;</span></span></code><br /></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-141218" class="journal has-notes has-details">
+    <h4><a href="43104.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-19" title="2012-11-19 16:44">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Assigned To</strong> deleted (<strike><i>Adrian Föder</i></strike>)</li>
+      
+       <li><strong>Has patch</strong> changed from <i>Yes</i> to <i>No</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-141218-notes"><p>Rafael, thanks for your submission.<br />The functionality generally is nice (i.e. the idea); I would say it could be an <code>AbstractInteractiveCommandController</code> which users/developers will be allowed to use.<br />Please update your code to this, maintaining the Coding Guidelines (<a class="external" href="../../external.html?link=http://flow.typo3.org/documentation/codingguidelines.html">http://flow.typo3.org/documentation/codingguidelines.html</a>), and push such a patch to the review system (<a class="external" href="../../external.html?link=http://wiki.typo3.org/Contribution_Walkthrough_with_CommandLine">http://wiki.typo3.org/Contribution_Walkthrough_with_CommandLine</a>).</p>
+
+
+	<p>However, feel free to work on the gist until the code would be ready for use.</p></div>
+  </div>
+  
+
+  <div id="change-141219" class="journal has-details">
+    <h4><a href="43104.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-19" title="2012-11-19 16:44">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Priority</strong> changed from <i>Should have</i> to <i>Could have</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-141336" class="journal has-details">
+    <h4><a href="43104.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-20" title="2012-11-20 09:53">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> deleted (<strike><i>2.0 beta 1</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-144787" class="journal has-notes has-details">
+    <h4><a href="43104.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-12-10" title="2012-12-10 15:34">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> changed from <i>Command</i> to <i>Cli</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Bastian Waidelich</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-144787-notes"><p>Thanks for this!<br />IMO this is quite specific and a bit too much magic to be implemented in the core.<br />Does anything speak against adding this to a separate package which someone could add a dependency on when relying on this kind of feature?</p>
+
+
+	<p>If you agree I'd close this issue.</p></div>
+  </div>
+  
+
+  <div id="change-145691" class="journal has-notes has-details">
+    <h4><a href="43104.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-12-18" title="2012-12-18 15:06">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Rejected</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-145691-notes"><p>Closing due to lack of feedback.<br />I hope this can be useful for people looking for a similar feature (google should still point them here) but – as written above – I'd consider this too specific to be added to the core.<br />Feel free to reopen and/or comment if you don't agree</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-43104-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/43104.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="43104.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/43104 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:03:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,1274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/44105 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:29:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #44105: Image size does not get updated - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/44105.atom" rel="alternate" title="Core - Bug #44105: Image size does not get updated" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (24)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/128">Georg Ringer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/26">Ingmar Schlecht</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/412">Susanne Moog</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/327">Tolleiv Nietsch</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38662">Robert Böck</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37190">Tilo Baller</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37858">Marcel Burkhalter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36614">Oliver Salzburg</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/926">Claus Fassing</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39377">Flo no-lastname-given</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1909">Bjoern Jacob</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39503">Benjamin Pick</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3889">Hannes Gesmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37991">Thomas Luzat</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/688">Tom K.</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36284">stefan schreck</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-44105-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #44105</h2>
+
+<div class="issue status-9 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Image size does not get updated</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-12-19" title="2012-12-19 10:45">over 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-11" title="2015-06-11 09:35">about 1 month</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-12-19</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.0</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>My test scenario is like this: I upload an image and use it in a 'images only' content element. Then I go in fileadmin where file was originally placed and I want to change the image. So I upload a different one with same name and mark the 'override files'. The new image is uploaded and replaces the old one, but in frontend (as in database table sys_file) are still used old sizes (from the original image).</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/23254/fal-error.png" class="icon icon-attachment">fal-error.png</a>  
+  
+  <span class="size">(7.3 kB)</span>
+  
+  
+    <span class="author">Camelia M, 2013-01-30 10:38</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-7859">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="44550" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="44550.html" class="issue status-9 priority-2 closed child">Task #44550</a>: Preview image and database entry not deleted when deletin...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-01-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9903">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="44645" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="44645.html" class="issue status-7 priority-2 closed">Bug #44645</a>: Preview images don&#39;t get a new filename after overwriting...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-01-18</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10578">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="45922" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="45922.html" class="issue status-2 priority-1">Bug #45922</a>: image replacement, width and height are kept even i chang...
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2013-02-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11929">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="46020" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="46020.html" class="issue status-9 priority-1 closed">Bug #46020</a>: Image size is 0 when not scaled
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-03-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11943">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="61181" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="61181.html" class="issue status-10 priority-1 closed">Bug #61181</a>: FAL: file maxW and maxH are ignored
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-08-25</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9904">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="50508" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="50508.html" class="issue status-7 priority-2 closed">Bug #50508</a>: Re-uploading file in backend fails
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-07-29</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9905">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="52658" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="52658.html" class="issue status-10 priority-2 closed">Bug #52658</a>: Overriding image does not change the dimensions
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2013-10-10</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11930">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54533" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="54533.html" class="issue status-10 priority-2 closed">Bug #54533</a>: imgResource.noScale doesn&#39;t scale image tag
+</td>
+<td class="status">Rejected</td>
+<td class="start_date"></td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11923">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62400" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62400.html" class="issue status-10 priority-2 closed">Bug #62400</a>: Lot of entries in sys_file_processed with name=NULL and i...
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-10-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11932">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="59216" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="59216.html" class="issue status-9 priority-1 closed">Bug #59216</a>: Image dimensions (width/height) are 0 when not scaled
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-05-30</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11934">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="60215" /></td>
+<td class="subject">related to 
+    FAL Indexing - 
+    <a href="60215.html" class="issue status-6 priority-2">Bug #60215</a>: sys_file_processedfile with empty identifier and name fields
+</td>
+<td class="status">Under Review</td>
+<td class="start_date">2014-07-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11933">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62247" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62247.html" class="issue status-10 priority-2 closed">Bug #62247</a>: FAL: Uppercase File Extensions of Image cannot be displayed 
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-10-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9096">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="50392" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="50392.html" class="issue status-9 priority-2 closed">Bug #50392</a>: Specifying size in ImageViewHelper does nothing
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-07-24</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10894">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="57565" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="57565.html" class="issue status-9 priority-1 closed">Bug #57565</a>: Creating new sys_file_metadata record for existing sys_fi...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-04-02</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11931">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="58019" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="58019.html" class="issue status-10 priority-1 closed">Bug #58019</a>: FAL Indexer for broken files: Column &#39;width&#39; cannot be null
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-04-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9023">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="46446" /></td>
+<td class="subject">duplicates 
+    Core - 
+    <a href="46446.html" class="issue status-4 priority-1">Bug #46446</a>: sys_file doesn&#39;t get updated
+</td>
+<td class="status">Needs Feedback</td>
+<td class="start_date">2013-03-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/44105/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/44105/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=44105&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-145783" class="journal has-notes">
+    <h4><a href="44105.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-12-19" title="2012-12-19 16:20">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-145783-notes"><p>Also the problem is quite severe. Because even if I delete the image and upload again, it seems it keeps some kind of connection so that it still uses old image sizes. Tried to delete it even from the recycler but that didn't help either.</p></div>
+  </div>
+  
+
+  <div id="change-149249" class="journal has-notes">
+    <h4><a href="44105.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-30" title="2013-01-30 10:08">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149249-notes"><p>I still have this issue even after updating to 6.0.1</p></div>
+  </div>
+  
+
+  <div id="change-149259" class="journal has-notes has-details">
+    <h4><a href="44105.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-30" title="2013-01-30 10:38">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/23254/fal-error.png">fal-error.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-149259-notes"><p>you can see in the attachment the image size is 231x185 but the img tag uses old sizes (238x187) thus stretching my picture.</p></div>
+  </div>
+  
+
+  <div id="change-149630" class="journal has-notes">
+    <h4><a href="44105.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-01" title="2013-02-01 16:57">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149630-notes"><p>Maybe this problem have to do with <a href="44585.html" class="issue status-7 priority-2 closed" title="FAL: file properties are not updated (Resolved)">#44585</a></p>
+
+
+	<p>Can you try the patch from <a href="44585.html" class="issue status-7 priority-2 closed" title="FAL: file properties are not updated (Resolved)">#44585</a> and report if that fixes your issue?</p></div>
+  </div>
+  
+
+  <div id="change-149969" class="journal has-notes">
+    <h4><a href="44105.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-04" title="2013-02-04 08:57">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149969-notes"><p>Alexander Opitz wrote:</p>
+
+
+<blockquote>
+
+	<p>Maybe this problem have to do with <a href="44585.html" class="issue status-7 priority-2 closed" title="FAL: file properties are not updated (Resolved)">#44585</a></p>
+
+
+	<p>Can you try the patch from <a href="44585.html" class="issue status-7 priority-2 closed" title="FAL: file properties are not updated (Resolved)">#44585</a> and report if that fixes your issue?</p>
+
+
+</blockquote>
+
+	<p>I tried it but it doesn't fix my problem. Still width and height in sys_file do not get updated. I tried upload with 'override' mark set, also tried deleting and uploading again.. Still old sizes are shown. In 'view item' in backend though all information is correct (not sure if this comes from db or is automatically generated).</p></div>
+  </div>
+  
+
+  <div id="change-150138" class="journal has-notes">
+    <h4><a href="44105.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-05" title="2013-02-05 12:43">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150138-notes"><p>Ok, do you have 1 ore multiple database entries for that image?</p></div>
+  </div>
+  
+
+  <div id="change-150139" class="journal has-notes">
+    <h4><a href="44105.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-05" title="2013-02-05 13:10">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150139-notes"><p>Alexander Opitz wrote:</p>
+
+
+<blockquote>
+
+	<p>Ok, do you have 1 ore multiple database entries for that image?</p>
+
+
+</blockquote>
+
+	<p>In table sys_file i think they are all be unique (although I'm not completely sure that the same image can't be in different folders in fileadmin). But in table sys_file_processedfile I have several db rows that point to same 'original' file (even tough several are different versions of the original, some actually have nothing in common with it and therefore should not point to it). For example for one 'original I found 8 rows. Part of the 8 are different 'cropscales' of the original, while 2 of them are different images.</p></div>
+  </div>
+  
+
+  <div id="change-150710" class="journal has-notes">
+    <h4><a href="44105.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-09" title="2013-02-09 17:06">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150710-notes"><p>Camelia M wrote:</p>
+
+
+<blockquote>
+
+	<p>Alexander Opitz wrote:</p>
+
+
+<blockquote>
+
+	<p>Ok, do you have 1 ore multiple database entries for that image?</p>
+
+
+</blockquote>
+
+	<p>In table sys_file i think they are all be unique (although I'm not completely sure that the same image can't be in different folders in fileadmin). But in table sys_file_processedfile I have several db rows that point to same 'original' file (even tough several are different versions of the original, some actually have nothing in common with it and therefore should not point to it). For example for one 'original I found 8 rows. Part of the 8 are different 'cropscales' of the original, while 2 of them are different images.</p>
+
+
+</blockquote>
+
+	<p>I think this is related to bug <a href="45308.html" class="issue status-7 priority-1 closed" title="uid of processed file is sometimes updated during processing (Resolved)">#45308</a>, not <a href="44585.html" class="issue status-7 priority-2 closed" title="FAL: file properties are not updated (Resolved)">#44585</a>.</p></div>
+  </div>
+  
+
+  <div id="change-150711" class="journal has-notes">
+    <h4><a href="44105.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-09" title="2013-02-09 17:08">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150711-notes"><p>Andreas Wolf wrote:</p>
+
+
+<blockquote>
+
+	<p>Camelia M wrote:</p>
+
+
+<blockquote>
+
+	<p>Alexander Opitz wrote:</p>
+
+
+<blockquote>
+
+	<p>Ok, do you have 1 ore multiple database entries for that image?</p>
+
+
+</blockquote>
+
+	<p>In table sys_file i think they are all be unique (although I'm not completely sure that the same image can't be in different folders in fileadmin). But in table sys_file_processedfile I have several db rows that point to same 'original' file (even tough several are different versions of the original, some actually have nothing in common with it and therefore should not point to it). For example for one 'original I found 8 rows. Part of the 8 are different 'cropscales' of the original, while 2 of them are different images.</p>
+
+
+</blockquote>
+
+	<p>I think this is related to bug <a href="45308.html" class="issue status-7 priority-1 closed" title="uid of processed file is sometimes updated during processing (Resolved)">#45308</a>, not <a href="44585.html" class="issue status-7 priority-2 closed" title="FAL: file properties are not updated (Resolved)">#44585</a>.</p>
+
+
+</blockquote>
+
+	<p>Ah, and I think the problem Camelia described originally is indeed related to <a href="44585.html" class="issue status-7 priority-2 closed" title="FAL: file properties are not updated (Resolved)">#44585</a>. Could you check if your problems are solved with most recent master? Please empty sys_file_processedfile before testing; this will remove all cached image versions.</p></div>
+  </div>
+  
+
+  <div id="change-150712" class="journal has-details">
+    <h4><a href="44105.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-09" title="2013-02-09 17:08">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-150865" class="journal has-notes">
+    <h4><a href="44105.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-11" title="2013-02-11 08:21">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150865-notes"><p>I did apply patch from <a href="44585.html" class="issue status-7 priority-2 closed" title="FAL: file properties are not updated (Resolved)">#44585</a> and it fixes the problem reported by bug <a href="44585.html" class="issue status-7 priority-2 closed" title="FAL: file properties are not updated (Resolved)">#44585</a> (0 filesize shows in filelist) but it does not fix the image dimension problem (not filesize but width and height).<br />I also applied patch from <a href="45308.html" class="issue status-7 priority-1 closed" title="uid of processed file is sometimes updated during processing (Resolved)">#45308</a> but this doesn't fix my problem either. <br />I did empty sys_file_processedfile after each patch but it seems to me that the sys_file is the problem, not sys_file_processedfile because sys_file keeps the original width and height of the image (no matter if the newly updated image has different sizes).<br />So the originally reported issue still stands (ignore the post about several rows in sys_file_processedfile pointing to same original in sys_file as this was treated in another issue <a href="44616.html" class="issue status-9 priority-1 closed" title="Image caching broken for im_noScaleUp = 1 (Closed)">#44616</a> and I think is not related to this one).<br />But it is related (if not duplicated) by <a href="44550.html" class="issue status-9 priority-2 closed child" title="Preview image and database entry not deleted when deleting a FAL file (Closed)">#44550</a> and that was marked as accepted, so I guess when that gets fixed, this will be fixed also ;)</p></div>
+  </div>
+  
+
+  <div id="change-157396" class="journal has-notes">
+    <h4><a href="44105.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-28" title="2013-03-28 14:08">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157396-notes"><p>Although I now use typo3 6.0.4, I still have this problem.<br />The status for this bug report shows as "Needs feedback". Is there any other info I should provide?</p></div>
+  </div>
+  
+
+  <div id="change-169279" class="journal has-notes">
+    <h4><a href="44105.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36783">Matthias Secker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-13" title="2013-06-13 13:42">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-169279-notes"><p>I got the same problem as well in TYPO3 6.1.1<br />I uploaded logo.png (FTP) and used IMAGE cObject in TS to include that image. Later I saw that my image was a bit too small in height and width so I replaced the file with a new one, the same name (FTP overwrite).<br />HTML output show that the new image is used but IMAGE cObject created the old height/width parameters. I found the entry "logo.png" in sys_file twice.</p></div>
+  </div>
+  
+
+  <div id="change-172683" class="journal has-notes">
+    <h4><a href="44105.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-09" title="2013-07-09 19:56">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-172683-notes"><p>Issue still exists in 6.0.6: <br />In table sys_file, fields width and height are not updated when the file itself is overwritten by upload.</p></div>
+  </div>
+  
+
+  <div id="change-174557" class="journal has-notes">
+    <h4><a href="44105.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36614">Oliver Salzburg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-22" title="2013-07-22 19:42">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-174557-notes"><p>I just tripped over this in 6.1.1. I was trying to replace a logo in a website and the new image always had the wrong size.</p>
+
+
+	<p>The file is just kept in an extension folder and was only updated through FTP. I cleared the image size cache and any other cache I could think of, but to no avail.</p>
+
+
+	<p>Is this to be expected? What is a possible workaround?</p></div>
+  </div>
+  
+
+  <div id="change-174585" class="journal has-notes">
+    <h4><a href="44105.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37858">Marcel Burkhalter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-23" title="2013-07-23 09:45">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-174585-notes"><p>@Oliver: For FAL to be able to detect changes done via FTP you should add the job "File Abstraction Layer: Indexing job" to your TYPO3 scheduler and let it run periodically. You can also trigger it manually in the scheduler, clear all caches and check if your problem is fixed.</p>
+
+
+	<p>If not, the following workaround did it for us:</p>
+
+
+	<p>1.)<br />Check the generated filename of the image with the wrong size in the FE (e.g. "csm_kontakt2_b26c111e24.jpg")</p>
+
+
+	<p>2.)<br />Search for this file with phpMyAdmin in the processed file table:<br />SELECT *<br />FROM `sys_file_processedfile`<br />WHERE `name` LIKE '%csm_kontakt2_b26c111e24.jpg%'</p>
+
+
+	<p>3.)<br />Look out for the "originalfilesha1" of the found file (e.g. "0526f87243d4b9dd5e2e2e8eec535f1b6fe8b723")</p>
+
+
+	<p>4.)<br />Search for the original file with phpMyAdmin:<br />SELECT *<br />FROM `sys_file`<br />WHERE `sha1` = '0526f87243d4b9dd5e2e2e8eec535f1b6fe8b723'</p>
+
+
+	<p>5.)<br />Manually delete the wrong entry/entries. In our case the "storage" value was 0 (which is invalid, storage IDs start with 1). And the wrong entries had the old height/width values.</p>
+
+
+	<p>Hope this helps.</p></div>
+  </div>
+  
+
+  <div id="change-174594" class="journal has-notes">
+    <h4><a href="44105.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-23" title="2013-07-23 10:40">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-174594-notes"><p>Marcel Burkhalter wrote:</p>
+
+
+<blockquote>
+
+	<p>@Oliver: For FAL to be able to detect changes done via FTP you should add the job "File Abstraction Layer: Indexing job" to your TYPO3 scheduler and let it run periodically. You can also trigger it manually in the scheduler, clear all caches and check if your problem is fixed.</p>
+
+
+	<p>If not, the following workaround did it for us:</p>
+
+
+	<p>1.)<br />Check the generated filename of the image with the wrong size in the FE (e.g. "csm_kontakt2_b26c111e24.jpg")</p>
+
+
+	<p>2.)<br />Search for this file with phpMyAdmin in the processed file table:<br />SELECT *<br />FROM `sys_file_processedfile`<br />WHERE `name` LIKE '%csm_kontakt2_b26c111e24.jpg%'</p>
+
+
+	<p>3.)<br />Look out for the "originalfilesha1" of the found file (e.g. "0526f87243d4b9dd5e2e2e8eec535f1b6fe8b723")</p>
+
+
+	<p>4.)<br />Search for the original file with phpMyAdmin:<br />SELECT *<br />FROM `sys_file`<br />WHERE `sha1` = '0526f87243d4b9dd5e2e2e8eec535f1b6fe8b723'</p>
+
+
+	<p>5.)<br />Manually delete the wrong entry/entries. In our case the "storage" value was 0 (which is invalid, storage IDs start with 1). And the wrong entries had the old height/width values.</p>
+
+
+	<p>Hope this helps.</p>
+
+
+</blockquote>
+
+	<p>In my case the problem is there also if I replace it in the backend by using filelist->upload with the checkmark "overrride existing filelist". My guess is that problem has nothing to do with the method of uploading the file.</p></div>
+  </div>
+  
+
+  <div id="change-174759" class="journal has-notes">
+    <h4><a href="44105.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36614">Oliver Salzburg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-24" title="2013-07-24 14:59">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-174759-notes"><p>Marcel Burkhalter wrote:</p>
+
+
+<blockquote>
+
+	<p>@Oliver: For FAL to be able to detect changes done via FTP you should add the job "File Abstraction Layer: Indexing job" to your TYPO3 scheduler and let it run periodically. You can also trigger it manually in the scheduler, clear all caches and check if your problem is fixed.</p>
+
+
+	<p>If not, the following workaround did it for us:</p>
+
+
+	<p>1.)<br />Check the generated filename of the image with the wrong size in the FE (e.g. "csm_kontakt2_b26c111e24.jpg")</p>
+
+
+	<p>2.)<br />Search for this file with phpMyAdmin in the processed file table:<br />SELECT *<br />FROM `sys_file_processedfile`<br />WHERE `name` LIKE '%csm_kontakt2_b26c111e24.jpg%'</p>
+
+
+	<p>3.)<br />Look out for the "originalfilesha1" of the found file (e.g. "0526f87243d4b9dd5e2e2e8eec535f1b6fe8b723")</p>
+
+
+	<p>4.)<br />Search for the original file with phpMyAdmin:<br />SELECT *<br />FROM `sys_file`<br />WHERE `sha1` = '0526f87243d4b9dd5e2e2e8eec535f1b6fe8b723'</p>
+
+
+	<p>5.)<br />Manually delete the wrong entry/entries. In our case the "storage" value was 0 (which is invalid, storage IDs start with 1). And the wrong entries had the old height/width values.</p>
+
+
+	<p>Hope this helps.</p>
+
+
+</blockquote>
+
+	<p>Thanks for the advice. Sadly, the scheduler task doesn't help, because it only indexes registered storage locations (like fileadmin) and our extension that defines the website is not (and should probably not) be configured as a storage location.</p>
+
+
+	<p>I'm aware of being able to manipulate the data in the database directly, but would obviously like to avoid this.</p>
+
+
+	<p>Upon further inspection, not only is the cached size incorrect, the stored SHA1 checksum, the file size (and probably the cdate and mdate) are also incorrect. I currently don't see how I could get the data properly updated. Even deactivating and reactivating doesn't cause the entry to be updated.</p></div>
+  </div>
+  
+
+  <div id="change-174771" class="journal has-notes">
+    <h4><a href="44105.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37858">Marcel Burkhalter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-24" title="2013-07-24 15:25">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-174771-notes"><blockquote>
+
+	<p>I'm aware of being able to manipulate the data in the database directly, but would obviously like to avoid this.</p>
+
+
+	<p>Upon further inspection, not only is the cached size incorrect, the stored SHA1 checksum, the file size (and probably the cdate and mdate) are also incorrect. I currently don't see how I could get the data properly updated. Even deactivating and reactivating doesn't cause the entry to be updated.</p>
+
+
+</blockquote>
+
+	<p>AFAIK there is currently no other workaround than manipulating in the database until this issue has been fixed :(</p></div>
+  </div>
+  
+
+  <div id="change-174790" class="journal has-notes">
+    <h4><a href="44105.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36614">Oliver Salzburg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-24" title="2013-07-24 16:01">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-174790-notes"><p>Marcel Burkhalter wrote:</p>
+
+
+<blockquote>
+
+	<p>AFAIK there is currently no other workaround than manipulating in the database until this issue has been fixed :(</p>
+
+
+</blockquote>
+
+	<p>Oh well...</p>
+
+
+	<p>Just FYI, setting up a storage location for the website extension (in the hope to be able to utilize that scheduler task) doesn't work either. The files will be identified with their relative name (to the storage location). So instead of getting /typo3conf/ext/user_website/Resources/logo.png I get /Resources/logo.png. So it doesn't even affect my file in question.</p></div>
+  </div>
+  
+
+  <div id="change-175601" class="journal has-notes">
+    <h4><a href="44105.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-30" title="2013-07-30 12:33">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-175601-notes"><p>This is an issue with extension updates. Any changed ressources are <strong>not</strong> detected. IMHO this is a major issue of FAL.</p></div>
+  </div>
+  
+
+  <div id="change-182979" class="journal has-notes">
+    <h4><a href="44105.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1909">Bjoern Jacob</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-16" title="2013-09-16 10:54">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-182979-notes"><p>We are experiencing the same problem. Some of our customers use heavily SFTP for uploading pictures. I also think this is a major problem. The status of this ticket is "Needs Feedback". So what kind of feedback do you need to fix this problem?</p></div>
+  </div>
+  
+
+  <div id="change-183304" class="journal has-notes">
+    <h4><a href="44105.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-18" title="2013-09-18 11:38">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-183304-notes"><p>I can't change it, please ask one of the members to move this ticket to core.</p>
+
+
+	<p>Anyway you need to run the indexer job after sftp upload. Or you need to trigger this as a post-upload script if your sFTP server supports this.</p></div>
+  </div>
+  
+
+  <div id="change-183307" class="journal has-details">
+    <h4><a href="44105.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-18" title="2013-09-18 11:48">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>File Abstraction Layer</i> to <i>Core</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>6.1</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-183344" class="journal has-notes">
+    <h4><a href="44105.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1909">Bjoern Jacob</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-18" title="2013-09-18 16:38">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-183344-notes"><p>I haven't heard of this indexer but a short while after I updated this post I found it. So I've set up the FileIndexingTask. But as soon as I started it I got the next error message saying "You are not allowed to access the given folder". I don't know where the problem is discussed. Does it belong to <a href="51747.html" class="issue status-7 priority-1 closed" title="Fatal Error after upgrading to 6.0.9 and 6.1.4 and deleting typo3temp/_processed_ (Resolved)">#51747</a>? Anyway, we found a working solution. We've copied the FileIndexingTask and added one more line within the foreach loop.</p>
+
+
+<pre>
+$storageObject-&gt;setEvaluatePermissions(FALSE);
+</pre>
+
+	<p>Do you know the correct corresponding ticket? Than I can send a patch.</p></div>
+  </div>
+  
+
+  <div id="change-183394" class="journal has-notes has-details">
+    <h4><a href="44105.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-19" title="2013-09-19 09:37">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>File Abstraction Layer (FAL)</i></li>
+      
+       <li><strong>Is Regression</strong> set to <i>No</i></li>
+      
+       <li><strong>TYPO3 Version</strong> set to <i>6.0</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-183394-notes"><p>If you have TYPO3 CMS 6.1 lower then 6.1.5 (or TYPO3 CMS 6.0 lower then 6.0.10) then update and try again.</p>
+
+
+	<p>Else, please create a new issue report about the problem with the indexer task.</p></div>
+  </div>
+  
+
+  <div id="change-183440" class="journal has-notes">
+    <h4><a href="44105.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36614">Oliver Salzburg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-19" title="2013-09-19 11:18">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-183440-notes"><p>Just FYI, I updated to 6.1.5 and tried the indexer task again. It has no effect on cached data related to files stored in extension directories.</p></div>
+  </div>
+  
+
+  <div id="change-183463" class="journal has-notes">
+    <h4><a href="44105.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-19" title="2013-09-19 14:09">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-183463-notes"><p>The indexer just updates files inside a storage ... this tip was related to sFTP upload for editors which likely appear within at least on storage+mountpoint.</p></div>
+  </div>
+  
+
+  <div id="change-183465" class="journal has-details">
+    <h4><a href="44105.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-19" title="2013-09-19 14:09">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Priority</strong> changed from <i>Should have</i> to <i>Must have</i></li>
+      
+       <li><strong>Target version</strong> set to <i>7.0</i></li>
+      
+       <li><strong>PHP Version</strong> set to <i>5.3</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-186847" class="journal has-notes has-details">
+    <h4><a href="44105.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-15" title="2013-10-15 10:47">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>7.0</i> to <i>6.2.0</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-186847-notes"><p>Should be fixed in 6.2 IMO.</p></div>
+  </div>
+  
+
+  <div id="change-191213" class="journal has-notes">
+    <h4><a href="44105.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-21" title="2013-11-21 17:21">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-191213-notes"><p>Please test 6.2beta2 if this issue is gone for your installation. Please try it with newly changed images.</p></div>
+  </div>
+  
+
+  <div id="change-205602" class="journal has-notes">
+    <h4><a href="44105.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39304">Thomas Etter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-27" title="2014-02-27 09:11">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205602-notes"><p>I testet this with TYPO3 6.1.7 and it seems to be solved here, the image is always resized when i upload another image and overwrite the existing one both in the backend via filelist or directly. However i have a related issue with fluid, where the image size is not updated, when i change the size in the template (without changing the image).</p></div>
+  </div>
+  
+
+  <div id="change-211585" class="journal has-notes has-details">
+    <h4><a href="44105.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-02" title="2014-04-02 20:29">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Closed</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>6.2.0</i></strike>)</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-211585-notes"><p>Closing this issue as it seems to be fixed in 6.2</p></div>
+  </div>
+  
+
+  <div id="change-230221" class="journal has-notes">
+    <h4><a href="44105.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40487">Markus D</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-18" title="2014-09-18 09:16">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230221-notes"><p>I still have the described error in version 6.2.4</p>
+
+
+	<p>the image size is not updated</p>
+
+
+	<p>i've cleared the cache in the install tool, typo3temp and all caches in be.</p></div>
+  </div>
+  
+
+  <div id="change-237059" class="journal has-notes">
+    <h4><a href="44105.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37962">Andreas Allacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-20" title="2014-11-20 12:13">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237059-notes"><p>I just noticed this issue again too with 6.2.6<br />I updated an image inside my extension but the sys_file record still used the old image size and therefore the image was rendered wrongly (not even ratio was correct) and in this case the image was not even resized but just rendered directly.</p>
+
+
+	<p>I was using the ImageViewHelper for the output.<br />I can avoid this by using uri.resource and the tag directly but that way I am losing resize functionality etc.</p>
+
+
+	<p>Maybe checking the if the original file timestamp matches the current timestamp and if not check the SHA1 value before rendering?</p></div>
+  </div>
+  
+
+  <div id="change-257424" class="journal has-notes">
+    <h4><a href="44105.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/41759">Bastian Stargazer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-02" title="2015-05-02 10:40">3 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-257424-notes"><p>This bug still exists in the version 6.2.11! My (ugly) workaround is to set a number suffix to all my images which I upload to fileadmin/ manually. For example: "content-fill-img_house01.jpg" will be "content-fill-img_house02.jpg" if I changed the size...</p>
+
+
+	<p>To delete the caches or the files in fileadmin/_processed_/ doesn´t help!</p></div>
+  </div>
+  
+
+  <div id="change-260993" class="journal has-notes">
+    <h4><a href="44105.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38427">Carsten Tornow</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 19:41">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-260993-notes"><p>That problem is still there! Using TYPO3 v. 6.2.12</p></div>
+  </div>
+  
+
+  <div id="change-261072" class="journal has-notes">
+    <h4><a href="44105.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-11" title="2015-06-11 09:35">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-261072-notes"><p>Could you recheck with 6.2.13 please?</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-44105-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/44105.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="44105.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/44105 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:29:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

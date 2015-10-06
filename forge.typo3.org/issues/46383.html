@@ -1,0 +1,840 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/46383 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:28:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #46383: levelmedia ignores sorting of media records - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/46383.atom" rel="alternate" title="Core - Bug #46383: levelmedia ignores sorting of media records" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (8)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/459">Ben Robinson</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1136">Florian Schaeffer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2839">Stephan Bauer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38687">Maximilian Ziermaier</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/5051">Markus no-lastname-given</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2793">Georg Rienzner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-46383-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #46383</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>levelmedia ignores sorting of media records</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/459">Ben Robinson</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-17" title="2013-03-17 12:35">over 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-13" title="2014-05-13 17:32">about 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-03-17</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2354">next-patchlevel</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.1</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Precondition: a page with multiple FAL media records (images).</p>
+
+
+	<p>The sorting of media records is ignored. If the sorting is changed afterwards, it does not affect the order of the "FILES":<br /><pre>
+page.10 = COA
+page.10{
+  stdWrap.wrap = &lt;ul&gt;|&lt;/ul&gt;
+  stdWrap.required = 1
+  10 = FILES
+  10 { 
+     references{
+       data =  levelmedia:-1, slide
+       treatIdAsReference = 1
+     }
+     renderObj = IMAGE
+     renderObj {
+       stdWrap.wrap = &lt;li&gt;|&lt;/li&gt;
+       stdWrap.required = 1
+       file.import.data = file:current:originalUid // file:current:uid
+    }
+  }
+}
+</pre></p>
+
+
+	<p>This does work (but without "slide"):<br /><pre>
+page.10 = COA
+page.10{
+  stdWrap.wrap = &lt;ul&gt;|&lt;/ul&gt;
+  stdWrap.required = 1
+  10 = FILES
+  10 { 
+     references{
+       table = pages
+       uid.data = page:uid
+       fieldName = media
+     }
+     renderObj = IMAGE
+     renderObj {
+       stdWrap.wrap = &lt;li&gt;|&lt;/li&gt;
+       stdWrap.required = 1
+       file.import.data = file:current:originalUid // file:current:uid
+    }
+  }
+}
+</pre></p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-8938">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="43691" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="43691.html" class="issue status-9 priority-2 closed">Bug #43691</a>: Media Image Import is broken
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2012-12-06</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10107">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54260" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="54260.html" class="issue status-2 priority-3 overdue child parent">Epic #54260</a>: WP: FAL Missing Issues / Features / API
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2012-04-22</td>
+<td class="due_date">2014-02-15</td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10513">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54884" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="54884.html" class="issue status-7 priority-1 closed">Bug #54884</a>: RootlineUtility does not consider foreign_sorting for rel...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-01-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10512">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="56150" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="56150.html" class="issue status-7 priority-1 closed">Bug #56150</a>: Exception with &quot;Hidden&quot; sys_file_references when using le...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-02-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/46383/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/46383/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=46383&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-170472" class="journal has-notes">
+    <h4><a href="46383.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1136">Florian Schaeffer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-24" title="2013-06-24 14:54">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-170472-notes"><p>confirmed on TYPO3 6.1.1</p>
+
+
+	<p>When using (for debugging purposes only, the snippet just prints all available media images):</p>
+
+
+<pre>
+lib.navigationIcon = FILES
+lib.navigationIcon {
+  references {
+    data =  levelmedia:-1, slide
+  }
+  renderObj = TEXT
+  renderObj {
+    data = file:current:publicUrl
+    wrap = {image : '|', title : ' ', thumb : ' ', url : ''},
+  }
+}
+</pre>
+
+	<p>I get another order of records as with</p>
+
+
+<pre>
+lib.navigationIcon = FILES
+lib.navigationIcon {
+  references {
+    table = pages
+    uid = 1
+    fieldName = media
+  }
+  renderObj = TEXT
+  renderObj {
+    data = file:current:publicUrl
+    wrap = {image : '|', title : ' ', thumb : ' ', url : ''},
+  }
+}
+</pre>
+
+	<p>If I try to get the first record using levelmedia:-1, slide the files are not sorted correctly (following the SQL-statements I see sort by for all accesses to sys_file_reference).</p>
+
+
+	<p>To reproduce it just add more than one reesource to page, make sure that you slide up the tree to get the information and than change the order of thoses ressources. The frontend output won't change.</p>
+
+
+	<p>There is another bug <a href="43691.html" class="issue status-9 priority-2 closed" title="Media Image Import is broken (Closed)">#43691</a> which describes the same form cObject IMAGE so it is related to the levelmedia.</p>
+
+
+	<p>I debugged all SQL-queries and found, that when using levelmedia the sys_file_reference table is queried twice, the first time WIHTOUT sorting and the second time with sorting. Unfortunately the first query result is used for reading the file references for the media field.</p>
+
+
+	<p>So if I manually delete a media releation and add another one, the order is correct unless I change it by ordering the relations in the media field again.</p></div>
+  </div>
+  
+
+  <div id="change-170931" class="journal has-details">
+    <h4><a href="46383.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-28" title="2013-06-28 11:12">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Priority</strong> changed from <i>Should have</i> to <i>Must have</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-189031" class="journal has-notes">
+    <h4><a href="46383.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5051">Markus no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-06" title="2013-11-06 15:46">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-189031-notes"><p>A small workaround: If you use "sorting = sorting_foreign" it works for me. hth</p>
+
+
+<pre>
+lib.navigationIcon = FILES
+lib.navigationIcon {
+  sorting = sorting_foreign
+  references {
+    data =  levelmedia:-1, slide
+  }
+  renderObj = TEXT
+  renderObj {
+    data = file:current:publicUrl
+    wrap = {image : '|', title : ' ', thumb : ' ', url : ''},
+  }
+}
+</pre></div>
+  </div>
+  
+
+  <div id="change-204405" class="journal has-notes">
+    <h4><a href="46383.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-19" title="2014-02-19 01:06">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-204405-notes"><p>I can confirm levelmedia ignores sorting of FAL references in 6.1.7</p>
+
+
+	<pre><code>blabla= COA<br />     blabla{<br />        10 = IMAGE<br />        10 {<br />            file {<br />                import.data = levelfield:1, media<br />                treatIdAsReference = 1<br />                import.listNum = 0<br />              }<br />        }<br />     }</code></pre>
+
+
+	<p>Levelfield is done through stdwrap and leads to the function <code>getData</code> in <code>TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer</code><br />This has a switch construct and for <code>levelfield</code> it just asks the rootline</p>
+
+
+	<pre><code>switch ($type) {<br />     ...<br />                case 'levelfield':<br />                    $keyP = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $key);<br />                    $nkey = $this-&gt;getKey($keyP[0], $GLOBALS['TSFE']-&gt;tmpl-&gt;rootLine);<br />                    <ins><strong>$retVal = $this-&gt;rootLineValue</strong></ins>($nkey, $keyP[1], strtolower($keyP[2]) == 'slide');<br />                    break;</code></pre>
+
+
+	<p>In <code>TYPO3\CMS\Core\Utility\RootlineUtility::enrichWithRelationFields</code></p>
+
+
+	<p>line 267</p>
+
+
+	<p><code>$rows = $this->databaseConnection->exec_SELECTgetRows('uid', $table, $whereClause);</code></p>
+
+
+	<ul>
+	<li>No ORDER clause at all.</li>
+		<li>No enableFields respected 
+	<ul>
+	<li>There is only <code>$this->pageContext->deleteClause($table)</code> </li>
+		<li>(this leads to an <strong>exception</strong> if a FAL reference is hidden!)</li>
+	</ul></li>
+	</ul>
+
+
+	<p>This part of RootlineUtility does query TCA but it doesn't ask for 'foreign_sortby' which would be right.</p>
+
+
+	<p>It does</p>
+
+
+	<pre><code>foreach ($GLOBALS['TCA']['pages']['columns'] as $column =&gt; $configuration) {<br />  ...<br />  $table = $configuration['foreign_table'];<br />  $field = $configuration['foreign_field'];</code></pre>
+
+
+	<p>Maybe just add </p>
+
+
+	<pre><code>$sorting = $configuration['foreign_sortby'];</code></pre>
+
+
+	<p>and use that (if not null/empty) for adding an <code>orderByClause</code> after the <code>whereClause</code> ?</p></div>
+  </div>
+  
+
+  <div id="change-204571" class="journal has-notes">
+    <h4><a href="46383.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-20" title="2014-02-20 09:00">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-204571-notes"><p>This ought to be fixed in 6.2 with <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/26727/">https://review.typo3.org/#/c/26727/</a> but that should be backported to 6.1</p></div>
+  </div>
+  
+
+  <div id="change-205027" class="journal has-notes has-details">
+    <h4><a href="46383.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-24" title="2014-02-24 10:15">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Resolved</i></li>
+      
+       <li><strong>Target version</strong> set to <i>next-patchlevel</i></li>
+      
+       <li><strong>TYPO3 Version</strong> changed from <i>6.0</i> to <i>6.1</i></li>
+      
+       <li><strong>Is Regression</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-205027-notes"><p>This is fixed in 6.1 and 6.2 with <a href="54884.html" class="issue status-7 priority-1 closed" title="RootlineUtility does not consider foreign_sorting for relation fields (Resolved)">#54884</a>.</p>
+
+
+	<p>Will be released with 6.1.8</p></div>
+  </div>
+  
+
+  <div id="change-205702" class="journal has-notes">
+    <h4><a href="46383.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40074">Fritz Welter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-27" title="2014-02-27 16:32">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205702-notes"><p>Yes i confirm that as well (Typo3 6.2), and it even takes media from lower levels by mistake!</p>
+
+
+	<p>I have set media records in root page and subpage 2 and levelmedia takes them all</p>
+
+
+	<p>root<br />.<br />.--subpage1<br />.--subpage2</p>
+
+
+TS<br />#lib.sliderimages = COA<br />#lib.sliderimages {
+	<ol>
+	<li> 1 = COA  </li>
+		<li> 1 {</li>
+		<li>   stdWrap.required=1</li>
+		<li>   stdWrap.outerWrap.cObject = TEXT</li>
+		<li>   stdWrap.outerWrap.cObject.value = '|',</li>
+		<li>   2 = IMG_RESOURCE  </li>
+		<li>   2 {</li>
+		<li>     file {</li>
+		<li>       import.data = levelmedia: -1, slide               </li>
+		<li>       treatIdAsReference = 1</li>
+		<li>       import.listNum = 0                            </li>
+		<li>     }</li>
+		<li>   }</li>
+		<li> } </li>
+		<li> 2 < .1</li>
+		<li> 2.2.file.import.listNum = 1</li>
+		<li> 3 < .1</li>
+		<li> 3.2.file.import.listNum = 2</li>
+		<li> 4 < .1</li>
+		<li> 4.2.file.import.listNum = 3</li>
+		<li> 5 < .1</li>
+		<li> 5.2.file.import.listNum = 4<br />#}</li>
+	</ol></div>
+  </div>
+  
+
+  <div id="change-210721" class="journal has-notes">
+    <h4><a href="46383.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36834">Sebastian Schmal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-27" title="2014-03-27 10:48">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-210721-notes"><p>mh, this ts dont work in T3 6.2 :(<br />the output is all the same image!</p>
+
+
+	<p>here the old code in T3 4.5.xx and higher<br /><pre>
+#IMAGE
+          5 = IMAGE
+          5 {
+            wrap = |
+            file {
+              width = 705c
+              height = 550c
+              maxW = 705c
+              maxH = 550c
+              import {
+                cObject = TEXT
+                cObject {
+                  cObject = TEXT
+                  cObject {
+                    value = fileadmin/templates/images/products/product1.jpg
+                    override {
+                      required = 1
+                      data = levelmedia:-1, slide
+                      wrap = uploads/media/|
+                      listNum = 0
+                    }
+                  }
+                  override {
+                    required = 1
+                    field = media
+                    wrap = uploads/media/|
+                    listNum = 0
+                  }
+                }
+              }
+            }
+            altText.field = title
+            titleText.field = title
+            imageLinkWrap = 1
+            imageLinkWrap {
+              enable = 1
+              typolink {
+                target = _self
+                parameter.field = uid
+                title.cObject=TEXT
+                title.cObject.field = nav_title // subtitle // title
+              }
+            }
+          }
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-210941" class="journal has-notes">
+    <h4><a href="46383.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36834">Sebastian Schmal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-28" title="2014-03-28 15:34">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-210941-notes"><p><strong>here a new solution</strong></p>
+
+
+<pre>
+5 = FILES
+            5 {
+
+              references {
+                table = pages
+                fieldName = media
+              }
+              renderObj = IMAGE
+              renderObj {
+                file {
+                  width = 470c
+                  height = 470c
+                  maxW = 470c
+                  maxH = 470c
+                  import.data = file:current:publicUrl
+                }
+                #altText.data = file:current:title
+                altText.field = title
+                titleText.field = title
+
+                layoutKey = default
+                layout {
+                  default {
+                    element = &lt;img src="###SRC###"  ###PARAMS### ###ALTPARAMS### ###BORDER### ###SELFCLOSINGTAGSLASH###&gt;
+                    source =
+                  }
+                  srcset {
+                    element = &lt;img src="###SRC###" srcset="###SOURCECOLLECTION###" ###PARAMS### ###ALTPARAMS### ###SELFCLOSINGTAGSLASH###&gt;
+                    source = |*|###SRC### ###SRCSETCANDIDATE###,|*|###SRC### ###SRCSETCANDIDATE###
+                  }
+                }
+
+                sourceCollection {
+                  small {
+                    width = 200
+                    srcsetCandidate = 600w
+                    mediaQuery = (max-device-width: 600px)
+                    dataKey = small
+                  }
+                  smallRetina {
+                    if.directReturn = 1
+                    width = 200
+                    pixelDensity = 2
+                    srcsetCandidate = 600w 2x
+                    mediaQuery = (max-device-width: 600px) AND (min-resolution: 192dpi)
+                    dataKey = smallRetina
+                  }
+                }
+              }
+
+            }
+</pre>
+
+	<p><strong>references {<br />table = pages<br />fieldName = media<br />}</strong></p>
+
+
+	<p>this code is in 6.2 buggy!!<br /><strong>data = levelmedia:-1, slide</strong></p></div>
+  </div>
+  
+
+  <div id="change-216619" class="journal has-notes">
+    <h4><a href="46383.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36834">Sebastian Schmal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-13" title="2014-05-13 17:32">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-216619-notes"><p>here a new solution - T3 6.2 and slide:<br />[[<a class="external" href="../../external.html?link=http://blog.ingeniumdesign.de/2014/03/30/typo3-6-2-probleme-mit-ressourcen-media-auslesen/">http://blog.ingeniumdesign.de/2014/03/30/typo3-6-2-probleme-mit-ressourcen-media-auslesen/</a>]]</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-46383-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/46383.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="46383.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/46383 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:28:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

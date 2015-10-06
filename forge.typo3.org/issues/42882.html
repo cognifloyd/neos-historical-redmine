@@ -1,0 +1,852 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/42882 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:58:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #42882: FileDoesNotExistException thrown in update - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/42882.atom" rel="alternate" title="Core - Bug #42882: FileDoesNotExistException thrown in update" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2597">Klaus Hinum</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-42882-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #42882</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>FileDoesNotExistException thrown in update</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-12" title="2012-11-12 15:19">over 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-04-24" title="2013-04-24 16:00">over 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-11-12</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2014">6.0.1</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.0</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>easy</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>The install tool update step 2 or 3 from TYPO3 4.7 to 6.0 ends up in an uncaught exception if an image file is not found. There is no folder "_migrated".</p>
+
+
+	<p>Uncaught TYPO3 Exception</p>
+
+
+	<p>TYPO3\CMS\Core\Resource\Exception\FileDoesNotExistException thrown in file<br />/var/www/mydomain/web/typo3_src-6.0.0rc1/typo3/sysext/core/Classes/Resource/Driver/AbstractDriver.php in line 400.</p>
+
+
+	<p>7 TYPO3\CMS\Core\Resource\Driver\AbstractDriver::getFile("_migrated/pics/nattier043_w.jpg")</p>
+
+
+	<p>/var/www/mydomain/web/typo3_src-6.0.0rc1/typo3/sysext/core/Classes/Resource/ResourceStorage.php:</p>
+
+
+	<p>00793:   */<br />00794:  public function getFile($identifier) {</p>
+
+
+	<p>00795:   return $this->driver->getFile($identifier);</p>
+
+
+	<p>00796:  }<br />00797:</p>
+
+
+	<p>6 TYPO3\CMS\Core\Resource\ResourceStorage::getFile("_migrated/pics/nattier043_w.jpg")</p>
+
+
+	<p>/var/www/mydomain/web/typo3_src-6.0.0rc1/typo3/sysext/install/Classes/Updates/TceformsUpdateWizard.php:</p>
+
+
+	<p>00199:    rename($sourcePath, $targetPath);<br />00200:    // get the File object</p>
+
+
+	<p>00201:    $file = $this->storage->getFile($fieldConfiguration['targetPath'] . $item);</p>
+
+
+	<p>00202:    if ($file instanceof \TYPO3\CMS\Core\Resource\File) {<br />00203:     $fields = array(</p>
+
+
+	<p>5 TYPO3\CMS\Install\Updates\TceformsUpdateWizard::migrateField("tt_content", array, "image", array)</p>
+
+
+	<p>/var/www/mydomain/web/typo3_src-6.0.0rc1/typo3/sysext/install/Classes/Updates/TceformsUpdateWizard.php:</p>
+
+
+	<p>00147:     foreach ($records as $record) {<br />00148:      foreach ($fieldsToMigrate as $field) {</p>
+
+
+	<p>00149:       $dbQueries = array_merge($this->migrateField($table, $record, $field, $tableConfiguration[$field]));</p>
+
+
+	<p>00150:      }<br />00151:     }</p>
+
+
+	<p>4 TYPO3\CMS\Install\Updates\TceformsUpdateWizard::performUpdate(array, "")</p>
+
+
+	<p>/var/www/mydomain/web/typo3_src-6.0.0rc1/typo3/sysext/install/Classes/Installer.php:</p>
+
+
+	<p>05761:       $dbQueries = array();<br />05762:       $databaseQueries = array();</p>
+
+
+	<p>05763:       if ($tmpObj->performUpdate($dbQueries, $customOutput)) {</p>
+
+
+	<p>05764:        $performUpdateMarkers['updateStatus'] = 'Update successful!';<br />05765:       } else {</p>
+
+
+	<p>3 TYPO3\CMS\Install\Installer::updateWizard_parts("performUpdate")</p>
+
+
+	<p>/var/www/mydomain/web/typo3_src-6.0.0rc1/typo3/sysext/install/Classes/Installer.php:</p>
+
+
+	<p>05599:   // call wizard<br />05600:   $action = $this->INSTALL['database_type'] ? $this->INSTALL['database_type'] : 'checkForUpdate';</p>
+
+
+	<p>05601:   $this->updateWizard_parts($action);</p>
+
+
+	<p>05602:   $this->output($this->outputWrapper($this->printAll()));<br />05603:  }</p>
+
+
+	<p>2 TYPO3\CMS\Install\Installer::updateWizard()</p>
+
+
+	<p>/var/www/mydomain/web/typo3_src-6.0.0rc1/typo3/sysext/install/Classes/Installer.php:</p>
+
+
+	<p>00539:     $this->checkDatabase();<br />00540:     $this->silent = 0;</p>
+
+
+	<p>00541:     $this->updateWizard();</p>
+
+
+	<p>00542:     break;<br />00543:    case 'config':</p>
+
+
+	<p>1 TYPO3\CMS\Install\Installer::init()</p>
+
+
+	<p>/var/www/mydomain/web/typo3_src-6.0.0rc1/typo3/install/index.php:</p>
+
+
+	<p>00080: require_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('install') . 'mod/class.tx_install.php';<br />00081: $install_check = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Install\\Installer', TRUE);</p>
+
+
+	<p>00082: $install_check->init();</p>
+
+
+	<p>00083: ?></p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/22922/not-migrated.png" class="icon icon-attachment">not-migrated.png</a>  
+  
+  <span class="size">(52 kB)</span>
+  
+  
+    <span class="author">Dmitry Dulepov, 2012-12-05 10:54</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-7446">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="42859" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="42859.html" class="issue status-7 priority-2 closed">Bug #42859</a>: missing extension icons for lots of core extensions
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-11-12</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7593">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="43509" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="43509.html" class="issue status-9 priority-2 closed">Bug #43509</a>: &quot;Migrate all file relations from tt_content.image and pag...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2012-12-02</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/42882/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/42882/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=42882&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/6acbc087309120d4b0ba4d908d7402c384a17b8e" title="Revision 6acbc087">Revision 6acbc087</a><br />
+        <span class="author">Added by Andreas Wolf  <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-12" title="2013-01-12 16:24">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] FAL: update wizard fails if file does not exist</p>
+
+
+	<p>The FAL update wizard throws an exception during migration if a file is<br />missing. As we cannot do that much about a missing source file, we<br />should at least not fatal here, but give the user a warning message in<br />the logs instead.</p>
+
+
+	<p>Change-Id: I3ab0ecd8d8f60e782b7459d7f92f89d2c0a9fd40<br />Resolves: <a href="42882.html" class="issue status-7 priority-1 closed" title="FileDoesNotExistException thrown in update (Resolved)">#42882</a><br />Releases: 6.1, 6.0<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/16533">https://review.typo3.org/16533</a><br />Reviewed-by: Franz Holzinger<br />Tested-by: Franz Holzinger<br />Reviewed-by: Francois Suter<br />Tested-by: Francois Suter<br />Reviewed-by: Helmut Hummel<br />Tested-by: Helmut Hummel</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/aa1463e03c68d9b9ebb69ebe657a1e6275815e81" title="Revision aa1463e0">Revision aa1463e0</a><br />
+        <span class="author">Added by Andreas Wolf  <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-12" title="2013-01-12 16:25">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] FAL: update wizard fails if file does not exist</p>
+
+
+	<p>The FAL update wizard throws an exception during migration if a file is<br />missing. As we cannot do that much about a missing source file, we<br />should at least not fatal here, but give the user a warning message in<br />the logs instead.</p>
+
+
+	<p>Change-Id: I3ab0ecd8d8f60e782b7459d7f92f89d2c0a9fd40<br />Resolves: <a href="42882.html" class="issue status-7 priority-1 closed" title="FileDoesNotExistException thrown in update (Resolved)">#42882</a><br />Releases: 6.1, 6.0<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/16533">https://review.typo3.org/16533</a><br />Reviewed-by: Franz Holzinger<br />Tested-by: Franz Holzinger<br />Reviewed-by: Francois Suter<br />Tested-by: Francois Suter<br />Reviewed-by: Helmut Hummel<br />Tested-by: Helmut Hummel<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/17489">https://review.typo3.org/17489</a></p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-140132" class="journal has-notes">
+    <h4><a href="42882.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-12" title="2012-11-12 15:26">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140132-notes"><p>Does the whole folder "_migrated" not exist or just the file? And does the file uploads/pics/nattier043_w.jpg exist/did it exist before the update?</p>
+
+
+	<p>What I'm trying to find out: Did the migration fail completely or was it just a missing file that did not exist before the update.</p></div>
+  </div>
+  
+
+  <div id="change-140133" class="journal has-details">
+    <h4><a href="42882.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-12" title="2012-11-12 15:26">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>File Abstraction Layer (FAL)</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Andreas Wolf</i></li>
+      
+       <li><strong>Target version</strong> set to <i>6.0.0</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-140138" class="journal has-notes">
+    <h4><a href="42882.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-12" title="2012-11-12 16:03">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140138-notes"><p>There is a folder ~/web/fileadmin/_migrated/pics. Maybe this one is correct.<br />However it contains only 2 image files. Much too few for this homepage.<br />The install tool's update process is broken. There is no option to continue from here.<br />The file "uploads/pics/nattier043_w.jpg" does not exist. Apperently this file has been removed before the update. But the install tool should not stop in such a case or offer to remove the image automatically.</p></div>
+  </div>
+  
+
+  <div id="change-140165" class="journal has-notes">
+    <h4><a href="42882.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2597">Klaus Hinum</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-12" title="2012-11-12 19:26">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140165-notes"><p>Same here, step<br />Migrate all file relations from tt_content.image and pages.media<br />stops after a missing image and wont continue.</p></div>
+  </div>
+  
+
+  <div id="change-140335" class="journal has-notes">
+    <h4><a href="42882.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-14" title="2012-11-14 10:46">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140335-notes"><p>This happens in the install tool.</p>
+
+
+	<p>Step 2 - Configuration of updates</p>
+
+
+	<p>Migrate all file relations from tt_content.image and pages.media</p></div>
+  </div>
+  
+
+  <div id="change-140697" class="journal has-notes has-details">
+    <h4><a href="42882.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-16" title="2012-11-16 15:41">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+       <li><strong>Target version</strong> changed from <i>6.0.0</i> to <i>6.0.0-RC2</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-140697-notes"><p>Ok, I think we should automatically remove files which are not present and note this in the syslog.</p></div>
+  </div>
+  
+
+  <div id="change-140949" class="journal has-notes has-details">
+    <h4><a href="42882.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-17" title="2012-11-17 17:49">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-140949-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16533">http://review.typo3.org/16533</a></p></div>
+  </div>
+  
+
+  <div id="change-140952" class="journal has-notes">
+    <h4><a href="42882.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-17" title="2012-11-17 17:49">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140952-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16533">http://review.typo3.org/16533</a></p></div>
+  </div>
+  
+
+  <div id="change-141523" class="journal has-notes">
+    <h4><a href="42882.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2597">Klaus Hinum</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-21" title="2012-11-21 09:58">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-141523-notes"><p>still not fixed in 6.0.0RC2</p></div>
+  </div>
+  
+
+  <div id="change-142797" class="journal has-notes">
+    <h4><a href="42882.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4157">Christian Eßl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-29" title="2012-11-29 11:08">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-142797-notes"><p>still not fixed in 6.0<br />impossible to proceed the update process from there.</p></div>
+  </div>
+  
+
+  <div id="change-142804" class="journal has-notes">
+    <h4><a href="42882.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2597">Klaus Hinum</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-29" title="2012-11-29 11:42">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-142804-notes"><p>same here, cant update to 6.0</p></div>
+  </div>
+  
+
+  <div id="change-143169" class="journal has-notes">
+    <h4><a href="42882.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-12-01" title="2012-12-01 19:54">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-143169-notes"><p>Right, this is not fixed - but there is a patch. I'd be glad if you tested it in your environment to see if it works with the patch. If yes, please vote for it, so we get it in for 6.0.1.</p></div>
+  </div>
+  
+
+  <div id="change-143173" class="journal has-notes">
+    <h4><a href="42882.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-12-01" title="2012-12-01 21:27">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-143173-notes"><p>I have applied this patch:</p>
+
+
+	<p><a class="external" href="../../external.html?link=https://review.typo3.org/#/c/16533/2/typo3/sysext/install/Classes/Updates/TceformsUpdateWizard.php,unified">https://review.typo3.org/#/c/16533/2/typo3/sysext/install/Classes/Updates/TceformsUpdateWizard.php,unified</a></p>
+
+
+	<p>Then it ends up in this error message:</p>
+
+
+	<p>Fatal error: Class '\\TYPO3\CMS\Core\Log\LogManager' not found in /var/www/mydomain/web/typo3_src-6.0.0/typo3/sysext/core/Classes/Utility/GeneralUtility.php on line 4155</p>
+
+
+	<p>This is wrong:</p>
+
+
+	<pre><code>public function <i>construct() {<br />        /** @var $logManager \TYPO3\CMS\Core\Log\LogManager */<br />        $logManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\TYPO3\CMS\Core\Log\LogManager');<br />        $this-&gt;logger = $logManager-&gt;getLogger(__CLASS</i>);<br />    }</code></pre>
+
+
+	<p>Fix:<br />==>  $logManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Log\\LogManager');</p>
+
+
+	<p>And after this, the <br />Step 2 - Configuration of updates</p>
+
+
+	<p>I get:</p>
+
+
+	<p>Migrate all file relations from tt_content.image and pages.media<br />Update successful!</p>
+
+
+	<p>So make this bugfix and I can vote. But where do I vote?</p></div>
+  </div>
+  
+
+  <div id="change-143201" class="journal has-notes">
+    <h4><a href="42882.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-12-02" title="2012-12-02 12:08">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-143201-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16533">http://review.typo3.org/16533</a></p></div>
+  </div>
+  
+
+  <div id="change-143202" class="journal has-notes has-details">
+    <h4><a href="42882.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-12-02" title="2012-12-02 12:09">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>6.0.0-RC2</i> to <i>6.0.1</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>easy</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-143202-notes"><p>Franz Holzinger wrote:</p>
+
+
+<blockquote>
+
+	<p>So make this bugfix and I can vote. But where do I vote?</p>
+
+
+</blockquote>
+
+	<p>I'll upload a revised version of the patch in a minute. You could just give you +1 on "code review" and "verified" in Gerrit. The login is your usual typo3.org login as used for Forge and all other services.</p></div>
+  </div>
+  
+
+  <div id="change-143268" class="journal has-notes">
+    <h4><a href="42882.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-12-02" title="2012-12-02 22:39">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-143268-notes"><p>On gerrit it was mentioned that the fix under review here seems to also fix <a href="43509.html" class="issue status-9 priority-2 closed" title="&quot;Migrate all file relations from tt_content.image and pages.media&quot; fails on missing file (Closed)">#43509</a>. Please consider in tests or when finally closing this bug here.</p></div>
+  </div>
+  
+
+  <div id="change-143465" class="journal has-notes has-details">
+    <h4><a href="42882.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-12-05" title="2012-12-05 10:54">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/22922/not-migrated.png">not-migrated.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-143465-notes"><p>Added a way to show what was NOT migrated. See the screenshot.</p></div>
+  </div>
+  
+
+  <div id="change-143468" class="journal has-notes">
+    <h4><a href="42882.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-12-05" title="2012-12-05 10:56">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-143468-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/16533">http://review.typo3.org/16533</a></p></div>
+  </div>
+  
+
+  <div id="change-147557" class="journal has-notes">
+    <h4><a href="42882.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-12" title="2013-01-12 16:24">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-147557-notes"><p>Patch set 1 for branch <strong>TYPO3_6-0</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/17489">https://review.typo3.org/17489</a></p></div>
+  </div>
+  
+
+  <div id="change-147560" class="journal has-notes has-details">
+    <h4><a href="42882.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by Anonymous <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-12" title="2013-01-12 16:30">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-147560-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/aa1463e03c68d9b9ebb69ebe657a1e6275815e81" class="changeset" title="[BUGFIX] FAL: update wizard fails if file does not exist The FAL update wizard throws an excepti...">aa1463e03c68d9b9ebb69ebe657a1e6275815e81</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-42882-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/42882.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="42882.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/42882 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:58:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/40216 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:27:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #40216: Delete pages via drap&amp;drop fails - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/40216.atom" rel="alternate" title="Core - Bug #40216: Delete pages via drap&amp;drop fails" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-40216-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #40216</h2>
+
+<div class="issue status-9 priority-2 closed child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="40095.html" class="issue status-7 priority-4 closed parent">Task #40095</a>: Move core to namespaces</p><div><h3>Delete pages via drap&amp;drop fails</h3></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-26" title="2012-08-26 00:19">almost 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-27" title="2012-11-27 21:57">over 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-08-26</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.0</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.4</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <pre>[{"tid":31,"action":"Commands","method":"deleteNode","type":"rpc","result":[],"debug":""}]</pre>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-7561">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="43320" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="43320.html" class="issue status-1 priority-2">Bug #43320</a>: Be outputs debug answer into ajax responses
+</td>
+<td class="status">New</td>
+<td class="start_date">2012-11-27</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/40216/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/40216/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=40216&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-129681" class="journal has-notes">
+    <h4><a href="40216.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-26" title="2012-08-26 00:21">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129681-notes"><p>The page is actually deleted, but this is only visible after refreshing the page tree.</p></div>
+  </div>
+  
+
+  <div id="change-129697" class="journal has-details">
+    <h4><a href="40216.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-26" title="2012-08-26 02:32">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#40095</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-129700" class="journal has-notes">
+    <h4><a href="40216.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2239">Stefan Froemken</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-26" title="2012-08-26 02:56">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129700-notes"><p>I can't confirm this on my server.<br />- I have cleared all caches<br />- I have deleted ALL directories in typo3temp<br />- I have truncated all cf_*-Tables and cache*-tables<br />- I have worked on current master<br />- I'm using PHP5.3</p></div>
+  </div>
+  
+
+  <div id="change-129702" class="journal has-notes">
+    <h4><a href="40216.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-26" title="2012-08-26 11:25">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129702-notes"><p>I can, even after removing all temp files and clearing cache.</p>
+
+
+	<p>Actually it works if I deleted the page again, thus dragging it twice into the drop zone actually works without another error.</p>
+
+
+	<p>Please note that I have enabled <code>['BE']['debug']</code>.</p></div>
+  </div>
+  
+
+  <div id="change-142219" class="journal has-details">
+    <h4><a href="40216.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-27" title="2012-11-27 00:55">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-142244" class="journal has-notes">
+    <h4><a href="40216.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-27" title="2012-11-27 02:09">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-142244-notes"><p>Please reopen this ... I have this with almost all ajax actions of the page tree and I do not yet know where it comes from.</p>
+
+
+	<p>This is most likely related to PHP 5.4, but might also be a JS bug.</p>
+
+
+<pre><code class="js syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="function">evaluateResponse</span>: <span class="keyword">function</span>(response) {
+<span class="line-numbers"> 2</span>        <span class="keyword">if</span> (response.success === <span class="predefined-constant">false</span>) {
+<span class="line-numbers"> 3</span>!!!!!!! Uncaught TypeError: Cannot read property <span class="string"><span class="delimiter">'</span><span class="content">success</span><span class="delimiter">'</span></span> of <span class="predefined-constant">undefined</span>
+<span class="line-numbers"> 4</span>            TYPO3.Flashmessage.display(<span class="integer">4</span>, <span class="string"><span class="delimiter">'</span><span class="content">Exception</span><span class="delimiter">'</span></span>, response.message);
+<span class="line-numbers"> 5</span>            <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+<span class="line-numbers"> 6</span>        }
+<span class="line-numbers"> 7</span>
+<span class="line-numbers"> 8</span>        <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+<span class="line-numbers"> 9</span>    },</span></code><br /></pre>
+
+	<p>Somewhere in between it got an exception inside the debug toolbar which included:<br /><pre>PHP Catchable Fatal Error: Argument 2 passed to TYPO3\\CMS\\Backend\\Utility\\IconUtility::getSpriteIconForRecord() must be of the type array, null given</pre></p>
+
+
+	<p>I could reproduce it until I stated to debug this with PhpStorm. As soon as I enabled the cookie, it disappeared ... heisenbug :(</p></div>
+  </div>
+  
+
+  <div id="change-142245" class="journal has-details">
+    <h4><a href="40216.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-27" title="2012-11-27 02:10">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-142248" class="journal has-notes">
+    <h4><a href="40216.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-27" title="2012-11-27 02:27">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-142248-notes"><p>Post<pre>http://localhost/t3-playground/t3-git/typo3/ajax.php?ajaxID=ExtDirect::route&#38;namespace=TYPO3.Components.PageTree</pre><br />Parameter<pre>ajaxID    ExtDirect::route
+namespace    TYPO3.Components.PageTree</pre><br />Post-Data<pre>{"action":"Commands","method":"moveNodeAfterDestination","data":[{"serializeClassName":"TYPO3\\CMS\\Backend\\Tree\\Pagetree\\PagetreeNode","id":"399","type":"pages","editableText":"test2move","text":"test2move","cls":null,"prefix":"","suffix":"","qtip":"id=399","expanded":true,"expandable":false,"draggable":true,"isTarget":true,"spriteIconCode":"&lt;span class=\"t3-icon t3-icon-apps t3-icon-apps-pagetree t3-icon-pagetree-page-default\"&gt;&amp;nbsp;&lt;/span&gt;","t3TextSourceField":"title","t3InCopyMode":false,"t3InCutMode":false,"t3ContextInfo":[],"editable":true,"allowChildren":true,"readableRootline":"","mountPoint":73,"workspaceId":399,"isMountPoint":false,"backgroundColor":""},"303","e635d9e0460f0a989a4e2161595174045c1ef368"],"type":"rpc","tid":13}</pre></p>
+
+
+	<p>Answer<pre>&lt;script type="text/javascript"&gt;
+/*&lt;![CDATA[*/
+    (function debug() {
+        var debugMessage = "\x0A\x09\x3Ctable\x20class\x3D\x22typo3\x2Ddebug\x22\x20border\x3D\x220\x22\x20cellpadding\x3D\x220\x22\x20cellspacing\x3D\x220\x22\x20bgcolor\x3D\x22white\x22\x20style\x3D\x22border\x3A0px\x3B\x20margin\x2Dtop\x3A3px\x3B\x20margin\x2Dbottom\x3A3px\x3B\x22\x3E\x0A\x09\x09\x3Ctr\x3E\x0A\x09\x09\x09\x3Ctd\x20style\x3D\x22background\x2Dcolor\x3A\x23bbbbbb\x3B\x20font\x2Dfamily\x3A\x20verdana,arial\x3B\x20font\x2Dweight\x3A\x20bold\x3B\x20font\x2Dsize\x3A\x2010px\x3B\x22\x3Eexec_UPDATEquery\x3C\x2Ftd\x3E\x0A\x09\x09\x3C\x2Ftr\x3E\x0A\x09\x09\x3Ctr\x3E\x0A\x09\x09\x09\x3Ctd\x3E\x0A\x09\x09\x09\x0A\x09\x09\x09\x3Ctable\x20border\x3D\x221\x22\x20cellpadding\x3D\x221\x22\x20cellspacing\x3D\x220\x22\x20bgcolor\x3D\x22white\x22\x3E\x3Ctr\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x20valign\x3D\x22top\x22\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x3Ecaller\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x20color\x3D\x22red\x22\x3ETYPO3\x5CCMS\x5CCore\x5CDatabase\x5CDatabaseConnection\x3A\x3Aexec_UPDATEquery\x3Cbr\x20\x2F\x3E\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x3C\x2Ftr\x3E\x3Ctr\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x20valign\x3D\x22top\x22\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x3EERROR\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x20color\x3D\x22red\x22\x3EYou\x20have\x20an\x20error\x20in\x20your\x20SQL\x20syntax\x3B\x20check\x20the\x20manual\x20that\x20corresponds\x20to\x20your\x20MySQL\x20server\x20version\x20for\x20the\x20right\x20syntax\x20to\x20use\x20near\x20\x27WHERE\x20uid\x20\x3D\x20\x27399\x27\x27\x20at\x20line\x201\x3Cbr\x20\x2F\x3E\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x3C\x2Ftr\x3E\x3Ctr\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x20valign\x3D\x22top\x22\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x3ElastBuiltQuery\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x20color\x3D\x22red\x22\x3EUPDATE\x20pages\x20SET\x20\x20WHERE\x20uid\x20\x3D\x20\x27399\x27\x3Cbr\x20\x2F\x3E\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x3C\x2Ftr\x3E\x3Ctr\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x20valign\x3D\x22top\x22\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x3Edebug_backtrace\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x20color\x3D\x22red\x22\x3ETYPO3\x5CCMS\x5CCore\x5CUtility\x5CGeneralUtility\x3A\x3AcallUserFunction\x2361\x20\x2F\x2F\x20call_user_func_array\x234017\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CExtDirect\x5CExtDirectRouter\x2D\x26gt\x3Broute\x23\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CExtDirect\x5CExtDirectRouter\x2D\x26gt\x3BprocessRpc\x2398\x20\x2F\x2F\x20call_user_func_array\x23149\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CBackend\x5CTree\x5CPagetree\x5CExtdirectTreeCommands\x2D\x26gt\x3BmoveNodeAfterDestination\x23\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CBackend\x5CTree\x5CPagetree\x5CCommands\x3A\x3AmoveNode\x23212\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CBackend\x5CTree\x5CPagetree\x5CCommands\x3A\x3AprocessTceCmdAndDataMap\x23147\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CDataHandling\x5CDataHandler\x2D\x26gt\x3Bprocess_cmdmap\x23206\x20\x2F\x2F\x20Tx_Flux_Backend_TceMain\x2D\x26gt\x3BprocessCmdmap_preProcess\x232690\x20\x2F\x2F\x20Tx_Flux_Backend_TceMain\x2D\x26gt\x3BexecuteConfigurationProviderMethod\x2379\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CDatabase\x5CDatabaseConnection\x2D\x26gt\x3Bexec_UPDATEquery\x23180\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CDatabase\x5CDatabaseConnection\x2D\x26gt\x3Bdebug\x23172\x3Cbr\x20\x2F\x3E\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x3C\x2Ftr\x3E\x3C\x2Ftable\x3E\x0A\x09\x09\x09\x3C\x2Ftd\x3E\x0A\x09\x09\x3C\x2Ftr\x3E\x0A\x09\x3C\x2Ftable\x3E\x0A\x09";
+        var header = "exec_UPDATEquery";
+        var group = "";
+
+        if (typeof Ext !== "object" &#38;&#38; (top &#38;&#38; typeof top.Ext !== "object")) {
+            document.write(debugMessage);
+            return;
+        }
+
+        if (top &#38;&#38; typeof Ext !== "object") {
+            Ext = top.Ext;
+        }
+
+        Ext.onReady(function() {
+            var TYPO3ViewportInstance = null;
+
+            if (top &#38;&#38; top.TYPO3 &#38;&#38; typeof top.TYPO3.Backend === "object") {
+                TYPO3ViewportInstance = top.TYPO3.Backend;
+            } else if (typeof TYPO3 === "object" &#38;&#38; typeof TYPO3.Backend === "object") {
+                TYPO3ViewportInstance = TYPO3.Backend;
+            }
+
+            if (TYPO3ViewportInstance !== null) {
+                TYPO3ViewportInstance.DebugConsole.addTab(debugMessage, header, group);
+            } else {
+                document.write(debugMessage);
+            }
+        });
+    })();
+
+/*]]&gt;*/
+&lt;/script&gt;&lt;script type="text/javascript"&gt;
+/*&lt;![CDATA[*/
+    (function debug() {
+        var debugMessage = "\x0A\x09\x3Ctable\x20class\x3D\x22typo3\x2Ddebug\x22\x20border\x3D\x220\x22\x20cellpadding\x3D\x220\x22\x20cellspacing\x3D\x220\x22\x20bgcolor\x3D\x22white\x22\x20style\x3D\x22border\x3A0px\x3B\x20margin\x2Dtop\x3A3px\x3B\x20margin\x2Dbottom\x3A3px\x3B\x22\x3E\x0A\x09\x09\x3Ctr\x3E\x0A\x09\x09\x09\x3Ctd\x20style\x3D\x22background\x2Dcolor\x3A\x23bbbbbb\x3B\x20font\x2Dfamily\x3A\x20verdana,arial\x3B\x20font\x2Dweight\x3A\x20bold\x3B\x20font\x2Dsize\x3A\x2010px\x3B\x22\x3Eexec_UPDATEquery\x3C\x2Ftd\x3E\x0A\x09\x09\x3C\x2Ftr\x3E\x0A\x09\x09\x3Ctr\x3E\x0A\x09\x09\x09\x3Ctd\x3E\x0A\x09\x09\x09\x0A\x09\x09\x09\x3Ctable\x20border\x3D\x221\x22\x20cellpadding\x3D\x221\x22\x20cellspacing\x3D\x220\x22\x20bgcolor\x3D\x22white\x22\x3E\x3Ctr\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x20valign\x3D\x22top\x22\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x3Ecaller\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x20color\x3D\x22red\x22\x3ETYPO3\x5CCMS\x5CCore\x5CDatabase\x5CDatabaseConnection\x3A\x3Aexec_UPDATEquery\x3Cbr\x20\x2F\x3E\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x3C\x2Ftr\x3E\x3Ctr\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x20valign\x3D\x22top\x22\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x3EERROR\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x20color\x3D\x22red\x22\x3EYou\x20have\x20an\x20error\x20in\x20your\x20SQL\x20syntax\x3B\x20check\x20the\x20manual\x20that\x20corresponds\x20to\x20your\x20MySQL\x20server\x20version\x20for\x20the\x20right\x20syntax\x20to\x20use\x20near\x20\x27WHERE\x20uid\x20\x3D\x20\x27399\x27\x27\x20at\x20line\x201\x3Cbr\x20\x2F\x3E\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x3C\x2Ftr\x3E\x3Ctr\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x20valign\x3D\x22top\x22\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x3ElastBuiltQuery\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x20color\x3D\x22red\x22\x3EUPDATE\x20pages\x20SET\x20\x20WHERE\x20uid\x20\x3D\x20\x27399\x27\x3Cbr\x20\x2F\x3E\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x3C\x2Ftr\x3E\x3Ctr\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x20valign\x3D\x22top\x22\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x3Edebug_backtrace\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x09\x3Ctd\x3E\x3Cfont\x20face\x3D\x22Verdana,Arial\x22\x20size\x3D\x221\x22\x20color\x3D\x22red\x22\x3ETYPO3\x5CCMS\x5CCore\x5CUtility\x5CGeneralUtility\x3A\x3AcallUserFunction\x2361\x20\x2F\x2F\x20call_user_func_array\x234017\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CExtDirect\x5CExtDirectRouter\x2D\x26gt\x3Broute\x23\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CExtDirect\x5CExtDirectRouter\x2D\x26gt\x3BprocessRpc\x2398\x20\x2F\x2F\x20call_user_func_array\x23149\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CBackend\x5CTree\x5CPagetree\x5CExtdirectTreeCommands\x2D\x26gt\x3BmoveNodeAfterDestination\x23\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CBackend\x5CTree\x5CPagetree\x5CCommands\x3A\x3AmoveNode\x23212\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CBackend\x5CTree\x5CPagetree\x5CCommands\x3A\x3AprocessTceCmdAndDataMap\x23147\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CDataHandling\x5CDataHandler\x2D\x26gt\x3Bprocess_cmdmap\x23206\x20\x2F\x2F\x20Tx_Flux_Backend_TceMain\x2D\x26gt\x3BprocessCmdmap_postProcess\x232734\x20\x2F\x2F\x20Tx_Flux_Backend_TceMain\x2D\x26gt\x3BexecuteConfigurationProviderMethod\x2393\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CDatabase\x5CDatabaseConnection\x2D\x26gt\x3Bexec_UPDATEquery\x23180\x20\x2F\x2F\x20TYPO3\x5CCMS\x5CCore\x5CDatabase\x5CDatabaseConnection\x2D\x26gt\x3Bdebug\x23172\x3Cbr\x20\x2F\x3E\x3C\x2Ffont\x3E\x3C\x2Ftd\x3E\x0A\x09\x09\x09\x09\x09\x3C\x2Ftr\x3E\x3C\x2Ftable\x3E\x0A\x09\x09\x09\x3C\x2Ftd\x3E\x0A\x09\x09\x3C\x2Ftr\x3E\x0A\x09\x3C\x2Ftable\x3E\x0A\x09";
+        var header = "exec_UPDATEquery";
+        var group = "";
+
+        if (typeof Ext !== "object" &#38;&#38; (top &#38;&#38; typeof top.Ext !== "object")) {
+            document.write(debugMessage);
+            return;
+        }
+
+        if (top &#38;&#38; typeof Ext !== "object") {
+            Ext = top.Ext;
+        }
+
+        Ext.onReady(function() {
+            var TYPO3ViewportInstance = null;
+
+            if (top &#38;&#38; top.TYPO3 &#38;&#38; typeof top.TYPO3.Backend === "object") {
+                TYPO3ViewportInstance = top.TYPO3.Backend;
+            } else if (typeof TYPO3 === "object" &#38;&#38; typeof TYPO3.Backend === "object") {
+                TYPO3ViewportInstance = TYPO3.Backend;
+            }
+
+            if (TYPO3ViewportInstance !== null) {
+                TYPO3ViewportInstance.DebugConsole.addTab(debugMessage, header, group);
+            } else {
+                document.write(debugMessage);
+            }
+        });
+    })();
+
+/*]]&gt;*/
+&lt;/script&gt;[{"tid":13,"action":"Commands","method":"moveNodeAfterDestination","type":"rpc","result":{"serializeClassName":"TYPO3\\CMS\\Backend\\Tree\\Pagetree\\PagetreeNode","id":"p18f","type":"pages","editableText":"test2move","text":"test2move","cls":null,"prefix":"","suffix":"","qtip":"id=399","expanded":true,"expandable":false,"draggable":true,"isTarget":true,"spriteIconCode":"&lt;span class=\"t3-icon t3-icon-apps t3-icon-apps-pagetree t3-icon-pagetree-page-default\"&gt;&amp;nbsp;&lt;\/span&gt;","t3TextSourceField":"title","t3InCopyMode":false,"t3InCutMode":false,"t3ContextInfo":[],"editable":true,"allowChildren":true,"nodeData":{"serializeClassName":"TYPO3\\CMS\\Backend\\Tree\\Pagetree\\PagetreeNode","id":"399","type":"pages","editableText":"test2move","text":"test2move","cls":null,"prefix":"","suffix":"","qtip":"id=399","expanded":true,"expandable":false,"draggable":true,"isTarget":true,"spriteIconCode":"&lt;span class=\"t3-icon t3-icon-apps t3-icon-apps-pagetree t3-icon-pagetree-page-default\"&gt;&amp;nbsp;&lt;\/span&gt;","t3TextSourceField":"title","t3InCopyMode":false,"t3InCutMode":false,"t3ContextInfo":[],"editable":true,"allowChildren":true,"readableRootline":"","mountPoint":0,"workspaceId":399,"isMountPoint":false,"backgroundColor":""},"realId":"399","readableRootline":""},"debug":""}]</pre></p>
+
+
+	<p>Looks like there are some SQL errors...</p>
+
+
+<pre>exec_UPDATEquery
+caller     TYPO3\CMS\Core\Database\DatabaseConnection::exec_UPDATEquery
+ERROR     You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE uid = '399'' at line 1
+lastBuiltQuery     UPDATE pages SET WHERE uid = '399'
+debug_backtrace     TYPO3\CMS\Core\Utility\GeneralUtility::callUserFunction#61 // call_user_func_array#4017 // TYPO3\CMS\Core\ExtDirect\ExtDirectRouter-&gt;route# // TYPO3\CMS\Core\ExtDirect\ExtDirectRouter-&gt;processRpc#98 // call_user_func_array#149 // TYPO3\CMS\Backend\Tree\Pagetree\ExtdirectTreeCommands-&gt;moveNodeAfterDestination# // TYPO3\CMS\Backend\Tree\Pagetree\Commands::moveNode#212 // TYPO3\CMS\Backend\Tree\Pagetree\Commands::processTceCmdAndDataMap#147 // TYPO3\CMS\Core\DataHandling\DataHandler-&gt;process_cmdmap#206 // Tx_Flux_Backend_TceMain-&gt;processCmdmap_preProcess#2690 // Tx_Flux_Backend_TceMain-&gt;executeConfigurationProviderMethod#79 // TYPO3\CMS\Core\Database\DatabaseConnection-&gt;exec_UPDATEquery#180 // TYPO3\CMS\Core\Database\DatabaseConnection-&gt;debug#172
+</pre></div>
+  </div>
+  
+
+  <div id="change-142249" class="journal has-notes">
+    <h4><a href="40216.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-27" title="2012-11-27 02:28">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-142249-notes"><p>OK, so this are two bugs ... one in flux, but the second in core:</p>
+
+
+	<p>The ajax response should not contain the debug answers with HTML script tags.</p></div>
+  </div>
+  
+
+  <div id="change-142266" class="journal has-notes">
+    <h4><a href="40216.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-27" title="2012-11-27 04:18">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-142266-notes"><p>This can be closed.</p></div>
+  </div>
+  
+
+  <div id="change-142315" class="journal has-details">
+    <h4><a href="40216.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-27" title="2012-11-27 08:49">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-142528" class="journal has-details">
+    <h4><a href="40216.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-27" title="2012-11-27 21:57">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-40216-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/40216.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="40216.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/40216 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:27:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

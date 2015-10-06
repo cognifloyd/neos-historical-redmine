@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/4317 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:55:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #4317: Still Problems with SplObjectStorage duplicates - TYPO3.TYPO3CR - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/4317.atom" rel="alternate" title="TYPO3.TYPO3CR - Bug #4317: Still Problems with SplObjectStorage duplicates" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 current sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.TYPO3CR</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="level-1 current sorting-0">Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-form" class="level-2 sorting-0">TYPO3.Form</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-imagine" class="level-2 sorting-0">TYPO3.Imagine</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-media" class="level-2 sorting-0">TYPO3.Media</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="level-2 sorting-0">TYPO3.Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos-nodetypes" class="level-2 sorting-0">TYPO3.Neos.NodeTypes</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-party" class="level-2 sorting-0">TYPO3.Party</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-setup" class="level-2 sorting-0">TYPO3.Setup</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-sitekickstarter" class="level-2 sorting-0">TYPO3.SiteKickstarter</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-twitter-bootstrap" class="level-2 sorting-0">TYPO3.Twitter.Bootstrap</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr" class="level-2 current sorting-0">TYPO3.TYPO3CR</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-typoscript" class="level-2 sorting-0">TYPO3.TypoScript</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-coordination" class="level-1 sorting-0">Coordination Group</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-website-communication" class="level-1 sorting-0">Website and Communication</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?query_id=42" class="query">Issues for 0.5.0 alpha 2</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?query_id=64" class="query">Issues for 0.5.0 alpha 3</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2175">Tommy Seus</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-4317-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #4317</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Still Problems with SplObjectStorage duplicates</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/2175">Tommy Seus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/activity?from=2009-08-25" title="2009-08-25 16:17">almost 6 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/activity?from=2011-05-05" title="2011-05-05 17:14">about 4 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2009-08-25</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">FLOW3 Persistence</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>My Version is Revision r3094</p>
+
+
+	<p>There are still problems with the SplObjectStorage duplicates (Issue <a href="3819.html" class="issue status-7 priority-2 closed" title="Objects in SplObjectStorage are stored over and over again (Resolved)">#3819</a>).</p>
+
+
+	<p>I have attached my script. In addition, the blog model must be expanded.</p>
+
+
+	<p>Step1:<br />creating a Blog<br />creating a Post1<br />creating a Post2<br />add Post1 to Blog</p>
+
+
+	<p>Step2:<br />add Post2 to Blog</p>
+
+
+	<p>Step3<br />detach Post1 from Blog</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/1531/TestController.php" class="icon icon-attachment">TestController.php</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/1531/TestController.php"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+   - testController
+  <span class="size">(3.2 kB)</span>
+  
+  
+    <span class="author">Tommy Seus, 2009-08-25 16:17</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/1532/Blog.php" class="icon icon-attachment">Blog.php</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/1532/Blog.php"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+   - modified Blog Modell (detachPost)
+  <span class="size">(4.1 kB)</span>
+  
+  
+    <span class="author">Tommy Seus, 2009-08-25 16:17</span>
+  
+  </p>
+
+<p><a href="../attachments/download/1533/blogs.jpg" class="icon icon-attachment">blogs.jpg</a>  
+   - TYPO3CR
+  <span class="size">(17.8 kB)</span>
+  
+  
+    <span class="author">Tommy Seus, 2009-08-25 16:17</span>
+  
+  </p>
+
+<p><a href="../attachments/download/1534/revision.jpg" class="icon icon-attachment">revision.jpg</a>  
+  
+  <span class="size">(4.2 kB)</span>
+  
+  
+    <span class="author">Tommy Seus, 2009-08-25 16:17</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/1586/Backend.php" class="icon icon-attachment">Backend.php</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/1586/Backend.php"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+   - modified F3\TYPO3CR\FLOW3\Persistence\Backend
+  <span class="size">(3.2 kB)</span>
+  
+  
+    <span class="author">Tommy Seus, 2009-09-08 01:42</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/repository/revisions/86971cd1be7b3862870425d87ef0c8e8c43b0d07" title="Revision 86971cd1">Revision 86971cd1</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/activity?from=2009-10-15" title="2009-10-15 18:56">almost 6 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[+BUGFIX] TYPO3CR (FLOW3 Persistence): fixes to storing arrays and SplObjectStorage properties, fixes <a href="4317.html" class="issue status-7 priority-2 closed" title="Still Problems with SplObjectStorage duplicates (Resolved)">#4317</a>.<br />[~TASK] TYPO3CR (FLOW3 Persistence): some tweaks to DataMapper and storage search classes.</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-9453" class="journal has-notes has-details">
+    <h4><a href="4317.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2175">Tommy Seus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/activity?from=2009-09-08" title="2009-09-08 01:42">almost 6 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/1586/Backend.php">Backend.php</a><a href="../../external.html?link=https://forge.typo3.org/attachments/1586/Backend.php"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-9453-notes"><p>Hello, I tried to find a solution. In the initial state will always generate a ItemNode without checking to see if it already exists. My modification performs this check and this triggers the problem of duplicate entries when adding (ATTACH).</p>
+
+
+	<p>Removing (DETACH) of objects is more complicated. Here are 2 lists "compared". Once the new list, ahead of objects are removed. In the second list, the database objects are stored. If in the first list an item missing, this will be deleted from the second.</p>
+
+
+	<p>I hope this solution inspires you.</p></div>
+  </div>
+  
+
+  <div id="change-10377" class="journal has-details">
+    <h4><a href="4317.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/activity?from=2009-09-30" title="2009-09-30 17:59">almost 6 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>FLOW3 Persistence</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Karsten Dambekalns</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-10829" class="journal has-notes has-details">
+    <h4><a href="4317.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/activity?from=2009-10-15" title="2009-10-15 19:00">almost 6 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-10829-notes"><p>Applied in changeset r3328.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-4317-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/4317.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="4317.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/4317 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:55:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
