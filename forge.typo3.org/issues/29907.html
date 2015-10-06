@@ -1,0 +1,713 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/29907 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:58:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #29907: Redirect to /login instead of raising a &quot;Entity not found.&quot; exception if the userdata of an active session has been deleted - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/29907.atom" rel="alternate" title="TYPO3.Flow - Feature #29907: Redirect to /login instead of raising a &quot;Entity not found.&quot; exception if the userdata of an active session has been deleted" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/1295">Dominique Feyer</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-29907-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #29907</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Redirect to /login instead of raising a &quot;Entity not found.&quot; exception if the userdata of an active session has been deleted</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/9">Martin Brüggemann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-09-16" title="2011-09-16 19:30">almost 4 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-09-27" title="2013-09-27 01:05">almost 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2011-09-16</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Security</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1967">TYPO3 Flow Base Distribution - 2.1</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>If you are logged in into a secured FLOW3 project and delete the corresponding db user (for whatever reasons). There's an exception "Entity not found." raised instead - maybe caused by the invalid cookie data. It would be nicer, if the user would be redirected to the login page defined by "entryPoint:WebRedirect:uri:".</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/18736/Bildschirmfoto_2011-09-16_um_19.19.04.png" class="icon icon-attachment">Bildschirmfoto_2011-09-16_um_19.19.04.png</a>  
+  
+  <span class="size">(123.7 kB)</span>
+  
+  
+    <span class="author">Martin Brüggemann, 2011-09-16 19:30</span>
+  
+  </p>
+
+<p><a href="../attachments/download/23183/Bildschirmfoto_2013-01-19_um_12.43.01.png" class="icon icon-attachment">Bildschirmfoto_2013-01-19_um_12.43.01.png</a>  
+  
+  <span class="size">(76.5 kB)</span>
+  
+  
+    <span class="author">Martin Brüggemann, 2013-01-19 12:44</span>
+  
+  </p>
+
+<p><a href="../attachments/download/23532/Bild_04.03.13_um_11.36.jpg" class="icon icon-attachment">Bild_04.03.13_um_11.36.jpg</a>  
+  
+  <span class="size">(581.7 kB)</span>
+  
+  
+    <span class="author">Bastian Waidelich, 2013-03-04 11:37</span>
+  
+  </p>
+
+<p><a href="../attachments/download/23533/Bild_04.03.13_um_11.36.jpg" class="icon icon-attachment">Bild_04.03.13_um_11.36.jpg</a>  
+  
+  <span class="size">(581.7 kB)</span>
+  
+  
+    <span class="author">Bastian Waidelich, 2013-03-04 11:38</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-7654">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="37001" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="37001.html" class="issue status-7 priority-1 closed">Bug #37001</a>: Catch Exception from inactivityTimeout
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-05-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/29907/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/29907/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=29907&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/940f56d124705ba86d13a3ff0bfc48b406b0c42c" title="Revision 940f56d1">Revision 940f56d1</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 15:12">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Redirect instead of raising "Entity not found" exception</p>
+
+
+	<p>If you are logged in into a secured Flow project and delete the<br />corresponding db user (for whatever reasons) an exception "Entity not<br />found" is raised and not caught.</p>
+
+
+	<p>With this change the exception is caught and instead PolicyEnforcement<br />will throw an AuthenticationRequiredException, usually calling a<br />redirect to the configured login page.</p>
+
+
+	<p>Change-Id: I5ae0ae2c174314ceb21ae641cd4ef140ca82efb7<br />Resolves: <a href="29907.html" class="issue status-7 priority-1 closed" title="Redirect to /login instead of raising a &quot;Entity not found.&quot; exception if the userdata of an activ... (Resolved)">#29907</a><br />Releases: master, 2.0</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/7b1564bfa839be258fe2759491dba5db241d5e08" title="Revision 7b1564bf">Revision 7b1564bf</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-20" title="2013-03-20 10:52">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Redirect instead of raising "Entity not found" exception</p>
+
+
+	<p>If you are logged in into a secured Flow project and delete the<br />corresponding db user (for whatever reasons) an exception "Entity not<br />found" is raised and not caught.</p>
+
+
+	<p>With this change the exception is caught and instead PolicyEnforcement<br />will throw an AuthenticationRequiredException, usually calling a<br />redirect to the configured login page.</p>
+
+
+	<p>Change-Id: I5ae0ae2c174314ceb21ae641cd4ef140ca82efb7<br />Resolves: <a href="29907.html" class="issue status-7 priority-1 closed" title="Redirect to /login instead of raising a &quot;Entity not found.&quot; exception if the userdata of an activ... (Resolved)">#29907</a><br />Releases: master, 2.0</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-91550" class="journal has-details">
+    <h4><a href="29907.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-10-21" title="2011-10-21 13:25">almost 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>TYPO3 Flow Base Distribution</i> to <i>TYPO3.Flow</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-91552" class="journal has-details">
+    <h4><a href="29907.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-10-21" title="2011-10-21 13:26">almost 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Security</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-144669" class="journal has-notes has-details">
+    <h4><a href="29907.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-12-09" title="2012-12-09 21:49">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> changed from <i>Andreas Förthner</i> to <i>Karsten Dambekalns</i></li>
+      
+       <li><strong>Has patch</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-144669-notes"><p>Is this solved with <a href="37001.html" class="issue status-7 priority-1 closed" title="Catch Exception from inactivityTimeout (Resolved)">#37001</a> maybe?</p></div>
+  </div>
+  
+
+  <div id="change-148206" class="journal has-notes has-details">
+    <h4><a href="29907.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/9">Martin Brüggemann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-19" title="2013-01-19 12:44">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/23183/Bildschirmfoto_2013-01-19_um_12.43.01.png">Bildschirmfoto_2013-01-19_um_12.43.01.png</a> added</li>
+      
+       <li><strong>Priority</strong> changed from <i>Should have</i> to <i>Must have</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-148206-notes"><p>This is still a problem. If you are developing doctrine models and working with fixtures, you'll often have to reset the whole database. So please, please, please just redirect to the login-url and kill the session, if the user of the session does not exists in the DB anymore.  THIS IS A SHOWSTOPPER FOR BEGINNERS! :(</p>
+
+
+	<p><img src="../attachments/23183/Bildschirmfoto_2013-01-19_um_12.43.01.html" alt="" /></p></div>
+  </div>
+  
+
+  <div id="change-148527" class="journal has-details">
+    <h4><a href="29907.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-23" title="2013-01-23 21:07">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-148554" class="journal has-notes has-details">
+    <h4><a href="29907.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-24" title="2013-01-24 08:22">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-148554-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/17683">https://review.typo3.org/17683</a></p></div>
+  </div>
+  
+
+  <div id="change-148555" class="journal has-details">
+    <h4><a href="29907.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-24" title="2013-01-24 08:35">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>2.1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-149451" class="journal has-notes">
+    <h4><a href="29907.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 15:12">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149451-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/17683">https://review.typo3.org/17683</a></p></div>
+  </div>
+  
+
+  <div id="change-149455" class="journal has-notes has-details">
+    <h4><a href="29907.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-31" title="2013-01-31 15:36">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-149455-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/940f56d124705ba86d13a3ff0bfc48b406b0c42c" class="changeset" title="[BUGFIX] Redirect instead of raising &quot;Entity not found&quot; exception If you are logged in...">940f56d124705ba86d13a3ff0bfc48b406b0c42c</a>.</p></div>
+  </div>
+  
+
+  <div id="change-153234" class="journal has-notes has-details">
+    <h4><a href="29907.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-04" title="2013-03-04 11:37">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/23532/Bild_04.03.13_um_11.36.jpg">Bild_04.03.13_um_11.36.jpg</a> added</li>
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-153234-notes"><p>Mh, I still (or again?) get this exception if I log in, reset the db, run migrations and refresh the page (see attachment)</p></div>
+  </div>
+  
+
+  <div id="change-153235" class="journal has-notes has-details">
+    <h4><a href="29907.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-04" title="2013-03-04 11:38">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/23533/Bild_04.03.13_um_11.36.jpg">Bild_04.03.13_um_11.36.jpg</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-153235-notes"><p>Mh, I still (or again?) get this exception if I log in, reset the db, run migrations and refresh the page (see attachment)</p></div>
+  </div>
+  
+
+  <div id="change-153831" class="journal has-notes">
+    <h4><a href="29907.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-07" title="2013-03-07 17:07">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-153831-notes"><p>Ok, in my case the code that ends up in this exception is:<br /><pre>
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="keyword">protected</span> <span class="keyword">function</span> <span class="function">initializeAction</span>() {
+<span class="line-numbers"> 2</span>    <span class="local-variable">$activeTokens</span> = <span class="local-variable">$this</span>-&gt;securityContext-&gt;getAuthenticationTokens();
+<span class="line-numbers"> 3</span>    <span class="keyword">foreach</span> (<span class="local-variable">$activeTokens</span> <span class="keyword">as</span> <span class="local-variable">$token</span>) {
+<span class="line-numbers"> 4</span>        <span class="keyword">if</span> (<span class="local-variable">$token</span>-&gt;isAuthenticated()) {
+<span class="line-numbers"> 5</span>            <span class="local-variable">$this</span>-&gt;account = <span class="local-variable">$token</span>-&gt;getAccount();
+<span class="line-numbers"> 6</span>            <span class="local-variable">$this</span>-&gt;party = <span class="local-variable">$this</span>-&gt;account-&gt;getParty();
+<span class="line-numbers"> 7</span>        }
+<span class="line-numbers"> 8</span>    }
+<span class="line-numbers"> 9</span>}
+</span></code><br /></pre></p>
+
+
+	<p>When the account does not exist any more, <em>$token->isAuthenticated()</em> still returns TRUE if the token was loaded from the session.<br /><em>$token->getAccount()</em> is an instance of <em>TYPO3\Flow\Persistence\Doctrine\Proxies\</em>_CG__\TYPO3\Flow\Security\Account_ that throws the <em>\Doctrine\ORM\EntityNotFoundException</em> whenever it is accessed.<br />I worked around this as follows:<br /><pre>
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="keyword">protected</span> <span class="keyword">function</span> <span class="function">initializeAction</span>() {
+<span class="line-numbers"> 2</span>    <span class="local-variable">$activeTokens</span> = <span class="local-variable">$this</span>-&gt;securityContext-&gt;getAuthenticationTokens();
+<span class="line-numbers"> 3</span>    <span class="keyword">foreach</span> (<span class="local-variable">$activeTokens</span> <span class="keyword">as</span> <span class="local-variable">$token</span>) {
+<span class="line-numbers"> 4</span>        <span class="keyword">if</span> (<span class="local-variable">$token</span>-&gt;isAuthenticated()) {
+<span class="line-numbers"> 5</span>            <span class="local-variable">$this</span>-&gt;account = <span class="local-variable">$token</span>-&gt;getAccount();
+<span class="line-numbers"> 6</span>            <span class="keyword">try</span> {
+<span class="line-numbers"> 7</span>                <span class="local-variable">$this</span>-&gt;party = <span class="local-variable">$this</span>-&gt;account-&gt;getParty();
+<span class="line-numbers"> 8</span>            } <span class="keyword">catch</span> (\<span class="constant">Doctrine</span>\<span class="constant">ORM</span>\<span class="constant">EntityNotFoundException</span> <span class="local-variable">$exception</span>) {
+<span class="line-numbers"> 9</span>                <span class="local-variable">$token</span>-&gt;setAuthenticationStatus(\<span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Security</span>\<span class="constant">Authentication</span>\<span class="constant">TokenInterface</span>::<span class="constant">NO_CREDENTIALS_GIVEN</span>);
+<span class="line-numbers"><strong>10</strong></span>                <span class="local-variable">$this</span>-&gt;account = <span class="predefined-constant">NULL</span>;
+<span class="line-numbers">11</span>            }
+<span class="line-numbers">12</span>        }
+<span class="line-numbers">13</span>    }
+<span class="line-numbers">14</span>}
+</span></code><br /></pre></p>
+
+
+	<p>But this feels rather hacky..</p></div>
+  </div>
+  
+
+  <div id="change-155214" class="journal has-notes has-details">
+    <h4><a href="29907.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-20" title="2013-03-20 10:52">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-155214-notes"><p>Patch set 1 for branch <strong>2.0</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/19074">https://review.typo3.org/19074</a></p></div>
+  </div>
+  
+
+  <div id="change-155217" class="journal has-notes has-details">
+    <h4><a href="29907.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-03-20" title="2013-03-20 11:36">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-155217-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/7b1564bfa839be258fe2759491dba5db241d5e08" class="changeset" title="[BUGFIX] Redirect instead of raising &quot;Entity not found&quot; exception If you are logged in...">7b1564bfa839be258fe2759491dba5db241d5e08</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-29907-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/29907.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="29907.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/29907 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:58:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

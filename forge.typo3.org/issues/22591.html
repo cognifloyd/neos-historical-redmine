@@ -1,0 +1,583 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/22591 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:16:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #22591: JS and CSS merger don&#39;t work in BE - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/22591.atom" rel="alternate" title="Core - Bug #22591: JS and CSS merger don't work in BE" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-22591-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #22591</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>JS and CSS merger don&#39;t work in BE</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-05" title="2010-05-05 13:31">about 5 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-06" title="2010-05-06 22:31">about 5 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2010-05-05</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.4</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.2</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>After activate FE-compression and BE-compression at the Installer, the FE Works fine. The BE dount work. No CSS File can read.</p>
+
+
+	<p>In BE:</p>
+
+
+	<p>&lt;link rel="stylesheet" type="text/css" href="../typo3temp/compressor/ext-all-notheme-b6c6e6aeafbd762fe76348fe10df8add.css.gzip?1272914439" media="all" /&gt;<br />&lt;link rel="stylesheet" type="text/css" href="../typo3temp/compressor/xtheme-t3skin-e1fc60ee0adbb7fbf7aa707e2684c406.css.gzip?1272914439" media="all" /&gt;</p>
+
+
+	<p>&lt;link rel="stylesheet" type="text/css" href="../typo3temp/compressor/merged-beb93ddc36a5a327a06ba99fa0b06f84-04c7698886384e4e002faecde88eb3b1.css.gzip?1272914416" media="all" /&gt;<br />&lt;link rel="stylesheet" type="text/css" href="../typo3temp/compressor/opendocs-c46e938514542ed3ce565e38eb8e6559.css.gzip?1272914439" media="all" /&gt;<br />&lt;style type="text/css"&gt;<br />/*&lt;![CDATA[*/<br />&lt;!-- <br />/*inDocStyles*/</p>
+
+
+	<p>/*###POSTCSSMARKER###*/<br />--><br />/*]]>*/<br />&lt;/style&gt;</p>
+
+
+	<p>&lt;script src="../typo3temp/compressor/prototype-c5d2c89fd65c61d2e760fb692f6b36e2.js.gzip" type="text/javascript"&gt;&lt;/script&gt;<br />&lt;script src="../typo3temp/compressor/effects-8de1688ef9c40f439491789a4bd0e101.js.gzip" type="text/javascript"&gt;&lt;/script&gt;<br />&lt;script src="../typo3temp/compressor/builder-e53f9438cd8b4b09b93ada10715be4be.js.gzip" type="text/javascript"&gt;&lt;/script&gt;<br />&lt;script src="../typo3temp/compressor/effects-8de1688ef9c40f439491789a4bd0e101.js.gzip" type="text/javascript"&gt;&lt;/script&gt;<br />&lt;script src="../typo3temp/compressor/dragdrop-a1aceafe4baad8ec27b12013ff7c77b6.js.gzip" type="text/javascript"&gt;&lt;/script&gt;</p>
+
+
+	<p>&lt;script src="../typo3temp/compressor/controls-524b02dbb0f9dc9393bf7f455c22ff14.js.gzip" type="text/javascript"&gt;&lt;/script&gt;<br />&lt;script src="../typo3temp/compressor/scriptaculous-1571a1f334913b40e68be86ea98db0b1.js.gzip" type="text/javascript"&gt;&lt;/script&gt;<br />&lt;script src="../typo3temp/compressor/ext-base-42c81d0d026713f9740240954c9ca4a9.js.gzip" type="text/javascript"&gt;&lt;/script&gt;<br />&lt;script src="../typo3temp/compressor/ext-all-ea2d1fdaf391d47f9b61c8d237e9af5d.js.gzip" type="text/javascript"&gt;&lt;/script&gt;<br />&lt;script src="../typo3temp/compressor/ext-lang-de-e455f650bf9fe31d83c57ea161f45d75.js.gzip" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;<br />&lt;script type="text/javascript"&gt;</p>
+
+
+	<p>There is no mergin, and the .gzip do not work</p>
+
+
+	<p>In FE:</p>
+
+
+	<p>&lt;link rel="stylesheet" type="text/css" href="typo3temp/stylesheet_00f8951780.css?1273057423" media="all"&gt;</p>
+
+
+	<p>&lt;script src="typo3temp/javascript_93077bb238.js?1244666259" type="text/javascript"&gt;&lt;/script&gt;<br />&lt;script type="text/javascript"&gt;<br />/*&lt;![CDATA[*/<br />&lt;!-- <br />/*TS_inlineJSint*/</p>
+
+
+	<p>// --><br />/*]]>*/<br />&lt;/script&gt;</p>
+
+
+	<p>(issue imported from #M14310)</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-3071">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="22546" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="22546.html" class="issue status-9 priority-2 closed">Bug #22546</a>: Add a compressor/concatenator for CSS and JS to TYPO3
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2010-04-29</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/22591/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/22591/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=22591&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-56438" class="journal has-notes">
+    <h4><a href="22591.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-05" title="2010-05-05 13:53">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-56438-notes"><p>Did you change the .htaccess according to news.txt and enshured that your webserver will process the entries?</p></div>
+  </div>
+  
+
+  <div id="change-56439" class="journal has-notes">
+    <h4><a href="22591.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-05" title="2010-05-05 14:34">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-56439-notes"><p>Yes,</p>
+
+
+	<p>my localconf.php is now:</p>
+
+
+	<p>$TYPO3_CONF_VARS['FE']['compressionLevel'] = '5';  <br />$TYPO3_CONF_VARS['BE']['compressionLevel'] = '5';   <br />$TYPO3_CONF_VARS['BE']['versionNumberInFilename'] = '1';</p>
+
+
+	<p>and the .htaccess</p>
+
+
+	<ol>
+	<li>Begin: Rewrite stuff ###</li>
+	</ol>
+
+
+	<ol>
+	<li>Enable URL rewriting<br />RewriteEngine On</li>
+	</ol>
+
+
+	<p>RewriteCond %{REQUEST_FILENAME} !-f<br />RewriteCond %{REQUEST_FILENAME} !-d<br />RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip)$ $1.$3 [L]</p>
+
+
+	<ol>
+	<li>If you use the RealUrl extension, then you'll have to enable the next line.</li>
+		<li>You will have to change this path if your TYPO3 installation is located</li>
+		<li>in a subdirectory of the website root.
+#</li>
+		<li>If you place this in httpd.conf, you cannot use this directive in any case!<br />#RewriteBase /</li>
+	</ol>
+
+
+	<ol>
+	<li>Stop rewrite processing if we are in the typo3/ directory</li>
+		<li>For httpd.conf, use this line instead of the next one:</li>
+		<li>RewriteRule ^/TYPO3root/(typo3/|t3lib/|tslib/|fileadmin/|typo3conf/|typo3temp/|uploads/|showpic\.php|favicon\.ico) - [L]<br />RewriteRule ^(typo3/|t3lib/|tslib/|fileadmin/|typo3conf/|typo3temp/|uploads/|showpic\.php|favicon\.ico) - [L]</li>
+	</ol>
+
+
+	<ol>
+	<li>Redirect <a class="external" href="../../external.html?link=http://mysite/typo3">http://mysite/typo3</a> to <a class="external" href="../../external.html?link=http://mysite/typo3/index_re.php">http://mysite/typo3/index_re.php</a></li>
+		<li>and stop the rewrite processing</li>
+		<li>For httpd.conf, use this line instead of the next one:</li>
+		<li>RewriteRule ^/TYPO3root/typo3$ /TYPO3root/typo3/index.php [L]<br />RewriteRule ^typo3$ typo3/index_re.php [L]</li>
+	</ol>
+
+
+	<p>In FE the merging works fine.</p></div>
+  </div>
+  
+
+  <div id="change-56440" class="journal has-notes">
+    <h4><a href="22591.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/114">Lars Houmark</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-05" title="2010-05-05 22:14">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-56440-notes"><p>You seem to be missing the .htaccess for the compression. Please read the NEWS.txt file regarding the needed FilesMatch rules, which also needs to be in the top of the .htaccess file.</p>
+
+
+	<p>And be sure that your server is capable of running compressed files, meaning mod_deflate and mod_mime needs to be installed.</p></div>
+  </div>
+  
+
+  <div id="change-56441" class="journal has-notes">
+    <h4><a href="22591.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-05" title="2010-05-05 23:11">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-56441-notes"><p>Hi Christian</p>
+
+
+	<p>this is the important part, you are missing:<br /><pre>
+&lt;FilesMatch "\.js\.gzip$"&gt;
+  AddType "text/javascript" .gzip
+&lt;/FilesMatch&gt;
+&lt;FilesMatch "\.css\.gzip$"&gt;
+  AddType "text/css" .gzip
+&lt;/FilesMatch&gt;
+AddEncoding gzip .gzip
+</pre></p>
+
+
+	<p>This can be seen in misc/advanced.htaccess and is mentioned in NEWS.txt (as already said...)</p></div>
+  </div>
+  
+
+  <div id="change-56442" class="journal has-notes">
+    <h4><a href="22591.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-05" title="2010-05-05 23:36">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-56442-notes"><p>Sorry, i have only 5 Lines in my .htaccess file in the root of the Website.</p>
+
+
+	<p>###<br />RewriteEngine On<br />RewriteCond %{REQUEST_FILENAME} !-f<br />RewriteCond %{REQUEST_FILENAME} !-d<br />RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip)$ $1.$3 [L]<br />RewriteRule ^(typo3/|t3lib/|tslib/|fileadmin/|typo3conf/|typo3temp/|uploads/|showpic\.php|favicon\.ico) - [L]
+###</p>
+
+
+	<p>Mode mod_deflate and mod_mime are installed. <br />(look at <a class="external" href="../../external.html?link=http://typo34.leicht.info/info.php">http://typo34.leicht.info/info.php</a>)</p>
+
+
+	<p>In the FE css of csc and tt_news were added together.<br />(look at <a class="external" href="../../external.html?link=http://typo34.leicht.info/">http://typo34.leicht.info</a>)</p>
+
+
+	<p>in BE css is not merged but compressed an .gzip is added<br />(look at <a class="external" href="../../external.html?link=http://typo34.leicht.info/typo3">http://typo34.leicht.info/typo3</a>)</p></div>
+  </div>
+  
+
+  <div id="change-56443" class="journal has-notes">
+    <h4><a href="22591.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-05" title="2010-05-05 23:44">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-56443-notes"><p>Hello Steffen,</p>
+
+
+	<p>this prevent the gzip errors, but do not merge the css an js in BE</p>
+
+
+	<p>Test the Backend : <br /><a class="external" href="../../external.html?link=http://typo34.leicht.info/typo3">http://typo34.leicht.info/typo3</a><br />user:test  <br />passwd:test</p></div>
+  </div>
+  
+
+  <div id="change-56444" class="journal has-notes">
+    <h4><a href="22591.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-06" title="2010-05-06 22:25">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-56444-notes"><p>Hi Christian,</p>
+
+
+	<p>you should think about consulting mailinglists, when having such problems. It's easier, to find a solution there (especially when notification mails in the BT don't work, like these days) :-(<br />... and you should post (admin!) credentials to your installation in public!</p>
+
+
+	<p>I will have a look at your installation right now.</p>
+
+
+	<p>Steffen</p></div>
+  </div>
+  
+
+  <div id="change-56445" class="journal has-notes">
+    <h4><a href="22591.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-06" title="2010-05-06 22:31">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-56445-notes"><p>Hi Christian,</p>
+
+
+	<p>the CSS, which can be merged, is merged (the 3rd CSS file). JS is currently not merged at all, because of time limits on the one hand and a bit more risk than with CSS. Maybe this comes with beta3, maybe not..</p>
+
+
+	<p>The problem is that you can't always merge <strong>all</strong> currently needed CSS/JS files together, as they differ between the different frames and modules. Doing so would result in numerous (big) merged files, one for each module of the backend. So don't expect to have <strong>one</strong> CSS and <strong>one</strong> JS file.</p>
+
+
+	<p>Steffen</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-22591-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/22591.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="22591.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/22591 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:16:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

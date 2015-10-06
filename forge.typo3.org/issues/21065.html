@@ -1,0 +1,1273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/21065 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:08:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #21065: Sporadic random Backend Logoffs - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/21065.atom" rel="alternate" title="Core - Bug #21065: Sporadic random Backend Logoffs" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (7)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/489">Michael Klapper</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1175">Andreas Dörler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4187">Uwe Schmelzer</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-21065-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #21065</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Sporadic random Backend Logoffs</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-09-16" title="2009-09-16 09:20">almost 6 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-07-02" title="2010-07-02 11:17">about 5 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2009-09-16</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1094">4.3.1</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.1</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.2</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I have been informed by one of our customers, that he is being logged off shortly after login, or while trying to edit content elements on a page.</p>
+
+
+	<p>none</p>
+
+
+	<p>none<br />(issue imported from #M11968)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/12222/ie8-compatibility.png" class="icon icon-attachment">ie8-compatibility.png</a>  
+  
+  <span class="size">(9.2 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-10-28 22:40</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/12223/ie8-force-strict.diff" class="icon icon-attachment">ie8-force-strict.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/12223/ie8-force-strict.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(578 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-10-28 23:00</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/12224/template.php.ie8_backend_logoff.diff" class="icon icon-attachment">template.php.ie8_backend_logoff.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/12224/template.php.ie8_backend_logoff.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(188 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-11-03 14:49</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/12225/ie8-force-strict-42.diff" class="icon icon-attachment">ie8-force-strict-42.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/12225/ie8-force-strict-42.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(463 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-11-09 17:52</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/12226/11968.diff" class="icon icon-attachment">11968.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/12226/11968.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(973 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2010-01-08 12:42</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/12227/11968_4-2.diff" class="icon icon-attachment">11968_4-2.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/12227/11968_4-2.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(1.2 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2010-01-08 16:22</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-2765">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="20757" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="20757.html" class="issue status-7 priority-2 closed">Bug #20757</a>: Session Timeout after BE Login IE8
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2009-07-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/21065/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/21065/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=21065&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-53176" class="journal has-notes">
+    <h4><a href="21065.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-09-16" title="2009-09-16 09:28">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53176-notes"><p>Could be related to / duplicate of <a href="20757.html" class="issue status-7 priority-2 closed" title="Session Timeout after BE Login IE8 (Resolved)">#20757</a> - maybe you have the chance to reproduce?</p></div>
+  </div>
+  
+
+  <div id="change-53177" class="journal has-notes">
+    <h4><a href="21065.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-09-21" title="2009-09-21 16:53">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53177-notes"><p>changing the browser compatibility version did not work for the customer.</p>
+
+
+	<p>we are verifying their network and pc setup currently, ill keep you updated on the state.</p></div>
+  </div>
+  
+
+  <div id="change-53178" class="journal has-notes">
+    <h4><a href="21065.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-09-22" title="2009-09-22 12:09">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53178-notes"><p>Is he using a dial-up connection with a short timeout?<br />T-Com router have a senseless short connection timeout time of a few minutes.<br />Especially this sounds reasonable for "or while trying to edit content elements on a page.", if he needs 10min to write his text or grabs a coffee in between.</p></div>
+  </div>
+  
+
+  <div id="change-53179" class="journal has-notes">
+    <h4><a href="21065.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-09-22" title="2009-09-22 12:39">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53179-notes"><p>he is on a "stand-line", its a bigger company...</p></div>
+  </div>
+  
+
+  <div id="change-53180" class="journal has-notes">
+    <h4><a href="21065.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-01" title="2009-10-01 19:01">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53180-notes"><p>Then probably the company goes out through multiple IPs (proxy) and the backend is fixed for a session on a single IP. Analyse your Webserver logs if you see the same session coming from two different IPs, it is not a bug, but a setting you can make:<br />$TYPO3_CONF_VARS['BE']['lockIP'] = '3';</p></div>
+  </div>
+  
+
+  <div id="change-53181" class="journal has-notes">
+    <h4><a href="21065.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-02" title="2009-10-02 12:07">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53181-notes"><p>Sorry to say, but our customer said, that the Setting of Ernesto Baschny isnt helping either.</p></div>
+  </div>
+  
+
+  <div id="change-53182" class="journal has-notes">
+    <h4><a href="21065.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-02" title="2009-10-02 13:12">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53182-notes"><p>command back, the fix from ernesto could be working, the point is, the customer had forgotten to logout/login before answering.</p>
+
+
+	<p>we will see if that continues to work.</p></div>
+  </div>
+  
+
+  <div id="change-53183" class="journal has-notes">
+    <h4><a href="21065.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-05" title="2009-10-05 12:06">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53183-notes"><p>nope, still no go, the customer still has the problem.</p></div>
+  </div>
+  
+
+  <div id="change-53184" class="journal has-notes">
+    <h4><a href="21065.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-07" title="2009-10-07 12:05">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53184-notes"><p>additional information: the problem seems to be internet explorer 8 specific.</p></div>
+  </div>
+  
+
+  <div id="change-53185" class="journal has-notes">
+    <h4><a href="21065.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-28" title="2009-10-28 22:34">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53185-notes"><p>I had two clients in my last training, which used IE8 and were sometimes thrown out of backend. We added the site to the trusted sites and think then only one was thrown out once.</p>
+
+
+	<p>I just tried IE8 and got quite quick thrown out, with the hint that IE switched to compatibility mode.. but as I'm now in this, it shouldn't throw me out again (question: why switches IE8 to compatibility mode??).</p>
+
+
+	<p>I'll try to use IE8 the next days to test it a bit.</p></div>
+  </div>
+  
+
+  <div id="change-53186" class="journal has-notes">
+    <h4><a href="21065.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-28" title="2009-10-28 22:40">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53186-notes"><p>I tested some minutes with IE8 and couldn't reproduce that.</p>
+
+
+	<p>I was only "thrown out" of the backend as soon as I clicked on that "compatibility mode" icon that is being displayed besides the address bar. Maybe people are just hitting this button thinking that it will reload the page? The reload button is just on side of that. See screenshot.</p>
+
+
+	<p>Why the "compatibility button" resets the session I don't know, but you might try to simply tell people not to hit that button?</p></div>
+  </div>
+  
+
+  <div id="change-53187" class="journal has-notes">
+    <h4><a href="21065.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-28" title="2009-10-28 22:43">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53187-notes"><p>No, they for sure didn't hit that button.</p>
+
+
+	<p>I always get switched to Comp-mode, as soon as I open the page properties using the click-menu in the page tree.</p>
+
+
+	<p>I think it's a new session b/c a IE7 is loaded internally (which seems not to share the session data).</p>
+
+
+	<p>I found no way to get an error log shown and the developer tools weren't modernized since ages. Anybody an idea, how to get information, why IE switches?</p></div>
+  </div>
+  
+
+  <div id="change-53188" class="journal has-notes">
+    <h4><a href="21065.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-28" title="2009-10-28 23:00">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53188-notes"><p>It has been documented on how to get rid of the "compatibility switch" on a website. Read the full blown explanation and history of it here: <a class="external" href="../../external.html?link=http://www.alistapart.com/articles/beyonddoctype/">http://www.alistapart.com/articles/beyonddoctype/</a></p>
+
+
+	<p>To sum up, if we add this header:<br />&lt;meta http-equiv="X-UA-Compatible" content="IE=8" /&gt;</p>
+
+
+	<p>we are saying "IE8 in standards mode please" and then no switch is presented to the user anymore. See attached patch which adds this and try it out.</p></div>
+  </div>
+  
+
+  <div id="change-53189" class="journal has-notes">
+    <h4><a href="21065.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-28" title="2009-10-28 23:03">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53189-notes"><p>Okay, will try it after tomorrows exam and appropriate party :)</p>
+
+
+	<p>I think then I should at least get error messages, what IE doesn't like.</p></div>
+  </div>
+  
+
+  <div id="change-53190" class="journal has-notes">
+    <h4><a href="21065.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-28" title="2009-10-28 23:20">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53190-notes"><p>IE8 displays that buttoon on every page that is presenting itself in standards mode and has no meta-tag. This is not an error message, but the intended behaviour (allowing the user to switch the mode when the page author hasn't really specifying the target browser).</p>
+
+
+	<p>If you are not used to see this toolbar icon it is because most major sites either already have this meta tag "X-UA-Compatible" in their headers (facebook, web.de, spiegel.de etc) or they have no indication of wanting standards mode (e.g. invalid xhtml, no DOCTYPE, etc).</p>
+
+
+	<p>Since TYPO3 presents itself as "standards valid xhtml" but doesn't say which IE version it targets, that IE7-compatibility button is shown.</p>
+
+
+	<p>Adding the meta-tag will solve the problem.</p>
+
+
+	<p>If your Backend is switching back and forth the IE8 + IE7-mode, it might come from extensions that provide invalid markup or something that makes IE switch a sub-frame into quirck mode. That is just an assumption, don't know if this is really the problem.</p></div>
+  </div>
+  
+
+  <div id="change-53191" class="journal has-notes">
+    <h4><a href="21065.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-28" title="2009-10-28 23:22">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53191-notes"><p>And another note about this, just found this piece of information, which might explain why setting the TYPO3 backend in the "trusted" zone alleviates the problem:</p>
+
+
+	<p>"A large number of line-of-business websites are Internet Explorer 7 capable today. In order to preserve compatibility, Internet Explorer 8 ships with smart defaults based on zone evaluation. In the default state, all sites on the public internet display in Internet Explorer 8 Standards mode (Compatibility View off) and all intranet websites display in Internet Explorer 7 Standards mode (Compatibility View on). "</p>
+
+
+	<p>from <a class="external" href="../../external.html?link=http://blogs.msdn.com/ie/archive/2008/08/27/introducing-compatibility-view.aspx">http://blogs.msdn.com/ie/archive/2008/08/27/introducing-compatibility-view.aspx</a></p></div>
+  </div>
+  
+
+  <div id="change-53192" class="journal has-notes">
+    <h4><a href="21065.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-10-28" title="2009-10-28 23:23">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53192-notes"><p>No, has nothing to do with extensions. I only opened Backend and a TCEform.</p>
+
+
+	<p>There should be a reason, why it falls back to IE7, I hope this triggers an error message, if we state that it shouldn't fall back.</p>
+
+
+	<p>Will try it locally soon...</p></div>
+  </div>
+  
+
+  <div id="change-53193" class="journal has-notes">
+    <h4><a href="21065.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-03" title="2009-11-03 14:27">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53193-notes"><p>thank you very much for checking this up.</p>
+
+
+	<p>adding the new meta tag indeed fixed the problem for the customer it seems.</p>
+
+
+	<p>the patch of course is not for the current 4.1, i think this is 4.2 code, however, i put in the code myself by hand, and the customer has not yet been logged off.</p></div>
+  </div>
+  
+
+  <div id="change-53194" class="journal has-notes">
+    <h4><a href="21065.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-03" title="2009-11-03 14:29">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53194-notes"><p>Yes, I had only a few tests but got not logged out.<br />Although I'm very unhappy with adding such browser-specific bullshit, I'd say it would avoid headache of several TYPO3 admins.</p></div>
+  </div>
+  
+
+  <div id="change-53195" class="journal has-notes">
+    <h4><a href="21065.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-03" title="2009-11-03 14:49">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53195-notes"><p>added 4.1.13 patch.</p></div>
+  </div>
+  
+
+  <div id="change-53196" class="journal has-notes">
+    <h4><a href="21065.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-03" title="2009-11-03 14:55">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53196-notes"><p>As from my observation, I can confirm that X-UA-Compatible meta tag solves a lot (all?) of the problems for logins getting invalid... so a +1 for introducing this for the moment (hopefully IE >= 9 won't choke on this one).</p>
+
+
+	<p>Maybe it would be a good idea to have some extra config option for the frontend (ie tslib_pagegen) as well, since as for the moment the only thing that works without hacking the core is to set<br />config.headerComment (<br />--><br />&lt;meta http-equiv="X-UA-Compatible" content="IE=8" /&gt;<br />&lt;!--<br />)<br />since IE8 expects the meta tag at the very beginning of the page.<br />But this is another topic of course.</p></div>
+  </div>
+  
+
+  <div id="change-53197" class="journal has-notes">
+    <h4><a href="21065.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-03" title="2009-11-03 15:35">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53197-notes"><p>ok, this is getting weird.</p>
+
+
+	<p>user confirms the bugfix didnt work.</p>
+
+
+	<p>he has been logged of 2 times within the last 3 minutes.</p></div>
+  </div>
+  
+
+  <div id="change-53198" class="journal has-notes">
+    <h4><a href="21065.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-03" title="2009-11-03 16:15">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53198-notes"><p>This confirms my experience that IE tries it first with "standard" mode and then falls back to Compatibility mode. This causes the logout.<br />Afterwards IE never switched back to the IE8 mode but stays with compatibility mode.</p></div>
+  </div>
+  
+
+  <div id="change-53199" class="journal has-notes">
+    <h4><a href="21065.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-04" title="2009-11-04 13:02">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53199-notes"><p>i have now added a global setting, that might fix this for now to my htaccess</p>
+
+
+	<p>#enable ie compatibility mode<br />Header set X-UA-Compatible "IE=EmulateIE7"</p>
+
+
+	<p>no information on that one yet from the customer, so we will see...</p></div>
+  </div>
+  
+
+  <div id="change-53200" class="journal has-notes">
+    <h4><a href="21065.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-04" title="2009-11-04 14:39">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53200-notes"><p>oliver so this fixed the problem or not? In note 31924 you said the bugfix "didnt work".</p></div>
+  </div>
+  
+
+  <div id="change-53201" class="journal has-notes">
+    <h4><a href="21065.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-04" title="2009-11-04 15:14">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53201-notes"><p>the bug is not fixed yet.</p>
+
+
+	<p>the user has not confirmed me that the change solves his problem, currently i am in wait state, as soon as i know more, i will inform you.</p>
+
+
+	<p>on a side note, adding the htaccess information seems to break other parts of the homepage, namely kj_imagelightbox</p></div>
+  </div>
+  
+
+  <div id="change-53202" class="journal has-notes">
+    <h4><a href="21065.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-04" title="2009-11-04 15:16">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53202-notes"><p>Why don't you set the compatibility mode to IE=8? TYPO3 shouldn't cause problems with this.</p></div>
+  </div>
+  
+
+  <div id="change-53203" class="journal has-notes">
+    <h4><a href="21065.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-04" title="2009-11-04 15:21">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53203-notes"><p>setting compatibility mode in ie8 worked for the backend, but if he (the customer) sets that, lightbox in frontend causes javascript errors (browserhangs, debugger wants to open...)</p>
+
+
+	<p>the idea behind setting the htaccess value was, that customer doesnt have to change things in his/her ie8, and the page itself decides.</p>
+
+
+	<p>the customer is not the kind of person, that knows howto use a webbrowser.</p></div>
+  </div>
+  
+
+  <div id="change-53204" class="journal has-notes">
+    <h4><a href="21065.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1238">oliver leitner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-04" title="2009-11-04 16:02">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53204-notes"><p>command back, the ie8 compatibility fix seems to work.<br />the lightbox isnt broken either, customer usage error...</p>
+
+
+	<p>the thing seems to work in general.</p></div>
+  </div>
+  
+
+  <div id="change-53205" class="journal has-notes">
+    <h4><a href="21065.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:10">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53205-notes"><p>logouts do happen in IE8 with current 4.3 trunk as well</p>
+
+
+	<p>i.e After logging in a click on an click menu icon in the page tree and then on "edit" lead to a logout<br />After logging in a second time the same procedure worked without logout<br />Seems there is a problem with session handling between different URLs in frames or something like that.</p></div>
+  </div>
+  
+
+  <div id="change-53206" class="journal has-notes">
+    <h4><a href="21065.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:12">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53206-notes"><p>Please read my comments above. This is because it first tries the IE8 mode and then falls back to IE7. I had the exactly same test procedure.</p>
+
+
+	<p>Please try to add<br />Header set X-UA-Compatible "IE=8" <br />to your .htaccess file</p></div>
+  </div>
+  
+
+  <div id="change-53207" class="journal has-notes">
+    <h4><a href="21065.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:13">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53207-notes"><p>(of course, this doesn't explain, WHY it falls back to compatibility mode)</p></div>
+  </div>
+  
+
+  <div id="change-53208" class="journal has-notes">
+    <h4><a href="21065.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:14">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53208-notes"><p>Maybe better test the ie8-force-strict.diff patch, which is what we would need to add to the core instead of a .htaccess switch which might affect much more than just the TYPO3 backend.</p>
+
+
+	<p>@JoH, could you test it, please? I couldn't reproduce it, yet.. :(</p></div>
+  </div>
+  
+
+  <div id="change-53209" class="journal has-notes">
+    <h4><a href="21065.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:16">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53209-notes"><p>Thanks for the hint, Ernesto! Didn't see the new patch. Just knew that the old one was not that nice. Will try it, too.</p>
+
+
+	<p>Edit: I see, the new patch is the bad one :-[</p></div>
+  </div>
+  
+
+  <div id="change-53210" class="journal has-notes">
+    <h4><a href="21065.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:22">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53210-notes"><p>Steffen, could you be more "precise"? What is bad about this patch?</p>
+
+
+	<p>I cannot really follow your arguments as I am not sure where you are guessing, proposing a solution that might work, or provide a working solution. Do you know how to solve the problem already?</p></div>
+  </div>
+  
+
+  <div id="change-53211" class="journal has-notes">
+    <h4><a href="21065.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:24">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53211-notes"><p>What I can say is that with this patch the "compatibility switch button" is gone unter IE8 and TYPO3 backend. If this avois the logoff problem or is just of cosmetical nature, either way I think it is "good", as the compatibility switch button in IE8 being present in TYPO3 backend is already ugly.</p></div>
+  </div>
+  
+
+  <div id="change-53212" class="journal has-notes">
+    <h4><a href="21065.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:35">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53212-notes"><p>Sorry, I'm a bit harried today...</p>
+
+
+	<p>I remembered template.php.ie8_backend_logoff.diff, which is not a unified diff.</p>
+
+
+	<p>I can't reproduce the frequent logouts as they appear for oliver's client: As Jo, I login, do sth. and then get logged out, because IE switches to compatibility mode (=IE7).<br />IE7/8 seem to not share their cookie information, so the session is ended and user logged out.</p>
+
+
+	<p>If I force to use IE8-mode, everything worked for me. I hoped to find out, WHY IE switches, but couldn't find anything (thought of a JS error.. but nothing). So it seems to stay a mistery.</p>
+
+
+	<p>As IE8 mode seems not to have any problems with TYPO3 BE, I also think we should add the meta tag to TYPO3.</p>
+
+
+	<p>Of course, my advise to add the line to .htaccess was ment for testing purposes (and could also be added typo3/.htaccess :-P).</p>
+
+
+	<p>As you provided a patch for 4.3, I'd appreciate to have this and a 4.2 compatible one in core list.</p>
+
+
+	<p>Hope you understand my weird notions now :)</p></div>
+  </div>
+  
+
+  <div id="change-53213" class="journal has-notes">
+    <h4><a href="21065.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:42">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53213-notes"><p>The problem is that these logouts really happened randomly, so it is not easy to reproduce them with or without an active compatibility mode.</p>
+
+
+	<p>The only thing I can confirm is, that switching the mode manually will log you out immediately.</p>
+
+
+	<p>Adding a META tag could break stuff in other versions of IE though.</p></div>
+  </div>
+  
+
+  <div id="change-53214" class="journal has-notes">
+    <h4><a href="21065.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:52">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53214-notes"><p>@JoH, "could break" what do you mean exactly? Previous version of IE didn't care (didn't even know) about this meta tag, future versions of IE will know that we aimed IE8 and act acordingly. So I see no problem whatsoever of backwards compatibility issues with this meta tag (which is why it was introduced in the first place).</p>
+
+
+	<p>If you run your system with my mentioned patch and it doesn't logout, it might be the solution and we should / could /must also apply this to TYPO3 v4.2 and v4.1.</p>
+
+
+	<p>@Steffen, thanks for explaining. still you haven't said if you think ie8-force-strict.diff "bad" or "good". It is unified, and yes, it is for trunk only (because it is still unproven that this is really related to the "logoff" problem). Attached is now also a patch for 4.2.</p></div>
+  </div>
+  
+
+  <div id="change-53215" class="journal has-notes">
+    <h4><a href="21065.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:55">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53215-notes"><p>Now I got one I was able to reproduce:</p>
+
+
+	<p>1. Login without activated compatibility mode<br />2. Go to Extension Manager<br />3. Switch to "Import Extensions" <br />3.a) If the Extension Manager already shows "Import Extensions" switch to "Install Extensions" and back to "Import Extensions"</p>
+
+
+	<p>This will always trigger the compatibility mode and logout immediately.</p></div>
+  </div>
+  
+
+  <div id="change-53216" class="journal has-notes">
+    <h4><a href="21065.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 17:58">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53216-notes"><p>Well - even this one seems to be randomly working: Now i's the other way around and it kicks me when switching to "Install Extension"</p></div>
+  </div>
+  
+
+  <div id="change-53217" class="journal has-notes">
+    <h4><a href="21065.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 18:00">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53217-notes"><p>@JoH, not reproduceable here with 4.2.10.</p>
+
+
+	<p>I've had one "logoff" already but also cannot say what exactly was done (just switching from Page to List view as far as I remember). Very difficult to spot!</p>
+
+
+	<p>Maybe you could find something out if you really got it reproduceable on your system. Maybe try the ie-force-strict-42.diff patch to see if it helps?</p></div>
+  </div>
+  
+
+  <div id="change-53219" class="journal has-notes">
+    <h4><a href="21065.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 18:04">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53219-notes"><p>I am talking about 4.3beta3 here not 4.2 :-)</p></div>
+  </div>
+  
+
+  <div id="change-53218" class="journal has-notes">
+    <h4><a href="21065.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 18:09">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53218-notes"><p>the error is reproducable here, an the interesting thing about it is, that the site is added to the list of sites to be shown in compatibility mode as well. Which will lead to the site being shown in compatibility mode automatically at the next visit.</p></div>
+  </div>
+  
+
+  <div id="change-53220" class="journal has-notes">
+    <h4><a href="21065.html#note-45" class="journal-link">#45</a>
+    
+    <a name="note-45"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 18:09">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53220-notes"><p>@Ernesto<br />I call it "bad" because i think the way it is done, is bad. I haven't tried it, as I didn't know, to which version it applies.</p>
+
+
+	<p>@Jo<br />Can you reproduce the problem with the patch applied? I think it doesn't switch, if the header/meta is present and so it should work.</p>
+
+
+	<p>Also it can't break any older version. For newer versions, the setting has to be adjusted. Back like in times of browser switches. Thanks M$.</p></div>
+  </div>
+  
+
+  <div id="change-53221" class="journal has-notes">
+    <h4><a href="21065.html#note-46" class="journal-link">#46</a>
+    
+    <a name="note-46"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 18:10">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53221-notes"><p>I guess the bad guy is this one:</p>
+
+
+	<p>onchange="jumpToUrl('index.php?&#38;id=0&#38;SET[function]='+this.options[this.selectedIndex].value,this);"</p></div>
+  </div>
+  
+
+  <div id="change-53222" class="journal has-notes">
+    <h4><a href="21065.html#note-47" class="journal-link">#47</a>
+    
+    <a name="note-47"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 18:14">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53222-notes"><p>With the meta tag the switch doesn't happen anymore, but IMHO this just removes the symptom but not the cause.</p>
+
+
+	<p>So maybe we should better tryto find out what causes IE8 to switch.</p></div>
+  </div>
+  
+
+  <div id="change-53223" class="journal has-notes">
+    <h4><a href="21065.html#note-48" class="journal-link">#48</a>
+    
+    <a name="note-48"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 18:21">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53223-notes"><p>@Steffen, what is "bad" about the way it is done? Can you suggest something better?</p>
+
+
+	<p>The MS-idea is that it doesn't need to be adjusted in newer versions. Newer versions of IE will know how to behave. It is like our good old "compatVersion" in TYPO3, which we added for the exact same purpose: make the rendering of a newer version "behave" like an older version. So I see no flaw in the concept and it is much better than the previous fixes (switching xml-prologue etc). This was created in a collaboration of many CSS / XHTML specialists and MS. See <a class="external" href="../../external.html?link=http://www.alistapart.com/articles/beyonddoctype/">http://www.alistapart.com/articles/beyonddoctype/</a></p>
+
+
+	<p>So maybe you are just biased by previous MS-oddities which might mislead your judgement on the matter.</p>
+
+
+	<p>For our TYPO3 backend it should mean:</p>
+
+
+	<p>If we know that our backend works in IE8, we "tag" it as such in this meta tag and also future IE versions will know about it without "breaking" our site. Because IE8 can also emulate IE7, we might even tag ourselves for IE7 so IE8 will know about it.</p></div>
+  </div>
+  
+
+  <div id="change-53224" class="journal has-notes">
+    <h4><a href="21065.html#note-49" class="journal-link">#49</a>
+    
+    <a name="note-49"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 18:36">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53224-notes"><p>After all it seems I found the reason, why in the case I was able to reproduce IE8 switched to compatibility mode:</p>
+
+
+	<p>The reason is the badly formatted URL handed over to the JavaScript function jumpToUrl.</p>
+
+
+	<p>After replacing any  &amp; with &amp;amp; before using window.location.href, the switch didn't happen anymore.</p>
+
+
+	<p>URL = URL.replace(/&amp;/g,"&amp;amp;");</p>
+
+
+	<p>Since this removes a cause instead of the symptom, IMHO we should check if this could be a cause at other places as well.</p>
+
+
+	<p>Maybe the URL has to be formatted according to the doctype to avoid the switch? Then we will need an additional check. But first I would like you guys to check if you can confirm my observations</p></div>
+  </div>
+  
+
+  <div id="change-53225" class="journal has-notes">
+    <h4><a href="21065.html#note-50" class="journal-link">#50</a>
+    
+    <a name="note-50"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 19:26">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53225-notes"><p>It's getting weirder: The stuff I mentioned in my last post stopped working. Now it seems that every second call of a window.location.href causes the switch.</p>
+
+
+	<p>Have to investigate further.</p></div>
+  </div>
+  
+
+  <div id="change-53226" class="journal has-notes">
+    <h4><a href="21065.html#note-51" class="journal-link">#51</a>
+    
+    <a name="note-51"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 20:18">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53226-notes"><p>Internet Options> Advanced> Browsing> uncheck "Automatically recover from page layout errors with Compatibility View."</p>
+
+
+	<p>This does prevent IE8 from switching to IE7 mode - but this means: There must be "page layout errors" recognized by IE8 that trigger this behaviour, which still leaves us with the problem that we have to find the cause.</p></div>
+  </div>
+  
+
+  <div id="change-53227" class="journal has-notes">
+    <h4><a href="21065.html#note-52" class="journal-link">#52</a>
+    
+    <a name="note-52"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 23:42">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53227-notes"><p>Sorry, but again the question: Does IE switch to compatibilty mode, if the X-UA-Compatible flag is set? Regardless of finding reasons for the switch, we have to add this flag because I'm 99% sure, we'll never find all the reasons, why it switches.</p>
+
+
+	<p>@Ernesto<br />I hate this flag because as we see here, it results in trouble. Why does it not just act as IE8 and work closer to the standards and enough.</p></div>
+  </div>
+  
+
+  <div id="change-53228" class="journal has-notes">
+    <h4><a href="21065.html#note-53" class="journal-link">#53</a>
+    
+    <a name="note-53"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-10" title="2009-11-10 00:32">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53228-notes"><p>hmpf - what a strange topic.</p>
+
+
+	<p>Maybe the reason is something totally different. Could it be that IE switch to compatibility mode if the HTML isn't valid? Mybe not "invalid" but having not allowed nested elements or unclosed tags.</p></div>
+  </div>
+  
+
+  <div id="change-53229" class="journal has-notes">
+    <h4><a href="21065.html#note-54" class="journal-link">#54</a>
+    
+    <a name="note-54"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-10" title="2009-11-10 06:53">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53229-notes"><p>Check <a href="21511.html" class="issue status-9 priority-1 closed" title="Lots of HTML, JS and/or CSS errors force IE8 to switch to compatibility view (Closed)">#21511</a></p></div>
+  </div>
+  
+
+  <div id="change-53230" class="journal has-notes">
+    <h4><a href="21065.html#note-55" class="journal-link">#55</a>
+    
+    <a name="note-55"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2902">Mark Möller-Bengtsson</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-01-07" title="2010-01-07 13:26">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53230-notes"><p>I've just dealt with a similar issue with a client of ours.<br />The problem, in our case, occured even between updates of IE (7->8).<br />Spent numerous of hours trying to figure it out and trying to replicate the issue and here's the deal:</p>
+
+
+	<p>For some reason Google Chrome Frame was installed and although it should not interfere unless told so specifically through &lt;head&gt; it does. It breaks IE7/8 (confirmed) and possibly IE6 aswell.</p>
+
+
+	<p>Should mention that the session timeout/random logoff occurs as soon as an AJAX-call is made.</p></div>
+  </div>
+  
+
+  <div id="change-53231" class="journal has-notes">
+    <h4><a href="21065.html#note-56" class="journal-link">#56</a>
+    
+    <a name="note-56"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-01-14" title="2010-01-14 00:37">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-53231-notes"><p>Committed to svn<br />4_3 rev 6759<br />trunk rev 6760<br />4_2 rev 6761</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-21065-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/21065.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="21065.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/21065 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:08:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

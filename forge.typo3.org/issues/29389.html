@@ -1,0 +1,688 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/29389 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:58:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #29389: Provide simple code migration mechanism - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/29389.atom" rel="alternate" title="TYPO3.Flow - Feature #29389: Provide simple code migration mechanism" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-29389-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #29389</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Provide simple code migration mechanism</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-08-31" title="2011-08-31 15:58">almost 4 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-03" title="2012-05-03 02:39">over 3 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2011-08-31</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1231">TYPO3 Flow Base Distribution - 1.1</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>For people up-/downgrading from one FLOW3 version to another, there should be some tool that executes required migrations etc.</p>
+
+
+	<p>This could be a simple FLOW3 CLI Command IMO.<br />Changes that need to replace code could be put in <code>&lt;Package&gt;/Migrations/Php/Version&lt;timestamp&gt;.php</code> (just like Doctrine migrations.<br />A consequence of that would be that changes must not break CLI (at least after caches have been flushed).</p>
+
+
+	<p>Some issues/questions:</p>
+
+
+	<ul>
+	<li>Do we need to provide a <strong>downgrading</strong> mechanismn?</li>
+		<li>How can we track from which to which version the user is up-/downgrading?</li>
+		<li>Do we need some automatic backup solution if anything goes wrong?</li>
+	</ul>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-6425">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="37053" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="37053.html" class="issue status-7 priority-1 closed">Bug #37053</a>: Code migration doesn&#39;t work on Windows
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-05-10</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/29389/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/29389/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=29389&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/ed8fdeafc57bad85358c960daf2e7751ef161796" title="Revision ed8fdeaf">Revision ed8fdeaf</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-02" title="2012-05-02 15:58">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Code migration tool</p>
+
+
+	<p>This adds support for "code" migrations. As with database migrations,<br />steps needed to adjust existing code to changes done in some package<br />can be delivered in a migration file with said package.</p>
+
+
+	<p>A new command flow3:core:migrate can be used to apply migrations to<br />all packages still in need of that migration. The tool requires git<br />to be available and will work only on code in clean git working copies.</p>
+
+
+	<p>Change-Id: Id237481ae651f94f2ae93d73544efb94d9d19734<br />Resolves: <a href="29389.html" class="issue status-7 priority-2 closed" title="Provide simple code migration mechanism (Resolved)">#29389</a><br />Releases: 1.1</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/05f80eb8cf434e9d447f1d4bf55a26dc5ced7509" title="Revision 05f80eb8">Revision 05f80eb8</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-03" title="2012-05-03 15:57">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Adjust the code migration for FLOW3 1.1</p>
+
+
+	<p>This tweaks the code migration a little to be more complete and<br />produce better readable output.</p>
+
+
+	<p>Change-Id: Icadf90477f4c3bb0f8f565d2ebe656c84f95db67<br />Related: <a href="29389.html" class="issue status-7 priority-2 closed" title="Provide simple code migration mechanism (Resolved)">#29389</a><br />Releases: 1.1</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/06930c3be589d35d80fe9f25eddbfd7f20b7a7f4" title="Revision 06930c3b">Revision 06930c3b</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-03" title="2012-05-03 16:08">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Tweak code migration tool code and output</p>
+
+
+	<p>This makes the output of the code migration tool a little<br />more readable and shifts some parts of the code around to<br />clean it up.</p>
+
+
+	<p>Change-Id: I818e422f40cad7f8e036112dd5186caada143039<br />Related: <a href="29389.html" class="issue status-7 priority-2 closed" title="Provide simple code migration mechanism (Resolved)">#29389</a><br />Releases: 1.1</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/b7d30145a427147738cc6928d6125481952340f2" title="Revision b7d30145">Revision b7d30145</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-07" title="2012-05-07 13:55">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Make migration of a single package possible</p>
+
+
+	<p>Now the option "--package-key" can be given to "core:migrate" to<br />migrate a single package.</p>
+
+
+	<p>This allows for migration of single packages, including those in the<br />"Framework" category, which are now skipped by default.</p>
+
+
+	<p>Change-Id: I75984fb77bfdea2d8284d278822e2e148b6a6bef<br />Related: <a href="29389.html" class="issue status-7 priority-2 closed" title="Provide simple code migration mechanism (Resolved)">#29389</a><br />Releases: 1.1</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/c7038c4e0c4507c803531a06c59ef77bbe2b1f70" title="Revision c7038c4e">Revision c7038c4e</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-10" title="2012-05-10 17:44">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Make core:migrate work on Windows</p>
+
+
+	<p>On Windows redirection to /dev/null does not work. Also<br />some migrations would not be found due to useless type<br />casting.</p>
+
+
+	<p>Change-Id: If36ac839a194f2663aeabf4ba85cfb6321764679<br />Related: <a href="29389.html" class="issue status-7 priority-2 closed" title="Provide simple code migration mechanism (Resolved)">#29389</a><br />Releases: 1.1</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-84895" class="journal has-notes">
+    <h4><a href="29389.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-08-31" title="2011-08-31 16:05">almost 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-84895-notes"><p>Bastian Waidelich wrote:</p>
+
+
+<blockquote>
+
+	<p>Some issues/questions:</p>
+
+
+	<ul>
+	<li>Do we need to provide a <strong>downgrading</strong> mechanismn?</li>
+	</ul>
+
+
+</blockquote>
+
+	<p><strong>Suggestion:</strong> Create up() and down() methods in some AbstractMigrations (also see <a href="../../external.html?link=http://git.typo3.org/FLOW3/Packages/Doctrine.git?a=blob;f=Classes/DBAL/Migrations/AbstractMigration.php;hb=HEAD" class="external">Doctrine Migrations</a>) and leave it to the implementation whether to support downgrade or not.</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>How can we track from which to which version the user is up-/downgrading?</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>One solution would be to always execute all migrations in the right order.<br />Another solution could be to store the current version in some text(?) file after upgrading.</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>Do we need some automatic backup solution if anything goes wrong?</li>
+	</ul>
+
+
+</blockquote>
+
+	<p><strong>Suggestion:</strong> flow3:upgrade (or whatever the command would be called) would do a dry run by default and inform the user that a backup of files and db has to be done first.</p>
+
+
+	<p>See also <a class="external" href="../../external.html?link=http://git.typo3.org/FLOW3/Packages/FLOW3.git?a=blob;f=Scripts/migrate.php;h=c355961a936331c078406147564d665319d28f72;hb=HEAD">http://git.typo3.org/FLOW3/Packages/FLOW3.git?a=blob;f=Scripts/migrate.php;h=c355961a936331c078406147564d665319d28f72;hb=HEAD</a> for reference.</p></div>
+  </div>
+  
+
+  <div id="change-84896" class="journal has-notes">
+    <h4><a href="29389.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-08-31" title="2011-08-31 16:11">almost 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-84896-notes"><p>Also nice is the way things are managed with Symfony 2. we should look at having something along those lines to ease working with "custom distributions" <br /><a class="external" href="../../external.html?link=http://symfony.com/doc/current/cookbook/workflow/new_project_git.html#cookbook-managing-vendor-libraries">http://symfony.com/doc/current/cookbook/workflow/new_project_git.html#cookbook-managing-vendor-libraries</a></p></div>
+  </div>
+  
+
+  <div id="change-85260" class="journal has-details">
+    <h4><a href="29389.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-09-05" title="2011-09-05 15:36">almost 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Provide simple upgrade mechanism</i> to <i>Provide simple code migration mechanism</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-85791" class="journal has-details">
+    <h4><a href="29389.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-09-09" title="2011-09-09 15:17">almost 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>1.0 beta 2</i> to <i>1.0.0</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-88776" class="journal has-details">
+    <h4><a href="29389.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-09-30" title="2011-09-30 10:20">almost 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>1.0.0</i> to <i>1.1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-101052" class="journal has-details">
+    <h4><a href="29389.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-31" title="2012-01-31 17:26">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Karsten Dambekalns</i></li>
+      
+       <li><strong>Has patch</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-101053" class="journal has-notes">
+    <h4><a href="29389.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-31" title="2012-01-31 17:30">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-101053-notes"><p>Here is the concept: <a class="external" href="../../external.html?link=https://docs.google.com/document/pub?id=1ik5gp9TLfvV5yem04uSFkrOKBWIvPp-zGSgVrG9ePkY">https://docs.google.com/document/pub?id=1ik5gp9TLfvV5yem04uSFkrOKBWIvPp-zGSgVrG9ePkY</a></p></div>
+  </div>
+  
+
+  <div id="change-109938" class="journal has-notes has-details">
+    <h4><a href="29389.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-02" title="2012-04-02 11:30">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-109938-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/10124">http://review.typo3.org/10124</a></p></div>
+  </div>
+  
+
+  <div id="change-112137" class="journal has-notes">
+    <h4><a href="29389.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-14" title="2012-04-14 13:52">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-112137-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/10124">http://review.typo3.org/10124</a></p></div>
+  </div>
+  
+
+  <div id="change-114374" class="journal has-notes">
+    <h4><a href="29389.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-27" title="2012-04-27 13:15">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-114374-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/10124">http://review.typo3.org/10124</a></p></div>
+  </div>
+  
+
+  <div id="change-114563" class="journal has-notes">
+    <h4><a href="29389.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-29" title="2012-04-29 12:47">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-114563-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/10124">http://review.typo3.org/10124</a></p></div>
+  </div>
+  
+
+  <div id="change-114565" class="journal has-notes">
+    <h4><a href="29389.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-29" title="2012-04-29 13:20">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-114565-notes"><p>Patch set 5 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/10124">http://review.typo3.org/10124</a></p></div>
+  </div>
+  
+
+  <div id="change-114965" class="journal has-notes">
+    <h4><a href="29389.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-02" title="2012-05-02 15:59">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-114965-notes"><p>Patch set 6 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/10124">http://review.typo3.org/10124</a></p></div>
+  </div>
+  
+
+  <div id="change-115023" class="journal has-notes has-details">
+    <h4><a href="29389.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-03" title="2012-05-03 02:39">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-115023-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/ed8fdeafc57bad85358c960daf2e7751ef161796" class="changeset" title="[FEATURE] Code migration tool This adds support for &quot;code&quot; migrations. As with databas...">ed8fdeafc57bad85358c960daf2e7751ef161796</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-29389-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/29389.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="29389.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/29389 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:58:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/20757 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:05:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #20757: Session Timeout after BE Login IE8 - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/20757.atom" rel="alternate" title="Core - Bug #20757: Session Timeout after BE Login IE8" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (4)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1058">Lars Dyhr</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/489">Michael Klapper</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4187">Uwe Schmelzer</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-20757-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #20757</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Session Timeout after BE Login IE8</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/1383">Michael Raberger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-07-15" title="2009-07-15 09:29">about 6 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-06" title="2010-05-06 22:18">about 5 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2009-07-15</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.2</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.2</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Sometimes after the login into the backend TYPO3 produces a session timeout when the page is redirecting to the main module page</p>
+
+
+	<p>this happens only with internet explorer version 8<br />A login with firefox fits perfect</p>
+
+
+	<p>(issue imported from #M11538)</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-2456">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19883" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="19883.html" class="issue status-7 priority-2 closed">Bug #19883</a>: timout after backend login in 4.2.4
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2009-01-21</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2744">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="21511" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="21511.html" class="issue status-9 priority-1 closed">Bug #21511</a>: Lots of HTML, JS and/or CSS errors force IE8 to switch to...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2009-11-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2765">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="21065" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="21065.html" class="issue status-9 priority-2 closed">Bug #21065</a>: Sporadic random Backend Logoffs
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2009-09-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/20757/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/20757/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=20757&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-52424" class="journal has-notes">
+    <h4><a href="20757.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-07-15" title="2009-07-15 10:20">about 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52424-notes"><p>Did you experience any JavaScript errors on that behaviour?</p></div>
+  </div>
+  
+
+  <div id="change-52425" class="journal has-notes">
+    <h4><a href="20757.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1383">Michael Raberger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-07-15" title="2009-07-15 10:37">about 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52425-notes"><p>No, there are no JavaScript errors</p>
+
+
+	<p>I'm still redirected to an error page after the login</p></div>
+  </div>
+  
+
+  <div id="change-52426" class="journal has-notes">
+    <h4><a href="20757.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/788">Søren Andersen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-07-25" title="2009-07-25 11:07">about 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52426-notes"><p>I don't know if this is connected, but I have session timeout problems in IE8 (IE7 too). For me it works perfectly for a while, and then suddenly I'm logged out by a session timeout.</p>
+
+
+	<p>Sometimes it seems like it is happening when I open up tabs and visit other websites while being logged in to TYPO3.</p>
+
+
+	<p>In addition I have trouble being logged in on the frontend of my websites. One is running on 4.1.12 and the other is 4.2.8, I think it happened around 4.1.10 and 4.2.6. I didn't report it then because I hoped it would be fixed in newer versions, so I simply resorted to other browsers.</p>
+
+
+	<p>I'll try and be careful observing when the session timeout happens.</p></div>
+  </div>
+  
+
+  <div id="change-52427" class="journal has-notes">
+    <h4><a href="20757.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-07-31" title="2009-07-31 11:23">about 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52427-notes"><p>Take a look to <a href="19883.html" class="issue status-7 priority-2 closed" title="timout after backend login in 4.2.4 (Resolved)">#19883</a> for further possible solutions.</p></div>
+  </div>
+  
+
+  <div id="change-52428" class="journal has-notes">
+    <h4><a href="20757.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1058">Lars Dyhr</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-08-28" title="2009-08-28 19:48">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52428-notes"><p>I have just encounter the same issue. I was using 4.2.6 and upgraded to 4.2.8, but that did not help. It turns out that I was running this site in  IE8's new "Compatibility mode", and when I switched it back to NOT running in this mode it works perfectly again.<br />I have not looked into what this compatibility mode actually does, but apperently it interferes in a bad way.<br />Hope that this will bring us closer to sorting that issue (and that this is related to the bug that you have experienced).<br />NB: You can administer your compatibility mode if you open "Functions"=>"settings for compatibility views" (translated from a danish version).</p></div>
+  </div>
+  
+
+  <div id="change-52429" class="journal has-notes">
+    <h4><a href="20757.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1058">Lars Dyhr</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-08-28" title="2009-08-28 19:51">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52429-notes"><p>By the way as Oliver asked for JS errors I seem to get a few (none of them seem to be able to cause the bug I think). Anyway here they are:<br />This is printed from Microsofts IE debugger:</p>
+
+
+	<p>Et objekt er obligatorisk  prototype.js, linje 3788 tegn 7<br />  'x' er null eller ikke et objekt  prototype.js, linje 3827 tegn 7<br />  Et objekt er obligatorisk  prototype.js, linje 3788 tegn 7<br />  'Event.pointer(...).x' er null eller ikke et objekt  prototype.js, linje 3796 tegn 33<br />  Et objekt er obligatorisk  prototype.js, linje 3788 tegn 7<br />  'Event.pointer(...).y' er null eller ikke et objekt  prototype.js, linje 3797 tegn 33</p></div>
+  </div>
+  
+
+  <div id="change-52430" class="journal has-notes">
+    <h4><a href="20757.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-08-29" title="2009-08-29 10:46">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52430-notes"><p>Problem occurs here as well with IE8 and "Compatibility View" activated (reproduced in 4.2.8 and early 4.3 version due to customer complaints; have neither checked with current trunk nor other IEs). Version of IE8: 8.0.6001.18702</p>
+
+
+	<p>To reproduce this error (haven't examined the reason yet): <br />- Activate "Compatibility View" in IE8<br />- Log in to backend<br />- Switch to frontend view and navigate there while being logged in to TYPO3.<br />- Try to use the backend => you're session is lost</p></div>
+  </div>
+  
+
+  <div id="change-52431" class="journal has-notes">
+    <h4><a href="20757.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/788">Søren Andersen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-08-29" title="2009-08-29 10:57">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52431-notes"><p>I can lose the session in IE8 (TYPO3 4.1.12) without having compatibility view activated.</p>
+
+
+	<p>I open the browser, login to the backend, open a new tab, go to the front end and navigate a little, and bingo, session is lost.</p>
+
+
+	<p>So I don't think it's totally related to compatibility view.</p></div>
+  </div>
+  
+
+  <div id="change-52432" class="journal has-notes">
+    <h4><a href="20757.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-08-29" title="2009-08-29 11:22">almost 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52432-notes"><p>I can't confirm losing BE session without Compatibility View.</p>
+
+
+	<p>Although and after playing around a bit, it seems (not to sure here) to be depending on the state of the Admin Panel and the shown fe editing options, so there might be situations different to the ones I'm testing with.</p>
+
+
+	<p>At least it should be possible to reproduce the error now which should allow to eventually track it down...</p></div>
+  </div>
+  
+
+  <div id="change-52433" class="journal has-notes">
+    <h4><a href="20757.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-07" title="2009-11-07 09:00">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52433-notes"><p>The following works for me (fixes the problem of losing session while navigating through the frontend):</p>
+
+
+	<p>TS setup:<br />config.headerComment (<br />--><br />&lt;meta http-equiv="X-UA-Compatible" content="IE=8" /&gt;<br />&lt;!--<br />)</p></div>
+  </div>
+  
+
+  <div id="change-52434" class="journal has-notes">
+    <h4><a href="20757.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/788">Søren Andersen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-07" title="2009-11-07 09:09">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52434-notes"><p>Ralf, I just tried out your solution, but with no luck.</p>
+
+
+	<p>I inserted the code in the frontend, confirmed that it showed up in "View source". While being on a front-end page, I opened up a new tab, logged in to the backend, switched to the front-end page, navigated to another page and then the session in the frontend was lost.</p></div>
+  </div>
+  
+
+  <div id="change-52435" class="journal has-notes">
+    <h4><a href="20757.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-09" title="2009-11-09 23:00">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52435-notes"><p>Have a look at <a href="21511.html" class="issue status-9 priority-1 closed" title="Lots of HTML, JS and/or CSS errors force IE8 to switch to compatibility view (Closed)">#21511</a> - could be the reason for lots of IE8 problems</p></div>
+  </div>
+  
+
+  <div id="change-52436" class="journal has-notes">
+    <h4><a href="20757.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/236">Chris topher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-04-28" title="2010-04-28 00:35">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52436-notes"><p>I did not have this error after <a href="21065.html" class="issue status-9 priority-2 closed" title="Sporadic random Backend Logoffs (Closed)">#21065</a> was committed.</p>
+
+
+	<p>Does this still happen to someone with 4.2.11 and 4.3.1 or newer?</p></div>
+  </div>
+  
+
+  <div id="change-52437" class="journal has-notes">
+    <h4><a href="20757.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/486">Steffen Gebert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-04-28" title="2010-04-28 12:33">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-52437-notes"><p>Michael, is this problem fixed?</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-20757-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/20757.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="20757.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/20757 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:05:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

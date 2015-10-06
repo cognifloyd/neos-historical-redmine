@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/21719 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:09:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #21719: Install Tool can not create cachingframework databases - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/21719.atom" rel="alternate" title="Core - Bug #21719: Install Tool can not create cachingframework databases" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/360">Irene Höppner</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-21719-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #21719</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Install Tool can not create cachingframework databases</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-27" title="2009-11-27 17:18">over 5 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-08-12" title="2010-08-12 13:18">almost 5 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2009-11-27</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.3</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.2</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>In Install Tool on Compare, the Tools is not able to Create this 3 new Databases</p>
+
+
+	<p>CREATE TABLE cachingframework_cache_hash_tags (<br />id int(11) unsigned NOT NULL auto_increment,<br />identifier text NOT NULL,<br />tag text NOT NULL,<br />PRIMARY KEY (id),<br />KEY cache_id (identifier),<br />KEY cache_tag (tag(320))<br />) ENGINE=InnoDB;</p>
+
+
+	<p>CREATE TABLE cachingframework_cache_pages_tags (<br />id int(11) unsigned NOT NULL auto_increment,<br />identifier text NOT NULL,<br />tag text NOT NULL,<br />PRIMARY KEY (id),<br />KEY cache_id (identifier),<br />KEY cache_tag (tag(320))<br />) ENGINE=InnoDB;</p>
+
+
+	<p>CREATE TABLE cachingframework_cache_pagesection_tags (<br />id int(11) unsigned NOT NULL auto_increment,<br />identifier text NOT NULL,<br />tag text NOT NULL,<br />PRIMARY KEY (id),<br />KEY cache_id (identifier),<br />KEY cache_tag (tag(320))<br />) ENGINE=InnoDB;</p>
+
+
+	<p>Problem is that the identifier Key has no lenght</p>
+
+
+	<p>After Drop all chachingframwork databases (the old one from 4.3 svn versions) is not possible to create with Install Tool the new again.</p>
+
+
+	<p>Also, i cant fix this changes in Install Tools:</p>
+
+
+	<p>Add fields<br />    select/deselect all<br />    ALTER TABLE cachingframework_cache_hash_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE cachingframework_cache_pages_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE cachingframework_cache_pagesection_tags ADD KEY cache_id (identifier);<br />Changing fields<br />    select/deselect all<br />    ALTER TABLE sys_registry DROP KEY entry_identifier;<br />    ALTER TABLE sys_registry ADD UNIQUE entry_identifier (entry_namespace,entry_key(320));<br />    ALTER TABLE sys_refindex CHANGE tablename tablename text;<br />    Current value: varchar(100) default ''<br />    ALTER TABLE sys_refindex CHANGE ref_table ref_table text;<br />    Current value: varchar(100) default ''<br />    ALTER TABLE tx_realurl_uniqalias CHANGE field_alias field_alias text;<br />    Current value: varchar(75) default ''</p>
+
+
+	<p>My MySQL Version: 5.0.32 Debian/etch11</p>
+
+
+	<p>(issue imported from #M12801)</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-2722">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="21730" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="21730.html" class="issue status-9 priority-2 closed">Bug #21730</a>: ALTER TABLE is not able to parse length restriction in in...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2009-11-29</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/21719/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/21719/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=21719&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-54714" class="journal has-notes">
+    <h4><a href="21719.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-28" title="2009-11-28 15:25">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54714-notes"><p>What DMBS are you using? The field tag is a <acronym title="128">VARCHAR</acronym> thus creating an index with a length of 320 characters looks a bit strange. I guess you have DBAL installed?</p></div>
+  </div>
+  
+
+  <div id="change-54715" class="journal has-notes">
+    <h4><a href="21719.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-29" title="2009-11-29 00:37">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54715-notes"><p>I have run a regular MySQL 5.0.32 from the debian etch. DBAL is not aktiv.<br />I thought the databases are created using the core TCA? As a user, I can not change anything.</p>
+
+
+	<p>These are the entries can not be eliminated:</p>
+
+
+	<p>Add fields<br />    select/deselect all<br />    ALTER TABLE cachingframework_cache_hash_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE sys_registry ADD UNIQUE entry_identifier (entry_namespace,entry_key(320));<br />    ALTER TABLE cachingframework_cache_pages_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE cachingframework_cache_pagesection_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE tx_realurl_uniqalias ADD KEY bk_realurl01 (field_alias,field_id,value_id,lang,expire);<br />Changing fields<br />    select/deselect all<br />    ALTER TABLE sys_refindex CHANGE tablename tablename text;<br />    Current value: varchar(100) default ''<br />    ALTER TABLE sys_refindex CHANGE ref_table ref_table text;<br />    Current value: varchar(100) default ''</p></div>
+  </div>
+  
+
+  <div id="change-54716" class="journal has-notes">
+    <h4><a href="21719.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-29" title="2009-11-29 10:35">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54716-notes"><p>Tested on a website with a MySQL database and DBAL active:</p>
+
+
+	<p>- Dropped caching_* tables in MySQL<br />- Went to Install Tool > Database Analyzer > Compare<br />- 6 tables are selected in the Add tables section, namely cachingframework_cache_hash, cachingframework_cache_hash_tags, cachingframework_cache_pages, cachingframework_cache_pages_tags, cachingframework_cache_pagesection, cachingframework_cache_pagesection_tags. None of them contain a length restriction for an index. Typically, cachingframework_cache_hash_tags has</p>
+
+
+	<pre><code>KEY cache_tag (tag)</code></pre>
+
+
+	<p>and NOT</p>
+
+
+	<pre><code>KEY cache_tag (tag(320))</code></pre>
+
+
+	<p>as said in the description</p>
+
+
+	<p>- All went fine, tables are properly created</p>
+
+
+	<p>Tested again on a website with an Oracle database and (of course) DBAL active:</p>
+
+
+	<p>- Created mapping configuration to avoid identifier length restriction:</p>
+
+
+	<p>$TYPO3_CONF_VARS['EXTCONF']['dbal']['mapping'] = array(<br />        'cachingframework_cache_hash' => array(<br />                'mapTableName' => 'cf_cache_hash',<br />        ),<br />        'cachingframework_cache_pages' => array(<br />                'mapTableName' => 'cf_cache_pages',<br />        ),<br />        'cachingframework_cache_hash_tags' => array(<br />                'mapTableName' => 'cf_cache_hash_tags',<br />        ),<br />        'cachingframework_cache_pages_tags' => array(<br />                'mapTableName' => 'cf_cache_pages_tags',<br />        ),<br />        'cachingframework_cache_pagesection' => array(<br />                'mapTableName' => 'cf_cache_pagesection',<br />        ),<br />        'cachingframework_cache_pagesection_tags' => array(<br />                'mapTableName' => 'cf_cache_pagesection_tags',<br />        ),<br />);</p>
+
+
+	<p>- Dropped all cf_* tables in Oracle<br />- Went to Install Tool > Database Analyzer > Compare<br />- Same here: 6 tables are selected in the Add tables sections and are properly created except for some indexes but that is related to bug <a href="16292.html" class="issue status-1 priority-2" title="installer doesn't cope with maximum table and field length (Oracle XE, MS SQL via DBlib) (New)">#16292</a> and has actually nothing to do with this bug report. Furthermore, I cannot confirm the length restriction of 320 or anything else in the CREATE TABLE statements.</p>
+
+
+	<p>Regarding the other "bug" when having a length restriction in an ALTER TABLE statement, this is related to bug <a href="16292.html" class="issue status-1 priority-2" title="installer doesn't cope with maximum table and field length (Oracle XE, MS SQL via DBlib) (New)">#16292</a>.</p></div>
+  </div>
+  
+
+  <div id="change-54717" class="journal has-notes">
+    <h4><a href="21719.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-11-29" title="2009-11-29 10:49">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54717-notes"><p>Tested without DBAL on a MySQL-only install of TYPO3. I cannot confirm the problem there either. I don't know why you have a restriction of 320 characters in your case. It seems to come from "nowhere"...</p></div>
+  </div>
+  
+
+  <div id="change-54718" class="journal has-notes">
+    <h4><a href="21719.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31031">Jana Brner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-01" title="2009-12-01 14:02">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54718-notes"><p>I just tried to upgrade our dev website from 4.2.10 to 4.3.0 and it seems we are having the same problem. We are using MySQL 5.0.77. DBAL isn't installed.</p>
+
+
+	<p>The MySQL Database replies with following error when trying to create the sys_registry table for example: <br /><a href="14798.html" class="issue status-2 priority-2" title="Robots.txt and indexed search (Accepted)">#14798</a> - BLOB/TEXT column 'entry_namespace' used in key specification without a key length</p>
+
+
+	<p>This is what the install tool want to do for the table mentioned above:</p>
+
+
+	<p>CREATE TABLE sys_registry (<br />uid int(11) unsigned NOT NULL auto_increment,<br />entry_namespace text NOT NULL,<br />entry_key text NOT NULL,<br />entry_value blob,<br />PRIMARY KEY (uid),<br />UNIQUE entry_identifier (entry_namespace,entry_key(256))<br />);</p>
+
+
+	<p>There are also the three tables, that are in the report above, listed for creation and some alteration too. All changing from a varchar to a text field type. Like this one: <br />ALTER TABLE sys_refindex CHANGE ref_table ref_table text;<br />Current value: varchar(80) default ''</p>
+
+
+	<p>I'm not sure if that helps finding/solving the problem but I found an article to the MySQL error here:<br /><a class="external" href="../../external.html?link=http://www.mydigitallife.info/2007/07/09/mysql-error-1170-42000-blobtext-column-used-in-key-specification-without-a-key-length/">http://www.mydigitallife.info/2007/07/09/mysql-error-1170-42000-blobtext-column-used-in-key-specification-without-a-key-length/</a></p></div>
+  </div>
+  
+
+  <div id="change-54719" class="journal has-notes">
+    <h4><a href="21719.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-01" title="2009-12-01 14:46">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54719-notes"><p>This is exactly the problem I have, too. I'm not as fit in MySQL. Here are a few still have the error messages:</p>
+
+
+	<p>ALTER TABLE cachingframework_cache_hash_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE sys_registry ADD UNIQUE entry_identifier (entry_namespace,entry_key(320));<br />    ALTER TABLE sys_refindex ADD KEY lookup_rec (tablename,recuid);<br />    ALTER TABLE sys_refindex ADD KEY lookup_uid (ref_table,ref_uid);<br />    ALTER TABLE cachingframework_cache_pages_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE cachingframework_cache_pagesection_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE tx_realurl_uniqalias ADD KEY bk_realurl01 (field_alias,field_id,value_id,lang,expire);</p>
+
+
+	<p>Thanks for your help</p>
+
+
+	<p>Christian</p></div>
+  </div>
+  
+
+  <div id="change-54720" class="journal has-notes">
+    <h4><a href="21719.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/28769">Sascha Hinze</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-02" title="2009-12-02 09:30">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54720-notes"><p>I have a similar problem. After upgrade from 4.2.10 to 4.3.0 I get these messages in the database analyser after "Compare":</p>
+
+
+	<p>ALTER TABLE cachingframework_cache_hash DROP KEY cache_id; <br /> ALTER TABLE cachingframework_cache_hash ADD KEY cache_id (identifier(256)); <br /> ALTER TABLE sys_refindex DROP KEY lookup_string; <br /> ALTER TABLE sys_refindex ADD KEY lookup_string (ref_string(400)); <br /> ALTER TABLE cachingframework_cache_pages DROP KEY cache_id; <br /> ALTER TABLE cachingframework_cache_pages ADD KEY cache_id (identifier(256));</p>
+
+
+	<p>"Write to database" doesn't work.<br />We use Mysql 5.1, the database is set to UTF-8. DBAL is not installed.</p>
+
+
+	<p>Thanks for help</p>
+
+
+	<p>Sascha</p></div>
+  </div>
+  
+
+  <div id="change-54721" class="journal has-notes">
+    <h4><a href="21719.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22384">Bernie </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-02" title="2009-12-02 17:06">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54721-notes"><p>Same problem here. Our database is also set to UTF-8.</p></div>
+  </div>
+  
+
+  <div id="change-54722" class="journal has-notes">
+    <h4><a href="21719.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-03" title="2009-12-03 10:39">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54722-notes"><p>The problem also exists with other databases, like the tt_news 3.0.1.</p>
+
+
+	<p>Always get the mysql Error 1170</p></div>
+  </div>
+  
+
+  <div id="change-54723" class="journal has-notes">
+    <h4><a href="21719.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33177">Pascal </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-07" title="2009-12-07 14:47">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54723-notes"><p>I have the same issue. I tried to upgrade from 4.2.9 to 4.3 using PHP 5.2.11 and MySQL 4.1.22</p>
+
+
+	<p>I downloaded the Typo3 4.3 package from the typo3.org website.</p>
+
+
+	<p>These are the tables that keep on showing in the install tool Database compare (I cannot get rid of them when clicking 'write to database'):</p>
+
+
+	<p>Add fields<br />    ALTER TABLE sys_history ADD KEY recordident (tablename(510),recuid,tstamp);<br />Changing fields<br />    select/deselect all<br />    ALTER TABLE cache_hash ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE cachingframework_cache_hash ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE cache_imagesizes ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE sys_log ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE cache_pages ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE cache_pagesection ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE cachingframework_cache_pages ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE cachingframework_cache_pagesection ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE cache_typo3temp_log ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE cache_md5params ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE cache_treelist ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE fe_session_data ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE fe_sessions ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE index_phash ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE index_fulltext ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE index_rel ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE index_words ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE index_section ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE index_grlist ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE index_stat_search ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE index_stat_word ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE tx_realurl_pathcache ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE tx_realurl_chashcache ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE tx_realurl_urldecodecache ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE tx_realurl_urlencodecache ENGINE=InnoDB;<br />    Current value: ENGINE=<br />    ALTER TABLE sys_refindex CHANGE tablename tablename text;<br />    Current value: varchar(80) default ''<br />    ALTER TABLE sys_refindex CHANGE ref_table ref_table text;<br />    Current value: varchar(80) default ''<br />    ALTER TABLE sys_refindex DROP KEY lookup_string;<br />    ALTER TABLE sys_refindex ADD KEY lookup_string (ref_string(400));<br />Add tables<br />    select/deselect all<br />    CREATE TABLE cachingframework_cache_hash_tags (<br />id int(11) unsigned NOT NULL auto_increment,<br />identifier text NOT NULL,<br />tag text NOT NULL,<br />PRIMARY KEY (id),<br />KEY cache_id (identifier),<br />KEY cache_tag (tag(256))<br />) ENGINE=InnoDB;<br />    CREATE TABLE sys_registry (<br />uid int(11) unsigned NOT NULL auto_increment,<br />entry_namespace text NOT NULL,<br />entry_key text NOT NULL,<br />entry_value blob,<br />PRIMARY KEY (uid),<br />UNIQUE entry_identifier (entry_namespace,entry_key(256))<br />);<br />    CREATE TABLE cachingframework_cache_pages_tags (<br />id int(11) unsigned NOT NULL auto_increment,<br />identifier text NOT NULL,<br />tag text NOT NULL,<br />PRIMARY KEY (id),<br />KEY cache_id (identifier),<br />KEY cache_tag (tag(256))<br />) ENGINE=InnoDB;<br />    CREATE TABLE cachingframework_cache_pagesection_tags (<br />id int(11) unsigned NOT NULL auto_increment,<br />identifier text NOT NULL,<br />tag text NOT NULL,<br />PRIMARY KEY (id),<br />KEY cache_id (identifier),<br />KEY cache_tag (tag(256))<br />) ENGINE=InnoDB;</p>
+
+
+	<p>Is there any patch for this?</p></div>
+  </div>
+  
+
+  <div id="change-54724" class="journal has-notes">
+    <h4><a href="21719.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/360">Irene Höppner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-11" title="2009-12-11 12:59">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54724-notes"><p>You are probably using</p>
+
+
+	<p>$TYPO3_CONF_VARS['SYS']['multiplyDBfieldSize']</p>
+
+
+	<p>somewhere. Thus TYPO3 makes the field to a bigger size (f.i. text instead of varchar(255). Those fields can not be used as keys without giving the key a length (see <a class="external" href="../../external.html?link=http://www.mydigitallife.info/2007/07/09/mysql-error-1170-42000-blobtext-column-used-in-key-specification-without-a-key-length/">http://www.mydigitallife.info/2007/07/09/mysql-error-1170-42000-blobtext-column-used-in-key-specification-without-a-key-length/</a>).</p>
+
+
+	<p>Take a look, if your database isn't utf-8 formatted yet. Then you dont need the multiplyDBfieldSize anymore.</p>
+
+
+	<p>Maybe the key-fields should be taken into account from the install tool, if multiplyDBfieldSize is being used?</p></div>
+  </div>
+  
+
+  <div id="change-54725" class="journal has-notes">
+    <h4><a href="21719.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31031">Jana Brner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-14" title="2009-12-14 14:51">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54725-notes"><p>Thanks for the info!<br />Our database is UTF-8 and ['SYS']['multiplyDBfieldSize'] was set to 2. <br />When removing the value the table creations and the alterations worked.</p></div>
+  </div>
+  
+
+  <div id="change-54726" class="journal has-notes">
+    <h4><a href="21719.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/28769">Sascha Hinze</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-14" title="2009-12-14 19:11">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54726-notes"><p>Thats it!<br />Our database was also set to UTF-8 and ['SYS']['multiplyDBfieldSize'] was set to 2. "ALTER TABLE" worked when i removed this value.<br />Thanks for your help Irene.</p></div>
+  </div>
+  
+
+  <div id="change-54727" class="journal has-notes">
+    <h4><a href="21719.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-14" title="2009-12-14 19:30">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54727-notes"><p>Yes its true.</p>
+
+
+	<p>A ['SYS']['multiplyDBfieldSize'] = 1 fixed this problem.</p>
+
+
+	<p>BUT dont forget that arabic and chinese sites still have this trouble. On this languages you need a ['SYS']['multiplyDBfieldSize'] = 2 or 3</p>
+
+
+	<p>Its still a bug. On 4.2.x this works fine</p>
+
+
+	<p>Christian</p></div>
+  </div>
+  
+
+  <div id="change-54728" class="journal has-notes">
+    <h4><a href="21719.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33177">Pascal </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-15" title="2009-12-15 05:13">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54728-notes"><p>Hello,</p>
+
+
+	<p>I have set ['SYS']['multiplyDBfieldSize'] = 1</p>
+
+
+	<p>But I still keep getting errors when I compare the DB:</p>
+
+
+	<p>ERROR: Query could not be parsed: "SQL engine parse ERROR: Field type unknown in parseFieldDef()!: near "entry_identifier (entry_namespace,entry_key) "". Query: "ALTER TABLE sys_registry ADD UNIQUE entry_identifier (entry_namespace,entry_key);"</p>
+
+
+	<p>I get this error when I run:</p>
+
+
+	<p>Add fields<br />    select/deselect all<br />    ALTER TABLE cachingframework_cache_hash_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE sys_registry ADD UNIQUE entry_identifier (entry_namespace,entry_key);<br />    ALTER TABLE sys_history ADD KEY recordident (tablename,recuid,tstamp);<br />    ALTER TABLE cachingframework_cache_pages_tags ADD KEY cache_id (identifier);<br />    ALTER TABLE cachingframework_cache_pagesection_tags ADD KEY cache_id (identifier);</p></div>
+  </div>
+  
+
+  <div id="change-54729" class="journal has-notes">
+    <h4><a href="21719.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31031">Jana Brner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-12-15" title="2009-12-15 14:54">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54729-notes"><p>I'm not sure if removing the index and setting it to 1 is/does the same.<br />In the configuration is pointed to this typo3 wiki entry:<br /><a class="external" href="../../external.html?link=http://wiki.typo3.org/index.php/UTF-8_support">http://wiki.typo3.org/index.php/UTF-8_support</a><br />All green boxes (at the bottom) say that when your database is set to UTF-8 you shouldn't use ['SYS']['multiplyDBfieldSize'] . <br />So I simply removed the digit out of the field.</p></div>
+  </div>
+  
+
+  <div id="change-54730" class="journal has-notes">
+    <h4><a href="21719.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-02-22" title="2010-02-22 23:10">over 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54730-notes"><p>Yes, multiplyDBfieldSize is an old way to deal with UTF8 character set without a real UTF8 DB. This should not be used anymore in any new install. I guess it only still makes sense for old install.</p>
+
+
+	<p>May this bug be closed?</p></div>
+  </div>
+  
+
+  <div id="change-54731" class="journal has-notes">
+    <h4><a href="21719.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-05-16" title="2010-05-16 12:50">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-54731-notes"><p>Resolved, won't fix.</p>
+
+
+	<p>['SYS']['multiplyDBfieldSize'] is deprecated and shouldn't be used anymore.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-21719-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/21719.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="21719.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/21719 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:09:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
