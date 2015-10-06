@@ -1,0 +1,63 @@
+https://github.com/nuvolabase/orientdb/wiki/Graph-Schema
+// g.V.each{g.removeVertex(it)};
+
+
+
+
+liveWorkspace = g.addVertex("class:Workspace", [name: "live"]);
+rootNode = g.addVertex("class:Node", [_root: true]);
+g.addEdge(rootNode, liveWorkspace, "workspace");
+
+rootStructure = g.addVertex("class:NodeStructure");
+g.addEdge(rootNode, rootStructure, "structure");
+
+
+twoColumnNode = g.addVertex("class:Node", [_hidden: false]);
+g.addEdge(twoColumnNode, liveWorkspace, "workspace");
+g.addEdge(rootStructure, twoColumnNode, "children", [workspace: "live", path: "twoColumn"]);
+
+twoColumnStructure = g.addVertex("class:NodeStructure");
+g.addEdge(twoColumnNode, twoColumnStructure, "structure");
+
+g.commit();
+
+
+
+// Root
+g.v("#11:2")
+
+// Child nodes...
+g.v("#11:2").out("structure").outE
+
+
+g.v("#11:2").out("structure").outE.has("workspace", "live").inV
+
+
+/////////START
+// go one named path traversal step "twoColumn"
+workspaceList = ["user", "live"];
+paths = "twoColumn";
+currentNode = g.v("#11:2");
+
+paths.tokenize(':').each { path ->
+	structureNode = currentNode.out("structure").next();
+	currentNode = workspaceList.findResult { workspace ->
+		x = [];
+		structureNode.outE.has("workspace", workspace).has("path", path).inV.fill(x);
+		if (x.length)
+		  return x.first();
+		else
+		  return null;
+	};
+};
+
+return currentNode;
+/////////END
+
+
+
+// go
+has("workspace", "user").inV
+
+// Workspace
+g.v("#11:2").out("workspace")

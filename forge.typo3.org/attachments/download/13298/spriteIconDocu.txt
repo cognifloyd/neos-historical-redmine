@@ -1,0 +1,166 @@
+SPRITE ICON API
+
+The sprite icons are a completely different approach than using single file images. In order to get a
+icon you don't need to know anything about a file or whatever. The only thing you need to know are the
+css classes used. This api even helps you with that by only needing a single string name for an icon.
+You should always look up this "iconName" in the Skinning Manual.
+
+Example: display an icon for creating a new document/page content element
+Usage:   t3lib_iconWorks::getSpriteIcon('actions-document-new');
+Result:  <span class="t3-icon t3-icon-actions-document t3-icon-document-new ">&nbsp;</span>
+
+== Common Options == 
+
+If you want to change additional options you can provide them as an config array. Some options are
+  - 'title'   (string: defaults to '') define an title for the icon [if the icon is wrapped by a link for functionality the link should get the title]
+  - 'class'   (string: defaults to '') additional css classes to add
+  - 'row'     (array:  no default)     data row; not added as attribute
+  - [...] more Options are in the Advanced Section
+
+Example: new Record icon with a title tag
+Usage:   t3lib_iconWorks::getSpriteIcon('actions-document-new', 'Create new Record');
+Usage:   t3lib_iconWorks::getSpriteIcon('actions-document-new', array('titel' => 'Create new Record') );
+Result:  <span class="t3-icon t3-icon-actions-document t3-icon-document-new" title="Create new Record">&nbsp;</span>
+Note:    The title is a special case and can also be provided as string for the second parameter
+
+Example: new Record icon with an additional css class
+Usage:   t3lib_iconWorks::getSpriteIcon('actions-document-new', array('class' => 'center') );
+Result:  <span class="t3-icon t3-icon-actions-document t3-icon-document-new center">&nbsp;</span>
+
+Example: new Record icon with an additional css class and title tag
+Usage:   t3lib_iconWorks::getSpriteIcon('actions-document-new', array('class' => 'center', 'titel' => 'Create new Record') );
+Result:  <span class="t3-icon t3-icon-actions-document t3-icon-document-new center" title="Create new Record">&nbsp;</span>
+
+
+== Overlays ==
+
+Overlays are realised by placing two spans on top of each other. For easy usage you can just add
+overlays with '+'.
+
+Example: icon of a hidden page (page icon with overlay hidden)
+Usage:   t3lib_iconWorks::getSpriteIcon('apps-pagetree-page-default+status-overlay-hidden');
+Result:  <span class="t3-icon t3-icon-apps-pagetree t3-icon-pagetree-page-default">
+           <span class="t3-icon t3-icon-status-overlay t3-icon-overlay-hidden t3-icon-overlay">&nbsp;</span>
+         </span>
+
+== Files ==
+
+Icons for files are generated with a 'file:' prefix followed by the complete path or the filename.
+
+Example: icon for an image
+Usage:   t3lib_iconWorks::getSpriteIcon('file:EXT:t3skin/icons/options.gif');
+Result:  <span class="t3-icon t3-icon-mimetype-media t3-icon-media-image">&nbsp;</span>
+
+If you already know the fileextension or the type of the path you can use 'file::'
+
+Example: icon for a *.png file
+Usage:   t3lib_iconWorks::getSpriteIcon('file::gif');
+Result:  <span class="t3-icon t3-icon-mimetype-media t3-icon-media-image">&nbsp;</span>
+Note:    The result is the same as gif and png files are mapped to the same icon
+
+Example: icon for a folder
+Usage:   t3lib_iconWorks::getSpriteIcon('file:EXT:t3skin/icons');
+Usage:   t3lib_iconWorks::getSpriteIcon('file:/');
+Usage:   t3lib_iconWorks::getSpriteIcon('file::folder');
+Result:  <span class="t3-icon t3-icon-apps-filetree t3-icon-filetree-folder-default">&nbsp;</span>
+
+Example: icon for mountpoint
+Usage:   t3lib_iconWorks::getSpriteIcon('file::mount');
+Result:  <span class="t3-icon t3-icon-apps-filetree t3-icon-filetree-mount">&nbsp;</span>
+
+== Table Rows ==
+
+Icons for table rows are generated with a 'row:' prefix followed by the table and an option array with 'row'
+
+Example: generate icon for current table and row
+Usage:   t3lib_iconWorks::getSpriteIcon('row:' . $table, array('row' => $row) );
+Result:  <span class="t3-icon t3-icon-apps-pagetree t3-icon-pagetree-page-not-in-menu">&nbsp;</span>
+Note:    Depending on table and row (here $table = pages; $row = Array( [doktype] => 254 [...] )
+
+If you want to have the table row overlay icon you can use 'row::' again with the option array 'row'.
+In order to have it automatically with the icon you can use the '+' mentioned earlier.
+
+Example: generate icon + overlay for current table and row
+Usage:   t3lib_iconWorks::getSpriteIcon('row:' . $table . '+row::' . $table, array('row' => $row));
+Result:  <span class="t3-icon t3-icon-apps-pagetree t3-icon-pagetree-page-not-in-menu">
+           <span class="t3-icon t3-icon-status-overlay t3-icon-overlay-hidden t3-icon-overlay">&nbsp;</span>
+         </span>
+
+== Advanced Section ==
+
+Every string item that is in the option array for getSpriteIcon is automatically added as a html attribute. So you can add
+whatever valid or nonvalide html attribute. There are a few options predefined and some are not added as attribute:
+  - 'row'     (array:  no default)           data row; not added as attribute
+  - 'element' (string: defaults to 'span')   the html element that should be created; not added as attribute
+  - 'html'    (string: defaults to '&nbsp;') html content that should be placed inside the tag; not added as attribute
+  - 'baseCssClass' (string: defaults to 't3-icon') change the base class for the icon type; not added as attribute
+
+Example: generate a uppercase text link to google with the external link icon
+Usage:   t3lib_iconWorks::getSpriteIcon('apps-pagetree-page-shortcut-external', array(
+           'element' => 'a',
+           'html' => 'google',
+           'href' => 'http://www.google.com',
+           'style' => 'text-transform: uppercase'
+         ));
+Result: <a style="text-transform: uppercase;" href="http://www.google.com" class="t3-icon t3-icon-apps-pagetree t3-icon-pagetree-page-shortcut-external">google</a>
+Note:   Text options get transformed to html elements
+
+In fact you can define multiple '+' in the iconname and for each part you can define a different configuration.
+For this you need to use a multidimentional array. The default configuration is set to
+  $TYPO3_CONF_VARS['BE']['iconDefaultOptions'] => array(
+   array('element' => 'span', 'baseCssClass' => 't3-icon', 'html' => '&nbsp;'),
+   array('element' => 'span', 'baseCssClass' => 't3-icon', 'html' => '&nbsp;', 'class' => 't3-icon-overlay')
+  )
+so if you want more then two level you will have to define that in your config. However this is very unlikely.
+
+Example: link to google with external icon and overlay hidden - some text in the span
+Usage:   t3lib_iconWorks::getSpriteIcon('apps-pagetree-page-shortcut-external+status-overlay-hidden', array(
+           array('element' => 'a', 'href' => 'http://www.google.com'),
+           array('html' => 'V')
+         ));
+Result:  <a class="t3-icon t3-icon-apps-pagetree t3-icon-pagetree-page-shortcut-external" href="http://www.google.com">
+           <span class="t3-icon t3-icon-status-overlay t3-icon-overlay-hidden t3-icon-overlay">V</span>
+         </a>
+
+== Overlays ==
+
+This system is supposed to be only used with one overlay. The graphical icon guideline shows that subtypes of icons
+are defined through a overlay in the right bottom corner. The left bottom area is then used to show the most important
+state of the icon (just one). If the element has more than one state it will be displayed on hover currently just with
+text in the title tag - hopefully in the future with with some javascript overlay containing icons.
+In order to select the most important state there is a priority list at
+  $TYPO3_CONF_VARS['BE']['iconOverlayPriorities'] => array('hidden', 'starttime', 'endtime', 'fe_group', 'protectSection', 'futuretiming')
+As multiple states may have the same icon and the state name is not compatible with the css there is a mapping array at
+  $TYPO3_CONF_VARS['BE']['iconOverlayMapping'] = 
+    'hidden'       => 'status-overlay-hidden',
+    'fe_group'     => 'status-overlay-access-restricted',
+    'starttime'    => 'status-overlay-scheduled',
+    'endtime'      => 'status-overlay-scheduled',
+    'futuretiming' => 'status-overlay-scheduled',
+    'readonly'     => 'status-overlay-locked',
+    'deleted'      => 'status-overlay-deleted',
+    'missing'      => 'status-overlay-missing',
+    'translated'   => 'status-overlay-translated',
+    'protectedSection' => 'status-overlay-includes-subpages',
+  )
+
+== Table Row Icons ==
+
+In order to generate a proper iconname for table rows you need to add the following configuration for you table.
+This is an example for the table pages:
+  $TCA['pages']['typeicon_classes'] = array(
+    '1' => 'apps-pagetree-page-default',
+    '3' => 'apps-pagetree-page-shortcut-external',
+    '255' => 'actions-edit-deleted',
+    ...
+  )
+The array can be anything (doesn't need to be a number) it depends an  $TCA['pages']['typeicon_column']
+Another example from tt_content:
+  $TCA['tt_content']['typeicon_classes'] = array(
+    'header' => 'mimetypes-x-content-header',
+    'textpic' => 'mimetypes-x-content-text-picture',
+    'image' => 'mimetypes-x-content-image',
+    ...
+  )
+
+

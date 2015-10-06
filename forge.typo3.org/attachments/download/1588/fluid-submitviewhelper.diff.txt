@@ -1,0 +1,22 @@
+Index: Classes/ViewHelpers/Form/SubmitViewHelper.php
+===================================================================
+--- Classes/ViewHelpers/Form/SubmitViewHelper.php	(Revision 1200)
++++ Classes/ViewHelpers/Form/SubmitViewHelper.php	(Arbeitskopie)
+@@ -73,14 +73,10 @@
+ 	 * @author Bastian Waidelich <bastian@typo3.org>
+ 	 * @api
+ 	 */
+-	public function render($name = '', $value = '') {
++	public function render() {
+ 		$this->tag->addAttribute('type', 'submit');
+-		if ($name !== '') {
+-			$this->tag->addAttribute('name', $name);
+-		}
+-		if ($value !== '') {
+-			$this->tag->addAttribute('value', $value);
+-		}
++		$this->tag->addAttribute('name', $this->getName());
++		$this->tag->addAttribute('value', $this->getValue());
+ 
+ 		return $this->tag->render();
+ 	}

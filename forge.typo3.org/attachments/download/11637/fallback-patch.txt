@@ -1,0 +1,54 @@
+### Eclipse Workspace Patch 1.0
+#P TYPO3
+Index: typo3/sysext/cms/tslib/class.tslib_fe.php
+===================================================================
+--- typo3/sysext/cms/tslib/class.tslib_fe.php	(revision 5596)
++++ typo3/sysext/cms/tslib/class.tslib_fe.php	(working copy)
+@@ -2258,6 +2258,7 @@
+ 								foreach($fallBackOrder as $orderValue)	{
+ 									if (!strcmp($orderValue,'0') || count($this->sys_page->getPageOverlay($this->id, $orderValue)))	{
+ 										$this->sys_language_content = $orderValue;	// Setting content uid (but leaving the sys_language_uid)
++										$this->page = $this->sys_page->getPageOverlay($this->page, $orderValue); // Get titles and other page info of current page in fallback language 
+ 										break;
+ 									}
+ 								}
+Index: t3lib/class.t3lib_page.php
+===================================================================
+--- t3lib/class.t3lib_page.php	(revision 5596)
++++ t3lib/class.t3lib_page.php	(working copy)
+@@ -306,6 +306,35 @@
+ 							'',
+ 							'1'
+ 						);
++
++					// When we have no result yet, check if there is fallback defined and try to find the page in the fallback language:
++				if($lUid == $this->sys_language_uid && $GLOBALS['TYPO3_DB']->sql_num_rows($res) == 0) {
++						
++					list($sys_language_mode,$sys_language_content) = t3lib_div::trimExplode(';', $GLOBALS['TSFE']->config['config']['sys_language_mode']);
++					if($sys_language_mode == 'content_fallback') {
++						$fallBackOrder = t3lib_div::intExplode(',', $sys_language_content);
++						foreach($fallBackOrder as $orderValue)	{
++							
++								// Selecting overlay record in fallback language:
++							$GLOBALS['TYPO3_DB']->sql_free_result($res);
++							$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
++										implode(',',$fieldArr),
++										'pages_language_overlay',
++										'pid='.intval($page_id).'
++											AND sys_language_uid='.intval($orderValue).
++											$this->enableFields('pages_language_overlay'),
++										'',
++										'',
++										'1'
++									);
++									
++							if($GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {
++								break;
++							}
++						}
++					}
++				}
++
+ 				$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+ 				$GLOBALS['TYPO3_DB']->sql_free_result($res);
+ 				$this->versionOL('pages_language_overlay',$row);

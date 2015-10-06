@@ -1,0 +1,13 @@
+Index: Z:/svnworkspace/TYPO3_4-1/typo3/sysext/cms/tslib/class.tslib_menu.php
+===================================================================
+--- Z:/svnworkspace/TYPO3_4-1/typo3/sysext/cms/tslib/class.tslib_menu.php	(revision 2438)
++++ Z:/svnworkspace/TYPO3_4-1/typo3/sysext/cms/tslib/class.tslib_menu.php	(working copy)
+@@ -896,7 +896,7 @@
+ 								// Checking if a page should be shown in the menu depending on whether a translation exists:
+ 							$tok = TRUE;
+ 							if ($GLOBALS['TSFE']->sys_language_uid && t3lib_div::hideIfNotTranslated($data['l18n_cfg']))	{	// There is an alternative language active AND the current page requires a translation:
+-								if (!$data['_PAGES_OVERLAY'])	{
++								if (!$data['_PAGES_OVERLAY'] || ($data['_PAGES_OVERLAY'] && $data['_PAGES_OVERLAY_LUID'] != $GLOBALS['TSFE']->sys_language_uid))	{
+ 									$tok = FALSE;
+ 								}
+ 							}

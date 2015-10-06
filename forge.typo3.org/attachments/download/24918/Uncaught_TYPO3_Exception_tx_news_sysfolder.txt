@@ -1,0 +1,182 @@
+Uncaught TYPO3 Exception
+#1375955684: You are not allowed to access the given folder (More information)
+
+TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException thrown in file
+xyz/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 730.
+20 TYPO3\CMS\Core\Resource\ResourceStorage::assureFolderReadPermission()
+
+xyz/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01257:   */
+01258:  public function hasFile($identifier) {
+01259:   $this->assureFolderReadPermission();
+01260:   return $this->driver->fileExists($identifier);
+01261:  }
+
+19 TYPO3\CMS\Core\Resource\ResourceStorage::hasFile("/typo3temp/_processed_/preview_2013-04-20-Hinweise_2889277d41.jpg")
+
+xyz/typo3/sysext/core/Classes/Resource/AbstractFile.php:
+00382:    return FALSE;
+00383:   }
+00384:   return $this->storage->hasFile($this->getIdentifier());
+00385:  }
+00386: 
+
+18 TYPO3\CMS\Core\Resource\AbstractFile::exists()
+
+xyz/typo3/sysext/core/Classes/Resource/ProcessedFile.php:
+00448: 
+00449:   // processedFile does not exist
+00450:   if (!$this->usesOriginalFile() && !$this->exists()) {
+00451:    $fileMustBeRecreated = TRUE;
+00452:   }
+
+17 TYPO3\CMS\Core\Resource\ProcessedFile::needsReprocessing()
+
+xyz/typo3/sysext/core/Classes/Resource/ProcessedFile.php:
+00271:   */
+00272:  public function isProcessed() {
+00273:   return ($this->isPersisted() && !$this->needsReprocessing()) || $this->updated;
+00274:  }
+00275: 
+
+16 TYPO3\CMS\Core\Resource\ProcessedFile::isProcessed()
+
+xyz/typo3/sysext/core/Classes/Resource/Service/FileProcessingService.php:
+00100:   // (maybe modified or already processed by a signal)
+00101:   // or (in case of preview images) already in the DB/in the processing folder
+00102:   if (!$processedFile->isProcessed()) {
+00103:    $this->process($processedFile, $targetStorage);
+00104:   }
+
+15 TYPO3\CMS\Core\Resource\Service\FileProcessingService::processFile(TYPO3\CMS\Core\Resource\File, TYPO3\CMS\Core\Resource\ResourceStorage, "Image.Preview", array)
+
+xyz/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01130:    throw new \InvalidArgumentException('Cannot process files of foreign storage', 1353401835);
+01131:   }
+01132:   $processedFile = $this->getFileProcessingService()->processFile($fileObject, $this, $context, $configuration);
+01133: 
+01134:   return $processedFile;
+
+14 TYPO3\CMS\Core\Resource\ResourceStorage::processFile(TYPO3\CMS\Core\Resource\File, "Image.Preview", array)
+
+xyz/typo3/sysext/core/Classes/Resource/File.php:
+00291:   */
+00292:  public function process($taskType, array $configuration) {
+00293:   return $this->getStorage()->processFile($this, $taskType, $configuration);
+00294:  }
+00295: 
+
+13 TYPO3\CMS\Core\Resource\File::process("Image.Preview", array)
+
+xyz/typo3/sysext/backend/Classes/Utility/BackendUtility.php:
+01547:        'width' => $sizeParts[0],
+01548:        'height' => $sizeParts[1]
+01549:       ))->getPublicUrl(TRUE);
+01550:       if (!$fileObject->checkActionPermission('read')) {
+01551:        /** @var $flashMessage \TYPO3\CMS\Core\Messaging\FlashMessage */
+
+12 TYPO3\CMS\Backend\Utility\BackendUtility::thumbCode(array, "tx_news_domain_model_media", "image", NULL, "", NULL, 0, "", "", boolean)
+
+xyz/typo3conf/ext/news/Classes/Hooks/Labels.php:
+00076:     if (!empty($params['row']['image'])) {
+00077:      $params['row']['image'] = $this->splitFileName($params['row']['image']);
+00078:      $additionalHtmlContent = '
+' . t3lib_BEfunc::thumbCode($params['row'], 'tx_news_domain_model_media', 'image', $GLOBALS['BACK_PATH'], '', NULL, 0, '', '', FALSE);
+00079:     }
+00080:     break;
+
+11 Tx_News_Hooks_Labels::getUserLabelMedia(array, NULL)
+10 call_user_func_array(array, array)
+
+xyz/typo3/sysext/core/Classes/Utility/GeneralUtility.php:
+03968:      }
+03969:      // Call method:
+03970:      $content = call_user_func_array(array(&$classObj, $parts[1]), array(&$params, &$ref));
+03971:     } else {
+03972:      $errorMsg = 'No method name \'' . $parts[1] . '\' in class ' . $parts[0];
+
+9 TYPO3\CMS\Core\Utility\GeneralUtility::callUserFunction("Tx_News_Hooks_Labels->getUserLabelMedia", array, NULL)
+
+xyz/typo3/sysext/backend/Classes/Form/Element/InlineElement.php:
+00522:    // callUserFunction requires a third parameter, but we don't want to give $this as reference!
+00523:    $null = NULL;
+00524:    \TYPO3\CMS\Core\Utility\GeneralUtility::callUserFunction($GLOBALS['TCA'][$foreign_table]['ctrl']['label_userFunc'], $params, $null);
+00525:    $recTitle = $params['title'];
+00526:   } elseif ($hasForeignLabel || $hasSymmetricLabel) {
+
+8 TYPO3\CMS\Backend\Form\Element\InlineElement::renderForeignRecordHeader("2156", "tx_news_domain_model_media", array, array, boolean)
+
+xyz/typo3/sysext/backend/Classes/Form/Element/InlineElement.php:
+00451:    $out = '
+' . $fields . $combination . '
+';
+00452:    $header = \TYPO3\CMS\Backend\Utility\IconUtility::getSpriteIcon('apps-irre-' . ($class != '' ? 'collapsed' : 'expanded'));
+00453:    $header .= $this->renderForeignRecordHeader($parentUid, $foreign_table, $rec, $config, $isVirtualRecord);
+00454:    $out = '
+' . $header . '
+' . $out;
+00455:    // Wrap the header, fields and combination part of a child record with a div container
+
+7 TYPO3\CMS\Backend\Form\Element\InlineElement::renderForeignRecord("2156", array, array)
+
+xyz/typo3/sysext/backend/Classes/Form/Element/InlineElement.php:
+00304:   if (count($relatedRecords['records'])) {
+00305:    foreach ($relatedRecords['records'] as $rec) {
+00306:     $item .= $this->renderForeignRecord($row['uid'], $rec, $config);
+00307:     if (!isset($rec['__virtual']) || !$rec['__virtual']) {
+00308:      $relationList[] = $rec['uid'];
+
+6 TYPO3\CMS\Backend\Form\Element\InlineElement::getSingleField_typeInline("tx_news_domain_model_news", "media", array, array)
+
+xyz/typo3/sysext/backend/Classes/Form/FormEngine.php:
+01206:    break;
+01207:   case 'inline':
+01208:    $item = $this->inline->getSingleField_typeInline($table, $field, $row, $PA);
+01209:    break;
+01210:   case 'none':
+
+5 TYPO3\CMS\Backend\Form\FormEngine::getSingleField_SW("tx_news_domain_model_news", "media", array, array)
+
+xyz/typo3/sysext/backend/Classes/Form/FormEngine.php:
+01100:      }
+01101:      // Based on the type of the item, call a render function:
+01102:      $item = $this->getSingleField_SW($table, $field, $row, $PA);
+01103:      // Add language + diff
+01104:      if ($PA['fieldConf']['l10n_display'] && (\TYPO3\CMS\Core\Utility\GeneralUtility::inList($PA['fieldConf']['l10n_display'], 'hideDiff') || \TYPO3\CMS\Core\Utility\GeneralUtility::inList($PA['fieldConf']['l10n_display'], 'defaultAsReadonly'))) {
+
+4 TYPO3\CMS\Backend\Form\FormEngine::getSingleField("tx_news_domain_model_news", "media", array, NULL, 0, NULL, NULL)
+
+xyz/typo3/sysext/backend/Classes/Form/FormEngine.php:
+00774:          $this->palettesRendered[$this->renderDepth][$table][$parts[2]] = 1;
+00775:         }
+00776:         $sField = $this->getSingleField($table, $theField, $row, $parts[1], 0, $parts[3], $parts[2]);
+00777:         if ($sField) {
+00778:          $sField .= $sFieldPal;
+
+3 TYPO3\CMS\Backend\Form\FormEngine::getMainFields("tx_news_domain_model_news", array)
+
+xyz/typo3/sysext/backend/Classes/Controller/EditDocumentController.php:
+00856:           }
+00857:          } else {
+00858:           $panel .= $this->tceforms->getMainFields($table, $rec);
+00859:          }
+00860:          $panel = $this->tceforms->wrapTotal($panel, $rec, $table);
+
+2 TYPO3\CMS\Backend\Controller\EditDocumentController::makeEditForm()
+
+xyz/typo3/sysext/backend/Classes/Controller/EditDocumentController.php:
+00651:    }
+00652:    // Creating the editing form, wrap it with buttons, document selector etc.
+00653:    $editForm = $this->makeEditForm();
+00654:    if ($editForm) {
+00655:     $this->firstEl = reset($this->elementsData);
+
+1 TYPO3\CMS\Backend\Controller\EditDocumentController::main()
+
+xyz/typo3/alt_doc.php:
+00057: // Main:
+00058: $SOBE->init();
+00059: $SOBE->main();
+00060: $SOBE->printContent();
+00061: ?>
+

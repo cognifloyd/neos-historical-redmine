@@ -1,0 +1,141 @@
+Uncaught TYPO3 Exception
+#1375955684: You are not allowed to access the given folder (More information)
+
+TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException thrown in file
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 730.
+
+15 TYPO3\CMS\Core\Resource\ResourceStorage::assureFolderReadPermission()
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01257:   */
+01258:  public function hasFile($identifier) {
+01259:   $this->assureFolderReadPermission();
+01260:   return $this->driver->fileExists($identifier);
+01261:  }
+
+14 TYPO3\CMS\Core\Resource\ResourceStorage::hasFile("/typo3temp/_processed_/preview_DSC_8012_fa6368187a.jpg")
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/AbstractFile.php:
+00365:    return FALSE;
+00366:   }
+00367:   return $this->storage->hasFile($this->getIdentifier());
+00368:  }
+00369: 
+
+13 TYPO3\CMS\Core\Resource\AbstractFile::exists()
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ProcessedFile.php:
+00448: 
+00449:   // processedFile does not exist
+00450:   if (!$this->usesOriginalFile() && !$this->exists()) {
+00451:    $fileMustBeRecreated = TRUE;
+00452:   }
+
+12 TYPO3\CMS\Core\Resource\ProcessedFile::needsReprocessing()
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ProcessedFile.php:
+00271:   */
+00272:  public function isProcessed() {
+00273:   return ($this->isPersisted() && !$this->needsReprocessing()) || $this->updated;
+00274:  }
+00275: 
+
+11 TYPO3\CMS\Core\Resource\ProcessedFile::isProcessed()
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/Service/FileProcessingService.php:
+00100:   // (maybe modified or already processed by a signal)
+00101:   // or (in case of preview images) already in the DB/in the processing folder
+00102:   if (!$processedFile->isProcessed()) {
+00103:    $this->process($processedFile, $targetStorage);
+00104:   }
+
+10 TYPO3\CMS\Core\Resource\Service\FileProcessingService::processFile(TYPO3\CMS\Core\Resource\File, TYPO3\CMS\Core\Resource\ResourceStorage, "Image.Preview", array)
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01130:    throw new \InvalidArgumentException('Cannot process files of foreign storage', 1353401835);
+01131:   }
+01132:   $processedFile = $this->getFileProcessingService()->processFile($fileObject, $this, $context, $configuration);
+01133: 
+01134:   return $processedFile;
+
+9 TYPO3\CMS\Core\Resource\ResourceStorage::processFile(TYPO3\CMS\Core\Resource\File, "Image.Preview", array)
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/File.php:
+00291:   */
+00292:  public function process($taskType, array $configuration) {
+00293:   return $this->getStorage()->processFile($this, $taskType, $configuration);
+00294:  }
+00295: 
+
+8 TYPO3\CMS\Core\Resource\File::process("Image.Preview", array)
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/backend/Classes/Utility/BackendUtility.php:
+01555:        'width' => $sizeParts[0],
+01556:        'height' => $sizeParts[1]
+01557:       ))->getPublicUrl(TRUE);
+01558:       if (!$fileObject->checkActionPermission('read')) {
+01559:        /** @var $flashMessage \TYPO3\CMS\Core\Messaging\FlashMessage */
+
+7 TYPO3\CMS\Backend\Utility\BackendUtility::thumbCode(array, "tt_news", "image", "")
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/recordlist/Classes/RecordList/AbstractDatabaseRecordList.php:
+00530:   */
+00531:  public function thumbCode($row, $table, $field) {
+00532:   return \TYPO3\CMS\Backend\Utility\BackendUtility::thumbCode($row, $table, $field, $this->backPath);
+00533:  }
+00534: 
+
+6 TYPO3\CMS\Recordlist\RecordList\AbstractDatabaseRecordList::thumbCode(array, "tt_news", "image")
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/recordlist/Classes/RecordList/DatabaseRecordList.php:
+00642:       preg_match('/(^|(.*(;|,)?))' . $thumbsCol . '(((;|,).*)|$)/', $visibleColumns) === 1
+00643:      ) {
+00644:       $theData[$fCol] .= '
+' . $this->thumbCode($row, $table, $thumbsCol);
+00645:      }
+00646:      $localizationMarkerClass = '';
+
+5 TYPO3\CMS\Recordlist\RecordList\DatabaseRecordList::renderListRow("tt_news", array, 1, "title", "image")
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/recordlist/Classes/RecordList/DatabaseRecordList.php:
+00496:       $cc++;
+00497:       $this->translations = FALSE;
+00498:       $iOut .= $this->renderListRow($table, $row, $cc, $titleCol, $thumbsCol);
+00499:       // If localization view is enabled it means that the selected records are
+00500:       // either default or All language and here we will not select translations
+
+4 TYPO3\CMS\Recordlist\RecordList\DatabaseRecordList::getTable("tt_news", 5, "")
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/recordlist/Classes/RecordList/AbstractDatabaseRecordList.php:
+00433:     }
+00434:     // Finally, render the list:
+00435:     $this->HTMLcode .= $this->getTable($tableName, $this->id, implode(',', $fields));
+00436:    }
+00437:   }
+
+3 TYPO3\CMS\Recordlist\RecordList\AbstractDatabaseRecordList::generateList()
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/recordlist/Classes/RecordList.php:
+00312:    }
+00313:    // Render the list of tables:
+00314:    $dblist->generateList();
+00315:    // Write the bottom of the page:
+00316:    $dblist->writeBottom();
+
+2 TYPO3\CMS\Recordlist\RecordList::main()
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/recordlist/mod1/index.php:
+00056: }
+00057: $SOBE->clearCache();
+00058: $SOBE->main();
+00059: $SOBE->printContent();
+00060: ?>
+
+1 require("/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/sysext/recordlist/mod1/index.php")
+
+/websites/dombauverein-hildesheim.de/typo3_src-6.0.9/typo3/mod.php:
+00039:  require $temp_path . 'conf.php';
+00040:  $BACK_PATH = '';
+00041:  require $temp_path . 'index.php';
+00042:  $isDispatched = TRUE;
+00043: } else {

@@ -1,0 +1,146 @@
+
+Uncaught TYPO3 Exception
+Warning: mkdir() [function.mkdir]: Permission denied in /home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/Utility/T3_FLOW3_Utility_Files.php line 82
+
+T3_FLOW3_Error_Exception thrown in file
+Packages/FLOW3/Classes/Error/T3_FLOW3_Error_ErrorHandler.php in line 61.
+
+11 T3_FLOW3_Error_ErrorHandler::handleError(2, "mkdir() [<a href='function.mkdir'>functi…", "/home/jk/www/flow3/Distribution/trunk/Pa…", 82, array)
+
+10 mkdir("/tmp/FLOW3/0580259d6733fbdae00fdc3f8b9fe…", 511)
+
+
+/home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/Utility/T3_FLOW3_Utility_Files.php:
+
+00080:    $currentPath .= $directoryName . '/';
+00081:    if (!is_dir($currentPath) && T3_PHP6_Functions::strlen($directoryName) > 0) {
+
+00082:     mkdir($currentPath, 0777);
+
+00083:     if (!is_dir($currentPath)) throw new RuntimeException('Could not create directory "' . $path . '"!', 1170251400);
+00084:    }
+
+
+9 T3_FLOW3_Utility_Files::createDirectoryRecursively("/tmp/FLOW3/0580259d6733fbdae00fdc3f8b9fe…")
+
+
+/home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/Cache/Backend/T3_FLOW3_Cache_Backend_File.php:
+
+00078:  public function setCacheDirectory($cacheDirectory) {
+00079:   if (!is_writable($cacheDirectory)) {
+
+00080:    T3_FLOW3_Utility_Files::createDirectoryRecursively($cacheDirectory);
+
+00081:   }
+00082:   if (!is_dir($cacheDirectory)) throw new T3_FLOW3_Cache_Exception('The directory "' . $cacheDirectory . '" does not exist.', 1203965199);
+
+
+8 T3_FLOW3_Cache_Backend_File::setCacheDirectory("/tmp/FLOW3/0580259d6733fbdae00fdc3f8b9fe…")
+
+
+/home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/Cache/Backend/T3_FLOW3_Cache_Backend_File.php:
+
+00063:   $cacheDirectory = $this->environment->getPathToTemporaryDirectory() . '/FLOW3/' . md5($this->environment->getScriptPathAndFilename()) . '/';
+00064:   try {
+
+00065:    $this->setCacheDirectory($cacheDirectory);
+
+00066:   } catch(T3_FLOW3_Cache_Exception $exception) {
+00067:   }
+
+
+7 T3_FLOW3_Cache_Backend_File::initializeComponent()
+
+
+/home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/Component/T3_FLOW3_Component_ObjectBuilder.php:
+
+00272:   $lifecycleInitializationMethod = $componentConfiguration->getLifecycleInitializationMethod();
+00273:   if (method_exists($componentObject, $lifecycleInitializationMethod)) {
+
+00274:    $componentObject->$lifecycleInitializationMethod();
+
+00275:   }
+00276:  }
+
+
+6 T3_FLOW3_Component_ObjectBuilder::callLifecycleInitializationMethod(T3_FLOW3_Cache_Backend_File, T3_FLOW3_Component_Configuration)
+
+
+/home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/Component/T3_FLOW3_Component_ObjectBuilder.php:
+
+00098:    $this->injectSetterProperties($setterProperties, $componentObject);
+00099:
+
+00100:    $this->callLifecycleInitializationMethod($componentObject, $componentConfiguration);
+
+00101:
+00102:    unset ($this->componentsBeingBuilt[$componentName]);
+
+
+5 T3_FLOW3_Component_ObjectBuilder::createComponentObject("T3_FLOW3_Cache_Backend_File", T3_FLOW3_Component_Configuration, array)
+
+
+/home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/Component/T3_FLOW3_Component_Manager.php:
+
+00128:   switch ($scope) {
+00129:    case 'prototype' :
+
+00130:     $componentObject = $this->componentObjectBuilder->createComponentObject($componentName, $componentConfiguration, $overridingConstructorArguments);
+
+00131:     break;
+00132:    case 'singleton' :
+
+
+4 T3_FLOW3_Component_Manager::getComponent("T3_FLOW3_Cache_Backend_File", "Development")
+
+
+/home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/AOP/T3_FLOW3_AOP_Framework.php:
+
+00106:
+00107:   $context = $this->componentManager->getContext();
+
+00108:   $cacheBackend = $this->componentManager->getComponent('T3_FLOW3_Cache_Backend_File', $context);
+
+00109:   $this->proxyCache = $this->componentManager->getComponent('T3_FLOW3_Cache_VariableCache', 'FLOW3_AOP_Proxy', $cacheBackend);
+00110:   $this->configurationCache = $this->componentManager->getComponent('T3_FLOW3_Cache_VariableCache', 'FLOW3_AOP_Configuration', clone $cacheBackend);
+
+
+3 T3_FLOW3_AOP_Framework::initialize()
+
+
+/home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/T3_FLOW3.php:
+
+00102:
+00103:   $this->componentManager->getComponent('T3_FLOW3_Package_ManagerInterface')->initialize();
+
+00104:   $this->componentManager->getComponent('T3_FLOW3_AOP_Framework')->initialize();
+
+00105:   $this->componentManager->getComponent('T3_FLOW3_Utility_Environment');
+00106:   $this->isInitialized = TRUE;
+
+
+2 T3_FLOW3::initialize()
+
+
+/home/jk/www/flow3/Distribution/trunk/Packages/FLOW3/Classes/T3_FLOW3.php:
+
+00115:   */
+00116:  public function run() {
+
+00117:   if (!$this->isInitialized) $this->initialize();
+
+00118:   $requestHandler = $this->componentManager->getComponent('T3_FLOW3_MVC_RequestHandlerResolver')->resolveRequestHandler();
+00119:   $requestHandler->handleRequest();
+
+
+1 T3_FLOW3::run()
+
+
+/home/jk/www/flow3/Distribution/trunk/index.php:
+
+00033:
+00034: $framework = new T3_FLOW3();
+
+00035: $framework->run();
+
+00036: ?>

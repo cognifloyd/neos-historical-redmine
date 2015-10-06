@@ -1,0 +1,164 @@
+Uncaught TYPO3 Exception
+#1375955684: You are not allowed to access the given folder (More information)
+
+TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException thrown in file
+/websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 730.
+
+17 TYPO3\CMS\Core\Resource\ResourceStorage::assureFolderReadPermission()
+
+/websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01257:   */
+01258:  public function hasFile($identifier) {
+01259:   $this->assureFolderReadPermission();
+01260:   return $this->driver->fileExists($identifier);
+01261:  }
+
+16 TYPO3\CMS\Core\Resource\ResourceStorage::hasFile("/typo3temp/_processed_/preview_is_kopfbild_dom_innen_3b9bb94c8b.jpg")
+
+/websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/AbstractFile.php:
+00365:    return FALSE;
+00366:   }
+00367:   return $this->storage->hasFile($this->getIdentifier());
+00368:  }
+00369: 
+
+15 TYPO3\CMS\Core\Resource\AbstractFile::exists()
+
+/websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ProcessedFile.php:
+00448: 
+00449:   // processedFile does not exist
+00450:   if (!$this->usesOriginalFile() && !$this->exists()) {
+00451:    $fileMustBeRecreated = TRUE;
+00452:   }
+
+14 TYPO3\CMS\Core\Resource\ProcessedFile::needsReprocessing()
+
+/websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ProcessedFile.php:
+00271:   */
+00272:  public function isProcessed() {
+00273:   return ($this->isPersisted() && !$this->needsReprocessing()) || $this->updated;
+00274:  }
+00275: 
+
+13 TYPO3\CMS\Core\Resource\ProcessedFile::isProcessed()
+
+/websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/Service/FileProcessingService.php:
+00100:   // (maybe modified or already processed by a signal)
+00101:   // or (in case of preview images) already in the DB/in the processing folder
+00102:   if (!$processedFile->isProcessed()) {
+00103:    $this->process($processedFile, $targetStorage);
+00104:   }
+
+12 TYPO3\CMS\Core\Resource\Service\FileProcessingService::processFile(TYPO3\CMS\Core\Resource\File, TYPO3\CMS\Core\Resource\ResourceStorage, "Image.Preview", array)
+
+/websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01130:    throw new \InvalidArgumentException('Cannot process files of foreign storage', 1353401835);
+01131:   }
+01132:   $processedFile = $this->getFileProcessingService()->processFile($fileObject, $this, $context, $configuration);
+01133: 
+01134:   return $processedFile;
+
+11 TYPO3\CMS\Core\Resource\ResourceStorage::processFile(TYPO3\CMS\Core\Resource\File, "Image.Preview", array)
+
+/websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/File.php:
+00291:   */
+00292:  public function process($taskType, array $configuration) {
+00293:   return $this->getStorage()->processFile($this, $taskType, $configuration);
+00294:  }
+00295: 
+
+10 TYPO3\CMS\Core\Resource\File::process("Image.Preview", array)
+
+/websites/XYZ/typo3_src-6.0.9/typo3/sysext/backend/Classes/Utility/BackendUtility.php:
+01555:        'width' => $sizeParts[0],
+01556:        'height' => $sizeParts[1]
+01557:       ))->getPublicUrl(TRUE);
+01558:       if (!$fileObject->checkActionPermission('read')) {
+01559:        /** @var $flashMessage \TYPO3\CMS\Core\Messaging\FlashMessage */
+
+9 TYPO3\CMS\Backend\Utility\BackendUtility::thumbCode(array, "", "dummyFieldName", "../../../../typo3/", "", "uploads/tx_templavoila")
+
+/websites/XYZ/typo3conf/ext/templavoila/mod1/index.php:
+01471:       if ($TCEformsConfiguration['internal_type'] == 'file') {
+01472:        // Render preview for images:
+01473:        $thumbnail = t3lib_BEfunc::thumbCode (array('dummyFieldName'=> $fieldValue), '', 'dummyFieldName', $this->doc->backPath, '', $TCEformsConfiguration['uploadfolder']);
+01474:        $previewContent .= ''.$TCEformsLabel.' '.$thumbnail.'
+';
+01475:       } elseif ($TCEformsConfiguration['internal_type'] === 'db') {
+
+8 tx_templavoila_module1::render_previewData(array, array, array, "DEF", "sDEF")
+
+/websites/XYZ/typo3conf/ext/templavoila/mod1/index.php:
+01060: 
+01061:    // Preview made:
+01062:   $previewContent = $contentTreeArr['ds_meta']['disableDataPreview'] ? ' ' : $this->render_previewData($contentTreeArr['previewData'], $contentTreeArr['el'], $contentTreeArr['ds_meta'], $languageKey, $sheet);
+01063: 
+01064:    // Wrap workspace notification colors:
+
+7 tx_templavoila_module1::render_framework_singleSheet(array, "DEF", "sDEF", array, array)
+
+/websites/XYZ/typo3conf/ext/templavoila/mod1/index.php:
+00886:    return $this->doc->getDynTabMenu($parts,'TEMPLAVOILA:pagemodule:'.$this->apiObj->flexform_getStringFromPointer($parentPointer));
+00887:   } else {
+00888:    return $this->render_framework_singleSheet($contentTreeArr, $languageKey, 'sDEF', $parentPointer, $parentDsMeta);
+00889:   }
+00890:  }
+
+6 tx_templavoila_module1::render_framework_allSheets(array, "DEF", array, array)
+
+/websites/XYZ/typo3conf/ext/templavoila/mod1/index.php:
+01258:        }
+01259: 
+01260:        $cellContent .= $this->render_framework_allSheets($subElementArr, $languageKey, $subElementPointer, $elementContentTreeArr['ds_meta']);
+01261: 
+01262:        if (!$this->translatorMode && $canCreateNew) {
+
+5 tx_templavoila_module1::render_framework_subElements(array, "DEF", "sDEF", 31)
+
+/websites/XYZ/typo3conf/ext/templavoila/mod1/index.php:
+01090:     
+' .
+01091:      ($warnings ? '
+' . $warnings . '
+' : '' ) .
+01092:      $this->render_framework_subElements($contentTreeArr, $languageKey, $sheet, $calcPerms) .
+01093:      '
+' . $previewContent . '
+' .
+01094:      $this->render_localizationInfoTable($contentTreeArr, $parentPointer, $parentDsMeta) .
+
+4 tx_templavoila_module1::render_framework_singleSheet(array, "DEF", "sDEF", array, array)
+
+/websites/XYZ/typo3conf/ext/templavoila/mod1/index.php:
+00886:    return $this->doc->getDynTabMenu($parts,'TEMPLAVOILA:pagemodule:'.$this->apiObj->flexform_getStringFromPointer($parentPointer));
+00887:   } else {
+00888:    return $this->render_framework_singleSheet($contentTreeArr, $languageKey, 'sDEF', $parentPointer, $parentDsMeta);
+00889:   }
+00890:  }
+
+3 tx_templavoila_module1::render_framework_allSheets(array, "DEF")
+
+/websites/XYZ/typo3conf/ext/templavoila/mod1/index.php:
+00823:    $output.= $this->render_outline($contentTreeData['tree']);
+00824:   } else {
+00825:    $output.= $this->render_framework_allSheets($contentTreeData['tree'], $this->currentLanguageKey);
+00826:   }
+00827: 
+
+2 tx_templavoila_module1::render_editPageScreen()
+
+/websites/XYZ/typo3conf/ext/templavoila/mod1/index.php:
+00516:     }
+00517:      // Render "edit current page" (important to do before calling ->sideBarObj->render() - otherwise the translation tab is not rendered!
+00518:     $editCurrentPageHTML .= $this->render_editPageScreen();
+00519: 
+00520:     if (t3lib_div::_GP('ajaxUnlinkRecord')) {
+
+1 tx_templavoila_module1::main()
+
+/websites/XYZ/typo3conf/ext/templavoila/mod1/index.php:
+02902: $SOBE = t3lib_div::makeInstance('tx_templavoila_module1');
+02903: $SOBE->init();
+02904: $SOBE->main();
+02905: $SOBE->printContent();
+02906: ?>

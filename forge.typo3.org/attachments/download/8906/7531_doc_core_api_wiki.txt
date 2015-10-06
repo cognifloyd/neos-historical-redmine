@@ -1,0 +1,37 @@
+=== doc_core_api ===
+
+Ralf Hettinger, 08.08.2009: ''[TYPO3-core] RFC: Feature #7531: TCA displayCond - allow ANDed and/or ORed rulesets'':
+<pre>
+ Chapter: 4.2. $TCA array reference => ['columns'][fieldname] section , Key displayCond
+ 
+ change Datatype to: string or array
+ 
+ change Description:
+ << Contains a condition rule for whether to display the field or not.
+ >> Contains one rule or a ruleset of multiple rules for whether to display the field or not. One rule can be set as a string, multiple rules may be set as an array (see below).
+ 
+ change Description (addition at the end):
+ For passing multiple displayCond rules as a ruleset, they have to be grouped into an array with the keys AND and/or OR. Those keys are pointing to arrays, which contain elements being either strings (a single displayCond rule as described above) or arrays (again with keys being AND and/or OR and then containing another ruleset).
+ Example: 
+ The following ruleset is true, if (my_field1 && my_field2!=3 && (my_field3 || my_field4 || my_field5 && my_field6) || my_field7 || my_field8) :
+ [code]
+ 'displayCond' => array (
+   'AND' => array (
+     'FIELD:my_field1:REQ:true',
+     'FIELD:my_field2:!=:3',
+     'OR' => array (
+       'FIELD:my_field3:REQ:true',
+       'FIELD:my_field4:REQ:true',
+       'AND' => array(
+         'FIELD:my_field5:REQ:true',
+         'FIELD:my_field6:REQ:true',
+       )
+     )
+   ),
+   'OR' => array (
+     'FIELD:my_field7:REQ:true',
+     'FIELD:my_field8:REQ:true',
+   )
+ ),
+ [/code]
+ </pre>

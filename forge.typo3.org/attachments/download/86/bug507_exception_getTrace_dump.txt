@@ -1,0 +1,32 @@
+string(5519) "<pre style="color:#69A550; background-color: #414141; padding: 4px 2px 4px 2px;"><span style="color:white;">7</span> F3_FLOW3_Error_ErrorHandler<span style="color:white;">::</span>handleError<span style="color:white;">(<span style="color:#FF8700;">2</span><span style="color:white;">,</span> "<span style="color:#FF8700;">mkdir() [&lt;a href='function.mkdir'&gt;function.mkdir&lt;/a&gt;]: File exists</span>"<span style="color:white;">,</span> "<span style="color:#FF8700;">C:\xampp\htdocs\FLOW3\Packages\FLOW3\Classes\Utility\F3_FLOW3_Utility_Files.php</span>"<span style="color:white;">,</span> <span style="color:#FF8700;">107</span><span style="color:white;">,</span> <span style="color:#FF8700;"><em>array</em></span>)</span></pre><br /><span style="font-size:10px;">C:\xampp\htdocs\FLOW3\Packages\FLOW3\Classes\Utility\F3_FLOW3_Utility_Files.php:</span><br /><pre>00105:   if (!is_dir($path) && F3_PHP6_Functions::strlen($path) > 0) {
+00106:    $oldMask = umask(000);
+</pre><pre style="background-color: #F1F1F1; color: black;">00107:    mkdir($path, 0777, TRUE);
+</pre><pre>00108:    umask($oldMask);
+00109:    if (!is_dir($path)) throw new F3_FLOW3_Utility_Exception('Could not create directory "' . $path . '"!', 1170251400);
+</pre><br /><pre style="color:#69A550; background-color: #414141; padding: 4px 2px 4px 2px;"><span style="color:white;">6</span> F3_FLOW3_Utility_Files<span style="color:white;">::</span>createDirectoryRecursively<span style="color:white;">("<span style="color:#FF8700;">C:/xampp/htdocs/FLOW3/Public/Resources/TestPackage/Public/.</span>"<span style="color:white;">,</span> <span style="color:#FF8700;">511</span><span style="color:white;">,</span> <span style="color:#FF8700;"><em>boolean</em></span>)</span></pre><br /><span style="font-size:10px;">C:\xampp\htdocs\FLOW3\Packages\FLOW3\Classes\Resource\F3_FLOW3_Resource_Publisher.php:</span><br /><pre>00155:    $metadata = $this->extractResourceMetadata($URI);
+00156: 
+</pre><pre style="background-color: #F1F1F1; color: black;">00157:    F3_FLOW3_Utility_Files::createDirectoryRecursively($destinationPath . dirname($relativeFile));
+</pre><pre>00158:    if($metadata['mimeType'] == 'text/html') {
+00159:     $HTML = F3_FLOW3_Resource_Processor::adjustRelativePathsInHTML(file_get_contents($file), 'Resources/' . $packageName . '/Public/' . dirname($relativeFile) . '/');
+</pre><br /><pre style="color:#69A550; background-color: #414141; padding: 4px 2px 4px 2px;"><span style="color:white;">5</span> F3_FLOW3_Resource_Publisher<span style="color:white;">::</span>mirrorPublicPackageResources<span style="color:white;">("<span style="color:#FF8700;">C:/xampp/htdocs/FLOW3/Public/Resources/TestPackage/Public/.</span>")</span></pre><br /><span style="font-size:10px;">C:\xampp\htdocs\FLOW3\Packages\FLOW3\Classes\F3_FLOW3.php:</span><br /><pre>00271:   $activePackages = $packageManager->getActivePackages();
+00272:   foreach ($activePackages as $packageKey => $package) {
+</pre><pre style="background-color: #F1F1F1; color: black;">00273:    $resourcePublisher->mirrorPublicPackageResources($packageKey);
+</pre><pre>00274:   }
+00275: 
+</pre><br /><pre style="color:#69A550; background-color: #414141; padding: 4px 2px 4px 2px;"><span style="color:white;">4</span> F3_FLOW3<span style="color:white;">::</span>initializeResources<span style="color:white;">("<span style="color:#FF8700;">TestPackage</span>")</span></pre><br /><span style="font-size:10px;">C:\xampp\htdocs\FLOW3\Packages\FLOW3\Classes\F3_FLOW3.php:</span><br /><pre>00121:   $this->initializeComponents();
+00122:   $this->initializeSettings();
+</pre><pre style="background-color: #F1F1F1; color: black;">00123:   $this->initializeResources();
+</pre><pre>00124:  }
+00125: 
+</pre><br /><pre style="color:#69A550; background-color: #414141; padding: 4px 2px 4px 2px;"><span style="color:white;">3</span> F3_FLOW3<span style="color:white;">::</span>initialize<span style="color:white;">()</span></pre><br /><span style="font-size:10px;">C:\xampp\htdocs\FLOW3\Packages\FLOW3\Classes\F3_FLOW3.php:</span><br /><pre>00285:   */
+00286:  public function run() {
+</pre><pre style="background-color: #F1F1F1; color: black;">00287:   if ($this->initializationLevel == self::INITIALIZATION_LEVEL_CONSTRUCT) $this->initialize();
+</pre><pre>00288:   if ($this->initializationLevel < self::INITIALIZATION_LEVEL_SETTINGS) throw new F3_FLOW3_Exception('Cannot run FLOW3 because it is not fully initialized (current initialization level: ' . $this->initializationLevel . ').', 1205759259);
+00289: 
+</pre><br /><pre style="color:#69A550; background-color: #414141; padding: 4px 2px 4px 2px;"><span style="color:white;">2</span> F3_FLOW3<span style="color:white;">::</span>run<span style="color:white;">()</span></pre><br /><span style="font-size:10px;">C:\xampp\htdocs\FLOW3\Public\index_dev.php:</span><br /><pre>00029: 
+00030: $framework = new F3_FLOW3('Development');
+</pre><pre style="background-color: #F1F1F1; color: black;">00031: $framework->run();
+</pre><pre>00032: ?></pre><br /><pre style="color:#69A550; background-color: #414141; padding: 4px 2px 4px 2px;"><span style="color:white;">1</span> require_once<span style="color:white;">("<span style="color:#FF8700;">C:\xampp\htdocs\FLOW3\Public\index_dev.php</span>")</span></pre><br /><span style="font-size:10px;">C:\xampp\htdocs\FLOW3\index_dev.php:</span><br /><pre>00030:  */
+00031: 
+</pre><pre style="background-color: #F1F1F1; color: black;">00032: require_once('Public/index_dev.php');
+</pre><pre>00033: ?></pre><br />"

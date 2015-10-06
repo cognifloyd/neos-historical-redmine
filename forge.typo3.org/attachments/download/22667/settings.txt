@@ -1,0 +1,944 @@
+Configuration "Settings":
+
+TYPO3:
+    Flow:
+        aop:
+            globalObjects:
+                securityContext: TYPO3\Flow\Security\Context
+        configuration:
+            compileConfigurationFiles: false
+        core:
+            context: Development
+            phpBinaryPathAndFilename: /Applications/MAMP/bin/php/php5.3.6/bin/php
+            subRequestEnvironmentVariables:
+                XDEBUG_CONFIG: 'idekey=FLOW_SUBREQUEST remote_port=9001'
+        error:
+            exceptionHandler:
+                className: TYPO3\Flow\Error\DebugExceptionHandler
+                defaultRenderingOptions:
+                    renderTechnicalDetails: true
+                renderingGroups:
+                    notFoundExceptions:
+                        matchingStatusCodes:
+                            - 404
+                        options:
+                            templatePathAndFilename: 'resource://TYPO3.Neos/Private/Templates/Error/Index.html'
+                            variables:
+                                errorDescription: 'Sorry, the page you requested was not found.'
+                                errorTitle: 'Page Not Found'
+                            layoutRootPath: 'resource://TYPO3.Neos/Private/Layouts/'
+                            format: html
+                    databaseConnectionExceptions:
+                        matchingExceptionClassNames:
+                            - TYPO3\Flow\Persistence\Doctrine\DatabaseConnectionException
+                        options:
+                            templatePathAndFilename: 'resource://TYPO3.Neos/Private/Templates/Error/Index.html'
+                            variables:
+                                errorDescription: 'Sorry, the database connection could not be established.'
+                                errorTitle: 'No Database Connection'
+                            layoutRootPath: 'resource://TYPO3.Neos/Private/Layouts/'
+                            format: html
+                    noHomepageException:
+                        matchingExceptionClassNames:
+                            - TYPO3\Neos\Routing\Exception\NoHomepageException
+                        options:
+                            templatePathAndFilename: 'resource://TYPO3.Neos/Private/Templates/Error/Index.html'
+                            layoutRootPath: 'resource://TYPO3.Neos/Private/Layouts/'
+                            format: html
+                            variables:
+                                errorTitle: 'Missing Homepage'
+                                errorDescription: 'Either no site has been defined yet or the site does not contain a homepage.'
+            errorHandler:
+                exceptionalErrors:
+                    - '256'
+                    - '4096'
+                    - '2'
+                    - '8'
+                    - '512'
+                    - '1024'
+                    - '2048'
+        http:
+            baseUri: null
+        log:
+            systemLogger:
+                backend: TYPO3\Flow\Log\Backend\FileBackend
+                backendOptions:
+                    logFileURL: /Applications/MAMP/htdocs/NeosCore/Data/Logs/System_Development.log
+                    createParentDirectories: true
+                    severityThreshold: '7'
+                    maximumLogFileSize: 10485760
+                    logFilesToKeep: 1
+                    logMessageOrigin: false
+            securityLogger:
+                backend: TYPO3\Flow\Log\Backend\FileBackend
+                backendOptions:
+                    logFileURL: /Applications/MAMP/htdocs/NeosCore/Data/Logs/Security_Development.log
+                    createParentDirectories: true
+                    severityThreshold: '7'
+                    maximumLogFileSize: 10485760
+                    logFilesToKeep: 1
+                    logIpAddress: true
+            sqlLogger:
+                backend: TYPO3\Flow\Log\Backend\FileBackend
+                backendOptions:
+                    logFileURL: /Applications/MAMP/htdocs/NeosCore/Data/Logs/Query_Development.log
+                    createParentDirectories: true
+                    severityThreshold: '7'
+                    maximumLogFileSize: 10485760
+                    logFilesToKeep: 1
+        i18n:
+            defaultLocale: en
+            fallbackRule:
+                strict: false
+                order: {  }
+        object:
+            registerFunctionalTestClasses: false
+            excludeClasses:
+                Doctrine.Common:
+                    - '.*'
+                Doctrine.ORM:
+                    - '.*'
+                Doctrine.DBAL:
+                    - '.*'
+                doctrine.migrations:
+                    - '.*'
+                symfony.domcrawler:
+                    - 'Symfony\\Component\\DomCrawler\\Tests\\.*'
+                    - 'Symfony\\Component\\DomCrawler\\Form.*'
+                symfony.yaml:
+                    - 'Symfony\\Component\\Yaml\\Tests\\.*'
+                mikey179.vfsStream:
+                    - '.*'
+                typo3.flowcomposerinstallers:
+                    - '.*'
+                imagine.Imagine:
+                    - 'Imagine\\Test\\.*'
+        package:
+            inactiveByDefault:
+                - typo3.flowcomposerinstallers
+        persistence:
+            backendOptions:
+                driver: pdo_mysql
+                host: 127.0.0.1
+                dbname: neoscore
+                user: root
+                password: root
+                charset: utf8
+            doctrine:
+                enable: true
+                cacheImplementation: Doctrine\Common\Cache\ArrayCache
+                sqlLogger: null
+        reflection:
+            ignoredTags:
+                - api
+                - package
+                - subpackage
+                - license
+                - copyright
+                - author
+                - const
+                - see
+                - todo
+                - scope
+                - fixme
+                - test
+                - expectedException
+                - depends
+                - dataProvider
+                - group
+                - codeCoverageIgnore
+            logIncorrectDocCommentHints: false
+        resource:
+            publishing:
+                detectPackageResourceChanges: true
+                fileSystem:
+                    mirrorMode: link
+        security:
+            enable: true
+            firewall:
+                rejectAll: false
+                filters:
+                    -
+                        patternType: CsrfProtection
+                        patternValue: null
+                        interceptor: AccessDeny
+            authentication:
+                providers:
+                    Typo3BackendProvider:
+                        provider: PersistedUsernamePasswordProvider
+                        requestPatterns:
+                            controllerObjectName: 'TYPO3\Neos\Controller\.*|TYPO3\Neos\Service\.*'
+                        entryPoint: WebRedirect
+                        entryPointOptions:
+                            uri: neos/login
+                    Typo3SetupProvider:
+                        provider: FileBasedSimpleKeyProvider
+                        providerOptions:
+                            keyName: SetupKey
+                        requestPatterns:
+                            controllerObjectName: 'TYPO3\Setup\Controller\.*'
+                        entryPoint: WebRedirect
+                        entryPointOptions:
+                            uri: setup/login
+                authenticationStrategy: oneToken
+            authorization:
+                accessDecisionVoters:
+                    - TYPO3\Flow\Security\Authorization\Voter\Policy
+                allowAccessIfAllVotersAbstain: false
+            csrf:
+                csrfStrategy: onePerSession
+            cryptography:
+                hashingStrategies:
+                    default: bcrypt
+                    fallback: pbkdf2
+                    pbkdf2: TYPO3\Flow\Security\Cryptography\Pbkdf2HashingStrategy
+                    bcrypt: TYPO3\Flow\Security\Cryptography\BCryptHashingStrategy
+                    saltedmd5: TYPO3\Flow\Security\Cryptography\SaltedMd5HashingStrategy
+                Pbkdf2HashingStrategy:
+                    dynamicSaltLength: 8
+                    iterationCount: 10000
+                    derivedKeyLength: 64
+                    algorithm: sha256
+                BCryptHashingStrategy:
+                    cost: 14
+                RSAWalletServicePHP:
+                    keystorePath: /Applications/MAMP/htdocs/NeosCore/Data/Persistent/RsaWalletData
+                    openSSLConfiguration: {  }
+        session:
+            inactivityTimeout: 3600
+            PhpSession:
+                name: Flow
+                savePath: null
+                cookie:
+                    lifetime: 0
+                    path: /
+                    secure: false
+                    httponly: true
+                    domain: null
+        utility:
+            environment:
+                temporaryDirectoryBase: /Applications/MAMP/htdocs/NeosCore/Data/Temporary/
+    Aloha:
+        alohaDevelopmentMode: false
+    Eel: {  }
+    ExtJS:
+        ExtDirect:
+            exposeExceptionInformation: true
+    Fluid: {  }
+    Form:
+        yamlPersistenceManager:
+            savePath: /Applications/MAMP/htdocs/NeosCore/Data/Forms/
+        supertypeResolver:
+            hiddenProperties: {  }
+        presets:
+            default:
+                title: Default
+                stylesheets: {  }
+                javaScripts: {  }
+                formElementTypes:
+                    'TYPO3.Form:Base':
+                        renderingOptions:
+                            templatePathPattern: 'resource://{@package}/Private/Form/{@type}.html'
+                            partialPathPattern: 'resource://{@package}/Private/Form/Partials/{@type}.html'
+                            layoutPathPattern: 'resource://{@package}/Private/Form/Layouts/{@type}.html'
+                    'TYPO3.Form:Form':
+                        superTypes:
+                            - 'TYPO3.Form:Base'
+                        rendererClassName: TYPO3\Form\Core\Renderer\FluidFormRenderer
+                        renderingOptions:
+                            renderableNameInTemplate: form
+                    'TYPO3.Form:RemovableMixin': {  }
+                    'TYPO3.Form:ReadOnlyFormElement':
+                        superTypes:
+                            - 'TYPO3.Form:Base'
+                            - 'TYPO3.Form:RemovableMixin'
+                        implementationClassName: TYPO3\Form\FormElements\GenericFormElement
+                        renderingOptions:
+                            renderableNameInTemplate: element
+                    'TYPO3.Form:FormElement':
+                        superTypes:
+                            - 'TYPO3.Form:Base'
+                            - 'TYPO3.Form:RemovableMixin'
+                        implementationClassName: TYPO3\Form\FormElements\GenericFormElement
+                        properties:
+                            containerClassAttribute: input
+                            elementClassAttribute: ''
+                            elementErrorClassAttribute: error
+                        renderingOptions:
+                            renderableNameInTemplate: element
+                    'TYPO3.Form:Page':
+                        superTypes:
+                            - 'TYPO3.Form:Base'
+                            - 'TYPO3.Form:RemovableMixin'
+                        implementationClassName: TYPO3\Form\Core\Model\Page
+                        renderingOptions:
+                            renderableNameInTemplate: page
+                    'TYPO3.Form:PreviewPage':
+                        superTypes:
+                            - 'TYPO3.Form:Page'
+                    'TYPO3.Form:Section':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                        implementationClassName: TYPO3\Form\FormElements\Section
+                        renderingOptions:
+                            renderableNameInTemplate: section
+                    'TYPO3.Form:TextMixin': {  }
+                    'TYPO3.Form:SingleLineText':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                            - 'TYPO3.Form:TextMixin'
+                    'TYPO3.Form:Password':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                            - 'TYPO3.Form:TextMixin'
+                    'TYPO3.Form:PasswordWithConfirmation':
+                        superTypes:
+                            - 'TYPO3.Form:Password'
+                        implementationClassName: TYPO3\Form\FormElements\PasswordWithConfirmation
+                        properties:
+                            elementClassAttribute: input-medium
+                            confirmationLabel: Confirmation
+                            confirmationClassAttribute: input-medium
+                    'TYPO3.Form:MultiLineText':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                            - 'TYPO3.Form:TextMixin'
+                        properties:
+                            elementClassAttribute: xxlarge
+                    'TYPO3.Form:SelectionMixin': {  }
+                    'TYPO3.Form:SingleSelectionMixin':
+                        superTypes:
+                            - 'TYPO3.Form:SelectionMixin'
+                    'TYPO3.Form:MultiSelectionMixin':
+                        superTypes:
+                            - 'TYPO3.Form:SelectionMixin'
+                    'TYPO3.Form:Checkbox':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                        properties:
+                            elementClassAttribute: add-on
+                            value: 1
+                    'TYPO3.Form:MultipleSelectCheckboxes':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                            - 'TYPO3.Form:MultiSelectionMixin'
+                    'TYPO3.Form:MultipleSelectDropdown':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                            - 'TYPO3.Form:MultiSelectionMixin'
+                        properties:
+                            elementClassAttribute: xlarge
+                    'TYPO3.Form:SingleSelectRadiobuttons':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                            - 'TYPO3.Form:SingleSelectionMixin'
+                    'TYPO3.Form:SingleSelectDropdown':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                            - 'TYPO3.Form:SingleSelectionMixin'
+                    'TYPO3.Form:DatePicker':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                        implementationClassName: TYPO3\Form\FormElements\DatePicker
+                        properties:
+                            elementClassAttribute: small
+                            timeSelectorClassAttribute: mini
+                            dateFormat: Y-m-d
+                            enableDatePicker: true
+                            displayTimeSelector: false
+                    'TYPO3.Form:FileUpload':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                        implementationClassName: TYPO3\Form\FormElements\FileUpload
+                        properties:
+                            allowedExtensions:
+                                - pdf
+                                - doc
+                    'TYPO3.Form:ImageUpload':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                        implementationClassName: TYPO3\Form\FormElements\ImageUpload
+                        properties:
+                            allowedTypes:
+                                - jpeg
+                                - png
+                                - bmp
+                    'TYPO3.Form:StaticText':
+                        superTypes:
+                            - 'TYPO3.Form:ReadOnlyFormElement'
+                        properties:
+                            text: ''
+                    'TYPO3.Form:HiddenField':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+                finisherPresets:
+                    'TYPO3.Form:Closure':
+                        implementationClassName: TYPO3\Form\Finishers\ClosureFinisher
+                        options: {  }
+                    'TYPO3.Form:Confirmation':
+                        implementationClassName: TYPO3\Form\Finishers\ConfirmationFinisher
+                        options: {  }
+                    'TYPO3.Form:Email':
+                        implementationClassName: TYPO3\Form\Finishers\EmailFinisher
+                        options: {  }
+                    'TYPO3.Form:FlashMessage':
+                        implementationClassName: TYPO3\Form\Finishers\FlashMessageFinisher
+                        options: {  }
+                    'TYPO3.Form:Redirect':
+                        implementationClassName: TYPO3\Form\Finishers\RedirectFinisher
+                        options: {  }
+                validatorPresets:
+                    'TYPO3.Flow:NotEmpty':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\NotEmptyValidator
+                    'TYPO3.Flow:DateTimeRange':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\DateTimeRangeValidator
+                    'TYPO3.Flow:Alphanumeric':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\AlphanumericValidator
+                    'TYPO3.Flow:Text':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\TextValidator
+                    'TYPO3.Flow:StringLength':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\StringLengthValidator
+                    'TYPO3.Flow:EmailAddress':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\EmailAddressValidator
+                    'TYPO3.Flow:Integer':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\IntegerValidator
+                    'TYPO3.Flow:Float':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\FloatValidator
+                    'TYPO3.Flow:NumberRange':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\NumberRangeValidator
+                    'TYPO3.Flow:RegularExpression':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\RegularExpressionValidator
+                    'TYPO3.Flow:Count':
+                        implementationClassName: TYPO3\Flow\Validation\Validator\CountValidator
+            typo3.setup:
+                title: 'Setup Elements'
+                parentPreset: default
+                formElementTypes:
+                    'TYPO3.Form:Form':
+                        renderingOptions:
+                            templatePathPattern: 'resource://TYPO3.Setup/Private/Form/{@type}.html'
+                    'TYPO3.Setup:LinkElement':
+                        superTypes:
+                            - 'TYPO3.Form:ReadOnlyFormElement'
+                        properties:
+                            text: ''
+                            class: btn
+                            href: ''
+                    'TYPO3.Setup:DatabaseSelector':
+                        superTypes:
+                            - 'TYPO3.Form:FormElement'
+    DocTools:
+        bundles:
+            Form:
+                documentationRootPath: /Applications/MAMP/htdocs/NeosCore/Packages/Application/TYPO3.Form/Documentation/Guide/source
+                renderedDocumentationRootPath: /Applications/MAMP/htdocs/NeosCore/Data/Temporary/Documentation/Form
+                configurationRootPath: /Applications/MAMP/htdocs/NeosCore/Packages/Application/TYPO3.Form/Documentation/Guide/source
+                imageRootPath: /Applications/MAMP/htdocs/NeosCore/Packages/Application/TYPO3.Form/Documentation/Guide/Images/
+            Neos:
+                documentationRootPath: /Applications/MAMP/htdocs/NeosCore/Packages/Application/TYPO3.Neos/Documentation/
+                configurationRootPath: /Applications/MAMP/htdocs/NeosCore/Packages/Application/TYPO3.DocTools/Resources/Private/Themes/TYPO3/
+                renderedDocumentationRootPath: /Applications/MAMP/htdocs/NeosCore/Data/Temporary/Documentation/TYPO3.Neos/
+                renderingOutputFormat: html
+                renderByDefault: false
+    Gerrit: {  }
+    Imagine:
+        driver: Gd
+    Kickstart: {  }
+    Media: {  }
+    Neos:
+        contentTypeGroups:
+            - General
+            - Structure
+            - Plugins
+        enableAloha: false
+        loadMinifiedJavascript: false
+        userInterface:
+            string:
+                class: T3.Content.UI.Editor.TextField
+            integer:
+                class: T3.Content.UI.Editor.TextField
+            boolean:
+                class: T3.Content.UI.Editor.Checkbox
+            TYPO3\Media\Domain\Model\ImageVariant:
+                class: T3.Content.UI.Editor.Image
+            date:
+                class: T3.Content.UI.Editor.DateField
+            enum:
+                class: T3.Content.UI.Editor.Selectbox
+        moduleConfiguration:
+            widgetTemplatePathAndFileName: 'resource://TYPO3.Neos/Private/Templates/Module/Widget.html'
+        modules:
+            management:
+                label: Management
+                submodules:
+                    workspaces:
+                        label: Workspaces
+                        controller: \TYPO3\Neos\Controller\Module\Management\WorkspacesController
+                        description: 'This module contains the overview of all elements within the current workspace and it enables to continue the review and publishing workflow for them.'
+                        icon: 'resource://TYPO3.Neos/Public/Images/Icons/Orange/layers_1_icon-24.png'
+            administration:
+                label: Administration
+                role: Administrator
+                submodules:
+                    users:
+                        label: 'User Management'
+                        controller: \TYPO3\Neos\Controller\Module\Administration\UsersController
+                        description: 'The User Management module provides you with an overview of all backend users. You can group them by their properties so you are able to monitor their permissions, filemounts, member groups etc.. This module is an indispensable tool in order to make sure the users are correctly configured.'
+                        icon: 'resource://TYPO3.Neos/Public/Images/Icons/Orange/users_icon-24.png'
+                        actions:
+                            new:
+                                label: 'Create user'
+                                title: 'Create a new user'
+                    packages:
+                        label: 'Package Management'
+                        controller: \TYPO3\Neos\Controller\Module\Administration\PackagesController
+                        description: 'The Package Management module provides you with an overview of all packages. You can activate and deactivate individual packages, import new packages and delete existing packages. It also provides you with the ability to freeze and unfreeze packages in development context.'
+                        icon: 'resource://TYPO3.Neos/Public/Images/Icons/Orange/box_icon-24.png'
+            user:
+                label: User
+                hideInMenu: true
+                submodules:
+                    usersettings:
+                        label: 'User Settings'
+                        controller: \TYPO3\Neos\Controller\Module\User\UserSettingsController
+                        description: 'This module allows you to customize your backend user profile. Here you can change your active system language, name and email address. You may also configure other general features in the system.'
+                        icon: 'resource://TYPO3.Neos/Public/Images/Icons/Orange/user_icon-24.png'
+        ContentTypes: {  }
+    Setup:
+        stepOrder:
+            - database
+            - final
+            - siteimport
+            - final
+        steps:
+            administrator:
+                className: TYPO3\Neos\Setup\Step\AdministratorStep
+                requiredConditions:
+                    -
+                        className: TYPO3\Setup\Condition\DatabaseConnectionCondition
+            siteimport:
+                className: TYPO3\Neos\Setup\Step\SiteImportStep
+                requiredConditions:
+                    -
+                        className: TYPO3\Setup\Condition\DatabaseConnectionCondition
+            final:
+                className: TYPO3\Setup\Step\FinalStep
+            database:
+                className: TYPO3\Setup\Step\DatabaseStep
+                requiredConditions:
+                    -
+                        className: TYPO3\Setup\Condition\PdoDriverCondition
+        view:
+            title: 'TYPO3 Setup'
+        initialPasswordFile: /Applications/MAMP/htdocs/NeosCore/Data/SetupPassword.txt
+    TYPO3CR:
+        contentTypes:
+            'TYPO3.Neos.ContentTypes:AbstractNode':
+                properties:
+                    _removed:
+                        type: boolean
+                    _hidden:
+                        type: boolean
+                        label: Hide
+                        group: visibility
+                        priority: 1
+                    _hiddenBeforeDateTime:
+                        type: date
+                        label: 'Hide before date'
+                        group: visibility
+                        priority: 11
+                    _hiddenAfterDateTime:
+                        type: date
+                        label: 'Hide after date'
+                        group: visibility
+                        priority: 10
+                groups:
+                    visibility:
+                        label: Visibility
+                        priority: 1
+            'TYPO3.Neos.ContentTypes:Section':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:AbstractNode'
+                label: Section
+                icon: Images/Icons/White/page_layout_icon-16.png
+                darkIcon: Images/Icons/Black/page_layout_icon-16.png
+            'TYPO3.Neos.ContentTypes:Folder':
+                superTypes:
+                    - 'TYPO3.TYPO3CR:Folder'
+                    - 'TYPO3.Neos.ContentTypes:AbstractNode'
+                label: Folder
+                search: Pages
+                properties:
+                    title:
+                        type: string
+                        label: Title
+                        group: page
+                        reloadOnChange: true
+                    _name:
+                        type: string
+                        label: 'Name (URL)'
+                        group: page
+                        reloadOnChange: true
+                groups:
+                    page:
+                        label: 'Folder options'
+                        priority: 10
+            'TYPO3.Neos.ContentTypes:Shortcut':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:Folder'
+                label: Shortcut
+                icon: Images/Icons/White/shortcut_icon-16.png
+                darkIcon: Images/Icons/Black/shortcut_icon-16.png
+                groups:
+                    page:
+                        label: 'Shortcut options'
+            'TYPO3.Neos.ContentTypes:Page':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:Folder'
+                label: Page
+                icon: Images/Icons/White/doc_empty_icon-16.png
+                darkIcon: Images/Icons/Black/doc_empty_icon-16.png
+                groups:
+                    page:
+                        label: 'Page options'
+            'TYPO3.Neos.ContentTypes:ContentObject':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:AbstractNode'
+                label: 'Abstract content object'
+                search: Content
+                properties:
+                    title:
+                        type: string
+                        label: 'Content Title'
+            'TYPO3.Neos.ContentTypes:Headline':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:ContentObject'
+                group: General
+                icon: Images/Icons/White/text_letter_t_icon-16.png
+                darkIcon: Images/Icons/Black/text_letter_t_icon-16.png
+                label: Headline
+                properties:
+                    title:
+                        default: '<h1>Enter headline here</h1>'
+                inlineEditableProperties:
+                    - title
+            'TYPO3.Neos.ContentTypes:Text':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:ContentObject'
+                group: General
+                icon: Images/Icons/White/doc_lines_stright_icon-16.png
+                darkIcon: Images/Icons/Black/doc_lines_stright_icon-16.png
+                label: Text
+                properties:
+                    text:
+                        label: string
+                        default: '<p>Enter text here</p>'
+                inlineEditableProperties:
+                    - title
+                    - text
+            'TYPO3.Neos.ContentTypes:Image':
+                label: Image
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:ContentObject'
+                group: General
+                icon: Images/Icons/White/picture_icon-16.png
+                darkIcon: Images/Icons/Black/picture_icon-16.png
+                properties:
+                    image:
+                        type: TYPO3\Media\Domain\Model\ImageVariant
+                        label: Image
+                        group: image
+                        reloadOnChange: true
+                groups:
+                    image:
+                        label: Image
+                        priority: 5
+            'TYPO3.Neos.ContentTypes:TextWithImage':
+                label: 'Text with Image'
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:Image'
+                    - 'TYPO3.Neos.ContentTypes:Text'
+                group: General
+                icon: Images/Icons/White/image_text_icon-16.png
+                darkIcon: Images/Icons/Black/image_text_icon-16.png
+                properties:
+                    position:
+                        type: enum
+                        label: 'Image position'
+                        group: image
+                        options:
+                            values:
+                                left:
+                                    label: Left
+                                right:
+                                    label: Right
+                        reloadOnChange: true
+            'TYPO3.Neos.ContentTypes:Html':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:ContentObject'
+                group: General
+                icon: Images/Icons/White/brackets_icon-16.png
+                darkIcon: Images/Icons/Black/brackets_icon-16.png
+                label: HTML
+                properties:
+                    source:
+                        type: string
+                        label: 'HTML Content'
+                        default: '<p>Enter HTML here</p>'
+                        group: html
+                        userInterface:
+                            class: T3.Content.UI.Editor.HtmlEditor
+                groups:
+                    html:
+                        label: HTML
+                        priority: 10
+            'TYPO3.Neos.ContentTypes:Menu':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:ContentObject'
+                group: Structure
+                icon: Images/Icons/White/list_bullets_icon-16.png
+                darkIcon: Images/Icons/Black/list_bullets_icon-16.png
+                label: Menu
+                properties:
+                    startLevel:
+                        type: enum
+                        label: 'Starting Level'
+                        group: options
+                        reloadOnChange: true
+                        default: '0'
+                        options:
+                            values:
+                                -4:
+                                    label: 'Four Levels Above Current Page'
+                                -3:
+                                    label: 'Three Levels Above Current Page'
+                                -2:
+                                    label: 'Two Levels Above Current Page'
+                                -1:
+                                    label: 'One Level Above Current Page'
+                                0:
+                                    label: 'Same Level As Current Page'
+                                1:
+                                    label: 'First Level Of Website'
+                                2:
+                                    label: 'Second Level Of Website'
+                                3:
+                                    label: 'Third Level Of Website'
+                                4:
+                                    label: 'Forth Level Of Website'
+                                5:
+                                    label: 'Fifth Level Of Website'
+                                6:
+                                    label: 'Sixth Level Of Website'
+                    maximumLevels:
+                        type: enum
+                        label: 'Maximum Levels'
+                        group: options
+                        reloadOnChange: true
+                        default: '1'
+                        options:
+                            values:
+                                1:
+                                    label: '1'
+                                2:
+                                    label: '2'
+                                3:
+                                    label: '3'
+                                4:
+                                    label: '4'
+                                5:
+                                    label: '5'
+                                6:
+                                    label: '6'
+                                7:
+                                    label: '7'
+                                8:
+                                    label: '8'
+                                9:
+                                    label: '9'
+                                10:
+                                    label: '10'
+                groups:
+                    options:
+                        label: Options
+                        priority: 30
+            'TYPO3.Neos.ContentTypes:Column':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:ContentObject'
+                icon: Images/Icons/White/columns_icon-16.png
+                darkIcon: Images/Icons/Black/columns_icon-16.png
+                properties:
+                    layout:
+                        type: enum
+                        label: Layout
+                        group: column
+                groups:
+                    column:
+                        label: Columns
+                        priority: 10
+            'TYPO3.Neos.ContentTypes:TwoColumn':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:Column'
+                group: Structure
+                label: 'Two column content'
+                structure:
+                    column0:
+                        type: 'TYPO3.Neos.ContentTypes:Section'
+                    column1:
+                        type: 'TYPO3.Neos.ContentTypes:Section'
+                properties:
+                    layout:
+                        default: 50-50
+                        options:
+                            values:
+                                50-50:
+                                    label: '50% / 50%'
+                                75-25:
+                                    label: '75% / 25%'
+                                25-75:
+                                    label: '25% / 75%'
+                                66-33:
+                                    label: '66% / 33%'
+                                33-66:
+                                    label: '33% / 66%'
+                        reloadOnChange: true
+            'TYPO3.Neos.ContentTypes:ThreeColumn':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:Column'
+                group: Structure
+                label: 'Three column content'
+                structure:
+                    column0:
+                        type: 'TYPO3.Neos.ContentTypes:Section'
+                    column1:
+                        type: 'TYPO3.Neos.ContentTypes:Section'
+                    column2:
+                        type: 'TYPO3.Neos.ContentTypes:Section'
+                properties:
+                    layout:
+                        default: 33-33-33
+                        options:
+                            values:
+                                33-33-33:
+                                    label: '33% / 33% / 33%'
+                                50-25-25:
+                                    label: '50% / 25% / 25%'
+                                25-50-25:
+                                    label: '25% / 50% / 25%'
+                                25-25-50:
+                                    label: '25% / 25% / 50%'
+                        reloadOnChange: true
+            'TYPO3.Neos.ContentTypes:FourColumn':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:Column'
+                group: Structure
+                label: 'Four column content'
+                structure:
+                    column0:
+                        type: 'TYPO3.Neos.ContentTypes:Section'
+                    column1:
+                        type: 'TYPO3.Neos.ContentTypes:Section'
+                    column2:
+                        type: 'TYPO3.Neos.ContentTypes:Section'
+                    column3:
+                        type: 'TYPO3.Neos.ContentTypes:Section'
+                properties:
+                    layout:
+                        default: 25-25-25-25
+                        options:
+                            values:
+                                25-25-25-25:
+                                    label: '25% / 25% / 25% / 25%'
+                        reloadOnChange: true
+            'TYPO3.Neos.ContentTypes:Plugin':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:ContentObject'
+                icon: Images/Icons/White/app_window_shell_icon-16.png
+                darkIcon: Images/Icons/Black/app_window_shell_icon-16.png
+                label: 'Abstract plugin'
+                properties:
+                    package:
+                        type: string
+                        label: Package
+                        group: pluginSettings
+                        reloadOnChange: true
+                    subpackage:
+                        type: string
+                        label: Subpackage
+                        group: pluginSettings
+                        reloadOnChange: true
+                    controller:
+                        type: string
+                        label: 'Controller Name'
+                        group: pluginSettings
+                        reloadOnChange: true
+                    action:
+                        type: string
+                        label: Action
+                        group: pluginSettings
+                        reloadOnChange: true
+                groups:
+                    pluginSettings:
+                        label: 'Plugin Settings'
+            'TYPO3.NeosDemoTypo3Org:Registration':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:Plugin'
+                label: 'Editor Registration Plugin'
+            'TYPO3.NeosDemoTypo3Org:YouTube':
+                superTypes:
+                    - 'TYPO3.Neos.ContentTypes:Headline'
+                icon: Images/Icons/White/youtube_icon-16.png
+                label: YouTube
+                properties:
+                    video:
+                        type: string
+                        label: ID
+                        default: ''
+                        group: video
+                        reloadOnChange: true
+                    width:
+                        type: integer
+                        label: Width
+                        default: '400'
+                        group: video
+                        reloadOnChange: true
+                    height:
+                        type: integer
+                        label: Height
+                        default: '300'
+                        group: video
+                        reloadOnChange: true
+                groups:
+                    video:
+                        label: Video
+            unstructured:
+                label: Unstructured
+            'TYPO3.TYPO3CR:Folder':
+                label: Folder
+    NeosDemoTypo3Org: {  }
+    Party: {  }
+    SiteKickstarter: {  }
+    Twitter:
+        Bootstrap:
+            viewHelpers:
+                partialRootPath: 'resource://TYPO3.Twitter.Bootstrap/Private/Partials/'
+                templates:
+                    TYPO3\Twitter\Bootstrap\ViewHelpers\Navigation\MenuViewHelper: 'resource://TYPO3.Twitter.Bootstrap/Private/Templates/Navigation/Menu.html'
+    TypoScript:
+        catchRuntimeExceptions: false
+        debugMode: false
+Doctrine:
+    Common: {  }
+    DBAL: {  }
+    ORM: {  }
+doctrine:
+    migrations: {  }
+imagine:
+    Imagine: {  }
+symfony:
+    domcrawler: {  }
+    yaml: {  }
+typo3:
+    flowcomposerinstallers: {  }
+
+

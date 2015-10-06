@@ -1,0 +1,25 @@
+Index: Classes/ViewHelpers/Form/SelectViewHelper.php
+===================================================================
+--- Classes/ViewHelpers/Form/SelectViewHelper.php	(revision 2369)
++++ Classes/ViewHelpers/Form/SelectViewHelper.php	(working copy)
+@@ -93,6 +93,7 @@
+ 		$this->registerTagAttribute('size', 'string', 'Size of input field');
+ 		$this->registerTagAttribute('disabled', 'string', 'Specifies that the input element should be disabled when the page loads');
+ 		$this->registerArgument('options', 'array', 'Associative array with internal IDs as key, and the values are displayed in the select box', TRUE);
++		$this->registerArgument('optionsValuesArray', 'array', 'Associative array with options array keys as key, and the values are used as option value in the select box');		
+ 		$this->registerArgument('optionValueField', 'string', 'If specified, will call the appropriate getter on each object to determine the value.');
+ 		$this->registerArgument('optionLabelField', 'string', 'If specified, will call the appropriate getter on each object to determine the label.');
+ 		$this->registerArgument('sortByOptionLabel', 'boolean', 'If true, List will be sorted by label.', FALSE, FALSE);
+@@ -201,6 +202,12 @@
+ 					$value = $this->persistenceManager->getBackend()->getIdentifierByObject($value);
+ 				}
+ 			}
++			if ($this->arguments->hasArgument('optionsValuesArray')) {
++				$optionValuesArray = $this->arguments['optionsValuesArray'];
++				if (array_key_exists($key, $optionValuesArray)) {
++					$key = $optionValuesArray[$key];
++				}
++			}
+ 			$options[$key] = $value;
+ 		}
+ 		if ($this->arguments['sortByOptionLabel']) {

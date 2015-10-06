@@ -1,0 +1,122 @@
+Uncaught TYPO3 Exception
+#1375955684: You are not allowed to access the given folder (More information)
+
+TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException thrown in file
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 738.
+
+13 TYPO3\CMS\Core\Resource\ResourceStorage::assureFolderReadPermission(TYPO3\CMS\Core\Resource\Folder)
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01873:   }
+01874:   $folder = $this->driver->getFolder($identifier);
+01875:   $this->assureFolderReadPermission($folder);
+01876: 
+01877:   return $folder;
+
+12 TYPO3\CMS\Core\Resource\ResourceStorage::getFolder("fileadmin/_processed_")
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceFactory.php:
+00379:    }
+00380:   }
+00381:   return $this->getStorageObject($storageUid)->getFolder($folderIdentifier);
+00382:  }
+00383: 
+
+11 TYPO3\CMS\Core\Resource\ResourceFactory::getFolderObjectFromCombinedIdentifier("fileadmin/_processed_")
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/core/Classes/Html/RteHtmlParser.php:
+00556:      $magicFolder = $fileFactory->getFolderObjectFromCombinedIdentifier(
+00557:       $this->rteImageStorageDir()
+00558:      );
+00559:      if ($magicFolder instanceof \TYPO3\CMS\Core\Resource\Folder) {
+00560:       $magicFolderPath = $magicFolder->getPublicUrl();
+
+10 TYPO3\CMS\Core\Html\RteHtmlParser::TS_images_rte("<a href="http://audiconale.de/?id=124" class="inte…>Gunter Ulbricht</a><br />Roller GmbH &amp; Co. KG")
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/core/Classes/Html/RteHtmlParser.php:
+00305:      switch ($cmd) {
+00306:      case 'ts_images':
+00307:       $value = $this->TS_images_rte($value);
+00308:       break;
+00309:      case 'ts_reglinks':
+
+9 TYPO3\CMS\Core\Html\RteHtmlParser::RTE_transform("<link 124 - internal-link "Gunter Ulbricht"><img s…nter Ulbricht</link><br />Roller GmbH &amp; Co. KG", array, "rte", array)
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/backend/Classes/Rte/AbstractRte.php:
+00134:     $parseHTML->setRelPath($RTErelPath);
+00135:     // Perform transformation:
+00136:     $value = $parseHTML->RTE_transform($value, $specConf, $dirRTE, $thisConfig);
+00137:    }
+00138:   }
+
+8 TYPO3\CMS\Backend\Rte\AbstractRte::transformContent("rte", "<link 124 - internal-link "Gunter Ulbricht"><img s…nter Ulbricht</link><br />Roller GmbH &amp; Co. KG", "tt_content", "bodytext", array, array, array, "", 142)
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/rtehtmlarea/Classes/RteHtmlAreaBase.php:
+00502:     */
+00503:    // Transform value:
+00504:    $value = $this->transformContent('rte', $PA['itemFormElValue'], $table, $field, $row, $specConf, $thisConfig, $RTErelPath, $thePidValue);
+00505:    // Further content transformation by registered plugins
+00506:    foreach ($this->registeredPlugins as $pluginId => $plugin) {
+
+7 TYPO3\CMS\Rtehtmlarea\RteHtmlAreaBase::drawRTE(TYPO3\CMS\Backend\Form\FormEngine, "tt_content", "bodytext", array, array, array, array, "textpic", "", 142)
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/backend/Classes/Form/FormEngine.php:
+01496:        // Get RTE object, draw form and set flag:
+01497:        $RTEobj = \TYPO3\CMS\Backend\Utility\BackendUtility::RTEgetObj();
+01498:        $item = $RTEobj->drawRTE($this, $table, $field, $row, $PA, $specConf, $thisConfig, $RTEtypeVal, $RTErelPath, $thePidValue);
+01499:        // Wizard:
+01500:        $item = $this->renderWizards(array($item, $altItem), $config['wizards'], $table, $row, $field, $PA, $PA['itemFormElName'], $specConf, 1);
+
+6 TYPO3\CMS\Backend\Form\FormEngine::getSingleField_typeText("tt_content", "bodytext", array, array)
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/backend/Classes/Form/FormEngine.php:
+01191:    break;
+01192:   case 'text':
+01193:    $item = $this->getSingleField_typeText($table, $field, $row, $PA);
+01194:    break;
+01195:   case 'check':
+
+5 TYPO3\CMS\Backend\Form\FormEngine::getSingleField_SW("tt_content", "bodytext", array, array)
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/backend/Classes/Form/FormEngine.php:
+01100:      }
+01101:      // Based on the type of the item, call a render function:
+01102:      $item = $this->getSingleField_SW($table, $field, $row, $PA);
+01103:      // Add language + diff
+01104:      if ($PA['fieldConf']['l10n_display'] && (\TYPO3\CMS\Core\Utility\GeneralUtility::inList($PA['fieldConf']['l10n_display'], 'hideDiff') || \TYPO3\CMS\Core\Utility\GeneralUtility::inList($PA['fieldConf']['l10n_display'], 'defaultAsReadonly'))) {
+
+4 TYPO3\CMS\Backend\Form\FormEngine::getSingleField("tt_content", "bodytext", array, "Text", 0, "richtext:rte_transform[flag=rte_enabled|mode=ts_css]", "")
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/backend/Classes/Form/FormEngine.php:
+00774:          $this->palettesRendered[$this->renderDepth][$table][$parts[2]] = 1;
+00775:         }
+00776:         $sField = $this->getSingleField($table, $theField, $row, $parts[1], 0, $parts[3], $parts[2]);
+00777:         if ($sField) {
+00778:          $sField .= $sFieldPal;
+
+3 TYPO3\CMS\Backend\Form\FormEngine::getMainFields("tt_content", array)
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/backend/Classes/Controller/EditDocumentController.php:
+00856:           }
+00857:          } else {
+00858:           $panel .= $this->tceforms->getMainFields($table, $rec);
+00859:          }
+00860:          $panel = $this->tceforms->wrapTotal($panel, $rec, $table);
+
+2 TYPO3\CMS\Backend\Controller\EditDocumentController::makeEditForm()
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/sysext/backend/Classes/Controller/EditDocumentController.php:
+00651:    }
+00652:    // Creating the editing form, wrap it with buttons, document selector etc.
+00653:    $editForm = $this->makeEditForm();
+00654:    if ($editForm) {
+00655:     $this->firstEl = reset($this->elementsData);
+
+1 TYPO3\CMS\Backend\Controller\EditDocumentController::main()
+
+/is/htdocs/wp10727294_YZHPFH745N/_typo3-src/typo3_src-6.1.4/typo3/alt_doc.php:
+00057: // Main:
+00058: $SOBE->init();
+00059: $SOBE->main();
+00060: $SOBE->printContent();
+00061: ?>

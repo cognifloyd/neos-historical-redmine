@@ -1,0 +1,80 @@
+Exeption Filelist/_processed_
+------------------------------
+
+Uncaught TYPO3 Exception
+#1376992145: You are not allowed to add files to this storage "0" (More information)
+
+TYPO3\CMS\Core\Resource\Exception\InsufficientUserPermissionsException thrown in file
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 840.
+
+8 TYPO3\CMS\Core\Resource\ResourceStorage::assureFileAddPermissions("/foooo/typo3temp/pics/29336c3711.jpg", TYPO3\CMS\Core\Resource\Folder, "RTEmagicC_01_Logopaedie_KWA_Klinik_Stift_Rottal.jpg")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01051:    throw new \InvalidArgumentException('File "' . $localFilePath . '" does not exist.', 1319552745);
+01052:   }
+01053:   $this->assureFileAddPermissions($localFilePath, $targetFolder, $targetFileName);
+01054:   $targetFolder = $targetFolder ? $targetFolder : $this->getDefaultFolder();
+01055:   $targetFileName = $targetFileName ? $targetFileName : PathUtility::basename($localFilePath);
+
+7 TYPO3\CMS\Core\Resource\ResourceStorage::addFile("/foooo/typo3temp/pics/29336c3711.jpg", TYPO3\CMS\Core\Resource\Folder, "RTEmagicC_01_Logopaedie_KWA_Klinik_Stift_Rottal.jpg", "changeName")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/Folder.php:
+00283:  public function addFile($localFilePath, $fileName = NULL, $conflictMode = 'cancel') {
+00284:   $fileName = $fileName ? $fileName : PathUtility::basename($localFilePath);
+00285:   return $this->storage->addFile($localFilePath, $this, $fileName, $conflictMode);
+00286:  }
+00287: 
+
+6 TYPO3\CMS\Core\Resource\Folder::addFile("/foooo/typo3temp/pics/29336c3711.jpg", "RTEmagicC_01_Logopaedie_KWA_Klinik_Stift_Rottal.jpg", "changeName")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/Service/MagicImageService.php:
+00110:    $magicFolder = $this->getMagicFolder($targetFolderCombinedIdentifier);
+00111:    if ($magicFolder instanceof \TYPO3\CMS\Core\Resource\Folder) {
+00112:     $magicImage = $magicFolder->addFile($magicImageInfo[3], $targetFileName, 'changeName');
+00113:    }
+00114:   }
+
+5 TYPO3\CMS\Core\Resource\Service\MagicImageService::createMagicImage(TYPO3\CMS\Core\Resource\File, array, "fileadmin/_processed_")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/rtehtmlarea/Classes/SelectImage.php:
+00239:     'maxH' => $this->magicMaxHeight
+00240:    );
+00241:    $magicImage = $magicImageService->createMagicImage($fileObject, $imageConfiguration, $this->getRTEImageStorageDir());
+00242:    if ($magicImage instanceof \TYPO3\CMS\Core\Resource\FileInterface) {
+00243:     $filePath = $magicImage->getForLocalProcessing(FALSE);
+
+4 TYPO3\CMS\Rtehtmlarea\SelectImage::insertMagicImage(TYPO3\CMS\Core\Resource\File, NULL, "01_Logopaedie_KWA_Klinik_Stift_Rottal.jpg", "data-htmlarea-file-uid="357" data-htmlarea-file-table="sys_file"")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/rtehtmlarea/Classes/SelectImage.php:
+00200:    switch ($this->act) {
+00201:    case 'magic':
+00202:     $this->insertMagicImage($fileObject, $altText, $titleText, 'data-htmlarea-file-uid="' . $uid . '" data-htmlarea-file-table="' . $table . '"');
+00203:     die;
+00204:     break;
+
+3 TYPO3\CMS\Rtehtmlarea\SelectImage::insertImage()
+
+/foooo/typo3_src-6.1.4/typo3/sysext/rtehtmlarea/Classes/SelectImage.php:
+00087:   $this->fileProcessor->init($GLOBALS['FILEMOUNTS'], $GLOBALS['TYPO3_CONF_VARS']['BE']['fileExtensions']);
+00088:   $this->allowedItems = $this->getAllowedItems('magic,plain,image');
+00089:   $this->insertImage();
+00090:   // Creating backend template object:
+00091:   $this->doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Template\\DocumentTemplate');
+
+2 TYPO3\CMS\Rtehtmlarea\SelectImage::init()
+
+/foooo/typo3_src-6.1.4/typo3/sysext/rtehtmlarea/Classes/Controller/SelectImageController.php:
+00076:   if (!$browserRendered) {
+00077:    $GLOBALS['SOBE']->browser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Rtehtmlarea\\SelectImage');
+00078:    $GLOBALS['SOBE']->browser->init();
+00079:    $modData = $GLOBALS['BE_USER']->getModuleData('select_image.php', 'ses');
+00080:    list($modData, $store) = $GLOBALS['SOBE']->browser->processSessionData($modData);
+
+1 TYPO3\CMS\Rtehtmlarea\Controller\SelectImageController::main()
+
+/foooo/typo3_src-6.1.4/typo3/sysext/rtehtmlarea/mod4/select_image.php:
+00047: // Make instance:
+00048: $SOBE = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Rtehtmlarea\\Controller\\SelectImageController');
+00049: $SOBE->main();
+00050: $SOBE->printContent();
+00051: ?>

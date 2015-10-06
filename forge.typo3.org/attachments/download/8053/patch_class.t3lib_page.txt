@@ -1,0 +1,88 @@
+Index: Z:/svnworkspace/TYPO3_4-1/t3lib/class.t3lib_page.php
+===================================================================
+--- Z:/svnworkspace/TYPO3_4-1/t3lib/class.t3lib_page.php	(revision 2438)
++++ Z:/svnworkspace/TYPO3_4-1/t3lib/class.t3lib_page.php	(working copy)
+@@ -239,7 +239,35 @@
+ 		}
+ 		return 0;
+ 	}
+-
++	/** 
++	* function that checks which page record overlay language should be used, according to the given fallbackorder
++	*
++	* @param integer		pid which is checked for translations
++	* @param string		comma seperated list of language uids (integer). the languageUid to whith the fallback order
++	* @return integer  id of the first found languageuid in the fallbackorder where a translation for $pid exists.
++	**/
++	function getLanguageOverlayUidForPage($page_id,$fallBackOrder) {
++		$lUids = t3lib_div::intExplode(',', $fallBackOrder);		
++		foreach($lUids as $lUid)	{
++			// Selecting overlay record:
++				$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
++							'*',
++							'pages_language_overlay',
++							'pid='.intval($page_id).'
++								AND sys_language_uid='.intval($lUid).
++								$this->enableFields('pages_language_overlay'),
++							'',
++							'',
++							'1'
++						);
++				$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);							
++				$this->versionOL('pages_language_overlay',$row);
++				if (is_array($row))	{
++					return $lUid;
++				}
++		}	
++		return 0;	
++	}
+ 	/**
+ 	 * Returns the relevant page overlay record fields
+ 	 *
+@@ -248,20 +276,28 @@
+ 	 * @return	array		Page row which is overlayed with language_overlay record (or the overlay record alone)
+ 	 */
+ 	function getPageOverlay($pageInput,$lUid=-1)	{
+-
+-			// Initialize:
+-		if ($lUid<0)	$lUid = $this->sys_language_uid;
++		//get page_id	
++		if (is_array($pageInput))	{
++			$page_id = $pageInput['uid'];	// Was the whole record
++		}
++		else {
++			$page_id = $pageInput;	// Was the id
++		}
++		// Initialize:
++		if ($lUid<0)	{
++			$lUid = $this->sys_language_uid;
++			//if  with sys_language_overlayCheckOrder, check for other Overlay language which should be used instead
++			if ($page_id && $lUid && is_object($GLOBALS['TSFE']) && $GLOBALS['TSFE']->sys_language_overlayCheckOrder) {			
++				$lUid=$this->getLanguageOverlayUidForPage($page_id,$GLOBALS['TSFE']->sys_language_overlayCheckOrder);					
++			}			
++		}
+ 		$row = NULL;
+-
+ 			// If language UID is different from zero, do overlay:
+ 		if ($lUid)	{
+ 			$fieldArr = explode(',', $GLOBALS['TYPO3_CONF_VARS']['FE']['pageOverlayFields']);
+-			if (is_array($pageInput))	{
+-				$page_id = $pageInput['uid'];	// Was the whole record
++			if (is_array($pageInput))	{				
+ 				$fieldArr = array_intersect($fieldArr,array_keys($pageInput));		// Make sure that only fields which exist in the incoming record are overlaid!
+-			} else {
+-				$page_id = $pageInput;	// Was the id
+-			}
++			} 
+ 
+ 			if (count($fieldArr))	{
+ 				/*
+@@ -286,7 +322,7 @@
+ 
+ 				if (is_array($row))	{
+ 					$row['_PAGES_OVERLAY'] = TRUE;
+-
++					$row['_PAGES_OVERLAY_LUID'] = $lUid;
+ 						// Unset vital fields that are NOT allowed to be overlaid:
+ 					unset($row['uid']);
+ 					unset($row['pid']);

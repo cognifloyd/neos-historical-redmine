@@ -1,0 +1,103 @@
+SPRITE ICON API
+
+The sprite icons are a completely different approach than using single file images for each icon. In order to get an icon you don't need to know anything about the file, its location or size or whatever. The only thing you need to know are the CSS classes used. This API even helps you with that by only needing a single string name for an icon. You should always look up this "iconName" in the skinning manual.
+
+== Example for creating HTML for icons in the TYPO3 backend ==
+
+$icon = t3lib_iconWorks::getSpriteIcon('actions-document-new');
+Returns: <span class="t3-icon t3-icon-actions-document t3-icon-document-new">&nbsp;</span>
+
+$icon = t3lib_iconWorks::getSpriteIcon('actions-document-new', array('title' => 'Create new record'));
+Returns: <span class="t3-icon t3-icon-actions-document t3-icon-document-new" title="Create new record">&nbsp;</span>
+
+$icon = t3lib_iconWorks::getSpriteIcon('actions-document-new', array(
+	'tagName' => 'a',
+	'title'   => 'Create new record',
+	'class'   => 'download-link',
+	'html'    => 'Inner Code',
+	'style'   => 'margin-left: 20px;'
+));
+Returns: <a class="t3-icon t3-icon-actions-document t3-icon-document-new download-link" title="Create new record" style="margin-left: 20px;">Inner Code</a>
+
+The second parameter "$options" specifies the tag attributes, except for three special options "tagName", "html" (the inner HTML part) and "class" (additional CSS classes).
+
+
+== Files ==
+
+Icons for files or filetypes will work through the additional function "getSpriteIconForFile". The first parameter either takes a full path, a file extension, a filename or one of the two special keywords "folder" or "mount" (for file mounts). The second parameter takes the same array of options as the generic method.
+
+$icon = t3lib_iconWorks::getSpriteIconForFile('EXT:t3skin/icons/options.gif');
+$icon = t3lib_iconWorks::getSpriteIconForFile('options.gif');
+$icon = t3lib_iconWorks::getSpriteIconForFile('gif');
+Result:  <span class="t3-icon t3-icon-mimetype-media t3-icon-media-image">&nbsp;</span>
+
+
+$icon = t3lib_iconWorks::getSpriteIconForFile('EXT:t3skin/icons');
+$icon = t3lib_iconWorks::getSpriteIconForFile('/');
+$icon = t3lib_iconWorks::getSpriteIconForFile('folder');
+Result:  <span class="t3-icon t3-icon-apps-filetree t3-icon-filetree-folder-default">&nbsp;</span>
+
+$icon = t3lib_iconWorks::getSpriteIconForFile('mount');
+Result:  <span class="t3-icon t3-icon-apps-filetree t3-icon-filetree-mount">&nbsp;</span>
+
+== TCA database records ==
+
+Icons for DB rows and table-based records are rendered through the additional function "getSpriteIconForRecord". The first parameter takes the name of the TCA table, the second parameter the array of the current row of the table to find out if any kind of overlay is necessary. The third parameter is the options array with the same functionality as in the other two methods.
+
+Example: generate icon for current table and row
+Usage:   t3lib_iconWorks::getSpriteIcon('pages', $row);
+Result:  <span class="t3-icon t3-icon-apps-pagetree t3-icon-pagetree-page-not-in-menu">&nbsp;</span>
+(Note: This is depending on table and row)
+
+== Overlays ==
+
+There is also a third parameter for "t3lib_iconWorks::getSpriteIcon" that allows you to define overlays to an icon: Overlays are implemented by placing two spans on top of each other. To use them, you can just add an overlay as associative array where the keys of the array are the iconNames (like 'actions-document-download') and the options are the parameter.
+
+$icon = t3lib_iconWorks::getSpriteIcon('actions-document-new', array('tagName' => 'a'), array('actions-document-download' => array('title' => 'Download now')));
+Returns: <a class="t3-icon t3-icon-actions-document t3-icon-document-new"><span class="t3-icon t3-icon-actions-document t3-icon-document-download" title="Download now">&nbsp;</span></a>
+
+Currently the "t3lib_iconWorks::getSpriteIconForFile" API function does not allow for an overlay, and t3lib_iconWorks::getSpriteIconForRecord is taking care of the overlay automatically.
+
+This system for the DB records is supposed to be only used with one overlay. The graphical icon guideline shows that subtypes of icons are defined through a overlay in the right bottom corner. The left bottom area is then used to show the most important state of the icon (just one). If the element has more than one state it will be displayed on hover currently just with text in the title tag - hopefully in the future with with some javascript overlay containing icons.
+
+In order to select the most important state there is a priority list at
+
+$TYPO3_CONF_VARS['BE']['spriteIconRecordOverlayPriorities'] => array('hidden', 'starttime', 'endtime', 'fe_group', 'protectSection', 'futuretiming')
+
+As multiple states may have the same icon and the state name is not compatible with the css there is a mapping array at
+$TYPO3_CONF_VARS['BE']['spriteIconRecordOverlayNames'] = 
+    'hidden'       => 'status-overlay-hidden',
+    'fe_group'     => 'status-overlay-access-restricted',
+    'starttime'    => 'status-overlay-scheduled',
+    'endtime'      => 'status-overlay-scheduled',
+    'futuretiming' => 'status-overlay-scheduled',
+    'readonly'     => 'status-overlay-locked',
+    'deleted'      => 'status-overlay-deleted',
+    'missing'      => 'status-overlay-missing',
+    'translated'   => 'status-overlay-translated',
+    'protectedSection' => 'status-overlay-includes-subpages',
+);
+
+
+== Extending TCA for Icon Names ==
+
+In order to generate a proper icon name for TCA records, you need to add the following configuration for you TCA ctrl-section of your table:
+
+This is an example for the table "pages":
+
+$TCA['pages']['typeicon_classes'] = array(
+    '1' => 'apps-pagetree-page-default',
+    '3' => 'apps-pagetree-page-shortcut-external',
+    '255' => 'actions-edit-deleted',
+    ...
+);
+
+The array can be anything (doesn't need to be a number) it depends on $TCA['pages']['typeicon_column'] (like "CType" for tt_content)
+Another example from tt_content:
+
+$TCA['tt_content']['typeicon_classes'] = array(
+    'header'  => 'mimetypes-x-content-header',
+    'textpic' => 'mimetypes-x-content-text-picture',
+    'image'   => 'mimetypes-x-content-image',
+    ...
+);

@@ -1,0 +1,123 @@
+enctype = multipart/form-data
+method = post
+prefix = tx_form
+confirmation = 1
+postProcessor {
+	1 = mail
+	1 {
+		recipientEmail = valid@email.tld
+		senderEmail = valid@email.tld
+	}
+}
+10 = CHECKBOX
+10 {
+	name = gespraech
+	label {
+		value = Ich wünsche ein Gespräch
+	}
+}
+20 = CHECKBOX
+20 {
+	name = unterlagen
+	label {
+		value = Ich wünsche Unterlagen über Ihr Unternehmen
+	}
+}
+30 = SELECT
+30 {
+	name = Anrede
+	label {
+		value = Anrede
+	}
+	10 = OPTION
+	10 {
+		data = Herr
+		selected = selected
+	}
+	20 = OPTION
+	20 {
+		data = Frau
+	}
+}
+40 = TEXTLINE
+40 {
+	name = Vorname
+	label {
+		value = Vorname *
+	}
+}
+50 = TEXTLINE
+50 {
+	name = Name
+	label {
+		value = Name *
+	}
+}
+60 = TEXTLINE
+60 {
+	name = Adresse
+	label {
+		value = Adresse
+	}
+}
+70 = TEXTLINE
+70 {
+	name = Ort
+	label {
+		value = PLZ/Ort
+	}
+}
+80 = TEXTLINE
+80 {
+	name = Telefon
+	label {
+		value = Telefon
+	}
+}
+90 = TEXTLINE
+90 {
+	name = Email
+	label {
+		value = Email *
+	}
+}
+100 = TEXTAREA
+100 {
+	cols = 40
+	rows = 5
+	name = 11
+	label {
+		value = Mitteilung
+	}
+}
+110 = SUBMIT
+110 {
+	name = 6
+	value = senden
+}
+rules {
+	1 = required
+	1 {
+		breakOnError = 0
+		showMessage = 
+		message = 
+		error = Dies ist ein Pflichtfeld
+		element = Vorname
+	}
+	2 = required
+	2 {
+		breakOnError = 0
+		showMessage = 
+		message = 
+		error = Dies ist ein Pflichtfeld
+		element = Name
+	}
+	3 = email
+	3 {
+		breakOnError = 0
+		showMessage = 
+		message = 
+		error = keine gültige E-Mail-Adresse
+		element = Email
+	}
+}

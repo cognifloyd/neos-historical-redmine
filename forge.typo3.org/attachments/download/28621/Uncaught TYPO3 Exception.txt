@@ -1,0 +1,240 @@
+Uncaught TYPO3 Exception
+#1: PHP Warning: trim() expects parameter 1 to be string, array given in /home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/Page/PageRepository.php line 1416 (More information)
+
+TYPO3\CMS\Core\Error\Exception thrown in file
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/core/Classes/Error/ErrorHandler.php in line 101.
+
+27 TYPO3\CMS\Core\Error\ErrorHandler::handleError(2, "trim() expects parameter 1 to be string, array given", "/home/shared_typo3/typo3_source/typo3_src-6.2.11/t…o3/sysext/frontend/Classes/Page/PageRepository.php", 1416, array)
+26 trim(array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/Page/PageRepository.php:
+01414:    }
+01415: 
+01416:    if ($checkValue === array() || trim($checkValue) === '') {
+01417:     $shouldFieldBeOverlaid = FALSE;
+01418:    }
+
+25 TYPO3\CMS\Frontend\Page\PageRepository::shouldFieldBeOverlaid("pages_language_overlay", "media", array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/Page/PageRepository.php:
+01381:    $localizedReferences = $fileRepository->findByRelation($tableName, $fieldName, $localizedId);
+01382:    $localizedReferencesValue = $localizedReferences ?: '';
+01383:    if ($this->shouldFieldBeOverlaid($tableName, $fieldName, $localizedReferencesValue)) {
+01384:     $references = $localizedReferences;
+01385:    }
+
+24 TYPO3\CMS\Frontend\Page\PageRepository::getFileReferences("pages", "media", array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/FilesContentObject.php:
+00319:    $referencesFieldName,
+00320:    $element
+00321:   );
+00322: 
+00323:   $this->addToArray($references, $fileObjects);
+
+23 TYPO3\CMS\Frontend\ContentObject\FilesContentObject::handleFileReferences(array, array, array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/FilesContentObject.php:
+00078:    }
+00079: 
+00080:    $this->handleFileReferences($conf, (array)$this->cObj->data, $fileObjects);
+00081:   }
+00082:   if ($conf['files'] || $conf['files.']) {
+
+22 TYPO3\CMS\Frontend\ContentObject\FilesContentObject::render(array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+00749:      $contentObject = $this->getContentObject($name);
+00750:      if ($contentObject) {
+00751:       $content .= $contentObject->render($conf);
+00752:      } else {
+00753:       // Call hook functions for extra processing
+
+21 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("FILES", array, "20")
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+00694:     if ((int)$theKey && strpos($theKey, '.') === FALSE) {
+00695:      $conf = $setup[$theKey . '.'];
+00696:      $content .= $this->cObjGetSingle($theValue, $conf, $addKey . $theKey);
+00697:     }
+00698:    }
+
+20 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGet(array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectArrayContentObject.php:
+00038: 
+00039:   $this->cObj->includeLibs($conf);
+00040:   $content = $this->cObj->cObjGet($conf);
+00041:   $wrap = isset($conf['wrap.']) ? $this->cObj->stdWrap($conf['wrap'], $conf['wrap.']) : $conf['wrap'];
+00042:   if ($wrap) {
+
+19 TYPO3\CMS\Frontend\ContentObject\ContentObjectArrayContentObject::render(array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+00749:      $contentObject = $this->getContentObject($name);
+00750:      if ($contentObject) {
+00751:       $content .= $contentObject->render($conf);
+00752:      } else {
+00753:       // Call hook functions for extra processing
+
+18 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("COA", array, "/stdWrap/.cObject")
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+02278:   */
+02279:  public function stdWrap_cObject($content = '', $conf = array()) {
+02280:   return $this->cObjGetSingle($conf['cObject'], $conf['cObject.'], '/stdWrap/.cObject');
+02281:  }
+02282: 
+
+17 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::stdWrap_cObject(NULL, array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+02099:      // Call the function with the prefix stdWrap_ to make sure nobody can execute functions just by adding their name to the TS Array
+02100:      $functionName = 'stdWrap_' . $functionName;
+02101:      $content = $this->{$functionName}($content, $singleConf);
+02102:     } elseif ($functionType == 'boolean' && !$conf[$functionName]) {
+02103:      $isExecuted[$functionName] = TRUE;
+
+16 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::stdWrap(NULL, array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/Menu/TextMenuContentObject.php:
+00189:    }
+00190:   }
+00191:   $processedPref = isset($this->I['val'][$pref . '.']) ? $this->WMcObj->stdWrap($this->I['val'][$pref], $this->I['val'][$pref . '.']) : $this->I['val'][$pref];
+00192:   if (isset($this->I['val'][$pref . 'Wrap'])) {
+00193:    return $this->tmpl->wrap($res . $processedPref, $this->I['val'][$pref . 'Wrap']);
+
+15 TYPO3\CMS\Frontend\ContentObject\Menu\TextMenuContentObject::getBeforeAfter("after")
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/Menu/TextMenuContentObject.php:
+00141:    }
+00142:    $this->I['parts']['stdWrap2_end'] = $wrapPartsStdWrap[1];
+00143:    $this->I['parts']['after'] = $this->getBeforeAfter('after');
+00144:    // Passing I to a user function
+00145:    if ($this->mconf['IProcFunc']) {
+
+14 TYPO3\CMS\Frontend\ContentObject\Menu\TextMenuContentObject::writeMenu()
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/Menu/AbstractMenuContentObject.php:
+01507:      // Reset the menu item count for the submenu
+01508:      $GLOBALS['TSFE']->register['count_MENUOBJ'] = 0;
+01509:      $content = $submenu->writeMenu();
+01510:      // Restore the item count now that the submenu has been handled
+01511:      $GLOBALS['TSFE']->register['count_MENUOBJ'] = $tempCountMenuObj;
+
+13 TYPO3\CMS\Frontend\ContentObject\Menu\AbstractMenuContentObject::subMenu("50", NULL)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/Menu/TextMenuContentObject.php:
+00236:   // Add part to the accumulated result + fetch submenus
+00237:   if (!$this->I['spacer']) {
+00238:    $this->I['theItem'] .= $this->subMenu($this->I['uid'], $this->WMsubmenuObjSuffixes[$key]['sOSuffix']);
+00239:   }
+00240:   $part = isset($this->I['val']['wrapItemAndSub.']) ? $this->WMcObj->stdWrap($this->I['val']['wrapItemAndSub'], $this->I['val']['wrapItemAndSub.']) : $this->I['val']['wrapItemAndSub'];
+
+12 TYPO3\CMS\Frontend\ContentObject\Menu\TextMenuContentObject::extProc_afterLinking(0)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/Menu/TextMenuContentObject.php:
+00160:    }
+00161:    // Calling extra processing function
+00162:    $this->extProc_afterLinking($key);
+00163:   }
+00164:   return $this->extProc_finish();
+
+11 TYPO3\CMS\Frontend\ContentObject\Menu\TextMenuContentObject::writeMenu()
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/HierarchicalMenuContentObject.php:
+00047:    $menu->start($GLOBALS['TSFE']->tmpl, $GLOBALS['TSFE']->sys_page, '', $conf, 1);
+00048:    $menu->makeMenu();
+00049:    $theValue .= $menu->writeMenu();
+00050:   } catch (\TYPO3\CMS\Frontend\ContentObject\Menu\Exception\NoSuchMenuTypeException $e) {
+00051:   }
+
+10 TYPO3\CMS\Frontend\ContentObject\HierarchicalMenuContentObject::render(array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+00749:      $contentObject = $this->getContentObject($name);
+00750:      if ($contentObject) {
+00751:       $content .= $contentObject->render($conf);
+00752:      } else {
+00753:       // Call hook functions for extra processing
+
+9 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("HMENU", array, "10")
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+00694:     if ((int)$theKey && strpos($theKey, '.') === FALSE) {
+00695:      $conf = $setup[$theKey . '.'];
+00696:      $content .= $this->cObjGetSingle($theValue, $conf, $addKey . $theKey);
+00697:     }
+00698:    }
+
+8 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGet(array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectArrayContentObject.php:
+00038: 
+00039:   $this->cObj->includeLibs($conf);
+00040:   $content = $this->cObj->cObjGet($conf);
+00041:   $wrap = isset($conf['wrap.']) ? $this->cObj->stdWrap($conf['wrap'], $conf['wrap.']) : $conf['wrap'];
+00042:   if ($wrap) {
+
+7 TYPO3\CMS\Frontend\ContentObject\ContentObjectArrayContentObject::render(array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+00749:      $contentObject = $this->getContentObject($name);
+00750:      if ($contentObject) {
+00751:       $content .= $contentObject->render($conf);
+00752:      } else {
+00753:       // Call hook functions for extra processing
+
+6 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("COA", array, "subparts.navmenu")
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/TemplateContentObject.php:
+00126:      $this->cObj->data[$this->cObj->currentValKey] = $GLOBALS['TSFE']->register['SUBPART_' . $theKey];
+00127:      // Get subpart cObject and substitute it!
+00128:      $subpartArray[$PRE . $theKey . $POST] = $this->cObj->cObjGetSingle($theValue['name'], $theValue['conf'], 'subparts.' . $theKey);
+00129:     }
+00130:     // Reset current to empty
+
+5 TYPO3\CMS\Frontend\ContentObject\TemplateContentObject::render(array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+00749:      $contentObject = $this->getContentObject($name);
+00750:      if ($contentObject) {
+00751:       $content .= $contentObject->render($conf);
+00752:      } else {
+00753:       // Call hook functions for extra processing
+
+4 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("TEMPLATE", array, "20")
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+00694:     if ((int)$theKey && strpos($theKey, '.') === FALSE) {
+00695:      $conf = $setup[$theKey . '.'];
+00696:      $content .= $this->cObjGetSingle($theValue, $conf, $addKey . $theKey);
+00697:     }
+00698:    }
+
+3 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGet(array)
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/Page/PageGenerator.php:
+00212:   $GLOBALS['TT']->incStackPointer();
+00213:   $GLOBALS['TT']->push($GLOBALS['TSFE']->sPre, 'PAGE');
+00214:   $pageContent = $GLOBALS['TSFE']->cObj->cObjGet($GLOBALS['TSFE']->pSetup);
+00215:   if ($GLOBALS['TSFE']->pSetup['wrap']) {
+00216:    $pageContent = $GLOBALS['TSFE']->cObj->wrap($pageContent, $GLOBALS['TSFE']->pSetup['wrap']);
+
+2 TYPO3\CMS\Frontend\Page\PageGenerator::renderContent()
+
+/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/cms/tslib/index_ts.php:
+00210:   // Content generation
+00211:   if (!$TSFE->isINTincScript()) {
+00212:    \TYPO3\CMS\Frontend\Page\PageGenerator::renderContent();
+00213:    $TSFE->setAbsRefPrefix();
+00214:   }
+
+1 require("/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/cms/tslib/index_ts.php")
+
+/home/user/public_html/project/index.php:
+00166: // ******************
+00167: 
+00168: require(PATH_tslib . 'index_ts.php');
+00169: 
+00170: 

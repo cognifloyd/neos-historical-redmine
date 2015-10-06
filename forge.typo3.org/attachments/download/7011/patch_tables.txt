@@ -1,0 +1,24 @@
+--- class.tx_cssstyledcontent_pi1.orig.php	2006-04-24 09:18:49.000000000 +0200
++++ class.tx_cssstyledcontent_pi1.php	2006-04-24 09:19:27.000000000 +0200
+@@ -213,7 +213,7 @@
+ 				}
+ 				if (!$noStyles)	{
+ 					$oddEven = $k%2 ? 'tr-odd' : 'tr-even';
+-					$rowAttribs =  ($k>0 && ($rCount-1)==$k) ? ' class="'.$oddEven.' tr-last"' : ' class="'.$oddEven.' tr-'.$k.'"';
++					$rowAttribs =  ($k>0 && ($rCount-1)==$k) ? ' class="'.$oddEven.' tr-last tr-'.$k.'"' : ' class="'.$oddEven.' tr-'.$k.'"';
+ 				}
+ 				$rows[$k]='
+ 					<tr'.$rowAttribs.'>'.implode('',$newCells).'
+@@ -849,9 +849,9 @@
+ 
+ 			// Create table attributes array:
+ 		$tableTagParams = array();
+-		$tableTagParams['border'] =  $this->cObj->data['table_border'] ? intval($this->cObj->data['table_border']) : $tableTagParams_conf['border'];
+-		$tableTagParams['cellspacing'] =  $this->cObj->data['table_cellspacing'] ? intval($this->cObj->data['table_cellspacing']) : $tableTagParams_conf['cellspacing'];
+-		$tableTagParams['cellpadding'] =  $this->cObj->data['table_cellpadding'] ? intval($this->cObj->data['table_cellpadding']) : $tableTagParams_conf['cellpadding'];
++		$tableTagParams['border'] =  $this->cObj->data['table_border'] >= 0 ? intval($this->cObj->data['table_border']) : $tableTagParams_conf['border'];
++		$tableTagParams['cellspacing'] =  $this->cObj->data['table_cellspacing'] >= 0 ? intval($this->cObj->data['table_cellspacing']) : $tableTagParams_conf['cellspacing'];
++		$tableTagParams['cellpadding'] =  $this->cObj->data['table_cellpadding'] >= 0 ? intval($this->cObj->data['table_cellpadding']) : $tableTagParams_conf['cellpadding'];
+ 		$tableTagParams['bgcolor'] =  isset($conf['color.'][$this->cObj->data['table_bgColor']]) ? $conf['color.'][$this->cObj->data['table_bgColor']] : $conf['color.']['default'];
+ 
+ 			// Return result:

@@ -1,0 +1,19 @@
+Index: Packages/FLOW3/Classes/F3_FLOW3.php
+===================================================================
+--- Packages/FLOW3/Classes/F3_FLOW3.php	(revision 1074)
++++ Packages/FLOW3/Classes/F3_FLOW3.php	(working copy)
+@@ -431,6 +431,14 @@
+ 		if (version_compare(phpversion(), '6.0.0', '<') && !(extension_loaded('iconv') || extension_loaded('mbstring'))) {
+ 			die ('FLOW3 requires the PHP extension "mbstring" or "iconv" for PHP versions below 6.0.0 (Error #1207148809)');
+ 		}
++		if (extension_loaded('eAccelerator')) {
++			$reflect = new ReflectionClass('F3_FLOW3');
++			if($reflect->getDocComment() == NULL) {
++				die ('FLOW3 requires to compile eAccelerator with the --with-eaccelerator-doc-comment-inclusion flag or to disable it');
++			}
++			unset($reflect);
++		}
++		
+ 		set_time_limit(0);
+ 		ini_set('unicode.output_encoding', 'utf-8');
+ 		ini_set('unicode.stream_encoding', 'utf-8');

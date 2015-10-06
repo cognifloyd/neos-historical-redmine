@@ -1,0 +1,19 @@
+registerEventListeners: function() {
+	$$('#typo3-menu li.menuSection ul li').invoke('observe', 'click', this.toggleActiveClass);
+},
+
+
+
+toggleActiveClass : function(event) {
+		// remove active
+	$$('#typo3-menu li.menuSection ul li').each(function(el) {
+		if (el.hasClassName('active')) {
+			el.removeClassName('active');
+		}
+	});
+		// set active
+	var mainMenuId	= Event.element(event).up('li');
+	if(!mainMenuId.hasClassName('menuSection')) {
+		mainMenuId.addClassName('active');
+	}
+},

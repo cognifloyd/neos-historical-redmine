@@ -1,0 +1,185 @@
+Uncaught TYPO3 Exception
+#1314354065: Could not find row with uid "5" in table sys_file_storage (More information)
+
+RuntimeException thrown in file
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/AbstractRepository.php in line 194.
+
+20 TYPO3\CMS\Core\Resource\AbstractRepository::findByUid("5")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceFactory.php:
+00140:     $storageRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
+00141:     /** @var $storage ResourceStorage */
+00142:     $storageObject = $storageRepository->findByUid($uid);
+00143:    }
+00144:    if (!$storageObject instanceof ResourceStorage) {
+
+19 TYPO3\CMS\Core\Resource\ResourceFactory::getStorageObject("5")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceFactory.php:
+00428:   $fileObject = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\File', $fileData);
+00429:   if (is_numeric($fileData['storage'])) {
+00430:    $storageObject = $this->getStorageObject($fileData['storage']);
+00431:    $fileObject->setStorage($storageObject);
+00432:   }
+
+18 TYPO3\CMS\Core\Resource\ResourceFactory::createFileObject(array)
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceFactory.php:
+00282:     }
+00283:    }
+00284:    $this->fileInstances[$uid] = $this->createFileObject($fileData);
+00285:   }
+00286:   return $this->fileInstances[$uid];
+
+17 TYPO3\CMS\Core\Resource\ResourceFactory::getFileObject("588", array)
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/FileRepository.php:
+00078:   */
+00079:  protected function createDomainObject(array $databaseRow) {
+00080:   return $this->factory->getFileObject($databaseRow['uid'], $databaseRow);
+00081:  }
+00082: 
+
+16 TYPO3\CMS\Core\Resource\FileRepository::createDomainObject(array)
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/FileRepository.php:
+00183:   $objects = array();
+00184:   foreach ($resultRows as $row) {
+00185:    $objects[] = $this->createDomainObject($row);
+00186:   }
+00187:   return $objects;
+
+15 TYPO3\CMS\Core\Resource\FileRepository::findBySha1Hash("c0fa749a1d87bfd5838bc46af27b7fc9fbd6f93d")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/Service/IndexerService.php:
+00103:    // Check if a file has been moved outside of FAL -- we have some
+00104:    // orphaned index record in this case we could update
+00105:    $otherFiles = $this->getRepository()->findBySha1Hash($fileInfo['sha1']);
+00106:    $movedFile = FALSE;
+00107:    /** @var $otherFile \TYPO3\CMS\Core\Resource\File */
+
+14 TYPO3\CMS\Core\Resource\Service\IndexerService::indexFile(TYPO3\CMS\Core\Resource\File, boolean)
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/FileRepository.php:
+00090:   */
+00091:  public function addToIndex(File $fileObject) {
+00092:   return $this->getIndexerService()->indexFile($fileObject, FALSE);
+00093:  }
+00094: 
+
+13 TYPO3\CMS\Core\Resource\FileRepository::addToIndex(TYPO3\CMS\Core\Resource\File)
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/File.php:
+00172:   if ($indexRecord === FALSE && $indexIfNotIndexed) {
+00173:    $this->indexingInProgress = TRUE;
+00174:    $indexRecord = $repo->addToIndex($this);
+00175:    $this->mergeIndexRecord($indexRecord);
+00176:    $this->indexed = TRUE;
+
+12 TYPO3\CMS\Core\Resource\File::loadIndexRecord()
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/File.php:
+00102:  public function getProperty($key) {
+00103:   if ($this->indexed === NULL) {
+00104:    $this->loadIndexRecord();
+00105:   }
+00106:   return parent::getProperty($key);
+
+11 TYPO3\CMS\Core\Resource\File::getProperty("uid")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/AbstractFile.php:
+00199:   */
+00200:  public function getUid() {
+00201:   return $this->getProperty('uid');
+00202:  }
+00203: 
+
+10 TYPO3\CMS\Core\Resource\AbstractFile::getUid()
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ProcessedFileRepository.php:
+00153:    '*',
+00154:    $this->table,
+00155:    'original=' . intval($file->getUid()) .
+00156:     ' AND task_type=' . $this->databaseConnection->fullQuoteStr($taskType, $this->table) .
+00157:     ' AND configuration=' . $this->databaseConnection->fullQuoteStr(serialize($configuration), $this->table)
+
+9 TYPO3\CMS\Core\Resource\ProcessedFileRepository::findOneByOriginalFileAndTaskTypeAndConfiguration(TYPO3\CMS\Core\Resource\File, "Image.Preview", array)
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/Service/FileProcessingService.php:
+00091:   $processedFileRepository = Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\ProcessedFileRepository');
+00092: 
+00093:   $processedFile = $processedFileRepository->findOneByOriginalFileAndTaskTypeAndConfiguration($fileObject, $taskType, $configuration);
+00094: 
+00095:   // set the storage of the processed file
+
+8 TYPO3\CMS\Core\Resource\Service\FileProcessingService::processFile(TYPO3\CMS\Core\Resource\File, TYPO3\CMS\Core\Resource\ResourceStorage, "Image.Preview", array)
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01130:    throw new \InvalidArgumentException('Cannot process files of foreign storage', 1353401835);
+01131:   }
+01132:   $processedFile = $this->getFileProcessingService()->processFile($fileObject, $this, $context, $configuration);
+01133: 
+01134:   return $processedFile;
+
+7 TYPO3\CMS\Core\Resource\ResourceStorage::processFile(TYPO3\CMS\Core\Resource\File, "Image.Preview", array)
+
+/foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/File.php:
+00291:   */
+00292:  public function process($taskType, array $configuration) {
+00293:   return $this->getStorage()->processFile($this, $taskType, $configuration);
+00294:  }
+00295: 
+
+6 TYPO3\CMS\Core\Resource\File::process("Image.Preview", array)
+
+/foooo/typo3_src-6.1.4/typo3/sysext/filelist/Classes/FileList.php:
+00620:        // Thumbnails?
+00621:        if ($this->thumbs && $this->isImage($ext)) {
+00622:         $processedFile = $fileObject->process(\TYPO3\CMS\Core\Resource\ProcessedFile::CONTEXT_IMAGEPREVIEW, array());
+00623:         if ($processedFile) {
+00624:          $thumbUrl = $processedFile->getPublicUrl(TRUE);
+
+5 TYPO3\CMS\Filelist\FileList::formatFileList(array, "file")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/filelist/Classes/FileList.php:
+00351:    }
+00352:    // Files are added
+00353:    $iOut .= $this->formatFileList($files, $titleCol);
+00354:    // Header line is drawn
+00355:    $theData = array();
+
+4 TYPO3\CMS\Filelist\FileList::getTable("fileext,tstamp,size,rw,_REF_")
+
+/foooo/typo3_src-6.1.4/typo3/sysext/filelist/Classes/FileList.php:
+00197:   */
+00198:  public function generateList() {
+00199:   $this->HTMLcode .= $this->getTable('fileext,tstamp,size,rw,_REF_');
+00200:  }
+00201: 
+
+3 TYPO3\CMS\Filelist\FileList::generateList()
+
+/foooo/typo3_src-6.1.4/typo3/sysext/filelist/Classes/Controller/FileListController.php:
+00288:    $this->filelist->start($this->folderObject, $this->pointer, $this->MOD_SETTINGS['sort'], $this->MOD_SETTINGS['reverse'], $this->MOD_SETTINGS['clipBoard'], $this->MOD_SETTINGS['bigControlPanel']);
+00289:    // Generate the list
+00290:    $this->filelist->generateList();
+00291:    // Write the footer
+00292:    $this->filelist->writeBottom();
+
+2 TYPO3\CMS\Filelist\Controller\FileListController::main()
+
+/foooo/typo3_src-6.1.4/typo3/sysext/filelist/mod1/index.php:
+00044: $SOBE = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Filelist\\Controller\\FileListController');
+00045: $SOBE->init();
+00046: $SOBE->main();
+00047: $SOBE->printContent();
+00048: ?>
+
+1 require("/foooo/typo3_src-6.1.4/typo3/sysext/filelist/mod1/index.php")
+
+/foooo/typo3_src-6.1.4/typo3/mod.php:
+00039:  require $temp_path . 'conf.php';
+00040:  $BACK_PATH = '';
+00041:  require $temp_path . 'index.php';
+00042:  $isDispatched = TRUE;
+00043: } else {

@@ -1,0 +1,153 @@
+root@flow3:/var/www/typo35# ./install.sh
+Looking for config file in /var/www/typo35
+Checking current config
+1 Reconfigure
+2 Show current config
+3 Use current config
+0 Abort
+
+Existing config
+Config for host flow3
+
+Webserver user: www-data
+Webserver group: www-data
+URL for TYPO3 Public directory: http://172.19.3.145/typo35/Public/
+
+Production database:
+Production database type: sqlite
+Sqlite database path: /var/www/typo35/Data/Persistent/TYPO3CR.db
+Lucene index location: /var/www/typo35/Data/Persistent/Index/
+
+Test databases:
+
+Only sqlite test db configured (sqlite needs no configuration for tests)
+
+sqlite3 binary: /usr/bin/sqlite3
+mysql binary (CONFIG_BIN_MYSQL) not set
+mysqldump binary (CONFIG_BIN_MYSQLDUMP) not set
+psql binary (CONFIG_BIN_PSQL) not set
+pg_dump binary (CONFIG_BIN_PG_DUMP) not set
+
+Looking for config file in /var/www/typo35
+Checking current config
+1 Reconfigure
+2 Show current config
+3 Use current config
+0 Abort
+
+Setting up typo3v5
+Using config:
+Config for host flow3
+
+Webserver user: www-data
+Webserver group: www-data
+URL for TYPO3 Public directory: http://172.19.3.145/typo35/Public/
+
+Production database:
+Production database type: sqlite
+Sqlite database path: /var/www/typo35/Data/Persistent/TYPO3CR.db
+Lucene index location: /var/www/typo35/Data/Persistent/Index/
+
+Test databases:
+
+Only sqlite test db configured (sqlite needs no configuration for tests)
+
+sqlite3 binary: /usr/bin/sqlite3
+mysql binary (CONFIG_BIN_MYSQL) not set
+mysqldump binary (CONFIG_BIN_MYSQLDUMP) not set
+psql binary (CONFIG_BIN_PSQL) not set
+pg_dump binary (CONFIG_BIN_PG_DUMP) not set
+
+/var/www/typo35 /var/www/typo35
+Now in typo3 base directory: /var/www/typo35
+Fixing permissions...
+Using sudo to allow for changes in both files owned by you and the webserver user...
+chown: cannot access `Public/Resources/': No such file or directory
+Lucene index location exists...
+Backing up lucene index in /var/www/typo35/Data/Persistent/Index.XyLI5358...
+Creating lucene index location...
+Fixing permissions of lucene index location...
+Setting up production database...
+Setting up sqlite production database..
+Disabling persistence layer to setup database...
+Database exists...moving it to backup /var/www/typo35/Data/Persistent/TYPO3CR.db.ZnYw5369
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  5209  100  5209    0     0    263      0  0:00:19  0:00:19 --:--:--  1130
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+                                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+
+
+                                FLOW3 Exception
+
+
+
+                                .ExceptionProperty {
+                                        color: #101010;
+                                }
+                                pre {
+                                        margin: 0;
+                                        font-size: 11px;
+                                        color: #515151;
+                                        background-color: #D0D0D0;
+                                        padding-left: 30px;
+                                }
+
+                        <div style="
+                                        position: absolute;
+                                        left: 10px;
+                                        background-color: #B9B9B9;
+                                        outline: 1px solid #515151;
+                                        color: #515151;
+                                        font-family: Arial, Helvetica, sans-serif;
+                                        font-size: 12px;
+                                        margin: 10px;
+                                        padding: 0;
+                                ">
+                                Uncaught FLOW3 Exception
+
+                                        #1220884009: The controller component "f3::flow3::controller::defaultcontroller" does not exist. (More information)
+
+                                        F3::FLOW3::MVC::Exception::NoSuchController thrown in file
+                                        FLOW3/Classes/MVC/F3_FLOW3_MVC_Request.php in line
+                                        160.
+
+                                        5 F3::FLOW3::MVC::Request::getControllerComponentName()/var/www/typo35/Packages/FLOW3/Classes/MVC/F3_FLOW3_MVC_Dispatcher.php:00140:   */
+00141:  protected function getPreparedController(F3::FLOW3::MVC::Request $request, F3::FLOW3::MVC::Response $response) {
+00142:   $controllerComponentName = $request->getControllerComponentName();
+00143:
+00144:   try {
+4 F3::FLOW3::MVC::Dispatcher::getPreparedController(F3::FLOW3::MVC::Web::Request, F3::FLOW3::MVC::Web::Response)/var/www/typo35/Packages/FLOW3/Classes/MVC/F3_FLOW3_MVC_Dispatcher.php:00122:
+00123:    try {
+00124:     $controller = $this->getPreparedController($request, $response);
+00125:     $controller->processRequest($request, $response);
+00126:    } catch (F3::FLOW3::MVC::Exception::StopAction $ignoredException) {
+3 F3::FLOW3::MVC::Dispatcher::dispatch(F3::FLOW3::MVC::Web::Request, F3::FLOW3::MVC::Web::Response)/var/www/typo35/Packages/FLOW3/Classes/MVC/Web/F3_FLOW3_MVC_Web_RequestHandler.php:00083:   $this->requestProcessorChainManager->processRequest($request);
+00084:   $response = $this->componentFactory->getComponent('F3::FLOW3::MVC::Web::Response');
+00085:   $this->dispatcher->dispatch($request, $response);
+00086:   $response->send();
+00087:  }
+2 F3::FLOW3::MVC::Web::RequestHandler::handleRequest()/var/www/typo35/Packages/FLOW3/Classes/F3_FLOW3.php:00441:   $requestHandlerResolver = $this->componentFactory->getComponent('F3::FLOW3::MVC::RequestHandlerResolver', $this->settings);
+00442:   $requestHandler = $requestHandlerResolver->resolveRequestHandler();
+00443:   $requestHandler->handleRequest();
+00444:
+00445:   if ($this->settings->persistence->enable === TRUE) {
+1 F3::FLOW3::run()/var/www/typo35/Public/index_dev.php:00028:
+00029: $framework = new F3::FLOW3('Development');
+00030: $framework->run();
+00031: ?>
+
+
+
+
+Enabling persistence layer...
+Writing Configuration/Settings.php...
+Can't open Configuration/Settings.php: No such file or directory.
+cat: Configuration/Settings.php: No such file or directory
+Setting up test databases...
+Writing testdb.sh config file /var/www/typo35/Packages/TYPO3CR/Tests/Fixtures/testdb.conf
+Setting up sqlite test db
+Cleaning up sqlite test db
+Writing Configuration/Settings.php (Lucene index location)...
+TYPO3 Setup complete...
+
