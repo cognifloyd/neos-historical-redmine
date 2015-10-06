@@ -1,0 +1,645 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/19283 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:31:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #19283: page cache is not influenced by tt_content.starttime/endtime - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/19283.atom" rel="alternate" title="Core - Feature #19283: page cache is not influenced by tt_content.starttime/endtime" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (5)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2125">Jonas Renggli</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2737">Andreas Kiessling</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2668">Bernhard Stähli</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-19283-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #19283</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>page cache is not influenced by tt_content.starttime/endtime</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/68">Martin Holtz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-09-03" title="2008-09-03 22:34">almost 7 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-01" title="2013-06-01 14:45">about 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2008-09-03</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.2</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>The actual caching meachanism works like that:</p>
+
+
+	<p>- page is generated<br />- expiredate is calculated (by clearAtMidNight or page caching config,<br />usually set to generating time + one day)<br />- if a page is requested, TYPO3 checks wether the cache is expired or the<br />page starttime/endtime should take effect.</p>
+
+
+	<p>So an content element has no influence on caching time.</p>
+
+
+	<p>If a page is cached at 2pm (with 24hours cache-expire) and there is a<br />content element with an starttime at 3pm on that day, that content element<br />will be visible first at 2pm the next day (when the page cache expires).</p>
+
+
+	<p>As an proof of concept i wrote an extension:<br /><a class="external" href="../../external.html?link=http://forge.typo3.org/projects/show/extension-cacheexpire">http://forge.typo3.org/projects/show/extension-cacheexpire</a></p>
+
+
+	<p>With that extension the expire-timestamp of the pagecache will be calculated based on starttime/endtime of all content elements on that page. Deleted, hidden, starttime, endtime and group-permissions are respected.</p>
+
+
+	<p>For different tables then tt_content it is possible to use an hook. With that extension i provide an very simple class which hooks in and takes care of tt_news elements (if there is a plugin on that page).</p>
+
+
+	<p>I made an patch of that extension for integrating into the core.<br />(issue imported from #M9284)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/10056/tslib_class.tslib_fe.php_patch.txt" class="icon icon-attachment">tslib_class.tslib_fe.php_patch.txt</a>  
+    <a href="../attachments/10056/tslib_class.tslib_fe.php_patch.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(2.8 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-09-03 22:34</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10057/9284.diff" class="icon icon-attachment">9284.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10057/9284.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(5.8 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-09-09 13:36</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10058/2008.10.16.tslib_class_fe.php_patch.diff" class="icon icon-attachment">2008.10.16.tslib_class_fe.php_patch.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10058/2008.10.16.tslib_class_fe.php_patch.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(815 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-10-16 21:55</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10059/2008.10.29.tslib_class_fe.php_patch.diff" class="icon icon-attachment">2008.10.29.tslib_class_fe.php_patch.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10059/2008.10.29.tslib_class_fe.php_patch.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(1.4 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-10-29 21:06</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10060/9284-revised.diff" class="icon icon-attachment">9284-revised.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10060/9284-revised.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(1.4 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-11-28 20:25</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10061/T3X_xnews-0_0_0-z-200811282031.t3x" class="icon icon-attachment">T3X_xnews-0_0_0-z-200811282031.t3x</a>  
+  
+  <span class="size">(5.8 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-11-28 20:31</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10062/T3X_overlays-0_2_0-dev-z-200811282031.t3x" class="icon icon-attachment">T3X_overlays-0_2_0-dev-z-200811282031.t3x</a>  
+  
+  <span class="size">(40.2 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-11-28 20:32</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10063/9284-revisedv2.diff" class="icon icon-attachment">9284-revisedv2.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10063/9284-revisedv2.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(3.3 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2010-05-28 19:15</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-2393">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="20473" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="20473.html" class="issue status-9 priority-2 closed parent">Bug #20473</a>: Starttime/endtime is not taken into account when caching
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2011-06-05</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-3548">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="23180" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="23180.html" class="issue status-10 priority-2 closed">Bug #23180</a>: Starttime/endtime for pages and content is not taken into...
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2010-07-14</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/19283/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/19283/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=19283&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-49794" class="journal has-notes">
+    <h4><a href="19283.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/68">Martin Holtz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-09-09" title="2008-09-09 13:37">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49794-notes"><p>The new 9284.diff is from Ingo Renner in the core mailinglist</p></div>
+  </div>
+  
+
+  <div id="change-49795" class="journal has-notes">
+    <h4><a href="19283.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/68">Martin Holtz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-16" title="2008-10-16 21:53">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49795-notes"><p>another try:</p>
+
+
+	<p>i removed the hook and the sql-query and reduced this patch that it only reacts on</p>
+
+
+	<p>$GLOBALS['TSFE']->cacheExpires</p></div>
+  </div>
+  
+
+  <div id="change-49796" class="journal has-notes">
+    <h4><a href="19283.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/68">Martin Holtz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-29" title="2008-10-29 21:06">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49796-notes"><p>i uploaded another patch</p>
+
+
+	<p>this time with an additional function to set cacheExpires Timestamp</p></div>
+  </div>
+  
+
+  <div id="change-49797" class="journal has-notes">
+    <h4><a href="19283.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/329">Francois Suter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-28" title="2008-11-28 20:24">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49797-notes"><p>Attaching a corrected patch, as submitted in the core list</p></div>
+  </div>
+  
+
+  <div id="change-49798" class="journal has-notes">
+    <h4><a href="19283.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/329">Francois Suter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-28" title="2008-11-28 20:30">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49798-notes"><p>I have tested this patch with a quickly put together extension, which I am attaching here. The extension is called "xnews". It's a FE plugin that just gets the 10 latest records from the tt_news table (so you need tt_news installed too). There's no configuration at all. Just insert an instance of xnews on some page and display the page. You should a list of 10 news items plus an indication of when the next update should take place, i.e. when the cache will expire.</p>
+
+
+	<p>To test properly you obviously need to have at least 1 tt_news with a starttime in the future.</p>
+
+
+	<p>You can check if that matches the information stored in the cache_pages table.</p>
+
+
+	<p>The xnews extension actually relies on an (as yet) unpublished extension called "overlays" (and this is even a modified version just for testing this patch). So you need to install "overlays" too. "overlays" is used to simplify querying the DB in particular in a multilingual setup. In this case I added a method for simply getting all records in the future and calculating a precise expiry time for the cache.</p></div>
+  </div>
+  
+
+  <div id="change-49799" class="journal has-notes">
+    <h4><a href="19283.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-05-19" title="2009-05-19 10:30">about 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49799-notes"><p>Please, see also <a href="20473.html" class="issue status-9 priority-2 closed parent" title="Starttime/endtime is not taken into account when caching (Closed)">#20473</a>. It provides an automatic solution to this problem.</p></div>
+  </div>
+  
+
+  <div id="change-49800" class="journal has-notes">
+    <h4><a href="19283.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/68">Martin Holtz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-05-19" title="2009-05-19 21:17">about 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49800-notes"><p>hi dmitry,</p>
+
+
+	<p>in my eyes<br /><a href="20473.html" class="issue status-9 priority-2 closed parent" title="Starttime/endtime is not taken into account when caching (Closed)">#20473</a><br />is an better approach.</p></div>
+  </div>
+  
+
+  <div id="change-79638" class="journal has-details">
+    <h4><a href="19283.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-07-14" title="2011-07-14 13:55">about 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>4.6.0</i> to <i>4.6.0-beta1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-79728" class="journal has-notes">
+    <h4><a href="19283.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-07-14" title="2011-07-14 23:36">about 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-79728-notes"><p>The functionality described in this issue-description is what <a href="20473.html" class="issue status-9 priority-2 closed parent" title="Starttime/endtime is not taken into account when caching (Closed)">#20473</a> (already commited now) offers. So I'd say we should close this one.</p></div>
+  </div>
+  
+
+  <div id="change-79734" class="journal has-notes has-details">
+    <h4><a href="19283.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-07-15" title="2011-07-15 00:16">about 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-79734-notes"><p>Solved with <a href="20473.html" class="issue status-9 priority-2 closed parent" title="Starttime/endtime is not taken into account when caching (Closed)">#20473</a></p></div>
+  </div>
+  
+
+  <div id="change-167944" class="journal has-details">
+    <h4><a href="19283.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-01" title="2013-06-01 14:45">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> deleted (<strike><i>4.6.0-beta1</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-19283-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/19283.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="19283.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/19283 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:31:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

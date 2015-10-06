@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/1787 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:54:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #1787: Improved cache registration - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/1787.atom" rel="alternate" title="TYPO3.Flow - Feature #1787: Improved cache registration" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-1787-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #1787</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Improved cache registration</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2008-10-22" title="2008-10-22 23:06">almost 7 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2010-10-20" title="2010-10-20 11:39">almost 5 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2008-10-22</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Cache</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/182">TYPO3 Flow Base Distribution - 1.0 alpha 1</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Currently there is no fixed time during the app flow when a cache needs to be registered. That might / will raise problems with garbage collection etc. and therefore needs to be improved (eg. register caches by configuration and not through php code)</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-159">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="1785" /></td>
+<td class="subject">blocks 
+    TYPO3.Flow - 
+    <a href="1785.html" class="issue status-1 priority-1">Feature #1785</a>: Automatic garbage collection for expired cache entries
+</td>
+<td class="status">New</td>
+<td class="start_date">2008-10-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/1787/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/1787/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=1787&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/adde6ecc40d0fb750ae9c4fc7e16e72afde9a70a" title="Revision adde6ecc">Revision adde6ecc</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-01-15" title="2009-01-15 15:24">over 6 years</a> ago</span></p>
+    <div class="wiki">
+        <p>This is a big commit (sorry - not exactly Continuous Integration ...)<br />While all seems to be fine and stable, many features introduced in this commit are not complete. Especially AOP Proxy Caching, Logging (API), the System Logger and the Signal Slots mechanism need some further work.</p>
+
+
+	<ul>
+	<li>TYPO3 Distribution: Added a Log directory</li>
+		<li>TYPO3 Distribution: Disabled security (for now) because some thing need to be refactored and tested again after this commit</li>
+		<li>FLOW3: Further cleanup of the bootstrap. Addresses <a href="2117.html" class="issue status-7 priority-2 closed" title="Clean up bootstrap (Resolved)">#2117</a></li>
+		<li>FLOW3: Removed manual registration of objects from all classes and created an Objects.yaml configuration instead which declares the objects and configures their dependencies. This manual registration is necessary for objects such as the AOP Framework because at the time it is created, the Object Manager is not yet fully initialized.</li>
+		<li>FLOW3: (AOP) Refactored and cleaned up the AOP initialization process. Resolves <a href="441.html" class="issue status-7 priority-2 closed" title="Extract component configuration modifications from AOP Framework initialize method (Resolved)">#441</a>.</li>
+		<li>FLOW3: (AOP) Completely rewrote all unit tests and added many new ones. Now no AOP test relies on the TestPackage anymore. Addresses #1868</li>
+		<li>FLOW3: (AOP) Improved the automatic documentation rendering of the Proxy Class Builder. Resolves <a href="35.html" class="issue status-9 priority-2 closed" title="Refactor T3P_Core_AOPFramework: Extract build methods (Closed)">#35</a>.</li>
+		<li>FLOW3: (AOP) Externalized the creation of the AOP proxy and instead use the Caches.yaml configuration.</li>
+		<li>FLOW3: (AOP) Removed all use of PHP's Reflection classes and replaced them with calls to the Reflection Service</li>
+		<li>FLOW3: (AOP) Converted all classes involved in the proxy building process from static into dynamic calls</li>
+		<li>FLOW3: (Cache) Introduced an (semi) automatic cache registration feature which assures that all necessary caches are registered when file changes are detected. In order to register a cache, just define it in the new "Caches.yaml" configuration file. See the FLOW3 package for examples. Resolves <a href="1787.html" class="issue status-7 priority-1 closed" title="Improved cache registration (Resolved)">#1787</a></li>
+		<li>FLOW3: (Cache) Wrote more tests for the File Backend. Resolves <a href="1843.html" class="issue status-7 priority-1 closed" title="Check file cache backend (Resolved)">#1843</a></li>
+		<li>FLOW3: (Configuration) Improved the performance of the special configuration management</li>
+		<li>FLOW3: (Configuration) Added support for Caches.* configuration</li>
+		<li>FLOW3: (Error) The exception handlers now log uncaught exceptions to the System Logger</li>
+		<li>FLOW3: (Monitor) Introduced a new sub package "Monitor" which provides a mechanism for automatic detection of changes on monitored files. If monitored files or directories (the latter not yet implemented) change, a signal is emitted which can be catched by a slot taking further action. Currently all cache entries tagged with a class tag are flushed automatically if a class file changes.</li>
+		<li>FLOW3: (Log) Introduced a special System Logger which is created automatically and can be injected if needed. Although it works quite well already, the general concept of injecting the logger and the LoggerInterface itself is not final! Watch for log files in the Data/Log/ directory when running TYPO3 / FLOW3 in development context.</li>
+		<li>FLOW3: (Log) Introduced a Logger Factory for use in Objects configuration. Warning: the API might still change</li>
+		<li>FLOW3: (Log) Made the SEVERITY constants conform to RFC3164 and PHP's LOG_* constants</li>
+		<li>FLOW3: (Object) Refactored and detached more unit tests from the TestPackage. Addresses <a href="2123.html" class="issue status-7 priority-2 closed" title="Refactor (Object) Framework unit tests (Resolved)">#2123</a></li>
+		<li>FLOW3: (Object) Implemented an early configuration parse step which allows for configuring objects in the Objects.yaml file of the FLOW3 package even before the Package Manager is initialized.</li>
+		<li>FLOW3: (Object) Introduced a lifecycle shutdown method (default is "shutdownObject") which can be used as a clean alternative to __destruct().</li>
+		<li>FLOW3: (Reflection) Added new API methods: isClassReflected, getInterfaceNamesImplementedByClass, isMethodFinal, isMethodStatic, isMethodPublic, isMethodProtected, isMethodPrivate</li>
+		<li>FLOW3: (Reflection) getMethods() now returns information about the method visibility</li>
+		<li>FLOW3: (Security) Refactored the ACL Policy Service - might still need some final work</li>
+		<li>FLOW3: (SignalSlot) Fixed some small issues in the Dispatcher and implemented support for System Logger</li>
+		<li>FLOW3: (Utility) Fixed a bug in Arrays::getValueByPath</li>
+		<li>Testing: Implemented a method buildAccessibleProxy() in the BaseTestCase which allows for conveniently calling protected methods of a class. See FLOW3 unit tests for examples.</li>
+		<li>TestPackage: Removed many classes which became obsolete due to the AOP tests refactoring. refs #1868</li>
+	</ul>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-3764" class="journal has-details">
+    <h4><a href="1787.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2008-10-28" title="2008-10-28 12:53">almost 7 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> deleted (<strike><i>1.0 alpha 1</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-3781" class="journal has-details">
+    <h4><a href="1787.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2008-10-28" title="2008-10-28 12:58">almost 7 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>1.0 alpha 1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-4846" class="journal has-notes has-details">
+    <h4><a href="1787.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-01-15" title="2009-01-15 15:25">over 6 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-4846-notes"><p>Applied in changeset r1747.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-1787-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/1787.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="1787.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/1787 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:54:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

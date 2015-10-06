@@ -1,0 +1,1779 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/15663 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:41:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #15663: EM2 need more than 32 MB - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/15663.atom" rel="alternate" title="Core - Bug #15663: EM2 need more than 32 MB" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (12)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/29891">Dimitri Tarassenko</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/29874">old_mplutka </a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/391">Peter Niederlag</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/764">Gregor Hermens</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2904">Staffan Ericsson</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/400">Bernhard Kraft</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/23173">Schmid Valentin</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-15663-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #15663</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>EM2 need more than 32 MB</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-02-17" title="2006-02-17 23:16">over 9 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2007-03-13" title="2007-03-13 15:31">over 8 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2006-02-17</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Extension Manager</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.0</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>4</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>The EM2 needs more than 32 MB memory_limit .<br />I think its to much. The most WebSpaces don´t have more than 32MB of Memory for PHP. <br />I checked 64 MB and it works.</p>
+
+
+	<p>(issue imported from #M2615)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6763/em_1638.diff" class="icon icon-attachment">em_1638.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6763/em_1638.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(111.7 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2006-07-15 14:18</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6764/class.em_tslib_pibase.php" class="icon icon-attachment">class.em_tslib_pibase.php</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6764/class.em_tslib_pibase.php"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(19.9 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2006-07-15 14:19</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6765/em_1638_unix_save.diff" class="icon icon-attachment">em_1638_unix_save.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6765/em_1638_unix_save.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(61.3 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2006-07-27 14:07</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6766/EM_MemFix_2006-08-15.diff" class="icon icon-attachment">EM_MemFix_2006-08-15.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6766/EM_MemFix_2006-08-15.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(21 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2006-08-15 13:58</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6767/EM_MemFix_20061008(4.0.2).diff" class="icon icon-attachment">EM_MemFix_20061008(4.0.2).diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6767/EM_MemFix_20061008(4.0.2).diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(21.7 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2006-10-08 12:33</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6770/EM_MemFix_2006-11-28_SVNrev1816.diff" class="icon icon-attachment">EM_MemFix_2006-11-28_SVNrev1816.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6770/EM_MemFix_2006-11-28_SVNrev1816.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(22.7 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2006-11-28 13:57</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6768/EM_MemFix_2006-12-10_SVNrev1860.diff" class="icon icon-attachment">EM_MemFix_2006-12-10_SVNrev1860.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6768/EM_MemFix_2006-12-10_SVNrev1860.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(23.4 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2006-12-10 10:39</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6769/EM_MemFix_2006-12-11_SVNrev1860.diff" class="icon icon-attachment">EM_MemFix_2006-12-11_SVNrev1860.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6769/EM_MemFix_2006-12-11_SVNrev1860.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(23.4 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2006-12-11 23:10</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-1587">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="16912" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="16912.html" class="issue status-9 priority-2 closed">Bug #16912</a>: Warning on uploading extension to TER (unserialize)
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2007-01-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1535">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="15640" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="15640.html" class="issue status-7 priority-2 closed">Feature #15640</a>: search word also in title and descriptions
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2006-02-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1521">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="16028" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="16028.html" class="issue status-9 priority-2 closed">Bug #16028</a>: No matching extensions found.
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-04-11</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1517">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="16070" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="16070.html" class="issue status-9 priority-2 closed">Bug #16070</a>: Fatal error with function gzfile in class.em_index.php on...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-04-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1516">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="15817" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="15817.html" class="issue status-9 priority-2 closed">Bug #15817</a>: Retrieve/Update generates extensions.xml.gz file, but sho...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-03-13</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1559">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="16770" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="16770.html" class="issue status-9 priority-2 closed">Bug #16770</a>: Fatal error: Allowed memory size
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-12-07</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1396">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="15746" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="15746.html" class="issue status-9 priority-2 closed">Bug #15746</a>: Allocating far toooo much memory
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-02-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/15663/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/15663/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=15663&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-40580" class="journal has-notes">
+    <h4><a href="15663.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/48">Stefano Cecere</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-02-18" title="2006-02-18 14:07">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40580-notes"><p>i had problems qith 24Mb, but worked perfectly with 32 (Debian, PHP 4.1, mysql 4.1)</p></div>
+  </div>
+  
+
+  <div id="change-40581" class="journal has-notes">
+    <h4><a href="15663.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/130">Christian Leicht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-02-18" title="2006-02-18 17:02">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40581-notes"><p>I use Suse 9.3 with PHP 4.3.10 and MySQL 4.1.</p>
+
+
+	<p>The TER2 is working with  > 43 MB</p></div>
+  </div>
+  
+
+  <div id="change-40582" class="journal has-notes">
+    <h4><a href="15663.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/26612">old_martinficzel </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-02-22" title="2006-02-22 11:27">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40582-notes"><p>i can confim the problem, on my host the extension manager cant retrieve the list of extension from the miror because of to much memory usage.</p>
+
+
+	<p>the look up function with keywords also does not give a result but i think that's because the retieve before did not suceed.</p></div>
+  </div>
+  
+
+  <div id="change-40583" class="journal has-notes">
+    <h4><a href="15663.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29553">Marcel Ellerbrok</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-02-28" title="2006-02-28 22:36">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40583-notes"><p>Jepp, same problems on my side.</p>
+
+
+	<p>Please make it run with less then 16MB (thats the default memory size)!</p></div>
+  </div>
+  
+
+  <div id="change-40584" class="journal has-notes">
+    <h4><a href="15663.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2904">Staffan Ericsson</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-04" title="2006-03-04 22:20">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40584-notes"><p>An idea might be to import it in parts - update be-ext first, fe-ext there after and so on.</p>
+
+
+	<p>Requering a lot om memory is a problem that is not going to get smaller - the TER will grow and the update function must be able to handle large quantites of data.</p>
+
+
+	<p>But the new ter seems really promising.</p></div>
+  </div>
+  
+
+  <div id="change-40585" class="journal has-notes">
+    <h4><a href="15663.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2904">Staffan Ericsson</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-13" title="2006-03-13 15:18">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40585-notes"><p>It needs more than 32MB now and the memory requierment is growing as new extension is added to the TER.</p></div>
+  </div>
+  
+
+  <div id="change-40586" class="journal has-notes">
+    <h4><a href="15663.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/28897">Ralf Abele</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-14" title="2006-03-14 15:44">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40586-notes"><p>I've got the same problem...</p>
+
+
+	<p>Would it be possible as a workaround to just import the extensions.xml.gz into the ter2 in order to get it working ? I've downloaded the file directly from typo3.org/fileadmin/ter/.</p>
+
+
+	<p>I've got the extensions.xml.gz into a local installation by setting max_execution_time to 240 and the memory_limit to 64M. I've copied this file and the extensions.bin and reviewstates.bin to my online version and then this extension manager also had the repository file.</p>
+
+
+	<p>Yet the Problem was not solved because a look up ended in the same fatal error regarding the exhausted memory :-( My online memory limit is 20M at the moment</p></div>
+  </div>
+  
+
+  <div id="change-40587" class="journal has-notes">
+    <h4><a href="15663.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33121">RaS </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-15" title="2006-03-15 13:53">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40587-notes"><p>... after manual deleting of the files<br />'typo3temp/extensions.xml.gz' and <br />'typo3temp/extensions.bin' <br />i was able to load the list of extension from the miror by setting<br />max_execution_time = 60 and<br />memory_limit = 8M<br />in my php.ini</p>
+
+
+	<p>may one of the two deleted files cause the problem???</p>
+
+
+	<p>SYS: WIN2K | APACHE2 | PHP5 | MYSQL4 | TYPO3 4.0rc1</p></div>
+  </div>
+  
+
+  <div id="change-40588" class="journal has-notes">
+    <h4><a href="15663.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-24" title="2006-03-24 20:41">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40588-notes"><p>I have a big site and use the import/export extension to export the whole site with all tables. Then I get the attached image which asks me what to do with the index.php file.</p>
+
+
+	<p>The error_log file says:</p>
+
+
+	<p>[24-Mar-2006 20:19:11] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 3888093 bytes) in /var/www/vhosts/fholzinger.com/httpdocs/TYPO3core/typo3/sysext/impexp/class.tx_impexp.php on line 1122</p>
+
+
+	<p>So no export from the homepage is possible any more.</p></div>
+  </div>
+  
+
+  <div id="change-40589" class="journal has-notes">
+    <h4><a href="15663.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/28897">Ralf Abele</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-29" title="2006-03-29 14:49">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40589-notes"><p>Still the same problem in 4.0rc2</p></div>
+  </div>
+  
+
+  <div id="change-40590" class="journal has-notes">
+    <h4><a href="15663.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29891">Dimitri Tarassenko</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-04-06" title="2006-04-06 00:20">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40590-notes"><p>Out of curiousity, I tried executing</p>
+
+
+	<p>implode(gzfile('extensions.xml.gz'));</p>
+
+
+	<p>- the same technique that is used in the EM to unzip metadata files - in shell (i.e. outside of TYPO3 environment) and even there it would only work with memory limit set at 17M. There are certainly better ways of handling a 5M xml file than splitting it into an array one line per element and then glueing it together into another variable.</p></div>
+  </div>
+  
+
+  <div id="change-40591" class="journal has-notes">
+    <h4><a href="15663.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/28897">Ralf Abele</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-04-10" title="2006-04-10 17:29">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40591-notes"><p>Still the same problem in 4.0 final.</p></div>
+  </div>
+  
+
+  <div id="change-40592" class="journal has-notes">
+    <h4><a href="15663.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-05-19" title="2006-05-19 11:33">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40592-notes"><p>I have wrote a new EM which works in 24 MB. It could be interesting for you.</p>
+
+
+	<p>the extension-key is ch_lightem.</p>
+
+
+	<p>enjoy.</p></div>
+  </div>
+  
+
+  <div id="change-40593" class="journal has-notes">
+    <h4><a href="15663.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-06-07" title="2006-06-07 18:39">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40593-notes"><p>If my extension "ch_lightem" is of interest for the core team I can provide a diff-file.</p></div>
+  </div>
+  
+
+  <div id="change-40594" class="journal has-notes">
+    <h4><a href="15663.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-06-07" title="2006-06-07 21:01">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40594-notes"><p>@chihoang: Yes, a diff would be cool.</p></div>
+  </div>
+  
+
+  <div id="change-40595" class="journal has-notes">
+    <h4><a href="15663.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-06-08" title="2006-06-08 02:02">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40595-notes"><p>@karsten:  can I have cvs write to em?</p></div>
+  </div>
+  
+
+  <div id="change-40596" class="journal has-notes">
+    <h4><a href="15663.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-06-09" title="2006-06-09 17:17">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40596-notes"><p>@karsten: yes or no?</p></div>
+  </div>
+  
+
+  <div id="change-40597" class="journal has-notes">
+    <h4><a href="15663.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-06-12" title="2006-06-12 10:19">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40597-notes"><p>@chihoang: Slow down, this isn't just me who has to decide this. The EM is a central component, and I haven't even seen your patch yet - why do you need write access to CVS to attach a patch to this bugtracker item?</p></div>
+  </div>
+  
+
+  <div id="change-40598" class="journal has-notes">
+    <h4><a href="15663.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-06-13" title="2006-06-13 08:17">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40598-notes"><p>I had the same problem some days ago. When I updated the ext. list, it kept saying that the memory is not sufficient until I rose the limit to 64 MB. The same problem occured at work a few days earlier, but when I tried it the second or third time, the allocated 40 MB were sufficient.</p>
+
+
+	<p>But I also noticed another problem: Somehow it seems that if the memory-error occured, the extension list will not be updated when you try again because the EM thinks the list is already up to date. But new or updated extensions won't be displayed.</p></div>
+  </div>
+  
+
+  <div id="change-40599" class="journal has-notes">
+    <h4><a href="15663.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-06-15" title="2006-06-15 12:41">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40599-notes"><p>@karsten: I don't need CVS-Write access, although I find it sexy to have it. By the way did you look at my work? It is quite complex. And it's not just one patch, because I have included class tslib_pibase. How can I provide that in a patch?</p></div>
+  </div>
+  
+
+  <div id="change-40600" class="journal has-notes">
+    <h4><a href="15663.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-14" title="2006-07-14 14:38">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40600-notes"><p>I have now tried to upload a new version of tt_products 2.5.0 with the latest TYPO3svn and got this error message:</p>
+
+
+	<p>[14-Jul-2006 14:32:08] PHP Fatal error:  Allowed memory size of 67108864 bytes exhausted (tried to allocate 16438785 bytes) in /var/www/html/typo3-svn/TYPO3core/trunk/typo3/mod/tools/em/class.nusoap.php on line 268</p>
+
+
+	<p>Then it went fine after changing in /etc/php.ini<br />former:<br />memory_limit = 64M      ; Maximum amount of memory a script may consume (32MB)</p>
+
+
+	<p>new:<br />memory_limit = 128M      ; Maximum amount of memory a script may consume (32MB)</p></div>
+  </div>
+  
+
+  <div id="change-40601" class="journal has-notes">
+    <h4><a href="15663.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-14" title="2006-07-14 14:43">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40601-notes"><p>@chihoang,</p>
+
+
+	<p>I would find it cool if you could try to incorporate your changes in the current SVN version of TYPO3core. Then you just make a diff and post it here, so we can see what you have changed. This would be the easiest way to start a discussion about it. Else noone (except you) will be able to see what you changed and why.</p></div>
+  </div>
+  
+
+  <div id="change-40602" class="journal has-notes">
+    <h4><a href="15663.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-15" title="2006-07-15 14:25">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40602-notes"><p>@karsten: I have uploaded 2 files. em_1638.diff is the diff against the svn, 1638 branch. class.em_tslib_pibase.php is an additional class you need to run my diff. it has to placed in the same directory (i.e. em). sorry for any inconvenience.</p></div>
+  </div>
+  
+
+  <div id="change-40603" class="journal has-notes">
+    <h4><a href="15663.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 13:04">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40603-notes"><p>Moved the issue to TYPO3 Core and changed category to Extension Manager; updated summary and description accordingly.</p>
+
+
+	<p>~9336: Thanks for the patches</p></div>
+  </div>
+  
+
+  <div id="change-40604" class="journal has-notes">
+    <h4><a href="15663.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 13:13">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40604-notes"><p>@chihoang</p>
+
+
+	<p>I have taken a quick look at your "patches", and before I go further down, I would need more input:</p>
+
+
+	<p>1) the em_1638.diff is not very useful, because you have changed the newline ending (from unix to MS-format) and all lines have changes. Try to remake the diff using "-b", which will ignore blank changes (including new-lines), so that the patch would be cleaner and we will be able to see what you have really changed.</p>
+
+
+	<p>2) why are you using pi_base? this is a backend module and "pi_base" is meant to be used in frontend plugins. Couldn't you just apply your memory-boost change to the current CORE code, so that we can this fixed, before we go into cosmetical details? That would be cool.</p>
+
+
+	<p>Thanks for your help, Chi!</p></div>
+  </div>
+  
+
+  <div id="change-40605" class="journal has-notes">
+    <h4><a href="15663.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 14:26">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40605-notes"><p>@ernesto:</p>
+
+
+	<p>1) Fixed<br />2) At that time I didn't know about class.t3lib_recordlist.php. And I didn't know about the MySQL IN statement, either. For your favour, I will do a clean patch without pi_base in 3 days.</p></div>
+  </div>
+  
+
+  <div id="change-40606" class="journal has-notes">
+    <h4><a href="15663.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 15:10">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40606-notes"><p>@chihoang</p>
+
+
+	<p>nice, thanks a lot! This already looks much better. If you are reworking that, you could also indent the code with TABs instead of 4 spaces, this way it would integrate better in the CORE code. Another thing I noticed is that the patch is not based on current SVN, if you can, please do (some things have changed since the 4.0.0 release in that file).</p>
+
+
+	<p>As far as I see (I have just skimmed over the code) you are not only improving speed by storing the extension database in SQL, but you also add some features:</p>
+
+
+	<p>- pagination in large result sets, currently using pi_base<br />- filter by "state" (alpha/beta...) and by category<br />- maybe other things I overlooked in the code</p>
+
+
+	<p>For a core patch, it would be nicer to split that up into smaller changes, so that we don't have to review such a monster.</p>
+
+
+	<p>The most important thing would be to solve the original bug report problem. Could you create a diff from current SVN version only with the retrieval and storing of the xml data in SQL? Keep all other stuff (display, filters, etc) as they are now in SVN. This would provide us a solution for this bug report without adding more features (yet!). We could then release this in 4.0.2 (no new features) and have that in trunk for later 4.1.x, where we can than come back to the new features.</p>
+
+
+	<p>Thanks again for the help and fast feedback, Chi. Sorry if sometimes you don't get feedback sooner, but I think this is pretty important and all core team is glad it is being looked at.</p></div>
+  </div>
+  
+
+  <div id="change-40607" class="journal has-notes">
+    <h4><a href="15663.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 15:26">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40607-notes"><p>Thanks for your patches, Chi!<br />I tried applying it, but unfortunately  it doesn't do either against HEAD nor r1638.</p>
+
+
+	<p>Can you make a new patch please? Please create an additional patch using the -w flag (ignore whitespace changes).</p>
+
+
+	<p>Thanks</p></div>
+  </div>
+  
+
+  <div id="change-40608" class="journal has-notes">
+    <h4><a href="15663.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 15:29">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40608-notes"><p>I just notice that I didn't refresh this page for some time ;-) Ignore my last post, everything has been written by Ernesto and Karsten already.</p></div>
+  </div>
+  
+
+  <div id="change-40609" class="journal has-notes">
+    <h4><a href="15663.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 18:16">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40609-notes"><p>@ernesto: FYI, I'm working with scite, tabs are converted to whitespace, so I hope this -w flag will do the job.</p>
+
+
+<blockquote>
+
+	<p>Could you create a diff from current SVN version only with the retrieval and >storing of the xml data in SQL? Keep all other stuff (display, filters, etc) as >they are now in SVN.</p>
+
+
+</blockquote>
+
+	<p>display uses SQL too, I will do a diff with display but without filters.</p>
+
+
+<blockquote>
+
+	<p>I noticed is that the patch is not based on current SVN</p>
+
+
+</blockquote>
+
+	<p>what is the current SVN?</p></div>
+  </div>
+  
+
+  <div id="change-40610" class="journal has-notes">
+    <h4><a href="15663.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 18:24">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40610-notes"><p>@chi,</p>
+
+
+<blockquote>
+
+	<p>FYI, I'm working with scite, tabs are converted to whitespace, so I hope this -w flag will do the job.</p>
+
+
+</blockquote>
+
+	<p>The -w will make a good diff, but your code will still have wrong indentation. Maybe you can configure your editor to insert tabs instead of 4 spaces. If not, we also can do that in your patch later, that shouldn't hold you off.</p>
+
+
+<blockquote>
+
+	<p>display uses SQL too, I will do a diff with display but without filters.</p>
+
+
+</blockquote>
+
+	<p>Right, but it would be better to leave the display engine as it is now without pagination. So don't use pi_base or other routine just yet, use the regular output that we already have.</p>
+
+
+<blockquote><blockquote>
+
+	<p>I noticed is that the patch is not based on current SVN</p>
+
+
+</blockquote>
+
+	<p>what is the current SVN?</p>
+
+
+</blockquote>
+
+	<p>It's our versioning repository, the successor of CVS. Check out <a class="external" href="../../external.html?link=http://sourceforge.net/svn/?group_id=20391">http://sourceforge.net/svn/?group_id=20391</a> (the web-access to it seems to be broken right now).</p></div>
+  </div>
+  
+
+  <div id="change-40611" class="journal has-notes">
+    <h4><a href="15663.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 18:32">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40611-notes"><p>@ernesto: all the diffs are based already on the svn. branch 1638 like I named the files. by the way how can I checkout only the EM. Currently I'm fetching 300 MB, thats is the whole svn...</p></div>
+  </div>
+  
+
+  <div id="change-40612" class="journal has-notes">
+    <h4><a href="15663.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 18:50">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40612-notes"><p>You don't need to fetch everything! branches/TYPO3_4-0/ is enough.<br />See this page for easy webaccess: <a class="external" href="../../external.html?link=http://svn.t3.digitaldistrict.de/cgi-bin/trac.cgi/browser/typo3/TYPO3core/branches/TYPO3_4-0">http://svn.t3.digitaldistrict.de/cgi-bin/trac.cgi/browser/typo3/TYPO3core/branches/TYPO3_4-0</a></p></div>
+  </div>
+  
+
+  <div id="change-40613" class="journal has-notes">
+    <h4><a href="15663.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 19:55">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40613-notes"><p>Hi folks,</p>
+
+
+	<p>I have implemented 50% of a new feature in the TER2 server scripts which now create a file called "extensions.bin" parallel to "extensions.xml.gz". It contains (or should contain in the future) exactly the same serialized array which is needed by the extension manager.</p>
+
+
+	<p>You can download a sample extensions.bin file from my server: <a class="external" href="../../external.html?link=http://ter.dev.robertlemke.de/fileadmin/ter/extensions.bin">http://ter.dev.robertlemke.de/fileadmin/ter/extensions.bin</a></p>
+
+
+	<p>This file isn't complete yet and will most likely create a foreach error or similar in your extension manager but I will finish that tomorrow. Of course we can still follow other paths for solutions, but at least we got something ... it's quick solution we can provide.</p>
+
+
+	<p>Can someone test if that really helps in low-memory enviroments?</p>
+
+
+	<p>Thanks,<br />robert</p></div>
+  </div>
+  
+
+  <div id="change-40614" class="journal has-notes">
+    <h4><a href="15663.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 20:10">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40614-notes"><p>@Robert: Don't test it, it won't help. The only solution is to load it in parts. And to load a serialized array in parts, is imo academic.</p></div>
+  </div>
+  
+
+  <div id="change-40615" class="journal has-notes">
+    <h4><a href="15663.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-27" title="2006-07-27 20:40">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40615-notes"><p>@ernesto: at the soureforge page it is told:</p>
+
+
+	<p>(Warning: ... in most cases, you will want to add '/trunk' to the HTTPS URL above to check out only trunk (main development line)).</p>
+
+
+	<p>When I check the EM of the trunk, it has version 1647, When I check the EM from the branch TYPO3_4-0 it has version 1645.</p>
+
+
+	<p>The webaccess trunk and TYPO3_4-0 has no version at all.</p>
+
+
+	<p>My Question: Which branch should I fetch to make my diff? Trunk, TYPO3_4.0, webaccess. ATM webaccess is my favourite.</p></div>
+  </div>
+  
+
+  <div id="change-40616" class="journal has-notes">
+    <h4><a href="15663.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-28" title="2006-07-28 09:08">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40616-notes"><p>@chi</p>
+
+
+	<p>I don't know what you mean with "webaccess".</p>
+
+
+	<p>You should make your patch against TYPO3_4.0 (which fixes the EM-memory problem bug). This will later be released as 4.0.2.</p>
+
+
+	<p>We will merge that change later into "trunk", which is the basis of 4.1.x and later, where we then can add the new features, if we want.</p></div>
+  </div>
+  
+
+  <div id="change-40617" class="journal has-notes">
+    <h4><a href="15663.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-28" title="2006-07-28 10:03">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40617-notes"><p>@ernesto:</p>
+
+
+	<p>this is webaccess:</p>
+
+
+<blockquote>
+
+	<p>You don't need to fetch everything! branches/TYPO3_4-0/ is enough.<br />See this page for easy webaccess: >http://svn.t3.digitaldistrict.de/cgi-bin/trac.cgi/browser/typo3/TYPO3core/branches/TYPO3_4-0</p>
+
+
+</blockquote>
+
+	<p>so it is a bug or a feature?</p></div>
+  </div>
+  
+
+  <div id="change-40618" class="journal has-notes">
+    <h4><a href="15663.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-28" title="2006-07-28 10:17">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40618-notes"><p>@chi,</p>
+
+
+	<p>this is only an interface to the branches. You can use a SVN client or this webaccess client, it will access the same repositories. In this case, branches/TYPO3_4-0/ is the "branch" called "TYPO3_4_0". This is the same as you see using a SVN client. So use that!</p></div>
+  </div>
+  
+
+  <div id="change-40619" class="journal has-notes">
+    <h4><a href="15663.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-28" title="2006-07-28 10:24">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40619-notes"><p>@ernesto: I'm aware that this is a webinterface. But the version numbers are missing. So, it is a bug or a feature?</p></div>
+  </div>
+  
+
+  <div id="change-40620" class="journal has-notes">
+    <h4><a href="15663.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/391">Peter Niederlag</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-28" title="2006-07-28 10:58">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40620-notes"><p>[OT] @chi: The uperrmost directories in TYPO§core are</p>
+
+
+	<p>branches/*<br />tags/*<br />trunk/</p>
+
+
+	<p>trunk/ is for the most recent stuff, tags/* is for singel versions (like 4.0.1rc1 etc.)</p>
+
+
+	<p>As we only ask for a diff against the 4.0 branch you should use 'TYPO3core/branches/TYPO3_4_0/' This will always reflect the most recent code of the 4.x series.</p>
+
+
+	<p>Have a look at  http://bscw.fit.fraunhofer.de/bscw_help-4.3/german/sec-09070000.html (German!) how you can easily access this via Windows-Explorer (suggested) or Internet-Explorer: The url you need to supply there is:<br />https://svn.sourceforge.net/svnroot/typo3/TYPO3core/branches/TYPO3_4_0/</p>
+
+
+	<p>If you want additional comfort have a look at <a class="external" href="../../external.html?link=http://tortoisesvn.tigris.org/">http://tortoisesvn.tigris.org</a></p>
+
+
+	<p>Feel free to contact me via PM if you need some additional assitance.</p>
+
+
+	<p>Greets,<br />Peter</p></div>
+  </div>
+  
+
+  <div id="change-40621" class="journal has-notes">
+    <h4><a href="15663.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-28" title="2006-07-28 20:31">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40621-notes"><p>@ernesto: This doesn't help me. I'm still missing the version number in the webaccess.</p></div>
+  </div>
+  
+
+  <div id="change-40622" class="journal has-notes">
+    <h4><a href="15663.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-07-28" title="2006-07-28 22:15">about 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40622-notes"><p>@chi,</p>
+
+
+	<p>I am not sure what else you need. If you need help with using Subversion, I think you should try to read the docs. Either use this URL:</p>
+
+
+	<p><a class="external" href="../../external.html?link=http://svn.t3.digitaldistrict.de/cgi-bin/trac.cgi/browser/typo3/TYPO3core/branches/TYPO3_4-0">http://svn.t3.digitaldistrict.de/cgi-bin/trac.cgi/browser/typo3/TYPO3core/branches/TYPO3_4-0</a></p>
+
+
+	<p>If you want to use the web to access the files.</p>
+
+
+	<p>I personally find it easier just to check out the whole branch using the svn client (read the docu or Peter's post on how to do that). From the Unix command prompt:</p>
+
+
+	<p>% svn checkout <a class="external" href="../../external.html?link=https://svn.sourceforge.net/svnroot/typo3/TYPO3core/branches/TYPO3_4-0">https://svn.sourceforge.net/svnroot/typo3/TYPO3core/branches/TYPO3_4-0</a></p>
+
+
+	<p>Or use your favorite SVN client.</p>
+
+
+	<pre><code>I don't think the bug tracker is a good place to get support on how to use SVN. I'm sure you will be able to figure it out, as you seem to be a smart guy. :)</code></pre></div>
+  </div>
+  
+
+  <div id="change-40623" class="journal has-notes">
+    <h4><a href="15663.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/400">Bernhard Kraft</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-08-14" title="2006-08-14 22:50">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40623-notes"><p>Hello all,</p>
+
+
+	<p>I created a patch against the EM of the 4.0 version of TYPO3 during the Developer Days meeting.</p>
+
+
+	<p>EM_MemFix_2006-08-13_train.diff</p>
+
+
+	<p>I talked to Robert, Karsten and Kasper if they are fine with having an additional table in the core which stores the list of extension and they were all fine with it telling that they already suggested such a thing.</p>
+
+
+	<p>I named the table "cache_extensions" as it is a table which contains just the cached extension list from TER and can allways get regenerated using the "Update/Retrieve" button.</p>
+
+
+	<p>When I had finished my patch I took a look at Chi Hoang's solution (believe me - I read your code afterwards) and found that he mostly did what i did. But instead of using unreadable strpos constructs I rather used an regexp to split the extensions.xml file to single &lt;extenssion&gt; ... &lt;/extension&gt; pieces.</p>
+
+
+	<p>I also named the table not like an extension table - which would not be fine if we want to integrate the extension into the core.</p>
+
+
+	<p>@Chi Hoang: If you want to have your code integrated into the core you must have it look like exactly like all other parts of the core - I hope this is understandable for you.<br />You should read the coding guidelines: <br /><a class="external" href="../../external.html?link=http://typo3.org/documentation/document-library/core-documentation/doc_core_cgl/current/">http://typo3.org/documentation/document-library/core-documentation/doc_core_cgl/current/</a><br />Cause you allowed SQL injections in your code. Altough the EM is only available to Admins we do not want such constructs as:<br />$query = ...' AND variable='.$postvar.'<br />in our code. You always have to escape posted values properly.</p>
+
+
+	<p>You also should stick to TABs as indenting element and only use \n as linebreaks. This is all documented in the coding guidelines.</p>
+
+
+	<p>The reason for this is simple: We do not want our code to look if it would be patchwork from hundreds of people ... it shall look like one neat piece of code :)</p>
+
+
+	<p>It does not make really sense to create a patch from an extension - you should rather create a patch for the core and then make an extension out of it.</p>
+
+
+	<p>This is what I did. The extension key is "kb_test_em" and this testing extension for those who are to lazy to apply a patch will become available in TER during the next hours.</p>
+
+
+	<p>Chi Hoang: I was inspired by your idea of having a pagebrowser which I added to my code AFTER reading yours !<br />But you should not have used tslib_pibase in the BE. tslib classes are purely for use in the FE. You can use them in your own extensions as you like and nobody will keep you off using BE classes in FE and vice versa (I do that myself) - but it has not to get into the core.</p></div>
+  </div>
+  
+
+  <div id="change-40624" class="journal has-notes">
+    <h4><a href="15663.html#note-45" class="journal-link">#45</a>
+    
+    <a name="note-45"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-08-15" title="2006-08-15 13:02">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40624-notes"><p>- why only 1 table? why not 3 tables with true m:n relationship?<br />- strpos might be faster then preg_match<br />- do less INSERTS by combining them<br />- store icons url in the database (prefetch)<br />- unset unused variables<br />- why not use pibase in be when it enables such a performance?  is it to high cost?<br />- could you please upload 2 diffs, for each patch 1 diff? it is unreadable!</p></div>
+  </div>
+  
+
+  <div id="change-40625" class="journal has-notes">
+    <h4><a href="15663.html#note-46" class="journal-link">#46</a>
+    
+    <a name="note-46"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/400">Bernhard Kraft</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-08-15" title="2006-08-15 13:49">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40625-notes"><p>- why only 1 table? why not 3 tables with true m:n relationship?</p>
+
+
+	<ul>
+	<li>People like Kasper are very restrictive about new tables - I could convince him that at least one new table is necessary for storing the extensions. Why do you need three of them ? You can't store the extension "basis" information in some table and all available versions in some other - cause each version can have different basis information (for example the extension "adaltas_doktype" has different categories between different versions, etc.).</li>
+	</ul>
+
+
+	<p>- strpos might be faster then preg_match</p>
+
+
+	<ul>
+	<li>But strpos constructs are more "fragile". If for example once the return "false" you would handle it the same as "0" ... As far as I read your code. Of course you can come around this but you even have a fixed string lenght value (55 or so) at the beginning to skip the <?xml doktype addition.</li>
+	</ul>
+
+
+	<p>- do less INSERTS by combining them</p>
+
+
+	<ul>
+	<li>You should not use "$GLOBALS['TYPO3_DB']->sql_query" as this is not fully DBAL compatible and takes more time to get parsed (an effect when DBAL is installed) than the ->exec_INESRTquery method. You should rather stick to those exec_ methods. The speed is not that different and as far as I can read from your code you also use exec_INSERTquery for the extensions themselve.</li>
+	</ul>
+
+
+	<p>- store icons url in the database (prefetch)</p>
+
+
+	<ul>
+	<li>It does not really help to simply store the icons URL - it would only help if you really prefetch the icons from the server (is this is what you meant by prefetch) - and store them in some location on the client. Currently extension icons do not get shown in the EM - cause people posted a bug that it takes sometimes minutes to load all those icons and while they get loaded the size of the list changes all the time so you can't easily click an icon on the bottom.</li>
+	</ul>
+
+
+	<p>- unset unused variables</p>
+
+
+	<ul>
+	<li>I did that - which ones are you missing ?</li>
+	</ul>
+
+
+	<p>- why not use pibase in be when it enables such a performance? is it to high cost?</p>
+
+
+	<ul>
+	<li>As I said the tslib_ classes are strictly for the FE. Possibly in 4.5 or 5.0 this differenciation between BE and FE will get dropped but currently this is the situation and we would not like to change this. the _pibase class is a base class for FE plugins and should never get used in the BE. If you need to retrieve records from BE modules have a look at the class t3lib_BEfunc - but this one does not allow you to create "raw" SQL queries but can just get used for fetching specific records (where the tables must comply with the T3 rules like having "uid" and "pid" fields, etc.). For fetching "raw" SQL records in the BE you should use ->exec_SELECTquery or a similar one.</li>
+	</ul>
+
+
+	<p>- could you please upload 2 diffs, for each patch 1 diff? it is unreadable!</p>
+
+
+	<ul>
+	<li>This is only ONE patch which contains changes in TWO files. In the core list we keep it that way that patches which belong together and wouldn't work on their own are combined in two files. Which part do you find undreadable ? There is a mark:</li>
+	</ul>
+
+
+	<p>diff <del>ru typo3_src-4.0/typo3/mod/tools/em/class.em_xmlhandler.php typo3_src-4.0.em/typo3/mod/tools/em/class.em_xmlhandler.php<br />--</del> typo3_src-4.0/typo3/mod/tools/em/class.em_xmlhandler.php    2006-04-07 02:18:29.000000000 <ins>0200<br /></ins>++ typo3_src-4.0.em/typo3/mod/tools/em/class.em_xmlhandler.php    2006-08-13 23:02:42.722728480 +0200</p>
+
+
+	<p>somewhere in the middle of the patch which specifies that from here on the new files begin - if you are not familar with<br />such usage you should quickly get used to it :) cause it is common in T3 worlds ....</p>
+
+
+	<p>Of course I will include your name into the Changelog when applying the patch cause you supplied lot of information and additional ideas like the page-browser or the icon caching. About the icon caching: I will have a look when and how icons can still get displayed - and if a user has the possibility to show the icons I will add the possibility to prefetch them from the server - I would not like to add this feature by default as possibly many people do not want 1800 icons to get loaded onto their server ... I guess you understand the reasons.</p></div>
+  </div>
+  
+
+  <div id="change-40626" class="journal has-notes">
+    <h4><a href="15663.html#note-47" class="journal-link">#47</a>
+    
+    <a name="note-47"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/400">Bernhard Kraft</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-08-15" title="2006-08-15 13:59">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40626-notes"><p>I've also added a new version:</p>
+
+
+	<p>EM_MemFix_2006-08-15.diff</p>
+
+
+	<p>the last one missed the CREATE table statements in t3lib/stddb/tables.sql</p></div>
+  </div>
+  
+
+  <div id="change-40627" class="journal has-notes">
+    <h4><a href="15663.html#note-48" class="journal-link">#48</a>
+    
+    <a name="note-48"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29168">old_chihoang </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-08-15" title="2006-08-15 17:10">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40627-notes"><ul>
+	<li>People like Kasper are very restrictive about new tables - I could convince him that at least one new table is necessary for storing the extensions. Why do you need three of them ? You can't store the extension "basis" information in some table and all available versions in some other - cause each version can have different basis information (for example the extension "adaltas_doktype" has different categories between different versions, etc.).</li>
+	</ul>
+
+
+	<p>- I will remember that.</p>
+
+
+	<ul>
+	<li>But strpos constructs are more "fragile". If for example once the return "false" you would handle it the same as "0" ... As far as I read your code. Of course you can come around this but you even have a fixed string lenght value (55 or so) at the beginning to skip the <?xml doktype addition.</li>
+	</ul>
+
+
+	<p>- strpos is safe. see php manual. And in my algorithm it is not necessary to check for open tags. Keep it simple!</p>
+
+
+	<ul>
+	<li>You should not use "$GLOBALS['TYPO3_DB']->sql_query" as this is not fully DBAL compatible and takes more time to get parsed (an effect when DBAL is installed) than the ->exec_INESRTquery method. You should rather stick to those exec_ methods. The speed is not that different and as far as I can read from your code you also use exec_INSERTquery for the extensions themselve.</li>
+	</ul>
+
+
+	<p>- I will remember that.</p>
+
+
+	<ul>
+	<li>It does not really help to simply store the icons URL - it would only help if you really prefetch the icons from the server (is this is what you meant by prefetch) - and store them in some location on the client. Currently extension icons do not get shown in the EM - cause people posted a bug that it takes sometimes minutes to load all those icons and while they get loaded the size of the list changes all the time so you can't easily click an icon on the bottom.</li>
+	</ul>
+
+
+	<p>- Yes, it helps. You don't need to prefetch the icons, it should be enough to precalculate the url and store it in the db -> it saves some, maybe little time.</p>
+
+
+	<ul>
+	<li>I did that - which ones are you missing ?</li>
+	</ul>
+
+
+	<p>- I can't see any unset in your code. Did you understand me?</p>
+
+
+	<ul>
+	<li>As I said the tslib_ classes are strictly for the FE. Possibly in 4.5 or 5.0 this differenciation between BE and FE will get dropped but currently this is the situation and we would not like to change this. the _pibase class is a base class for FE plugins and should never get used in the BE. If you need to retrieve records from BE modules have a look at the class t3lib_BEfunc - but this one does not allow you to create "raw" SQL queries but can just get used for fetching specific records (where the tables must comply with the T3 rules like having "uid" and "pid" fields, etc.). For fetching "raw" SQL records in the BE you should use ->exec_SELECTquery or a similar one.</li>
+	</ul>
+
+
+	<p>- I will remember that. Although I think there should be exepctions. And this is one. I myself won't miss the comfort of my patch anymore.</p>
+
+
+	<ul>
+	<li>This is only ONE patch which contains changes in TWO files. In the core list we keep it that way that patches which belong together and wouldn't work on their own are combined in two files. Which part do you find undreadable ? There is a mark:</li>
+	</ul>
+
+
+	<p>diff <del>ru typo3_src-4.0/typo3/mod/tools/em/class.em_xmlhandler.php typo3_src-4.0.em/typo3/mod/tools/em/class.em_xmlhandler.php<br />--</del> typo3_src-4.0/typo3/mod/tools/em/class.em_xmlhandler.php 2006-04-07 02:18:29.000000000 <ins>0200<br />+</ins>+ typo3_src-4.0.em/typo3/mod/tools/em/class.em_xmlhandler.php 2006-08-13 23:02:42.722728480 +0200</p>
+
+
+	<p>somewhere in the middle of the patch which specifies that from here on the new files begin - if you are not familar with<br />such usage you should quickly get used to it :) cause it is common in T3 worlds ....</p>
+
+
+	<p>- I will remember that.</p></div>
+  </div>
+  
+
+  <div id="change-40628" class="journal has-notes">
+    <h4><a href="15663.html#note-49" class="journal-link">#49</a>
+    
+    <a name="note-49"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/400">Bernhard Kraft</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-08-15" title="2006-08-15 18:12">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40628-notes"><p>unset's are here:</p>
+
+
+	<p>-----------------------<br /><code>@ -815,9 +824,11 </code>@<br />                                 }</p>
+
+
+	<pre><code>$lines[]=$this-&gt;extensionListRow($extKey,$ext,array('&amp;lt;td class="bgColor"&amp;gt;'.$loadUnloadLink.'&amp;lt;/td&amp;gt;'),$theRowClass,$inst_list,1,'index.php?CMD[importExtInfo]='.rawurlencode($extKey));<br />+                                unset($list[$extKey]);<br />                             }<br />                         }<br />                     }<br />+                    unset($list);<br />----------------------------------</code></pre>
+
+
+	<p>and here:</p>
+
+
+	<p>----------------------------<br /><code>@ -3057,8 +3092,10 </code>@<br />                 );<br />             }<br />             $this->setCat($cat, $list[$extKey]['versions'][$version], $extKey);<br />+            if ($unsetProc)    {<br />+                unset($this->xmlhandler->extensionsXML[$extKey]);<br />+            }<br />---------------------------</p>
+
+
+	<p>the only locations where I could found the list to get copied ...</p></div>
+  </div>
+  
+
+  <div id="change-40629" class="journal has-notes">
+    <h4><a href="15663.html#note-50" class="journal-link">#50</a>
+    
+    <a name="note-50"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27964">Dimitrij Denissenko</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-10-08" title="2006-10-08 12:32">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40629-notes"><p>Uploaded EM_MemFix_20061008\(4.0.2\).diff.</p>
+
+
+	<p>It is an adaptation of the original EM_MemFix_2006-08-15.diff to the current stable TYPO3 version (4.0.2).</p>
+
+
+	<p>Usage:<br />patch -p1 < EM_MemFix_20061008(4.0.2).diff</p></div>
+  </div>
+  
+
+  <div id="change-40630" class="journal has-notes">
+    <h4><a href="15663.html#note-51" class="journal-link">#51</a>
+    
+    <a name="note-51"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-10-11" title="2006-10-11 20:50">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40630-notes"><p>Link to kb_test_em extension:  <a class="external" href="../../external.html?link=http://typo3.org/extensions/repository/view/kb_test_em/0.0.1/">http://typo3.org/extensions/repository/view/kb_test_em/0.0.1/</a></p>
+
+
+	<p>Please test and provide feedback.</p></div>
+  </div>
+  
+
+  <div id="change-40631" class="journal has-notes">
+    <h4><a href="15663.html#note-52" class="journal-link">#52</a>
+    
+    <a name="note-52"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2904">Staffan Ericsson</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-10-12" title="2006-10-12 16:54">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40631-notes"><p>kb_test_em generates no errors for me but the update date is not changed at all.</p>
+
+
+	<p>TER2 update tool is not responding either. It reports update successfull but the date is old and no updated extensions are visible.</p></div>
+  </div>
+  
+
+  <div id="change-40632" class="journal has-notes">
+    <h4><a href="15663.html#note-53" class="journal-link">#53</a>
+    
+    <a name="note-53"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1041">Franz Koch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-10-13" title="2006-10-13 00:39">almost 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40632-notes"><p>@test extension<br />well, finally the EM works on shared hosts like 1&#38;1 but it only lists the reviewed extensions even if the override checkbox is set.<br />The bug resides in a naming error in line 55 of class.ux_em_index.php.</p>
+
+
+	<p>wrong:<br />$this->xmlhandler->useUnsupported = $this->MOD_SETTINGS['display_unsupported'];</p>
+
+
+	<p>correct:$this->xmlhandler->useUnsupported = $this->MOD_SETTINGS['display_unchecked'];</p>
+
+
+	<p>tested with 4.0.2</p></div>
+  </div>
+  
+
+  <div id="change-40633" class="journal has-notes">
+    <h4><a href="15663.html#note-54" class="journal-link">#54</a>
+    
+    <a name="note-54"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/400">Bernhard Kraft</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-11-28" title="2006-11-28 13:58">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40633-notes"><p>Hi !</p>
+
+
+	<p>I uploaded a new diff made against revision 1816 from SVN ...</p>
+
+
+	<p>it contains fixes for the last two problems reported by Staffan Ericson and Franz Xaver Koch - it is based on the updated version by Dmitry.</p></div>
+  </div>
+  
+
+  <div id="change-40634" class="journal has-notes">
+    <h4><a href="15663.html#note-55" class="journal-link">#55</a>
+    
+    <a name="note-55"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-01" title="2006-12-01 12:56">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40634-notes"><p>So will this be fixed in TYPO3 4.0.3 / 4.1 ?</p></div>
+  </div>
+  
+
+  <div id="change-40635" class="journal has-notes">
+    <h4><a href="15663.html#note-56" class="journal-link">#56</a>
+    
+    <a name="note-56"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-01" title="2006-12-01 13:39">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40635-notes"><p>Not in 4.0.x, but in 4.1</p></div>
+  </div>
+  
+
+  <div id="change-40636" class="journal has-notes">
+    <h4><a href="15663.html#note-57" class="journal-link">#57</a>
+    
+    <a name="note-57"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-10" title="2006-12-10 10:40">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40636-notes"><p>The attached diff against rev 1860 will go into SVN if no objections are raised on the core list within 24 hours.</p>
+
+
+	<p>The diff is based on the rev 1816 diff done by Bernhard and changes the following things:</p>
+
+
+	<ul>
+	<li>Added escapeStrForLike() call to extension search em_xmlhandler::searchExtensionsXML() so one can search for literal _% in ext keys</li>
+		<li>Fixed arguments in em_xmlhandler::loadExtensionsXML() by adding another empty param before the "true" </li>
+		<li>Added an ini_set('pcre.backtrack_limit', 500000) call to avoid running into the PCRE backtrack limit for extension with a large number of versions and/or long comments (one extension-block longer than the default 100000 byte, e.g. with "ext_tbl", 102 versions in TER)</li>
+		<li>Changed the way the EOF is detected (no string length comparison anymore)</li>
+		<li>Removed nonsense 1==1 in if-clause in fetchExtension(), circumventing error checking (probably left there by accident)</li>
+		<li>The XML parser is now always set to utf-8 for the extensions XML file, added preg modifier "u" to enable utf-8</li>
+		<li>various minor cleanups</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-40637" class="journal has-notes">
+    <h4><a href="15663.html#note-58" class="journal-link">#58</a>
+    
+    <a name="note-58"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2904">Staffan Ericsson</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-11" title="2006-12-11 09:30">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40637-notes"><p>Which  base is diff 1860  built from? Could I apply it on a 4.0.n installation or do I need to apply several of the diffs?</p>
+
+
+	<p>Stucki wrote that it will not be applied to 4.0.x branch - why not? Isn't it really a bug fix that should be applied to the stable version?</p></div>
+  </div>
+  
+
+  <div id="change-40638" class="journal has-notes">
+    <h4><a href="15663.html#note-59" class="journal-link">#59</a>
+    
+    <a name="note-59"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-11" title="2006-12-11 09:59">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40638-notes"><p>Regarding ~11359: since the EM is about the same for 4.0.x and 4.x.x the patch should apply cleanly to 4.0.x, too. You only need the latest (my) patch.</p>
+
+
+	<p>This won't go into 4.0.x, as it changes the database, which is a no-no with our release policy.</p></div>
+  </div>
+  
+
+  <div id="change-40639" class="journal has-notes">
+    <h4><a href="15663.html#note-60" class="journal-link">#60</a>
+    
+    <a name="note-60"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2904">Staffan Ericsson</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-11" title="2006-12-11 17:31">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40639-notes"><p>Tested patch 1860 on T3-4.1beta1a without success.</p>
+
+
+	<p>Unpacked a fresh source<br />Applied patch<br />Ran install tool to update DB<br />Tried EM without sucess.</p>
+
+
+	<p>Extensions.xml.gz is fetched to typo3temp</p>
+
+
+	<p>No error messages but only 54 records in  table cache_extensions. No warnings , no timeout errors or out of memory errors so far - just can't get all extension into the database.</p></div>
+  </div>
+  
+
+  <div id="change-40640" class="journal has-notes">
+    <h4><a href="15663.html#note-61" class="journal-link">#61</a>
+    
+    <a name="note-61"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-11" title="2006-12-11 18:52">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40640-notes"><p>~11379: what PHP version are you using?</p></div>
+  </div>
+  
+
+  <div id="change-40641" class="journal has-notes">
+    <h4><a href="15663.html#note-62" class="journal-link">#62</a>
+    
+    <a name="note-62"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2904">Staffan Ericsson</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-11" title="2006-12-11 19:00">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40641-notes"><p>PHP 4.3.10-18 (cli) (built: Nov  3 2006 21:56:29)<br />Copyright (c) 1997-2004 The PHP Group<br />Zend Engine v1.3.0, Copyright (c) 1998-2004 Zend Technologies</p></div>
+  </div>
+  
+
+  <div id="change-40642" class="journal has-notes">
+    <h4><a href="15663.html#note-63" class="journal-link">#63</a>
+    
+    <a name="note-63"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-11" title="2006-12-11 21:05">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40642-notes"><p>Staffan, that is strange. I ran into a problem that "felt" the same and was caused by hitting the pcre.backtrack_limit - but that is only available since PHP 5.2.0, so it should not be causing your problems. Could you send me the extensions.xml.gz and a dump of the cache_extensions table (<a class="email" href="mailto:karsten@typo3.org">karsten@typo3.org</a>)? Maybe that gives me a hint...</p></div>
+  </div>
+  
+
+  <div id="change-40643" class="journal has-notes">
+    <h4><a href="15663.html#note-64" class="journal-link">#64</a>
+    
+    <a name="note-64"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-11" title="2006-12-11 23:03">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40643-notes"><p>The patch introduces preg_last_error() usage, but i just discovered that this has been added in PHP 5.2, so the code is broken for all older PHP versions. I fixed that and uploaded a new patch (EM_MemFix_2006-12-11_SVNrev1860.diff).</p></div>
+  </div>
+  
+
+  <div id="change-40644" class="journal has-notes">
+    <h4><a href="15663.html#note-65" class="journal-link">#65</a>
+    
+    <a name="note-65"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2904">Staffan Ericsson</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-12" title="2006-12-12 08:55">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40644-notes"><p>Patch       EM_MemFix_2006-12-11_SVNrev1860.diff  did the job - works good now.</p>
+
+
+	<p>The list of "extension found only on this server" seems a little bit strange. Got trunkload of extensions there as false postives. (For example tt_news)</p>
+
+
+	<p>A warning might be needed. The patch breaks ext. ter_update_check</p>
+
+
+	<p>.staffan</p></div>
+  </div>
+  
+
+  <div id="change-40645" class="journal has-notes">
+    <h4><a href="15663.html#note-66" class="journal-link">#66</a>
+    
+    <a name="note-66"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-12" title="2006-12-12 09:00">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40645-notes"><p>I know it breaks the update check extension, I'll see into fixing this. That should be integrated into the EM anyway...</p></div>
+  </div>
+  
+
+  <div id="change-40646" class="journal has-notes">
+    <h4><a href="15663.html#note-67" class="journal-link">#67</a>
+    
+    <a name="note-67"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-12-12" title="2006-12-12 13:04">over 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-40646-notes"><p>The fix is in SVN now. Phew. Thanks to all contributors!</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-15663-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/15663.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="15663.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/15663 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:41:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

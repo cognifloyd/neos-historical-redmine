@@ -1,0 +1,1081 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/14354 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:02:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #14354: MySQL gt 4.1 no default value for auto inc - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/14354.atom" rel="alternate" title="Core - Bug #14354: MySQL gt 4.1 no default value for auto inc" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (11)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/29407">Lars Houmark</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/24258">miikaawaadizi </a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/31224">Rob Kamp</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/32243">old_djluc </a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/34060">old_ewerk </a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/391">Peter Niederlag</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/65">Alexey Boriskin</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/842">Stefan Kreisberg</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/849">Martin Adler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1291">Peter </a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-14354-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #14354</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>MySQL gt 4.1 no default value for auto inc</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/842">Stefan Kreisberg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2004-10-12" title="2004-10-12 11:19">almost 11 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-08-12" title="2006-08-12 14:25">almost 9 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2004-10-12</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/26">Ingmar Schlecht</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Install Tool</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>3.8.0beta2</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>In MySQL > 4.0 default values for auto_inc columns are ignored, in MySQL > 4.1 they produce an error. Many extensions (perhaps created with the extrepwiz?) create sql schemas with auto_inc wich have default values ...</p>
+
+
+	<p>example: <br />replace the line uid int(11) NOT NULL default '0' auto_increment with uid int(11) unsigned NOT NULL auto_increment - I'd like to fix all extensions but do not know howto :D<br />(issue imported from #M416)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/5981/0000416-bug_416.diff" class="icon icon-attachment">0000416-bug_416.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/5981/0000416-bug_416.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(584 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2004-11-15 22:27</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/5982/0000416-class.t3lib_install.php.diff" class="icon icon-attachment">0000416-class.t3lib_install.php.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/5982/0000416-class.t3lib_install.php.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(600 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2005-02-04 19:26</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/5983/0000416-class.t3lib_install.php.part2.diff" class="icon icon-attachment">0000416-class.t3lib_install.php.part2.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/5983/0000416-class.t3lib_install.php.part2.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(747 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2005-02-04 20:01</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/5985/class.t3lib_install_4.diff" class="icon icon-attachment">class.t3lib_install_4.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/5985/class.t3lib_install_4.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(2.2 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2005-04-07 18:06</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/5986/class.t3lib_install_5.diff" class="icon icon-attachment">class.t3lib_install_5.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/5986/class.t3lib_install_5.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(3 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2005-04-07 21:51</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/5984/class.t3lib_install__beta2.diff" class="icon icon-attachment">class.t3lib_install__beta2.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/5984/class.t3lib_install__beta2.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(1007 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2005-04-18 11:49</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-1253">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="14139" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="14139.html" class="issue status-9 priority-3 closed">Bug #14139</a>: Install tool is incapable of comparing modern database dumps
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2004-05-03</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1244">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="14645" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="14645.html" class="issue status-9 priority-2 closed">Bug #14645</a>: Database fields don&#39;t get updated
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2005-04-07</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1234">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="14528" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="14528.html" class="issue status-9 priority-2 closed">Bug #14528</a>: Mysql 4.1 bug 416 still buggy
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2005-02-03</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1235">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="14529" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="14529.html" class="issue status-9 priority-2 closed">Bug #14529</a>: Cannot create static tables containing data with MySQL 4.x
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2005-02-03</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1231">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="14422" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="14422.html" class="issue status-9 priority-2 closed">Bug #14422</a>: bug with MySQL 4.1.7
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2004-11-30</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1227">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="14378" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="14378.html" class="issue status-9 priority-2 closed">Bug #14378</a>: MySQL 4.1.7 does not tolerate DEFAULT &#39;0&#39; with AUTO_INCRE...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2004-11-08</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1284">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="14876" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="14876.html" class="issue status-9 priority-2 closed">Bug #14876</a>: Warning: mysql_fetch_assoc() error
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2005-07-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1343">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="15295" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="15295.html" class="issue status-9 priority-2 closed">Bug #15295</a>: Unable to login into BE when using MySQL 5+
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2005-12-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/14354/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/14354/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=14354&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-36524" class="journal has-notes">
+    <h4><a href="14354.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/24258">miikaawaadizi </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2004-10-17" title="2004-10-17 18:16">almost 11 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36524-notes"><p>This isn't trivial, this is more worth critical.</p>
+
+
+	<p>Every extention created with the kickstarter is automatically writing DEFAULT '0' into the uid auto_increment column, and MySQL 4.1.* refuses to accept it.  That means either having to go manually through every extension you want to install, strip out the SQL, remove the DEFAULT '0' from every uid line and insert it manually (which is time consuming), or don't install extensions.</p>
+
+
+	<p>What would be ideal is if the extension manager parsed the CREATE statement of every extension when installing, rewrote the CREATE statement and removed the DEFAULT '0' before feeding it to the database.  There's no valid reason for an auto_increment field to be set to DEFAULT '0' anyways, AFAIK.</p>
+
+
+	<p>Guys, this one needs bumping up to somewhere at the top of the list.</p>
+
+
+	<p>Kathi</p></div>
+  </div>
+  
+
+  <div id="change-36525" class="journal has-notes">
+    <h4><a href="14354.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/842">Stefan Kreisberg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2004-10-18" title="2004-10-18 09:12">almost 11 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36525-notes"><p>Ok, sorry for the wrong status. THis is one of the first bugs I report. Dunno even how to change it from trivial to critical.  Anyways it shouldnt cause a great headache to replace the default '0' when installing, i.e. str_replace() should do the trick.</p>
+
+
+	<p>Another thing is: what about the kickstarter? I know it writes SQL but perhaps it needs modifications better sooner than later...</p></div>
+  </div>
+  
+
+  <div id="change-36526" class="journal has-notes">
+    <h4><a href="14354.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/26">Ingmar Schlecht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2004-11-13" title="2004-11-13 22:47">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36526-notes"><p>I agree this bug is critical. A fix is likely to be shipped with 3.7.1.</p></div>
+  </div>
+  
+
+  <div id="change-36527" class="journal has-notes">
+    <h4><a href="14354.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/26">Ingmar Schlecht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2004-11-13" title="2004-11-13 23:28">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36527-notes"><p>I have attached a fix that deletes DEFAULT '0' within the CREATE statement of fields named "uid" having "auto_increment".</p>
+
+
+	<p>I suppose this fix will catch most of the wrong SQL statements, but possibly not all.<br />For example a lower-case default '0' would not be caught. A field named "id" having auto_increment would also not be caught, only "uid" will.</p></div>
+  </div>
+  
+
+  <div id="change-36528" class="journal has-notes">
+    <h4><a href="14354.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2004-11-14" title="2004-11-14 15:42">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36528-notes"><p>Have a look at bug <a href="495.html" class="issue status-7 priority-2 closed" title="memcached cache backend with multiple FLOW3 installations will fail (Resolved)">#495</a> that fixes the problem on the kickstarter side.</p></div>
+  </div>
+  
+
+  <div id="change-36529" class="journal has-notes">
+    <h4><a href="14354.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/26">Ingmar Schlecht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2004-11-14" title="2004-11-14 22:55">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36529-notes"><p>OK, I'll commit that to kickstarter CVS soon, but I still think it's necessary to fix t3lib_install as well so it doesn't execute those bugus SQL statements any more.</p>
+
+
+	<p>Remember that still many extensions do have this DEFAULT '0' in the definition of the uid field.</p></div>
+  </div>
+  
+
+  <div id="change-36530" class="journal has-notes">
+    <h4><a href="14354.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2004-11-15" title="2004-11-15 11:10">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36530-notes"><p>Yes, of course. Both make sense.</p></div>
+  </div>
+  
+
+  <div id="change-36531" class="journal has-notes">
+    <h4><a href="14354.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/26">Ingmar Schlecht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2004-11-16" title="2004-11-16 20:42">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36531-notes"><p>I just fixed this in HEAD. The fix will probably be ported to the 3.7 branch as well.</p></div>
+  </div>
+  
+
+  <div id="change-36532" class="journal has-notes">
+    <h4><a href="14354.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-02-04" title="2005-02-04 17:50">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36532-notes"><p>Ingmar writes:<br />--- cut ---<br />I have attached a fix that deletes DEFAULT '0' within the CREATE statement of fields named "uid" having "auto_increment".</p>
+
+
+	<p>I suppose this fix will catch most of the wrong SQL statements, but possibly not all. For example a lower-case default '0' would not be caught. A field named "id" having auto_increment would also not be caught, only "uid" will.<br />--- cut ---</p>
+
+
+	<p>User "pruss" was wondering why this only happens in "uid" fields and not for all. I think he's right, the rewrite should be done on <em>every</em> field that contains "auto_increment" and "default 0".</p>
+
+
+	<p>However there's a little risk that a text field could contain this value in its context, so it should also be checked if the field is an integer field (there are different types for that, though).<br />UPDATE: Stupid me, this doesn't count of course. Simply make sure that only "create table" and "alter table" commands are being watched (which I think is the case already).</p>
+
+
+	<p>edited on: 04.02.05 17:54</p></div>
+  </div>
+  
+
+  <div id="change-36533" class="journal has-notes">
+    <h4><a href="14354.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1486">Peter Russ</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-02-04" title="2005-02-04 18:08">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36533-notes"><p>Your right with fields, where the default  is like<br />default "autoincrement default '0'". This default values would be resetted. But I see no alternative without some rewrite of the method or sofisticated regexp. Perhaps that the better solution.</p>
+
+
+	<p>But with the fix provided at 747 the user could at least set up such important extensions as sys_messages or sys_todos without any DB problems. So what's more important?</p>
+
+
+	<p>edited on: 04.02.05 18:14</p></div>
+  </div>
+  
+
+  <div id="change-36534" class="journal has-notes">
+    <h4><a href="14354.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-02-04" title="2005-02-04 18:19">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36534-notes"><p>The first priority is that no content gets changed by mistake.</p>
+
+
+	<p>Imagine a SQL line like this:</p>
+
+
+	<p>INSERT INTO .... VALUES .... "This is my text about auto_increment and default '0' blablabla...";</p>
+
+
+	<p>So could you please run a debug to see which SQL statements get into $linecontent? If there are only "ALTER TABLE" and "INSERT TABLE" commands then I think we can safely remove the "uid" check condition.</p>
+
+
+	<p>(While working on this, please also consider to make all checks case-insensitive which is not the case yet I think...)</p></div>
+  </div>
+  
+
+  <div id="change-36535" class="journal has-notes">
+    <h4><a href="14354.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1486">Peter Russ</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-02-04" title="2005-02-04 19:08">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36535-notes"><p>the change is only in method getUpdateSuggestions (line 454). This method only uses 'alter table', 'drop table' and 'create table'.</p>
+
+
+	<p>Thanks for the hint of case sensitivity. Add.</p></div>
+  </div>
+  
+
+  <div id="change-36536" class="journal has-notes">
+    <h4><a href="14354.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-02-04" title="2005-02-04 19:29">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36536-notes"><p>Added a new patch version against HEAD. Basically it is pretty much the same like yours, Peter. It's just a little bit beautified... :-)</p></div>
+  </div>
+  
+
+  <div id="change-36537" class="journal has-notes">
+    <h4><a href="14354.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22868">old_webbo </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-02-04" title="2005-02-04 20:00">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36537-notes"><p>Uploaded class.t3lib_install.php.part2.diff which is copied accross from <a href="14529.html" class="issue status-9 priority-2 closed" title="Cannot create static tables containing data with MySQL 4.x (Closed)">#14529</a> to resolve the same issue but in the getCreateTables method.</p>
+
+
+	<p>See <a href="14529.html" class="issue status-9 priority-2 closed" title="Cannot create static tables containing data with MySQL 4.x (Closed)">#14529</a> for a bigger explanation.</p></div>
+  </div>
+  
+
+  <div id="change-36538" class="journal has-notes">
+    <h4><a href="14354.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/20898">old_toph </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-02-05" title="2005-02-05 13:40">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36538-notes"><p>If you do your replacement not just for the 'uid' fields, but simply for all field definitions containing 'auto_increment', this fix will also take care of extensions like realurl, where the uid has a different field name.</p></div>
+  </div>
+  
+
+  <div id="change-36539" class="journal has-notes">
+    <h4><a href="14354.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1486">Peter Russ</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-02-05" title="2005-02-05 13:51">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36539-notes"><p>toph,</p>
+
+
+	<p>that's already fixed s. class.t3lib_install.php.diff and class.t3lib_install.php.part2.diff</p>
+
+
+	<p>Enjoy.</p></div>
+  </div>
+  
+
+  <div id="change-36540" class="journal has-notes">
+    <h4><a href="14354.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-02-05" title="2005-02-05 13:52">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36540-notes"><p>Citing "pruss" since he posted this in bug #0000748 right when I was closing it...</p>
+
+
+	<p>--- cut ---<br />if (TYPO3_OS=='WIN')    {$table=strtolower($table);}    // tablenames are always<br />lowercase on windows!</p>
+
+
+	<p>THIS is not right, because it depends on your setup of MySql. So you can<br />keep  to have tablenames consistent to other OS.<br />--- cut ---</p>
+
+
+	<p>Since this line was existing even before these patches I think it doesn't really hurt...(?)</p></div>
+  </div>
+  
+
+  <div id="change-36541" class="journal has-notes">
+    <h4><a href="14354.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22881">old_strangefruit </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-03-29" title="2005-03-29 12:13">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36541-notes"><p>It would be useful if there was some concise information on what to do with these files. Where do they go precisely? I am new to typo3 and finding that even a db (doing my quickstart install, MySQL issued 18 warnings!) setup is already a problem is not very encouraging at all. Why can't the sql setup file be fixed and offered for separate download?</p>
+
+
+	<p>edited on: 29.03.05 12:15</p></div>
+  </div>
+  
+
+  <div id="change-36542" class="journal has-notes">
+    <h4><a href="14354.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31642">Stefan Kaufmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-04" title="2005-04-04 12:20">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36542-notes"><p>After some troubleshooting and reading all posts I uploaded the class.t3lib_install.php from CVS and it worked. Did not test everything but I was able to add tables at least. Using MySQL 4.1.10a, Typo 3.7. Hope this helps anyone else struggling with the issue. I know this should maybe posted on the list, but during my troubleshooting I ended up here, thats why I add it here. Thanks for all helping to sort  this one out. <br />Half of the patches did not work properly using the GNU 'patch' tool. At least om y Suse 9.2 machine...</p></div>
+  </div>
+  
+
+  <div id="change-36543" class="journal has-notes">
+    <h4><a href="14354.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-05" title="2005-04-05 11:20">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36543-notes"><p>I would suggest to close this bug or bug 495. The patches from this bug (416) are only fixing a part of the mysql 4.1 problem.  The the last patch from bug 495 is fixing the complete problem which concerns also the file class.tx_kickstarter_compilefiles.php</p>
+
+
+	<p>or even better: it would be great, if the fixes from bug 495 could be integrated in TYPO3 3.8 beta2 so both bugs could be closed.</p></div>
+  </div>
+  
+
+  <div id="change-36544" class="journal has-notes">
+    <h4><a href="14354.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-05" title="2005-04-05 11:28">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36544-notes"><p>Hi Rupi et all,<br />I will look at this problem tomorrow. Will test if everything works right and resolve both at the end of the day (hopefully) :-))</p></div>
+  </div>
+  
+
+  <div id="change-36545" class="journal has-notes">
+    <h4><a href="14354.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-05" title="2005-04-05 11:36">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36545-notes"><p>THANX !!</p></div>
+  </div>
+  
+
+  <div id="change-36546" class="journal has-notes">
+    <h4><a href="14354.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-07" title="2005-04-07 18:05">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36546-notes"><p>I made a new patch against latest cvs version: class.t3lib_install_4.diff<br />this patch is a bit shorter as the last one but it works for me (MySQL 4.1.10) .</p>
+
+
+	<p>that's what I tested:<br />- installing/updating extensions with wrong default values in their uid-lines <del>> ok<br /></del> dumping sql files from ext-manager Backup/Delete <del>> ok<br /></del> table comparison in the install tool. with or without '$changedUnsignedFields' set -> ok</p>
+
+
+	<p>the replace at line 519 seems not to be needed since the wrong default values in field definitions have been already replaced in function getFieldDefinitions_sqlContent(). Or they have not been added in function assembleFieldDefinition().</p>
+
+
+	<p>so that could it be finally ?</p></div>
+  </div>
+  
+
+  <div id="change-36547" class="journal has-notes">
+    <h4><a href="14354.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-07" title="2005-04-07 21:22">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36547-notes"><p>and again ;-)</p>
+
+
+	<p>One thing I did not test: import of static tables. <br />this fails with my last patch because I removed one eregi_replace to much.</p></div>
+  </div>
+  
+
+  <div id="change-36548" class="journal has-notes">
+    <h4><a href="14354.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-07" title="2005-04-07 21:53">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36548-notes"><p>patch nr 5 fixes the problem</p></div>
+  </div>
+  
+
+  <div id="change-36549" class="journal has-notes">
+    <h4><a href="14354.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-18" title="2005-04-18 03:54">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36549-notes"><p>The whole problem is finally (hopefully!) solved.<br />Many thanks to Ingmar Schlecht, Rupert Germann and whoever I forgot for their valuable help.</p>
+
+
+	<p>Please test TYPO3 3.8.0beta2 and post a note if there are <em>still</em> problems with DEFAULT parameters in auto_incremented SQL lines.</p></div>
+  </div>
+  
+
+  <div id="change-36550" class="journal has-notes">
+    <h4><a href="14354.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-18" title="2005-04-18 09:57">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36550-notes"><p>import of static data is still not working.<br />If I click in the install tool on the "Import the whole file 'CURRENT_STATIC' directly:" or on one of the single "import static data" checkboxes, all tables with static data will be deleted.</p>
+
+
+	<p>I have time to make a patch this afternoon.</p></div>
+  </div>
+  
+
+  <div id="change-36551" class="journal has-notes">
+    <h4><a href="14354.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-18" title="2005-04-18 11:51">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36551-notes"><p>The latest patch fixes the problem for beta2.</p>
+
+
+	<p>(patch is made against beta2 and NOT against CVS)</p></div>
+  </div>
+  
+
+  <div id="change-36552" class="journal has-notes">
+    <h4><a href="14354.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-18" title="2005-04-18 22:33">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36552-notes"><p>beta2.1 works like a charm ;-)<br />tested:<br />- fresh install<br />- updating a 3.7.0 installation<br />- installing extension with wrong default values in autoinc lines.</p>
+
+
+	<p>mysql 4.1.11</p></div>
+  </div>
+  
+
+  <div id="change-36553" class="journal has-notes">
+    <h4><a href="14354.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31224">Rob Kamp</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-22" title="2005-04-22 00:26">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36553-notes"><p>Could somebody tell me please if there is a fix for 3.7.0 and where to find it?</p>
+
+
+	<p>Rob Kamp</p></div>
+  </div>
+  
+
+  <div id="change-36554" class="journal has-notes">
+    <h4><a href="14354.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/391">Peter Niederlag</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-27" title="2005-04-27 21:22">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36554-notes"><p>Hi imho a tiny problem still remains in current CVS HEAD</p>
+
+
+	<p>INSTALL-Tool/Compare still complains about "changing fields". :-<</p>
+
+
+	<p>[update: removed some stuff not belonging here]</p>
+
+
+	<p>I think this needs a Fix for 3.8 and 3.7 as well</p></div>
+  </div>
+  
+
+  <div id="change-36555" class="journal has-notes">
+    <h4><a href="14354.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-28" title="2005-04-28 19:02">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36555-notes"><p>finally fixed in CVS</p></div>
+  </div>
+  
+
+  <div id="change-36556" class="journal has-notes">
+    <h4><a href="14354.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/391">Peter Niederlag</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-28" title="2005-04-28 19:53">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36556-notes"><p>I don't really like to spoil the party but I feel it still is not working quite as intended. .-<</p>
+
+
+At first looks good, now please try the following:
+	<ul>
+	<li>add some extension which adds some DB-Stuff</li>
+		<li>remove extension again(first let EM create tables/fields of course)</li>
+	</ul>
+
+
+	<p>Supposed to COMPARE would show you additional fields which are not in $TCA an let you easily remove/rename them. Now it's blank. .-<</p>
+
+
+	<p>Compare $TCA will still find unneeded stuff but not the "regular" COMAPRE which will compile those update statements, that I find useful. ;)</p>
+
+
+	<p>tried with EXT:tt_adress, latest CVS HEAD from now (rev 1.30 of t3lib_install with rupis latest changes)<br />Peter</p></div>
+  </div>
+  
+
+  <div id="change-36557" class="journal has-notes">
+    <h4><a href="14354.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-04-28" title="2005-04-28 20:41">over 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36557-notes"><p>Hi Peter<br />I did the same what you described but it works for me. I installed and uninstalled tt_address, opened "database compare" in  the install tool and clicked on the upper COMPARE link. As expected the installtool suggests to rename the tt_address table:</p>
+
+
+	<p>ALTER TABLE tt_address RENAME zzz_deleted_tt_address;</p>
+
+
+	<p>with the changes from today the class.t3lib_install is now at the same state as the one from  beta2.1. Can reproduce the error in beta2.1 too ?</p></div>
+  </div>
+  
+
+  <div id="change-36558" class="journal has-notes">
+    <h4><a href="14354.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/391">Peter Niederlag</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-05-08" title="2005-05-08 19:29">about 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36558-notes"><p>sorry I forgot to put this bug on my watchlist, so missed your note :-<</p>
+
+
+	<p>OK, works here fine now with HEAD as of today (may-8-2005). plz don't ask me why it didn't on 4-28-2005.</p>
+
+
+	<p>I will try to get this fix into 3.7 now.</p>
+
+
+	<p>Thx,<br />Peter</p></div>
+  </div>
+  
+
+  <div id="change-36559" class="journal has-notes">
+    <h4><a href="14354.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/391">Peter Niederlag</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-05-08" title="2005-05-08 19:31">about 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-36559-notes"><p>sorry I forgot to put this bug on my watchlist, so missed your note :-<</p>
+
+
+	<p>OK, works here fine now with HEAD as of today (may-8-2005). plz don't ask me why it didn't on 4-28-2005.</p>
+
+
+	<p>I will try to get this fix into 3.7 now.</p>
+
+
+	<p>Thx,<br />Peter</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-14354-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/14354.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="14354.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/14354 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:03:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

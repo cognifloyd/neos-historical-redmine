@@ -1,0 +1,1087 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/19867 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:51:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #19867: DB session records are only created when users authenticate - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/19867.atom" rel="alternate" title="Core - Bug #19867: DB session records are only created when users authenticate" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (13)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/414">Oliver Klee</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1136">Florian Schaeffer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1096">Reto Schmid</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/23173">Schmid Valentin</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/27488">Jens Hirschfeld</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1790">Sacha Vorbeck</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2409">Benno Weinzierl</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/29584">Daniel Hahler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/862">David Bruchmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1678">Robert Grede</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/28488">Clemens Kalb</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-19867-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #19867</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>DB session records are only created when users authenticate</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/295">Marcus Krause</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-20" title="2009-01-20 22:40">over 6 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-24" title="2009-01-24 16:58">over 6 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2009-01-20</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.0</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.2</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Functions $GLOBALS["TSFE"]->fe_user->getKey() or $GLOBALS["TSFE"]->fe_user->setKey() allow to bind data to a user's session.<br />Unfortunately TYPO3 only creates DB session records in tables be_sessions/fe_sessions if a user authenticates.</p>
+
+
+	<p>Before applying the session fixation fix, TYPO3 always trusted the session id provided by the user through COOKIE etc. Although no DB session records were created, setKey() and getKey() worked in a way that a record in fe_session_data was created (including session id) and could be accessed.</p>
+
+
+	<p>Now, after the session fixation fix, TYPO3 will issue a new session id if there's no according db record in be_sessions/fe_sessions. This now has the drawback that every request of a non-authenticated user will force TYPO3 to issue a new session id so that getKey() no longer works as existing records in fe_session_data are associated to an "old" session identifier.</p>
+
+
+	<p>I believe that the security fix is not the cause of the problem but the trigger for it. I expect TYPO3 to create a DB session record whenever a session id is generated not only when a user authenticates itself.</p>
+
+
+	<p>(issue imported from #M10205)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10771/user_sestest.php" class="icon icon-attachment">user_sestest.php</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10771/user_sestest.php"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(236 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-01-21 12:57</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10773/10205_trunk.diff" class="icon icon-attachment">10205_trunk.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10773/10205_trunk.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(705 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-01-21 23:45</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10772/10205.diff" class="icon icon-attachment">10205.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10772/10205.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(858 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-01-21 23:47</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10774/bug_10205_v2_trunk.diff" class="icon icon-attachment">bug_10205_v2_trunk.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10774/bug_10205_v2_trunk.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(1.1 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-01-22 18:37</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10775/bug_10205_v3.diff" class="icon icon-attachment">bug_10205_v3.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10775/bug_10205_v3.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(2.4 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-01-23 09:02</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10776/bug_10205_v4.diff" class="icon icon-attachment">bug_10205_v4.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10776/bug_10205_v4.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(1.8 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-01-23 22:29</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10777/bug_10205_post1_commerce.diff" class="icon icon-attachment">bug_10205_post1_commerce.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10777/bug_10205_post1_commerce.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(790 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-01-24 01:55</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/10778/bug_10205_v5.patch" class="icon icon-attachment">bug_10205_v5.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/10778/bug_10205_v5.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(2.6 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-01-24 14:28</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-2224">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19831" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="19831.html" class="issue status-7 priority-1 closed">Bug #19831</a>: Session fixation vulnerability in user authentication
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2009-01-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2223">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19880" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="19880.html" class="issue status-7 priority-2 closed">Bug #19880</a>: Patch 10146 in Version 4.2.4 does not work for me. None o...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2009-01-21</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2218">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19874" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="19874.html" class="issue status-7 priority-2 closed">Bug #19874</a>: Typo3 4.1.8: fe_session_data regression due to session fi...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2009-01-21</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2227">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19879" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="19879.html" class="issue status-7 priority-2 closed">Bug #19879</a>: after upgrade from 4.1.7 to 4.1.8 feusers and beusers hav...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2009-01-21</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/19867/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/19867/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=19867&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-50857" class="journal has-notes">
+    <h4><a href="19867.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/295">Marcus Krause</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-20" title="2009-01-20 23:20">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50857-notes"><p>There are two possible solutions:</p>
+
+
+	<p>- let method isExistingSessionRecord() check both tables fe_sessions/be_sessions AND fe_session_data for existing session ids<br />or<br />- let TYPO3 create be_sessions/fe_sessions records also for non-authenticated users</p>
+
+
+	<p>My favourite is <a href="2.html" class="issue status-9 priority-2 closed" title="authorName in PackageInfo.xml should be changed (Closed)">#2</a>; what do you think?</p></div>
+  </div>
+  
+
+  <div id="change-50858" class="journal has-notes">
+    <h4><a href="19867.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/329">Francois Suter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 09:58">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50858-notes"><p>Solution 2 seems more consistent.Obviously session ids need to be preserved once the user is logged in.</p></div>
+  </div>
+  
+
+  <div id="change-50859" class="journal has-notes">
+    <h4><a href="19867.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 12:56">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50859-notes"><p><a href="2.html" class="issue status-9 priority-2 closed" title="authorName in PackageInfo.xml should be changed (Closed)">#2</a></p></div>
+  </div>
+  
+
+  <div id="change-50860" class="journal has-notes">
+    <h4><a href="19867.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 12:59">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50860-notes"><p>Uploaded a simple script to test&#38;reproduce the problem. The following TS should be added to the site TS to see it in action:<br /><pre>
+includeLibs.user_sestest = fileadmin/user_sestest.php
+page.5 = USER_INT
+page.5.userFunc = user_sestest
+</pre><br />The output will display previous and new value (time stamp actually). With older TYPO3 code both values were shown. Current trunk shows only the new value (old one is always empty).</p></div>
+  </div>
+  
+
+  <div id="change-50861" class="journal has-notes">
+    <h4><a href="19867.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3087">Christian Hernmarck</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 15:12">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50861-notes"><p>Just a note:<br />this bug/topic is important - I upgraded to Typo3 4.0.10, 4.1.8 and 4.2.4 (several installations on several servers) and later realized that the shop is not working anymore (basket always empty).<br />Maybe my fault (I didn't check everything on the new version) - but it seems that the updates are more and more problematic...</p>
+
+
+	<p>Regards<br />Christian</p></div>
+  </div>
+  
+
+  <div id="change-50862" class="journal has-notes">
+    <h4><a href="19867.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29584">Daniel Hahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 17:45">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50862-notes"><p>WORKAROUND:</p>
+
+
+	<p>comment out / remove this part in t3lib/class.t3lib_userauth.php:<br />"|| !$this->isExistingSessionRecord($id)"</p>
+
+
+	<p>This removes the "session fixation fix" and appears to be better than downgrading completely.</p></div>
+  </div>
+  
+
+  <div id="change-50863" class="journal has-notes">
+    <h4><a href="19867.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 19:23">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50863-notes"><p>i see this patch as very urgent. The releases are not working and new release has to come very soon.<br />Does this patch brings the usersession back?</p></div>
+  </div>
+  
+
+  <div id="change-50864" class="journal has-notes">
+    <h4><a href="19867.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/295">Marcus Krause</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 20:27">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50864-notes"><p>There is no patch so far, just a workarround that reverts the session fixation fix.</p></div>
+  </div>
+  
+
+  <div id="change-50865" class="journal has-notes">
+    <h4><a href="19867.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 20:47">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50865-notes"><p>i tend to <a href="2.html" class="issue status-9 priority-2 closed" title="authorName in PackageInfo.xml should be changed (Closed)">#2</a>, but i think there must be a garbage collection as this can raise data a lot, especially the anonymous session data should be deleted after some hours/days.</p>
+
+
+	<p>Unfortunally we need a quick fix.</p></div>
+  </div>
+  
+
+  <div id="change-50866" class="journal has-notes">
+    <h4><a href="19867.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 21:30">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50866-notes"><p>I'm not too happy about storing <em>every</em> anonymous session into the database. This could lead to a serious performance impact an high traffic sites.<br />So, I would vote for solution <a href="1.html" class="issue status-9 priority-2 closed" title="Use SPL when searching/listing files. (Closed)">#1</a> to avoid unnecessary load on the server.</p>
+
+
+	<p>A compromise would be to only store the session id in fe_sessions, if $this->sesData_change is set and data is written to fe_sessions_data table...</p>
+
+
+	<p>But I'm not sure on this ...</p></div>
+  </div>
+  
+
+  <div id="change-50867" class="journal has-notes">
+    <h4><a href="19867.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 21:55">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50867-notes">for the urgent reason i would say:
+	<ul>
+	<li>use <a href="1.html" class="issue status-9 priority-2 closed" title="Use SPL when searching/listing files. (Closed)">#1</a> for now to have a fix.</li>
+		<li>work on an alternative way like <a href="2.html" class="issue status-9 priority-2 closed" title="authorName in PackageInfo.xml should be changed (Closed)">#2</a> without hurry</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-50868" class="journal has-notes">
+    <h4><a href="19867.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/295">Marcus Krause</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 21:56">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50868-notes"><p>So it's currently unclear; both solution have their pros and cons.</p>
+
+
+	<p>I hereby unassign this issue. I don't want to stop anybody to work on it.</p></div>
+  </div>
+  
+
+  <div id="change-50869" class="journal has-notes">
+    <h4><a href="19867.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/295">Marcus Krause</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 22:48">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50869-notes"><p>Hotfixes added, please test!</p>
+
+
+	<p>(*_trunk.diff is for subversion trunk only)</p></div>
+  </div>
+  
+
+  <div id="change-50870" class="journal has-notes">
+    <h4><a href="19867.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3777">Ralph Brugger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 01:09">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50870-notes"><p>Hotfix 10205.diff tested for <a class="external" href="../../external.html?link=http://www.bobsairport.de/">www.bobsairport.de</a><br />Seems to work!<br />Thanks for the fast hotfix</p></div>
+  </div>
+  
+
+  <div id="change-50871" class="journal has-notes">
+    <h4><a href="19867.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29584">Daniel Hahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 02:24">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50871-notes"><p>re patch: I think the additional check should only get done, if "! $count" applies to the first check;<br />In case there are results already from the first check, the second one can be skipped (saves a query).<br />Otherwise this patch looks good.</p></div>
+  </div>
+  
+
+  <div id="change-50872" class="journal has-notes">
+    <h4><a href="19867.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 10:02">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50872-notes"><p>tt_products basket: The patch 10205_trunk.diff for the trunk works fine, but only tt_products 2.8.0.  It does not work with tt_products 2.5.10.</p>
+
+
+	<p>The patch  10205.diff for TYPO3 4.2.4 does not change anything. The table fe_session_data always remains empty.</p></div>
+  </div>
+  
+
+  <div id="change-50873" class="journal has-notes">
+    <h4><a href="19867.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34940">Manfred Mueller-Spaeth</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 11:38">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50873-notes"><p>The problem comes in another "flavour" for me: fe_users may login, but on the next request, they seem to be logged out.</p>
+
+
+	<p>The workaround mentioned above works fine in this case, but not the hotfix 10205.diff, this won't change anything on the problem described above.</p>
+
+
+	<p>Edit: TYPO3 4.2.4 - PHP 5.2.x - tested with FireFox on Mac OS X and Windows</p>
+
+
+	<p>Edit: Sorry, I made a mistake, now the hotfix works fine!</p></div>
+  </div>
+  
+
+  <div id="change-50874" class="journal has-notes">
+    <h4><a href="19867.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2392">Michael Fritz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 12:45">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50874-notes"><p>Thanx alot!!  the hotfix does the trick!</p>
+
+
+	<p>10205.diff [^] (858 bytes) 21.01.09 23:47</p></div>
+  </div>
+  
+
+  <div id="change-50875" class="journal has-notes">
+    <h4><a href="19867.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 17:36">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50875-notes"><p>By having a look at patch "10205.diff" I think it is not solving the problem correctly.</p>
+
+
+	<p>1) Although such session information is most likely stored in FE sessions only, there is no guarantee for this. At least checking the ->loginType is the wrong way in my opinion.</p>
+
+
+	<p>2) Instead of doing a select query in the fe_session_data table, I propose to simply check the client session lifetime. Every value which is more than 0 should have a corresponding record in fe_session, and vice versa, if the lifetime is 0 we can be sure it's a non-authenticated session.</p>
+
+
+	<p>Those who tried the old patch already, please re-test if the new solution from "bug_10205_v2.diff" will also work for you. Thanks in advance!</p>
+
+
+	<p>- michael</p></div>
+  </div>
+  
+
+  <div id="change-50876" class="journal has-notes">
+    <h4><a href="19867.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3777">Ralph Brugger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 18:01">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50876-notes"><p>I've checked bug_10205_v2.diff too for bobsairport.de.<br />It seems be working the same way as the old bug_10205.diff patch.<br />Sessions are created the right way, and none existing sessions are also detected.<br />=> it works 4 me:)</p></div>
+  </div>
+  
+
+  <div id="change-50877" class="journal has-notes">
+    <h4><a href="19867.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 18:34">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50877-notes"><p>Patch bug_10205_v2.diff is not against current svn trunk, as I have thought.<br />Could you please attach the patch for trunk?</p></div>
+  </div>
+  
+
+  <div id="change-50878" class="journal has-notes">
+    <h4><a href="19867.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 18:35">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50878-notes"><p>I tested v2 with trunk. I had the problem that i can't login in BE (i logged in and session was invalid direct after login). Applying the patch BE login works again.</p></div>
+  </div>
+  
+
+  <div id="change-50879" class="journal has-notes">
+    <h4><a href="19867.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 18:37">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50879-notes"><p>I attached the v2-patch for trunk</p></div>
+  </div>
+  
+
+  <div id="change-50880" class="journal has-notes">
+    <h4><a href="19867.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/295">Marcus Krause</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 18:43">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50880-notes"><p>v2 is broken, it again allows session fixation for non-authenticated (fe-) users</p></div>
+  </div>
+  
+
+  <div id="change-50881" class="journal has-notes">
+    <h4><a href="19867.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1096">Reto Schmid</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 20:57">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50881-notes"><p>I test the new Patch "bug_10205_v2.diff", and it's look's good!</p>
+
+
+	<p>tt_products runs and no problems with logins ...</p>
+
+
+	<p>Thanks a lot ;)</p></div>
+  </div>
+  
+
+  <div id="change-50882" class="journal has-notes">
+    <h4><a href="19867.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/110">Ben van &#39;t Ende</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 23:20">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50882-notes"><p>After the fix we had no problems either. Will this be a HOTFIX now?</p></div>
+  </div>
+  
+
+  <div id="change-50883" class="journal has-notes">
+    <h4><a href="19867.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 23:22">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50883-notes"><p>we have to check comment from Marcus first as this would be a no-go</p></div>
+  </div>
+  
+
+  <div id="change-50884" class="journal has-notes">
+    <h4><a href="19867.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/295">Marcus Krause</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-22" title="2009-01-22 23:36">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50884-notes"><p>I've reviewed a new patch created by Michael. This patch seems to be a proper bugfix. I guess, he will add it here very soon.</p></div>
+  </div>
+  
+
+  <div id="change-50885" class="journal has-notes">
+    <h4><a href="19867.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-23" title="2009-01-23 09:04">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50885-notes"><p>New patch mentioned by Marcus is up now (bug_10205_v3.diff). Please test once again...</p></div>
+  </div>
+  
+
+  <div id="change-50886" class="journal has-notes">
+    <h4><a href="19867.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/28488">Clemens Kalb</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-23" title="2009-01-23 10:47">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50886-notes"><p>bug_10205_v3.diff didn't fix the problem described by Manfred Mueller-Spaeth a few comments earlier (at least it didn't fix it for me): fe_users may login, but on the next request, they seem to be logged out (TYPO3 4.0.10).</p></div>
+  </div>
+  
+
+  <div id="change-50887" class="journal has-notes">
+    <h4><a href="19867.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27488">Jens Hirschfeld</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-23" title="2009-01-23 11:46">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50887-notes"><p>[Update]<br />I've tested the patch bug_10205_v3.diff.<br />To reproduce the Problem with the login being not possible with the patch bug_10205_v3.diff:<br />1. go to the fe-login page.<br />2. delete your fe_typo_user cookie<br />3. login (it looks like it is successful)<br />4. click any link in your page. You aren´t logged in any more.</p>
+
+
+	<p>How the login is possible:<br />1. delete your fe_typo_user cookie<br />2. go to any page on your site, which contains an extension, which saves session-data.<br />3. now go to the fe-login page.<br />4. login -> the login IS successful<br />[/Update]</p>
+
+
+	<p>[Wrong, don´t read it!]<br />This Part of the Note is wrong:<br />I've tested the patch bug_10205_v3.diff on different server (2x IIS and 1x Apache).</p>
+
+
+	<p>The patch worked on the Apache Server, but on IIS Server I have encountered the Problem, that no FE-User can log in!<br />The user types in the username in password. After clicking the "login" Button/Link the User is again on the "login" page.</p>
+
+
+	<p>If i replace the patched Files with the original ones, the login is again possible.<br />[/Wrong, don´t read it!]<br />The reason was, that on the IIS-Systems i had´nt already a cookie with Session-Data. On the Apache-System i did.</p></div>
+  </div>
+  
+
+  <div id="change-50888" class="journal has-notes">
+    <h4><a href="19867.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34940">Manfred Mueller-Spaeth</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-23" title="2009-01-23 12:30">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50888-notes"><p>I thought all went fine, but I'm wrong ...</p>
+
+
+	<p>It's a curious thing: after using the system with the workaround above (just commenting out the call of "isExistingSessionRecord") and then patching the file (made unchanged again before), all works fine, also with deleted cookies. That's what I wrote yesterday in my comment.</p>
+
+
+	<p>But after truncating fe_session and fe_session_data, the same behaviour came up: fe_user login possible, but "forgotten login" with the next request.</p>
+
+
+	<p>Because of the lack of time, for the moment my description is not very precise. If no solution is found, I will track it with more details begin of next week.</p></div>
+  </div>
+  
+
+  <div id="change-50889" class="journal has-notes">
+    <h4><a href="19867.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2409">Benno Weinzierl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-23" title="2009-01-23 12:37">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50889-notes"><p>bug_10205_v3.diff did fix my 4.1.8-Installation.</p>
+
+
+	<p>It is a realy urgent matter as i also updated over 10 Projects until i noticed the disaster. There should be a Warning at the download-Page of <a class="external" href="../../external.html?link=http://www.typo3.org/">www.typo3.org</a> until this is fixed... just to prevent others to do the same mistake that i did.</p>
+
+
+	<p>Edit: Sorry, patch does NOT work in IE6&#38;7. Users are only logged in for one request. => i think same thing as Manfred Mueller-Spaeth</p></div>
+  </div>
+  
+
+  <div id="change-50890" class="journal has-notes">
+    <h4><a href="19867.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-23" title="2009-01-23 22:26">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50890-notes"><p>Finally found the reason why this works on some sites and and some it doesn't. My assumption regarding $lifetime was wrong. It is no indication for a non-authenticated user.</p>
+
+
+	<p>Therefore I'm uploading a new patch which doesn't have this condition and should finally work for all scenarios.</p></div>
+  </div>
+  
+
+  <div id="change-50891" class="journal has-notes">
+    <h4><a href="19867.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-23" title="2009-01-23 22:29">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50891-notes"><p>bug_10205_v4.diff is tested and will be submitted to the core list next.</p></div>
+  </div>
+  
+
+  <div id="change-50892" class="journal has-notes">
+    <h4><a href="19867.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34940">Manfred Mueller-Spaeth</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-24" title="2009-01-24 01:08">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50892-notes"><p>I'm really sorry ... but it's the same erroneous behaviour as before ...</p>
+
+
+	<p>After patching a freshly unzipped 4.2.4 with v4 and clearing all caches in TYPO3 as well as the cookies and sessions in the browser (FireFox) and emptying fe_sessions and fe_session_data, it's the same problem: a fe_user may login, but the next request on a secured page causes an error "The page did not exist or was inaccessible. Reason: ID was not an accessible page" as always.</p>
+
+
+	<p>Again: if there are sessions in the table from using the workaround above (commenting out the part " || !$this->isExistingSessionRecord($id)", the login works correctly without the workaround though. It's curious.</p></div>
+  </div>
+  
+
+  <div id="change-50893" class="journal has-notes">
+    <h4><a href="19867.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-24" title="2009-01-24 01:55">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50893-notes"><p>Oh well... What a mess!</p>
+
+
+	<p>After verifying the patch on a clients site, I can confirm that it<br />works, however there are still more problems to be resolved.</p>
+
+
+	<p>The extension "commerce" does for some reason use its own session<br />table, meaning there is no content in fe_session, no content in<br />fe_session_data, but there is content in tx_commerce_baskets!</p>
+
+
+	<p>Now the question is, how should we treat that situation:</p>
+
+
+	<p>a) Ignore but warn users of that extension<br />b) Add a fix for commerce to the core - see attached patch<br />c) Add a configuration flag that disables the session fixation fix (so<br />   that the user gets more time to wait for a fix from the commerce<br />   developers).</p>
+
+
+	<p>Attached is a post patch that implements a check for the commerce<br />extension. However, what if there are more such extensions playing their<br />own game?</p>
+
+
+	<p>What do you propose?</p>
+
+
+	<p>- michael</p></div>
+  </div>
+  
+
+  <div id="change-50894" class="journal has-notes">
+    <h4><a href="19867.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/324">Michiel Roos</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-24" title="2009-01-24 10:10">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50894-notes"><p>C<br />Extensions should definitely not bloat the core.</p>
+
+
+	<p>Sending a warning to the commerce team is fine too.</p></div>
+  </div>
+  
+
+  <div id="change-50895" class="journal has-notes">
+    <h4><a href="19867.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-24" title="2009-01-24 13:39">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50895-notes"><p>A hook can be added to allow this for multiple extensions.</p></div>
+  </div>
+  
+
+  <div id="change-50896" class="journal has-notes">
+    <h4><a href="19867.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/26">Ingmar Schlecht</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-24" title="2009-01-24 16:58">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-50896-notes"><p>Patch v5 committed to all affected branches.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-19867-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/19867.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="19867.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/19867 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:51:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

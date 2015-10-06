@@ -1,0 +1,938 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/18211 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:19:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #18211: Array of display conditions for TCA fields instead of 1 string - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/18211.atom" rel="alternate" title="Core - Feature #18211: Array of display conditions for TCA fields instead of 1 string" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (6)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/348">Steffen Müller</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1175">Andreas Dörler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/5000">Gabriel Kaufmann / Typoworx NewMedia</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36225">Kilian Hann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37190">Tilo Baller</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-18211-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #18211</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Array of display conditions for TCA fields instead of 1 string</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/91">Robert Destigter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-02-14" title="2008-02-14 15:46">over 7 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-04-11" title="2013-04-11 18:07">over 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2008-02-14</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">FormEngine aka TCEforms</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2200">6.1.0-beta1</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I think that the option "displayCond" should be an array of conditions instead of just one string.</p>
+
+
+	<p>'displayCond' => Array (<br />     "FIELD:myfieldname:!=:myvalue",<br />     "FIELD:myfieldname:IN:4,5,6",<br />),</p>
+
+
+	<p>(issue imported from #M7531)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/8905/7531.patch" class="icon icon-attachment">7531.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/8905/7531.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(3 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-06-26 22:32</span>
+  
+  </p>
+
+<p><a href="../attachments/download/8906/7531_doc_core_api_wiki.txt" class="icon icon-attachment">7531_doc_core_api_wiki.txt</a>  
+    <a href="../attachments/8906/7531_doc_core_api_wiki.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(1.5 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-08-08 13:18</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/8907/7531_4.3_cgl_v2.patch" class="icon icon-attachment">7531_4.3_cgl_v2.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/8907/7531_4.3_cgl_v2.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(3 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-08-08 18:36</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/22590/T3X_andor_tca_conditions-0_1_0-z-201210251526.t3x" class="icon icon-attachment">T3X_andor_tca_conditions-0_1_0-z-201210251526.t3x</a>  
+  
+  <span class="size">(4 kB)</span>
+  
+  
+    <span class="author">Ralf Hettinger, 2012-10-25 15:32</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-8322">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="37938" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="37938.html" class="issue status-1 priority-2">Bug #37938</a>: Using HTML5 for audio not (easily) possible due to flexform
+</td>
+<td class="status">New</td>
+<td class="start_date">2012-06-12</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10874">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="57479" /></td>
+<td class="subject">related to 
+    TCA Reference - 
+    <a href="57479.html" class="issue status-9 priority-2 closed">Task #57479</a>: Document TCA DisplayCond
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-04-01</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-8323">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="46819" /></td>
+<td class="subject">related to 
+    TCA Reference - 
+    <a href="46819.html" class="issue status-9 priority-2 closed">Feature #46819</a>: Support multiple display conditions in TCA
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-03-31</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6547">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="37939" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="37939.html" class="issue status-7 priority-2 closed">Feature #37939</a>: displayCond should allow multiple conditions/checks
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-06-12</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/18211/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/18211/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=18211&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/fe3e0a805e45478130fc75542a6db1da4b3e1aa4" title="Revision fe3e0a80">Revision fe3e0a80</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/662">Jigal van Hemert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-31" title="2013-03-31 17:02">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Support multiple display conditions in TCA</p>
+
+
+	<p>The displayCond option is expanded with support for multiple<br />conditions and even the logical operators OR and AND.</p>
+
+
+	<p>Change-Id: I6cb38ef83093ed7399b47701e234ac13bdfa47dd<br />Fixes: <a href="18211.html" class="issue status-7 priority-2 closed" title="Array of display conditions for TCA fields instead of 1 string (Resolved)">#18211</a><br />Releases: 6.1<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/13508">https://review.typo3.org/13508</a><br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters<br />Reviewed-by: Stefan Neufeind<br />Tested-by: Stefan Neufeind<br />Reviewed-by: Philipp Gampe<br />Tested-by: Philipp Gampe<br />Reviewed-by: Christian Kuhn<br />Tested-by: Christian Kuhn</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-47322" class="journal has-notes">
+    <h4><a href="18211.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-06-26" title="2009-06-26 22:41">about 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-47322-notes"><p>I'm in the need for a similar thing, though it is a bit more complex here. So I decided to come up with the attached patch, which allows grouping by AND or OR and works recursively... the following example reads</p>
+
+
+	<p>displayCond true if<br />(my_field1 &#38;&#38;<br /> my_field2!=3 &#38;&#38;<br /> (my_field3 || my_field4 || my_field5 &#38;&#38; my_field6) ||<br /> my_field7 ||<br /> my_field8<br />)</p>
+
+
+	<p>[...]<br />'displayCond' => array (<br />  'AND' => array (<br />    'FIELD:my_field1:REQ:true',<br />    'FIELD:my_field2:!=:3',<br />    'OR' => array (<br />      'FIELD:my_field3:REQ:true',<br />      'FIELD:my_field4:REQ:true',<br />      'AND' => array(<br />        'FIELD:my_field5:REQ:true',<br />        'FIELD:my_field6:REQ:true',<br />      )<br />    )<br />  ),<br />  'OR' => array (<br />    'FIELD:my_field7:REQ:true',<br />    'FIELD:my_field8:REQ:true',<br />  )<br />),<br />[...]</p></div>
+  </div>
+  
+
+  <div id="change-47323" class="journal has-notes">
+    <h4><a href="18211.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-06-26" title="2009-06-26 22:47">about 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-47323-notes"><p>forgot to mention: patched against 4.3 trunk rev. 5639</p></div>
+  </div>
+  
+
+  <div id="change-74536" class="journal has-notes">
+    <h4><a href="18211.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/348">Steffen Müller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-05-17" title="2011-05-17 12:50">about 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-74536-notes"><p>any news here. is this still an issue? would be nice to have this feature</p></div>
+  </div>
+  
+
+  <div id="change-79637" class="journal has-details">
+    <h4><a href="18211.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-07-14" title="2011-07-14 13:54">about 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>4.6.0</i> to <i>4.6.0-beta1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-81880" class="journal has-details">
+    <h4><a href="18211.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-08-02" title="2011-08-02 18:05">about 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> deleted (<strike><i>4.6.0-beta1</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-95446" class="journal has-notes">
+    <h4><a href="18211.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/48">Stefano Cecere</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-11-30" title="2011-11-30 14:10">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-95446-notes"><p>@Xavier: why did you drop this feature? i just checked it and seems ok (and useful)<br />should we propose it to 4.7?</p></div>
+  </div>
+  
+
+  <div id="change-106018" class="journal has-notes">
+    <h4><a href="18211.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5000">Gabriel Kaufmann / Typoworx NewMedia</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-08" title="2012-03-08 10:41">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-106018-notes"><p>Stefano Cecere wrote:</p>
+
+
+<blockquote>
+
+	<p>@Xavier: why did you drop this feature? i just checked it and seems ok (and useful)<br />should we propose it to 4.7?</p>
+
+
+</blockquote>
+
+	<p>I also agree that this feature could be very useful! Why isn't this feature going into the core?</p></div>
+  </div>
+  
+
+  <div id="change-111744" class="journal has-notes">
+    <h4><a href="18211.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/23379">Michael Sollmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-04-12" title="2012-04-12 18:08">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-111744-notes"><p>4.8?</p></div>
+  </div>
+  
+
+  <div id="change-116450" class="journal has-notes">
+    <h4><a href="18211.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2691">Robert Wildling</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-05-13" title="2012-05-13 15:38">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-116450-notes"><p>I'd like to join the credo! Please get it into core! Thanks!</p></div>
+  </div>
+  
+
+  <div id="change-119620" class="journal has-notes">
+    <h4><a href="18211.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-06-12" title="2012-06-12 11:23">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-119620-notes"><p>Haven't taken a look at the actual implementation. But yes, it would be really great to be able to combine multiple conditions.<br />Since 4.8 will be called 6.0 now, maybe for 6.0? :-)</p></div>
+  </div>
+  
+
+  <div id="change-121383" class="journal has-notes has-details">
+    <h4><a href="18211.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/662">Jigal van Hemert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-06-26" title="2012-06-26 09:18">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>FormEngine aka TCEforms</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Target version</strong> set to <i>6.0.0-alpha3</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>medium</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-121383-notes"><p>Seems like a useful feature. Anyone who wants to push a patch to gerrit?</p></div>
+  </div>
+  
+
+  <div id="change-121509" class="journal has-notes has-details">
+    <h4><a href="18211.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-06-26" title="2012-06-26 17:50">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-121509-notes"><p>How about introducing a USERFUNC: option?</p>
+
+
+	<p>Would that serve your needs. The proposed array solution looks complex and there will be edge cases which still cannot be covered</p></div>
+  </div>
+  
+
+  <div id="change-121520" class="journal has-notes">
+    <h4><a href="18211.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-06-26" title="2012-06-26 20:54">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-121520-notes"><p>USERFUNC for complex scenarios might be good to have. But imho we should have something built in as was proposed with that patch (though it looks complex at first). But I think for some small AND/OR it's more handy to have that builtin than through a USERFUNC whenever you need it.</p>
+
+
+	<p>Also note that USERFUNC might work on the server-side - but we have it on the client (JS) as well (flexform with displayCond).</p></div>
+  </div>
+  
+
+  <div id="change-127233" class="journal has-notes has-details">
+    <h4><a href="18211.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-07" title="2012-08-07 23:51">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-127233-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/13508">http://review.typo3.org/13508</a></p></div>
+  </div>
+  
+
+  <div id="change-137919" class="journal has-notes has-details">
+    <h4><a href="18211.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-10-25" title="2012-10-25 15:32">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/22590/T3X_andor_tca_conditions-0_1_0-z-201210251526.t3x">T3X_andor_tca_conditions-0_1_0-z-201210251526.t3x</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-137919-notes"><p>As author of this patch some years ago I'm hereby adding my vote for it ... :)</p>
+
+
+	<p>I haven't needed this neat feature for quite a while - as until today. The feature is tested in a productive environment since 3 years without any failures; the patch is  still applying to 4.7.<br />For those who need a quick&#38;dirty solution (like me today), I uploaded an extension which XClasses t3lib_tceforms (please forgive me, dear TYPO3 gods ;) )</p></div>
+  </div>
+  
+
+  <div id="change-137930" class="journal has-notes">
+    <h4><a href="18211.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5000">Gabriel Kaufmann / Typoworx NewMedia</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-10-25" title="2012-10-25 16:27">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-137930-notes"><p>You've also got my positive vote ;-)</p>
+
+
+	<p>Ralf Hettinger wrote:</p>
+
+
+<blockquote>
+
+	<p>As author of this patch some years ago I'm hereby adding my vote for it ... :)</p>
+
+
+	<p>For those who need a quick&#38;dirty solution (like me today), I uploaded an extension which XClasses t3lib_tceforms (please forgive me, dear TYPO3 gods ;) )</p>
+
+
+</blockquote>
+
+	<p>May be there is any processing-hook that may be suiteable for adding the patch?</p>
+
+
+	<p>I think this patch is a must-have to go into the TYPO3-Core.</p></div>
+  </div>
+  
+
+  <div id="change-147627" class="journal has-details">
+    <h4><a href="18211.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-13" title="2013-01-13 19:07">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>6.0.0-alpha3</i> to <i>6.0.1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-150475" class="journal has-notes">
+    <h4><a href="18211.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 10:59">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150475-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/13508">https://review.typo3.org/13508</a></p></div>
+  </div>
+  
+
+  <div id="change-150476" class="journal has-notes">
+    <h4><a href="18211.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-08" title="2013-02-08 11:01">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-150476-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/13508">https://review.typo3.org/13508</a></p></div>
+  </div>
+  
+
+  <div id="change-151329" class="journal has-notes">
+    <h4><a href="18211.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-15" title="2013-02-15 13:59">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-151329-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/13508">https://review.typo3.org/13508</a></p></div>
+  </div>
+  
+
+  <div id="change-151652" class="journal has-notes">
+    <h4><a href="18211.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5000">Gabriel Kaufmann / Typoworx NewMedia</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-02-18" title="2013-02-18 11:54">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-151652-notes"><p>Is there any plan to finally integrate multiple displayCond into the "final" TYPO3-Core anytime?</p>
+
+
+	<p>More complex TYPO3-Plugin make it really neccessary to integrate such a feature! And for now the only "Hack" ist to locally patch or XClass TYPO3 to get it working. Neither the one nore the other of these is really good to handle.</p>
+
+
+	<p>Please let us know when this feature will be going to be finally reviewed and integrated into TYPO3-Core.</p></div>
+  </div>
+  
+
+  <div id="change-153195" class="journal has-notes">
+    <h4><a href="18211.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/69">Ingo Renner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-04" title="2013-03-04 04:00">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-153195-notes"><p>Gabriel, if you want this feature so much, why is there no review from you?</p></div>
+  </div>
+  
+
+  <div id="change-153231" class="journal has-notes">
+    <h4><a href="18211.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5000">Gabriel Kaufmann / Typoworx NewMedia</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-04" title="2013-03-04 10:42">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-153231-notes"><p>Ingo Renner wrote:</p>
+
+
+<blockquote>
+
+	<p>Gabriel, if you want this feature so much, why is there no review from you?</p>
+
+
+</blockquote>
+
+	<p>Well what can I say much more. I think there have been enough suggestions how to implement this feature. I would prefer the Array-Way combined with the possibility for a userFunc for more complex matches. The userFunc-Method would also keep the door's open for further matching-patterns that may be implemented into core later on.</p></div>
+  </div>
+  
+
+  <div id="change-157601" class="journal has-notes">
+    <h4><a href="18211.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-31" title="2013-03-31 14:17">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157601-notes"><p>Patch set 5 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/13508">https://review.typo3.org/13508</a></p></div>
+  </div>
+  
+
+  <div id="change-157618" class="journal has-notes">
+    <h4><a href="18211.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-31" title="2013-03-31 16:49">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157618-notes"><p>Patch set 6 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/13508">https://review.typo3.org/13508</a></p></div>
+  </div>
+  
+
+  <div id="change-157620" class="journal has-details">
+    <h4><a href="18211.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-31" title="2013-03-31 17:03">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>6.0.1</i> to <i>6.1.0-beta1</i></li>
+      
+       <li><strong>PHP Version</strong> changed from <i>5.0</i> to <i>5.3</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-157625" class="journal has-notes has-details">
+    <h4><a href="18211.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/662">Jigal van Hemert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-31" title="2013-03-31 17:30">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-157625-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/fe3e0a805e45478130fc75542a6db1da4b3e1aa4" class="changeset" title="[FEATURE] Support multiple display conditions in TCA The displayCond option is expanded with sup...">fe3e0a805e45478130fc75542a6db1da4b3e1aa4</a>.</p></div>
+  </div>
+  
+
+  <div id="change-157659" class="journal has-notes">
+    <h4><a href="18211.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/348">Steffen Müller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-31" title="2013-03-31 20:45">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-157659-notes"><p>Thanks a lot for merging this.</p>
+
+
+	<p>Does this also work in flexforms? If so, could you please give us an example?</p></div>
+  </div>
+  
+
+  <div id="change-159340" class="journal has-notes">
+    <h4><a href="18211.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2239">Stefan Froemken</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-04-11" title="2013-04-11 18:07">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-159340-notes"><p>Steffen Müller wrote:</p>
+
+
+<blockquote>
+
+	<p>Thanks a lot for merging this.</p>
+
+
+	<p>Does this also work in flexforms? If so, could you please give us an example?</p>
+
+
+</blockquote>
+
+	<p>Yes it also works in FlexForms. I just have created a documentation in german. At the bottom you see a nested example how to use this cool new feature in FlexForms.</p>
+
+
+	<p>Link: <a class="external" href="../../external.html?link=http://jweiland.net/typo3/extension-programmierung/displaycond.html">http://jweiland.net/typo3/extension-programmierung/displaycond.html</a></p>
+
+
+	<p>Stefan</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-18211-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/18211.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="18211.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/18211 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:19:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

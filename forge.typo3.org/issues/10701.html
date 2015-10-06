@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/10701 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:57:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #10701: F3\FLOW3\Persistence\Exception thrown in file DataMapper.php - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/10701.atom" rel="alternate" title="TYPO3.Flow - Bug #10701: F3\FLOW3\Persistence\Exception thrown in file DataMapper.php" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-10701-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #10701</h2>
+
+<div class="issue status-9 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>F3\FLOW3\Persistence\Exception thrown in file DataMapper.php</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3175">Christian Lerrahn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2010-11-10" title="2010-11-10 08:01">over 4 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-15" title="2011-12-15 18:02">over 3 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2010-11-10</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Persistence</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+	<th>Affected Flow version:</th><td>FLOW3 1.0.0</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I get the following exception when trying to render a view of my model. The model is very similar to another model<br />which works. I can't see any structural difference between the views, either.</p>
+
+
+	<p>What is going wrong here? Is this a problem in Fluid or in FLOW3? I can't even tell. :(</p>
+
+
+	<p>I'm sorry if the information I'm providing is not sufficient. Please ask if you need more specific information.</p>
+
+
+	<p><code>The object of type "F3\UtilityMeterReconciliation\Domain\Model\Meter" is not marked as lazy loadable.<br />74 F3\FLOW3\Persistence\DataMapper::mapToObject(array)<br />73 F3\FLOW3\Persistence\DataMapper::mapToObjects(array)<br />72 F3\FLOW3\Persistence\QueryResult::initialize()<br />71 F3\FLOW3\Persistence\QueryResult::rewind()<br />70 F3\Fluid\ViewHelpers\ForViewHelper::render(F3\FLOW3\Persistence\QueryResult, "meter", "", boolean, NULL)<br />69 call_user_func_array(array, array)<br />68 F3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod(array)<br />67 F3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender(array)<br />66 F3\Fluid\Core\Parser\SyntaxTree\ViewHelperNode::evaluate(F3\Fluid\Core\Rendering\RenderingContext)<br />65 F3\Fluid\Core\Parser\SyntaxTree\AbstractNode::evaluateChildNodes(F3\Fluid\Core\Rendering\RenderingContext)<br />64 F3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()<br />63 F3\Fluid\ViewHelpers\FormViewHelper::render("csv", array, "Meter", NULL, NULL, NULL, "", "", array, boolean, boolean, array, NULL, NULL, NULL)<br />62 call_user_func_array(array, array)<br />61 F3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod(array)<br />60 F3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender(array)<br />59 F3\Fluid\Core\Parser\SyntaxTree\ViewHelperNode::evaluate(F3\Fluid\Core\Rendering\RenderingContext)<br />58 F3\Fluid\Core\Parser\SyntaxTree\AbstractNode::evaluateChildNodes(F3\Fluid\Core\Rendering\RenderingContext)<br />57 F3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()<br />56 F3\Fluid\Core\ViewHelper\AbstractConditionViewHelper::renderThenChild()<br />55 F3\Fluid\ViewHelpers\IfViewHelper::render(boolean)<br />54 call_user_func_array(array, array)<br />53 F3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod(array)<br />52 F3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender(array)<br />51 F3\Fluid\Core\Parser\SyntaxTree\ViewHelperNode::evaluate(F3\Fluid\Core\Rendering\RenderingContext)<br />50 F3\Fluid\Core\Parser\SyntaxTree\AbstractNode::evaluateChildNodes(F3\Fluid\Core\Rendering\RenderingContext)<br />49 F3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()<br />48 F3\Fluid\ViewHelpers\SectionViewHelper::render()<br />47 call_user_func_array(array, array)<br />46 F3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod(array)<br />45 F3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender(array)<br />44 F3\Fluid\Core\Parser\SyntaxTree\ViewHelperNode::evaluate(F3\Fluid\Core\Rendering\RenderingContext)<br />43 F3\Fluid\View\AbstractTemplateView::renderSection("contentRight", array)<br />42 F3\Fluid\ViewHelpers\RenderViewHelper::render("contentRight", NULL, array)<br />41 call_user_func_array(array, array)<br />40 F3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod(array)<br />39 F3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender(array)<br />38 F3\Fluid\Core\Parser\SyntaxTree\ViewHelperNode::evaluate(F3\Fluid\Core\Rendering\RenderingContext)<br />37 F3\Fluid\Core\Parser\SyntaxTree\AbstractNode::evaluateChildNodes(F3\Fluid\Core\Rendering\RenderingContext)<br />36 F3\Fluid\Core\Parser\SyntaxTree\RootNode::evaluate(F3\Fluid\Core\Rendering\RenderingContext)<br />35 F3\Fluid\Core\Parser\ParsingState::render(F3\Fluid\Core\Rendering\RenderingContext)<br />34 F3\Fluid\View\AbstractTemplateView::render()<br />33 F3\FLOW3\MVC\Controller\ActionController::callActionMethod()<br />32 F3\UtilityMeterReconciliation\Controller\Meter\MeterController_AOPProxy_Development::callActionMethod()<br />31 call_user_func_array(array, array)<br />30 F3\UtilityMeterReconciliation\Controller\Meter\MeterController_AOPProxy_Development::FLOW3_AOP_Proxy_invokeJoinPoint(F3\FLOW3\AOP\JoinPoint)<br />29 F3\FLOW3\AOP\Advice\AdviceChain::proceed(F3\FLOW3\AOP\JoinPoint)<br />28 F3\FLOW3\Security\Aspect\PolicyEnforcementAspect::enforcePolicy(F3\FLOW3\AOP\JoinPoint)<br />27 F3\FLOW3\AOP\Advice\AroundAdvice::invoke(F3\FLOW3\AOP\JoinPoint)<br />26 F3\FLOW3\AOP\Advice\AdviceChain::proceed(F3\FLOW3\AOP\JoinPoint)<br />25 F3\UtilityMeterReconciliation\Controller\Meter\MeterController_AOPProxy_Development::callActionMethod()<br />24 F3\FLOW3\MVC\Controller\ActionController::processRequest(F3\FLOW3\MVC\Web\Request, F3\FLOW3\MVC\Web\Response)<br />23 F3\UtilityMeterReconciliation\Controller\Meter\MeterController_AOPProxy_Development::processRequest(F3\FLOW3\MVC\Web\Request, F3\FLOW3\MVC\Web\Response)<br />22 call_user_func_array(array, array)<br />21 F3\UtilityMeterReconciliation\Controller\Meter\MeterController_AOPProxy_Development::FLOW3_AOP_Proxy_invokeJoinPoint(F3\FLOW3\AOP\JoinPoint)<br />20 F3\FLOW3\AOP\Advice\AdviceChain::proceed(F3\FLOW3\AOP\JoinPoint)<br />19 F3\FLOW3\Security\Aspect\PolicyEnforcementAspect::enforcePolicy(F3\FLOW3\AOP\JoinPoint)<br />18 F3\FLOW3\AOP\Advice\AroundAdvice::invoke(F3\FLOW3\AOP\JoinPoint)<br />17 F3\FLOW3\AOP\Advice\AdviceChain::proceed(F3\FLOW3\AOP\JoinPoint)<br />16 F3\UtilityMeterReconciliation\Controller\Meter\MeterController_AOPProxy_Development::processRequest(F3\FLOW3\MVC\Web\Request, F3\FLOW3\MVC\Web\Response)<br />15 F3\FLOW3\MVC\Dispatcher::dispatch(F3\FLOW3\MVC\Web\Request, F3\FLOW3\MVC\Web\Response)<br />14 F3\FLOW3\MVC\Dispatcher_AOPProxy_Development::dispatch(F3\FLOW3\MVC\Web\Request, F3\FLOW3\MVC\Web\Response)<br />13 call_user_func_array(array, array)<br />12 F3\FLOW3\MVC\Dispatcher_AOPProxy_Development::FLOW3_AOP_Proxy_invokeJoinPoint(F3\FLOW3\AOP\JoinPoint)<br />11 F3\FLOW3\AOP\Advice\AdviceChain::proceed(F3\FLOW3\AOP\JoinPoint)<br />10 F3\FLOW3\Security\Aspect\RequestDispatchingAspect::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(F3\FLOW3\AOP\JoinPoint)<br />9 F3\FLOW3\AOP\Advice\AroundAdvice::invoke(F3\FLOW3\AOP\JoinPoint)<br />8 F3\FLOW3\AOP\Advice\AdviceChain::proceed(F3\FLOW3\AOP\JoinPoint)<br />7 F3\FLOW3\Security\Aspect\RequestDispatchingAspect::initializeSecurity(F3\FLOW3\AOP\JoinPoint)<br />6 F3\FLOW3\AOP\Advice\AroundAdvice::invoke(F3\FLOW3\AOP\JoinPoint)<br />5 F3\FLOW3\AOP\Advice\AdviceChain::proceed(F3\FLOW3\AOP\JoinPoint)<br />4 F3\FLOW3\MVC\Dispatcher_AOPProxy_Development::dispatch(F3\FLOW3\MVC\Web\Request, F3\FLOW3\MVC\Web\Response)<br />3 F3\FLOW3\MVC\Web\RequestHandler::handleRequest()<br />2 F3\FLOW3\Core\Bootstrap::run()<br />1 require("/home/umr_test/FLOW3-1.0.0-alpha12-build42/Packages/Framework/FLOW3/Scripts/FLOW3.php")</code></p>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-25465" class="journal has-notes has-details">
+    <h4><a href="10701.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2010-11-12" title="2010-11-12 16:01">over 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Persistence</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Karsten Dambekalns</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-25465-notes"><p>It seems you have a property marked as @lazy but the corresponding entity is not marked as @lazy on the class-level. Is that correct?</p></div>
+  </div>
+  
+
+  <div id="change-26132" class="journal has-notes">
+    <h4><a href="10701.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3175">Christian Lerrahn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2010-11-22" title="2010-11-22 06:29">over 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-26132-notes"><p>No. I didn't even know the keyword @lazy until you mentioned it ;)</p>
+
+
+	<p><code>flow3-test:/var/www/foo/Packages/Application/UtilityMeterReconciliation# grep -ir lazy *<br />Resources/Public/javascript/jquery-ui/development-bundle/docs/tabs.html:    &lt;p&gt;Whether or not to cache remote tabs content, e.g. load only once or with every click. Cached content is being lazy loaded, e.g once and only once for the first click. Note that to prevent the actual Ajax requests from being cached by the browser you need to provide an extra cache: false flag to ajaxOptions.&lt;/p&gt;</code></p>
+
+
+	<p>No @lazy anywhere in the package. :(</p></div>
+  </div>
+  
+
+  <div id="change-26159" class="journal has-details">
+    <h4><a href="10701.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2010-11-22" title="2010-11-22 12:48">over 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-27071" class="journal has-notes">
+    <h4><a href="10701.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3175">Christian Lerrahn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2010-12-08" title="2010-12-08 04:50">over 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-27071-notes"><p>This is just a heads up on this bug report. <br />I updated my FLOW3 to the latest git version and still see the same problem.</p></div>
+  </div>
+  
+
+  <div id="change-27823" class="journal has-notes">
+    <h4><a href="10701.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2010-12-21" title="2010-12-21 13:49">over 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-27823-notes"><p>I recently saw this behaviour while tracking down another problem. If an object is persisted but has no property data stored, it looks for the DataMapper as if lazy-loading is requested.</p>
+
+
+	<p>Either the model has no properties (I doubt that) or something is wrong in the persisted data. It would be good if you could track the data that belongs to an affected instance.</p></div>
+  </div>
+  
+
+  <div id="change-91504" class="journal has-details">
+    <h4><a href="10701.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-10-21" title="2011-10-21 13:20">almost 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Affected Flow version</strong> set to <i>FLOW3 1.0.0</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-96991" class="journal has-notes has-details">
+    <h4><a href="10701.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-15" title="2011-12-15 18:02">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Closed</i></li>
+      
+       <li><strong>Has patch</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-96991-notes"><p>Closing this one due to bit rot setting in...</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-10701-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/10701.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="10701.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/10701 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:57:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

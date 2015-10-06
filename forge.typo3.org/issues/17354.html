@@ -1,0 +1,1932 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/17354 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:52:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #17354: fallback for menus. &quot;content_fallback;1,0&quot; has no affect for page records (e.g. menu) - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/17354.atom" rel="alternate" title="Core - Bug #17354: fallback for menus. &quot;content_fallback;1,0&quot; has no affect for page records (e.g. menu)" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (39)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/1714">Juergen Weber</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/929">Clemens Riccabona</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/25421">Daniel Chabrol</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/923">Daniel Schlohmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2802">Gregor Schreier</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/34103">Sareen Millet</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/158">Typoheads GmbH</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/869">Andreas </a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1712">Ronald Steiner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/830">Henjo Hoeksma</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/23247">Soeren Kracker</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1384">Ingo Siebeck</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2749">Simon Schaufelberger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2125">Jonas Renggli</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1096">Reto Schmid</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38134">Christiaan Wiesenekker</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38865">Markus Hölzle</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2967">Thomas Maurer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38784">Marius S.</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4345">Jonas Götze</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39489">Christoph Wolter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2689">Timon Gruetzmacher</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4703">Marc Steiner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38523">Sven Radetzky</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3545">Marc Hirdes</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39230">Florian Engelke</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3450">Raphael Zschorsch</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36621">Alfred Bez</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37784">Benjamin no-lastname-given</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/5287">Sascha Friedl</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2775">Lorenz Ulrich</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-17354-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #17354</h2>
+
+<div class="issue status-6 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>fallback for menus. &quot;content_fallback;1,0&quot; has no affect for page records (e.g. menu)</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/124">Daniel Poetzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2007-07-22" title="2007-07-22 14:08">about 8 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-25" title="2015-07-25 12:49">10 days</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Under Review</td>
+    <th class="start-date">Start date:</th><td class="start-date">2007-07-22</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 90%;"></td><td class="todo" style="width: 10%;"></td></tr></table><p class="pourcent">90%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Frontend</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+    <th class="estimated-hours">Estimated time:</th><td class="estimated-hours">50.00 hours</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td>Remote Sprint</td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>nightmare</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Problem:<br />It is not possible to define another that default language as fallback. <br />This is what TYPO3 does actual:<br />you can define<br /> config.sys_language_mode=content_fallback;1,0</p>
+
+
+	<p>What this does is to set <br />$this->sys_language_content in tslib_fe.</p>
+
+
+	<p>So only the content is rendered in a alternative fallback language.</p>
+
+
+	<p>- menues fall back to default<br />- page title fall back to default</p>
+
+
+	<p>So this is not perfect, cause it makes no sense if menues and pagedata fall back to default but content is shown in another fallback language.</p>
+
+
+	<p>Example:<br />say you have default=english / 1 = spanish / 2=catalan (spanish language)</p>
+
+
+	<p>typical setting if L=2:<br />config {<br />  sys_language_uid =  2<br />  sys_language_mode=content_fallback;1,0<br />}</p>
+
+
+	<p>if you view a page where no catalan version is available TYPO3 shows menu title and pagetitle of defaultlanguage and only the content in spanish. <br />(What is far from perfect and not the expected behaviour)</p>
+
+
+	<p>Solution:<br />- It is neccessary that other functions in the core know a fallbackorder.<br />- especially the function t3lib_page::getPageOverlay needs to know alternative fallback language uids.</p>
+
+
+	<p>I recommend to introduce a new configuration:<br /> config.sys_language_fallBackOrder=1,0<br />(which is used as general fallbackorder)</p>
+
+
+	<p>Attached a patch with the following changes:<br />t3lib_page:<br />1) new function getLanguageOverlayUidForPage($page_id,$fallBackOrder)<br />(function that checks which page record overlay language should be used, according to the given fallbackorder)<br />2) adjust getPageOverlay to use fallback uid instead of default</p>
+
+
+	<p>tslib_fe<br />1) settingLanguage():<br />set $this->sys_language_overlayCheckOrder<br />load fallback overlay for actaul page if needed</p>
+
+
+	<p>tslib_menu<br />1) adjust filterMenuPages to work with the changes</p>
+
+
+	<p>view attached patches <br />(i use head of branch 4.1)<br />(issue imported from #M6009)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/8053/patch_class.t3lib_page.txt" class="icon icon-attachment">patch_class.t3lib_page.txt</a>  
+    <a href="../attachments/8053/patch_class.t3lib_page.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(3 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2007-07-22 14:08</span>
+  
+  </p>
+
+<p><a href="../attachments/download/8054/patch_class.tslib_fe.txt" class="icon icon-attachment">patch_class.tslib_fe.txt</a>  
+    <a href="../attachments/8054/patch_class.tslib_fe.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(3.1 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2007-07-22 14:09</span>
+  
+  </p>
+
+<p><a href="../attachments/download/8055/patch_class.tslib_menu.txt" class="icon icon-attachment">patch_class.tslib_menu.txt</a>  
+    <a href="../attachments/8055/patch_class.tslib_menu.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(889 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2007-07-22 14:09</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/8056/T3X_danp_languagefallback_patch-0_0_0-z-200708151515.t3x" class="icon icon-attachment">T3X_danp_languagefallback_patch-0_0_0-z-200708151515.t3x</a>  
+  
+  <span class="size">(7.9 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2007-08-23 16:14</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/8057/6009_dmitry.diff" class="icon icon-attachment">6009_dmitry.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/8057/6009_dmitry.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(1.4 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2011-03-10 15:35</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/20419/l10nFallback.patch" class="icon icon-attachment">l10nFallback.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/20419/l10nFallback.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(9.7 kB)</span>
+  
+  
+    <span class="author">Stefan Galinski, 2012-03-22 15:10</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/20471/l10nFallback.patch" class="icon icon-attachment">l10nFallback.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/20471/l10nFallback.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(8.7 kB)</span>
+  
+  
+    <span class="author">Stefan Galinski, 2012-03-28 13:30</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-6634">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="36616" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="36616.html" class="issue status-7 priority-1 closed">Bug #36616</a>: TYPO3 4.7 sectionIndex not working correctly on multilang...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-04-26</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2350">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19114" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="19114.html" class="issue status-6 priority-2">Bug #19114</a>: sys_language_mode does not work
+</td>
+<td class="status">Under Review</td>
+<td class="start_date">2008-07-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9759">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="53120" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="53120.html" class="issue status-1 priority-2">Bug #53120</a>: Proper fetching of records in a language in the fallback-...
+</td>
+<td class="status">New</td>
+<td class="start_date">2013-10-25</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-8763">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="48673" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="48673.html" class="issue status-2 priority-1">Bug #48673</a>: Changed language overlay behaviour in TYPO3 6.*
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2013-05-30</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6365">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19718" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="19718.html" class="issue status-2 priority-2">Bug #19718</a>: Typoscript:  CONTENT | slide: multilanguage not correctly...
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2008-12-18</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6012">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="20623" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="20623.html" class="issue status-9 priority-2 closed">Bug #20623</a>: content_fallback for whole page, including navigation and...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2009-06-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11416">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="60052" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="60052.html" class="issue status-9 priority-1 closed">Bug #60052</a>: sys_language_mode=content_fallback only supports language...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-07-02</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/17354/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/17354/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=17354&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-45253" class="journal has-notes">
+    <h4><a href="17354.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34103">Sareen Millet</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2007-08-15" title="2007-08-15 22:30">almost 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45253-notes"><p>I observed the same problem. Then I tried the suggested patches but for me they don't Work. (I use Typo3 Version 4.12)<br />Has anybody another solution for the problem?</p></div>
+  </div>
+  
+
+  <div id="change-45254" class="journal has-notes">
+    <h4><a href="17354.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/124">Daniel Poetzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2007-08-23" title="2007-08-23 16:12">almost 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45254-notes"><p>they should work.</p>
+
+
+	<p>did you set new setting:</p>
+
+
+	<p>config.sys_language_fallBackOrder=1,0</p></div>
+  </div>
+  
+
+  <div id="change-45255" class="journal has-notes">
+    <h4><a href="17354.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34103">Sareen Millet</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2007-08-23" title="2007-08-23 19:15">almost 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45255-notes"><p>Hi Daniel,</p>
+
+
+	<p>I used: config.sys_language_mode = content_fallback; 1,0<br />Why did you change this config to <br />config.sys_language_fallBackOrder=1,0<br />I expected the patch to do the same thing as typo3 should do. So I used the normal config.<br />Now it's working.</p>
+
+
+	<p>Thanks.<br />Hope this bug is solved in the new Typo3 4.2.0 Version.</p>
+
+
+	<p>greetings</p>
+
+
+	<p>Sareen</p></div>
+  </div>
+  
+
+  <div id="change-45256" class="journal has-notes">
+    <h4><a href="17354.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/124">Daniel Poetzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2007-09-29" title="2007-09-29 02:12">almost 8 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45256-notes"><p>Its because the sematic difference<br />config.sys_language_mode = content_fallback; 1,0</p>
+
+
+	<p>controls the content fallback, and the fallbackorder is not implemented in a way it could easy be used for a common fallback order.</p>
+
+
+	<p>I my opinion having that common config parameter is more clear. (It changes not only content behaviour - which can also be set to something diffrent than content_fallback - but changes common language fallback)</p></div>
+  </div>
+  
+
+  <div id="change-45257" class="journal has-notes">
+    <h4><a href="17354.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1644">Andreas </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-01-14" title="2008-01-14 13:04">over 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45257-notes"><p>thanx daniel!! works perfect. i also think it's better to define the fallback order in an own config property.</p></div>
+  </div>
+  
+
+  <div id="change-45258" class="journal has-notes">
+    <h4><a href="17354.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34103">Sareen Millet</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-01-27" title="2008-01-27 20:27">over 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45258-notes"><p>Hi Daniel,</p>
+
+
+	<p>your patch is perfect, thank you. I played around with it for quite some time now. <br />There remains only one problem with realUrl. The text in the Url still has not the correct language fallBackOrder. <br />Is there a solution to this?</p>
+
+
+	<p>greetings</p>
+
+
+	<p>Sareen</p></div>
+  </div>
+  
+
+  <div id="change-45259" class="journal has-notes">
+    <h4><a href="17354.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1712">Ronald Steiner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-02-25" title="2008-02-25 00:03">over 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45259-notes"><p>Seams same problem occurs with: <br />pi_getFFvalue()  <br />- used for FlexForm<br />Language fallback in steps seams to be quite some problem</p></div>
+  </div>
+  
+
+  <div id="change-45260" class="journal has-notes">
+    <h4><a href="17354.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/929">Clemens Riccabona</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-04-17" title="2008-04-17 13:11">over 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45260-notes"><p>Is this coming up in 4.2? Does anybody know?</p></div>
+  </div>
+  
+
+  <div id="change-45261" class="journal has-notes">
+    <h4><a href="17354.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1075">Sonja Schubert</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-01" title="2008-07-01 17:57">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45261-notes"><p>still not in 4.2.1, please integrate this!</p></div>
+  </div>
+  
+
+  <div id="change-45262" class="journal has-notes">
+    <h4><a href="17354.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/124">Daniel Poetzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-01" title="2008-07-01 19:49">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45262-notes"><p>I will soon publish the extension langaugevisibility which resolves this and a lot more:<br /><a class="external" href="../../external.html?link=http://www.typo3-media.com/extensions/multilanguages-websites-with-typo3-languagevisibility.html">http://www.typo3-media.com/extensions/multilanguages-websites-with-typo3-languagevisibility.html</a></p></div>
+  </div>
+  
+
+  <div id="change-45263" class="journal has-notes">
+    <h4><a href="17354.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/96">Jonas Felix</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-02" title="2008-07-02 10:22">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45263-notes"><p>confirm: the extension works great, we use it in two projects! This has to be integrated into the core!</p></div>
+  </div>
+  
+
+  <div id="change-45264" class="journal has-notes">
+    <h4><a href="17354.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1712">Ronald Steiner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-02" title="2008-07-02 10:45">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45264-notes"><p>Is this extension for download  and test already somewhere?</p></div>
+  </div>
+  
+
+  <div id="change-45265" class="journal has-notes">
+    <h4><a href="17354.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/96">Jonas Felix</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-02" title="2008-07-02 11:06">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45265-notes"><p>@ronald: the extension is attached to this bug report: <a class="external" href="../../external.html?link=http://bugs.typo3.org/file_download.php?file_id=2929&amp;type=bug">http://bugs.typo3.org/file_download.php?file_id=2929&#38;type=bug</a></p></div>
+  </div>
+  
+
+  <div id="change-45266" class="journal has-notes">
+    <h4><a href="17354.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1712">Ronald Steiner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-02" title="2008-07-02 13:09">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45266-notes"><p>as far as I see, this is "just" the bugfix. And there will be an huge extension "languagevisibility" that solves this bug and adds a lot of features.</p></div>
+  </div>
+  
+
+  <div id="change-45267" class="journal has-notes">
+    <h4><a href="17354.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/96">Jonas Felix</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-17" title="2008-07-17 11:42">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45267-notes"><p>but shouldn't such thing be integrated in the core?</p>
+
+
+	<p>I'm realy carefull with such core changing extensions, they can lead to other problems. Is it tested with TV, Workspaces and all the other needed TYPO3 things?</p></div>
+  </div>
+  
+
+  <div id="change-45268" class="journal has-notes">
+    <h4><a href="17354.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/124">Daniel Poetzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-17" title="2008-07-17 19:28">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45268-notes"><p>sure its tested with workspaces / templavoila / even introduce new templavoila features</p>
+
+
+	<p>the extension is availabe at forge: <a class="external" href="../../external.html?link=http://forge.typo3.org/projects/show/extension-languagevisibility">http://forge.typo3.org/projects/show/extension-languagevisibility</a></p>
+
+
+	<p>sildes:<br /><a class="external" href="../../external.html?link=http://www.typo3-media.com/extensions/multilanguages-websites-with-typo3-languagevisibility.html">http://www.typo3-media.com/extensions/multilanguages-websites-with-typo3-languagevisibility.html</a></p></div>
+  </div>
+  
+
+  <div id="change-45269" class="journal has-notes">
+    <h4><a href="17354.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1644">Andreas </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-19" title="2008-08-19 18:00">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45269-notes"><p>thanx!! works like a charm!</p></div>
+  </div>
+  
+
+  <div id="change-45270" class="journal has-notes">
+    <h4><a href="17354.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1712">Ronald Steiner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-31" title="2008-08-31 09:04">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45270-notes"><p>Hi Daniel,</p>
+
+
+	<p>I just test your extension: languagevisability <br />- it seems to work fine so far, but the bug described here is not resolved, is it? Or is there a special TypoScript Configuration necessary to resolve this bug?</p>
+
+
+	<p>And it seems not possible to install that extension together with the patch you proviede here: T3X_danp_languagefallback_patch-0_0_0-z-200708151515.t3x</p>
+
+
+	<p>Schould this patch not be integrated in your extension languagevisability? Am I getting something wrong?</p>
+
+
+	<p>greetings</p>
+
+
+	<p>Ron</p></div>
+  </div>
+  
+
+  <div id="change-45271" class="journal has-notes">
+    <h4><a href="17354.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1712">Ronald Steiner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-31" title="2008-08-31 09:08">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45271-notes"><p>P.S.: For me correct language fallback in menu's is more important, so I now only use the patch and not the extension.</p></div>
+  </div>
+  
+
+  <div id="change-45272" class="journal has-notes">
+    <h4><a href="17354.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-04-06" title="2009-04-06 15:09">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45272-notes"><p>Daniel, can you update the patch for TYPO3 4.2 please? Additionally, please check my patch in <a href="19114.html" class="issue status-6 priority-2" title="sys_language_mode does not work (Under Review)">#19114</a>.<br />It seems to work quite different than the solution that you have come to. What it basically does is the provide content-fallback even if the page record has been translated, but not all content on it.</p>
+
+
+	<p>Any feedback is appreciated.</p>
+
+
+	<p>- michael</p></div>
+  </div>
+  
+
+  <div id="change-45273" class="journal has-notes">
+    <h4><a href="17354.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/96">Jonas Felix</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-07-14" title="2009-07-14 11:12">about 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45273-notes"><p>It would be great if somebody could writhe a manual on how to implement translation handling for records in extensions. But a way which supports the full features of translation handling in TYPO3.</p>
+
+
+	<p>Is this integrated in the ExtBase persitence layer?</p></div>
+  </div>
+  
+
+  <div id="change-45274" class="journal has-notes">
+    <h4><a href="17354.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-03-10" title="2011-03-10 15:34">over 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-45274-notes"><p>I attach another patch, which fixes everything.</p>
+
+
+	<p>According to the docs menu and page title should be translated as well when content_fallback is in use. This means that the page record and $TSFE->sys_language_uid should be set to a fallback language. Indirectly this is confirmed by TSRef in the description of sys_language_uid:</p>
+
+
+	<p>&lt;blockquote&gt;Internally, the value is depending on whether a Alternative Page Language record can be found with that language. If not, the value will default to zero (default language) except if “sys_language_mode” is set to a value like “content_fallback”.&lt;/blockquote&gt;</p>
+
+
+	<p>and</p>
+
+
+	<p>&lt;blockquote&gt;The system will always operate with the selected language even if the page is not translated with a page overlay record. This will keep menus etc. translated&lt;/blockquote&gt;</p>
+
+
+	<p>So the patch checks if the fallback is set and changes page record and sys_language_uid to be the one from fallback, which makes the behavior identical to described in TSRef.</p>
+
+
+	<p>Result: menu in the fallback language, page title in the fallback language, links still stay with user's choosen language.</p>
+
+
+	<p>One possible drawback could be with language selectors. If they use $TSFE->sys_language_uid, they will show a fallback language. Instead they should use the value of "L".</p></div>
+  </div>
+  
+
+  <div id="change-61853" class="journal has-notes has-details">
+    <h4><a href="17354.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1714">Juergen Weber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-03-29" title="2011-03-29 15:56">over 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> deleted (<strike><i>0</i></strike>)</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-61853-notes"><p>I have this issue in TYPO3 version 4.5. Isn't this fixed yet? Dimitry, will your patch also work with 4.5?</p></div>
+  </div>
+  
+
+  <div id="change-70827" class="journal has-notes">
+    <h4><a href="17354.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35818">amareco </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-04-04" title="2011-04-04 12:04">over 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-70827-notes"><p>The problem is´nt fixed in Typo3 4.5.2 but the patch works there.</p></div>
+  </div>
+  
+
+  <div id="change-75981" class="journal has-notes">
+    <h4><a href="17354.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/32414">Philipp Idler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-06-06" title="2011-06-06 14:07">about 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-75981-notes"><p>amareco  wrote:</p>
+
+
+<blockquote>
+
+	<p>The problem is´nt fixed in Typo3 4.5.2 but the patch works there.</p>
+
+
+</blockquote>
+
+	<p>what patch? dmitry's?<br />doesn't work for me (4.5.3)</p>
+
+
+	<p>i don't understand why this isn't part of the core...</p></div>
+  </div>
+  
+
+  <div id="change-76933" class="journal has-notes">
+    <h4><a href="17354.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4456">Evgeniy Martynov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2011-06-16" title="2011-06-16 14:51">about 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-76933-notes"><p>Hi,</p>
+
+
+	<p>Dmitry Dulepov wrote:</p>
+
+
+<blockquote>
+
+	<p>I attach another patch, which fixes everything.<br />...</p>
+
+
+</blockquote>
+
+	<p>I checked both solutions.</p>
+
+
+	<p>While danp_languagefallback_patch adrresses the issue the patch from Dmitrij does not at all.</p>
+
+
+	<p>The main problem is not translation of the currently selected page record (while in content_fallback mode), but rather falling back while translating menu items for other pages which are present in the menu.</p>
+
+
+	<p>Dmitrij's patch works only with currently selected page, while danp_languagefallback_patch reimplements getPageOverlay which actually provides menu biulding class with translated page records.</p></div>
+  </div>
+  
+
+  <div id="change-99431" class="journal has-notes has-details">
+    <h4><a href="17354.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-01-13" title="2012-01-13 10:11">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> deleted (<strike><i>Communication</i></strike>)</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-99431-notes"><p>Dan's patch is incorrect because it adds a dependency from t3lib_page to TSFE. This should not happen. There must be a different solution.</p></div>
+  </div>
+  
+
+  <div id="change-108221" class="journal has-notes">
+    <h4><a href="17354.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-22" title="2012-03-22 14:23">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108221-notes"><p>Any news on this issue?<br />It`s still reproducable in 4.6.6</p></div>
+  </div>
+  
+
+  <div id="change-108225" class="journal has-notes has-details">
+    <h4><a href="17354.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-22" title="2012-03-22 15:10">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/20419/l10nFallback.patch">l10nFallback.patch</a><a href="../../external.html?link=https://forge.typo3.org/attachments/20419/l10nFallback.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-108225-notes"><p>I have written a small patch for the site [[<a class="external" href="../../external.html?link=http://www.ashtangayoga.info/">http://www.ashtangayoga.info/</a>]] last week that consideres the configured content_fallback setting for pages too. Furthermore it introduces a new API method to overlay other non-page records with a possible fallback, but you must modify the necessary extensions yourself. It's already done for the core and so that stuff should already work in most cases. Just have a look at the patch for more details. Feedback is welcome and maybe this simple patch or a modification of it can be submitted to Gerrit sooner or later.</p></div>
+  </div>
+  
+
+  <div id="change-108227" class="journal has-notes">
+    <h4><a href="17354.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-22" title="2012-03-22 15:25">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108227-notes"><p>Hi Stefan,</p>
+
+
+	<p>meanwhile I tested Dmitrys patch - It solves the main problem with non translated navigations, but there are strange side effects I can`t discribe.<br />I will give your patch shortly a try - would be great to see this in core.</p></div>
+  </div>
+  
+
+  <div id="change-108417" class="journal has-notes">
+    <h4><a href="17354.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-23" title="2012-03-23 12:16">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108417-notes"><p>Hi Stefan,</p>
+
+
+	<p>I set up an test installation and imported my site (12 Languages!).<br />Everything is working as expected after applying your patch.</p>
+
+
+	<p>From my humble point of view you maybe could submit it to Gerrit.</p>
+
+
+	<p>PS: I think this is also related to <a href="20623.html" class="issue status-9 priority-2 closed" title="content_fallback for whole page, including navigation and title (Closed)">#20623</a></p></div>
+  </div>
+  
+
+  <div id="change-108424" class="journal has-notes has-details">
+    <h4><a href="17354.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-23" title="2012-03-23 13:00">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Stefan Galinski</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-108424-notes"><p>Hi Henrik,</p>
+
+
+	<p>I marked <a href="20623.html" class="issue status-9 priority-2 closed" title="content_fallback for whole page, including navigation and title (Closed)">#20623</a> as a duplicate of this one and will submit the patch to Gerrit for 4.8 only (and 4.5/4.6 backports afterwards if Ernesto/Xavier want it) in some days to get some more feedback and practical results as the patch is already running in a live installation. Thanks for your review! :-)</p></div>
+  </div>
+  
+
+  <div id="change-108979" class="journal has-notes">
+    <h4><a href="17354.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-27" title="2012-03-27 23:19">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108979-notes"><p>Hi Henrik,</p>
+
+
+	<p>I fixed a possible edge-case in the patch and will upload this to one to Gerrit now. Please review it again carefully, just to be sure that nothing else slipped in and don't forget voting in Gerrit. Thanks in advance! :-)</p>
+
+
+	<p>Edit: Everyone and not just Hendrik is invited to do the same. ;-)</p></div>
+  </div>
+  
+
+  <div id="change-108981" class="journal has-notes has-details">
+    <h4><a href="17354.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-27" title="2012-03-27 23:20">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-108981-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-109060" class="journal has-notes">
+    <h4><a href="17354.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-28" title="2012-03-28 11:18">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-109060-notes"><p>Thanks Stefan,</p>
+
+
+	<p>+1 by reading - Is there a way to download the changes as patch-file to apply it to my local installation?<br />I did not really deal with the new review system before. Sorry.</p>
+
+
+	<p>After a short test I will give my vote in Gerrit.</p></div>
+  </div>
+  
+
+  <div id="change-109115" class="journal has-notes has-details">
+    <h4><a href="17354.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-03-28" title="2012-03-28 13:30">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/20471/l10nFallback.patch">l10nFallback.patch</a><a href="../../external.html?link=https://forge.typo3.org/attachments/20471/l10nFallback.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-109115-notes"><p>I attached the new version of the patch directly taken from Gerrit by using the patch command. To get such a patch by yourself, you just need to clone the git repository of TYPO3 and execute one of the mentioned commands below a patchset in Gerrit on the sources.</p></div>
+  </div>
+  
+
+  <div id="change-111897" class="journal has-details">
+    <h4><a href="17354.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-04-13" title="2012-04-13 12:41">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>90</i></li>
+      
+       <li><strong>Estimated time</strong> set to <i>50.00</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>nightmare</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-111899" class="journal has-notes">
+    <h4><a href="17354.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/124">Daniel Poetzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-04-13" title="2012-04-13 12:45">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-111899-notes"><p>Why not using languagevisibility? :-) Its all working there and a lot of more things..</p>
+
+
+	<p>Just my 2 cents :-)</p></div>
+  </div>
+  
+
+  <div id="change-111906" class="journal has-notes">
+    <h4><a href="17354.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-04-13" title="2012-04-13 13:01">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-111906-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-111918" class="journal has-notes">
+    <h4><a href="17354.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-04-13" title="2012-04-13 14:27">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-111918-notes"><p>Hi Daniel,</p>
+
+
+	<p>Your extension does lot's of more stuff and that's exactly the problem. Also I didn't understood the code and it didn't worked for me like I had expected it (just install it, define the fallback order and go).</p></div>
+  </div>
+  
+
+  <div id="change-112001" class="journal has-notes">
+    <h4><a href="17354.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-04-13" title="2012-04-13 17:21">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-112001-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-115150" class="journal has-notes">
+    <h4><a href="17354.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-05-04" title="2012-05-04 08:26">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-115150-notes"><p>Push :)</p>
+
+
+	<p>Stefan and Ronald, could you please also look at the new patch from Markus?</p></div>
+  </div>
+  
+
+  <div id="change-121535" class="journal has-notes">
+    <h4><a href="17354.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-06-26" title="2012-06-26 23:37">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-121535-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-125788" class="journal has-notes">
+    <h4><a href="17354.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/26501">Stefan Regniet</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-07-27" title="2012-07-27 16:01">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-125788-notes"><p>Hi together. Just tested the patch on a page with > 40 languages (on a patched 4.7.2). Works fine so far.<br />But it seems that it ignores l18n_cfg setting (2) in page-record (Hide page if no translation is available). <br />So I don't have any chance to explicitly hide certain pages that I don't want to show in fallback.</p>
+
+
+	<p>That one should be patched in t3lib_page imho... Thanks :)</p></div>
+  </div>
+  
+
+  <div id="change-127840" class="journal has-notes">
+    <h4><a href="17354.html#note-45" class="journal-link">#45</a>
+    
+    <a name="note-45"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-13" title="2012-08-13 19:20">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-127840-notes"><p>Really? This setting works for me!? Please test the latest version of the patch. Will be there in a few minutes... :-)</p></div>
+  </div>
+  
+
+  <div id="change-127841" class="journal has-notes">
+    <h4><a href="17354.html#note-46" class="journal-link">#46</a>
+    
+    <a name="note-46"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-13" title="2012-08-13 19:23">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-127841-notes"><p>Patch set 5 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-127955" class="journal has-notes">
+    <h4><a href="17354.html#note-47" class="journal-link">#47</a>
+    
+    <a name="note-47"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-14" title="2012-08-14 14:51">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-127955-notes"><p>Patch set 6 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-127956" class="journal has-notes">
+    <h4><a href="17354.html#note-48" class="journal-link">#48</a>
+    
+    <a name="note-48"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-14" title="2012-08-14 14:55">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-127956-notes"><p>Patch set 7 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-128331" class="journal has-notes">
+    <h4><a href="17354.html#note-49" class="journal-link">#49</a>
+    
+    <a name="note-49"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-16" title="2012-08-16 21:35">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-128331-notes"><p>Patch set 8 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-128332" class="journal has-notes">
+    <h4><a href="17354.html#note-50" class="journal-link">#50</a>
+    
+    <a name="note-50"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-16" title="2012-08-16 21:38">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-128332-notes"><p>Patch set 9 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-128857" class="journal has-notes">
+    <h4><a href="17354.html#note-51" class="journal-link">#51</a>
+    
+    <a name="note-51"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-19" title="2012-08-19 22:35">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-128857-notes"><p>Patch set 10 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-131658" class="journal has-notes">
+    <h4><a href="17354.html#note-52" class="journal-link">#52</a>
+    
+    <a name="note-52"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-09-09" title="2012-09-09 02:34">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-131658-notes"><p>Patch set 11 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-131659" class="journal has-notes">
+    <h4><a href="17354.html#note-53" class="journal-link">#53</a>
+    
+    <a name="note-53"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-09-09" title="2012-09-09 02:42">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-131659-notes"><p>Patch set 12 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-134112" class="journal has-notes">
+    <h4><a href="17354.html#note-54" class="journal-link">#54</a>
+    
+    <a name="note-54"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-09-25" title="2012-09-25 13:17">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-134112-notes"><p>Patch set 13 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-134113" class="journal has-notes">
+    <h4><a href="17354.html#note-55" class="journal-link">#55</a>
+    
+    <a name="note-55"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-09-25" title="2012-09-25 13:20">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-134113-notes"><p>Patch set 14 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-147169" class="journal has-notes">
+    <h4><a href="17354.html#note-56" class="journal-link">#56</a>
+    
+    <a name="note-56"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-08" title="2013-01-08 10:23">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-147169-notes"><p>It seems to me this is a bug in typo3 6.0 also</p></div>
+  </div>
+  
+
+  <div id="change-147310" class="journal has-notes">
+    <h4><a href="17354.html#note-57" class="journal-link">#57</a>
+    
+    <a name="note-57"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-09" title="2013-01-09 14:55">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-147310-notes"><p>Patch set 15 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/9937">https://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-147313" class="journal has-notes">
+    <h4><a href="17354.html#note-58" class="journal-link">#58</a>
+    
+    <a name="note-58"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-09" title="2013-01-09 14:59">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-147313-notes"><p>Patch set 16 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/9937">https://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-147905" class="journal has-notes">
+    <h4><a href="17354.html#note-59" class="journal-link">#59</a>
+    
+    <a name="note-59"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-16" title="2013-01-16 13:20">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-147905-notes"><p>Patch 16 seems to work fine for me. Thank you</p></div>
+  </div>
+  
+
+  <div id="change-154688" class="journal has-notes">
+    <h4><a href="17354.html#note-60" class="journal-link">#60</a>
+    
+    <a name="note-60"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-15" title="2013-03-15 15:09">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154688-notes"><p>Camelia M wrote:</p>
+
+
+<blockquote>
+
+	<p>Patch 16 seems to work fine for me. Thank you</p>
+
+
+</blockquote>
+
+	<p>Actually, after I apply this patch, localizations for jfmulticontent stop working. Not sure if this is the only one that stops working, but this is the first I noticed.</p></div>
+  </div>
+  
+
+  <div id="change-155743" class="journal has-notes">
+    <h4><a href="17354.html#note-61" class="journal-link">#61</a>
+    
+    <a name="note-61"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5379">Camelia M</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-22" title="2013-03-22 16:31">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-155743-notes"><p>Camelia M wrote:</p>
+
+
+<blockquote>
+
+	<p>Camelia M wrote:</p>
+
+
+<blockquote>
+
+	<p>Patch 16 seems to work fine for me. Thank you</p>
+
+
+</blockquote>
+
+	<p>Actually, after I apply this patch, localizations for jfmulticontent stop working. Not sure if this is the only one that stops working, but this is the first I noticed.</p>
+
+
+</blockquote>
+
+	<p>I forgot to mention that I did replace getRecordOverlay function call with getRecordOverlayWithFallback</p></div>
+  </div>
+  
+
+  <div id="change-169360" class="journal has-notes">
+    <h4><a href="17354.html#note-62" class="journal-link">#62</a>
+    
+    <a name="note-62"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-14" title="2013-06-14 01:43">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-169360-notes"><p>Patch set 17 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/9937">https://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-169361" class="journal has-notes">
+    <h4><a href="17354.html#note-63" class="journal-link">#63</a>
+    
+    <a name="note-63"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-14" title="2013-06-14 02:04">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-169361-notes"><p>Patch set 18 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/9937">https://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-169466" class="journal has-notes">
+    <h4><a href="17354.html#note-64" class="journal-link">#64</a>
+    
+    <a name="note-64"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-15" title="2013-06-15 01:39">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-169466-notes"><p>Patch set 19 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/9937">https://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-172342" class="journal has-notes">
+    <h4><a href="17354.html#note-65" class="journal-link">#65</a>
+    
+    <a name="note-65"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-07" title="2013-07-07 01:10">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-172342-notes"><p>Patch set 20 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/9937">https://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-177322" class="journal has-notes">
+    <h4><a href="17354.html#note-66" class="journal-link">#66</a>
+    
+    <a name="note-66"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-08-11" title="2013-08-11 19:56">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-177322-notes"><p>Patch set 21 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/9937">https://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-183792" class="journal has-details">
+    <h4><a href="17354.html#note-67" class="journal-link">#67</a>
+    
+    <a name="note-67"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-23" title="2013-09-23 13:53">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Assigned To</strong> deleted (<strike><i>Stefan Galinski</i></strike>)</li>
+      
+       <li><strong>Is Regression</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-184726" class="journal has-notes">
+    <h4><a href="17354.html#note-68" class="journal-link">#68</a>
+    
+    <a name="note-68"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38784">Marius S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-01" title="2013-10-01 09:45">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-184726-notes"><p>Has anyone a patch for TYPO3 6.0.4? Patch set 21 isn't working in this version.</p></div>
+  </div>
+  
+
+  <div id="change-224222" class="journal has-notes">
+    <h4><a href="17354.html#note-69" class="journal-link">#69</a>
+    
+    <a name="note-69"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4703">Marc Steiner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-15" title="2014-07-15 17:41">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224222-notes"><p>Stefan Regniet wrote:</p>
+
+
+<blockquote>
+
+	<p>Hi together. Just tested the patch on a page with > 40 languages (on a patched 4.7.2). Works fine so far.<br />But it seems that it ignores l18n_cfg setting (2) in page-record (Hide page if no translation is available). <br />So I don't have any chance to explicitly hide certain pages that I don't want to show in fallback.</p>
+
+
+	<p>That one should be patched in t3lib_page imho... Thanks :)</p>
+
+
+</blockquote>
+
+	<p>Hi all,<br />we applied the patch set 21 to our 6.2 installation, but we also had the problem, that it ignores the l18n_cfg setting as mentioned above.</p>
+
+
+	<p>To fix this(at least for the basic HMENU) we changed line number 975 in the file <em>typo3/sysext/frontend/Classes/ContentObject/Menu/AbstractMenuContentObject.php</em>.</p>
+
+
+	<p>In function <em>filterMenuPages</em> after:<br /><pre>if ($GLOBALS['TSFE']-&gt;sys_language_uid &#38;&#38; GeneralUtility::hideIfNotTranslated($data['l18n_cfg'])) {</pre><br /><pre>
+-       if (!$data['_PAGES_OVERLAY']) {
++       if (!$data['_PAGES_OVERLAY'] || ($data['_PAGES_OVERLAY_LANGUAGE'] != $data['sys_language_uid'])) {
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-230769" class="journal has-notes">
+    <h4><a href="17354.html#note-70" class="journal-link">#70</a>
+    
+    <a name="note-70"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39652">Wolfgang Hamster</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-23" title="2014-09-23 08:48">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230769-notes"><p>why this bug isn't resolved in typo3 6.2 yet?<br />is there any extension to fix it?</p></div>
+  </div>
+  
+
+  <div id="change-230771" class="journal has-notes">
+    <h4><a href="17354.html#note-71" class="journal-link">#71</a>
+    
+    <a name="note-71"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-23" title="2014-09-23 09:06">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230771-notes"><p>There is a patch under review. Maybe that works for you? But it was mentioned in the review that somebody still had an issue with it. And currently it seems to be handled as a "feature" (won't have this for 6.2 then unfortunately) and not as a bugfix.</p></div>
+  </div>
+  
+
+  <div id="change-231764" class="journal has-notes">
+    <h4><a href="17354.html#note-72" class="journal-link">#72</a>
+    
+    <a name="note-72"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-02" title="2014-10-02 15:24">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231764-notes"><p>Patch set 22 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-231781" class="journal has-notes">
+    <h4><a href="17354.html#note-73" class="journal-link">#73</a>
+    
+    <a name="note-73"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-02" title="2014-10-02 18:25">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231781-notes"><p>Patch set 23 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-232174" class="journal has-notes">
+    <h4><a href="17354.html#note-74" class="journal-link">#74</a>
+    
+    <a name="note-74"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3545">Marc Hirdes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 16:59">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232174-notes"><p>So ist there any current workaround for TYPO3 6.2?</p></div>
+  </div>
+  
+
+  <div id="change-232180" class="journal has-notes">
+    <h4><a href="17354.html#note-75" class="journal-link">#75</a>
+    
+    <a name="note-75"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 17:41">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232180-notes"><p>Not really, but you can apply the patch yourself in 6.2 if you know how to do that. AFAIK there are not many differences, so you shouldn't get any errors.</p></div>
+  </div>
+  
+
+  <div id="change-232219" class="journal has-notes">
+    <h4><a href="17354.html#note-76" class="journal-link">#76</a>
+    
+    <a name="note-76"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3545">Marc Hirdes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-08" title="2014-10-08 08:38">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232219-notes"><p>But then I can't update the core when a new minor-version is published. Aren't there any other solutions? Isn't there any bugfix for 6.2?</p></div>
+  </div>
+  
+
+  <div id="change-232230" class="journal has-notes">
+    <h4><a href="17354.html#note-77" class="journal-link">#77</a>
+    
+    <a name="note-77"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-08" title="2014-10-08 10:48">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232230-notes"><p>Marc Hirdes wrote:</p>
+
+
+<blockquote>
+
+	<p>But then I can't update the core when a new minor-version is published.</p>
+
+
+</blockquote>
+
+	<p>You can always re-apply the patch on update. In case you are using Composer the <a href="../../external.html?link=https://packagist.org/packages/netresearch/composer-patches-plugin" class="external">composer-patches-plugin</a> might prove useful here.</p>
+
+
+<blockquote>
+
+	<p>Aren't there any other solutions? Isn't there any bugfix for 6.2?</p>
+
+
+</blockquote>
+
+	<p>Since the change has not been merged yet, there cannot be a bugfix release including it.</p></div>
+  </div>
+  
+
+  <div id="change-232239" class="journal has-notes">
+    <h4><a href="17354.html#note-78" class="journal-link">#78</a>
+    
+    <a name="note-78"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3545">Marc Hirdes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-08" title="2014-10-08 11:51">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232239-notes"><p>I don't use composer. For my local distribution it is only possible to set all changes manually in files?</p>
+
+
+	<p>Is it possible, that the next bugfix release include it?</p></div>
+  </div>
+  
+
+  <div id="change-232240" class="journal has-notes">
+    <h4><a href="17354.html#note-79" class="journal-link">#79</a>
+    
+    <a name="note-79"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-08" title="2014-10-08 11:58">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232240-notes"><p>Marc Hirdes wrote:</p>
+
+
+<blockquote>
+
+	<p>I don't use composer. For my local distribution it is only possible to set all changes manually in files?</p>
+
+
+</blockquote>
+
+	<p>Not necessarily if you use the patch command. :-)</p></div>
+  </div>
+  
+
+  <div id="change-232253" class="journal has-notes">
+    <h4><a href="17354.html#note-80" class="journal-link">#80</a>
+    
+    <a name="note-80"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3545">Marc Hirdes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-08" title="2014-10-08 14:47">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232253-notes"><p>OK I used the patch command. First it looks ok. But RealURL returns also a bad URL and another Extension provides also the wrong title. In this <a class="external" href="18062.html">https://forge.typo3.org/issues/18062</a> Issu is said, that RealURL expects the correct Lang-Param from core.</p>
+
+
+	<p>Am I the only one with this problem? I meen in many multilanguage pages I think they would have different fallbacks for different languages (austria -> german, us -> uk etc.).</p>
+
+
+	<p>Are there experiences with other extensions? And will this patch include in the Core maybe? Thanks a lot for support.</p></div>
+  </div>
+  
+
+  <div id="change-233011" class="journal has-notes">
+    <h4><a href="17354.html#note-81" class="journal-link">#81</a>
+    
+    <a name="note-81"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-16" title="2014-10-16 18:59">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-233011-notes"><p>I found a fix, but realurl can't handle the resulting urls with fallback names inside them. The root cause is that sometimes getPageOverlay is called with an explicit language parameter and this means to the function that the user want's exactly this language. Changing this behaviour will automatically be a breaking change.</p></div>
+  </div>
+  
+
+  <div id="change-233033" class="journal has-notes">
+    <h4><a href="17354.html#note-82" class="journal-link">#82</a>
+    
+    <a name="note-82"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-16" title="2014-10-16 23:56">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-233033-notes"><p>Patch set 24 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-233354" class="journal has-notes">
+    <h4><a href="17354.html#note-83" class="journal-link">#83</a>
+    
+    <a name="note-83"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3545">Marc Hirdes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-21" title="2014-10-21 10:03">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-233354-notes"><p>To handle RealUrl I translated every page. So the title of the page is correct and also the URL. My last problem is with Gridelemnts. When I have an element inside of antother element the fallback is the default language. Other elements are shown correct in the fallback language.</p></div>
+  </div>
+  
+
+  <div id="change-233380" class="journal has-notes">
+    <h4><a href="17354.html#note-84" class="journal-link">#84</a>
+    
+    <a name="note-84"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3545">Marc Hirdes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-21" title="2014-10-21 14:12">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-233380-notes"><p>OK, when I change in Gridelements.php line 161 getRecordOverlay to getRecordOverlayWithFallback it works fine.</p>
+
+
+	<p>$child = $GLOBALS['TSFE']->sys_page->getRecordOverlayWithFallback('tt_content', $child, $GLOBALS['TSFE']->sys_language_content, $GLOBALS['TSFE']->sys_language_contentOL);</p>
+
+
+	<p>Maybe the funtion getRecordOverlay can allways get the fallback, if no translation is given?</p></div>
+  </div>
+  
+
+  <div id="change-235269" class="journal has-notes">
+    <h4><a href="17354.html#note-85" class="journal-link">#85</a>
+    
+    <a name="note-85"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-05" title="2014-11-05 17:22">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235269-notes"><p>Patch set 25 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-235300" class="journal has-notes">
+    <h4><a href="17354.html#note-86" class="journal-link">#86</a>
+    
+    <a name="note-86"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-05" title="2014-11-05 20:45">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235300-notes"><p>Patch set 26 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-235302" class="journal has-notes">
+    <h4><a href="17354.html#note-87" class="journal-link">#87</a>
+    
+    <a name="note-87"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-05" title="2014-11-05 20:53">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235302-notes"><p>Patch set 27 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-243042" class="journal has-notes">
+    <h4><a href="17354.html#note-88" class="journal-link">#88</a>
+    
+    <a name="note-88"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-03" title="2015-01-03 11:47">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-243042-notes"><p>Patch set 28 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-264538" class="journal has-notes">
+    <h4><a href="17354.html#note-89" class="journal-link">#89</a>
+    
+    <a name="note-89"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-04" title="2015-07-04 03:01">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-264538-notes"><p>Patch set 29 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-264539" class="journal has-notes">
+    <h4><a href="17354.html#note-90" class="journal-link">#90</a>
+    
+    <a name="note-90"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-04" title="2015-07-04 03:06">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-264539-notes"><p>Patch set 30 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-264540" class="journal has-notes">
+    <h4><a href="17354.html#note-91" class="journal-link">#91</a>
+    
+    <a name="note-91"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-04" title="2015-07-04 03:07">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-264540-notes"><p>Patch set 31 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9937">http://review.typo3.org/9937</a></p></div>
+  </div>
+  
+
+  <div id="change-268476" class="journal has-details">
+    <h4><a href="17354.html#note-92" class="journal-link">#92</a>
+    
+    <a name="note-92"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-25" title="2015-07-25 12:49">10 days</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Frontend</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Markus Klein</i></li>
+      
+       <li><strong>PHP Version</strong> deleted (<strike><i>4.3</i></strike>)</li>
+      
+       <li><strong>Sprint Focus</strong> set to <i>Remote Sprint</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-17354-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/17354.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="17354.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/17354 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:52:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

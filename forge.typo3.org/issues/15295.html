@@ -1,0 +1,1150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/15295 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:44:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #15295: Unable to login into BE when using MySQL 5+ - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/15295.atom" rel="alternate" title="Core - Bug #15295: Unable to login into BE when using MySQL 5+" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (4)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/48">Stefano Cecere</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/235">Erik Svendsen</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-15295-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #15295</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Unable to login into BE when using MySQL 5+</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/29081">acngetunik.com </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-12-19" title="2005-12-19 16:08">over 9 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-08-12" title="2006-08-12 14:21">almost 9 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2005-12-19</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>3.8.1</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Existing and running webserver environment:<br />Win XP Professional SP2<br />Apache 2.0.54 Win32<br />PHP 5.0.4 OR PHP 4.4.2<br />MySQL 5.0.16-nt</p>
+
+
+	<p>Tried TYPO3 versions:<br />DummyPackage 3.8.1<br />QuickStart 3.8.1</p>
+
+
+	<p>Installation ended within that it was unpossible to login into the BE using the default admin username (admin) and password (password) although this data are within the db table be_users (checked by using the MySQL client).</p>
+
+
+	<p>Searches within forums and the internet has shown, that ther must be a problem using MySQL 5.</p>
+
+
+	<p>THIS SHOULD BE WRITEN ON THE SYSTEM REQUIREMENTS LIST UNDER <a class="external" href="../../external.html?link=http://typo3.org/1275.0.html">http://typo3.org/1275.0.html</a>!!!</p>
+
+
+	<p>(issue imported from #M2059)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6576/bug-2059.patch" class="icon icon-attachment">bug-2059.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6576/bug-2059.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(3 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2006-01-19 20:48</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-1381">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="15675" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="15675.html" class="issue status-9 priority-2 closed">Bug #15675</a>: Backend Login Problem
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-02-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12921">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54883" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="54883.html" class="issue status-7 priority-1 closed">Task #54883</a>: Document that TYPO3 CMS is not compatible with MySQL stri...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-01-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1334">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="15292" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="15292.html" class="issue status-9 priority-2 closed">Bug #15292</a>: login to the BE is not possible on default debian 3.1 sys...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2005-12-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1359">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="14848" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="14848.html" class="issue status-9 priority-2 closed">Bug #14848</a>: utf-8 data gets converted to utf-8 again under MySQL 4.1.11
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2005-07-05</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2468">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="18821" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="18821.html" class="issue status-9 priority-2 closed child">Bug #18821</a>: Installer will not create any be_users if unsupported sql...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2008-05-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1541">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="16809" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="16809.html" class="issue status-9 priority-1 closed">Bug #16809</a>: FIX FOR Typo3 basic tables definition not compliant with ...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-12-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1343">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="14354" /></td>
+<td class="subject">duplicates 
+    Core - 
+    <a href="14354.html" class="issue status-9 priority-2 closed">Bug #14354</a>: MySQL gt 4.1 no default value for auto inc
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2004-10-12</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-3122">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19239" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="19239.html" class="issue status-7 priority-2 closed">Bug #19239</a>: Cannot log in to backend
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2008-08-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/15295/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/15295/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=15295&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-39615" class="journal has-notes">
+    <h4><a href="15295.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/399">Martin Kutschker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-12-19" title="2005-12-19 16:12">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39615-notes"><p>Funny guy. Either your setup is wrong or Mysql made again an incompatible change.</p>
+
+
+	<p>If you cannot give any hint why this is broken, please, give at least pointer to thise "forums" and the "internet" where this problem has been discussed.</p>
+
+
+	<p>SHOUTING will get us nowhere, it just leaves a bad taste.</p></div>
+  </div>
+  
+
+  <div id="change-39616" class="journal has-notes">
+    <h4><a href="15295.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29081">acngetunik.com </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-12-19" title="2005-12-19 16:43">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39616-notes"><p>Dear Martin</p>
+
+
+	<p>I found some hints under:<br /><a class="external" href="../../external.html?link=http://typo3.org/documentation/mailing-lists/english-main-list-archive/thread/110185765/?tx_maillisttofaq_pi1%5Bsword%5D=BE%20login&amp;tx_maillisttofaq_pi1%5Banswered_only%5D=0&amp;tx_maillisttofaq_pi1%5Bmode%5D=1">http://typo3.org/documentation/mailing-lists/english-main-list-archive/thread/110185765/?tx_maillisttofaq_pi1%5Bsword%5D=BE%20login&#38;tx_maillisttofaq_pi1%5Banswered_only%5D=0&#38;tx_maillisttofaq_pi1%5Bmode%5D=1</a><br />All of the good advices within this tread showed me, that there must be a problem using TYPO3 and the MySQL server 5+ (or already 4.1+?).</p>
+
+
+	<p>It may be, that the problem is placed within the corner of MySQL, that's right.<br />Excuse my "shouting", but i'm angrily, because i checked the official TYPO3 system requirements under: <a class="external" href="../../external.html?link=http://typo3.org/1275.0.html">http://typo3.org/1275.0.html</a> and there wasn't any note, that i should use MySQL XYZ instead of a.e. MySQL 5+, that's all...</p>
+
+
+	<p>Greetings</p></div>
+  </div>
+  
+
+  <div id="change-39617" class="journal has-notes">
+    <h4><a href="15295.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29081">acngetunik.com </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-12-19" title="2005-12-19 18:08">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39617-notes"><p>Dear Martin</p>
+
+
+	<p>In the meantime i installed MySQL 4.0.26 on the same server and tried the TYPO3 environment SUCCESSFULLY WITHIN MINUTES - so it must be a problem between TYPO3 3.8.1 and MySQL ?4.1? or MySQL 5.+.</p>
+
+
+	<p>One thing what i can clearly say/trace back/verify: SQL statements used a.e. within the SQL script file /typo3conf/database.sql which are using the statement:<br />...<br />uid int(11) unsigned DEFAULT '0' NOT NULL auto_increment<br />...<br />doesn't work under MySQL 5+ (maybe also not under 4.1+) because it's not allowed to define a default value when defining auto_increment.<br />It should be:<br />...<br />uid int(11) unsigned NOT NULL auto_increment<br />...</p>
+
+
+	<p>So it would be nice if a corresponding statement can be found under the system requirements list - i guess ;-).</p>
+
+
+	<p>Greetings</p></div>
+  </div>
+  
+
+  <div id="change-39618" class="journal has-notes">
+    <h4><a href="15295.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-12-28" title="2005-12-28 02:14">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39618-notes"><p>Meanwhile the auto_increment vs. default issue has been resolved. Is this bug still an issue?</p></div>
+  </div>
+  
+
+  <div id="change-39619" class="journal has-notes">
+    <h4><a href="15295.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29081">acngetunik.com </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-12-28" title="2005-12-28 09:50">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39619-notes"><p>Dear Karsten</p>
+
+
+	<p>In the meantime i'm using TYPO3 with MySQL 4.0.26 as a testsystem. This system is now "live" for our development team, so that i can not easy switch / reinstall the database or TYPO3 environment, unfortunately.</p>
+
+
+	<p>As i recognized on an other, own PHP/MySQL project, there are many subtle changes at MySQL 4+ -> 5+ at the level of the SQL syntax. So maybe it would be best practice if you make your own tests...</p>
+
+
+	<p>In my opinion, if any as the commented problem occurs, it should be a corresponding notice at the official TYPO3 system requirements page.</p>
+
+
+	<p>Greetings</p></div>
+  </div>
+  
+
+  <div id="change-39620" class="journal has-notes">
+    <h4><a href="15295.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22792">Hans-Georg Althoff</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-12-31" title="2005-12-31 17:51">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39620-notes"><p>Hi together,</p>
+
+
+	<p>I am trying to install the Beta 4.0 together with the dummy package.<br />Before I had updated my pht ->5.1.1 and mySQL  -> 5.0.17.<br />I am running typo3 under Win Server 2003 and IIS.</p>
+
+
+	<p>I got the following errors:</p>
+
+
+	<p>1. Update Tables<br />After updating the tables, I got long list of Alter Tables, which I can't execute successful, because there is nothing to change.<br />The only differnces are, that in the current values the "NOT NULL" is missing. But if I access the tables via phpmyAdmin, the settings are correct and the NOT NULL is already set.</p>
+
+
+	<p>2. BE Login<br />I am also not able to log in in the BE.<br />Not wit user and password and also not with a new created user and password via Database Analyser->create new "admin" user.</p>
+
+
+	<p>So my experiences simular to acn.<br />In the next step I will switch back to my old mySQL 4.0.x to checkt it.</p>
+
+
+	<p>Maybe this helps,<br />Hans-Georg.</p></div>
+  </div>
+  
+
+  <div id="change-39621" class="journal has-notes">
+    <h4><a href="15295.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22792">Hans-Georg Althoff</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-01" title="2006-01-01 14:17">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39621-notes"><p>Hi,</p>
+
+
+	<p>I went back to mySQL 4.1.12 nt.<br />The problems with BE login and the NOT NULL by update tables are gone.<br />I only still have a problem with changing a table varchar to char. Also via phpmyadmin it doesn't work.<br />But I also did not find any table with set to CHAR. All set to VARCHAR.</p>
+
+
+	<p>Maybe a problem of the Beta 4.0 Dummy package.</p>
+
+
+	<p>So finally it seems to be a problem with mySQL 5.x !!!!</p>
+
+
+	<p>Greetings,<br />Hans-Georg.</p></div>
+  </div>
+  
+
+  <div id="change-39622" class="journal has-notes">
+    <h4><a href="15295.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/399">Martin Kutschker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-01" title="2006-01-01 18:59">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39622-notes"><p>Hans, do you have a proper DB connectoin? Mysql changed the way it stored the password for the Mysql users. You cannot simply upgrade from 4.0 or 3.23 without either upgrading the Mysql user accounts or starting Mysql with the compatibilty switch (see Mysql docs).</p></div>
+  </div>
+  
+
+  <div id="change-39623" class="journal has-notes">
+    <h4><a href="15295.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-02" title="2006-01-02 13:55">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39623-notes"><p>"DEFAULT '0' NOT NULL auto_increment" does not work starting from MySQL 4.1. See <a class="external" href="../../external.html?link=http://bugs.mysql.com/bug.php?id=392">http://bugs.mysql.com/bug.php?id=392</a></p></div>
+  </div>
+  
+
+  <div id="change-39624" class="journal has-notes">
+    <h4><a href="15295.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22792">Hans-Georg Althoff</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-05" title="2006-01-05 10:55">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39624-notes"><p>Hi Dmitry,</p>
+
+
+	<p>thanks for your input.</p>
+
+
+	<p>But if I get this problem, does it meen, that this correction is not implemented in Beta 4 and I should report it as Beta 4 Bug?</p>
+
+
+	<p>Regards,<br />Hans-Georg.</p></div>
+  </div>
+  
+
+  <div id="change-39625" class="journal has-notes">
+    <h4><a href="15295.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22792">Hans-Georg Althoff</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-05" title="2006-01-05 12:04">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39625-notes"><p>Hi Martin,</p>
+
+
+	<p>due to the fact that I want start from scratch, I did not a Upgrade but instead I rebuild a new mySQL.</p>
+
+
+	<p>Therefore I schould not have any upgrade problems.<br />Do you agree?</p>
+
+
+	<p>Maybe the incompatibily issues from mySQL 5.015 created some problems.</p>
+
+
+	<p>Currently I want to use my time to get more familiar with typo3 and therefore I will currently stay with mySQL 4.1.x.</p>
+
+
+	<p>Regards,<br />Hans-Georg.</p></div>
+  </div>
+  
+
+  <div id="change-39626" class="journal has-notes">
+    <h4><a href="15295.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29081">acngetunik.com </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-05" title="2006-01-05 12:54">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39626-notes"><p>Dear H-G</p>
+
+
+	<p>As Dmitry Dulepov reported (and that's what i can confirm), there is a problem using TYPO3 with a MySQL 4.1+ database within the background at the level of the used SQL syntax which is executed by TYPO3 (auto_increment).</p>
+
+
+	<p>My opinion:<br />Be aware / don't use a MySQL DB higher then 4.0.x as the TYPO3 backend database, until a corresponding batch/fix at the level of the by TYPO3 used SQL syntax is available.</p>
+
+
+	<p>Again:<br />Unfortunately a corresponding remark can not be found at the TYPO3 system requirements list.</p>
+
+
+	<p>Greetings</p></div>
+  </div>
+  
+
+  <div id="change-39627" class="journal has-notes">
+    <h4><a href="15295.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-05" title="2006-01-05 15:06">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39627-notes"><p>Again: I am using MySQL 4.1.15 here with CVS/beta1 and have no problems with auto_increment and DEFAULT, as a fix for this has been added quite a while ago.</p>
+
+
+	<p>@Hans-Georg: a char vs. varchar problem might indeed exist, because MySQL does silent column specification changes (see MySQL manual). But: this is a cosmetic problem, not a bug, and should be solved by changing the field definition in the corresponding ext_tables.sql file.</p>
+
+
+	<p>As for MySQL 5: I have not yet tried this, but will do so ASAP.</p></div>
+  </div>
+  
+
+  <div id="change-39628" class="journal has-notes">
+    <h4><a href="15295.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/399">Martin Kutschker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-05" title="2006-01-05 15:20">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39628-notes"><p>Karsten, the report was about 3.8.1.</p>
+
+
+	<p>Are those changes in 3.8.1 or are they only in CVS?</p></div>
+  </div>
+  
+
+  <div id="change-39629" class="journal has-notes">
+    <h4><a href="15295.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-05" title="2006-01-05 15:40">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39629-notes"><p>Martin, thanks for pointing that out - I am so focused on 4.0, that I didn't even assume someone would post a bug on 3.8.1 in December. :)</p>
+
+
+	<p>See bug <a href="14354.html" class="issue status-9 priority-2 closed" title="MySQL gt 4.1 no default value for auto inc (Closed)">#14354</a> to see when this was fixed - the ChangeLog says:<br /> ---- snip ----<br />2004-11-16  Ingmar Schlecht  &lt;<a class="email" href="mailto:ingmar@typo3.org">ingmar@typo3.org</a>&gt;
+ * Fixed bug #1435416: Removing spurious DEFAULT '0' in SQL create table statements of uid columns right before they're executed in t3lib_install.<br /> ---- snip ----</p>
+
+
+	<p>3.8.0 was released on May 23rd 2005, the last update to that bug was May 8th - so this was (seemed to be?) fixed in 3.8.0 already.</p></div>
+  </div>
+  
+
+  <div id="change-39630" class="journal has-notes">
+    <h4><a href="15295.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/235">Erik Svendsen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-06" title="2006-01-06 18:05">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39630-notes"><p>I give some comment to this bug, after done some testing with different version of MySQL 5.0.x. Rest of my configuration is Apache 2.0.54, PHP 5.1beta, Win XP SP2. Using TYPO3 3.8.0, 3.8.1, 4.0beta.</p>
+
+
+	<p>My first comment! I think there are two different issues been put on the table here. One is the problem with BE-login, and the other differences in Compare tables in install tool.</p>
+
+
+	<p>When it comes to problem with BE-login I have no problem login with MySQL 5.0.12beta, but can't login with 5.0.13rc and 5.0.18. With the two later it isn't possible to make new admin users in install tool. So maybe there is a change in MySQL from 5.0.12 to 5.0.13 who makes the problem.</p>
+
+
+	<p>I was doing an ugrade from MySQL from 5.0.12 to 5.0.13 without logout from BE (Closing the browser) Then I had no problem open the backend. Logged out, and no login possible.</p>
+
+
+	<p>The problem regarding bug 416 isn't relevant here. As Karsten point out it's solved in version 3.8.0. I'm running 3 servers with TYPO3 3.8.1 and/or 4.0beta and MySQL 4.1.14 and 4.1.16. No compare problems here.</p>
+
+
+	<p>The mismatch in compare look like this in all 5.0.x versions of MySQL i have tested. The same for TYPO3 3.8.0, 3.8.1 an 4.0beta. Same problem</p>
+
+
+	<p>ALTER TABLE be_groups CHANGE uid uid(11) unsigned NOT NULL auto_increment;<br />Current value: int(11) unsigned auto_increment</p>
+
+
+	<p>And as I can see it is the same for every table and field, but if I check the tables with MySQL Administrator NOT NULL is checked.</p>
+
+
+	<p>But I can't tell anything about how to solve it.</p></div>
+  </div>
+  
+
+  <div id="change-39631" class="journal has-notes">
+    <h4><a href="15295.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31057">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-07" title="2006-01-07 18:04">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39631-notes"><p>I use it with MySQL 5+ and i have no problems, so the problem must be in your configuration.<br />It works like it worked before with MySQL 4.1 or older, only problem ist the default, but only as warning, not as error.</p></div>
+  </div>
+  
+
+  <div id="change-39632" class="journal has-notes">
+    <h4><a href="15295.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/235">Erik Svendsen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-08" title="2006-01-08 18:29">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39632-notes"><p>I can give some more information on the problem.</p>
+
+
+	<p>If I install/configure MySQL with utf8 as default charset i can upgrade MySQL from 4.1.16 to 5.0.12 to 5.0.13 to 5.0.18 without problem.</p>
+
+
+	<p>If I install/configure MySQL with latin1 as default charset I can't login as admin in backend in 5.0.13 and 5.0.18.</p>
+
+
+	<p>I have tested with TYPO3 3.8.1 Quickstart. I can't confirm that different charset are the problem, more testing is needed. I haven't had opportunity to test with more than XP SP2, PHP 5.1rc1 and PHP 5.0.4, so it's impossible to isolate the problem at this time.</p>
+
+
+	<p>It should be checked with user who have testservers with MySQL 5.0.x (works and not works), following.<br />- PHP version.<br />- MySQL version (5.0.x). There are differences form 5.0.12 to 5.0.18<br />- Used default charset in MySQL</p></div>
+  </div>
+  
+
+  <div id="change-39633" class="journal has-notes">
+    <h4><a href="15295.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31057">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-09" title="2006-01-09 10:24">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39633-notes"><p>ok, then i will report my working configuration (on Windows)</p>
+
+
+	<p>- MySQL Version 5.0.7-beta-nt-log<br />character_set_client latin1 <br />character_set_connection latin1 <br />character_set_database latin1 <br />character_set_results latin1 <br />character_set_server latin1 <br />character_set_system utf8 <br />collation_connection latin1_swedish_ci <br />collation_database latin1_swedish_ci <br />collation_server latin1_swedish_ci</p>
+
+
+	<p>PHP 4.3.10 and 5 (no problems occur depending on PHP Version)</p></div>
+  </div>
+  
+
+  <div id="change-39634" class="journal has-notes">
+    <h4><a href="15295.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34580">Manuel Rüter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-09" title="2006-01-09 19:52">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39634-notes"><p>I have the same problems as decribed earlier. My configuration is WinXP SP2 + Apache 2.0.55 + PHP 5.1.1 + MySQL 5.0.18<br />My SQL Server has been configured for charset latin1 so I reinstalled it and choose utf8 as default charset. After reinstalling Typo3 4.0 the problem persists. The install tool can import the database.sql file without problems and everything looks perfect but when you open the backend all login attempts fail.</p>
+
+
+	<p>The bigest mystery to me is that I can't create a new admin user in the install tool. When I try, the tool gives a sucessfull message but nothing apears in the database. If the insert query has failed normaly an error message should show up but nothing happens at all. Does MySQL have an error log file or something similar for debuging?</p>
+
+
+	<p>A friend of mine is working with MySQL 5.0.18 and typo3 under linux and everything works. Can anybody confirm that it is a windows only issue?</p></div>
+  </div>
+  
+
+  <div id="change-39635" class="journal has-notes">
+    <h4><a href="15295.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34580">Manuel Rüter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-10" title="2006-01-10 18:10">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39635-notes"><p>Hallo at all</p>
+
+
+	<p>I think I found a solution for the issue. I was confused about the fact that no new admins are created when requested in the install tool. I activated the query log on the server, copied the insert query for the new be_admin from there and executed it i phpmyadmin. The query fails because no usergroup value is given and a default value is not set for the field.<br />Looks like mysql 5.0 sets very high standards for correct sql syntax. So i remembered that the mysql setup wizard asked me if i would like to enable strict mode and i had selected yes. It seems like typo3 does not meet the requirements of strict mode at the moment. More information can be found here:<br /><a class="external" href="../../external.html?link=http://dev.mysql.com/doc/refman/5.0/en/server-sql-mode.html">http://dev.mysql.com/doc/refman/5.0/en/server-sql-mode.html</a></p>
+
+
+	<p>I finaly edited the my.ini of the server and set the sql mode to MYSQL4. After a restart of the service everything works now, except for the phantom diverences reported in the database compare mentioned here earlier.</p>
+
+
+	<p>In the next release the typo3 team should check all sql querys for strict mode compatibility.</p></div>
+  </div>
+  
+
+  <div id="change-39636" class="journal has-notes">
+    <h4><a href="15295.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/48">Stefano Cecere</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-10" title="2006-01-10 19:28">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39636-notes"><p>great, Manuel!<br />i updated an application (non typo) of mine to mysql 5 and had to recode some queries, yes..</p></div>
+  </div>
+  
+
+  <div id="change-39637" class="journal has-notes">
+    <h4><a href="15295.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-10" title="2006-01-10 22:45">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39637-notes"><p>OK, so what is the SQL mode you are using when it doesn't work? What is the output of "SELECT @@sql_mode;"?</p></div>
+  </div>
+  
+
+  <div id="change-39638" class="journal has-notes">
+    <h4><a href="15295.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34580">Manuel Rüter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-11" title="2006-01-11 20:51">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39638-notes"><p>Dear Michael,</p>
+
+
+	<p>the sql_mode string of the server had been as follows: STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</p>
+
+
+	<p>This is the default setting which is recomended by the setup wizard of mysql 5.0.18 for windows. In this mode INSERT querys must include values for all fields or the omited fields must have default values. Otherwise the query is rejected. This is the reason why no admin can be created with the install tool. I guess the BE login fails because the INSERT for the be_sessions table also fails. If MYSQL4 is used as sql_mode string everything works.</p></div>
+  </div>
+  
+
+  <div id="change-39639" class="journal has-notes">
+    <h4><a href="15295.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29081">acngetunik.com </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-13" title="2006-01-13 09:17">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39639-notes"><ol>
+	<li>SELECT @@sql_mode;</li>
+	</ol>
+
+
+<blockquote><blockquote>
+
+	<p>OK, so what is the SQL mode you are using when it doesn't work? What is the output of "SELECT @@sql_mode;"? <<</p>
+
+
+</blockquote></blockquote>
+
+	<p>As shown at the starting note, i tried TYPO3 DummyPackage 3.8.1 and QuickStart 3.8.1 with a MySQL DB 5.0.16 at the background (which i use in the meantime also for other, own applications).</p>
+
+
+	<p>Executing the presented SQL query returns:<br />STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</p>
+
+
+	<ol>
+	<li>About the 'character-set issue':<br />I'm not so shure about if it's a problem by the character-set setting, because within my used my.ini it's defined:</li>
+	</ol>
+
+
+	<p>- CLIENT SECTION<br />[client]<br />...<br />[mysql]<br />default-character-set=utf8</p>
+
+
+	<p>- SERVER SECTION<br />[mysqld]<br />...<br />default-character-set=utf8</p>
+
+
+	<p>I'm totally confused ... !!</p></div>
+  </div>
+  
+
+  <div id="change-39640" class="journal has-notes">
+    <h4><a href="15295.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/34580">Manuel Rüter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-13" title="2006-01-13 09:43">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39640-notes"><p>Dear  <a class="email" href="mailto:acn@getunik.com">acn@getunik.com</a>,</p>
+
+
+	<p>your confusion can be solved. As I posted before your sql-mode setting is the reason why it does not work. You have to open your my.ini, find the line with the parameter sql-mode=STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION and change it to sql-mode=MYSQL4. Then restart the mysql sevice and typo3 should work. The character set seems not to have an effect on the issue.</p></div>
+  </div>
+  
+
+  <div id="change-39641" class="journal has-notes">
+    <h4><a href="15295.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29081">acngetunik.com </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-13" title="2006-01-13 10:01">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39641-notes"><p>Dear Manuel</p>
+
+
+	<p>Thanks a lot for your help!! I want to test-it later (probably next week...).</p>
+
+
+	<p>Unfortunately we use the MySQL DB 5.0.16 as a database server which supports other applications to. Several applications take advantage of extended MySQL 5+ features (stored procedures), so it woud not be possible to switch back to the "sql-mode=MYSQL4", i'm right?</p>
+
+
+	<p>Anyway, thanks a lot for your "real" help!!</p>
+
+
+	<p>Greetings</p></div>
+  </div>
+  
+
+  <div id="change-39642" class="journal has-notes">
+    <h4><a href="15295.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/399">Martin Kutschker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-13" title="2006-01-13 10:19">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39642-notes"><p>As a workaround you can execute a SET SESSION sql_mode='MYSQL4' after the connection is made to the Mysql server if you hack it into t3lib_db.</p>
+
+
+	<p>Anyway MYSQL4 mode doesn't turn off stored procedures etc It simply has a more relaxed syntax (as opposed to to ANSI SQL)!</p>
+
+
+	<p>Manuel has posted a link to the Mysql docs which describe the modes. Use it.</p></div>
+  </div>
+  
+
+  <div id="change-39643" class="journal has-notes">
+    <h4><a href="15295.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-15" title="2006-01-15 23:56">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39643-notes"><p>I think the workaround mentioned by Masi is the way to go.<br />Does anything speak against changing this in CVS core?</p></div>
+  </div>
+  
+
+  <div id="change-39644" class="journal has-notes">
+    <h4><a href="15295.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-16" title="2006-01-16 19:55">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39644-notes"><p>The solution suggested by Masi would be possible, but should probably only be used when running on MySQL5, to avoid potential problems when 4 or even 3.23.x is used.</p>
+
+
+	<p>But if we decide to drop the NOT NULL alltogether, this would become a non-issue (see thread on core list).</p></div>
+  </div>
+  
+
+  <div id="change-39645" class="journal has-notes">
+    <h4><a href="15295.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/399">Martin Kutschker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-17" title="2006-01-17 09:35">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39645-notes"><p>I didn't understand all of the NOT NULL issues, but in Mysql 3.23 there was a reason for them. You save one bit (for the NULL state) and it made a difference for indices. I recall that tze docs said that NOT NULL fields are faster as well. But anyway, I don't think that TYPO3 will gain so much percormance by the NOT NULLs.</p>
+
+
+	<p>As for SET SESSION sql_mode='MYSQL4', if we have a 3.8.2 I think we should use it there and drop the NOT NULLs for 4.0.</p></div>
+  </div>
+  
+
+  <div id="change-39646" class="journal has-notes">
+    <h4><a href="15295.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-17" title="2006-01-17 11:24">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39646-notes"><p>@karsten: As far as I can see, the NOT NULL problem fixes the DB Compare stuff but not the BE login problems.</p></div>
+  </div>
+  
+
+  <div id="change-39647" class="journal has-notes">
+    <h4><a href="15295.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-17" title="2006-01-17 11:33">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39647-notes"><p>CONCLUSION
+================</p>
+
+
+	<p>There are numerous MySQL issues, some of them are listed here, some are not (charset related stuff, for example).</p>
+
+
+	<p>My suggestion is to implement the following changes:</p>
+
+
+	<p>- Remove NOT NULL (seems every agrees on this)<br />- Add a new configuration option to TYPO3_CONF_VARS: SYS[setDBinit] which can hold a number of SQL queries which are called in $TYPO3_DB->sql_pconnect() right after the connection was done. This will solve all outstanding problems and gives us good chances to fix additional problems in future versions of MySQL.<br />- Users can now add the "SET SESSION sql_mode='MYSQL4'" to the above option to fix their problems<br />- The recommended setting is to set the sql_mode in the config file (saves one query per connection)<br />- In the long term, we should analyze the problem exactly to see why TYPO3 conflicts with some of these MySQL settings (copied from comment 5122): "STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"</p>
+
+
+	<p>Questions:<br />- Who does what?</p></div>
+  </div>
+  
+
+  <div id="change-39648" class="journal has-notes">
+    <h4><a href="15295.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-19" title="2006-01-19 14:36">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39648-notes"><p>There was no feedback after my last comment. I would like to have a solution for this in Beta2, so what are your thoughts about that?</p></div>
+  </div>
+  
+
+  <div id="change-39649" class="journal has-notes">
+    <h4><a href="15295.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/399">Martin Kutschker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-19" title="2006-01-19 17:48">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39649-notes"><p>Hm, beware mysql_query can hold only one statement. If we don't want to parse the query, we need an array.</p></div>
+  </div>
+  
+
+  <div id="change-39650" class="journal has-notes">
+    <h4><a href="15295.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-19" title="2006-01-19 18:18">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39650-notes"><p>@stucki</p>
+
+
+	<p>comment <a href="5238.html" class="issue status-9 priority-2 closed" title="Improve Extension Manager -&gt; Translation handling (Closed)">#5238</a><br />Well, I understood that the login failed because an insert into the db failed. That insert failed because of an unspecified column that was declared NOT NULL (see comment <a href="5068.html" class="issue status-7 priority-2 closed" title="Implement validation for settings (or configuration in general) (Resolved)">#5068</a>), something which MySQL didn't care about in earlier versions. So it should fix the login issue.</p>
+
+
+	<p>comment <a href="5239.html" class="issue status-9 priority-1 closed" title="[team4] Clickmenu disappears too fast (Closed)">#5239</a><br />It conflicts with STRICT_TRANS_TABLES, the others only affect things TYPO3 doesn't care about (no GRANT in TYPO3 and it doesn't care about the table type).</p>
+
+
+	<p>Bottom line: remove the NOT NULL, add the config for the intial query, but make it an array (see comment <a href="5378.html" class="issue status-9 priority-2 closed" title="[team5] Record &quot;Save and New&quot;: Focus on input field (Closed)">#5378</a>).</p></div>
+  </div>
+  
+
+  <div id="change-39651" class="journal has-notes">
+    <h4><a href="15295.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-19" title="2006-01-19 23:09">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-39651-notes"><p>There is a new setting in TYPO3_CONF_VARS now; it can be used to set the SQL_MODE to a compatible choice.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-15295-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/15295.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="15295.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/15295 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:44:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

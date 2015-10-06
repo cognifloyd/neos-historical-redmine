@@ -1,0 +1,1408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/18690 by HTTrack Website Copier/3.x [XR&CO'2008], Tue, 04 Aug 2015 00:03:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #18690: Creating and editing of fields, forms, etc. in FCE&#39;s is impossible if there is a section inside - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/18690.atom" rel="alternate" title="Core - Bug #18690: Creating and editing of fields, forms, etc. in FCE's is impossible if there is a section inside" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (13)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1208">David Toshack</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/129">Jose Antonio Guerra</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/5089">Hercules Karvasonis</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/788">Søren Andersen</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3156">Jack Skaba</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1571">Olivier Schopfer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/389">Michael Cannon</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2509">Erwin Eggenberger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4500">Mads Chr. Olesen</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/31166">Aurelien Joahny</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/648">Raffi no-lastname-given</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3624">Jari no-lastname-given</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-18690-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #18690</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Creating and editing of fields, forms, etc. in FCE&#39;s is impossible if there is a section inside</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-04-24" title="2008-04-24 14:13">over 7 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-08-06" title="2010-08-06 13:21">almost 5 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2008-04-24</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.2</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.2</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>It is impossible to change the data in the whole FCE if there is just one SC inside. And even more the data is not shown in this fields if you try to edit the FCE. Just the first content of a rte field an the references to images are shown.</p>
+
+
+	<p>If you try to save or save/close the FCE you get an js alert which says that you have to login once more. A popup opens but says that you are logged in. So saving is impossible, too.</p>
+
+
+	<p>The picture shows a part of a normaly fully filled FCE.</p>
+
+
+	<p>I get this js error every time i try to edit a FCE which consists of SC's: <br />document.getElementById("pleasewait" + editorNumber) has no properties<br />setRTEsizeByJS(2)</p>
+
+
+	<p>(issue imported from #M8232)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/9448/tv.jpg" class="icon icon-attachment">tv.jpg</a>  
+  
+  <span class="size">(313 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-04-24 14:13</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/9449/fce_with_section_and_rte.patch" class="icon icon-attachment">fce_with_section_and_rte.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/9449/fce_with_section_and_rte.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(820 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-06-09 18:22</span>
+  
+  </p>
+
+<p><a href="../attachments/download/9450/steps.xml" class="icon icon-attachment">steps.xml</a>  
+    <a href="../attachments/9450/steps.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(2.7 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-08-06 16:04</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/9451/8232.diff" class="icon icon-attachment">8232.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/9451/8232.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(22.8 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-08-08 16:35</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/9452/8232_v2.diff" class="icon icon-attachment">8232_v2.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/9452/8232_v2.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(26.4 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-08-11 18:06</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/9453/8232_v3.diff" class="icon icon-attachment">8232_v3.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/9453/8232_v3.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(26.4 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-08-11 19:08</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/9454/8232_v4.diff" class="icon icon-attachment">8232_v4.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/9454/8232_v4.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(26.6 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-08-11 19:44</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/9455/8232_wizard_and_display.patch" class="icon icon-attachment">8232_wizard_and_display.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/9455/8232_wizard_and_display.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(3.8 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-08-19 01:50</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-2848">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="18697" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="18697.html" class="issue status-7 priority-2 closed">Bug #18697</a>: Creating and editing of fields, forms, etc. in TV FCE&#39;s i...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2008-04-25</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2165">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19477" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="19477.html" class="issue status-7 priority-2 closed">Bug #19477</a>: RTE does not work in IRRE subelements
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2008-10-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2056">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="18036" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="18036.html" class="issue status-9 priority-2 closed">Bug #18036</a>: Corrupted flexform data
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2008-01-21</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2164">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19624" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="19624.html" class="issue status-7 priority-2 closed">Bug #19624</a>: RTEhtmlarea does not work with IRRE after new child recor...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2008-11-21</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2144">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19519" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="19519.html" class="issue status-7 priority-2 closed">Bug #19519</a>: Save form with more then one RTE on a Flexible CE opens a...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2008-10-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2023">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="18967" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="18967.html" class="issue status-7 priority-2 closed">Bug #18967</a>: RTE not loading with TemplaVoila FCEs
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2008-06-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2268">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19865" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="19865.html" class="issue status-7 priority-2 closed">Bug #19865</a>: RTE doesn&#39;t load when using more than 1 section in TV
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2009-01-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2022">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="18881" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="18881.html" class="issue status-7 priority-2 closed">Bug #18881</a>: JS Script of RTE produces error if a section is part of t...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2008-05-31</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/18690/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/18690/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=18690&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-48562" class="journal has-notes">
+    <h4><a href="18690.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-04-24" title="2008-04-24 15:10">over 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48562-notes"><p>I figured out that the content of the "empty" fields when editing the FCE is there. But only in hidden fields. Could it be, that this is a TYPO3 4.2 UI issue? Seems that some js is not working correctly in TV FCE's ...</p></div>
+  </div>
+  
+
+  <div id="change-48563" class="journal has-notes">
+    <h4><a href="18690.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-04-25" title="2008-04-25 12:00">over 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48563-notes"><p>Ok. It has nothing to do with Sections. It is clearly the RTE. I have completely replaced all RTE-fields with normal textfields an everything works fine again.</p>
+
+
+	<p>damn i am not that into developing for TYPO3. Atm i can only reduce the error sources to the rte itself or the way templavoila implements it. Possible the core?</p>
+
+
+	<p>Seems to me like this issue is for the advanced T3'ler ... ^^</p></div>
+  </div>
+  
+
+  <div id="change-48564" class="journal has-notes">
+    <h4><a href="18690.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-04-25" title="2008-04-25 12:32">over 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48564-notes"><p>I made one more test. I placed 3 RTE fields in one FCE. Everything works fine. But if i make a section and than place an RTE field inside the whole FCE form will break as desrcibed.</p></div>
+  </div>
+  
+
+  <div id="change-48565" class="journal has-notes">
+    <h4><a href="18690.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5089">Hercules Karvasonis</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-05-07" title="2008-05-07 19:42">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48565-notes"><p>I have exactly the same problem with TYPO3 4.2 and TV 1.3.4</p>
+
+
+	<p>I have created an FCE with sections and a textfield and an RTE field inside that.</p>
+
+
+	<p>I get a pop up to relogin when trying to save the FCE and the text from the textfield is not been saved. Only the RTE content is being saved.</p>
+
+
+	<p>Did you find any fix for that?</p></div>
+  </div>
+  
+
+  <div id="change-48566" class="journal has-notes">
+    <h4><a href="18690.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-05-08" title="2008-05-08 09:08">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48566-notes"><p>Sorry ... i still have the problem. Seems like this issue has somtehing to do with TV itself, the RTE ext or the Core. So solving this is way to big for me.</p>
+
+
+	<p>But i found a "workaround" ... Cause it is just a JS Bug and the data is just not shown right but delivered right you can still use the FCE forms just by klicking "abort"  when the message with the relogin appears.</p>
+
+
+	<p>This way it is possible to create and edit FCE's even with this bug. The only problem is, that you don't see what you are editing. I didn't try to "test this workaround" with more complex FCE's which e.g. have images inside or a link field.</p></div>
+  </div>
+  
+
+  <div id="change-48567" class="journal has-notes">
+    <h4><a href="18690.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2619">Oliver Berg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-05-15" title="2008-05-15 19:02">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48567-notes"><p>Same problem here. (TYPO3 4.2, TV 1.3.6)</p>
+
+
+	<p>In addition to what's already reported, the header field (from tt_content) doesn't get populated in my case.</p>
+
+
+	<p>Disabling the RTE fixes these problems immediatly, but unfortunately that is nothing I can offer an editor as a workaround. ;-)</p></div>
+  </div>
+  
+
+  <div id="change-48568" class="journal has-notes">
+    <h4><a href="18690.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-05-15" title="2008-05-15 19:07">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48568-notes"><p>I can confirm what Oliver mentioned, too. And upgrading to version 1.3.6 doesn't solved it, too.</p></div>
+  </div>
+  
+
+  <div id="change-48569" class="journal has-notes">
+    <h4><a href="18690.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-05-25" title="2008-05-25 14:39">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48569-notes"><p>I confirm this bug too.</p></div>
+  </div>
+  
+
+  <div id="change-48570" class="journal has-notes">
+    <h4><a href="18690.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/441">LinTong </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-05-27" title="2008-05-27 19:20">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48570-notes"><p>I have the same problem</p></div>
+  </div>
+  
+
+  <div id="change-48571" class="journal has-notes">
+    <h4><a href="18690.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2509">Erwin Eggenberger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-06-09" title="2008-06-09 18:31">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48571-notes"><p>Hi,</p>
+
+
+	<p>I've just noticed the same problem. The problem is that the JavaScript code for an RTE is inserted on the page but not the HTML the JS is refering to. Seems like TCEforms generates templates for items that may be inserted into the sections. That's why it also calls a function to generate a RTE element. The HTML for the RTE is not rendered, but the JS Code is saved internally and inserted later. That's why the initEditor function fails. This JS error also causes the backend to think your login has timed out.</p>
+
+
+	<p>Unfortunately this is not easy to fix, but I found a quick fix to get around the login timeout problem. See the patch for htmlarea.js I've attached ( fce_with_section_and_rte.patch ).</p>
+
+
+	<p>It checks if the node for the RTE exists before it is initialized to avoid the resulting JS errors. Like this you get rid of the timeout alert when saving. But if you create a new item in a section, you won't get an RTE for the text field, but if you just save you will get the RTEs as the page reloads. It seems like the RTE handling for sections in FCEs is not yet completely implemented in TCEforms. If I've the time I'll have a look at how this is handled by IRRE and try to supply a better patch.</p></div>
+  </div>
+  
+
+  <div id="change-48572" class="journal has-notes">
+    <h4><a href="18690.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2509">Erwin Eggenberger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-06-09" title="2008-06-09 18:35">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48572-notes"><p>I forgot to mention, you might want to delete the cache files in typo3temp/rtehtmlarea/ and clear your caches.</p></div>
+  </div>
+  
+
+  <div id="change-48573" class="journal has-notes">
+    <h4><a href="18690.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/788">Søren Andersen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-06-14" title="2008-06-14 22:19">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48573-notes"><p>I can confirm the bug too. I have a complex FCE with possibility to create several RTE's only one or two of them works, and Erwins descriptions seems resonable. Can someone confirm that this is a bug for TemplaVoila or should the bug be handled by RTE guys? Seems like it has been alive for some time.</p></div>
+  </div>
+  
+
+  <div id="change-48574" class="journal has-notes">
+    <h4><a href="18690.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-06-14" title="2008-06-14 22:30">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48574-notes"><p>I've allready posted it in the rte section, too.</p>
+
+
+	<p>See here <a class="external" href="../../external.html?link=http://bugs.typo3.org/view.php?id=8570">http://bugs.typo3.org/view.php?id=8570</a></p>
+
+
+	<p>Till now there's no response either. Shall we switch to louder drums? =) Does someone has the louder onces? =/ Actually i've no idea what to do more.</p>
+
+
+	<p>Perhaps Erwin is able to handle this one!? =/ Seems like he has the deeper understanding of this bug.</p></div>
+  </div>
+  
+
+  <div id="change-48575" class="journal has-notes">
+    <h4><a href="18690.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/788">Søren Andersen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-06-14" title="2008-06-14 22:50">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48575-notes"><p>Louder drums could be a post on the templavoila mailinglist, I'm not personally enrolled there though.</p>
+
+
+	<p>I don't have any experience with the sourcecode so I hope that this can be fixed by a competent person before I have to invite editors on my current project, otherwise I will look into the bug later.</p>
+
+
+	<p>I guess the most appreciated louder drum you have available is to sponsor the bug.</p></div>
+  </div>
+  
+
+  <div id="change-48576" class="journal has-notes">
+    <h4><a href="18690.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3156">Jack Skaba</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-12" title="2008-07-12 14:39">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48576-notes"><p>We we "solved" it by switching (temporarily?) to TinyRTE. Quite obviously not a perfect solution.<br />[UPDATE] We THOUGHT we found a workaround with tinyrte. however: <br />the good thing: no login popup appears and it's possible to edit already existing textfields.<br />the bad thing: when creating a new element, the rte is disabled</p></div>
+  </div>
+  
+
+  <div id="change-48577" class="journal has-notes">
+    <h4><a href="18690.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3156">Jack Skaba</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-14" title="2008-07-14 22:32">about 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48577-notes"><p>research results: it's hard to make rte's and scriptaculous work together.<br />Anyway, something like this issue was on the TO DO list of the IRRE project:</p>
+
+
+	<p><a class="external" href="../../external.html?link=http://wiki.typo3.org/index.php/Jp:Inline_Relational_Record_Editing">http://wiki.typo3.org/index.php/Jp:Inline_Relational_Record_Editing</a> <br />"OK bugfixing RTE problems for cascaded inline fields over more levels (positioning, width, height) " <br />But it doesn't really sound like the problems described here (that page has been edited eleven months ago ... ).</p>
+
+
+	<p>A possible solution (implemented in Rails...) was to enable / disable the editor (tinyMCE), an approach that is taken a bit further by <a class="external" href="../../external.html?link=http://inplacericheditor.box.re/">http://inplacericheditor.box.re</a> (based on tinyMCE).</p>
+
+
+	<p>BTW: using tinyrte the only workaround is to create an rte area and save it (even though it's empty). Afterwards the rte loads as expected. Drag and Drop however is now impossible.</p></div>
+  </div>
+  
+
+  <div id="change-48578" class="journal has-notes">
+    <h4><a href="18690.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/389">Michael Cannon</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-06" title="2008-08-06 16:09">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48578-notes"><p>I've added the TemplaVoila Flexible Content Element Data Structure for the problem we're encountering.</p></div>
+  </div>
+  
+
+  <div id="change-48579" class="journal has-notes">
+    <h4><a href="18690.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-07" title="2008-08-07 17:57">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48579-notes"><p>The problem is only with TYPO3 code for HTMLArea. It has nothing to do with scriptaculous or htmlarea javascript code. I managed to make working everything except saving RTE data. The problem is that rtehtmlarea code rely on the increasing counter in TCEforms. This does not work for sections. Content cannot be saved with rtehtmlarea but will work with other RTEs.</p></div>
+  </div>
+  
+
+  <div id="change-48580" class="journal has-notes">
+    <h4><a href="18690.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/788">Søren Andersen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-07" title="2008-08-07 18:11">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48580-notes"><p>Where does that put os solution-wise? Is it not possible to get it working like it should?</p></div>
+  </div>
+  
+
+  <div id="change-48581" class="journal has-notes">
+    <h4><a href="18690.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-07" title="2008-08-07 18:11">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48581-notes"><p>Oh ... OK.</p>
+
+
+	<p>Does this mean, that the only chance is to switch to another RTE like Tiny? Or are there plans to get even rtehtmlarea work with it?</p>
+
+
+	<p>Good tosee you here btw. =)</p></div>
+  </div>
+  
+
+  <div id="change-48582" class="journal has-notes">
+    <h4><a href="18690.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-07" title="2008-08-07 19:03">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48582-notes"><p>I was able to reproduce this issue (or these issues).</p>
+
+
+	<p>The first issue is that JS code is inserted for twice the number of RTE-enabled fields that are actually present.</p>
+
+
+	<p>This issue eventulally leads to a JS error when initialization of a non-existent  RTE area is invoked.</p></div>
+  </div>
+  
+
+  <div id="change-48583" class="journal has-notes">
+    <h4><a href="18690.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/389">Michael Cannon</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-07" title="2008-08-07 19:06">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48583-notes"><p>Sounds like some great progress here.</p>
+
+
+	<p>As a reminder, the 450 Euro bounty offer is for a working fix by Monday 10 AM Eastern. After that, it goes back to 300 Euro.</p>
+
+
+	<p>In short, make some good money fast here with a proven fix to test by Monday morning.</p>
+
+
+	<p>Thank you.</p></div>
+  </div>
+  
+
+  <div id="change-48584" class="journal has-notes">
+    <h4><a href="18690.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-07" title="2008-08-07 19:13">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48584-notes"><p>I have a patch to fix almost everything. The problem now is in the rtehtmlarea extension. It uses sequental numbers from TCEforms for editor instances. This works for normal CE elements but for sections these numbers are absent. Therefore every RTE is saved in the value of the first RTE. This is the only remaining problem. Otherwise my patch completely solves the issue.</p>
+
+
+	<p>Notice: it is truly the problem of rtehtmlarea. Other RTEs will work properly with my patch.</p></div>
+  </div>
+  
+
+  <div id="change-48585" class="journal has-notes">
+    <h4><a href="18690.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/389">Michael Cannon</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-07" title="2008-08-07 19:18">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48585-notes"><p>Can there a be a fix of rtehtmlarea then?</p>
+
+
+	<p>Some clients are used to rtehtmlarea and have them configured specifically. Changing out causes much grief to devs and clients.</p></div>
+  </div>
+  
+
+  <div id="change-48586" class="journal has-notes">
+    <h4><a href="18690.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-07" title="2008-08-07 23:21">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48586-notes"><p>Well, it would be easy to avoid the initial error. However, the error is just a symptom of a more difficult issue.</p>
+
+
+	<p>For each element of the structure that may be repeated, the flexform creates a model html section to be inserted in the form only when the add new button is pressed.</p>
+
+
+	<p>First issue: When the model html section is created for a RTE-enabled element, corresponding JS statements are also created, and inserted in the page. Thus, we initially get JS code that refers to non-existant html. This is the cause of the JS error.</p>
+
+
+	<p>Second issue: Each RTE area is uniquely identified, because it may have its own configuration. But when the add new button is pressed, the RTE area is always inserted with the same identifier that appears in the model html section. Moreover, the RTE is not initialized. Because the RTE is not initialized, the area appears as plain text. If the flexform script is modified to initialize the RTE, the identifier issue remains, causing the save issue.</p>
+
+
+	<p>Of course, if the new element contains multiple RTE-enabled elements, the problem gets even worse.</p></div>
+  </div>
+  
+
+  <div id="change-48587" class="journal has-notes">
+    <h4><a href="18690.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/389">Michael Cannon</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-07" title="2008-08-07 23:26">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48587-notes"><p>Thank you for the thorough explanation. How do you recommend proceeding to the best solution?</p></div>
+  </div>
+  
+
+  <div id="change-48588" class="journal has-notes">
+    <h4><a href="18690.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 09:12">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48588-notes"><p>Stanislas, actually, identifier will be different, that is already fixed. The problem now is the function named setSaveRTE(). It code:<br /><pre>
+    function setSaveRTE($RTEcounter, $formName, $textareaId) {
+        return '
+        editornumber = '.$RTEcounter.';
+        if (RTEarea[editornumber]) {
+            document.'.$formName.'["'.$textareaId.'"].value = RTEarea[editornumber]["editor"].getHTML();
+        }
+        else if (!RTEarea[editornumber].deleted) {
+            OK = 0;
+        }
+        ';
+    }
+</pre><br />I already modified it a little to enable support for deletion of section elements. Without there will be a big alert saying that one or more RTEs cannot be contacted.</p>
+
+
+	<p>Anyway... The function again uses $RTECounter, which is always the same number in case of sections. I fixed sections to add this postJS to every new section element but the problem is with the counter. Since it is always the same, all RTEs now save to the field of the same RTE. Imagine you added two elements to section like this in the form:</p>
+
+
+	<p>----------<br />Header: aaa<br />RTE: aaa<br />----------<br />Header: bbb<br />RTE: bbb<br />----------</p>
+
+
+	<p>After saving it becomes:</p>
+
+
+	<p>----------<br />Header: aaa<br />RTE: bbb<br />----------<br />Header: bbb<br />RTE: bbb<br />----------</p>
+
+
+	<p>And this happens only due to the second function! If we could fix it not to use the hardcoded number but HTML id, for example, that would completely solve the problem I think. But I do not have enough knowledge about RTE to fix it.</p>
+
+
+	<p>The submission code procuded by RTE currently looks like:<br /><pre>
+        editornumber = &lt;b&gt;1&lt;/b&gt;;
+        if (RTEarea[editornumber]) {
+            document.editform["unuqie-id-&lt;b&gt;1&lt;/b&gt;"].value = RTEarea[editornumber]["editor"].getHTML();
+        }
+        else if (!RTEarea[editornumber].deleted) {
+            OK = 0;
+        }
+
+        editornumber = &lt;b&gt;1&lt;/b&gt;;
+        if (RTEarea[editornumber]) {
+            document.editform["unuqie-id-&lt;/b&gt;2&lt;/b&gt;"].value = RTEarea[editornumber]["editor"].getHTML();
+        }
+        else if (!RTEarea[editornumber].deleted) {
+            OK = 0;
+        }
+</pre><br />Notice that editornumber is always 1 but textareaid is different! Can you search for editor number by textareaid instead of using editornumber? I guess this is how tinymce works.</p></div>
+  </div>
+  
+
+  <div id="change-48589" class="journal has-notes">
+    <h4><a href="18690.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/389">Michael Cannon</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 15:38">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48589-notes"><p>Dimitry, Stanislas:</p>
+
+
+	<p>Is there a related RTE issue ticket that we can connect and discuss with RTE devs?</p></div>
+  </div>
+  
+
+  <div id="change-48590" class="journal has-notes">
+    <h4><a href="18690.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 15:45">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48590-notes"><p>Yes ... there is one. <a class="external" href="../../external.html?link=http://bugs.typo3.org/view.php?id=8570">http://bugs.typo3.org/view.php?id=8570</a></p>
+
+
+	<p>I've multi posted this issue in diffrent areas because i was not sure if it is a core, RTE or TV issue.</p>
+
+
+	<p>But perhaps it would be a goog idea to open a totaly new one because of the probably missleading title. I think with the gained information in this thread another title would be better to get attention of other devs.</p></div>
+  </div>
+  
+
+  <div id="change-48591" class="journal has-notes">
+    <h4><a href="18690.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/389">Michael Cannon</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 15:47">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48591-notes"><p>I don't feel confident enough to create the new HTML issue. Could another do it and then post the link and relate this and the new issues?</p>
+
+
+	<p>I'd be happy to post some funds for sponsorship on that issue to combine with this issue.</p></div>
+  </div>
+  
+
+  <div id="change-48592" class="journal has-notes">
+    <h4><a href="18690.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 16:16">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48592-notes"><p>Dennis, TV does not create, show or process forms. It is all done by TYPO3 core. So all sections and RTEs is TYPO3 core stuff.</p>
+
+
+	<ul>
+	<li>* *</li>
+	</ul>
+
+
+	<p>General update: after fighting with lots of JS code I produced something monstrous that seems to work... I will make some more checks and post the patch for trying. Now it works ok in FF but I am not sure that my changes will work in MSIE6.</p></div>
+  </div>
+  
+
+  <div id="change-48593" class="journal has-notes">
+    <h4><a href="18690.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 16:26">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48593-notes"><p>Dimitry, now i'm wiser. ;) But at the time of my first encounter with this issue i've just thought of 3 possibilities. I was'nt that far away. ^^</p>
+
+
+	<p>I will test your patch as soon as i notice it.</p>
+
+
+	<p>Seems that posting to the mailing list is much more effective than just here!? Days over days nobody who was able to handle this one. And now after one little hint to the mailinglist ... just as i expected the bugtracker to work. hehe ^^</p></div>
+  </div>
+  
+
+  <div id="change-48594" class="journal has-notes">
+    <h4><a href="18690.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 16:32">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48594-notes"><p>Dennis, it is not just a hint in the mailing list, it is also amount of sponsoring that makes a difference :D</p></div>
+  </div>
+  
+
+  <div id="change-48595" class="journal has-notes">
+    <h4><a href="18690.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 16:50">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48595-notes"><p>The patch is attached...</p></div>
+  </div>
+  
+
+  <div id="change-48596" class="journal has-notes">
+    <h4><a href="18690.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 16:55">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48596-notes"><p>I forgot to say: the patch is not too clean. There is commented code and some things should be formatted better. But now we need to know if it works for everyone.</p></div>
+  </div>
+  
+
+  <div id="change-48597" class="journal has-notes">
+    <h4><a href="18690.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/389">Michael Cannon</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 17:10">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48597-notes"><p>I confirm that patch works on clients dev system. I'll try on live now.</p></div>
+  </div>
+  
+
+  <div id="change-48598" class="journal has-notes">
+    <h4><a href="18690.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/389">Michael Cannon</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 17:15">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48598-notes"><p>Patch works on live. Thank you Dmitry. Do email at <a class="email" href="mailto:michael@cannonbose.com">michael@cannonbose.com</a> for arranging payment.</p></div>
+  </div>
+  
+
+  <div id="change-48599" class="journal has-notes">
+    <h4><a href="18690.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/788">Søren Andersen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 17:35">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48599-notes"><p>I can confirm as well that the patch works.</p>
+
+
+	<p>Thank you to Michael Cannon for sponsoring the bug, the 30€ I could offer wasn't really much leverage for such a complex bug, so thank you!</p>
+
+
+	<p>Dmitry, thank you for the patch, I have used the "Donate" button on typo3bloke.net to send you the 30€.</p></div>
+  </div>
+  
+
+  <div id="change-48600" class="journal has-notes">
+    <h4><a href="18690.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 17:55">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48600-notes"><p>@Dmitry: The patch looks good to me from initial reading and testing. However, please do not use prototype.js constructs in rtehtmlarea code, because the RTE may be used in the frontend with some other incompatible framework loaded on the same page and would then fail.</p></div>
+  </div>
+  
+
+  <div id="change-48601" class="journal has-notes">
+    <h4><a href="18690.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 17:58">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48601-notes"><p>Søren, thanks! :)</p>
+
+
+	<p>Michael, mail sent! :)</p>
+
+
+	<p>Total it took nearly 11 hours to fix it. This a personal record for me for a single bug :)</p></div>
+  </div>
+  
+
+  <div id="change-48602" class="journal has-notes">
+    <h4><a href="18690.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/372">Dennis Geldmacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 18:35">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48602-notes"><p>Works like a charm! Well spent 11 hours of life juice. ;)</p>
+
+
+	<p>Is it going into 4.2.2?</p></div>
+  </div>
+  
+
+  <div id="change-48603" class="journal has-notes">
+    <h4><a href="18690.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 19:32">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48603-notes"><p>Stanislas, "do use" or "do not use"?</p></div>
+  </div>
+  
+
+  <div id="change-48604" class="journal has-notes">
+    <h4><a href="18690.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/788">Søren Andersen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-08" title="2008-08-08 21:09">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48604-notes"><p>A brief comment;</p>
+
+
+	<p>One of my clients suddenly experienced the following error message "Warning Editor url is not set".</p>
+
+
+	<p>She reported that it worked fine earlier, but seemingly after the patch the error occured. I have asked for more details and possibly a screenshot.</p>
+
+
+	<p>Her site is running on 4.2.1 without templavoila.</p>
+
+
+	<p>Maybe you know how this could happen, either way, I will report back. On google I found this issue with htmlarea, where a clearing of the persons cookies helped.</p>
+
+
+	<p>UPDATE: I can reproduce it know, and it seems to be a consequence of this patch. It happens when you click the button "Edit in Rich Text Editor", I didn't discover it, because I normally use the pencil to edit things.</p></div>
+  </div>
+  
+
+  <div id="change-48605" class="journal has-notes">
+    <h4><a href="18690.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-09" title="2008-08-09 03:52">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48605-notes"><p>@Dmitry: Sorry, I meant do NOT use prototype.js.</p>
+
+
+	<p>You also need to apply your logic to the frontend version of the RTE: see rtehtmlarea/pi2/class.tx_rtehtmlarea_pi2.php which extends tx_rtehtmlarea_base for the frontend.</p></div>
+  </div>
+  
+
+  <div id="change-48606" class="journal has-notes">
+    <h4><a href="18690.html#note-45" class="journal-link">#45</a>
+    
+    <a name="note-45"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-09" title="2008-08-09 10:55">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48606-notes"><p>Søren, don't know :( I made lots of tests and did not see such problem. Am not sure because 4.1, RTE can be different there.</p>
+
+
+	<p>Stanislas, ok, will take care in the end of next week. I hope you can review it in the core list when I post it.</p></div>
+  </div>
+  
+
+  <div id="change-48607" class="journal has-notes">
+    <h4><a href="18690.html#note-46" class="journal-link">#46</a>
+    
+    <a name="note-46"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-11" title="2008-08-11 16:59">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48607-notes"><p>Stanislas, are you sure pi2 needs changes? There is no such problem in FE, so we could keep the old [simple] code in pi2.</p></div>
+  </div>
+  
+
+  <div id="change-48608" class="journal has-notes">
+    <h4><a href="18690.html#note-47" class="journal-link">#47</a>
+    
+    <a name="note-47"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-11" title="2008-08-11 17:41">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48608-notes"><p>Yes, Dmitry, I am quite sure. I cannot test it right now because of the use of proptotype.js in your current patch. But if you test with any extension that uses the RTE in the frontend, I expect that it will fail.</p>
+
+
+	<p>You need to apply the same logic to the teaxtarea id, save js, etc.</p></div>
+  </div>
+  
+
+  <div id="change-48609" class="journal has-notes">
+    <h4><a href="18690.html#note-48" class="journal-link">#48</a>
+    
+    <a name="note-48"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-11" title="2008-08-11 18:07">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48609-notes"><p>Here is a new patch. Can you test it? I do not have any test ext with RTE in FE.</p></div>
+  </div>
+  
+
+  <div id="change-48610" class="journal has-notes">
+    <h4><a href="18690.html#note-49" class="journal-link">#49</a>
+    
+    <a name="note-49"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-11" title="2008-08-11 18:59">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48610-notes"><p>$("pleasewait' . $textAreaId . '").id = "pleasewait" + editornumber;</p>
+
+
+	<p>fails in FE.</p></div>
+  </div>
+  
+
+  <div id="change-48611" class="journal has-notes">
+    <h4><a href="18690.html#note-50" class="journal-link">#50</a>
+    
+    <a name="note-50"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-11" title="2008-08-11 19:08">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48611-notes"><p>Here is the fix for $().</p>
+
+
+	<p>Thanks for testing!</p></div>
+  </div>
+  
+
+  <div id="change-48612" class="journal has-notes">
+    <h4><a href="18690.html#note-51" class="journal-link">#51</a>
+    
+    <a name="note-51"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-11" title="2008-08-11 19:45">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48612-notes"><p>Dmitry, here is a corrected patch tested in FE.</p></div>
+  </div>
+  
+
+  <div id="change-48613" class="journal has-notes">
+    <h4><a href="18690.html#note-52" class="journal-link">#52</a>
+    
+    <a name="note-52"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-11" title="2008-08-11 22:01">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48613-notes"><p>Stanislas, thanks! :) I'll post it to core list now!</p></div>
+  </div>
+  
+
+  <div id="change-48614" class="journal has-notes">
+    <h4><a href="18690.html#note-53" class="journal-link">#53</a>
+    
+    <a name="note-53"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-12" title="2008-08-12 15:35">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48614-notes"><p>Btw, the patch is in the core list. So if any monitoring guys want to see it in the next TYPO3 version, vote for it in the core list! I need one more +1 there.</p></div>
+  </div>
+  
+
+  <div id="change-48615" class="journal has-notes">
+    <h4><a href="18690.html#note-54" class="journal-link">#54</a>
+    
+    <a name="note-54"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-18" title="2008-08-18 18:51">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48615-notes"><p>Wrong patch was committed. RTE now broken in FE.</p></div>
+  </div>
+  
+
+  <div id="change-48616" class="journal has-notes">
+    <h4><a href="18690.html#note-55" class="journal-link">#55</a>
+    
+    <a name="note-55"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-18" title="2008-08-18 21:11">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48616-notes"><p>I recommitted patch v4</p></div>
+  </div>
+  
+
+  <div id="change-48617" class="journal has-notes">
+    <h4><a href="18690.html#note-56" class="journal-link">#56</a>
+    
+    <a name="note-56"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-19" title="2008-08-19 01:05">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48617-notes"><p>There is still an issue. The RTE wizard for full page view produces a JS error.</p>
+
+
+	<p>The attached patch will fix the RTE wizard issue. It will also fix the fact that the contents of the textarea is not initially hidden while the RTE is being loaded and initialized.</p></div>
+  </div>
+  
+
+  <div id="change-48618" class="journal has-notes">
+    <h4><a href="18690.html#note-57" class="journal-link">#57</a>
+    
+    <a name="note-57"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/396">Stanislas Rolland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-19" title="2008-08-19 04:28">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-48618-notes"><p>Committed follow-up patch to trunk revision 4002.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-18690-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/18690.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="18690.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/18690 by HTTrack Website Copier/3.x [XR&CO'2008], Tue, 04 Aug 2015 00:04:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

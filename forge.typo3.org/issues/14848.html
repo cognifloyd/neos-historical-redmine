@@ -1,0 +1,1000 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/14848 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:02:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #14848: utf-8 data gets converted to utf-8 again under MySQL 4.1.11 - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/14848.atom" rel="alternate" title="Core - Bug #14848: utf-8 data gets converted to utf-8 again under MySQL 4.1.11" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (5)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/22832">Eduardas Paulavicius</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/29182">Jochen Rieger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/270">Valery Romanchev</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/32931">Norbert Bernhardt</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-14848-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #14848</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>utf-8 data gets converted to utf-8 again under MySQL 4.1.11</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3857">Jorgo S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-07-05" title="2005-07-05 19:25">about 10 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-08-12" title="2006-08-12 14:16">almost 9 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2005-07-05</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.0</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>4</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>a) MySQL 4.1.11 - typo3 database charset UTF-8; Typo3 backend forced to UTF-8</p>
+
+
+	<p>Upon entering text with special characters (accents, etc., in my case, I am using Japanese symbols), the database refuses to accept the entered text with error 102 ("These fields are not properly updated in database: (bodytext) Probably value mismatch with fieldtype.")</p>
+
+
+	<p>The reason being most probably MySQL bug #9091 - <a class="external" href="../../external.html?link=http://bugs.mysql.com/bug.php?id=9091">http://bugs.mysql.com/bug.php?id=9091</a> - :<br />Upon entering Utf-8 characters, MySQL is not properly notified of the format and tries to convert the characters to UTF-8 again, resulting in a change from 2bit characters to 4bit characters.</p>
+
+
+	<p>Likely solution (as suggested in the MySQL bug article):<br />"right after you connect and just before you do any inserts or selects on your tables, do a SET NAMES 'utf8', which will ensure that mysql doesn't reencode already encoded utf8".</p>
+
+
+	<p>b) The same setup as above, but with typo3 mysql database set to latin1</p>
+
+
+	<p>Doing a database dump without charset parameters and inserting the table again results in conversion/loss of utf-8 characters. This might be because the default charset for MySQL 4.1.x is utf-8, I am not sure if this issue is the same as above.</p>
+
+
+	<p>(issue imported from #M1262)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/6279/bug_1262.diff" class="icon icon-attachment">bug_1262.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/6279/bug_1262.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(632 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2005-08-24 02:23</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-1359">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="15295" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="15295.html" class="issue status-9 priority-2 closed">Bug #15295</a>: Unable to login into BE when using MySQL 5+
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2005-12-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1407">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="15821" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="15821.html" class="issue status-9 priority-2 closed">Bug #15821</a>: $TYPO3_CONF_VARS[&#39;SYS&#39;][&#39;setDBinit&#39;] is not handled corre...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-03-14</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-1367">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="15510" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="15510.html" class="issue status-9 priority-2 closed">Bug #15510</a>: UTF-8 sites display garbled chars in select-fields (in BE)
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-01-26</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/14848/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/14848/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=14848&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-38008" class="journal has-notes">
+    <h4><a href="14848.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-07-14" title="2005-07-14 22:56">about 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38008-notes"><p>Well, that's definitely a MySQL issue and should not be fixed on TYPO3s side.</p>
+
+
+	<p>However, until they have fixed their bug, here is a workaround patch for you. Completely untested but does exactly what you described above.</p>
+
+
+	<p>Please keep me up to date about any feedbacks from MySQLs side.</p></div>
+  </div>
+  
+
+  <div id="change-38009" class="journal has-notes">
+    <h4><a href="14848.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3857">Jorgo S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-08" title="2005-08-08 03:37">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38009-notes"><p>Unfortunately, this patch only solves one half of the problem, namely correct saving. On reading the database, something weird happens again, and utf-8 characters get converted again, resulting in ?? characters (for Japanese language, cf. <a class="external" href="../../external.html?link=http://chie.jorgo.org/">http://chie.jorgo.org</a> . There are also some Spanish special characters that don't work correctly).<br />Clicking around in the menu and pages sometimes brings up the correct text after a while (I'm guessing whenever the db connects with "setnames")</p>
+
+
+	<p>Not sure if the patch is doing this already, but <br />SET NAMES 'utf8<br />needs to be executed before EVERY read or write operation IMHO.</p>
+
+
+	<p>Starting with MySQL 4.1.13, the patch should probably use mysql_set_character_set()<br />instead (see <a class="external" href="../../external.html?link=http://dev.mysql.com/doc/mysql/en/mysql-set-character-set.html">http://dev.mysql.com/doc/mysql/en/mysql-set-character-set.html</a> ).</p>
+
+
+	<p>Additional comment: <br />Funnily enough, the Japanese text we have introduced for LAST UPDATE is always shown correctly. Does it get stored in a different way?</p></div>
+  </div>
+  
+
+  <div id="change-38010" class="journal has-notes">
+    <h4><a href="14848.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/32931">Norbert Bernhardt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-12" title="2005-08-12 19:07">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38010-notes"><p>I think you are on the right way. I've made the following changes to the function 'sql_pconnect' in /t3lib/class.t3lib_db.php (line 827ff):</p>
+
+
+	<pre><code>function sql_pconnect($TYPO3_db_host, $TYPO3_db_username, $TYPO3_db_password)    {<br />        global $TYPO3_CONF_VARS;<br />        if ($GLOBALS['TYPO3_CONF_VARS']['SYS']['no_pconnect'])    {<br />            $this-&gt;link = mysql_connect($TYPO3_db_host, $TYPO3_db_username, $TYPO3_db_password);<br />        } else {<br />            $this-&gt;link = mysql_pconnect($TYPO3_db_host, $TYPO3_db_username, $TYPO3_db_password);<br />        }<br />        if ($TYPO3_CONF_VARS["BE"]["forceCharset"]=='utf-8') {<br />            mysql_query("SET NAMES utf8",$this-&gt;link);<br />            mysql_query("SET CHARACTER_SET utf8",$this-&gt;link);<br />        }</code></pre>
+
+
+	<pre><code>return $this-&gt;link;<br />    }</code></pre>
+
+
+	<p>quote from <br /><a class="external" href="../../external.html?link=http://dev.mysql.com/doc/mysql/en/charset-connection.html">http://dev.mysql.com/doc/mysql/en/charset-connection.html</a> :<br />SET NAMES indicates what is in the SQL statements that the client sends. Thus, SET NAMES 'cp1251' tells the server "future incoming messages from this client are in character set cp1251." It also specifies the character set for results that the server sends back to the client. (For example, it indicates what character set column values are if you use a SELECT statement.)</p>
+
+
+	<p>A SET NAMES 'x' statement is equivalent to these three statements:</p>
+
+
+	<p>mysql> SET character_set_client = x;<br />mysql> SET character_set_results = x;<br />mysql> SET character_set_connection = x;</p>
+
+
+	<p>Setting character_set_connection to x also sets collation_connection to the default collation for x.<br />(end quote)</p>
+
+
+	<p>As far as I have studied the MySQL logfiles, this is basically exactly what phpMyAdmin does when it connects to the MySQL server - and it also works perfectly for Typo3.</p></div>
+  </div>
+  
+
+  <div id="change-38011" class="journal has-notes">
+    <h4><a href="14848.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31549">Sean Ellis</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-13" title="2005-08-13 01:23">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38011-notes"><p>The changes that nbernhardt suggested are working for the strings that I've tried. The characters that were producing the error are being managed correctly as far as I can see.</p>
+
+
+	<p>[edit; some details]</p>
+
+
+	<p>typo3 3.8, mysql 4.1.11, php4-4.3.11, phpmyadmin-2.6.2</p>
+
+
+	<p>mysql variables from mysql client:</p>
+
+
+	<pre><code>character_set_client             latin1<br /> character_set_connection         latin1<br /> character_set_database           utf8<br /> character_set_results            latin1<br /> character_set_server             latin1<br /> character_set_system             utf8<br /> collation_connection             latin1_swedish_ci<br /> collation_database               utf8_general_ci<br /> collation_server                 latin1_swedish_ci</code></pre></div>
+  </div>
+  
+
+  <div id="change-38012" class="journal has-notes">
+    <h4><a href="14848.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3857">Jorgo S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-16" title="2005-08-16 07:55">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38012-notes"><p>My pages are now saved and displayed correctly, thanks to everybody who contributed here!</p>
+
+
+	<p>Remain 2 small issues:</p>
+
+
+	<p>1. The install tool finds differences with the compare database tool that don't seem to be saved, maybe there's a another screw that needs to be tightened somewhere else.<br />2. The Visitor tracking extension (VTS) still displays visited pages with Japanese titles as ???, would be nice if a fix could be issued.</p>
+
+
+	<p>Thanks again!</p></div>
+  </div>
+  
+
+  <div id="change-38013" class="journal has-notes">
+    <h4><a href="14848.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-16" title="2005-08-16 09:00">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38013-notes"><blockquote>
+
+	<p>1. The install tool finds differences with the compare database tool that don't seem<br />to be saved, maybe there's a another screw that needs to be tightened somewhere else.</p>
+
+
+</blockquote>
+
+	<p>What are these changes?</p>
+
+
+<blockquote>
+
+	<p>2. The Visitor tracking extension (VTS) still displays visited pages with Japanese titles<br />as ???, would be nice if a fix could be issued.</p>
+
+
+</blockquote>
+
+	<p>Could be an extension issue if all else works fine.</p></div>
+  </div>
+  
+
+  <div id="change-38014" class="journal has-notes">
+    <h4><a href="14848.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31549">Sean Ellis</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-16" title="2005-08-16 20:10">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38014-notes"><p>The templavoila extension is having trouble after making the edits to /t3lib/class.t3lib_db.php in note 0002729.</p>
+
+
+	<p>Pages that had been working are now producing this error:</p>
+
+
+	<pre><code>Template Object could not be unserialized successfully.<br />Are you sure you saved mapping information into Template Object with UID "5"?</code></pre>
+
+
+	<p>When you view the templavoila template object in the back end the mapping is gone.</p>
+
+
+	<p>I've tried a number of things with no luck so far.</p>
+
+
+	<p>- SQL ALTER commands on the tx_templavoila_* tables<br />- ran an extension, convert2utf8<br />- remapped existing templavoila template objects<br />- created fresh templavoila template objects, and data structures<br />- commenting out japanese characters from included templavoila typoscript script. The site is in development, so for now there is only content in english.</p>
+
+
+	<p>no go, so far; swapping in the edited  class.t3lib_db.php file toasts my templavoila functionality</p></div>
+  </div>
+  
+
+  <div id="change-38015" class="journal has-notes">
+    <h4><a href="14848.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/32931">Norbert Bernhardt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-16" title="2005-08-16 22:06">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38015-notes"><p>Regarding the Visitor tracking extension (VTS), it uses its own mysql_connect class (class tx_dephpot_Connection_Mysql) and function (PConnect and _pconnect). Adding the lines</p>
+
+
+	<pre><code>mysql_query("SET NAMES utf8",$this-&gt;link);<br />   mysql_query("SET CHARACTER_SET utf8",$this-&gt;link);</code></pre>
+
+
+	<p>after each connection to MySQL tells the server that the specified connection is UTF8 (what we need) and not Latin-something. I haven't found a way yet to set up the MySQL server to establish UTF connections by default. This is a very good example why extensions should use the Typo3 functions and classes and not their own.</p>
+
+
+	<p>TemplaVoila and hashes - maybe it helps to clear the cache?</p>
+
+
+	<p>If you have data that was written to the database BEFORE applying the patch, then you've got  have a problem: Non-ASCII characters are already messed up in the database, ie. an Ä looks like &#14258;¾* or similar in phpMyAdmin and in Typo3 after applying the patch. Or you get the famous ??? because there was no match during conversation.</p>
+
+
+	<p>*&#14258; ought to be a A-Tilde...</p></div>
+  </div>
+  
+
+  <div id="change-38016" class="journal has-notes">
+    <h4><a href="14848.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31549">Sean Ellis</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-16" title="2005-08-16 23:10">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38016-notes"><blockquote>
+
+	<p>after each connection to MySQL tells the server that the specified >connection is UTF8 (what we need) and not Latin-something. I haven't >found a way yet to set up the MySQL server to establish UTF >connections by default.</p>
+
+
+</blockquote>
+
+	<p>I  <em>think</em> that you might be able to specify this by placing the SET NAMES statement in a file read by the server at startup. Filename defined by --init-file='path'; could also go in my.cnf . I haven't tried this yet.</p>
+
+
+<blockquote>
+
+	<p>TemplaVoila and hashes - maybe it helps to clear the cache?</p>
+
+
+</blockquote>
+
+	<p>'the' cache? Not sure; I've certainly been clearing all the caches that I'm aware of, including hunting for any other cache entries with phpmyadmin and deleting them.</p>
+
+
+<blockquote>
+
+	<p>If you have data that was written to the database BEFORE applying the >patch, then you've got have a problem: Non-ASCII characters are >already messed up in the database, ie. an Ä looks like &0000258;¾* or >similar in phpMyAdmin and in Typo3 after applying the patch. Or you get >the famous ??? because there was no match during conversation.</p>
+
+
+	<p>*&0000258; ought to be a A-Tilde...</p>
+
+
+</blockquote>
+
+	<p>I tried to eliminate this by using ALTER TABLE ... CHARACTER SET on the templavoila tables and the other steps that I took. And I have tried making entirely new templavoila template objects and data structures with the SET NAMES fix applied, but the same results.</p>
+
+
+	<p>I'll have to keep looking. There are a  few things to consider and perhaps I'm overlooking something between dropping and repopulating the database and trying these different remedies.</p></div>
+  </div>
+  
+
+  <div id="change-38017" class="journal has-notes">
+    <h4><a href="14848.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/32931">Norbert Bernhardt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-17" title="2005-08-17 03:21">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38017-notes"><p>1) As far as I've studied the MySQL manual (again), you can set the server default character set in my.cnf with<br />[mysqld]<br />default-character-set=utf8<br />default-collation=utf8_general_ci</p>
+
+
+	<p>However, this won't help our problem because this does not effect the (default) character set of the connection and result set (what MySQL sends back). It seems that these settings are complied into MySQL. At least there are no switches that you could set at runtime regarding a "default connection charset".</p>
+
+
+	<p>Keep in mind that "solutions" in the MySQL manual for the [mysql] section of my.cnf only apply to the mysql(.exe) client. If you set <br />[mysql]<br />default-character-set=utf8 <br />in my.cnf then the mysql(.exe) client uses UTF-8 for everything, even the connection. But this doesn't have any influence on the connections made by/from PHP.</p>
+
+
+	<p>2) Another chance trying to set a character set is php.ini since PHP in general connects to the MySQL server. But despite default host, username and password, there is no possibility to select a character set.</p>
+
+
+	<p>3) So the only way to tell MySQL what character set you want to use for each connection is to tell MySQL right after the connection is established.</p>
+
+
+	<p>4) As far as I can oversee, the TemplaVoila extension uses the database class of Typo3. Guess I can't help you as I don't use this extension.</p></div>
+  </div>
+  
+
+  <div id="change-38018" class="journal has-notes">
+    <h4><a href="14848.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31549">Sean Ellis</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-17" title="2005-08-17 05:32">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38018-notes"><p>I found the relevant mysqld option. It's init-connect not init-file.</p>
+
+
+	<p>Setting init-connect='SET NAMES utf8'; in my.cnf gives the same results as editing /t3lib/class.t3lib_db.php; Japanese characters are now accepted in the backend without error, but templavoila no longer works.</p>
+
+
+	<p>So, again, no joy, but closer I think.</p></div>
+  </div>
+  
+
+  <div id="change-38019" class="journal has-notes">
+    <h4><a href="14848.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/32931">Norbert Bernhardt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-17" title="2005-08-17 18:06">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38019-notes"><p>I think this is closest we can get.</p>
+
+
+	<p>I suggest that the</p>
+
+
+	<pre><code>if ($TYPO3_CONF_VARS["BE"]["forceCharset"]=='utf-8') {<br />   SET NAMES utf8;<br />   SET CHARACTER_SET utf8;<br />   }<br />is added to the CVS as solves at least the case for Typo3 and extensions who use the Typo3 classes.</code></pre>
+
+
+	<p>It seems that not only Typo3 has this problem. Googling for solution you find SugarCRM, forums etc.</p></div>
+  </div>
+  
+
+  <div id="change-38020" class="journal has-notes">
+    <h4><a href="14848.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-24" title="2005-08-24 02:25">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38020-notes"><p>Attached is a new patch which also executes the "SET CHARACTER_SET" command.</p>
+
+
+	<p>Did anybody yet find out why there are problems with Templavoilà?</p></div>
+  </div>
+  
+
+  <div id="change-38021" class="journal has-notes">
+    <h4><a href="14848.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/31549">Sean Ellis</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-08-24" title="2005-08-24 03:19">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38021-notes"><blockquote>
+
+	<p>Did anybody yet find out why there are problems with Templavoilà?</p>
+
+
+</blockquote>
+
+	<p>I looked, but my novice abilities prevent me from reaching any useful conclusion. I can only say that templavoila was failing at about line 216 of typo3conf/ext/templavoila/pi1/class.tx_templavoila_pi1.php after an unsuccessful attempt to unserialize($TOrec['templatemapping']).  This variable is populated; it contains a long string like of html with some kind of extra templavoila meta information interspersed throughout.</p>
+
+
+	<p>Sorry I can't be of more help. Thanks for the feedback.</p>
+
+
+	<p>Sean</p></div>
+  </div>
+  
+
+  <div id="change-38022" class="journal has-notes">
+    <h4><a href="14848.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22832">Eduardas Paulavicius</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-09-01" title="2005-09-01 09:36">almost 10 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38022-notes"><p>Hello, nbernhardt<br />I'm using Lithuanian characters and UTF-8 under  Windows XP Pro, Apache 1.3.33, MySQL 4.1.13a, PHP 4.4.</p>
+
+
+	<p>Your patch was not working for me.</p>
+
+
+	<p>When I changed line:<br />if ($TYPO3_CONF_VARS["BE"]["forceCharset"]=='utf-8') {<br />to:<br />if ($GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset']=='utf-8') {</p>
+
+
+	<p>it started working correctly.</p>
+
+
+	<p>Thanks,<br />Eduardas</p></div>
+  </div>
+  
+
+  <div id="change-38023" class="journal has-notes">
+    <h4><a href="14848.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29182">Jochen Rieger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2005-12-03" title="2005-12-03 12:22">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38023-notes"><p>Ran into the described problem, too. Our solution which is working quite fine so far:</p>
+
+
+	<p>Not only to set the default character set for [mysqld] in the my.cnf but also for the [client] section. But I this of cause is just a solution for "fresh" systems with no other applications using that database so far.</p>
+
+
+	<p>I guess this prevents MySQL from reencoding the sent UTF-8 encoded strings.</p></div>
+  </div>
+  
+
+  <div id="change-38024" class="journal has-notes">
+    <h4><a href="14848.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3857">Jorgo S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-26" title="2006-01-26 13:15">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38024-notes"><p>This was not fixed in Typo3 4.0beta2 and I just lost all my japanese characters when updating the database.</p>
+
+
+	<p>Manually adding the additional lines suggested by nbernhardt also did not fix the problem (maybe syntax needs to be changed now).</p>
+
+
+	<p>Reverted to 3.8.1 and awaiting fix, which I hope will be included in 4.0 for everybody, since the few extra lines don't hurt anybody and can save utf-8 users a lot of grief.</p></div>
+  </div>
+  
+
+  <div id="change-38025" class="journal has-notes">
+    <h4><a href="14848.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-26" title="2006-01-26 14:25">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38025-notes"><p>Hi Joerg,</p>
+
+
+	<p>indeed it was fixed, but I forgot to explain that here. In the Install Tool, there is a new field for SQL queries which are executed right after the connection was established. There you can now simply add the above commands:</p>
+
+
+	<p>SET NAMES utf8<br />SET CHARACTER_SET utf8</p>
+
+
+	<p>For details, have a look at bug <a href="15295.html" class="issue status-9 priority-2 closed" title="Unable to login into BE when using MySQL 5+ (Closed)">#15295</a>.</p>
+
+
+	<p>I will close this bug since I consider it solved. Please reopen if you have any problems left.</p></div>
+  </div>
+  
+
+  <div id="change-38026" class="journal has-notes">
+    <h4><a href="14848.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3857">Jorgo S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-26" title="2006-01-26 17:53">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38026-notes"><p>Added line to localconf.php:<br />$TYPO3_CONF_VARS["SYS"]["setDBinit"] = 'SET NAMES utf8';       // Modified or inserted by TYPO3 Install Tool.</p>
+
+
+	<p>Result in webpage:</p>
+
+
+	<p>Warning: Invalid argument supplied for foreach() in /home/jorgo/public_html/typo3_src-4.0beta2/t3lib/class.t3lib_db.php on line 890</p>
+
+
+	<p>Warning: Cannot modify header information - headers already sent by (output started at /home/jorgo/public_html/typo3_src-4.0beta2/t3lib/class.t3lib_db.php:890) in /home/jorgo/public_html/typo3_src-4.0beta2/t3lib/class.t3lib_userauth.php on line 260</p>
+
+
+	<p>Warning: Cannot modify header information - headers already sent by (output started at /home/jorgo/public_html/typo3_src-4.0beta2/t3lib/class.t3lib_db.php:890) in /home/jorgo/public_html/typo3_src-4.0beta2/typo3/sysext/cms/tslib/class.tslib_fe.php on line 2698</p>
+
+
+	<p>Also tried to wrap UTF8 in various kinds of colons with the same result.</p></div>
+  </div>
+  
+
+  <div id="change-38027" class="journal has-notes">
+    <h4><a href="14848.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-26" title="2006-01-26 18:21">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38027-notes"><p>The variable is an array, so it must be:</p>
+
+
+	<p>$TYPO3_CONF_VARS["SYS"]["setDBinit"][] = 'SET NAMES utf8';<br />$TYPO3_CONF_VARS["SYS"]["setDBinit"][] = 'SET CHARACTER_SET utf8';</p></div>
+  </div>
+  
+
+  <div id="change-38028" class="journal has-notes">
+    <h4><a href="14848.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3857">Jorgo S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-26" title="2006-01-26 18:40">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38028-notes"><p>Thanks Carsten, that did the trick and now I am actually seeing the correct characters. However, I get new errors:</p>
+
+
+	<p>Warning: fopen(): open_basedir restriction in effect. File(/proc/loadavg) is not within the allowed path(s): (/home/jorgo/:/usr/lib/php:/usr/local/lib/php:/tmp) in /home/jorgo/public_html/typo3_src-4.0beta2/t3lib/class.gzip_encode.php on line 302</p>
+
+
+	<p>Warning: fopen(/proc/loadavg): failed to open stream: Operation not permitted in /home/jorgo/public_html/typo3_src-4.0beta2/t3lib/class.gzip_encode.php on line 302</p>
+
+
+	<p>Warning: feof(): supplied argument is not a valid stream resource in /home/jorgo/public_html/typo3_src-4.0beta2/t3lib/class.gzip_encode.php on line 303</p>
+
+
+	<p>I've never seen /proc/loadavg before, is that some part of Typo3?</p></div>
+  </div>
+  
+
+  <div id="change-38029" class="journal has-notes">
+    <h4><a href="14848.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-01-27" title="2006-01-27 00:09">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38029-notes"><p>You are welcome, Jürg (SCNR).</p>
+
+
+	<p>The open_basedir has nothing to do with the database problem, but is rather a security restriction configured in php.ini. This leads to /proc/loadavg not being accessible, which is used to determine the gzip compression leven when it is set to auto in $TYPO3_CONF_VARS.</p></div>
+  </div>
+  
+
+  <div id="change-38030" class="journal has-notes">
+    <h4><a href="14848.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3857">Jorgo S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-14" title="2006-03-14 14:41">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38030-notes"><p>Would you be so kind as to update this thread with the syntax for the string value for "setdbinit" that is required starting with 4.0RC1?</p>
+
+
+	<p>$TYPO3_CONF_VARS['SYS']['setDBinit'] = 'SET NAMES utf8 \n SET CHARACTER_SET utf8';</p>
+
+
+	<p>somehow doesn't seem to work.</p></div>
+  </div>
+  
+
+  <div id="change-38031" class="journal has-notes">
+    <h4><a href="14848.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-14" title="2006-03-14 14:53">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38031-notes"><p>That was a mistake, sorry.</p>
+
+
+	<p>Currently you need to set the value manually in localconf.php, but notice that it is not an array anymore (changed to a string).</p>
+
+
+	<p>Please check bug <a href="15821.html" class="issue status-9 priority-2 closed" title="$TYPO3_CONF_VARS['SYS']['setDBinit'] is not handled correct in the install tool (Closed)">#15821</a> for further details since this is not related with the initial MySQL problem anymore...</p></div>
+  </div>
+  
+
+  <div id="change-38032" class="journal has-notes">
+    <h4><a href="14848.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3857">Jorgo S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-14" title="2006-03-14 14:59">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38032-notes"><p>I actually DID add the line manually when I noticed that writing \n produced \\n in localconfig. <br />I am however saying, that additionally, the entry does not seem to have any effect on mysql.</p></div>
+  </div>
+  
+
+  <div id="change-38033" class="journal has-notes">
+    <h4><a href="14848.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-14" title="2006-03-14 18:04">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38033-notes"><p>\n is not recognized as special sequence when inside single quotes. So either use<br /> "SET NAMES utf8\nSET CHARACTER SET utf8" <br />or<br /> 'SET NAMES utf8'.chr(10).'SET CHARACTER SET utf8'</p></div>
+  </div>
+  
+
+  <div id="change-38034" class="journal has-notes">
+    <h4><a href="14848.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3857">Jorgo S.</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-14" title="2006-03-14 18:37">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38034-notes"><p>Works, who'd have thunk it :) Thanks K-arsten!</p></div>
+  </div>
+  
+
+  <div id="change-38035" class="journal has-notes">
+    <h4><a href="14848.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2006-03-26" title="2006-03-26 17:04">over 9 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-38035-notes"><p>Forgot to report here, but the newline-in-textarea issue has been finally solved in 4.0rc2.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-14848-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/14848.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="14848.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/14848 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:02:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

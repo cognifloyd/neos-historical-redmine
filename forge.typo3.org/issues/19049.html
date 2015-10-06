@@ -1,0 +1,1109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/19049 by HTTrack Website Copier/3.x [XR&CO'2008], Tue, 04 Aug 2015 00:04:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #19049: drag &amp; drop of section elements and IRRE records does not work if frame has to be scrolled - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/19049.atom" rel="alternate" title="Core - Bug #19049: drag &amp; drop of section elements and IRRE records does not work if frame has to be scrolled" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (11)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/850">Florian Seirer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1135">Philipp Heine</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/35218">Bart Veldhuizen</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1155">Laurent Cherpit</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/998">Christian Clemens</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2619">Oliver Berg</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2522">Dennis Riedel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/24274">Gregor Nathanael Meyer</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-19049-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #19049</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>drag &amp; drop of section elements and IRRE records does not work if frame has to be scrolled</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/998">Christian Clemens</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-07-02" title="2008-07-02 13:31">about 7 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2010-07-02" title="2010-07-02 11:18">about 5 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2008-07-02</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.2</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.2</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>After upgrading to 1.3.6 and Typo3 4.2.1 we are no longer able to change the order (position) of section-elements in a tv-object: there is a section in a tv-object for collecting links. In previous versions of templavoila it was possible to change the position of these links with arrow-buttons. In 1.3.6. this should be done with drag &#38; drop. I can drag a section-element, but I'm not able to drop it at another position (see screenshot). Am I too silly or is it a bug? ;-)</p>
+
+
+	<p>Tested in FF2 and IE7.</p>
+
+
+	<p>(issue imported from #M8882)</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/9846/screenshot_drag_and_drop.gif" class="icon icon-attachment">screenshot_drag_and_drop.gif</a>  
+  
+  <span class="size">(96.3 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-07-02 13:31</span>
+  
+  </p>
+
+<p><a href="../attachments/download/9847/screenshot_sensitive_area_drag_n_drop_firefox_2_0_0_16.gif" class="icon icon-attachment">screenshot_sensitive_area_drag_n_drop_firefox_2_0_0_16.gif</a>  
+  
+  <span class="size">(85.7 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-08-15 10:20</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/9848/T3X_test_flexform_sections-0_0_0-z-200810271429.t3x" class="icon icon-attachment">T3X_test_flexform_sections-0_0_0-z-200810271429.t3x</a>  
+  
+  <span class="size">(6.9 kB)</span>
+  
+  
+    <span class="author">Administrator Admin, 2008-10-27 14:33</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/9849/8882_v1.patch" class="icon icon-attachment">8882_v1.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/9849/8882_v1.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(493 Bytes)</span>
+  
+  
+    <span class="author">Administrator Admin, 2009-01-08 17:51</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-2117">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="19496" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="19496.html" class="issue status-9 priority-1 closed">Bug #19496</a>: Flexform sections are not working anymore since script.ac...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2008-10-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-2204">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="18696" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="18696.html" class="issue status-9 priority-2 closed">Bug #18696</a>: Drag and Drop problems with flexform sections
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2008-04-24</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/19049/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/19049/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=19049&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-49370" class="journal has-notes">
+    <h4><a href="19049.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-14" title="2008-08-14 19:22">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49370-notes"><p>same problem for me - but I realized that the other items are moving when I move the dragged item beneath, much of beneath the section list, but sometimes the place on the page is not enough to get every position ;)</p></div>
+  </div>
+  
+
+  <div id="change-49371" class="journal has-notes">
+    <h4><a href="19049.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/998">Christian Clemens</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-15" title="2008-08-15 08:04">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49371-notes"><p>Tried to move an element much of beneath the section list - but your workaround doesn't work for me. What browser do you use? Can you probably make a screenshot for me (to see "how much beneath" ;-)?</p></div>
+  </div>
+  
+
+  <div id="change-49372" class="journal has-notes">
+    <h4><a href="19049.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-15" title="2008-08-15 10:20">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49372-notes"><p>I think this shouldn't be a workaround - it's more a hint to solve the problem, but okay you can use it sometimes as a workaround :)<br />This "works" for me in Firefox 2.0.0.16 (and some versions below) and also in IE7  and IE6 (but in IE6 the sensitive area is more beneath than in FF2 or IE7).<br />It will "works" in Firefox 3, too - but the sensitive area seems to be so much beneath, that it's often at the end of page and so it's not useably.</p>
+
+
+	<p>See the screenshot (Firefox 2.0.0.16).</p></div>
+  </div>
+  
+
+  <div id="change-49373" class="journal has-notes">
+    <h4><a href="19049.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/998">Christian Clemens</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-15" title="2008-08-15 10:30">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49373-notes"><p>Thank you lee! Unfortunately we cannot reconstruct this effect in our installation... :-(</p></div>
+  </div>
+  
+
+  <div id="change-49374" class="journal has-notes">
+    <h4><a href="19049.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-15" title="2008-08-15 10:32">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49374-notes"><p>I can confirm too that it is much more difficult to move something with the drag and drop feature and it should be either fixed soon or go back to the old-fashioned but working arrows.</p></div>
+  </div>
+  
+
+  <div id="change-49375" class="journal has-notes">
+    <h4><a href="19049.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-08-15" title="2008-08-15 10:49">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49375-notes"><p>I hope this will not go back to the old-fashioned arrows, because there are problems as well!<br />With the old fashioned arrows I've got sometimes empty section-nodes in the corresponding XML - delete one section inside the list and than change the order by this deleted position - but be careful, because after the error occurs you cannot edit the FCE, you have to delete the empty section-node in the corresponding XML in the database.<br />And the old fashioned arrows are not very user-friendly, when you have a very long list and you have to change the whole order - it takes hours with the step-by-step-arrows and you have to hope, that the XML-structure will stay clean.</p>
+
+
+	<p>So please find a way to solve the problem with drag and drop.</p></div>
+  </div>
+  
+
+  <div id="change-49376" class="journal has-notes">
+    <h4><a href="19049.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-09-12" title="2008-09-12 10:58">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49376-notes"><p>Anybody knows what is going on to solve this bug?<br />I think it's an important problem! - But nobody is assigned to this bug :(</p></div>
+  </div>
+  
+
+  <div id="change-49377" class="journal has-notes">
+    <h4><a href="19049.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/998">Christian Clemens</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-13" title="2008-10-13 11:24">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49377-notes"><p>In TYPO3 4.2.2 the problem still exists. But: I can't not even drag any elements - when I move mouse arrow above the icon "drag &#38; drop", the arrow doesn't change     appearance. When I move arrow above the icon "delete", appearance changes correctly.</p></div>
+  </div>
+  
+
+  <div id="change-49378" class="journal has-notes">
+    <h4><a href="19049.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1135">Philipp Heine</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-17" title="2008-10-17 11:19">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49378-notes"><p>I can confirm that this problem still exits in TYPO3 4.2.2 an TemplaVoila 3.1.6 and 3.1.7. <br />It's not a browser problem (no function on the drag&#38;drop icon nor the headline) in Firefox 3, Firefox 2 and IE6.</p>
+
+
+	<p>And YES: For me it is an important problem, too!</p></div>
+  </div>
+  
+
+  <div id="change-49379" class="journal has-notes">
+    <h4><a href="19049.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/850">Florian Seirer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-22" title="2008-10-22 13:21">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49379-notes"><p>+1 for importance. It makes section containers almost unusable and on one of our websites relies heavily on this feature.</p>
+
+
+	<p>I do get a JS error in IE7 ("'Sortable' is undefined"), if that helps.</p></div>
+  </div>
+  
+
+  <div id="change-49380" class="journal has-notes">
+    <h4><a href="19049.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-23" title="2008-10-23 09:31">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49380-notes"><p>Is this issue related to TemplaVoila only or can it be reproduced in "regular" TYPO3 environments as well? Can anybody please attach a FlexForm snippet that uses sections and produces this behaviour?</p></div>
+  </div>
+  
+
+  <div id="change-49381" class="journal has-notes">
+    <h4><a href="19049.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/850">Florian Seirer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-23" title="2008-10-23 10:06">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49381-notes"><p>There you go:</p>
+
+
+	<p><?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?><br />&lt;T3DataStructure&gt;<br />    &lt;meta type="array"&gt;<br />        &lt;langDisable&gt;1&lt;/langDisable&gt;<br />    &lt;/meta&gt;<br />    &lt;ROOT type="array"&gt;<br />        &lt;tx_templavoila type="array"&gt;<br />            &lt;title&gt;ROOT&lt;/title&gt;<br />            &lt;description&gt;Select the HTML element on the page which you want to be the overall container element for the template.&lt;/description&gt;<br />        &lt;/tx_templavoila&gt;<br />        &lt;type&gt;array&lt;/type&gt;<br />        &lt;el type="array"&gt;<br />            &lt;field_mitarbeiter_zustaendigkeiten_container type="array"&gt;<br />                &lt;type&gt;array&lt;/type&gt;<br />                &lt;section&gt;1&lt;/section&gt;<br />                &lt;tx_templavoila type="array"&gt;<br />                    &lt;title&gt;Zustaendigkeiten Container&lt;/title&gt;<br />                    &lt;eType&gt;input&lt;/eType&gt;<br />                &lt;/tx_templavoila&gt;<br />                &lt;el type="array"&gt;<br />                    &lt;field_mitarbeiter_zustaendigkeiten type="array"&gt;<br />                        &lt;type&gt;array&lt;/type&gt;<br />                        &lt;tx_templavoila type="array"&gt;<br />                            &lt;title&gt;Zustaendigkeiten&lt;/title&gt;<br />                            &lt;eType&gt;input&lt;/eType&gt;<br />                        &lt;/tx_templavoila&gt;<br />                        &lt;el type="array"&gt;<br />                            &lt;field_mitarbeiter_zustaendigkeit type="array"&gt;<br />                                &lt;tx_templavoila type="array"&gt;<br />                                    &lt;title&gt;Zustaendigkeit&lt;/title&gt;<br />                                    &lt;sample_data type="array"&gt;<br />                                        &lt;numIndex index="0"&gt;Zustaendigkeit 1&lt;/numIndex&gt;<br />                                    &lt;/sample_data&gt;<br />                                    &lt;eType&gt;input&lt;/eType&gt;<br />                                    &lt;TypoScript&gt;<br />                                        10 = TEXT<br />                                        10.current = 1<br />                                        10.typolink.parameter.field = field_mitarbeiter_zustaendigkeit_url<br />                                    &lt;/TypoScript&gt;<br />                                    &lt;proc type="array"&gt;<br />                                        &lt;HSC type="integer"&gt;1&lt;/HSC&gt;<br />                                    &lt;/proc&gt;<br />                                &lt;/tx_templavoila&gt;<br />                                &lt;TCEforms type="array"&gt;<br />                                    &lt;config type="array"&gt;<br />                                        &lt;type&gt;input&lt;/type&gt;<br />                                        &lt;size&gt;48&lt;/size&gt;<br />                                        &lt;eval&gt;trim&lt;/eval&gt;<br />                                    &lt;/config&gt;<br />                                    &lt;label&gt;Zustaendigkeit&lt;/label&gt;<br />                                &lt;/TCEforms&gt;<br />                            &lt;/field_mitarbeiter_zustaendigkeit&gt;<br />                            &lt;field_mitarbeiter_zustaendigkeit_url type="array"&gt;<br />                                &lt;type&gt;attr&lt;/type&gt;<br />                                &lt;tx_templavoila type="array"&gt;<br />                                    &lt;title&gt;URL&lt;/title&gt;<br />                                    &lt;sample_data type="array"&gt;<br />                                        &lt;numIndex index="0"&gt;<a class="external" href="../../external.html?link=http://www.dvt.at</numIndex">www.dvt.at&lt;/numIndex</a>&gt;<br />                                    &lt;/sample_data&gt;<br />                                    &lt;eType&gt;link&lt;/eType&gt;<br />                                    &lt;TypoScript&gt;<br />                                        10 = TEXT<br />                                        10.typolink.parameter.current = 1<br />                                        10.typolink.returnLast = url<br />                                    &lt;/TypoScript&gt;<br />                                    &lt;proc type="array"&gt;<br />                                        &lt;HSC type="integer"&gt;1&lt;/HSC&gt;<br />                                    &lt;/proc&gt;<br />                                &lt;/tx_templavoila&gt;<br />                                &lt;TCEforms type="array"&gt;<br />                                    &lt;config type="array"&gt;<br />                                        &lt;type&gt;input&lt;/type&gt;<br />                                        &lt;size&gt;15&lt;/size&gt;<br />                                        &lt;max&gt;256&lt;/max&gt;<br />                                        &lt;checkbox&gt;&lt;/checkbox&gt;<br />                                        &lt;eval&gt;trim&lt;/eval&gt;<br />                                        &lt;wizards type="array"&gt;<br />                                            &lt;_PADDING type="integer"&gt;2&lt;/_PADDING&gt;<br />                                            &lt;link type="array"&gt;<br />                                                &lt;type&gt;popup&lt;/type&gt;<br />                                                &lt;title&gt;Link&lt;/title&gt;<br />                                                &lt;icon&gt;link_popup.gif&lt;/icon&gt;<br />                                                &lt;script&gt;browse_links.php?mode=wizard&lt;/script&gt;<br />                                                &lt;JSopenParams&gt;height=300,width=500,status=0,menubar=0,scrollbars=1&lt;/JSopenParams&gt;<br />                                            &lt;/link&gt;<br />                                        &lt;/wizards&gt;<br />                                    &lt;/config&gt;<br />                                    &lt;label&gt;URL&lt;/label&gt;<br />                                &lt;/TCEforms&gt;<br />                            &lt;/field_mitarbeiter_zustaendigkeit_url&gt;<br />                        &lt;/el&gt;<br />                    &lt;/field_mitarbeiter_zustaendigkeiten&gt;<br />                &lt;/el&gt;<br />            &lt;/field_mitarbeiter_zustaendigkeiten_container&gt;<br />        &lt;/el&gt;<br />    &lt;/ROOT&gt;<br />&lt;/T3DataStructure&gt;</p></div>
+  </div>
+  
+
+  <div id="change-49382" class="journal has-notes">
+    <h4><a href="19049.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/850">Florian Seirer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-27" title="2008-10-27 11:14">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49382-notes"><p>This looks like a duplicate of <a class="external" href="../../external.html?link=http://bugs.typo3.org/view.php?id=8244">http://bugs.typo3.org/view.php?id=8244</a> ...</p></div>
+  </div>
+  
+
+  <div id="change-49383" class="journal has-notes">
+    <h4><a href="19049.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/89">Steffen Kamper</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-27" title="2008-10-27 14:32">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49383-notes"><p>I can confirm a problem there.<br />I attached a demo extension with flexform section in plugin configuration.</p>
+
+
+	<p>I'm not able to drag anymore, error given is:<br />Sortable is not defined<br /><a class="external" href="../../external.html?link=http://localhost/t3/home/typo3/alt_doc.php?returnUrl=%2Ft3%2Fhome%2Ftypo3%2Fsysext%2Fcms%2Flayout%2Fdb_layout.php%3Fid%3D26&amp;edit[tt_content][78,]=edit">http://localhost/t3/home/typo3/alt_doc.php?returnUrl=%2Ft3%2Fhome%2Ftypo3%2Fsysext%2Fcms%2Flayout%2Fdb_layout.php%3Fid%3D26&#38;edit[tt_content][78,]=edit</a><br />Line 687</p></div>
+  </div>
+  
+
+  <div id="change-49384" class="journal has-notes">
+    <h4><a href="19049.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-10-27" title="2008-10-27 15:04">almost 7 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49384-notes"><p>Hm, thanks for the information you gave - but we have to distinguish:<br />1) This issue seems to be about wrong handling in TemplaVoila since dragging is possible and no JavaScript error on "Sortable" occurs<br />2) The different issue was introduced in TYPO3 4.2.2 and didn't load script.aculo.us at all and this the JavaScript error gets shown - see issue <a href="19496.html" class="issue status-9 priority-1 closed" title="Flexform sections are not working anymore since script.aculo.us is not loaded (Closed)">#19496</a> for a patch</p></div>
+  </div>
+  
+
+  <div id="change-49385" class="journal has-notes">
+    <h4><a href="19049.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/850">Florian Seirer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-03" title="2008-11-03 10:46">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49385-notes"><p>After applying the patch from <a class="external" href="../../external.html?link=http://bugs.typo3.org/view.php?id=9623">http://bugs.typo3.org/view.php?id=9623</a> I get the following error:</p>
+
+
+	<p>PHP Fatal error:  Call to undefined method t3lib_TCEforms::loadJavascriptLib() in /var/www/html/typo3/t3lib/class.t3lib_tceforms.php</p>
+
+
+	<p>Did I miss something or does this patch apply to the SVN version only? I use the official version 4.2.2...</p></div>
+  </div>
+  
+
+  <div id="change-49386" class="journal has-notes">
+    <h4><a href="19049.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-03" title="2008-11-03 11:03">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49386-notes"><p>Florian, there were some other patches and fixed involved in this issue. So, the best thing would be to check out the TYPO3_4-2 branch from SVN (that's the version that will be released as TYPO3 4.2.3 soon).</p></div>
+  </div>
+  
+
+  <div id="change-49387" class="journal has-notes">
+    <h4><a href="19049.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-10" title="2008-11-10 17:27">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49387-notes"><p>Friday, the 7th november I have installed the TYPO3 4.2.3dev from SVN - in this version I've got no Javascript-Error by clicking on the drag'n'drop-icon BUT I have still the same problem to find the sensitive area, where the other items will move to reorder the items. It seems, that these areas are still much beneath the section list.</p>
+
+
+	<p>So, I hope the whole (!) problem will be fixed in the final version of TYPO3 4.2.3.</p></div>
+  </div>
+  
+
+  <div id="change-49388" class="journal has-notes">
+    <h4><a href="19049.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-10" title="2008-11-10 17:45">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49388-notes"><p>Lee,<br />what browser are you using? Do you have TemplaVoila installed? Thanks for the additional information!<br />Best regards, Oliver "John Doe" Hader</p></div>
+  </div>
+  
+
+  <div id="change-49389" class="journal has-notes">
+    <h4><a href="19049.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/998">Christian Clemens</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-11" title="2008-11-11 08:03">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49389-notes"><p>In TYPO3 4.2.3 the problem still exists. Now I can drag items again - but I can't still drop them. Tested in FF3 and IE7. Using TemplaVoila 1.3.7. This is the XML of my TV-object:</p>
+
+
+	<p><?xml version="1.0" encoding="utf-8" standalone="yes" ?><br />&lt;T3DataStructure&gt;<br />    &lt;meta type="array"&gt;<br />        &lt;langDisable&gt;1&lt;/langDisable&gt;<br />    &lt;/meta&gt;<br />    &lt;ROOT type="array"&gt;<br />        &lt;tx_templavoila type="array"&gt;<br />            &lt;title&gt;ROOT&lt;/title&gt;<br />            &lt;description&gt;Select the HTML element on the page which you want to be the overall container element for the template.&lt;/description&gt;<br />        &lt;/tx_templavoila&gt;<br />        &lt;type&gt;array&lt;/type&gt;<br />        &lt;el type="array"&gt;<br />            &lt;field_title type="array"&gt;<br />                &lt;tx_templavoila type="array"&gt;<br />                    &lt;title&gt;Title&lt;/title&gt;<br />                    &lt;description&gt;&lt;![CDATA[&lt;h1 class="titel"&gt;...&lt;/h1&gt;]]>&lt;/description&gt;<br />                    &lt;sample_data type="array"&gt;<br />                        &lt;numIndex index="0"&gt;Ich bin eine Titel&lt;/numIndex&gt;<br />                    &lt;/sample_data&gt;<br />                    &lt;eType&gt;input&lt;/eType&gt;<br />                    &lt;proc type="array"&gt;<br />                        &lt;HSC type="integer"&gt;1&lt;/HSC&gt;<br />                    &lt;/proc&gt;<br />                &lt;/tx_templavoila&gt;<br />                &lt;TCEforms type="array"&gt;<br />                    &lt;config type="array"&gt;<br />                        &lt;type&gt;input&lt;/type&gt;<br />                        &lt;size&gt;48&lt;/size&gt;<br />                        &lt;eval&gt;trim&lt;/eval&gt;<br />                    &lt;/config&gt;<br />                    &lt;label&gt;Title&lt;/label&gt;<br />                &lt;/TCEforms&gt;<br />            &lt;/field_title&gt;</p>
+&lt;field_subtitle type="array"&gt;<br />                &lt;tx_templavoila type="array"&gt;<br />                    &lt;title&gt;Subtitle&lt;/title&gt;<br />                    &lt;description&gt;&lt;![CDATA[&lt;h2 class="subtitle"&gt;...&lt;/h2&gt; - wobei dieser Wrap per TS gesetzt wird]]>&lt;/description&gt;<br />                    &lt;sample_data type="array"&gt;<br />                        &lt;numIndex index="0"&gt;Ich bin ein Subtitle&lt;/numIndex&gt;<br />                    &lt;/sample_data&gt;<br />                    &lt;eType&gt;input&lt;/eType&gt;<br />                &lt;TypoScript&gt;&lt;![CDATA[<br />    10 = TEXT<br />    10.current = 1<br />    10.required=1<br />    10.wrap=&lt;h2 class="subtitle"&gt;|&lt;/h2&gt;
+	<ol>
+	<li>Folgende Zeilen einkommentieren zum Debuggen</li>
+		<li>20 = TEXT</li>
+		<li>20.field = field_image_border</li>
+		<li>20.required=1</li>
+		<li>20.wrap=&lt;h2&gt;|&lt;/h2&gt;<br />                ]]>&lt;/TypoScript&gt;                    <br />                    &lt;proc type="array"&gt;<br />                        &lt;HSC type="integer"&gt;0&lt;/HSC&gt;<br />                    &lt;/proc&gt;<br />                &lt;/tx_templavoila&gt;<br />                &lt;TCEforms type="array"&gt;<br />                    &lt;config type="array"&gt;<br />                        &lt;type&gt;input&lt;/type&gt;<br />                        &lt;size&gt;48&lt;/size&gt;<br />                        &lt;eval&gt;trim&lt;/eval&gt;<br />                    &lt;/config&gt;<br />                    &lt;label&gt;Subtitle&lt;/label&gt;<br />                &lt;/TCEforms&gt;<br />            &lt;/field_subtitle&gt;</li>
+	</ol>
+	<pre><code>&amp;lt;field_image type="array"&amp;gt;<br />                &amp;lt;tx_templavoila type="array"&amp;gt;<br />                    &amp;lt;title&amp;gt;Bild&amp;lt;/title&amp;gt;<br />                    &amp;lt;description&amp;gt;&amp;lt;![CDATA[&amp;lt;p class="image"&amp;gt;&amp;lt;img .../&amp;gt;&amp;lt;/p&amp;gt; - wobei dieser Wrap per TS gesetzt wird]]&gt;&amp;lt;/description&amp;gt;<br />                    &amp;lt;sample_data type="array"&amp;gt;<br />                        &amp;lt;numIndex index="0"&amp;gt;&amp;lt;![CDATA[&amp;lt;img src=&amp;quot;test.gif&amp;quot; /&amp;gt;]]&amp;gt;&amp;lt;/numIndex&amp;gt;<br />                    &amp;lt;/sample_data&amp;gt;<br />                    &amp;lt;eType&amp;gt;image&amp;lt;/eType&amp;gt;<br />                    &amp;lt;TypoScript&amp;gt;&amp;lt;![CDATA[<br />                      10 = COA                      </code></pre>
+
+
+	<pre><code>10.3 = TEXT<br />              10.3 {<br />                      value=0<br />                      if.isTrue.field = field_image<br />              }<br />              10.3.value=&amp;lt;div class="image"&amp;gt;</code></pre>
+
+
+	<pre><code>10.5 = TEXT<br />                      10.5 {<br />                            value = 0<br />                            if.isTrue.field = field_image_border<br />                      }<br />              10.5.value=&amp;lt;div class="csc-image-border"&amp;gt;</code></pre>
+
+
+	<pre><code>10.6 = TEXT<br />                      10.6 {<br />                               value = 1<br />                               if.isTrue.field = field_image_nofloat<br />                      }<br />                      10.6.value=&amp;lt;p class="nofloat"&amp;gt;</code></pre>
+
+
+	<pre><code>10.10=IMAGE<br />                  10 {<br />                          10.altText.field = field_image_alttext<br />                          10.titleText.field = field_image_titletext<br />                          10.file.import = uploads/tx_templavoila/<br />                          10.file.import.current = 1<br />                          10.file.import.listNum = 0<br />                          10.file.width.field = field_image_width<br />                          10.file.height.field = field_image_height<br />                          10.file.maxW = 400<br />                          10.stdWrap.typolink.parameter.field = field_image_link
+    # Alle externen Links werden automatisch in einem neuen Fenster geöffnet:<br />                        10.stdWrap.typolink.extTarget = _blank<br />                          #14101.stdWrap.required=1<br />                          #14101.stdWrap.typolink.wrap=&amp;lt;p class="image"&amp;gt;|&amp;lt;/p&amp;gt;<br />              }</code></pre>
+
+
+	<pre><code>10.14 = TEXT<br />                      10.14 {<br />                               value = 1<br />                               if.isTrue.field = field_image_nofloat<br />                      }<br />                      10.14.value=&amp;lt;/p&amp;gt;</code></pre>
+
+
+	<pre><code>10.15 = TEXT<br />                      10.15 {<br />                            value = 0<br />                            if.isTrue.field = field_image_border<br />                      }<br />              10.15.value=&amp;lt;/div&amp;gt;</code></pre>
+
+
+	<pre><code>10.20 = TEXT<br />              10.20 {<br />                      value=0<br />                      if.isTrue.field = field_image<br />              }              <br />                      10.20.value=&amp;lt;/div&amp;gt;</code></pre>
+
+
+	<pre><code>]]&gt;<br />                &amp;lt;/TypoScript&amp;gt;<br />                &amp;lt;/tx_templavoila&amp;gt;<br />                &amp;lt;TCEforms type="array"&amp;gt;<br />                    &amp;lt;config type="array"&amp;gt;<br />                        &amp;lt;type&amp;gt;group&amp;lt;/type&amp;gt;<br />                        &amp;lt;internal_type&amp;gt;file&amp;lt;/internal_type&amp;gt;<br />                        &amp;lt;allowed&amp;gt;gif,png,jpg,jpeg&amp;lt;/allowed&amp;gt;<br />                        &amp;lt;max_size&amp;gt;1000&amp;lt;/max_size&amp;gt;<br />                        &amp;lt;uploadfolder&amp;gt;uploads/tx_templavoila&amp;lt;/uploadfolder&amp;gt;<br />                        &amp;lt;show_thumbs&amp;gt;1&amp;lt;/show_thumbs&amp;gt;<br />                        &amp;lt;size&amp;gt;1&amp;lt;/size&amp;gt;<br />                        &amp;lt;maxitems&amp;gt;1&amp;lt;/maxitems&amp;gt;<br />                        &amp;lt;minitems&amp;gt;0&amp;lt;/minitems&amp;gt;<br />                    &amp;lt;/config&amp;gt;<br />                    &amp;lt;label&amp;gt;Bild&amp;lt;/label&amp;gt;<br />                &amp;lt;/TCEforms&amp;gt;<br />            &amp;lt;/field_image&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_image_alttext type="array"&amp;gt;<br />        &amp;lt;tx_templavoila type="array"&amp;gt;<br />            &amp;lt;title&amp;gt;Image Alt-Text&amp;lt;/title&amp;gt;<br />            &amp;lt;sample_data type="array"&amp;gt;<br />                &amp;lt;numIndex index="0"&amp;gt;&amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/sample_data&amp;gt;<br />            &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />            &amp;lt;proc type="array"&amp;gt;<br />                &amp;lt;HSC type="integer"&amp;gt;1&amp;lt;/HSC&amp;gt;<br />            &amp;lt;/proc&amp;gt;<br />        &amp;lt;/tx_templavoila&amp;gt;<br />      &amp;lt;TCEforms type="array"&amp;gt;<br />          &amp;lt;config type="array"&amp;gt;<br />              &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />              &amp;lt;size&amp;gt;40&amp;lt;/size&amp;gt;<br />              &amp;lt;default&amp;gt;&amp;lt;/default&amp;gt;<br />          &amp;lt;/config&amp;gt;<br />          &amp;lt;label&amp;gt;Bild - Alt-Text&amp;lt;/label&amp;gt;<br />      &amp;lt;/TCEforms&amp;gt;<br />    &amp;lt;/field_image_alttext&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_image_titletext type="array"&amp;gt;<br />        &amp;lt;tx_templavoila type="array"&amp;gt;<br />            &amp;lt;title&amp;gt;Image Title-Text&amp;lt;/title&amp;gt;<br />            &amp;lt;sample_data type="array"&amp;gt;<br />                &amp;lt;numIndex index="0"&amp;gt;&amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/sample_data&amp;gt;<br />            &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />            &amp;lt;proc type="array"&amp;gt;<br />                &amp;lt;HSC type="integer"&amp;gt;1&amp;lt;/HSC&amp;gt;<br />            &amp;lt;/proc&amp;gt;<br />        &amp;lt;/tx_templavoila&amp;gt;<br />        &amp;lt;TCEforms type="array"&amp;gt;<br />            &amp;lt;config type="array"&amp;gt;<br />                &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />                &amp;lt;size&amp;gt;40&amp;lt;/size&amp;gt;<br />                &amp;lt;default&amp;gt;&amp;lt;/default&amp;gt;<br />            &amp;lt;/config&amp;gt;<br />            &amp;lt;label&amp;gt;Bild - Titel-Text&amp;lt;/label&amp;gt;<br />        &amp;lt;/TCEforms&amp;gt;<br />    &amp;lt;/field_image_titletext&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_image_link type="array"&amp;gt;<br />        &amp;lt;type&amp;gt;attr&amp;lt;/type&amp;gt;<br />        &amp;lt;tx_templavoila type="array"&amp;gt;<br />            &amp;lt;title&amp;gt;Image-Link&amp;lt;/title&amp;gt;<br />            &amp;lt;sample_data type="array"&amp;gt;<br />                &amp;lt;numIndex index="0"&amp;gt;&amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/sample_data&amp;gt;<br />            &amp;lt;eType&amp;gt;link&amp;lt;/eType&amp;gt;<br />            &amp;lt;TypoScript&amp;gt;&amp;lt;![CDATA[<br />              10 = TEXT<br />              10.typolink.typolink.parameter.field = field_link]]&gt;<br />            &amp;lt;/TypoScript&amp;gt;<br />            &amp;lt;proc type="array"&amp;gt;<br />                &amp;lt;HSC type="integer"&amp;gt;1&amp;lt;/HSC&amp;gt;<br />            &amp;lt;/proc&amp;gt;<br />        &amp;lt;/tx_templavoila&amp;gt;<br />        &amp;lt;TCEforms type="array"&amp;gt;<br />            &amp;lt;config type="array"&amp;gt;<br />                &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />                &amp;lt;size&amp;gt;15&amp;lt;/size&amp;gt;<br />                &amp;lt;max&amp;gt;256&amp;lt;/max&amp;gt;<br />                &amp;lt;checkbox&amp;gt;&amp;lt;/checkbox&amp;gt;<br />                &amp;lt;eval&amp;gt;trim&amp;lt;/eval&amp;gt;<br />                &amp;lt;wizards type="array"&amp;gt;<br />                    &amp;lt;_PADDING type="integer"&amp;gt;2&amp;lt;/_PADDING&amp;gt;<br />                    &amp;lt;link type="array"&amp;gt;<br />                        &amp;lt;type&amp;gt;popup&amp;lt;/type&amp;gt;<br />                        &amp;lt;title&amp;gt;Link&amp;lt;/title&amp;gt;<br />                        &amp;lt;icon&amp;gt;link_popup.gif&amp;lt;/icon&amp;gt;<br />                        &amp;lt;script&amp;gt;browse_links.php?mode=wizard&amp;lt;/script&amp;gt;<br />                        &amp;lt;JSopenParams&amp;gt;height=300,width=500,status=0,menubar=0,scrollbars=1&amp;lt;/JSopenParams&amp;gt;<br />                    &amp;lt;/link&amp;gt;<br />                &amp;lt;/wizards&amp;gt;<br />            &amp;lt;/config&amp;gt;<br />            &amp;lt;label&amp;gt;Bild - Link&amp;lt;/label&amp;gt;<br />        &amp;lt;/TCEforms&amp;gt;<br />    &amp;lt;/field_image_link&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_image_height type="array"&amp;gt;<br />        &amp;lt;tx_templavoila type="array"&amp;gt;<br />            &amp;lt;title&amp;gt;height&amp;lt;/title&amp;gt;<br />            &amp;lt;sample_data type="array"&amp;gt;<br />                &amp;lt;numIndex index="0"&amp;gt;&amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/sample_data&amp;gt;<br />            &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />            &amp;lt;proc type="array"&amp;gt;<br />                &amp;lt;HSC type="integer"&amp;gt;1&amp;lt;/HSC&amp;gt;<br />            &amp;lt;/proc&amp;gt;<br />        &amp;lt;/tx_templavoila&amp;gt;<br />        &amp;lt;TCEforms type="array"&amp;gt;<br />            &amp;lt;config type="array"&amp;gt;<br />                &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />                &amp;lt;size&amp;gt;4&amp;lt;/size&amp;gt;<br />                &amp;lt;eval&amp;gt;int&amp;lt;/eval&amp;gt;<br />                &amp;lt;checkbox&amp;gt;0&amp;lt;/checkbox&amp;gt;<br />                &amp;lt;range type="array"&amp;gt;<br />                  &amp;lt;upper&amp;gt;400&amp;lt;/upper&amp;gt;<br />                  &amp;lt;lower&amp;gt;0&amp;lt;/lower&amp;gt;<br />                &amp;lt;/range&amp;gt;<br />                &amp;lt;default&amp;gt;0&amp;lt;/default&amp;gt;<br />            &amp;lt;/config&amp;gt;<br />            &amp;lt;label&amp;gt;Bildhoehe&amp;lt;/label&amp;gt;<br />        &amp;lt;/TCEforms&amp;gt;<br />    &amp;lt;/field_image_height&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_image_width type="array"&amp;gt;<br />        &amp;lt;tx_templavoila type="array"&amp;gt;<br />            &amp;lt;title&amp;gt;width&amp;lt;/title&amp;gt;<br />            &amp;lt;sample_data type="array"&amp;gt;<br />                &amp;lt;numIndex index="0"&amp;gt;&amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/sample_data&amp;gt;<br />            &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />            &amp;lt;proc type="array"&amp;gt;<br />                &amp;lt;HSC type="integer"&amp;gt;1&amp;lt;/HSC&amp;gt;<br />            &amp;lt;/proc&amp;gt;<br />        &amp;lt;/tx_templavoila&amp;gt;<br />        &amp;lt;TCEforms type="array"&amp;gt;<br />            &amp;lt;config type="array"&amp;gt;<br />                &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />                &amp;lt;size&amp;gt;4&amp;lt;/size&amp;gt;<br />                &amp;lt;eval&amp;gt;int&amp;lt;/eval&amp;gt;<br />                &amp;lt;checkbox&amp;gt;0&amp;lt;/checkbox&amp;gt;<br />                &amp;lt;range type="array"&amp;gt;<br />                  &amp;lt;upper&amp;gt;300&amp;lt;/upper&amp;gt;<br />                  &amp;lt;lower&amp;gt;0&amp;lt;/lower&amp;gt;<br />                &amp;lt;/range&amp;gt;<br />                &amp;lt;default&amp;gt;0&amp;lt;/default&amp;gt;<br />            &amp;lt;/config&amp;gt;<br />            &amp;lt;label&amp;gt;Bildbreite&amp;lt;/label&amp;gt;<br />        &amp;lt;/TCEforms&amp;gt;<br />    &amp;lt;/field_image_width&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_image_border type="array"&amp;gt;<br />    &amp;lt;tx_templavoila type="array"&amp;gt;<br />        &amp;lt;title&amp;gt;border&amp;lt;/title&amp;gt;<br />        &amp;lt;sample_data type="array"&amp;gt;<br />            &amp;lt;numIndex index="0"&amp;gt;&amp;lt;/numIndex&amp;gt;<br />        &amp;lt;/sample_data&amp;gt;<br />        &amp;lt;eType&amp;gt;select&amp;lt;/eType&amp;gt;<br />    &amp;lt;/tx_templavoila&amp;gt;<br />    &amp;lt;TCEforms type="array"&amp;gt;<br />        &amp;lt;config type="array"&amp;gt;<br />            &amp;lt;type&amp;gt;select&amp;lt;/type&amp;gt;<br />            &amp;lt;items type="array"&amp;gt;<br />            &amp;lt;numIndex index="0" type="array"&amp;gt;<br />                &amp;lt;numIndex index="0"&amp;gt;Nein&amp;lt;/numIndex&amp;gt;<br />                &amp;lt;numIndex index="1"&amp;gt;0&amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/numIndex&amp;gt;<br />            &amp;lt;numIndex index="1" type="array"&amp;gt;<br />                &amp;lt;numIndex index="0"&amp;gt;Ja&amp;lt;/numIndex&amp;gt;<br />                &amp;lt;numIndex index="1"&amp;gt;1&amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/items&amp;gt;<br />            &amp;lt;default&amp;gt;0&amp;lt;/default&amp;gt;<br />        &amp;lt;/config&amp;gt;<br />        &amp;lt;label&amp;gt;Rahmen um Bild?&amp;lt;/label&amp;gt;<br />    &amp;lt;/TCEforms&amp;gt;<br />    &amp;lt;/field_image_border&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_image_nofloat type="array"&amp;gt;<br />    &amp;lt;tx_templavoila type="array"&amp;gt;<br />        &amp;lt;title&amp;gt;nofloat&amp;lt;/title&amp;gt;<br />        &amp;lt;sample_data type="array"&amp;gt;<br />            &amp;lt;numIndex index="0"&amp;gt;&amp;lt;/numIndex&amp;gt;<br />        &amp;lt;/sample_data&amp;gt;<br />        &amp;lt;eType&amp;gt;select&amp;lt;/eType&amp;gt;<br />    &amp;lt;/tx_templavoila&amp;gt;<br />    &amp;lt;TCEforms type="array"&amp;gt;<br />        &amp;lt;config type="array"&amp;gt;<br />            &amp;lt;type&amp;gt;select&amp;lt;/type&amp;gt;<br />            &amp;lt;items type="array"&amp;gt;<br />            &amp;lt;numIndex index="0" type="array"&amp;gt;<br />                &amp;lt;numIndex index="0"&amp;gt;Ja&amp;lt;/numIndex&amp;gt;<br />                &amp;lt;numIndex index="1"&amp;gt;0&amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/numIndex&amp;gt;<br />            &amp;lt;numIndex index="1" type="array"&amp;gt;<br />                &amp;lt;numIndex index="0"&amp;gt;Nein&amp;lt;/numIndex&amp;gt;<br />                &amp;lt;numIndex index="1"&amp;gt;1&amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/numIndex&amp;gt;<br />            &amp;lt;/items&amp;gt;<br />            &amp;lt;default&amp;gt;0&amp;lt;/default&amp;gt;<br />        &amp;lt;/config&amp;gt;<br />        &amp;lt;label&amp;gt;Text um Bild fliessen lassen?&amp;lt;/label&amp;gt;<br />    &amp;lt;/TCEforms&amp;gt;<br />    &amp;lt;/field_image_nofloat&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_text type="array"&amp;gt;<br />                &amp;lt;tx_templavoila type="array"&amp;gt;<br />                    &amp;lt;title&amp;gt;Text&amp;lt;/title&amp;gt;<br />                    &amp;lt;description&amp;gt;&amp;lt;![CDATA[&amp;lt;p&amp;gt;...&amp;lt;/p&amp;gt;]]&gt;&amp;lt;/description&amp;gt;<br />                    &amp;lt;sample_data type="array"&amp;gt;<br />                        &amp;lt;numIndex index="0"&amp;gt;Ich bin ein Text&amp;lt;/numIndex&amp;gt;<br />                    &amp;lt;/sample_data&amp;gt;<br />                    &amp;lt;eType&amp;gt;rte&amp;lt;/eType&amp;gt;<br />                    &amp;lt;TypoScript&amp;gt;&amp;lt;![CDATA[<br />    10 = COA</code></pre>
+
+
+	<pre><code>10.5 = TEXT<br />        10.5 {<br />             value = 1<br />             if.isTrue.field = field_image_nofloat<br />        }<br />        10.5.value=&amp;lt;div class="nofloat"&amp;gt;</code></pre>
+
+
+	<pre><code>10.10 = TEXT<br />    10.10.current = 1<br />    10.10.parseFunc = &lt; lib.parseFunc_RTE</code></pre>
+
+
+	<pre><code>10.15 = TEXT<br />        10.15 {<br />             value = 1<br />             if.isTrue.field = field_image_nofloat<br />        }<br />        10.15.value=&amp;lt;/div&amp;gt;<br />                                ]]&gt;&amp;lt;/TypoScript&amp;gt;<br />                    &amp;lt;proc type="array"&amp;gt;<br />                        &amp;lt;HSC type="integer"&amp;gt;0&amp;lt;/HSC&amp;gt;<br />                    &amp;lt;/proc&amp;gt;<br />                &amp;lt;/tx_templavoila&amp;gt;<br />                &amp;lt;TCEforms type="array"&amp;gt;<br />                    &amp;lt;config type="array"&amp;gt;<br />                        &amp;lt;type&amp;gt;text&amp;lt;/type&amp;gt;<br />                        &amp;lt;cols&amp;gt;48&amp;lt;/cols&amp;gt;<br />                        &amp;lt;rows&amp;gt;5&amp;lt;/rows&amp;gt;<br />                        &amp;lt;softref&amp;gt;typolink_tag,images,email[subst],url&amp;lt;/softref&amp;gt;<br />                    &amp;lt;/config&amp;gt;<br />                    &amp;lt;label&amp;gt;Text&amp;lt;/label&amp;gt;<br />                    &amp;lt;defaultExtras&amp;gt;richtext:rte_transform[flag=rte_enabled|mode=ts_css]&amp;lt;/defaultExtras&amp;gt;<br />                &amp;lt;/TCEforms&amp;gt;<br />            &amp;lt;/field_text&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_link_segment type="array"&amp;gt;<br />                &amp;lt;type&amp;gt;array&amp;lt;/type&amp;gt;<br />                &amp;lt;section&amp;gt;1&amp;lt;/section&amp;gt;<br />                &amp;lt;tx_templavoila type="array"&amp;gt;<br />                    &amp;lt;title&amp;gt;Container fuer alle Links&amp;lt;/title&amp;gt;<br />                    &amp;lt;description&amp;gt;&amp;lt;![CDATA[&amp;lt;div class="links"&amp;gt;...&amp;lt;/div&amp;gt;]]&gt;&amp;lt;/description&amp;gt;<br />                    &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />                &amp;lt;/tx_templavoila&amp;gt;<br />                &amp;lt;el type="array"&amp;gt;<br />                    &amp;lt;field_link type="array"&amp;gt;<br />                        &amp;lt;type&amp;gt;array&amp;lt;/type&amp;gt;<br />                        &amp;lt;tx_templavoila type="array"&amp;gt;<br />                            &amp;lt;title&amp;gt;Einzelner Link&amp;lt;/title&amp;gt;<br />                            &amp;lt;description&amp;gt;&amp;lt;![CDATA[&amp;lt;div class="link"&amp;gt;...&amp;lt;/div&amp;gt;]]&gt;&amp;lt;/description&amp;gt;<br />                            &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />                        &amp;lt;/tx_templavoila&amp;gt;<br />                        &amp;lt;el type="array"&amp;gt;<br />                            &amp;lt;field_linktext type="array"&amp;gt;<br />                                &amp;lt;tx_templavoila type="array"&amp;gt;<br />                                    &amp;lt;title&amp;gt;Linktext&amp;lt;/title&amp;gt;<br />                                    &amp;lt;description&amp;gt;&amp;lt;![CDATA[&amp;lt;a&amp;gt;...&amp;lt;/a&amp;gt;]]&gt;&amp;lt;/description&amp;gt;<br />                                    &amp;lt;sample_data type="array"&amp;gt;<br />                                        &amp;lt;numIndex index="0"&amp;gt;Weiter geht's&amp;lt;/numIndex&amp;gt;<br />                                    &amp;lt;/sample_data&amp;gt;<br />                                    &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />                                    &amp;lt;proc type="array"&amp;gt;<br />                                        &amp;lt;HSC type="integer"&amp;gt;1&amp;lt;/HSC&amp;gt;<br />                                    &amp;lt;/proc&amp;gt;<br />                                &amp;lt;/tx_templavoila&amp;gt;<br />                                &amp;lt;TCEforms type="array"&amp;gt;<br />                                    &amp;lt;config type="array"&amp;gt;<br />                                        &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />                                        &amp;lt;size&amp;gt;48&amp;lt;/size&amp;gt;<br />                                        &amp;lt;eval&amp;gt;trim&amp;lt;/eval&amp;gt;<br />                                    &amp;lt;/config&amp;gt;<br />                                    &amp;lt;label&amp;gt;Linktext&amp;lt;/label&amp;gt;<br />                                &amp;lt;/TCEforms&amp;gt;<br />                            &amp;lt;/field_linktext&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_linknote type="array"&amp;gt;<br />                                &amp;lt;tx_templavoila type="array"&amp;gt;<br />                                    &amp;lt;title&amp;gt;Linknote&amp;lt;/title&amp;gt;<br />                                    &amp;lt;description&amp;gt;&amp;lt;![CDATA[&amp;lt;span class="linknote"&amp;gt;...&amp;lt;/span&amp;gt;]]&gt;&amp;lt;/description&amp;gt;<br />                                    &amp;lt;sample_data type="array"&amp;gt;<br />                                        &amp;lt;numIndex index="0"&amp;gt;Link-Notiz&amp;lt;/numIndex&amp;gt;<br />                                    &amp;lt;/sample_data&amp;gt;<br />                                    &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />                                    &amp;lt;TypoScript&amp;gt;&amp;lt;![CDATA[<br />    10 = TEXT<br />    10.current = 1<br />    10.required=1<br />    10.wrap = &amp;nbsp;|<br />                            ]]&gt;&amp;lt;/TypoScript&amp;gt;<br />                                    &amp;lt;proc type="array"&amp;gt;<br />                                        &amp;lt;HSC type="integer"&amp;gt;0&amp;lt;/HSC&amp;gt;<br />                                    &amp;lt;/proc&amp;gt;<br />                                &amp;lt;/tx_templavoila&amp;gt;<br />                                &amp;lt;TCEforms type="array"&amp;gt;<br />                                    &amp;lt;config type="array"&amp;gt;<br />                                        &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />                                        &amp;lt;size&amp;gt;48&amp;lt;/size&amp;gt;<br />                                        &amp;lt;eval&amp;gt;trim&amp;lt;/eval&amp;gt;<br />                                    &amp;lt;/config&amp;gt;<br />                                    &amp;lt;label&amp;gt;Text nach Link&amp;lt;/label&amp;gt;<br />                                &amp;lt;/TCEforms&amp;gt;<br />                            &amp;lt;/field_linknote&amp;gt;</code></pre>
+
+
+	<pre><code>&amp;lt;field_linkto type="array"&amp;gt;<br />                                &amp;lt;type&amp;gt;attr&amp;lt;/type&amp;gt;<br />                                &amp;lt;tx_templavoila type="array"&amp;gt;<br />                                    &amp;lt;title&amp;gt;Linkziel&amp;lt;/title&amp;gt;<br />                                    &amp;lt;description&amp;gt;&amp;lt;![CDATA[src="..."]]&amp;gt;&amp;lt;/description&amp;gt;<br />                                    &amp;lt;sample_data type="array"&amp;gt;<br />                                        &amp;lt;numIndex index="0"&amp;gt;test.htm&amp;lt;/numIndex&amp;gt;<br />                                    &amp;lt;/sample_data&amp;gt;<br />                                    &amp;lt;eType&amp;gt;link&amp;lt;/eType&amp;gt;<br />                                    &amp;lt;TypoScript&amp;gt;<br />    10 = TEXT<br />    10.typolink.parameter.current = 1<br />    10.typolink.returnLast = url<br />                            &amp;lt;/TypoScript&amp;gt;<br />                                    &amp;lt;proc type="array"&amp;gt;<br />                                        &amp;lt;HSC type="integer"&amp;gt;1&amp;lt;/HSC&amp;gt;<br />                                    &amp;lt;/proc&amp;gt;<br />                                &amp;lt;/tx_templavoila&amp;gt;<br />                                &amp;lt;TCEforms type="array"&amp;gt;<br />                                    &amp;lt;config type="array"&amp;gt;<br />                                        &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />                                        &amp;lt;size&amp;gt;15&amp;lt;/size&amp;gt;<br />                                        &amp;lt;max&amp;gt;256&amp;lt;/max&amp;gt;<br />                                        &amp;lt;checkbox&amp;gt;&amp;lt;/checkbox&amp;gt;<br />                                        &amp;lt;eval&amp;gt;trim&amp;lt;/eval&amp;gt;<br />                                        &amp;lt;wizards type="array"&amp;gt;<br />                                            &amp;lt;_PADDING type="integer"&amp;gt;2&amp;lt;/_PADDING&amp;gt;<br />                                            &amp;lt;link type="array"&amp;gt;<br />                                                &amp;lt;type&amp;gt;popup&amp;lt;/type&amp;gt;<br />                                                &amp;lt;title&amp;gt;Link&amp;lt;/title&amp;gt;<br />                                                &amp;lt;icon&amp;gt;link_popup.gif&amp;lt;/icon&amp;gt;<br />                                                &amp;lt;script&amp;gt;browse_links.php?mode=wizard&amp;lt;/script&amp;gt;<br />                                                &amp;lt;JSopenParams&amp;gt;height=300,width=500,status=0,menubar=0,scrollbars=1&amp;lt;/JSopenParams&amp;gt;<br />                                            &amp;lt;/link&amp;gt;<br />                                        &amp;lt;/wizards&amp;gt;<br />                                    &amp;lt;/config&amp;gt;<br />                                    &amp;lt;label&amp;gt;Linkziel&amp;lt;/label&amp;gt;<br />                                &amp;lt;/TCEforms&amp;gt;<br />                            &amp;lt;/field_linkto&amp;gt;<br />                            &amp;lt;field_linktarget type="array"&amp;gt;<br />                                &amp;lt;type&amp;gt;attr&amp;lt;/type&amp;gt;<br />                                &amp;lt;tx_templavoila type="array"&amp;gt;<br />                                    &amp;lt;title&amp;gt;Linktarget&amp;lt;/title&amp;gt;<br />                                    &amp;lt;description&amp;gt;&amp;lt;![CDATA[target="..."]]&amp;gt;&amp;lt;/description&amp;gt;<br />                                    &amp;lt;sample_data type="array"&amp;gt;<br />                                        &amp;lt;numIndex index="0"&amp;gt;_blank&amp;lt;/numIndex&amp;gt;<br />                                    &amp;lt;/sample_data&amp;gt;<br />                                    &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />                                        &amp;lt;proc type="array"&amp;gt;<br />                                        &amp;lt;HSC type="integer"&amp;gt;1&amp;lt;/HSC&amp;gt;<br />                                    &amp;lt;/proc&amp;gt;<br />                                &amp;lt;/tx_templavoila&amp;gt;<br />                                &amp;lt;TCEforms type="array"&amp;gt;<br />                                    &amp;lt;config type="array"&amp;gt;<br />                                        &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />                                        &amp;lt;size&amp;gt;48&amp;lt;/size&amp;gt;<br />                                        &amp;lt;eval&amp;gt;trim, required&amp;lt;/eval&amp;gt;<br />                                        &amp;lt;default&amp;gt;_top&amp;lt;/default&amp;gt;                <br />                                    &amp;lt;/config&amp;gt;<br />                                    &amp;lt;label&amp;gt;Linktarget&amp;lt;/label&amp;gt;<br />                                &amp;lt;/TCEforms&amp;gt;<br />                            &amp;lt;/field_linktarget&amp;gt;<br />                            &amp;lt;field_linktitle type="array"&amp;gt;<br />                                &amp;lt;type&amp;gt;attr&amp;lt;/type&amp;gt;<br />                                &amp;lt;tx_templavoila type="array"&amp;gt;<br />                                    &amp;lt;title&amp;gt;Link-Title&amp;lt;/title&amp;gt;<br />                                    &amp;lt;description&amp;gt;&amp;lt;![CDATA[title="..."]]&amp;gt;&amp;lt;/description&amp;gt;<br />                                    &amp;lt;sample_data type="array"&amp;gt;<br />                                        &amp;lt;numIndex index="0"&amp;gt;huhu&amp;lt;/numIndex&amp;gt;<br />                                    &amp;lt;/sample_data&amp;gt;<br />                                    &amp;lt;eType&amp;gt;input&amp;lt;/eType&amp;gt;<br />                                    &amp;lt;proc type="array"&amp;gt;<br />                                        &amp;lt;HSC type="integer"&amp;gt;1&amp;lt;/HSC&amp;gt;<br />                                    &amp;lt;/proc&amp;gt;<br />                                &amp;lt;/tx_templavoila&amp;gt;<br />                                &amp;lt;TCEforms type="array"&amp;gt;<br />                                    &amp;lt;config type="array"&amp;gt;<br />                                        &amp;lt;type&amp;gt;input&amp;lt;/type&amp;gt;<br />                                        &amp;lt;size&amp;gt;48&amp;lt;/size&amp;gt;<br />                                        &amp;lt;eval&amp;gt;trim&amp;lt;/eval&amp;gt;<br />                                    &amp;lt;/config&amp;gt;<br />                                    &amp;lt;label&amp;gt;Link-Title&amp;lt;/label&amp;gt;<br />                                &amp;lt;/TCEforms&amp;gt;<br />                            &amp;lt;/field_linktitle&amp;gt;<br />                        &amp;lt;/el&amp;gt;<br />                    &amp;lt;/field_link&amp;gt;<br />                &amp;lt;/el&amp;gt;<br />            &amp;lt;/field_link_segment&amp;gt;<br />        &amp;lt;/el&amp;gt;<br />    &amp;lt;/ROOT&amp;gt;<br />&amp;lt;/T3DataStructure&amp;gt;</code></pre></div>
+  </div>
+  
+
+  <div id="change-49390" class="journal has-notes">
+    <h4><a href="19049.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/639">Michael Voehringer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-11" title="2008-11-11 12:12">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49390-notes"><p>I can reproduce this bug, with enabled RTE in typo3 4.2.3. <br />Please have look at Bug 8232 which fixed a bug in the trunk but not in the 4.2 branch. Also see Bug 9666.</p></div>
+  </div>
+  
+
+  <div id="change-49391" class="journal has-notes">
+    <h4><a href="19049.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/998">Christian Clemens</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-11" title="2008-11-11 13:53">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49391-notes"><p>Seems to have nothing to do with RTE - or what do you mean Michael?<br />I turned off RTE and problem still exists</p></div>
+  </div>
+  
+
+  <div id="change-49392" class="journal has-notes">
+    <h4><a href="19049.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-12" title="2008-11-12 13:08">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49392-notes"><p>Hey Oliver,<br />Chrisitan reported the browser-version and I did it here at the beginning of the bugreport (note 0023911) and yes I have installed TemplaVoila. Where else can I use these sections? - IRRE, okay - hmmm does it work there? - No, same problem there: the sensitive area is also much beneath the section, but there are also the old fashioned up- and down-arrows for changing the order.</p>
+
+
+	<p>so I can find the problem by sections in TemplaVoila and in IRRE - so it seems to be a problem by the TYPO3 core handling of section reordering ...</p></div>
+  </div>
+  
+
+  <div id="change-49393" class="journal has-notes">
+    <h4><a href="19049.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2158">Florian Seirer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-11-27" title="2008-11-27 16:09">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49393-notes"><p>I just accidentally found out that you can drag AND DROP the elements when you minimize them to their title bar. <br />Not perfect yet, because the "drop zone" is still quite a bit off,  but at least it's usable now.</p>
+
+
+	<p>Also, this looks related to <a class="external" href="../../external.html?link=http://bugs.typo3.org/view.php?id=8244">http://bugs.typo3.org/view.php?id=8244</a>, which makes solving it worth 130€. ;-)</p></div>
+  </div>
+  
+
+  <div id="change-49394" class="journal has-notes">
+    <h4><a href="19049.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/998">Christian Clemens</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-12-03" title="2008-12-03 15:19">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49394-notes"><p>I cannot find the mentioned "drop zone" (trying it in FF3). Don't know, why this "workaround" doesn't work in my installation...</p></div>
+  </div>
+  
+
+  <div id="change-49395" class="journal has-notes">
+    <h4><a href="19049.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/24274">Gregor Nathanael Meyer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-12-11" title="2008-12-11 16:31">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49395-notes"><p>At our site (TYPO3 4.2.3), script.aculo.us is loaded and the dragging works quite well. Only the drop zones are completely mad, and most of the time out of the viewport. If I minimize the Sections, I can sometimes get the dropzone somewehere inside the viewport, but several hundered pixels off the correct position.</p>
+
+
+	<p>E.g. a textarea section above some other sections influences the position of their drop zones: When it is minimized, the dropzones have an offset of about 300px, when it is opened, the drop zones offsets increase by the height of the textarea.</p>
+
+
+	<p>Can anyone reproduce this behaviour?</p></div>
+  </div>
+  
+
+  <div id="change-49396" class="journal has-notes">
+    <h4><a href="19049.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2158">Florian Seirer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-12-12" title="2008-12-12 09:59">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49396-notes"><p>I can.<br />It seems like the drop zones are calculated wrong by adding height when it shouldn't.</p>
+
+
+	<p>This issue is literally dragging now. ;-)</p></div>
+  </div>
+  
+
+  <div id="change-49397" class="journal has-notes">
+    <h4><a href="19049.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-12-15" title="2008-12-15 10:55">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49397-notes"><p>Yes we can! :) ...as I wrote in every second of my notes on this bug report.</p>
+
+
+	<p>Chrisitan, you cannot find the dropzone?<br />Maybe try it by changing the FCE field order - put the section list first and than all other fields of the FCE - so you will get some more space beneath the list to find the dropzone. - It's no solution only a hint to reproduce our field report or maybe sometimes a workaround - no, it's not a workaround, it's a minimal way to use the drag and drop in some way ...</p></div>
+  </div>
+  
+
+  <div id="change-49398" class="journal has-notes">
+    <h4><a href="19049.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/24348">Frederik Mathem</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-12-15" title="2008-12-15 21:25">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49398-notes"><p>Funny thing</p>
+
+
+	<p>If i resize the page with firefox zoom option, the position of the dropzones are no more miscalculated. If i go back to 100% zoom it stays that way only for one drop.</p></div>
+  </div>
+  
+
+  <div id="change-49399" class="journal has-notes">
+    <h4><a href="19049.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/998">Christian Clemens</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2008-12-16" title="2008-12-16 08:22">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49399-notes"><p>I tried Frederiks "workaround": if I zoom out in firefox3 several steps so that I couldn't really read the headlines any longer - than I discover dropzones. But in my firefox, they do not have the correct position - they are hundret of pixels below.</p>
+
+
+	<p>Update: if I zoom out 5 steps, than the dropzones have the correct position...</p></div>
+  </div>
+  
+
+  <div id="change-49400" class="journal has-notes">
+    <h4><a href="19049.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/494">Sebastian Fuchs</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-08" title="2009-01-08 17:58">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49400-notes"><p>Hi,<br />I think I had the same issue in an extension were we us flexforms to sort elements. the problem only occured if you had a long list and you had to scroll to position the element. <br />so like somebody else pointed out, if you scroll a little the offset will be small, if you scroll a lot the offset will be bigger.<br />I think this problem is related to these prototype/scriptacoulse issues:<br /><a class="external" href="../../external.html?link=http://dev.rubyonrails.org/ticket/3860">http://dev.rubyonrails.org/ticket/3860</a> <br /><a class="external" href="../../external.html?link=http://dev.rubyonrails.org/ticket/11255">http://dev.rubyonrails.org/ticket/11255</a></p>
+
+
+	<p>But for me the 8882_v1.patch works (its a trial&#38;error patch). It is only tested on FF2 against my own extensions (i dont have TV enabled).</p></div>
+  </div>
+  
+
+  <div id="change-49401" class="journal has-notes">
+    <h4><a href="19049.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-09" title="2009-01-09 10:51">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49401-notes"><p>Hi Sebastian,</p>
+
+
+	<p>it looks great (and easy ;) ...</p>
+
+
+	<p>Your patch works for me in FF2, FF3, IE6, IE7 and Safari with TemplaVoila!<br />It doesn't works for me in IRRE - but maybe it's another IRRE-setting problem ...</p>
+
+
+	<p>So long, GREAT WORK!</p></div>
+  </div>
+  
+
+  <div id="change-49402" class="journal has-notes">
+    <h4><a href="19049.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/494">Sebastian Fuchs</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-16" title="2009-01-16 15:16">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49402-notes"><p>Hi Lee,</p>
+
+
+	<p>good to here that it works for you.</p>
+
+
+	<p>As far as i remeber (some webcast from kasper) IRRE and these flexform sections are two totally different concepts (which both work with scriptacoulse drag'n'drop). <br />To fix this for IRRE too you have to edit t3lib/jsfunc.inline.js.<br />Insert <br />Position.includeScrollOffsets = true;<br />on line 473.</p>
+
+
+	<p>Sorry that i cant provide a patch this time.</p></div>
+  </div>
+  
+
+  <div id="change-49403" class="journal has-notes">
+    <h4><a href="19049.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-16" title="2009-01-16 17:56">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49403-notes"><p>Hey Sebastian,</p>
+
+
+	<p>thanx again!<br />I've patched the t3lib/jsfunc.inline.js manually and it works also fine now.</p>
+
+
+	<p>So please contact the TYPO3 core team to insert your patches for the next release.</p>
+
+
+	<p>greetings,<br />Lee</p></div>
+  </div>
+  
+
+  <div id="change-49404" class="journal has-notes">
+    <h4><a href="19049.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-18" title="2009-01-18 14:11">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49404-notes"><p>Thanks, Sebastian for finding a solution for this problem! I submitted the patch (icluding the IRRE fix) to the core list.</p></div>
+  </div>
+  
+
+  <div id="change-49405" class="journal has-notes">
+    <h4><a href="19049.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-19" title="2009-01-19 14:07">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49405-notes"><p>i tried the patch but it didn't solved the issue for me.</p>
+
+
+	<p>When i try to Drag an dDrop a section the Browser thorws a javascript error "Sortable is not undefined" (like Steffen Kamper and Florian Seirer reported).<br />For it works well when i include Scriptaculous in alt_doc.php</p>
+
+
+	<p>Line 458<br />+ $this->doc->loadJavascriptLib('contrib/scriptaculous/scriptaculous.js?load=effects,dragdrop');</p></div>
+  </div>
+  
+
+  <div id="change-49406" class="journal has-notes">
+    <h4><a href="19049.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-20" title="2009-01-20 10:23">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49406-notes"><p>hey tobias,</p>
+
+
+	<p>maybe you were working with TYPO3 4.2.2?</p>
+
+
+	<p>I guess, there was a bug (<a class="external" href="../../external.html?link=http://bugs.typo3.org/view.php?id=9623">http://bugs.typo3.org/view.php?id=9623</a> ) by loading or no more loading of script.aculo.us.<br />there is a patch and it was solved in TYPO3 4.2.3 ...</p>
+
+
+	<p>greetings,<br />lee</p></div>
+  </div>
+  
+
+  <div id="change-49407" class="journal has-notes">
+    <h4><a href="19049.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-20" title="2009-01-20 10:33">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49407-notes"><p>You're right! I stumpled over this in a customers project which still runs on 4.2.2.<br />The issue concering the missing scriptaculous.js is solved with <a href="19496.html" class="issue status-9 priority-1 closed" title="Flexform sections are not working anymore since script.aculo.us is not loaded (Closed)">#19496</a> and its solved in 4.2.3.</p></div>
+  </div>
+  
+
+  <div id="change-49408" class="journal has-notes">
+    <h4><a href="19049.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/22925">lee perry</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 10:35">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49408-notes"><p>Is this patch included in the release 4.2.4 now?</p></div>
+  </div>
+  
+
+  <div id="change-49409" class="journal has-notes">
+    <h4><a href="19049.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1155">Laurent Cherpit</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-01-21" title="2009-01-21 12:47">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49409-notes"><p>it does not seem so.</p>
+
+
+	<p>tx for the patch!</p></div>
+  </div>
+  
+
+  <div id="change-49410" class="journal has-notes">
+    <h4><a href="19049.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2778">Alban Cousinie</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-03-23" title="2009-03-23 11:52">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49410-notes"><p>The issue is still present in Typo3 4.2.6, and the patch attached to this issue does work (applied manually as line numbers may differ in Typo3 4.2.6).</p></div>
+  </div>
+  
+
+  <div id="change-49411" class="journal has-notes">
+    <h4><a href="19049.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2239">Stefan Froemken</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-04-06" title="2009-04-06 15:03">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49411-notes"><p>I have still the same problem in 4.2.6 and alpha 2. I searched for Position.includeScrollOffsets = true; in jsfunc.inline.js, but it isn't there?! When I don't scroll, than everything works fine, but with scrolling the offset get's bigger.</p></div>
+  </div>
+  
+
+  <div id="change-49412" class="journal has-notes">
+    <h4><a href="19049.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2239">Stefan Froemken</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-04-06" title="2009-04-06 15:21">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49412-notes"><p>TYPO3 Alpha 2:<br />I've looked into the Patch, searched for "function flexFormSortable" and saw, that I have to ADD not to EDIT a line.</p>
+
+
+	<p>After adding the new line in function drag and drop works perfectly.</p>
+
+
+	<p>THX</p></div>
+  </div>
+  
+
+  <div id="change-49413" class="journal has-notes">
+    <h4><a href="19049.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2009-04-09" title="2009-04-09 10:00">over 6 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-49413-notes">Committed to SVN:
+	<ul>
+	<li>TYPO3_4-2 (rev. 5302)</li>
+		<li>Trunk (rev. 5303)</li>
+	</ul>
+
+
+	<p>There is a sponsorship of 30,00 Euro by Christian Clemens. Affected parties in creating a patch were Sebastian Fuchs and Helmut Hummel.<br />Please get in contact with me directly (oliver @ typo3 . org) if you have problems concerning the sponsorship...</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-19049-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/19049.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="19049.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/19049 by HTTrack Website Copier/3.x [XR&CO'2008], Tue, 04 Aug 2015 00:04:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
