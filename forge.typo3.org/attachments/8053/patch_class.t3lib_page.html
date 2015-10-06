@@ -1,0 +1,1134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/attachments/8053/patch_class.t3lib_page.txt by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:53:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>patch_class.t3lib_page.txt - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../../rb/server_variables.js">
+</script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+    <link href="../../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            
+            <a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues">Issues</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="nosidebar" id="main">
+    <div id="leftmenu">
+        <a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+        
+    </div>
+    
+    <div id="content">
+				
+        <h2>patch_class.t3lib_page.txt</h2>
+
+<div class="attachments">
+<p>
+   <span class="author">Administrator Admin, 2007-07-22 14:08</span></p>
+<p><a href="../download/8053/patch_class.t3lib_page.txt">Download</a>   <span class="size">(3 kB)</span></p>
+
+</div>
+&nbsp;
+<div class="autoscroll">
+<table class="filecontent syntaxhl">
+<tbody>
+
+
+  <tr>
+    <th class="line-num" id="L1">
+      <a href="#L1">1</a>
+    </th>
+    <td class="line-code">
+      <pre>Index: Z:/svnworkspace/TYPO3_4-1/t3lib/class.t3lib_page.php
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L2">
+      <a href="#L2">2</a>
+    </th>
+    <td class="line-code">
+      <pre>===================================================================
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L3">
+      <a href="#L3">3</a>
+    </th>
+    <td class="line-code">
+      <pre>--- Z:/svnworkspace/TYPO3_4-1/t3lib/class.t3lib_page.php	(revision 2438)
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L4">
+      <a href="#L4">4</a>
+    </th>
+    <td class="line-code">
+      <pre>+++ Z:/svnworkspace/TYPO3_4-1/t3lib/class.t3lib_page.php	(working copy)
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L5">
+      <a href="#L5">5</a>
+    </th>
+    <td class="line-code">
+      <pre>@@ -239,7 +239,35 @@
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L6">
+      <a href="#L6">6</a>
+    </th>
+    <td class="line-code">
+      <pre> 		}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L7">
+      <a href="#L7">7</a>
+    </th>
+    <td class="line-code">
+      <pre> 		return 0;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L8">
+      <a href="#L8">8</a>
+    </th>
+    <td class="line-code">
+      <pre> 	}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L9">
+      <a href="#L9">9</a>
+    </th>
+    <td class="line-code">
+      <pre>-
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L10">
+      <a href="#L10">10</a>
+    </th>
+    <td class="line-code">
+      <pre>+	/** 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L11">
+      <a href="#L11">11</a>
+    </th>
+    <td class="line-code">
+      <pre>+	* function that checks which page record overlay language should be used, according to the given fallbackorder
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L12">
+      <a href="#L12">12</a>
+    </th>
+    <td class="line-code">
+      <pre>+	*
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L13">
+      <a href="#L13">13</a>
+    </th>
+    <td class="line-code">
+      <pre>+	* @param integer		pid which is checked for translations
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L14">
+      <a href="#L14">14</a>
+    </th>
+    <td class="line-code">
+      <pre>+	* @param string		comma seperated list of language uids (integer). the languageUid to whith the fallback order
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L15">
+      <a href="#L15">15</a>
+    </th>
+    <td class="line-code">
+      <pre>+	* @return integer  id of the first found languageuid in the fallbackorder where a translation for $pid exists.
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L16">
+      <a href="#L16">16</a>
+    </th>
+    <td class="line-code">
+      <pre>+	**/
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L17">
+      <a href="#L17">17</a>
+    </th>
+    <td class="line-code">
+      <pre>+	function getLanguageOverlayUidForPage($page_id,$fallBackOrder) {
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L18">
+      <a href="#L18">18</a>
+    </th>
+    <td class="line-code">
+      <pre>+		$lUids = t3lib_div::intExplode(&#39;,&#39;, $fallBackOrder);		
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L19">
+      <a href="#L19">19</a>
+    </th>
+    <td class="line-code">
+      <pre>+		foreach($lUids as $lUid)	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L20">
+      <a href="#L20">20</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// Selecting overlay record:
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L21">
+      <a href="#L21">21</a>
+    </th>
+    <td class="line-code">
+      <pre>+				$res = $GLOBALS[&#39;TYPO3_DB&#39;]-&gt;exec_SELECTquery(
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L22">
+      <a href="#L22">22</a>
+    </th>
+    <td class="line-code">
+      <pre>+							&#39;*&#39;,
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L23">
+      <a href="#L23">23</a>
+    </th>
+    <td class="line-code">
+      <pre>+							&#39;pages_language_overlay&#39;,
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L24">
+      <a href="#L24">24</a>
+    </th>
+    <td class="line-code">
+      <pre>+							&#39;pid=&#39;.intval($page_id).&#39;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L25">
+      <a href="#L25">25</a>
+    </th>
+    <td class="line-code">
+      <pre>+								AND sys_language_uid=&#39;.intval($lUid).
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L26">
+      <a href="#L26">26</a>
+    </th>
+    <td class="line-code">
+      <pre>+								$this-&gt;enableFields(&#39;pages_language_overlay&#39;),
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L27">
+      <a href="#L27">27</a>
+    </th>
+    <td class="line-code">
+      <pre>+							&#39;&#39;,
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L28">
+      <a href="#L28">28</a>
+    </th>
+    <td class="line-code">
+      <pre>+							&#39;&#39;,
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L29">
+      <a href="#L29">29</a>
+    </th>
+    <td class="line-code">
+      <pre>+							&#39;1&#39;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L30">
+      <a href="#L30">30</a>
+    </th>
+    <td class="line-code">
+      <pre>+						);
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L31">
+      <a href="#L31">31</a>
+    </th>
+    <td class="line-code">
+      <pre>+				$row = $GLOBALS[&#39;TYPO3_DB&#39;]-&gt;sql_fetch_assoc($res);							
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L32">
+      <a href="#L32">32</a>
+    </th>
+    <td class="line-code">
+      <pre>+				$this-&gt;versionOL(&#39;pages_language_overlay&#39;,$row);
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L33">
+      <a href="#L33">33</a>
+    </th>
+    <td class="line-code">
+      <pre>+				if (is_array($row))	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L34">
+      <a href="#L34">34</a>
+    </th>
+    <td class="line-code">
+      <pre>+					return $lUid;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L35">
+      <a href="#L35">35</a>
+    </th>
+    <td class="line-code">
+      <pre>+				}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L36">
+      <a href="#L36">36</a>
+    </th>
+    <td class="line-code">
+      <pre>+		}	
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L37">
+      <a href="#L37">37</a>
+    </th>
+    <td class="line-code">
+      <pre>+		return 0;	
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L38">
+      <a href="#L38">38</a>
+    </th>
+    <td class="line-code">
+      <pre>+	}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L39">
+      <a href="#L39">39</a>
+    </th>
+    <td class="line-code">
+      <pre> 	/**
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L40">
+      <a href="#L40">40</a>
+    </th>
+    <td class="line-code">
+      <pre> 	 * Returns the relevant page overlay record fields
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L41">
+      <a href="#L41">41</a>
+    </th>
+    <td class="line-code">
+      <pre> 	 *
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L42">
+      <a href="#L42">42</a>
+    </th>
+    <td class="line-code">
+      <pre>@@ -248,20 +276,28 @@
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L43">
+      <a href="#L43">43</a>
+    </th>
+    <td class="line-code">
+      <pre> 	 * @return	array		Page row which is overlayed with language_overlay record (or the overlay record alone)
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L44">
+      <a href="#L44">44</a>
+    </th>
+    <td class="line-code">
+      <pre> 	 */
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L45">
+      <a href="#L45">45</a>
+    </th>
+    <td class="line-code">
+      <pre> 	function getPageOverlay($pageInput,$lUid=-1)	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L46">
+      <a href="#L46">46</a>
+    </th>
+    <td class="line-code">
+      <pre>-
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L47">
+      <a href="#L47">47</a>
+    </th>
+    <td class="line-code">
+      <pre>-			// Initialize:
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L48">
+      <a href="#L48">48</a>
+    </th>
+    <td class="line-code">
+      <pre>-		if ($lUid&lt;0)	$lUid = $this-&gt;sys_language_uid;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L49">
+      <a href="#L49">49</a>
+    </th>
+    <td class="line-code">
+      <pre>+		//get page_id	
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L50">
+      <a href="#L50">50</a>
+    </th>
+    <td class="line-code">
+      <pre>+		if (is_array($pageInput))	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L51">
+      <a href="#L51">51</a>
+    </th>
+    <td class="line-code">
+      <pre>+			$page_id = $pageInput[&#39;uid&#39;];	// Was the whole record
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L52">
+      <a href="#L52">52</a>
+    </th>
+    <td class="line-code">
+      <pre>+		}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L53">
+      <a href="#L53">53</a>
+    </th>
+    <td class="line-code">
+      <pre>+		else {
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L54">
+      <a href="#L54">54</a>
+    </th>
+    <td class="line-code">
+      <pre>+			$page_id = $pageInput;	// Was the id
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L55">
+      <a href="#L55">55</a>
+    </th>
+    <td class="line-code">
+      <pre>+		}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L56">
+      <a href="#L56">56</a>
+    </th>
+    <td class="line-code">
+      <pre>+		// Initialize:
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L57">
+      <a href="#L57">57</a>
+    </th>
+    <td class="line-code">
+      <pre>+		if ($lUid&lt;0)	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L58">
+      <a href="#L58">58</a>
+    </th>
+    <td class="line-code">
+      <pre>+			$lUid = $this-&gt;sys_language_uid;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L59">
+      <a href="#L59">59</a>
+    </th>
+    <td class="line-code">
+      <pre>+			//if  with sys_language_overlayCheckOrder, check for other Overlay language which should be used instead
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L60">
+      <a href="#L60">60</a>
+    </th>
+    <td class="line-code">
+      <pre>+			if ($page_id &amp;&amp; $lUid &amp;&amp; is_object($GLOBALS[&#39;TSFE&#39;]) &amp;&amp; $GLOBALS[&#39;TSFE&#39;]-&gt;sys_language_overlayCheckOrder) {			
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L61">
+      <a href="#L61">61</a>
+    </th>
+    <td class="line-code">
+      <pre>+				$lUid=$this-&gt;getLanguageOverlayUidForPage($page_id,$GLOBALS[&#39;TSFE&#39;]-&gt;sys_language_overlayCheckOrder);					
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L62">
+      <a href="#L62">62</a>
+    </th>
+    <td class="line-code">
+      <pre>+			}			
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L63">
+      <a href="#L63">63</a>
+    </th>
+    <td class="line-code">
+      <pre>+		}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L64">
+      <a href="#L64">64</a>
+    </th>
+    <td class="line-code">
+      <pre> 		$row = NULL;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L65">
+      <a href="#L65">65</a>
+    </th>
+    <td class="line-code">
+      <pre>-
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L66">
+      <a href="#L66">66</a>
+    </th>
+    <td class="line-code">
+      <pre> 			// If language UID is different from zero, do overlay:
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L67">
+      <a href="#L67">67</a>
+    </th>
+    <td class="line-code">
+      <pre> 		if ($lUid)	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L68">
+      <a href="#L68">68</a>
+    </th>
+    <td class="line-code">
+      <pre> 			$fieldArr = explode(&#39;,&#39;, $GLOBALS[&#39;TYPO3_CONF_VARS&#39;][&#39;FE&#39;][&#39;pageOverlayFields&#39;]);
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L69">
+      <a href="#L69">69</a>
+    </th>
+    <td class="line-code">
+      <pre>-			if (is_array($pageInput))	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L70">
+      <a href="#L70">70</a>
+    </th>
+    <td class="line-code">
+      <pre>-				$page_id = $pageInput[&#39;uid&#39;];	// Was the whole record
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L71">
+      <a href="#L71">71</a>
+    </th>
+    <td class="line-code">
+      <pre>+			if (is_array($pageInput))	{				
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L72">
+      <a href="#L72">72</a>
+    </th>
+    <td class="line-code">
+      <pre> 				$fieldArr = array_intersect($fieldArr,array_keys($pageInput));		// Make sure that only fields which exist in the incoming record are overlaid!
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L73">
+      <a href="#L73">73</a>
+    </th>
+    <td class="line-code">
+      <pre>-			} else {
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L74">
+      <a href="#L74">74</a>
+    </th>
+    <td class="line-code">
+      <pre>-				$page_id = $pageInput;	// Was the id
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L75">
+      <a href="#L75">75</a>
+    </th>
+    <td class="line-code">
+      <pre>-			}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L76">
+      <a href="#L76">76</a>
+    </th>
+    <td class="line-code">
+      <pre>+			} 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L77">
+      <a href="#L77">77</a>
+    </th>
+    <td class="line-code">
+      <pre> 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L78">
+      <a href="#L78">78</a>
+    </th>
+    <td class="line-code">
+      <pre> 			if (count($fieldArr))	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L79">
+      <a href="#L79">79</a>
+    </th>
+    <td class="line-code">
+      <pre> 				/*
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L80">
+      <a href="#L80">80</a>
+    </th>
+    <td class="line-code">
+      <pre>@@ -286,7 +322,7 @@
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L81">
+      <a href="#L81">81</a>
+    </th>
+    <td class="line-code">
+      <pre> 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L82">
+      <a href="#L82">82</a>
+    </th>
+    <td class="line-code">
+      <pre> 				if (is_array($row))	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L83">
+      <a href="#L83">83</a>
+    </th>
+    <td class="line-code">
+      <pre> 					$row[&#39;_PAGES_OVERLAY&#39;] = TRUE;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L84">
+      <a href="#L84">84</a>
+    </th>
+    <td class="line-code">
+      <pre>-
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L85">
+      <a href="#L85">85</a>
+    </th>
+    <td class="line-code">
+      <pre>+					$row[&#39;_PAGES_OVERLAY_LUID&#39;] = $lUid;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L86">
+      <a href="#L86">86</a>
+    </th>
+    <td class="line-code">
+      <pre> 						// Unset vital fields that are NOT allowed to be overlaid:
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L87">
+      <a href="#L87">87</a>
+    </th>
+    <td class="line-code">
+      <pre> 					unset($row[&#39;uid&#39;]);
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L88">
+      <a href="#L88">88</a>
+    </th>
+    <td class="line-code">
+      <pre> 					unset($row[&#39;pid&#39;]);
+</pre>
+    </td>
+  </tr>
+  
+
+</tbody>
+</table>
+</div>
+
+
+
+
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/attachments/8053/patch_class.t3lib_page.txt by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:53:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
