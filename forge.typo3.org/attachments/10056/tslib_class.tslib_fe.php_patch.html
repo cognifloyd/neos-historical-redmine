@@ -1,0 +1,793 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/attachments/10056/tslib_class.tslib_fe.php_patch.txt by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:36:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>tslib_class.tslib_fe.php_patch.txt - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../../rb/server_variables.js">
+</script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+    <link href="../../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            
+            <a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues">Issues</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="nosidebar" id="main">
+    <div id="leftmenu">
+        <a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+        
+    </div>
+    
+    <div id="content">
+				
+        <h2>tslib_class.tslib_fe.php_patch.txt</h2>
+
+<div class="attachments">
+<p>
+   <span class="author">Administrator Admin, 2008-09-03 22:34</span></p>
+<p><a href="../download/10056/tslib_class.tslib_fe.php_patch.txt">Download</a>   <span class="size">(2.8 kB)</span></p>
+
+</div>
+&nbsp;
+<div class="autoscroll">
+<table class="filecontent syntaxhl">
+<tbody>
+
+
+  <tr>
+    <th class="line-num" id="L1">
+      <a href="#L1">1</a>
+    </th>
+    <td class="line-code">
+      <pre>Index: /daten/workspace/TYPO3_4_TRUNK/typo3/sysext/cms/tslib/class.tslib_fe.php
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L2">
+      <a href="#L2">2</a>
+    </th>
+    <td class="line-code">
+      <pre>===================================================================
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L3">
+      <a href="#L3">3</a>
+    </th>
+    <td class="line-code">
+      <pre>--- /daten/workspace/TYPO3_4_TRUNK/typo3/sysext/cms/tslib/class.tslib_fe.php	(revision 4059)
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L4">
+      <a href="#L4">4</a>
+    </th>
+    <td class="line-code">
+      <pre>+++ /daten/workspace/TYPO3_4_TRUNK/typo3/sysext/cms/tslib/class.tslib_fe.php	(working copy)
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L5">
+      <a href="#L5">5</a>
+    </th>
+    <td class="line-code">
+      <pre>@@ -2701,6 +2701,52 @@
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L6">
+      <a href="#L6">6</a>
+    </th>
+    <td class="line-code">
+      <pre> 	 */
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L7">
+      <a href="#L7">7</a>
+    </th>
+    <td class="line-code">
+      <pre> 	function setPageCacheContent($content,$data,$tstamp)	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L8">
+      <a href="#L8">8</a>
+    </th>
+    <td class="line-code">
+      <pre> 		$this-&gt;clearPageCacheContent();
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L9">
+      <a href="#L9">9</a>
+    </th>
+    <td class="line-code">
+      <pre>+
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L10">
+      <a href="#L10">10</a>
+    </th>
+    <td class="line-code">
+      <pre>+		// Call hook for $tstamp calulating
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L11">
+      <a href="#L11">11</a>
+    </th>
+    <td class="line-code">
+      <pre>+		if (is_array($this-&gt;TYPO3_CONF_VARS[&#39;SC_OPTIONS&#39;][&#39;tslib/class.tslib_fe.php&#39;][&#39;hook_cacheexpire_timestamp&#39;]))    {
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L12">
+      <a href="#L12">12</a>
+    </th>
+    <td class="line-code">
+      <pre>+		    foreach($this-&gt;TYPO3_CONF_VARS[&#39;SC_OPTIONS&#39;][&#39;tslib/class.tslib_fe.php&#39;][&#39;hook_cacheexpire_timestamp&#39;] as $_classRef)    {
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L13">
+      <a href="#L13">13</a>
+    </th>
+    <td class="line-code">
+      <pre>+		    	$_procObj = &amp;t3lib_div::getUserObj($_classRef);
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L14">
+      <a href="#L14">14</a>
+    </th>
+    <td class="line-code">
+      <pre>+		        $tstamp = $_procObj-&gt;calculateExpireTimestamp(array(&#39;tstamp&#39; =&gt; $tstamp, &#39;pid&#39; =&gt; $this-&gt;id),$this);
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L15">
+      <a href="#L15">15</a>
+    </th>
+    <td class="line-code">
+      <pre>+		    }
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L16">
+      <a href="#L16">16</a>
+    </th>
+    <td class="line-code">
+      <pre>+		}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L17">
+      <a href="#L17">17</a>
+    </th>
+    <td class="line-code">
+      <pre>+		
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L18">
+      <a href="#L18">18</a>
+    </th>
+    <td class="line-code">
+      <pre>+		$sys_page = t3lib_div::makeInstance(&#39;t3lib_pageSelect&#39;);
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L19">
+      <a href="#L19">19</a>
+    </th>
+    <td class="line-code">
+      <pre>+		
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L20">
+      <a href="#L20">20</a>
+    </th>
+    <td class="line-code">
+      <pre>+		// Workspace does not matter, because they are on an different page
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L21">
+      <a href="#L21">21</a>
+    </th>
+    <td class="line-code">
+      <pre>+		// so whe can use $this-id to check for content elements on this page
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L22">
+      <a href="#L22">22</a>
+    </th>
+    <td class="line-code">
+      <pre>+		// Versioning does not matter, because they got pid = -1
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L23">
+      <a href="#L23">23</a>
+    </th>
+    <td class="line-code">
+      <pre>+		$res = $GLOBALS[&#39;TYPO3_DB&#39;]-&gt;exec_SELECTquery(&#39;*&#39;, &#39;tt_content&#39;, &#39;
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L24">
+      <a href="#L24">24</a>
+    </th>
+    <td class="line-code">
+      <pre>+		tt_content.pid=&#39;.intval($this-&gt;id).&#39; 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L25">
+      <a href="#L25">25</a>
+    </th>
+    <td class="line-code">
+      <pre>+		AND (
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L26">
+      <a href="#L26">26</a>
+    </th>
+    <td class="line-code">
+      <pre>+			(tt_content.starttime &gt; &#39;.$GLOBALS[&#39;EXEC_TIME&#39;].&#39; AND tt_content.starttime &lt; &#39;.$tstamp.&#39;)
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L27">
+      <a href="#L27">27</a>
+    </th>
+    <td class="line-code">
+      <pre>+			OR 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L28">
+      <a href="#L28">28</a>
+    </th>
+    <td class="line-code">
+      <pre>+			(tt_content.endtime &gt; &#39;.$GLOBALS[&#39;EXEC_TIME&#39;].&#39; AND tt_content.endtime &lt; &#39;.$tstamp.&#39;)
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L29">
+      <a href="#L29">29</a>
+    </th>
+    <td class="line-code">
+      <pre>+		) &#39;.$sys_page-&gt;enableFields(&#39;tt_content&#39;,0,array(&#39;starttime&#39; =&gt; true,&#39;endtime&#39; =&gt; true),FALSE));
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L30">
+      <a href="#L30">30</a>
+    </th>
+    <td class="line-code">
+      <pre>+		
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L31">
+      <a href="#L31">31</a>
+    </th>
+    <td class="line-code">
+      <pre>+		while ($row = $GLOBALS[&#39;TYPO3_DB&#39;]-&gt;sql_fetch_assoc($res))	{
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L32">
+      <a href="#L32">32</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// $tstamp is the orignial expire-date of that page
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L33">
+      <a href="#L33">33</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// usually it is calculated by cache-expiredate and 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L34">
+      <a href="#L34">34</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// $GLOBALS[&#39;EXEC_TIME&#39;]
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L35">
+      <a href="#L35">35</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// the page starttime/endtime is checked before
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L36">
+      <a href="#L36">36</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// it is requested from cache. So we do not have to care
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L37">
+      <a href="#L37">37</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// of starttime/endtime of the page itself 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L38">
+      <a href="#L38">38</a>
+    </th>
+    <td class="line-code">
+      <pre>+			
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L39">
+      <a href="#L39">39</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// we want to respect the starttime / endtime of the
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L40">
+      <a href="#L40">40</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// content elements 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L41">
+      <a href="#L41">41</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L42">
+      <a href="#L42">42</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// we have to check for each content element only, if it has a starttime
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L43">
+      <a href="#L43">43</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// or an endtime which takes effect betwwen $GLOBALS[&#39;EXEC_TIME&#39;]
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L44">
+      <a href="#L44">44</a>
+    </th>
+    <td class="line-code">
+      <pre>+			// and the default-expire date ($tstamp). 
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L45">
+      <a href="#L45">45</a>
+    </th>
+    <td class="line-code">
+      <pre>+			if ($row[&#39;starttime&#39;] &lt; $tstamp &amp;&amp; $row[&#39;starttime&#39;] &gt; $GLOBALS[&#39;EXEC_TIME&#39;]) {
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L46">
+      <a href="#L46">46</a>
+    </th>
+    <td class="line-code">
+      <pre>+				t3lib_div::devLog(&#39;Expires was: &#39;.$tstamp.&#39; new Timestamp via starttime is: &#39;.$row[&#39;starttime&#39;].&#39; (ID=&#39;.$row[&#39;id&#39;].&#39;)&#39;,&#39;cacheexpire&#39;,0,$row);  
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L47">
+      <a href="#L47">47</a>
+    </th>
+    <td class="line-code">
+      <pre>+				$tstamp = $row[&#39;starttime&#39;];
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L48">
+      <a href="#L48">48</a>
+    </th>
+    <td class="line-code">
+      <pre>+			}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L49">
+      <a href="#L49">49</a>
+    </th>
+    <td class="line-code">
+      <pre>+			if ($row[&#39;endtime&#39;] &lt; $tstamp &amp;&amp; $row[&#39;endtime&#39;] &gt; $GLOBALS[&#39;EXEC_TIME&#39;]) {
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L50">
+      <a href="#L50">50</a>
+    </th>
+    <td class="line-code">
+      <pre>+				t3lib_div::devLog(&#39;Expires was: &#39;.$tstamp.&#39; new Timestamp via endtime is: &#39;.$row[&#39;endtime&#39;].&#39; (ID=&#39;.$row[&#39;id&#39;].&#39;)&#39;,&#39;cacheexpire&#39;,0,$row);
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L51">
+      <a href="#L51">51</a>
+    </th>
+    <td class="line-code">
+      <pre>+				$tstamp = $row[&#39;endtime&#39;];
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L52">
+      <a href="#L52">52</a>
+    </th>
+    <td class="line-code">
+      <pre>+			}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L53">
+      <a href="#L53">53</a>
+    </th>
+    <td class="line-code">
+      <pre>+		}
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L54">
+      <a href="#L54">54</a>
+    </th>
+    <td class="line-code">
+      <pre>+		
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L55">
+      <a href="#L55">55</a>
+    </th>
+    <td class="line-code">
+      <pre> 		$insertFields = array(
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L56">
+      <a href="#L56">56</a>
+    </th>
+    <td class="line-code">
+      <pre> 			&#39;hash&#39; =&gt; $this-&gt;newHash,
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L57">
+      <a href="#L57">57</a>
+    </th>
+    <td class="line-code">
+      <pre> 			&#39;page_id&#39; =&gt; $this-&gt;id,
+</pre>
+    </td>
+  </tr>
+  
+
+</tbody>
+</table>
+</div>
+
+
+
+
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/attachments/10056/tslib_class.tslib_fe.php_patch.txt by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:36:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
