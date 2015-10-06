@@ -1,0 +1,531 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/attachments/23031/strace_cookie.txt by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:24:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>strace_cookie.txt - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../../../external.html?link=https://forge.typo3.org/javascripts/prototype.js?1437165176" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/javascripts/effects.js?1437165176" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/javascripts/dragdrop.js?1437165176" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/javascripts/controls.js?1437165176" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/javascripts/application.js?1437165176" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/flow_design_helpers/javascripts/custom-scripts.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.min.js?1437165332" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.min.js?1437165332" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.mini.js?1437165332" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollow.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplot.js?1437165332" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighter.js?1437165332" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.min.js?1437165332" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js?1437165332" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.min.js?1437165332" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookie.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../../../external.html?link=https://forge.typo3.org/rb/server_variables.js">
+</script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/common.js?1437165332" type="text/javascript"></script>
+<script src="../../../external.html?link=https://forge.typo3.org/plugin_assets/redmine_backlogs/javascripts/burndown.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+    <link href="../../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../../../external.html?link=https://forge.typo3.org/javascripts/jstoolbar/jstoolbar.js?1437165176" type="text/javascript"></script><script src="../../../external.html?link=https://forge.typo3.org/javascripts/jstoolbar/textile.js?1437165176" type="text/javascript"></script><script src="../../../external.html?link=https://forge.typo3.org/javascripts/jstoolbar/lang/jstoolbar-en.js?1437165176" type="text/javascript"></script><link href="../../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../../../external.html?link=https://forge.typo3.org/headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            
+            <a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues">Issues</a></li>
+<li><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="nosidebar" id="main">
+    <div id="leftmenu">
+        <a href="../../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+        
+    </div>
+    
+    <div id="content">
+				
+        <h2>strace_cookie.txt</h2>
+
+<div class="attachments">
+<p>
+   <span class="author"><a href="../../../external.html?link=https://forge.typo3.org/users/38370">Kien Phuoc Ma</a>, 2012-12-18 12:33</span></p>
+<p><a href="../../../external.html?link=https://forge.typo3.org/attachments/download/23031/strace_cookie.txt">Download</a>   <span class="size">(6.9 kB)</span></p>
+
+</div>
+&nbsp;
+<div class="autoscroll">
+<table class="filecontent syntaxhl">
+<tbody>
+
+
+  <tr>
+    <th class="line-num" id="L1">
+      <a href="#L1">1</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP Fatal error:  Call to a member function setCookie() on a non-object in /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Session_Session_Original.php on line 255
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L2">
+      <a href="#L2">2</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP Stack trace:
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L3">
+      <a href="#L3">3</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP   1. {main}() /Users/kpm/workspace/myproject/Web/index.php:0
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L4">
+      <a href="#L4">4</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP   2. TYPO3\Flow\Core\Bootstrap-&gt;run() /Users/kpm/workspace/myproject/Web/index.php:27
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L5">
+      <a href="#L5">5</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP   3. OT\Rest\Restrequest\RequestHandler-&gt;handleRequest() /Users/kpm/workspace/myproject/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Core/Bootstrap.php:113
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L6">
+      <a href="#L6">6</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP   4. TYPO3\Flow\Mvc\Dispatcher-&gt;dispatch() /Users/kpm/workspace/myproject/Packages/Application/OT.Rest/Classes/OT/Rest/Restrequest/RequestHandler.php:157
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L7">
+      <a href="#L7">7</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP   5. TYPO3\Flow\Aop\Advice\AdviceChain-&gt;proceed() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Dispatcher.php:162
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L8">
+      <a href="#L8">8</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP   6. TYPO3\Flow\Aop\Advice\AroundAdvice-&gt;invoke() /Users/kpm/workspace/myproject/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Aop/Advice/AdviceChain.php:55
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L9">
+      <a href="#L9">9</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP   7. TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original-&gt;blockIllegalRequestsAndForwardToAuthenticationEntryPoints() /Users/kpm/workspace/myproject/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Aop/Advice/AroundAdvice.php:34
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L10">
+      <a href="#L10">10</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP   8. TYPO3\Flow\Aop\Advice\AdviceChain-&gt;proceed() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Security_Aspect_RequestDispatchingAspect_Original.php:75
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L11">
+      <a href="#L11">11</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP   9. TYPO3\Flow\Mvc\Dispatcher-&gt;Flow_Aop_Proxy_invokeJoinPoint() /Users/kpm/workspace/myproject/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Aop/Advice/AdviceChain.php:57
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L12">
+      <a href="#L12">12</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  10. call_user_func_array() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Dispatcher.php:131
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L13">
+      <a href="#L13">13</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  11. TYPO3\Flow\Mvc\Dispatcher-&gt;dispatch() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Dispatcher.php:131
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L14">
+      <a href="#L14">14</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  12. TYPO3\Flow\Mvc\Dispatcher_Original-&gt;dispatch() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Dispatcher.php:147
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L15">
+      <a href="#L15">15</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  13. TYPO3\Flow\Mvc\Controller\ActionController_Original-&gt;processRequest() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Dispatcher_Original.php:78
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L16">
+      <a href="#L16">16</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  14. OT\Rest\Controller\StandardController_Original-&gt;initializeView() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Controller_ActionController_Original.php:154
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L17">
+      <a href="#L17">17</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  15. OT\Rest\Domain\Model\Rest_Original-&gt;isHandable() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/OT_Rest_Controller_StandardController_Original.php:66
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L18">
+      <a href="#L18">18</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  16. OT\Rest\Domain\Model\Rest_Original-&gt;handleRequest() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/OT_Rest_Domain_Model_Rest_Original.php:289
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L19">
+      <a href="#L19">19</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  17. OT\Rest\Domain\Model\Rest_Original-&gt;handlePostRequest() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/OT_Rest_Domain_Model_Rest_Original.php:303
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L20">
+      <a href="#L20">20</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  18. OT\USER\Domain\Repository\UserRepository_Original-&gt;login() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/OT_Rest_Domain_Model_Rest_Original.php:464
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L21">
+      <a href="#L21">21</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  19. TYPO3\Flow\Security\Authentication\AuthenticationProviderManager-&gt;authenticate() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/OT_USER_Domain_Repository_UserRepository_Original.php:125
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L22">
+      <a href="#L22">22</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  20. TYPO3\Flow\Security\Authentication\AuthenticationProviderManager-&gt;Flow_Aop_Proxy_invokeJoinPoint() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Security_Authentication_AuthenticationProviderManager.php:175
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L23">
+      <a href="#L23">23</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  21. call_user_func_array() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Security_Authentication_AuthenticationProviderManager.php:147
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L24">
+      <a href="#L24">24</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  22. TYPO3\Flow\Security\Authentication\AuthenticationProviderManager-&gt;authenticate() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Security_Authentication_AuthenticationProviderManager.php:147
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L25">
+      <a href="#L25">25</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  23. TYPO3\Flow\Security\Authentication\AuthenticationProviderManager_Original-&gt;authenticate() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Security_Authentication_AuthenticationProviderManager.php:162
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L26">
+      <a href="#L26">26</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  24. TYPO3\Flow\Security\Authentication\Provider\PersistedUsernamePasswordProvider-&gt;authenticate() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Security_Authentication_AuthenticationProviderManager_Original.php:149
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L27">
+      <a href="#L27">27</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  25. TYPO3\Flow\Aop\Advice\AbstractAdvice-&gt;invoke() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Security_Authentication_Provider_PersistedUsernamePasswordProvider.php:160
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L28">
+      <a href="#L28">28</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  26. TYPO3\Flow\Session\Aspect\LazyLoadingAspect_Original-&gt;initializeSession() /Users/kpm/workspace/myproject/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Aop/Advice/AbstractAdvice.php:86
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L29">
+      <a href="#L29">29</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  27. TYPO3\Flow\Session\Session-&gt;start() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Session_Aspect_LazyLoadingAspect_Original.php:79
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L30">
+      <a href="#L30">30</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  28. TYPO3\Flow\Session\Session-&gt;Flow_Aop_Proxy_invokeJoinPoint() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Session_Session.php:187
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L31">
+      <a href="#L31">31</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  29. call_user_func_array() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Session_Session.php:161
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L32">
+      <a href="#L32">32</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  30. TYPO3\Flow\Session\Session-&gt;start() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Session_Session.php:161
+</pre>
+    </td>
+  </tr>
+  
+
+  <tr>
+    <th class="line-num" id="L33">
+      <a href="#L33">33</a>
+    </th>
+    <td class="line-code">
+      <pre>[18-Dec-2012 11:26:11 UTC] PHP  31. TYPO3\Flow\Session\Session_Original-&gt;start() /Users/kpm/workspace/myproject/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Session_Session.php:174</pre>
+    </td>
+  </tr>
+  
+
+</tbody>
+</table>
+</div>
+
+
+
+
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/attachments/23031/strace_cookie.txt by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:24:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
