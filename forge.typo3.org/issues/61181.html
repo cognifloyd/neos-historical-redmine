@@ -1,0 +1,1684 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/61181 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:41:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #61181: FAL: file maxW and maxH are ignored - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/61181.atom" rel="alternate" title="Core - Bug #61181: FAL: file maxW and maxH are ignored" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (4)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4002">Christian Ludwig</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3493">Daniel Wagner</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-61181-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #61181</h2>
+
+<div class="issue status-10 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>FAL: file maxW and maxH are ignored</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-25" title="2014-08-25 22:01">11 months</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-06" title="2015-01-06 13:40">7 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Rejected</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-08-25</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2966">7.1 (Cleanup)</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.5</td>
+	<th>Sprint Focus:</th><td>On Location Sprint</td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>see also <a class="external" href="46020.html">https://forge.typo3.org/issues/46020</a></p>
+
+
+	<p>After an upgrade from TYPO3 6.1 to 6.2 and the execution of all update steps in the Install Tool, the images in my FE extension are changed to full size.</p>
+
+
+	<p>I did also clear cache_imagesizes.</p>
+
+
+	<p>$imageCode = $cObj->getContentObject($contentObject)->render($imageConf);</p>
+
+
+	<p>file.maxW = 100<br />file.maxH = 200</p>
+
+
+	<p>This however results in:</p>
+
+
+	<p>&lt;img src="uploads/pics/Uhr-Waltons.png" width="299" height="401" alt="" /&gt;<</p>
+
+
+	<p>The image is not resized any more as in TYPO3 6.1.</p>
+
+
+	<p>And on another site the images are always size=0. maxW and maxH get ignored.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/27428/228211-product-list.png" class="icon icon-attachment">228211-product-list.png</a>  
+   - product list with 2 products and their images
+  <span class="size">(165 kB)</span>
+  
+  
+    <span class="author">Franz Holzinger, 2014-08-28 07:11</span>
+  
+  </p>
+
+<p><a href="../attachments/download/27431/228211-product-list-image2.png" class="icon icon-attachment">228211-product-list-image2.png</a>  
+   - second image added to first product is too big
+  <span class="size">(412.7 kB)</span>
+  
+  
+    <span class="author">Franz Holzinger, 2014-08-28 19:39</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/27468/bug%2361181-image-taylor.html" class="icon icon-attachment">bug#61181-image-taylor.html</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/27468/bug%2361181-image-taylor.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(13 kB)</span>
+  
+  
+    <span class="author">Franz Holzinger, 2014-09-04 12:32</span>
+  
+  </p>
+
+<p><a href="../attachments/download/27778/bug%2361181%20-sys_file_metadata.pdf" class="icon icon-attachment">bug#61181 -sys_file_metadata.pdf</a>  
+   - width=299 heigth=401
+  <span class="size">(99.7 kB)</span>
+  
+  
+    <span class="author">Franz Holzinger, 2014-10-25 16:10</span>
+  
+  </p>
+
+<p><a href="../attachments/download/27934/install-configuartion-image.png" class="icon icon-attachment">install-configuartion-image.png</a>  
+   - Configuration presets image processing
+  <span class="size">(52.6 kB)</span>
+  
+  
+    <span class="author">Franz Holzinger, 2014-11-12 13:50</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-11943">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="44105" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="44105.html" class="issue status-9 priority-1 closed">Bug #44105</a>: Image size does not get updated
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2012-12-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11944">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="45922" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="45922.html" class="issue status-2 priority-1">Bug #45922</a>: image replacement, width and height are kept even i chang...
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2013-02-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11631">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="46020" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="46020.html" class="issue status-9 priority-1 closed">Bug #46020</a>: Image size is 0 when not scaled
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-03-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11945">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="46446" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="46446.html" class="issue status-4 priority-1">Bug #46446</a>: sys_file doesn&#39;t get updated
+</td>
+<td class="status">Needs Feedback</td>
+<td class="start_date">2013-03-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11922">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="50392" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="50392.html" class="issue status-9 priority-2 closed">Bug #50392</a>: Specifying size in ImageViewHelper does nothing
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-07-24</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11946">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="52658" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="52658.html" class="issue status-10 priority-2 closed">Bug #52658</a>: Overriding image does not change the dimensions
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2013-10-10</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11921">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54533" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="54533.html" class="issue status-10 priority-2 closed">Bug #54533</a>: imgResource.noScale doesn&#39;t scale image tag
+</td>
+<td class="status">Rejected</td>
+<td class="start_date"></td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11920">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="58019" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="58019.html" class="issue status-10 priority-1 closed">Bug #58019</a>: FAL Indexer for broken files: Column &#39;width&#39; cannot be null
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-04-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11919">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="59216" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="59216.html" class="issue status-9 priority-1 closed">Bug #59216</a>: Image dimensions (width/height) are 0 when not scaled
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-05-30</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11947">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="60215" /></td>
+<td class="subject">related to 
+    FAL Indexing - 
+    <a href="60215.html" class="issue status-6 priority-2">Bug #60215</a>: sys_file_processedfile with empty identifier and name fields
+</td>
+<td class="status">Under Review</td>
+<td class="start_date">2014-07-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11904">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62247" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62247.html" class="issue status-10 priority-2 closed">Bug #62247</a>: FAL: Uppercase File Extensions of Image cannot be displayed 
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-10-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11914">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62400" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62400.html" class="issue status-10 priority-2 closed">Bug #62400</a>: Lot of entries in sys_file_processed with name=NULL and i...
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-10-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/61181/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/61181/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=61181&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-228075" class="journal has-notes">
+    <h4><a href="61181.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-26" title="2014-08-26 17:03">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228075-notes"><p>Ever image which I upload inside of the file browser window (in order to add an image to a product), is added in FAL to sys_file with width and height = 0.</p>
+
+
+	<p>The uploaded image is stored into the folder fileadmin/user_upload .</p></div>
+  </div>
+  
+
+  <div id="change-228207" class="journal has-notes has-details">
+    <h4><a href="61181.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-27" title="2014-08-27 21:16">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228207-notes"><p>Is the database compare empty or are there still tasks to perform?</p>
+
+
+	<p>Especially interesting are removing columns from the sys_file table. <br />If I'm not mistaken width and height is moved from sys_file to sys_file_metadata and I expect that these columns aren't removed from sys_file yet</p></div>
+  </div>
+  
+
+  <div id="change-228211" class="journal has-notes">
+    <h4><a href="61181.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-27" title="2014-08-27 21:55">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228211-notes"><p>All the DB checks and Updates have been executed in the Install Tool.</p>
+
+
+	<p>The sys_file table contains the width and height. And also the sys_file_metadata contains the width and height fields.<br />I have filled in the width and height into the table sys_file manually. Because the automatic generation always gave zeros to it. However then the image has always full size in the FE.<br />And another image is still not shown even with width and height set manually from phpMyAdmin.</p>
+
+
+	<p>I only get unchecked recommendations:</p>
+
+
+<pre>
+ALTER TABLE sys_file CHANGE crdate zzz_deleted_crdate int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE cruser_id zzz_deleted_cruser_id int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE deleted zzz_deleted_deleted tinyint(4) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE t3ver_oid zzz_deleted_t3ver_oid int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE t3ver_id zzz_deleted_t3ver_id int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE t3ver_wsid zzz_deleted_t3ver_wsid int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE t3ver_label zzz_deleted_t3ver_label varchar(30) NOT NULL default '';
+ALTER TABLE sys_file CHANGE t3ver_state zzz_deleted_t3ver_state tinyint(4) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE t3ver_stage zzz_deleted_t3ver_stage int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE t3ver_count zzz_deleted_t3ver_count int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE t3ver_tstamp zzz_deleted_t3ver_tstamp int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE t3ver_move_id zzz_deleted_t3ver_move_id int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE t3_origuid zzz_deleted_t3_origuid int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE title zzz_deleted_title tinytext;
+ALTER TABLE sys_file CHANGE width zzz_deleted_width int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE height zzz_deleted_height int(11) NOT NULL default '0';
+ALTER TABLE sys_file CHANGE description zzz_deleted_description text;
+ALTER TABLE sys_file CHANGE alternative zzz_deleted_alternative text; 
+
+ALTER TABLE sys_file DROP KEY parent;
+ALTER TABLE sys_file DROP KEY t3ver_oid; 
+</pre>
+
+	<p>This is the structure:</p>
+
+
+	<p>sys_file<br /><pre>
+Colonne    Type    Null    Défaut     Commentaires
+uid     int(11)    Non            
+pid     int(11)    Non     0       
+tstamp     int(11)    Non     0       
+crdate     int(11)    Non     0       
+cruser_id     int(11)    Non     0       
+deleted     tinyint(4)    Non     0       
+t3ver_oid     int(11)    Non     0       
+t3ver_id     int(11)    Non     0       
+t3ver_wsid     int(11)    Non     0       
+t3ver_label     varchar(30)    Non            
+t3ver_state     tinyint(4)    Non     0       
+t3ver_stage     int(11)    Non     0       
+t3ver_count     int(11)    Non     0       
+t3ver_tstamp     int(11)    Non     0       
+t3ver_move_id     int(11)    Non     0       
+t3_origuid     int(11)    Non     0       
+type     varchar(10)    Non            
+storage     int(11)    Non     0       
+identifier     text    Oui     NULL       
+extension     varchar(255)    Non            
+mime_type     varchar(255)    Non            
+name     tinytext    Oui     NULL       
+title     tinytext    Oui     NULL       
+sha1     tinytext    Oui     NULL       
+size     int(11)    Non     0       
+creation_date     int(11)    Non     0       
+modification_date     int(11)    Non     0       
+width     int(11)    Non     0       
+height     int(11)    Non     0       
+description     text    Oui     NULL       
+alternative     text    Oui     NULL       
+last_indexed     int(11)    Non     0       
+missing     tinyint(4)    Non     0       
+metadata     int(11)    Non     0       
+identifier_hash     varchar(40)    Non            
+folder_hash     varchar(40)    Non            
+</pre></p>
+
+
+	<p>Index</p>
+
+
+<pre>
+Nom de l'index    Type    Unique    Compressé    Colonne    Cardinalité    Interclassement    Null    Commentaire
+PRIMARY    BTREE    Oui    Non    uid    595    A    Non    
+parent    BTREE    Non    Non    pid    1    A    Non    
+deleted    1    A    Non
+t3ver_oid    BTREE    Non    Non    t3ver_oid    1    A    Non    
+t3ver_wsid    1    A    Non
+sha1    BTREE    Non    Non    sha1 (40)    595    A    Oui    
+folder    BTREE    Non    Non    storage    5    A    Non    
+folder_hash    595    A    Non
+tstamp    BTREE    Non    Non    tstamp    29    A    Non    
+lastindex    BTREE    Non    Non    last_indexed    1    A    Non    
+sel01    BTREE    Non    Non    storage    1    A    Non    
+identifier_hash    595    A    Non
+
+</pre><br />-----------------------------------------------------
+
+<pre>
+
+sys_file_metadata
+Colonne    Type    Null    Défaut     Commentaires
+uid     int(11)    Non            
+pid     int(11)    Non     0       
+tstamp     int(11)    Non     0       
+crdate     int(11)    Non     0       
+cruser_id     int(11)    Non     0       
+sys_language_uid     int(11)    Non     0       
+l10n_parent     int(11)    Non     0       
+l10n_diffsource     mediumblob    Non            
+t3ver_oid     int(11)    Non     0       
+t3ver_id     int(11)    Non     0       
+t3ver_wsid     int(11)    Non     0       
+t3ver_label     varchar(30)    Non            
+t3ver_state     tinyint(4)    Non     0       
+t3ver_stage     int(11)    Non     0       
+t3ver_count     int(11)    Non     0       
+t3ver_tstamp     int(11)    Non     0       
+t3ver_move_id     int(11)    Non     0       
+t3_origuid     int(11)    Non     0       
+file     int(11)    Non     0       
+title     tinytext    Oui     NULL       
+width     int(11)    Non     0       
+height     int(11)    Non     0       
+description     text    Oui     NULL       
+alternative     text    Oui     NULL       
+categories     int(11)    Non     0       
+
+</pre>
+
+	<p>Index</p>
+
+
+<pre>
+Nom de l'index    Type    Unique    Compressé    Colonne    Cardinalité    Interclassement    Null    Commentaire
+PRIMARY    BTREE    Oui    Non    uid    593    A    Non    
+file    BTREE    Non    Non    file    593    A    Non    
+t3ver_oid    BTREE    Non    Non    t3ver_oid    2    A    Non    
+t3ver_wsid    2    A    Non
+fal_filelist    BTREE    Non    Non    l10n_parent    2    A    Non    
+sys_language_uid    2    A    Non
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-228212" class="journal has-notes">
+    <h4><a href="61181.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-27" title="2014-08-27 22:00">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228212-notes"><p>The sys_file table changes are no recommendations but mandatory. Could you run these changes and try again?</p></div>
+  </div>
+  
+
+  <div id="change-228213" class="journal has-notes">
+    <h4><a href="61181.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-27" title="2014-08-27 22:02">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228213-notes"><p>Are the width and height field of sys_file_metadata set for existing images?</p></div>
+  </div>
+  
+
+  <div id="change-228234" class="journal has-notes has-details">
+    <h4><a href="61181.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-28" title="2014-08-28 07:11">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/27428/228211-product-list.png">228211-product-list.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228234-notes"><p>I have now executed all unchecked (not mandatory) issues in the Database section of the Install Tool. Now there is no issue any more.<br />However the result remains unchanged.</p>
+
+
+	<p>I did clear also the table cache_imagesizes.</p>
+
+
+	<p>sys_file<br /><pre>
+Colonne    Type    Null    Défaut     Commentaires
+uid     int(11)    Non            
+pid     int(11)    Non     0       
+tstamp     int(11)    Non     0       
+type     varchar(10)    Non            
+storage     int(11)    Non     0       
+identifier     text    Oui     NULL       
+extension     varchar(255)    Non            
+mime_type     varchar(255)    Non            
+name     tinytext    Oui     NULL       
+sha1     tinytext    Oui     NULL       
+size     int(11)    Non     0       
+creation_date     int(11)    Non     0       
+modification_date     int(11)    Non     0       
+last_indexed     int(11)    Non     0       
+missing     tinyint(4)    Non     0       
+metadata     int(11)    Non     0       
+identifier_hash     varchar(40)    Non            
+folder_hash     varchar(40)    Non            
+</pre></p>
+
+
+	<p>Index</p>
+
+
+<pre>
+Nom de l'index    Type    Unique    Compressé    Colonne    Cardinalité    Interclassement    Null    Commentaire
+PRIMARY    BTREE    Oui    Non    uid    497    A    Non    
+sha1    BTREE    Non    Non    sha1 (40)    497    A    Oui    
+folder    BTREE    Non    Non    storage    1    A    Non    
+folder_hash    497    A    Non
+tstamp    BTREE    Non    Non    tstamp    29    A    Non    
+lastindex    BTREE    Non    Non    last_indexed    1    A    Non    
+sel01    BTREE    Non    Non    storage    1    A    Non    
+identifier_hash    497    A    Non
+</pre>
+
+	<p>I have 5 entries for the 2 images in sys_file:</p>
+
+
+<pre>
+Requête SQL : SELECT * FROM `sys_file` WHERE name LIKE '%Uhr-Waltons.png%'OR name LIKE '%taylor%' LIMIT 0, 25 ;
+Lignes : 5
+uid     pid     tstamp     type     storage     identifier     extension     mime_type     name     sha1     size     creation_date     modification_date     last_indexed     missing     metadata     identifier_hash     folder_hash
+1     0     1371845027     2     0     /uploads/pics/Uhr-Waltons.png    png     image/png     Uhr-Waltons.png    d837d78911a3c03295853570c77aa93414a96c7b    126286     1348084323     1348084323     0     0     0     28ad2e0cf7104ba77284b33be6ad365d33d6a331     32769845128a22b5e8e3c1edc0da85e35185482d
+505     0     1408990980     0     1     /user_upload/taylor_swift_1211323728.JPG    jpg         taylor_swift_1211323728.JPG    2867ba372b341c0f8015da8a164daa88d6e56836    58209     1408990980     1408990980     0     0     0     b46b19dbe93c67c561ed472931b11e1a9050bce9     19669f1e02c2f16705ec7587044c66443be70725
+506     0     1408991002     0     0     /uploads/pics/taylor_swift_1211323728.JPG    jpg         taylor_swift_1211323728.JPG    2867ba372b341c0f8015da8a164daa88d6e56836    58209     1408991002     1408991002     0     0     0     d7dba0cb3f0b3cd381a9e9ca19f39ea3f5b4cc35     32769845128a22b5e8e3c1edc0da85e35185482d
+507     0     1408991071     0     0     /uploads/pics/taylor_swift_1211323728_01.JPG    jpg         taylor_swift_1211323728_01.JPG    2867ba372b341c0f8015da8a164daa88d6e56836    58209     1408991071     1408991071     0     0     0     e50aeacaa3e77adc995f9a045a705734abf33021     32769845128a22b5e8e3c1edc0da85e35185482d
+520     0     1409064774     2     1     /user_upload/Uhr-Waltons.png    png     image/png     Uhr-Waltons.png    d837d78911a3c03295853570c77aa93414a96c7b    126286     1409064755     1348084323     0     0     0     b529359a8c7f735730bfbae3fae41147c01068d3     19669f1e02c2f16705ec7587044c66443be70725
+</pre>
+
+	<p>I have configured the extension to not use the former "/upload/pics" but to use "fileadmin/user_upload" as the image upload folder.</p>
+
+
+<pre>
+[franz@localhost ~]$ ls -l /var/www/html/fileadmin/user_upload/
+total 324
+-rw-r--r-- 1 apache apache  58209 août  26 16:44 taylor_swift_1211323728.JPG
+drwxrwxrwx 2 apache apache   4096 août  28 06:34 _temp_/
+-rw-rw-r-- 1 apache apache 126286 août  26 19:27 Uhr-Waltons_01.png
+-rw-r--r-- 1 franz  live   126286 sept. 19  2012 Uhr-Waltons.png
+</pre>
+
+	<p>I get this result for the corresponding entries in sys_file_metadata</p>
+
+
+<pre>Requête SQL : SELECT uid,file, title, width, height FROM `sys_file_metadata` WHERE file IN (1,505,506,507,520) LIMIT 0, 25 ;
+Lignes : 5
+
+uid     file     title     width     height
+1     1     NULL    299     401
+505     505     NULL    0     0
+506     506     NULL    0     0
+507     507     NULL    0     0
+520     520     NULL    299     401
+</pre>
+
+	<p>So the width and height is here 0 for the invisible taylor_swift_1211323728.JPG image of the first product. I have tried to add it for several times. However the size has always been zero. This image has been added under TYPO3 6.2. The other image with title 'Uhr-Waltons' has been added in a former version of TYPO3.</p></div>
+  </div>
+  
+
+  <div id="change-228235" class="journal has-notes">
+    <h4><a href="61181.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-28" title="2014-08-28 07:24">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228235-notes"><p>Strange thing is that the id are in a strange order. The newer file has a lower id than the existing file.</p>
+
+
+	<p>Could you try to upload a different file directly in file module?</p></div>
+  </div>
+  
+
+  <div id="change-228240" class="journal has-notes">
+    <h4><a href="61181.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-28" title="2014-08-28 08:17">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228240-notes"><p>I want to use the file browser of the List Module to upload the image file and connect it to a product. <br />I think that I have also added the 'Uhr-Waltons' a second time. I have tried to fix the image size by removing and reassigning of the same image.</p>
+
+
+	<p>I have now added the file "SaguaroNationalParkArizona.jpg" using the fileadmin Module.</p>
+
+
+<pre>
+$sys_file = array(
+  array('uid' =&gt; '530','pid' =&gt; '0','tstamp' =&gt; '1409206290','type' =&gt; '2','storage' =&gt; '1','identifier' =&gt; '/SaguaroNationalParkArizona.jpg','extension' =&gt; 'jpg','mime_type' =&gt; 'image/jpeg','name' =&gt; 'SaguaroNationalParkArizona.jpg','sha1' =&gt; '7525c71cb267fe13fda0468fb28f03ff5fa6ca52','size' =&gt; '189313','creation_date' =&gt; '1409206290','modification_date' =&gt; '1409206290','last_indexed' =&gt; '0','missing' =&gt; '0','metadata' =&gt; '0','identifier_hash' =&gt; '89c2065ebdc0ae0720537726b2091c27eaa472a4','folder_hash' =&gt; '42099b4af021e53fd8fd4e056c2568d7c2e3ffa8')
+);
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-228250" class="journal has-notes">
+    <h4><a href="61181.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-28" title="2014-08-28 09:55">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228250-notes"><p>The new file has not meta_data record?</p></div>
+  </div>
+  
+
+  <div id="change-228251" class="journal has-notes">
+    <h4><a href="61181.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-28" title="2014-08-28 10:00">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228251-notes"><pre>
+Requête SQL : SELECT uid,file,width,height,title FROM `sys_file_metadata` WHERE file = 530 LIMIT 0, 25 ;
+Lignes : 1
+uid     file     width     height     title
+530     530     1600     1200     NULL
+</pre></div>
+  </div>
+  
+
+  <div id="change-228297" class="journal has-notes">
+    <h4><a href="61181.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-28" title="2014-08-28 18:47">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228297-notes"><p>Does it work now for new uploaded files?</p></div>
+  </div>
+  
+
+  <div id="change-228298" class="journal has-notes has-details">
+    <h4><a href="61181.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-28" title="2014-08-28 19:39">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/27431/228211-product-list-image2.png">228211-product-list-image2.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228298-notes"><p>The image upload works on the file module. However the image upload does not work in the popup window to assign the image to a product.</p>
+
+
+<pre>
+http://localhost/typo3/browser.php?mode=file&#38;bparams=data[tt_products][1][image]|||gif,jpg,jpeg,tif,tiff,bmp,pcx,tga,png,pdf,ai|
+</pre>
+
+	<p>I have added the new file as a second image of the first product. Now I get the full sized image in the FE. This is the second bug.</p></div>
+  </div>
+  
+
+  <div id="change-228587" class="journal has-notes">
+    <h4><a href="61181.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-02" title="2014-09-02 21:43">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228587-notes"><p>And the filebrowser popup windows has a third bug:</p>
+
+
+	<p>The uploaded image JPG has an empty mime_type field.</p>
+
+
+<pre>
+
+uid     identifier     extension     mime_type     name
+
+505     /user_upload/taylor_swift_1211323728.JPG    jpg     &lt;empty&gt;    taylor_swift_1211323728.JPG    
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-228632" class="journal has-notes">
+    <h4><a href="61181.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-03" title="2014-09-03 17:08">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228632-notes"><p>I can not reproduce your upload bug. I tested with the fe_users image field that also uses the old method like tt_products.</p>
+
+
+	<p>MimeType and dimensions are set correctly in DB.</p>
+
+
+	<p>You are sure the database structure of sys_file and sys_file_metadata is correct?</p></div>
+  </div>
+  
+
+  <div id="change-228676" class="journal has-notes has-details">
+    <h4><a href="61181.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-04" title="2014-09-04 12:32">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/27468/bug%2361181-image-taylor.html">bug#61181-image-taylor.html</a><a href="../../external.html?link=https://forge.typo3.org/attachments/27468/bug%2361181-image-taylor.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228676-notes"><p>Two bugs are fixed now, if the fields in the Install Tool have been removed. (see attached HTML file). Before I have removed all entries for 'taylor_swift'. Then I have uploaded the image taylor_swift_1211323728.JPG again (<a class="external" href="../../external.html?link=http://photobucket.com/">http://photobucket.com</a>).</p>
+
+
+	<p>However this is a <strong>bad side effect</strong>. Why do additional fields of the table sys_file have such a bad influence? This should be changed before a user starts the Filelist module. It is hardly possible to recover from wrong entries with zeros (width=0, height=0).</p>
+
+
+	<p>The main bug still remains. All product images are of full size in the Frontend.</p></div>
+  </div>
+  
+
+  <div id="change-233814" class="journal has-notes">
+    <h4><a href="61181.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-25" title="2014-10-25 11:27">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-233814-notes"><p>I do not really understand the problem you are facing.</p>
+
+
+	<p>Are the width and height fields removed from sys_file? These need to be removed because internaly the sys_file and sys_file_metadata are merged/used as one.</p>
+
+
+	<p>Did you try to set the missing flag to 1 in sys_file and run the indexer task for each storage? That makes sure that the width and height are set (again) for all image records.</p>
+
+
+	<p>Gr. Frans</p></div>
+  </div>
+  
+
+  <div id="change-233818" class="journal has-notes">
+    <h4><a href="61181.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-25" title="2014-10-25 12:08">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-233818-notes"><p>The images of products are shown in their full sizes. They should instead be shown in reduced sizes in the FE. Is this understandable? What is unclear?</p>
+
+
+	<p>No, I did not remove or change anything. I just deleted the image caches in the Install Tool.</p>
+
+
+	<p>Here again the table structur of sys_file:</p>
+
+
+<pre>
+sys_file
+Colonne    Type    Null    Défaut     Commentaires
+uid     int(11)    Non            
+pid     int(11)    Non     0       
+tstamp     int(11)    Non     0       
+last_indexed     int(11)    Non     0       
+missing     tinyint(4)    Non     0       
+storage     int(11)    Non     0       
+type     varchar(10)    Non            
+metadata     int(11)    Non     0       
+identifier     text    Oui     NULL       
+identifier_hash     varchar(40)    Non            
+folder_hash     varchar(40)    Non            
+extension     varchar(255)    Non            
+mime_type     varchar(255)    Non            
+name     tinytext    Oui     NULL       
+sha1     tinytext    Oui     NULL       
+size     int(11)    Non     0       
+creation_date     int(11)    Non     0       
+modification_date     int(11)    Non     0       
+
+</pre>
+
+	<p>As I have already written before, this table sys_file has no fields 'widht' and 'height' any more. And it still does not work.</p>
+
+
+	<p>I do not understand this question:<br />"Did you try to set the missing flag to 1 in sys_file and run the indexer task for each storage? That makes sure that the width and height are set (again) for all image records."</p>
+
+
+	<p>How can I do this? Why does not TYPO3 do this for me?<br />What is a missing flag? Where is it? Where do I find a storage for the product files? How must I start the indexer task?</p></div>
+  </div>
+  
+
+  <div id="change-233820" class="journal has-notes">
+    <h4><a href="61181.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-25" title="2014-10-25 13:05">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-233820-notes"><p>The problem you are facing is missing height and width values in sys_file_metadata</p>
+
+
+	<p>Have a look at the linked issue for instructions to get them back.</p>
+
+
+	<p><a class="external" href="46020.html#note-80">https://forge.typo3.org/issues/46020#note-80</a></p></div>
+  </div>
+  
+
+  <div id="change-233825" class="journal has-notes has-details">
+    <h4><a href="61181.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-25" title="2014-10-25 16:10">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/27778/bug%2361181%20-sys_file_metadata.pdf">bug#61181 -sys_file_metadata.pdf</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-233825-notes"><p>Franz Saris: "The problem you are facing is missing height and width values in sys_file_metadata".</p>
+
+
+	<p>No, this is wrong. I have written this already before (see <a href="61181.html#note-10" class="issue status-10 priority-1 closed" title="FAL: file maxW and maxH are ignored (Rejected)">#61181</a>). I am adding the PDF of sys_file_metadata of a second environment where the same error happens.</p></div>
+  </div>
+  
+
+  <div id="change-235001" class="journal has-details">
+    <h4><a href="61181.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-03" title="2014-11-03 17:45">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>New</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-235010" class="journal has-notes">
+    <h4><a href="61181.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-03" title="2014-11-03 19:34">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235010-notes"><p>Hi Franz,</p>
+
+
+	<p>So if I understood you correct all new uploaded and all existing images the width and height are set in sys_file_metadata.</p>
+
+
+	<p>New uploaded images are correctly resized in FE but existing images are not?</p>
+
+
+	<p>And before upgrading TYPO3 everything worked correct on this server? (Just asking to be sure).</p>
+
+
+	<p>It could be that the sys_file_processed table has wrong values (probably happened direct after upgrade when your table structure wasn't correct yet). Could you try to truncate this table and also remove all files from the fileadmin/_prosessed_ folder? That would forse the system to recreate the processed (resized) files.</p>
+
+
+	<p>I saw you have image files with the extension name in upper case. It could also be you run into the problem described here <a href="62247.html" class="issue status-10 priority-2 closed" title="FAL: Uppercase File Extensions of Image cannot be displayed  (Rejected)">#62247</a></p>
+
+
+	<p>Gr. Frans</p></div>
+  </div>
+  
+
+  <div id="change-235013" class="journal has-notes">
+    <h4><a href="61181.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-03" title="2014-11-03 20:27">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235013-notes"><p>Frans: "So if I understood you correct all new uploaded and all existing images the width and height are set in sys_file_metadata."</p>
+
+
+	<p>yes</p>
+
+
+	<p>Frans: "New uploaded images are correctly resized in FE but existing images are not?"</p>
+
+
+	<p>No. There is no difference. It does not matter if the image existed before or if it has been added after the upgrade to TYPO3 6.2. The image are always in the wrong full size in the FE.</p>
+
+
+	<p>Frans: "And before upgrading TYPO3 everything worked correct on this server? (Just asking to be sure)." <br />Yes, everything did work fine in former versions of TYPO3 on both servers.</p>
+
+
+	<p>Frans: "It could be that the sys_file_processed table has wrong values (probably happened direct after upgrade when your table structure wasn't correct yet). Could you try to truncate this table and also remove all files from the fileadmin/_prosessed_ folder? That would forse the system to recreate the processed (resized) files." <br />I have just executed these steps. They have no effect.</p>
+
+
+<pre>
+TRUNCATE sys_file_processedfile
+</pre>
+
+	<p>Frans: "I saw you have image files with the extension name in upper case. It could also be you run into the problem described here <a href="62247.html" class="issue status-10 priority-2 closed" title="FAL: Uppercase File Extensions of Image cannot be displayed  (Rejected)">#62247</a>"</p>
+
+
+	<p>There is no difference if the image has the file extension '.png', '.JPG' or '.jpg'. All images are shown in the wrong full size in the FE.</p></div>
+  </div>
+  
+
+  <div id="change-235019" class="journal has-notes">
+    <h4><a href="61181.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-03" title="2014-11-03 21:31">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235019-notes"><p>Are there sys_file_processedfile records created for the images that are shown incorrect?<br />Are the shown images the real imaģes or do they link to a processed file?<br />What code/fluid/typoscript do you use to show the images?</p>
+
+
+	<p>Gr. Frans</p></div>
+  </div>
+  
+
+  <div id="change-235110" class="journal has-notes">
+    <h4><a href="61181.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-04" title="2014-11-04 08:09">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235110-notes"><p>Frans: "Are there sys_file_processedfile records created for the images that are shown incorrect?" <br />Yes. However all the image files in the _processed folder have the size 0.</p>
+
+
+<pre>
+[franz@localhost fileadmin]$ cd _processed_/
+[franz@localhost _processed_]$ ls -l
+total 0
+-rw-r--r-- 1 apache apache 0 nov.   3 20:18 preview_Cecilia-Lina-Soerensen-1_578bf8e315.jpg
+-rw-r--r-- 1 apache apache 0 nov.   3 20:14 preview_SaguaroNationalParkArizona_099c2d4227.jpg
+-rw-r--r-- 1 apache apache 0 nov.   3 20:17 preview_SaguaroNationalParkArizona_7571662653.jpg
+-rw-r--r-- 1 apache apache 0 nov.   3 20:17 preview_taylor_swift_1211323728_01_64ef3b6bad.jpg
+-rw-r--r-- 1 apache apache 0 nov.   3 20:18 preview_taylor_swift_1211323728_c4555cfc69.jpg
+-rw-r--r-- 1 apache apache 0 nov.   3 20:17 preview_taylor_swift_1212938139_02811ae73a.jpg
+-rw-r--r-- 1 apache apache 0 nov.   3 20:17 preview_Uhr-Waltons_01_3a2375b2d8.png
+-rw-r--r-- 1 apache apache 0 nov.   3 20:18 preview_Uhr-Waltons_d06f8aa994.png
+</pre>
+
+	<p>Frans: "Are the shown images the real imaģes or do they link to a processed file?" <br />The images in the FE are linked this way:</p>
+
+
+<pre>
+http://localhost/fileadmin/user_upload/taylor_swift_1212938139.JPG
+</pre>
+
+	<p>Frans: "What code/fluid/typoscript do you use to show the images?".</p>
+
+
+	<p>tt_products list and basket view plugin.</p></div>
+  </div>
+  
+
+  <div id="change-235913" class="journal has-notes">
+    <h4><a href="61181.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 09:27">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235913-notes"><p>Normal content elements with images render correct?</p>
+
+
+	<p>I'm not familiar with code of tt_products.</p></div>
+  </div>
+  
+
+  <div id="change-235915" class="journal has-notes">
+    <h4><a href="61181.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 09:42">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235915-notes"><p>And in the bachend the preview/thumbnails are resized correct?</p></div>
+  </div>
+  
+
+  <div id="change-235919" class="journal has-notes">
+    <h4><a href="61181.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 10:26">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235919-notes"><p>The TYPO3 backend in TYPO3 6.2 is broken: No image icons are shown. TCE shows an empty image.</p></div>
+  </div>
+  
+
+  <div id="change-235922" class="journal has-notes">
+    <h4><a href="61181.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 10:47">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235922-notes"><p>The image tests in install tool give the correct result?</p>
+
+
+	<p>Install -> Test setup</p></div>
+  </div>
+  
+
+  <div id="change-235948" class="journal has-notes has-details">
+    <h4><a href="61181.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 13:50">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/27934/install-configuartion-image.png">install-configuartion-image.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-235948-notes"><p>The Install Tool fails with images.</p>
+
+
+<pre>
+
+Read jpg
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Read gif
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Read png
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Read tif
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Read bmp
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Read pcx
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Read tga
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Read pdf
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Read ai
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Writing gif and png
+
+This verifies that ImageMagick is able to write GIF and PNG files. The GIF-file is attempted compressed with LZW by the \TYPO3\CMS\Core\Utility\GeneralUtility::gif_compress() function.
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+Image generation failed
+ImageMagick / GraphicsMagick handling is enabled, but the execute command returned an error. Please check your settings, especially ['GFX']['im_path'] and ['GFX']['im_path_lzw'].
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-235955" class="journal has-notes">
+    <h4><a href="61181.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 14:20">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235955-notes"><p>So, you have your error or the issue behind your real problem. Fix the path to your image/graphics magic.</p></div>
+  </div>
+  
+
+  <div id="change-235959" class="journal has-notes">
+    <h4><a href="61181.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 14:28">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235959-notes"><p>I do not know why the Install Tool did not set this correctly during the upgrade process. These settings were fine for TYPO3 6.1. All former versions of TYPO3 did set this automatically correct. In TYPO3 6.2 I went through all upgrade steps without any success.<br />I did install Graphics Magick and I changed the settings in the Install Tool explicitely for Graphics Magick. Now the image sizes are correct in the Frontend and the Image Icons are visible in the TYPO3 backend.</p></div>
+  </div>
+  
+
+  <div id="change-235962" class="journal has-notes">
+    <h4><a href="61181.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 14:45">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235962-notes"><p>I don't know, what you are doing in your installations, but the configuration isn't changed between 6.1 and 6.2. As you say you now installed GraphicsMagic I would say, it wasn't there before.</p>
+
+
+	<p>So I'd like to close this issue now. Ok?</p></div>
+  </div>
+  
+
+  <div id="change-235974" class="journal has-notes">
+    <h4><a href="61181.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 15:10">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235974-notes"><p>I am quite sure that there has been no bug with TYPO3 6.1. This bug has been introduced with TYPO3 6.2..</p>
+
+
+	<p>Close this issue. However then other users who get into the same trap won't find it.</p></div>
+  </div>
+  
+
+  <div id="change-235979" class="journal has-notes">
+    <h4><a href="61181.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 15:32">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235979-notes"><p>So how should it have working with TYPO3 CMS 6.1 if there was no GraphicsMagic installed?</p></div>
+  </div>
+  
+
+  <div id="change-235982" class="journal has-notes">
+    <h4><a href="61181.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 15:44">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235982-notes"><p>If you do not believe me, then have a look at the image install-configuartion-image.png which I have added before. There you can see that ImageMagick has always been installed and working without any troubles. I did now install GraphicsMagick to make sure that this can't be the reason that the images in the FE and BE do not work with TYPO3 6.2.</p></div>
+  </div>
+  
+
+  <div id="change-235989" class="journal has-notes">
+    <h4><a href="61181.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 16:01">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235989-notes"><p>As I have no possibilities to look on your system I don't know what is installed on your system and where it is.</p>
+
+
+	<p>You installed Graphix Magic, changed the path accordingly and it worked => For me it looks like it wasn't working before course no such things installed.</p>
+
+
+	<p>The screenshot "install-configuartion-image.png" only tells me that you used a custom configuration with GM and not ImageMagic, but it doesn't show me the functionality from before.</p></div>
+  </div>
+  
+
+  <div id="change-235992" class="journal has-notes">
+    <h4><a href="61181.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 16:17">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235992-notes"><p>However the image "install-configuartion-image.png" shows that ImageMagick is listed there in green color. The green colors gives you a hint that ImageMagick does exist.<br />And the rpm package is installed: imagemagick-6.8.7.0-2.1.mga4</p>
+
+
+	<p>No, the image "install-configuartion-image.png" shows GraphicsMagick in red color. This is because at the moment of the screen shot no Graphics Magick has been installed.<br />I have made the screenshot before the installation of Graphics Magick.</p>
+
+
+	<p><a class="external" href="61181.html#note-29">https://forge.typo3.org/issues/61181#note-29</a></p>
+
+
+	<p>The problem is that TYPO3 6.2 cannot handle the grahpic settings from TYPO3 6.1. TYPO3 6.2 does not even show an error message or give a hint during the upgrade process.</p></div>
+  </div>
+  
+
+  <div id="change-236081" class="journal has-notes">
+    <h4><a href="61181.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-13" title="2014-11-13 10:52">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236081-notes"><p>From which TYPO3 Version is this screenshot?</p>
+
+
+	<p>And again, the screenshot shows that you selected "Custom configuration" and there you tried to use "gm" which is graphicsmagic ... but like the screenshot also says (how you correctly wrote) graphicsmagic isn't installed (in normal place like /usr/bin).</p>
+
+
+	<p>So all what the screenshot tells me is: "This can't work!"</p></div>
+  </div>
+  
+
+  <div id="change-236091" class="journal has-notes">
+    <h4><a href="61181.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-13" title="2014-11-13 11:45">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236091-notes"><p>This screenshot has been taken in the Install Tool TYPO3 6.2.<br />No, I did not try to change anything here since TYPO3 6.1.</p>
+
+
+	<p>I did not realize the not working ImageMagick because before the images were coming from the cache. Only when I used the TYPO3 6.2 Install Tool, then the images were not shown any more correctly. The images were not shown in the beginning, after some fixes the images were shown with full size. Many months ago I did use GraphicsMagick. However after a fresh software upgrade (every software completely removed) I did install ImageMagick. Everything seemed to work fine with it until the day when I cleared the image caches. And TYPO3 6.2 had some other issues (see above) with images. This website did not change since many months.</p></div>
+  </div>
+  
+
+  <div id="change-236109" class="journal has-notes has-details">
+    <h4><a href="61181.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-13" title="2014-11-13 13:23">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>File Abstraction Layer (FAL)</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Rejected</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-236109-notes"><p>So we only can guess what may or may not happened? It may also possible that it doesn't worked with 6.1 as the images were all in the cache? No chance to get it reproduced?</p>
+
+
+	<p>And after every question you came up with a "new story". Excuse, but I've other things to do.</p></div>
+  </div>
+  
+
+  <div id="change-236115" class="journal has-notes">
+    <h4><a href="61181.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-13" title="2014-11-13 13:53">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236115-notes"><p>I am sorry, that I do not check everything during the upgrade process. I did not guess the reasons. Are there any chancse to get TYPO3 improved with error messages instead of just not working correctly, if I reproduce this? This could prevent other users to fall into the same list of traps. I will not reproduce this, if nothing will be improved with TYPO3.</p></div>
+  </div>
+  
+
+  <div id="change-236182" class="journal has-notes">
+    <h4><a href="61181.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-13" title="2014-11-13 19:55">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236182-notes"><p>Hi Franz,</p>
+
+
+	<p>it would be great if you could reproduce it. I just tried it on my machine but with the given settings from your screenshot I couldn't get the image processing working without installing GraphicsMagic.</p>
+
+
+	<p>I tested your settings in a 4.5 installation and there the gm settings worked even do the test tell /usr/bin/gm was called. What isn't true because there is no /usr/bin/gm library on my machine.</p>
+
+
+	<p>You are sure previous version was 6.1 and no other system updates were performed in the meanwhile?</p>
+
+
+	<p>The image handling is really well covered in the install tool. The test tell you immediately if something doesn't work.<br />But if it really worked with the previous settings in 6.1 on your machine and after update not anymore than maybe a extra check/upgrade step is needed.</p>
+
+
+	<p>gr. Frans</p></div>
+  </div>
+  
+
+  <div id="change-237844" class="journal has-notes">
+    <h4><a href="61181.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-27" title="2014-11-27 18:24">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237844-notes"><p>Hello Frans,</p>
+
+
+	<p>I could just reproduce this on the same server with another TYPO3 installation (fresh install of TYPO3 6.2 and a Graphics Magick [Active]<br />GraphicsMagick was found in path /usr/bin/). The image generation in the backend and Install Tool was without any problems. Only the images in the FE extension were of full size.<br />However the "TRUNCATE sys_file_processed" could solve the problem here.</p>
+
+
+	<p>Frans: "You are sure previous version was 6.1 and no other system updates were performed in the meanwhile?".<br />-> In the meanwhile I can remember that many months before I had tried to use 6.2 beta3 and then I went back to 6.1.</p>
+
+
+	<p>Frans: "The image handling is really well covered in the install tool. The test tell you immediately if something doesn't work." <br />-> Yes, but former versions of TYPO3 did automatically warn me on the first page of the Install Tool about a mismatch in the GM/IM configuration. This feature is not in 6.2. And because it is an update, I did not reexecute these tests. And I was thinking about a bug in the FAL.</p>
+
+
+	<p>Frans: "But if it really worked with the previous settings in 6.1 on your machine and after update not anymore than maybe a extra check/upgrade step is needed." <br />-> A check in the Install Tool should be made automatically as in former versions of TYPO3. And a clear button should truncate the table sys_file_processed and remove the files in typo3temp/_processed_.</p></div>
+  </div>
+  
+
+  <div id="change-239355" class="journal has-notes">
+    <h4><a href="61181.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-07" title="2014-12-07 21:37">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-239355-notes"><p>Franz Holzinger wrote:</p>
+
+
+<blockquote>
+
+	<p>However the "TRUNCATE sys_file_processed" could solve the problem here.</p>
+
+
+</blockquote>
+
+	<p>Is already part of the upgrade process (one of the upgrade wizards)</p>
+
+
+<blockquote>
+
+	<p>Frans: "The image handling is really well covered in the install tool. The test tell you immediately if something doesn't work." <br />-> Yes, but former versions of TYPO3 did automatically warn me on the first page of the Install Tool about a mismatch in the GM/IM configuration. This feature is not in 6.2. And because it is an update, I did not reexecute these tests. And I was thinking about a bug in the FAL.</p>
+
+
+</blockquote>
+
+	<p>Not sure if a wizard is here the correct solution or only pointing the user to 'Install tool' -> 'Configuration presets' there are more settings you should check after upgrade.</p>
+
+
+<blockquote>
+
+	<p>Frans: "But if it really worked with the previous settings in 6.1 on your machine and after update not anymore than maybe a extra check/upgrade step is needed." <br />-> A check in the Install Tool should be made automatically as in former versions of TYPO3. And a clear button should truncate the table sys_file_processed and remove the files in typo3temp/_processed_.</p>
+
+
+</blockquote>
+
+	<p>As mentioned above one of the already existing upgrade wizards clears the sys_file_processed table when upgrating from 6.1</p></div>
+  </div>
+  
+
+  <div id="change-243377" class="journal has-details">
+    <h4><a href="61181.html#note-45" class="journal-link">#45</a>
+    
+    <a name="note-45"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-06" title="2015-01-06 13:40">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>7.1 (Cleanup)</i></li>
+      
+       <li><strong>Sprint Focus</strong> set to <i>On Location Sprint</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-61181-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/61181.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="61181.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/61181 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:41:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

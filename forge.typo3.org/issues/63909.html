@@ -1,0 +1,1130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/63909 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:43:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Epic #63909: Refactor Extension Manager - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/63909.atom" rel="alternate" title="Core - Epic #63909: Refactor Extension Manager" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/40570">Andreas Fernandez</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-63909-watcher"></span>
+
+
+</div>
+
+
+<h2>Epic #63909</h2>
+
+<div class="issue status-4 priority-2 parent details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Refactor Extension Manager</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/40570">Andreas Fernandez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-15" title="2014-12-15 17:35">8 months</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-18" title="2015-06-18 11:51">about 1 month</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Needs Feedback</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-12-15</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Extension Manager</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2969">7.4 (Backend)</a></td>
+    
+</tr>
+<tr>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>This issue collects all specs for a new EM.<br />It should run on PHP5.3+ so we can bundle it for 6.2 at a later stage.</p>
+
+
+	<a name="Desired-functionality"></a>
+<h2 >Desired functionality<a href="#Desired-functionality" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="From-the-Backend"></a>
+<h3 >From the Backend<a href="#From-the-Backend" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Enable extension</li>
+		<li>Disable extension</li>
+		<li>Remove extension from disk</li>
+	</ul>
+
+
+	<ul>
+	<li>Get extension from remote repository (also a specific version)</li>
+		<li>Resolve dependencies on <strong>download</strong></li>
+		<li>Review changes (before install/update and after installation)</li>
+	</ul>
+
+
+	<ul>
+	<li>Upload Extension <strong>ZIP</strong> via Browser</li>
+	</ul>
+
+
+	<a name="From-Command-Line"></a>
+<h3 >From Command Line<a href="#From-Command-Line" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Enable Extension</li>
+		<li>Disable Extension</li>
+		<li>Get extension from remote repository</li>
+		<li>Resolve dependencies on <strong>install</strong></li>
+		<li>Update all extensions</li>
+		<li>Fetch lists of installed extensions and available updates</li>
+	</ul>
+
+
+	<a name="General"></a>
+<h3 >General<a href="#General" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>It should be possible to import data into tables that do not belong to the extension (<a href="23965.html" class="issue status-9 priority-2 closed" title="possibility to insert records of other tables (Closed)">#23965</a>)</li>
+		<li>It should be possible to sign packages (<a href="30594.html" class="issue status-9 priority-2 closed" title="Allow packages to be signed (Closed)">#30594</a>)</li>
+		<li>If an extension get excluded from updates, the locallang files <strong>must not</strong> be updated (<a href="54287.html" class="issue status-9 priority-2 closed" title="excludeFromUpdates is ignored when updating Language (Closed)">#54287</a>)</li>
+		<li>Updating an extension must trigger an entry in sys_log (<a href="19992.html" class="issue status-9 priority-2 closed" title="Check for Extension Updates: Update Information should be written to sys_log (Closed)">#19992</a>)</li>
+		<li>Should clear opcode caches in install/uninstall (<a href="56969.html" class="issue status-9 priority-2 closed" title="Clear opcode cache after remove/update extension (Closed)">#56969</a>)</li>
+		<li>Should clear classes cache "by package" if possible (<a href="56323.html" class="issue status-9 priority-2 closed child" title="cache_classes should cluster by Package instead of Class (Closed)">#56323</a>)</li>
+		<li>Updating an extension should create a backup first (<a href="20664.html" class="issue status-9 priority-3 closed" title="When updating an extension, archive the old version (Closed)">#20664</a>, <a href="49297.html" class="issue status-9 priority-2 closed" title="Extension Upload with ExtManger should delete complete Folder, else Fatal Error (Closed)">#49297</a>)</li>
+		<li>Issue an error message when offline (<a href="43080.html" class="issue status-9 priority-1 closed" title="Can not install extension if mirror list can not be fetched (Closed)">#43080</a>)</li>
+		<li>Updating dependencies should ask per update (<a href="50347.html" class="issue status-9 priority-1 closed" title="ExtensionManager: Overwriting existing extensions with older versions without warning (Closed)">#50347</a>)</li>
+	</ul>
+
+
+	<a name="UI"></a>
+<h3 >UI<a href="#UI" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li>Get List of all extensions that offer updates (no matter if uploaded manually or installed from TER)</li>
+		<li>Offer the ability to search for an extension (but exclude meta-fields like "state")</li>
+		<li>Set Focus to the searchfield onload (<a href="29628.html" class="issue status-9 priority-3 closed" title="Auto Focus on Search field (Closed)">#29628</a>)</li>
+		<li>Reload List of Extensions after updating an extension (<del><a href="48867.html" class="issue status-7 priority-2 closed" title="Extension list does'nt reload after extension has been updated (Resolved)">#48867</a></del>)</li>
+		<li>List of Extensions should be sortable and provide indicators of the current sorting state (<a href="55140.html" class="issue status-9 priority-2 closed" title="Extension manager - problem with sorting and missing indicators (Closed)">#55140</a>)</li>
+		<li>Filter extentions by (<a href="43177.html" class="issue status-9 priority-2 closed" title="Filters for extensions (Closed)">#43177</a> / <a href="37382.html" class="issue status-9 priority-2 closed" title="Filter list of available extension (Closed)">#37382</a> / <a href="30508.html" class="issue status-9 priority-2 closed" title="add an additional filter &quot;show only not installed extensions&quot; (Closed)">#30508</a> / <a href="54997.html" class="issue status-9 priority-2 closed" title="EM filter shall exclude the state (Closed)">#54997</a>):
+	<ul>
+	<li>active</li>
+		<li>inactive</li>
+		<li>has update available</li>
+		<li>state (alpha/beta/stable)</li>
+	</ul>
+	</li>
+		<li>Remote Extension list should <strong>not</strong> show installed extensions</li>
+		<li>UI should show dependencies and conflicts</li>
+		<li>UI should allow overriding errors (dependencies/version-requirements; "I know what I'm doing"-mode)</li>
+		<li>UI should allow search by author and/or category</li>
+		<li>UI should show reverse dependencies (installed extensions only) (<a href="17573.html" class="issue status-9 priority-2 closed" title="EM should show reverse dependecies (Closed)">#17573</a>)</li>
+		<li>UI should show the last update from TER <strong>and</strong> when the extension has been installed (<a href="25202.html" class="issue status-9 priority-2 closed" title="Extension Manager has no column for &quot;last update&quot; of respective ext (like &quot;category&quot;) (Closed)">#25202</a>)</li>
+		<li>Extension updates with security issues should be moved to the top (<a href="37199.html" class="issue status-9 priority-3 closed" title="Give security issues more priority (Closed)">#37199</a>)</li>
+		<li>Extensions with security updates should provide a link to the bulletin (<a href="37156.html" class="issue status-9 priority-2 closed" title="Showing information about security issues (Closed)">#37156</a>)</li>
+		<li>Refactor messages in confirmation dialogs, move HTML from PHP and locallang.xlf into Fluid templates</li>
+		<li>UI should paginate search results in "Get Extensions" </li>
+		<li>Offer possibility to show changelog <strong>prior</strong> to installing an extension (<a href="43178.html" class="issue status-9 priority-2 closed" title="Updates: Changelog and chooseable update (Closed)">#43178</a>)</li>
+	</ul>
+
+
+	<a name="Directory-Layout"></a>
+<h3 >Directory Layout<a href="#Directory-Layout" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+ |-- Packages
+ |   |-- Common
+ |   |   |-- my_global_ext
+ |   |-- Application
+ |   |   |-- tt_news
+ |   |-- Framework
+ |   |   |-- workspaces
+ |   |-- Library
+ |   |   |-- doctrine
+ |   |       |-- dbal
+ |   |       |-- common
+ |-- Web (public Webroot)
+ |-- composer.json
+</pre>
+  </div>
+
+
+
+
+
+
+<hr />
+<div id="issue_tree">
+<div class="contextual">
+  
+</div>
+<p><strong>Subtasks</strong></p>
+<form><table class="list issues"><tr class="issue issue-63910 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="63910" /></td><td class="subject"><a href="63910.html" class="issue status-7 priority-2 closed child">Task #63910</a>: EXT:extensionmanager: Port javascript to RequireJS</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr></table></form>
+</div>
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-242140" class="journal has-details">
+    <h4><a href="63909.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-23" title="2014-12-23 19:40">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>7.0</i> to <i>7.1 (Cleanup)</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-242354" class="journal has-details">
+    <h4><a href="63909.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-23" title="2014-12-23 19:51">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>7.1 (Cleanup)</i> to <i>7.3 (Packages)</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-242820" class="journal has-details">
+    <h4><a href="63909.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-02" title="2015-01-02 10:33">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/242820?detail_id=207262" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-242821" class="journal has-details">
+    <h4><a href="63909.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-02" title="2015-01-02 10:33">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/242821?detail_id=207263" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-242827" class="journal has-details">
+    <h4><a href="63909.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-02" title="2015-01-02 10:54">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/242827?detail_id=207271" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-242828" class="journal has-details">
+    <h4><a href="63909.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-02" title="2015-01-02 10:54">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/242828?detail_id=207272" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243616" class="journal has-details">
+    <h4><a href="63909.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-07" title="2015-01-07 18:43">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243616?detail_id=207958" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243669" class="journal has-details">
+    <h4><a href="63909.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 10:33">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243669?detail_id=208022" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243722" class="journal has-details">
+    <h4><a href="63909.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 14:22">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243722?detail_id=208083" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243724" class="journal has-details">
+    <h4><a href="63909.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 14:25">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243724?detail_id=208086" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243730" class="journal has-details">
+    <h4><a href="63909.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 14:29">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243730?detail_id=208090" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243735" class="journal has-details">
+    <h4><a href="63909.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 14:40">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243735?detail_id=208096" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243738" class="journal has-details">
+    <h4><a href="63909.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 14:42">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243738?detail_id=208099" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243740" class="journal has-details">
+    <h4><a href="63909.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 14:44">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243740?detail_id=208101" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243748" class="journal has-details">
+    <h4><a href="63909.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 15:02">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243748?detail_id=208109" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243750" class="journal has-details">
+    <h4><a href="63909.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 15:03">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243750?detail_id=208111" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243752" class="journal has-details">
+    <h4><a href="63909.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 15:09">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243752?detail_id=208113" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243852" class="journal has-details">
+    <h4><a href="63909.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 05:39">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243852?detail_id=208220" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243855" class="journal has-details">
+    <h4><a href="63909.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 05:44">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243855?detail_id=208223" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243862" class="journal has-details">
+    <h4><a href="63909.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 06:02">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243862?detail_id=208230" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243865" class="journal has-details">
+    <h4><a href="63909.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 06:14">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243865?detail_id=208236" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243868" class="journal has-details">
+    <h4><a href="63909.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 06:17">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243868?detail_id=208239" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243874" class="journal has-details">
+    <h4><a href="63909.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40570">Andreas Fernandez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 08:16">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243874?detail_id=208244" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243907" class="journal has-details">
+    <h4><a href="63909.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 11:54">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243907?detail_id=208258" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243912" class="journal has-details">
+    <h4><a href="63909.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 12:00">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243912?detail_id=208265" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243919" class="journal has-details">
+    <h4><a href="63909.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 12:09">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243919?detail_id=208272" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243953" class="journal has-details">
+    <h4><a href="63909.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 14:30">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243953?detail_id=208306" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243954" class="journal has-details">
+    <h4><a href="63909.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 14:31">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243954?detail_id=208307" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243958" class="journal has-details">
+    <h4><a href="63909.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 14:51">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243958?detail_id=208315" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243959" class="journal has-details">
+    <h4><a href="63909.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 14:57">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243959?detail_id=208316" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243960" class="journal has-details">
+    <h4><a href="63909.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 14:58">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243960?detail_id=208317" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243961" class="journal has-details">
+    <h4><a href="63909.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 15:01">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243961?detail_id=208318" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243989" class="journal has-details">
+    <h4><a href="63909.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40570">Andreas Fernandez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 17:03">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/243989?detail_id=208342" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-244528" class="journal has-details">
+    <h4><a href="63909.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40570">Andreas Fernandez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-13" title="2015-01-13 10:50">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/244528?detail_id=208959" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-244530" class="journal has-details">
+    <h4><a href="63909.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-13" title="2015-01-13 11:04">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/244530?detail_id=208961" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-245304" class="journal has-details">
+    <h4><a href="63909.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-17" title="2015-01-17 19:00">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/245304?detail_id=210027" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-245341" class="journal has-details">
+    <h4><a href="63909.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-17" title="2015-01-17 20:04">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/245341?detail_id=210081" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-248471" class="journal has-details">
+    <h4><a href="63909.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40570">Andreas Fernandez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 05:20">6 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-248488" class="journal has-notes has-details">
+    <h4><a href="63909.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 10:36">6 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-248488-notes"><p>Please, before any major work goes into that, please check back with me and or Tom Maroschik.</p>
+
+
+	<p>What exactly are the plans here? Who wants do do what?</p></div>
+  </div>
+  
+
+  <div id="change-248489" class="journal has-notes">
+    <h4><a href="63909.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 10:37">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248489-notes"><blockquote>
+
+	<p>It should run on PHP5.3+ so we can bundle it for 6.2 at a later stage</p>
+
+
+</blockquote>
+
+	<p>Ah. OK so the main target is improving the state for 6.2?</p></div>
+  </div>
+  
+
+  <div id="change-261587" class="journal has-details">
+    <h4><a href="63909.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-15" title="2015-06-15 17:08">about 1 month</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>7.3 (Packages)</i> to <i>7.4 (Backend)</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-262668" class="journal has-notes">
+    <h4><a href="63909.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-18" title="2015-06-18 11:51">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-262668-notes"><p>@Helmut</p>
+
+
+	<p>I think the main target is to improve ExtensionManager generally but with the extra view on TYPO3 CMS 6.2. So it can be installed as replacement to the ExtensionManager there.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-63909-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/63909.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="63909.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/63909 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:44:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

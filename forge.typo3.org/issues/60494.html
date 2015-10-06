@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/60494 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:56:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #60494: editing gridelement in foreign language exhausts memory on large sites - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/60494.atom" rel="alternate" title="Core - Bug #60494: editing gridelement in foreign language exhausts memory on large sites" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-60494-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #60494</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>editing gridelement in foreign language exhausts memory on large sites</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/40670">Martin Schnabel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 12:26">about 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-02" title="2014-08-02 13:00">about 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-07-23</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I have a site with very many pages. tt_content has about 14000 rows. When editing a gridelement in a foreign language typo3 takes too much memory. I had to set memory_limit to 512M.</p>
+
+
+	<p>With some debugging I found out that the problem is inside TYPO3\CMS\Backend\Utility\BackendUtility::getProcessedValue when it is called for $col = 'tx_gridelements_children'. The array $rParts gets very large because it is filled with all uids of tt_content where tx_gridelements_children is 0. For my site that means about 10000 elements. In the later processing of the uids php runs out of memory.</p>
+
+
+	<p>As a workaground I used the hook inside BackendUtility::getProcessedValue by setting</p>
+
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="predefined">$GLOBALS</span>[<span class="string"><span class="delimiter">'</span><span class="content">TYPO3_CONF_VARS</span><span class="delimiter">'</span></span>][<span class="string"><span class="delimiter">'</span><span class="content">SC_OPTIONS</span><span class="delimiter">'</span></span>][<span class="string"><span class="delimiter">'</span><span class="content">t3lib/class.t3lib_befunc.php</span><span class="delimiter">'</span></span>][<span class="string"><span class="delimiter">'</span><span class="content">preProcessValue</span><span class="delimiter">'</span></span>][] = <span class="string"><span class="delimiter">'</span><span class="content">&#38;</span><span class="content">\W</span><span class="content">V</span><span class="content">\I</span><span class="content">mgReloaded</span><span class="content">\H</span><span class="content">ooks</span><span class="content">\G</span><span class="content">ridElementsFix-&gt;preProcessValue</span><span class="delimiter">'</span></span>;
+</span></code></pre>
+
+	<p>inside ext_tables.php (inside an extension of mine)</p>
+
+
+	<p>The hook sets the field type to flex that no processing by BackendUtility::getProcessedValue will be done:</p>
+
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="inline-delimiter">&lt;?php</span>
+<span class="line-numbers"> 2</span>
+<span class="line-numbers"> 3</span><span class="keyword">namespace</span> <span class="constant">WV</span>\<span class="constant">ImgReloaded</span>\<span class="constant">Hooks</span>;
+<span class="line-numbers"> 4</span>
+<span class="line-numbers"> 5</span><span class="comment">// Hook done in ext_tables.php</span>
+<span class="line-numbers"> 6</span>
+<span class="line-numbers"> 7</span><span class="keyword">class</span> <span class="class">GridElementsFix</span> {
+<span class="line-numbers"> 8</span>
+<span class="line-numbers"> 9</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">preProcessValue</span>(&#38;<span class="local-variable">$params</span>, &#38;<span class="local-variable">$ref</span>) {
+<span class="line-numbers"><strong>10</strong></span>        <span class="keyword">if</span> (<span class="predefined">is_array</span>(<span class="local-variable">$params</span>) &#38;&#38; <span class="predefined">array_key_exists</span>(<span class="string"><span class="delimiter">'</span><span class="content">foreign_field</span><span class="delimiter">'</span></span>, <span class="local-variable">$params</span>) &#38;&#38; <span class="local-variable">$params</span>[<span class="string"><span class="delimiter">'</span><span class="content">foreign_field</span><span class="delimiter">'</span></span>] == <span class="string"><span class="delimiter">'</span><span class="content">tx_gridelements_container</span><span class="delimiter">'</span></span>) {
+<span class="line-numbers">11</span>            <span class="local-variable">$params</span>[<span class="string"><span class="delimiter">'</span><span class="content">type</span><span class="delimiter">'</span></span>] = <span class="string"><span class="delimiter">'</span><span class="content">flex</span><span class="delimiter">'</span></span>;
+<span class="line-numbers">12</span>        }
+<span class="line-numbers">13</span>    }
+<span class="line-numbers">14</span>
+<span class="line-numbers">15</span>}
+</span></code></pre>
+
+	<p>I know the workaround is ugly. I hope someone can find a better fix.</p>
+
+
+	<p>(I had gridelements rev 1824f01414736595970f12f239fa76f4850288b3)</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-11518">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="59671" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="59671.html" class="issue status-7 priority-2 closed">Bug #59671</a>: IRRE related child records are not listed (comma separate...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-06-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/60494/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/60494/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=60494&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/169f8b912751998b72236be85f1ff77e092ae8a2" title="Revision 169f8b91">Revision 169f8b91</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-02" title="2014-08-02 12:59">about 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Fetch related records for existing uids only</p>
+
+
+	<p>Before fetching related records from a foreign table, we must ensure<br />that there is a uid to be considered, since otherwise we will fetch<br />any record having a 0 value for that field.</p>
+
+
+	<p>There are method calls in the core, that don't provide a uid, so the<br />default value 0 is used, i.e. when fetching children of translated<br />gridelements, causing memory outage when tt_content is > 10000 records.</p>
+
+
+	<p>Resolves: <a href="60494.html" class="issue status-7 priority-2 closed" title="editing gridelement in foreign language exhausts memory on large sites (Resolved)">#60494</a><br />Releases: 6.3, 6.2<br />Change-Id: I1105964f98f79074bb37dc1921180b493fac4bc6<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/31781">http://review.typo3.org/31781</a><br />Reviewed-by: Sascha Egerer &lt;<a class="email" href="mailto:sascha@sascha-egerer.de">sascha@sascha-egerer.de</a>&gt;<br />Tested-by: Sascha Egerer &lt;<a class="email" href="mailto:sascha@sascha-egerer.de">sascha@sascha-egerer.de</a>&gt;<br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/14fc75047f8de3353235f7be90c72edc90d14a92" title="Revision 14fc7504">Revision 14fc7504</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-02" title="2014-08-02 12:59">about 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Fetch related records for existing uids only</p>
+
+
+	<p>Before fetching related records from a foreign table, we must ensure<br />that there is a uid to be considered, since otherwise we will fetch<br />any record having a 0 value for that field.</p>
+
+
+	<p>There are method calls in the core, that don't provide a uid, so the<br />default value 0 is used, i.e. when fetching children of translated<br />gridelements, causing memory outage when tt_content is > 10000 records.</p>
+
+
+	<p>Resolves: <a href="60494.html" class="issue status-7 priority-2 closed" title="editing gridelement in foreign language exhausts memory on large sites (Resolved)">#60494</a><br />Releases: 6.3, 6.2<br />Change-Id: I1105964f98f79074bb37dc1921180b493fac4bc6<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/31947">http://review.typo3.org/31947</a><br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-224838" class="journal has-notes has-details">
+    <h4><a href="60494.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 13:14">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-224838-notes"><p>IMHO this is a core bug, since the original type is "inline" and I don't see a good reason, why getProcessedValue should consider each element having a value of 0 here.</p></div>
+  </div>
+  
+
+  <div id="change-224839" class="journal has-notes">
+    <h4><a href="60494.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 13:25">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224839-notes"><p>The problem seems to be that $uid is 0 in this case and therefor</p>
+
+
+	<p>$records = self::getRecordsByField($theColConf['foreign_table'], $theColConf['foreign_field'], $uid);</p>
+
+
+	<p>fetches each record that is NOT child of a container.<br />So the question is, why is getProcessedValue called with a 0 value here.</p></div>
+  </div>
+  
+
+  <div id="change-224840" class="journal has-notes">
+    <h4><a href="60494.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 13:35">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224840-notes"><p>This is the definition of the method<br /><pre>
+/**
+     * Returns a human readable output of a value from a record
+     * For instance a database record relation would be looked up to display the title-value of that record. A checkbox with a "1" value would be "Yes", etc.
+     * $table/$col is tablename and fieldname
+     * REMEMBER to pass the output through htmlspecialchars() if you output it to the browser! (To protect it from XSS attacks and be XHTML compliant)
+     *
+     * @param string $table Table name, present in TCA
+     * @param string $col Field name, present in TCA
+     * @param string $value The value of that field from a selected record
+     * @param integer $fixed_lgd_chars The max amount of characters the value may occupy
+     * @param boolean $defaultPassthrough Flag means that values for columns that has no conversion will just be pass through directly (otherwise cropped to 200 chars or returned as "N/A")
+     * @param boolean $noRecordLookup If set, no records will be looked up, UIDs are just shown.
+     * @param integer $uid Uid of the current record
+     * @param boolean $forceResult If BackendUtility::getRecordTitle is used to process the value, this parameter is forwarded.
+     * @return string
+     */
+    static public function getProcessedValue($table, $col, $value, $fixed_lgd_chars = 0, $defaultPassthrough = 0, $noRecordLookup = FALSE, $uid = 0, $forceResult = TRUE) {
+</pre></p>
+
+
+	<p>And these are different use cases and how it is called:</p>
+
+
+<pre>
+$defaultLanguageValue = BackendUtility::getProcessedValue($table, $field, $this-&gt;defaultLanguageData[$table . ':' . $row['uid']][$field], 0, 1);
+
+$defaultLanguageValue = BackendUtility::getProcessedValue($table, $field, $this-&gt;additionalPreviewLanguageData[$table . ':' . $row['uid']][$previewLanguage['uid']][$field], 0, 1);
+
+$diffres = $t3lib_diff_Obj-&gt;makeDiffDisplay(
+    BackendUtility::getProcessedValue($table, $field, $dLVal['old'][$field], 0, 1),
+    BackendUtility::getProcessedValue($table, $field, $dLVal['new'][$field], 0, 1)
+);
+</pre>
+
+	<p>As you can see they are using just 5 out of the 8 possible parameters, so $uid will always be 0, which is just plain wrong for the case of inline elements pointing to a foreign table.</p>
+
+
+	<p>I will move this to the core tracker.</p></div>
+  </div>
+  
+
+  <div id="change-224841" class="journal has-details">
+    <h4><a href="60494.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 13:43">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>Grid Elements</i> to <i>Core</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-224842" class="journal has-notes">
+    <h4><a href="60494.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 13:44">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224842-notes"><p>This is not just about Gridelements, but AFAICS about any element using fields of type inline.</p></div>
+  </div>
+  
+
+  <div id="change-224845" class="journal has-notes">
+    <h4><a href="60494.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 13:49">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224845-notes"><p>IMHO it should be enough to introduce a check for $uid being available in line 2080 of typo3/sysext/backend/Classes/Utility/BackendUtility.php, since we need to check that for existing uids only.</p></div>
+  </div>
+  
+
+  <div id="change-225117" class="journal has-notes has-details">
+    <h4><a href="60494.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-24" title="2014-07-24 20:57">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-225117-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/31781">http://review.typo3.org/31781</a></p></div>
+  </div>
+  
+
+  <div id="change-226271" class="journal has-notes">
+    <h4><a href="60494.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-02" title="2014-08-02 12:59">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-226271-notes"><p>Patch set 1 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/31947">http://review.typo3.org/31947</a></p></div>
+  </div>
+  
+
+  <div id="change-226272" class="journal has-notes has-details">
+    <h4><a href="60494.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-02" title="2014-08-02 13:00">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-226272-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/169f8b912751998b72236be85f1ff77e092ae8a2" class="changeset" title="[BUGFIX] Fetch related records for existing uids only Before fetching related records from a for...">169f8b912751998b72236be85f1ff77e092ae8a2</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-60494-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/60494.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="60494.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/60494 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:56:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

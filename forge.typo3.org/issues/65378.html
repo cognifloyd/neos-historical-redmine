@@ -1,0 +1,779 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/65378 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:52:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #65378: Scaling/cropping images in GIFBUILDER does not work - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/65378.atom" rel="alternate" title="Core - Bug #65378: Scaling/cropping images in GIFBUILDER does not work" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (7)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/38727">Geddo no-lastname-given</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4877">Harald Glaser</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36404">Michael Schreiner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2192">Timo Webler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3078">Philipp Mueller</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39110">Christoph Lehmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3426">Paul Hansen</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-65378-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #65378</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Scaling/cropping images in GIFBUILDER does not work</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/4646">Stephan grass</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-27" title="2015-02-27 08:39">5 months</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-12" title="2015-03-12 11:58">5 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2015-02-27</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Image Generation</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2354">next-patchlevel</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>Yes</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I am using following TypoScript to center an image on a specified rectangle.<br />This will not work after updating to 6.2.10</p>
+
+
+	<p>lib.prodImage = COA<br />lib.prodImage {<br />    10 = IMAGE<br />    10 {<br />        file = GIFBUILDER<br />        file {<br />            format = jpg<br />            workArea = 0,0,200,200<br />            XY = 200,200<br />            backColor = #ffffff<br />            quality = 95</p>
+
+
+	<pre><code>10 = IMAGE<br />            10 {<br />                file.import.current = 1<br />                file.maxH = 200<br />                file.maxW = 200<br />                align = c,c<br />            }<br />        }<br />    }<br />}</code></pre>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/28536/screen.jpg" class="icon icon-attachment">screen.jpg</a>  
+  
+  <span class="size">(204.9 kB)</span>
+  
+  
+    <span class="author">Claus Harup, 2015-02-27 16:58</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-12500">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="64224" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="64224.html" class="issue status-7 priority-2 closed">Bug #64224</a>: GIFBUILDER with FAL and UTF-8 filesystem
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2015-01-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12515">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62184" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62184.html" class="issue status-7 priority-2 closed">Bug #62184</a>: Exception using GIFBUILDER in css_styled_content texpic r...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-10-13</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12516">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="65535" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="65535.html" class="issue status-6 priority-2">Bug #65535</a>: Exception: Serialization of &#39;Closure&#39; is not allowed
+</td>
+<td class="status">Under Review</td>
+<td class="start_date">2015-03-05</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12575">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="65842" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="65842.html" class="issue status-7 priority-1 closed">Bug #65842</a>: Cropping Images in GIFBUILDER is broken since TYPO3 CMS 6...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2015-03-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12590">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="65925" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="65925.html" class="issue status-9 priority-1 closed">Bug #65925</a>: images are not processed / rendered in TYPO3 V6.2.11!?
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2015-03-23</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12529">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="65599" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="65599.html" class="issue status-9 priority-1 closed">Bug #65599</a>: After Update from 6.2.9 --&gt; 6.2.10 TypoScript Snippet doe...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2015-03-08</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/65378/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/65378/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=65378&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/ef5f6cc8ee556c66caf8787635ef049a68e88006" title="Revision ef5f6cc8">Revision ef5f6cc8</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3146">Torben Hansen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-04" title="2015-03-04 19:26">5 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Regression when scaling/cropping in GIFBUILDER</p>
+
+
+	<p>The fix for issue <a href="64224.html" class="issue status-7 priority-2 closed" title="GIFBUILDER with FAL and UTF-8 filesystem (Resolved)">#64224</a> introduced a regression in GIFBUILDER<br />resulting in problems with image scaling/cropping.</p>
+
+
+	<p>For $fileInfo and $maskInfo: use 'processedFile' for FAL files<br />if available and correctly distinguish between FAL- and non-FAL files<br />otherwise by checking for 'origFile'.</p>
+
+
+	<p>Resolves: <a href="65378.html" class="issue status-7 priority-2 closed" title="Scaling/cropping images in GIFBUILDER does not work (Resolved)">#65378</a><br />Related: <a href="64224.html" class="issue status-7 priority-2 closed" title="GIFBUILDER with FAL and UTF-8 filesystem (Resolved)">#64224</a><br />Releases: master, 6.2<br />Change-Id: Ib472bdcdc7f814e50ebd18e084f5fbe7d09fc410<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/37483">http://review.typo3.org/37483</a><br />Reviewed-by: Stephan Großberndt &lt;<a class="email" href="mailto:stephan@grossberndt.de">stephan@grossberndt.de</a>&gt;<br />Tested-by: Stephan Großberndt &lt;<a class="email" href="mailto:stephan@grossberndt.de">stephan@grossberndt.de</a>&gt;<br />Reviewed-by: Frans Saris &lt;<a class="email" href="mailto:franssaris@gmail.com">franssaris@gmail.com</a>&gt;<br />Tested-by: Stefan Froemken &lt;<a class="email" href="mailto:froemken@gmail.com">froemken@gmail.com</a>&gt;<br />Tested-by: Christoph Lehmann &lt;<a class="email" href="mailto:christoph.lehmann@networkteam.com">christoph.lehmann@networkteam.com</a>&gt;<br />Tested-by: Philipp Mueller &lt;<a class="email" href="mailto:philipp.mueller@lavitto.ch">philipp.mueller@lavitto.ch</a>&gt;<br />Reviewed-by: Christian Kuhn &lt;<a class="email" href="mailto:lolli@schwarzbu.ch">lolli@schwarzbu.ch</a>&gt;<br />Tested-by: Christian Kuhn &lt;<a class="email" href="mailto:lolli@schwarzbu.ch">lolli@schwarzbu.ch</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/835be9a818807f184b5d995fbc7263191d2cef55" title="Revision 835be9a8">Revision 835be9a8</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3146">Torben Hansen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-04" title="2015-03-04 19:27">5 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Regression when scaling/cropping in GIFBUILDER</p>
+
+
+	<p>The fix for issue <a href="64224.html" class="issue status-7 priority-2 closed" title="GIFBUILDER with FAL and UTF-8 filesystem (Resolved)">#64224</a> introduced a regression in GIFBUILDER<br />resulting in problems with image scaling/cropping.</p>
+
+
+	<p>For $fileInfo and $maskInfo: use 'processedFile' for FAL files<br />if available and correctly distinguish between FAL- and non-FAL files<br />otherwise by checking for 'origFile'.</p>
+
+
+	<p>Resolves: <a href="65378.html" class="issue status-7 priority-2 closed" title="Scaling/cropping images in GIFBUILDER does not work (Resolved)">#65378</a><br />Related: <a href="64224.html" class="issue status-7 priority-2 closed" title="GIFBUILDER with FAL and UTF-8 filesystem (Resolved)">#64224</a><br />Releases: master, 6.2<br />Change-Id: Ib472bdcdc7f814e50ebd18e084f5fbe7d09fc410<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/37533">http://review.typo3.org/37533</a><br />Reviewed-by: Christian Kuhn &lt;<a class="email" href="mailto:lolli@schwarzbu.ch">lolli@schwarzbu.ch</a>&gt;<br />Tested-by: Christian Kuhn &lt;<a class="email" href="mailto:lolli@schwarzbu.ch">lolli@schwarzbu.ch</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/c5b7a0d92d66ee670d53f976511e44540682195e" title="Revision c5b7a0d9">Revision c5b7a0d9</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/2592">Morton Jonuschat</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-15" title="2015-05-15 14:28">3 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Temporary filename collision in imageMagickConvert()</p>
+
+
+	<p>Add more entropy to the temporary filename used by imageMagickConvert()<br />to ensure different processing configurations resulting in the same<br />output dimensions get different temporary names.</p>
+
+
+	<p>In combination with LocalDriver moving the temporary file to a different<br />location and file_exists_typo3temp_file() having a 30s window where it<br />doesn't detect the moved file (when the user enabled<br />$TYPO3_CONF_VARS['GFX']['enable_typo3temp_db_tracking']) this<br />leads to entries in the sys_processed_file table with a width and<br />height of 0, thus referencing the original file and resulting in<br />unscaled images showing in the frontend.</p>
+
+
+	<p>Resolves: <a href="65842.html" class="issue status-7 priority-1 closed" title="Cropping Images in GIFBUILDER is broken since TYPO3 CMS 6.2.10 (Resolved)">#65842</a><br />Resolves: <a href="63519.html" class="issue status-7 priority-1 closed" title="sys_file_processedfile rows contain zero dimensions (Resolved)">#63519</a><br />Resolves: <a href="60215.html" class="issue status-6 priority-2" title="sys_file_processedfile with empty identifier and name fields (Under Review)">#60215</a><br />Related: <a href="65378.html" class="issue status-7 priority-2 closed" title="Scaling/cropping images in GIFBUILDER does not work (Resolved)">#65378</a><br />Releases: 6.2<br />Change-Id: I42748d0899bf1e24f9f92f2e55802d64309c5704<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/39373">http://review.typo3.org/39373</a><br />Reviewed-by: Stephan Großberndt &lt;<a class="email" href="mailto:stephan@grossberndt.de">stephan@grossberndt.de</a>&gt;<br />Reviewed-by: Frans Saris &lt;<a class="email" href="mailto:franssaris@gmail.com">franssaris@gmail.com</a>&gt;<br />Reviewed-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Tested-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:markus.klein@typo3.org">markus.klein@typo3.org</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:markus.klein@typo3.org">markus.klein@typo3.org</a>&gt;</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-251043" class="journal has-notes">
+    <h4><a href="65378.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38727">Geddo no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-27" title="2015-02-27 12:05">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251043-notes"><p>same here. I'm using gifbuilder to scale images + watermarks etc. Everything was fine in 6.2.9 and is now messed up in 6.2.10<br />Here is a test-snippet</p>
+
+
+<pre>
+page = PAGE
+page {
+    config {
+        no_cache = 1
+    }
+    10 = IMAGE
+    10 {
+        file = GIFBUILDER
+        file {
+            format = jpg
+            quality = 90
+            XY = 500,500
+
+            10 = IMAGE 
+            10 {
+                file = fileadmin/template/img/test.jpg
+                file.width = 500c # HAS NO EFFECT in 6.2.10!
+                file.height= 500c # HAS NO EFFECT in 6.2.10!    
+            } 
+        }
+    }
+}
+</pre>
+
+	<p>OK folks so here is the deal: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/36180/3/typo3/sysext/frontend/Classes/Imaging/GifBuilder.php">https://review.typo3.org/#/c/36180/3/typo3/sysext/frontend/Classes/Imaging/GifBuilder.php</a></p>
+
+
+	<p>$fileInfo<sup><a href="#fn3">3</a></sup> gets the correctly scaled, processed image while $fileInfo['originalFile']->getForLocalProcessing(FALSE) delivers the original, unscaled image. <br />So I don't know why this condition was implemented but at least it should rescale the originalFile like the one in $fileInfo<sup><a href="#fn3">3</a></sup></p></div>
+  </div>
+  
+
+  <div id="change-251060" class="journal has-notes">
+    <h4><a href="65378.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3943">Claus Harup</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-27" title="2015-02-27 16:55">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251060-notes"><p>I have the same problem with any GIFBUILDER configuration after upgrading to 6.2.10 :-|</p></div>
+  </div>
+  
+
+  <div id="change-251061" class="journal has-notes has-details">
+    <h4><a href="65378.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3943">Claus Harup</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-27" title="2015-02-27 16:58">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/28536/screen.jpg">screen.jpg</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-251061-notes"><p>Attachment to previous bug....</p></div>
+  </div>
+  
+
+  <div id="change-251500" class="journal has-notes">
+    <h4><a href="65378.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3078">Philipp Mueller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 09:09">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251500-notes"><p>Since TYPO3 6.2.10 I've the same problem like Geddo with GIFBUILDER. The problem occurs with width= and height=, too.</p>
+
+
+I work with:
+	<ul>
+	<li>GraphicsMagick 1.3.18 2013-03-10 Q8</li>
+		<li>PHP 5.5.9</li>
+		<li>Ubuntu 14.04.2 LTS.</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-251504" class="journal has-notes has-details">
+    <h4><a href="65378.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 09:37">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-251504-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37483">http://review.typo3.org/37483</a></p></div>
+  </div>
+  
+
+  <div id="change-251505" class="journal has-notes">
+    <h4><a href="65378.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/41422">Adrian no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 09:38">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251505-notes"><p>Same here. After upgrading TYPO3 from version 6.2.9 to 6.2.10 the scaling images using GIFBUILDER didn't work. When I'm testing image processing in Instal Tool everything looks ok, byt when I want to change img using GIFBUILDER scaling img didn't work. I'm using GIFBUILDER to adding watermark to yag gallery.</p></div>
+  </div>
+  
+
+  <div id="change-251511" class="journal has-notes">
+    <h4><a href="65378.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 10:50">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251511-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37483">http://review.typo3.org/37483</a></p></div>
+  </div>
+  
+
+  <div id="change-251514" class="journal has-notes">
+    <h4><a href="65378.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 10:59">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251514-notes"><p>Patch set 3 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37483">http://review.typo3.org/37483</a></p></div>
+  </div>
+  
+
+  <div id="change-251520" class="journal has-notes">
+    <h4><a href="65378.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 12:01">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251520-notes"><p>Patch set 4 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37483">http://review.typo3.org/37483</a></p></div>
+  </div>
+  
+
+  <div id="change-251526" class="journal has-notes has-details">
+    <h4><a href="65378.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2661">Stephan Großberndt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 12:31">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Typo3 6.2.10 Gifbuilder</i> to <i>Scaling/cropping images in GIFBUILDER does not work</i></li>
+      
+       <li><strong>Target version</strong> set to <i>next-patchlevel</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>medium</i></li>
+      
+       <li><strong>Is Regression</strong> changed from <i>No</i> to <i>Yes</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-251526-notes"><p>This is a regression in TYPO3 CMS 6.2.10 caused by <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/36180">https://review.typo3.org/#/c/36180</a></p></div>
+  </div>
+  
+
+  <div id="change-251527" class="journal has-notes">
+    <h4><a href="65378.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 12:47">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251527-notes"><p>Patch set 5 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37483">http://review.typo3.org/37483</a></p></div>
+  </div>
+  
+
+  <div id="change-251566" class="journal has-notes">
+    <h4><a href="65378.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4646">Stephan grass</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 17:03">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251566-notes"><p>Under php 5.4.34 GifBuilder.php will cause the error:</p>
+
+
+	<p>Parse error: syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /Users/stephangrass/Documents/_Webs_/MR-Chemie/typo3/typo3_src-6.2.10/typo3/sysext/frontend/Classes/Imaging/GifBuilder.php on line 141</p></div>
+  </div>
+  
+
+  <div id="change-251616" class="journal has-notes">
+    <h4><a href="65378.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-04" title="2015-03-04 11:57">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251616-notes"><p>@Stephan: I can not confirm your "fatal" report (our test environment would also have found that in travis-ci for php 5.4 on 6.2.10)</p></div>
+  </div>
+  
+
+  <div id="change-251659" class="journal has-notes">
+    <h4><a href="65378.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-04" title="2015-03-04 19:27">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251659-notes"><p>Patch set 1 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37533">http://review.typo3.org/37533</a></p></div>
+  </div>
+  
+
+  <div id="change-251661" class="journal has-notes has-details">
+    <h4><a href="65378.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3146">Torben Hansen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-04" title="2015-03-04 19:30">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-251661-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/ef5f6cc8ee556c66caf8787635ef049a68e88006" class="changeset" title="[BUGFIX] Regression when scaling/cropping in GIFBUILDER The fix for issue #64224 introduced a re...">ef5f6cc8ee556c66caf8787635ef049a68e88006</a>.</p></div>
+  </div>
+  
+
+  <div id="change-252267" class="journal has-notes">
+    <h4><a href="65378.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3777">Ralph Brugger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-11" title="2015-03-11 16:39">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252267-notes"><p>Under php 5.4.34 GifBuilder.php will cause the error:<br />Same for me wihtin</p>
+
+
+<pre>
+Parse error: syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /Users/stephangrass/Documents/_Webs_/MR-Chemie/typo3/typo3_src-6.2.10/typo3/sysext/frontend/Classes/Imaging/GifBuilder.php on line 141
+</pre>
+
+	<p>This worked for me: 4 or 5 times in this file:</p>
+
+
+<pre>
+... GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer');
+</pre></div>
+  </div>
+  
+
+  <div id="change-252362" class="journal has-notes">
+    <h4><a href="65378.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39110">Christoph Lehmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-12" title="2015-03-12 11:58">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252362-notes"><p>The applied changeset breaks PHP 5.3.10 too</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-65378-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/65378.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="65378.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/65378 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:52:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

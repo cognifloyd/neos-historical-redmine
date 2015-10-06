@@ -1,0 +1,881 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/61861 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:23:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #61861: Frontend throws exception on missing image - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/61861.atom" rel="alternate" title="Core - Bug #61861: Frontend throws exception on missing image" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (10)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/114">Lars Houmark</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2192">Timo Webler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2869">Rafal Brzeski</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36672">Michel Mix</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4755">Ronald Klomp</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/41435">Kai Gossel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2234">Bart Lammers</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/41812">Stefan Rosbak</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38134">Christiaan Wiesenekker</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-61861-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #61861</h2>
+
+<div class="issue status-1 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Frontend throws exception on missing image</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/4282">Grigori Prokhorov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-24" title="2014-09-24 21:02">10 months</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-06" title="2015-07-06 11:21">28 days</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">New</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-09-24</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2354">next-patchlevel</a></td>
+    
+    <th class="estimated-hours">Estimated time:</th><td class="estimated-hours">8.00 hours</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td>On Location Sprint</td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>With TYPO3 6.2.3 I currently experience the quite annoying issue that whenever there is an image that is referenced by a viewhelper or any other method that uses the TYPO3 API, the absence of said image leads to Exceptions being thrown in the frontend.</p>
+
+
+	<p>I feel that this behaviour is as annyoing as it is dangerous, since it poses the risk of killing off a complete website with a simple editor's mistake.</p>
+
+
+	<p>Although I understand that there is a need for the handling of a situation like this, I think that the Exception should only be thrown if a file is missing which is not located either in "fileadmin" or "uploads" - both of which are more or less user created content.</p>
+
+
+	<p>The exception in question is <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/master/entry/typo3/sysext/core/Classes/Resource/Driver/LocalDriver.php#L256" class="external">1314516809</a>, along with <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/master/entry/typo3/sysext/core/Classes/Resource/Driver/LocalDriver.php#L1082" class="external">1319455097</a></p>
+
+
+	<p>A possible solution might be as simple as adding <code> &#38;&#38; !strpos($path, 'fileadmin') &#38;&#38; !strpos($path, 'uploads')</code> to the respective conditions to allow for user generated images to be missing.</p>
+
+
+	<p>Possibly, some kind of error message should be put out, but an Exception seems to much.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/28032/Bildschirmfoto%202014-12-01%20um%2009.47.50.png" class="icon icon-attachment">Bildschirmfoto 2014-12-01 um 09.47.50.png</a>  
+  
+  <span class="size">(70.9 kB)</span>
+  
+  
+    <span class="author">Tomas Houska, 2014-12-01 10:08</span>
+  
+  </p>
+
+<p><a href="../attachments/download/28033/Bildschirmfoto%202014-12-01%20um%2009.48.01.png" class="icon icon-attachment">Bildschirmfoto 2014-12-01 um 09.48.01.png</a>  
+  
+  <span class="size">(47.7 kB)</span>
+  
+  
+    <span class="author">Tomas Houska, 2014-12-01 10:08</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-12631">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="9210" /></td>
+<td class="subject">related to 
+    TYPO3.Fluid - 
+    <a href="9210.html" class="issue status-10 priority-4 closed">Bug #9210</a>: imageViewHelper should not throw exception
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2011-10-15</td>
+<td class="due_date">2011-10-15</td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12630">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="9211" /></td>
+<td class="subject">related to 
+    TYPO3.Fluid - 
+    <a href="9211.html" class="issue status-10 priority-2 closed">Feature #9211</a>: Improve ViewHelper exception handling
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2010-08-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11796">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="47919" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="47919.html" class="issue status-7 priority-2 closed">Feature #47919</a>: Catch exceptions in USER TS objects
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-05-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11761">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="61125" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="61125.html" class="issue status-10 priority-1 closed">Bug #61125</a>: FAL exception if file does not exist
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-08-21</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12925">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="63955" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="63955.html" class="issue status-9 priority-1 closed">Bug #63955</a>: Fatal Error if Ressource could not be found
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-12-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/61861/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/61861/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=61861&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-232273" class="journal has-notes">
+    <h4><a href="61861.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2705">Frank Gerards</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-08" title="2014-10-08 19:14">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232273-notes"><p>Tbh, simply throwing an exception on such a deep-layer class like LocalDriver and then expecting it will be catched <br />in dozens of use-cases etc. and WITHOUT exaggerating this in documentation and stuff is simply crap.</p>
+
+
+	<p>Our authors sometimes falsely delete a header/galery image thus breaking multiple pages and the backend without being able<br />to recover from that error or deleting the corrupt content elements.</p>
+
+
+	<p>So PLEASE:</p>
+
+
+	<p>Throw a FileDoesNotExistsException in the LocalDriver and dont throw an exception at all in the getPermission method,<br />this is way overdone .</p>
+
+
+	<p>Can one identify all the cases and spots in the core/TS code, where these exceptions could be thrown ?</p></div>
+  </div>
+  
+
+  <div id="change-237067" class="journal has-notes">
+    <h4><a href="61861.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4282">Grigori Prokhorov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-20" title="2014-11-20 13:07">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237067-notes"><p>Please look into this bug. It does break TYPO3 6.2 installations in the wild - this is undocumented behaviour, AFAIK, also I agree with Frank that this is way too harsh of an error handling in this context.<br />This is also not simply a question of "The core throws the exception, it's the DEV's responsibility to catch it properly." - This issue occurs without any additional extensions installed.</p>
+
+
+	<p>Reproduction steps:</p>
+
+
+	<ul>
+	<li>Create a new Image Content Element</li>
+		<li>Add an image from fileadmin</li>
+		<li>Delete the image from the filesystem (yes, there are reasons and cases in which the restriction that referenced images can't be deleted does not suffice)</li>
+		<li>Open the page with the Image CE in the frontend</li>
+	</ul>
+
+
+Expected Result:
+	<ul>
+	<li>The page loads, no image is shown</li>
+	</ul>
+
+
+Actual Result:
+	<ul>
+	<li>The page throws the above mentioned error</li>
+	</ul>
+
+
+	<p>Please give this a higher priority.</p></div>
+  </div>
+  
+
+  <div id="change-237346" class="journal has-notes">
+    <h4><a href="61861.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37901">Moritz Ahl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-23" title="2014-11-23 20:28">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237346-notes"><p>I can confirm this issue. FAL throws an exception when being called from within a custom viewHelper which is rendering multiple images for responsive layouts (since fluid doesn't support this feature out of the box). Sure, I could catch possible Exceptions in my viewhelper. But in my opinion, FAL should deal with missing (image) files in a more unobtrusive way out of the box so that developers don't have to deal with such basic issues in each and every place which is using images.</p>
+
+
+	<p>This is the last part of my stack trace:<br /><pre>
+Uncaught TYPO3 Exception
+#1314516810: File /uploads/tx_news/TeamTour_Bewerbung.jpeg/ does not exist. (More information)
+
+TYPO3\CMS\Core\Resource\Exception\FolderDoesNotExistException thrown in file
+C:\xampp\htdocs\typo3_src-6.2.6\typo3\sysext\core\Classes\Resource\Driver\LocalDriver.php in line 272.
+
+212 TYPO3\CMS\Core\Resource\Driver\LocalDriver::getFolderInfoByIdentifier("uploads/tx_news/TeamTour_Bewerbung.jpeg")
+
+C:\xampp\htdocs\typo3_src-6.2.6\typo3\sysext\core\Classes\Resource\ResourceStorage.php:
+02064:   */
+02065:  public function getFolder($identifier, $returnInaccessibleFolderObject = FALSE) {
+02066:   $data = $this-&gt;driver-&gt;getFolderInfoByIdentifier($identifier);
+02067:   $folder = ResourceFactory::getInstance()-&gt;createFolderObject($this, $data['identifier'], $data['name']);
+02068: 
+
+211 TYPO3\CMS\Core\Resource\ResourceStorage::getFolder("uploads/tx_news/TeamTour_Bewerbung.jpeg")
+
+C:\xampp\htdocs\typo3_src-6.2.6\typo3\sysext\core\Classes\Resource\ResourceFactory.php:
+00498:    }
+00499:   }
+00500:   return $this-&gt;getStorageObject($storageUid, array(), $folderIdentifier)-&gt;getFolder($folderIdentifier);
+00501:  }
+00502: 
+
+210 TYPO3\CMS\Core\Resource\ResourceFactory::getFolderObjectFromCombinedIdentifier("uploads/tx_news/TeamTour_Bewerbung.jpeg")
+
+C:\xampp\htdocs\typo3_src-6.2.6\typo3\sysext\core\Classes\Resource\ResourceFactory.php:
+00468:    } else {
+00469:     // only the local path
+00470:     return $this-&gt;getFolderObjectFromCombinedIdentifier($input);
+00471:    }
+00472:   }
+
+209 TYPO3\CMS\Core\Resource\ResourceFactory::retrieveFileOrFolderObject("uploads/tx_news/TeamTour_Bewerbung.jpeg")
+
+C:\xampp\htdocs\typo3_src-6.2.6\typo3\sysext\extbase\Classes\Service\ImageService.php:
+00128:   } else {
+00129:    // We have a combined identifier or legacy (storage 0) path
+00130:    $image = $this-&gt;resourceFactory-&gt;retrieveFileOrFolderObject($src);
+00131:   }
+00132:   return $image;
+
+208 TYPO3\CMS\Extbase\Service\ImageService::getImageFromSourceString("uploads/tx_news/TeamTour_Bewerbung.jpeg", boolean)
+
+C:\xampp\htdocs\typo3_src-6.2.6\typo3\sysext\extbase\Classes\Service\ImageService.php:
+00096:  public function getImage($src, $image, $treatIdAsReference) {
+00097:   if (is_null($image)) {
+00098:    $image = $this-&gt;getImageFromSourceString($src, $treatIdAsReference);
+00099:   } elseif (is_callable(array($image, 'getOriginalResource'))) {
+00100:    // We have a domain model, so we need to fetch the FAL resource object from there
+
+207 TYPO3\CMS\Extbase\Service\ImageService::getImage("uploads/tx_news/TeamTour_Bewerbung.jpeg", NULL, boolean)
+
+C:\xampp\htdocs\typo3_bulls.de\typo3conf\ext\con_bulls\Classes\ViewHelpers\ResponsiveImageViewHelper.php:
+00073:  ) {
+00074:   $imageUris = '';
+00075:   $image = $this-&gt;imageService-&gt;getImage($src, $image, $treatIdAsReference);
+00076: 
+00077:   if ($this-&gt;arguments['breakpoints'] &#38;&#38; is_array($this-&gt;arguments['breakpoints'])) {
+
+206 Tx_ConBulls_ViewHelpers_ResponsiveImageViewHelper::render("uploads/tx_news/TeamTour_Bewerbung.jpeg", "231c", "231c", NULL, NULL, NULL, NULL, boolean, NULL)
+205 call_user_func_array(array, array)
+
+C:\xampp\htdocs\typo3_src-6.2.6\typo3\sysext\fluid\Classes\Core\ViewHelper\AbstractViewHelper.php:
+00246: 
+00247:   try {
+00248:    return call_user_func_array(array($this, 'render'), $renderMethodParameters);
+00249:   } catch (\TYPO3\CMS\Fluid\Core\ViewHelper\Exception $exception) {
+00250:    // @todo [BW] rethrow exception, log, ignore.. depending on the current context
+
+204 TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+
+C:\xampp\htdocs\typo3_src-6.2.6\typo3\sysext\fluid\Classes\Core\ViewHelper\AbstractViewHelper.php:
+00228:   $this-&gt;initialize();
+00229: 
+00230:   return $this-&gt;callRenderMethod();
+00231:  }
+00232: 
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-238300" class="journal has-notes has-details">
+    <h4><a href="61861.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/41115">Tomas Houska</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-01" title="2014-12-01 10:08">8 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/28032/Bildschirmfoto%202014-12-01%20um%2009.47.50.png">Bildschirmfoto 2014-12-01 um 09.47.50.png</a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/28033/Bildschirmfoto%202014-12-01%20um%2009.48.01.png">Bildschirmfoto 2014-12-01 um 09.48.01.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-238300-notes"><p>i have found a simple solution for the problem #1319455097.<br />After i upgrade to Typo3 6.2.6 the Filelist was not accessible. The solution was:<br />Look to List->File Storage-> click to "uploads (auto created)" -> change the path type to "relative" -> active the option "is online?"</p></div>
+  </div>
+  
+
+  <div id="change-247039" class="journal has-details">
+    <h4><a href="61861.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-27" title="2015-01-27 07:59">6 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Sprint Focus</strong> set to <i>On Location Sprint</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-247417" class="journal has-notes has-details">
+    <h4><a href="61861.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-29" title="2015-01-29 21:41">6 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-247417-notes"><p>can't reproduce</p></div>
+  </div>
+  
+
+  <div id="change-249658" class="journal has-notes">
+    <h4><a href="61861.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36672">Michel Mix</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-11" title="2015-02-11 21:18">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-249658-notes"><p>This error is very annoying.</p>
+
+
+	<p>We work with different DTAP environments. Upon working on a project I'll check it out from SVN and I download the current production database to have my system up-to-date. Even if I would have had FTP access (which I do not have), I don't want to download 500 or more images from the production server!</p>
+
+
+	<p>No problem to throw an error in the system log when a file is missing, but it should definitely NOT be fatal.</p></div>
+  </div>
+  
+
+  <div id="change-251847" class="journal has-notes">
+    <h4><a href="61861.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4755">Ronald Klomp</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-06" title="2015-03-06 11:25">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251847-notes"><p>Please look into this problem. It is a big problem when you develop sites with more than one developer.</p>
+
+
+	<p>The state is resolved now but thats not correct. I'm working with TYPO3 version 6.2.9 and 6.2.10 and in both version the error is present.</p></div>
+  </div>
+  
+
+  <div id="change-253489" class="journal has-notes">
+    <h4><a href="61861.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-23" title="2015-03-23 13:54">4 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-253489-notes"><p>Jep, it is still not solved.<br />Example: I have an extension with simple project data like name and image.</p>
+
+
+	<p>If the selected image got deleted on filesystem, Fluid throws an Exception #1314516810: File /uploads/tx_example/940.jpg/ does not exist.</p></div>
+  </div>
+  
+
+  <div id="change-254383" class="journal has-notes has-details">
+    <h4><a href="61861.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/507">Sascha Egerer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-30" title="2015-03-30 10:35">4 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-254383-notes"><p>I reopened this issue as dicussed in slack.</p>
+
+
+	<p>Looks like this one is fixed in TYPO3 7.x but it should really be fixed in 6.2 as it affects the frontend. I think this is a problem in many installations.</p>
+
+
+	<p>The Exception should be catched and logged. -> Check how it is implmented in TYPO3 7</p></div>
+  </div>
+  
+
+  <div id="change-254386" class="journal has-notes">
+    <h4><a href="61861.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/507">Sascha Egerer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-30" title="2015-03-30 10:59">4 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-254386-notes"><p>Looks like this doesn't effect content elements but for example the f:uri.image viewhelper.</p>
+
+
+	<p>Reproduce: Add <code>{f:uri.image(src: 'invalidFilePath.jpg')}</code> to a fluid template and clear caches.</p></div>
+  </div>
+  
+
+  <div id="change-254401" class="journal has-notes has-details">
+    <h4><a href="61861.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/507">Sascha Egerer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-30" title="2015-03-30 11:56">4 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-254401-notes"><p>Ok this is the same behavior as in the current master. I would say that this is related to an integrator error as a non existing file is referenced in TypoScript or in a Template. So I'm fine with throwing a exception in this case.</p>
+
+
+	<p>Any comments on that?</p></div>
+  </div>
+  
+
+  <div id="change-254402" class="journal has-notes">
+    <h4><a href="61861.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-30" title="2015-03-30 12:07">4 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-254402-notes"><p>The reproduction steps are correct. But I dont think it is an Integrator issue.<br />Think about this usecase: An editor inserts an image in an extension (maybe news) and afterwards deletes the image via ftp/filelist.</p>
+
+
+	<p>This is something an integrator can’t handle.<br />Usally throwing an exception would be OK, but here it is very annoying.</p>
+
+
+	<p>What about simply "hiding" the image and remove the &lt;img&gt; markup</p></div>
+  </div>
+  
+
+  <div id="change-254475" class="journal has-notes">
+    <h4><a href="61861.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4282">Grigori Prokhorov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-30" title="2015-03-30 23:06">4 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-254475-notes"><p>Hi Sascha!</p>
+
+
+	<p>This is definitely not an integrator issue.<br />This issue is also not new in any way<sup><a href="#fn1">1</a></sup>.<br />After all, we are building websites for end users and editors, not for developers.<br />This exception handling is also inconsistent - why does the core not throw an exception for a missing stylesheet, for example?</p>
+
+
+	<p>Anyhow, it should not be the integrator's responsibility to catch an exception ever, since it's not even possible, technically, to properly catch it<sup><a href="#fn2">2</a></sup>. <br />One could only work around it by creating a condition which avoids the exception being thrown.</p>
+
+
+	<p>We should not allow for a case where an editor's mistake can kill off a complete page inside a website for no good reason.<br />A simple text message would be more than enough.</p>
+
+
+	<p>I do understand that from a developer's standpoint the core's work is done as soon as it has notified the affected component of the exception but in this case EXT:fluid should have proper exception handling then.</p>
+
+
+	<p>Sascha Egerer wrote:</p>
+
+
+<blockquote>
+
+	<p>The Exception should be catched and logged. -> Check how it is implmented in TYPO3 7</p>
+
+
+</blockquote>
+
+	<p>This is by far the most correct and easiest approach to this, although I feel that a local error message (confined to the output of the method) should also be included.</p>
+
+
+	<p>I can provide a patch in a few days if it helps the cause.</p>
+
+
+	<p>Best regards,<br />Grigori</p>
+
+
+<hr />
+
+
+	<p id="fn1" class="footnote"><sup>1</sup> <a class="external" href="9211.html">https://forge.typo3.org/issues/9211</a></p>
+
+
+	<p id="fn2" class="footnote"><sup>2</sup> <a class="external" href="../../external.html?link=http://wiki.typo3.org/Fluid">http://wiki.typo3.org/Fluid</a></p></div>
+  </div>
+  
+
+  <div id="change-254487" class="journal has-notes">
+    <h4><a href="61861.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36672">Michel Mix</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-31" title="2015-03-31 03:09">4 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-254487-notes"><p>Sascha, please, common: this is NOT an integrator issue!</p>
+
+
+	<p>First of all: an exception should by definition never occur: "Exceptions should be reserved for conditions that are truly exceptional - in other words, for conditions that cannot be addressed by other coding practices. Exceptions are used in similar circumstances to assertions - for events that are not just infrequent but for events that should <em>never</em> occur" (<em>Code Complete</em>, my coding Bible ;-)). In this case (a) are we dealing with the error on a daily basis, and (b) it is possible to address the issue.</p>
+
+
+	<p>Now about the use cases:</p>
+
+
+	<ol>
+	<li>An editor inserts an image in an extension (maybe news) and afterwards deletes the image via ftp/filelist (mentioned by Henrik Ziegenhains)</li>
+		<li>DTAP environment where a developer downloads the production database to the development environment (I mentioned this before).</li>
+		<li>Developers working in seperate development environments (mentioned by Ronald Klomp)</li>
+		<li>Environments with a load balancer; the files on the main server are synced to the other server, but that takes a few minutes.</li>
+	</ol>
+
+
+	<p>So, catch the exception and log an error, if you want. But please: DON'T throw uncaught exceptions! The implementation of the connection between database and file system is simply too tight and should be loosened.</p></div>
+  </div>
+  
+
+  <div id="change-264633" class="journal has-details">
+    <h4><a href="61861.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-06" title="2015-07-06 11:21">28 days</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>New</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-61861-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/61861.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="61861.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/61861 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:23:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

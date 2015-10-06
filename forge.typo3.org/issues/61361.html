@@ -1,0 +1,1144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/61361 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:58:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #61361: Fluid template path fallback doesn&#39;t work in TypoScript object FLUIDTEMPLATE - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/61361.atom" rel="alternate" title="Core - Bug #61361: Fluid template path fallback doesn't work in TypoScript object FLUIDTEMPLATE" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (6)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38237">Benjamin Kott</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2691">Robert Wildling</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1264">Josef Glatz</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-61361-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #61361</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Fluid template path fallback doesn&#39;t work in TypoScript object FLUIDTEMPLATE</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-05" title="2014-09-05 09:30">11 months</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-24" title="2014-11-24 10:00">8 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-09-05</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Fluid</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2355">7.0</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>It looks like that the useful fallback feature of Fluid is implemented only in class TemplateView and not in class StandaloneView.</p>
+
+
+	<p>So a Typoscript like this doesn't work:</p>
+
+
+<pre>
+page {
+  10 = FLUIDTEMPLATE
+  10 {
+  partialRootPath &gt;
+  partialRootPaths {
+    10 = EXT:bootstrap_package/Resources/Private/Partials/Page/
+    20 = EXT:my_extension/Resources/Private/Partials/Page/
+  }
+}
+</pre>
+
+	<p>and produce a FE error:<br />Partial root path "typo3conf/ext/bootstrap_package/Resources/Private/Templates/Page/Partials" does not exist</p>
+
+
+	<p>IMHO, since this feature has been implemented in 6.2, it must be available also for TypoScript object FLUIDTEMPLATE and in TYPO3 6.2</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-12037">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="63367" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="63367.html" class="issue status-7 priority-1 closed">Bug #63367</a>: superfluous ucfirst() kills FE rendering with FLUIDTEMPLATE
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-11-27</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12018">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="63117" /></td>
+<td class="subject">related to 
+    TypoScript Reference (TSref) - 
+    <a href="63117.html" class="issue status-9 priority-1 closed">Feature #63117</a>: FLUIDTEMPLATE now supports fallback paths
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-11-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12007">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="63066" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="63066.html" class="issue status-7 priority-1 closed">Bug #63066</a>: FluidTemplateContentObject uses deprecated methods
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-11-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12039">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="63380" /></td>
+<td class="subject">precedes 
+    Core - 
+    <a href="63380.html" class="issue status-6 priority-2">Bug #63380</a>: FLUIDTEMPLATE: New fallback paths miss stdWrap
+</td>
+<td class="status">Under Review</td>
+<td class="start_date">2014-11-27</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/61361/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/61361/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=61361&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/3b6de8a3aef7d015261bed85b2ca0b5376caa70a" title="Revision 3b6de8a3">Revision 3b6de8a3</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/4192">Anja Leichsenring</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 23:53">10 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Template Path fallback for Fluid Standalone View</p>
+
+
+	<p>TemplateView received the feature of template path fallback<br />configuration with issue #39868.<br />The same is missing for Standalone view and will be introduced<br />with this patch.</p>
+
+
+	<p>Change-Id: I1e854a356a4c7e9cfff773c8f56fe4a437f77920<br />Resolves: <a href="61361.html" class="issue status-7 priority-1 closed" title="Fluid template path fallback doesn't work in TypoScript object FLUIDTEMPLATE (Resolved)">#61361</a><br />Related: #39868<br />Releases: master<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a><br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Reviewed-by: Wouter Wolters &lt;<a class="email" href="mailto:typo3@wouterwolters.nl">typo3@wouterwolters.nl</a>&gt;<br />Tested-by: Wouter Wolters &lt;<a class="email" href="mailto:typo3@wouterwolters.nl">typo3@wouterwolters.nl</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/1747ec195386a95793080810008c0671338ec0e2" title="Revision 1747ec19">Revision 1747ec19</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-20" title="2014-11-20 23:47">9 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Allow fallback paths in FLUIDTEMPLATE</p>
+
+
+	<p>Resolves: <a href="61361.html" class="issue status-7 priority-1 closed" title="Fluid template path fallback doesn't work in TypoScript object FLUIDTEMPLATE (Resolved)">#61361</a><br />Releases: master, 6.2<br />Change-Id: I676722936892f164ae147d7f9abcb602e734ae7d<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/34343">http://review.typo3.org/34343</a><br />Reviewed-by: Anja Leichsenring &lt;<a class="email" href="mailto:aleichsenring@ab-softlab.de">aleichsenring@ab-softlab.de</a>&gt;<br />Tested-by: Anja Leichsenring &lt;<a class="email" href="mailto:aleichsenring@ab-softlab.de">aleichsenring@ab-softlab.de</a>&gt;<br />Reviewed-by: Frans Saris &lt;<a class="email" href="mailto:franssaris@gmail.com">franssaris@gmail.com</a>&gt;<br />Tested-by: Frans Saris &lt;<a class="email" href="mailto:franssaris@gmail.com">franssaris@gmail.com</a>&gt;<br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/f582179a089a2306271fbb4d3b97d954e010fab9" title="Revision f582179a">Revision f582179a</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/4192">Anja Leichsenring</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-24" title="2014-11-24 09:54">8 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Template Path fallback for Fluid Standalone View</p>
+
+
+	<p>TemplateView received the feature of template path fallback<br />configuration with issue #39868.<br />The same is missing for Standalone view and will be introduced<br />with this patch.</p>
+
+
+	<p>Change-Id: I1e854a356a4c7e9cfff773c8f56fe4a437f77920<br />Resolves: <a href="61361.html" class="issue status-7 priority-1 closed" title="Fluid template path fallback doesn't work in TypoScript object FLUIDTEMPLATE (Resolved)">#61361</a><br />Related: #39868<br />Documentation: <a href="63117.html" class="issue status-9 priority-1 closed" title="FLUIDTEMPLATE now supports fallback paths (Closed)">#63117</a><br />Releases: master, 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/34344">http://review.typo3.org/34344</a><br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Reviewed-by: ian excedo &lt;<a class="email" href="mailto:ian@webian.it">ian@webian.it</a>&gt;<br />Tested-by: ian excedo &lt;<a class="email" href="mailto:ian@webian.it">ian@webian.it</a>&gt;<br />Reviewed-by: Stefan Neufeind &lt;<a class="email" href="mailto:typo3.neufeind@speedpartner.de">typo3.neufeind@speedpartner.de</a>&gt;<br />Reviewed-by: Oliver Hader &lt;<a class="email" href="mailto:oliver.hader@typo3.org">oliver.hader@typo3.org</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/145c36e20777cae006792025c0aa86ddbe1d430c" title="Revision 145c36e2">Revision 145c36e2</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-24" title="2014-11-24 09:54">8 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Allow fallback paths in FLUIDTEMPLATE</p>
+
+
+	<p>Resolves: <a href="61361.html" class="issue status-7 priority-1 closed" title="Fluid template path fallback doesn't work in TypoScript object FLUIDTEMPLATE (Resolved)">#61361</a><br />Releases: master, 6.2<br />Change-Id: I676722936892f164ae147d7f9abcb602e734ae7d<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/34421">http://review.typo3.org/34421</a><br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Reviewed-by: ian excedo &lt;<a class="email" href="mailto:ian@webian.it">ian@webian.it</a>&gt;<br />Tested-by: ian excedo &lt;<a class="email" href="mailto:ian@webian.it">ian@webian.it</a>&gt;<br />Reviewed-by: Robert Wildling &lt;<a class="email" href="mailto:robertwildling@gmail.com">robertwildling@gmail.com</a>&gt;<br />Tested-by: Robert Wildling &lt;<a class="email" href="mailto:robertwildling@gmail.com">robertwildling@gmail.com</a>&gt;</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-228783" class="journal has-details">
+    <h4><a href="61361.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4192">Anja Leichsenring</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-05" title="2014-09-05 14:30">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>Fluid</i> to <i>Core</i></li>
+      
+       <li><strong>Category</strong> set to <i>Fluid</i></li>
+      
+       <li><strong>TYPO3 Version</strong> set to <i>6.2</i></li>
+      
+       <li><strong>Is Regression</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-228849" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-06" title="2014-09-06 22:50">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228849-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-228856" class="journal has-notes">
+    <h4><a href="61361.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-07" title="2014-09-07 14:38">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228856-notes"><p>Thank you for the patch.<br />I tested it but it seems that it doesn't work.</p>
+
+
+	<p>I used the same Typoscript of the bug report and now this error is produced in the FE:<br />Could not load partial file. Tried following paths: "typo3conf/ext/bootstrap_package/Resources/Private/Templates/Page/Partials/Navigation/Main.html", "typo3conf/ext/bootstrap_package/Resources/Private/Templates/Page/Partials/Navigation/Main".</p></div>
+  </div>
+  
+
+  <div id="change-231790" class="journal has-notes">
+    <h4><a href="61361.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-02" title="2014-10-02 20:54">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231790-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231793" class="journal has-notes">
+    <h4><a href="61361.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-02" title="2014-10-02 21:28">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231793-notes"><p>Patch set 3 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231794" class="journal has-notes">
+    <h4><a href="61361.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-02" title="2014-10-02 21:29">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231794-notes"><p>Patch set 4 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231804" class="journal has-notes">
+    <h4><a href="61361.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-02" title="2014-10-02 22:26">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231804-notes"><p>Patch set 5 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231806" class="journal has-notes">
+    <h4><a href="61361.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-02" title="2014-10-02 22:42">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231806-notes"><p>Patch set 6 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231815" class="journal has-notes">
+    <h4><a href="61361.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-03" title="2014-10-03 00:29">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231815-notes"><p>Patch set 7 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231825" class="journal has-notes">
+    <h4><a href="61361.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-03" title="2014-10-03 10:04">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231825-notes"><p>Patch set 8 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231829" class="journal has-notes">
+    <h4><a href="61361.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-03" title="2014-10-03 11:00">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231829-notes"><p>Patch set 9 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231830" class="journal has-notes">
+    <h4><a href="61361.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-03" title="2014-10-03 11:06">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231830-notes"><p>Patch set 10 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231833" class="journal has-notes">
+    <h4><a href="61361.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-03" title="2014-10-03 11:21">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231833-notes"><p>Patch set 11 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231834" class="journal has-notes">
+    <h4><a href="61361.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-03" title="2014-10-03 11:25">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231834-notes"><p>Patch set 12 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231856" class="journal has-notes">
+    <h4><a href="61361.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-03" title="2014-10-03 14:43">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231856-notes"><p>Patch set 13 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-231865" class="journal has-notes">
+    <h4><a href="61361.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-03" title="2014-10-03 17:30">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231865-notes"><p>Patch set 14 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-232198" class="journal has-notes">
+    <h4><a href="61361.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 21:41">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232198-notes"><p>Patch set 15 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-232210" class="journal has-notes">
+    <h4><a href="61361.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 23:46">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232210-notes"><p>Patch set 16 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32613">http://review.typo3.org/32613</a></p></div>
+  </div>
+  
+
+  <div id="change-232214" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4192">Anja Leichsenring</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-08" title="2014-10-08 00:00">10 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-232214-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/3b6de8a3aef7d015261bed85b2ca0b5376caa70a" class="changeset" title="[FEATURE] Template Path fallback for Fluid Standalone View TemplateView received the feature of ...">3b6de8a3aef7d015261bed85b2ca0b5376caa70a</a>.</p></div>
+  </div>
+  
+
+  <div id="change-235746" class="journal has-notes">
+    <h4><a href="61361.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-10" title="2014-11-10 13:05">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235746-notes"><p>Hello,<br />this bug has been marked Resolved one month ago but I don't see these changes in TYPO3_6-2-7-dev.</p>
+
+
+	<p>Btw, I manually updated the code of StandaloneView.php and it doesn't seems to work or I didn't get how to make it work.</p>
+
+
+	<p>My Typoscript related to this is:<br /><pre>...
+partialRootPath &gt;
+partialRootPaths {
+  10 = EXT:bootstrap_package/Resources/Private/Partials/Page/
+  20 = EXT:iandefault/Resources/Private/Partials/Page/
+}
+...</pre>I get this exception:<br /><pre>#1288092556: Could not load partial file. Tried following paths: "typo3conf/ext/bootstrap_package/Resources/Private/Templates/Page/Partials/Navigation/Main.html", "typo3conf/ext/bootstrap_package/Resources/Private/Templates/Page/Partials/Navigation/Main".</pre></p>
+
+
+	<p>Am I missing something?</p>
+
+
+	<p>Thanks in advance for your help.</p></div>
+  </div>
+  
+
+  <div id="change-235870" class="journal has-notes">
+    <h4><a href="61361.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2691">Robert Wildling</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-11" title="2014-11-11 15:23">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235870-notes"><p>Hi,</p>
+
+
+	<p>it seems that <br />dirname($this->templatePathAndFilename)</p>
+
+
+	<p>in<br />public function getLayoutRootPaths() {...} [line 208ff]</p>
+
+
+	<p>returns a path that always adds "[...]Page/" to the path.</p></div>
+  </div>
+  
+
+  <div id="change-235890" class="journal has-notes">
+    <h4><a href="61361.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-11" title="2014-11-11 17:46">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235890-notes"><p>Hi Robert,<br />thanks for the hint.<br />I'm not a core developer or and expert but as far as I know that is correct cause "$this->templatePathAndFilename" is the full path of the template.<br />Instead I think that the problem reside on how this var is used in class StandaloneView to get paths for Layouts or Partials cause this logic suppose that those paths are in subfolders of the Template folder and this never happens.</p>
+
+
+	<p>@Anja please, re-open this bug cause it's not resolved.<br />Thanks.</p></div>
+  </div>
+  
+
+  <div id="change-235893" class="journal has-notes">
+    <h4><a href="61361.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-11" title="2014-11-11 21:07">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235893-notes"><p>Guys, the code has not been merged into 6.2!<br />There is NO fallback for paths in 6.2.<br />It should work on current master though.</p></div>
+  </div>
+  
+
+  <div id="change-235953" class="journal has-notes">
+    <h4><a href="61361.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 14:17">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235953-notes"><blockquote>
+
+	<p>Guys, the code has not been merged into 6.2!</p>
+
+
+</blockquote>
+
+	<p>The target TYPO3 Version of this bug has been set to 6.2 by a core developer, so I expect this to work in 6.2.</p>
+
+
+<blockquote>
+
+	<p>There is NO fallback for paths in 6.2.</p>
+
+
+</blockquote>
+
+	<p>It's clear that there is no fallback for paths in 6.2, that's why I opened this bug report.</p>
+
+
+<blockquote>
+
+	<p>It should work on current master though.</p>
+
+
+</blockquote>
+
+	<p>I tested on current master 7.0-dev and it doesn't seem to work.</p>
+
+
+	<p>I used this simple Typoscript:<pre>page = PAGE
+page {
+  10 = FLUIDTEMPLATE
+  10 {
+    file = fileadmin/Resources/Templates/Default.html
+    layoutRootPaths {
+      10 = fileadmin/Resources/Layouts/
+    }
+  }
+}</pre></p>
+
+
+	<p>Result:<pre>Uncaught TYPO3 Exception
+#1288092555: Could not load layout file. Tried following paths: "fileadmin/Resources/Templates/Layouts/Default.html", "fileadmin/Resources/Templates/Layouts/Default"</pre></p>
+
+
+	<p>As you can see "Templates/" has been added to the path and it shouldn't be.</p>
+
+
+	<p>Again, please, reopen this bug cause it's not resolved.<br />Thanks</p></div>
+  </div>
+  
+
+  <div id="change-235967" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 14:52">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>On Hold</i></li>
+      
+       <li><strong>Target version</strong> set to <i>7.0</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-235967-notes"><p>Hi Ian,</p>
+
+
+	<p>the "Target version" has never been set for this issue as far as I can see. It was reported for 6.2.<br />Features may only be added to the master branch.</p>
+
+
+	<p>I'll ask Ernesto as Release Manager, if he would accept a backport to 6.2, but before we can do that we have to ensure it works on master. Hope that I can give this a test run soon.</p></div>
+  </div>
+  
+
+  <div id="change-236045" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 21:03">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>On Hold</i> to <i>Accepted</i></li>
+      
+       <li><strong>Priority</strong> changed from <i>Should have</i> to <i>Must have</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-236045-notes"><p>I had a deeper look now again:</p>
+
+
+	<ul>
+	<li>Using multiple paths does not work with the TypoScript ContentObject FLUIDTEMPLATE. The feature is simply not implemented.</li>
+		<li>Only the StandaloneView itself is capable of fallback paths. So extensions may use it.</li>
+		<li>The patch merged for StandaloneView is actually not ok, as it deprecates methods that are still used in Core.</li>
+	</ul>
+
+
+	<p>This indeed needs several followups.</p></div>
+  </div>
+  
+
+  <div id="change-236901" class="journal has-notes">
+    <h4><a href="61361.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-19" title="2014-11-19 12:35">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236901-notes"><p>Markus Klein wrote:</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>The patch merged for StandaloneView is actually not ok, as it deprecates methods that are still used in Core.</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>This is fixed with <a href="63066.html" class="issue status-7 priority-1 closed" title="FluidTemplateContentObject uses deprecated methods (Resolved)">#63066</a>.</p></div>
+  </div>
+  
+
+  <div id="change-236908" class="journal has-notes">
+    <h4><a href="61361.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-19" title="2014-11-19 13:38">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236908-notes"><p>Hi Markus,<br />I tested <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/34340/">https://review.typo3.org/#/c/34340/</a> and is not working with TS mentioned above:<br /><pre>page = PAGE
+page {
+  10 = FLUIDTEMPLATE
+  10 {
+    file = fileadmin/Resources/Templates/Default.html
+    layoutRootPaths {
+      10 = fileadmin/Resources/Layouts/
+    }
+  }
+}</pre><br />Same result:<br /><pre>Uncaught TYPO3 Exception
+#1288092555: Could not load layout file. Tried following paths: "fileadmin/Resources/Templates/Layouts/Default.html", "fileadmin/Resources/Templates/Layouts/Default".</pre><br />Is that TS working for you?</p></div>
+  </div>
+  
+
+  <div id="change-236909" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-19" title="2014-11-19 13:40">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-236909-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34343">http://review.typo3.org/34343</a></p></div>
+  </div>
+  
+
+  <div id="change-236910" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-19" title="2014-11-19 13:47">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-236910-notes"><p>@Ian: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/34340/">https://review.typo3.org/#/c/34340/</a> was just about cleaning up some stuff. It does not fix this issue here. (that's why it references a different ticket)</p></div>
+  </div>
+  
+
+  <div id="change-236913" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-19" title="2014-11-19 14:01">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-236913-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34343">http://review.typo3.org/34343</a></p></div>
+  </div>
+  
+
+  <div id="change-236914" class="journal has-notes">
+    <h4><a href="61361.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-19" title="2014-11-19 14:10">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236914-notes"><p>Patch set 1 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34344">http://review.typo3.org/34344</a></p></div>
+  </div>
+  
+
+  <div id="change-237089" class="journal has-notes">
+    <h4><a href="61361.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-20" title="2014-11-20 16:35">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237089-notes"><p><a class="external" href="../../external.html?link=http://review.typo3.org/34343">http://review.typo3.org/34343</a> works in 7.0dev</p>
+
+
+	<p>But unluckily <a class="external" href="../../external.html?link=http://review.typo3.org/34344">http://review.typo3.org/34344</a> doesn't work in 6.2 tested with same TS setup in comment 28 it gives the same error.</p></div>
+  </div>
+  
+
+  <div id="change-237112" class="journal has-notes">
+    <h4><a href="61361.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-20" title="2014-11-20 21:30">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237112-notes"><p>Patch set 2 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34344">http://review.typo3.org/34344</a></p></div>
+  </div>
+  
+
+  <div id="change-237115" class="journal has-notes">
+    <h4><a href="61361.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-20" title="2014-11-20 21:48">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237115-notes"><p>Patch set 3 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34344">http://review.typo3.org/34344</a></p></div>
+  </div>
+  
+
+  <div id="change-237150" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-21" title="2014-11-21 00:00">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-237150-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/1747ec195386a95793080810008c0671338ec0e2" class="changeset" title="[FEATURE] Allow fallback paths in FLUIDTEMPLATE Resolves: #61361 Releases: master, 6.2 Change-Id...">1747ec195386a95793080810008c0671338ec0e2</a>.</p></div>
+  </div>
+  
+
+  <div id="change-237152" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-21" title="2014-11-21 00:01">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-237152-notes"><p>Patch set 4 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34344">http://review.typo3.org/34344</a></p></div>
+  </div>
+  
+
+  <div id="change-237153" class="journal has-notes">
+    <h4><a href="61361.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-21" title="2014-11-21 00:01">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237153-notes"><p>Patch set 1 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34421">http://review.typo3.org/34421</a></p></div>
+  </div>
+  
+
+  <div id="change-237171" class="journal has-notes">
+    <h4><a href="61361.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-21" title="2014-11-21 10:11">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237171-notes"><p>@all</p>
+
+
+	<p>We have patches ready now for 6.2, please test these.</p>
+
+
+	<p>You have to apply<br /><a class="external" href="../../external.html?link=https://review.typo3.org/#/c/34344/4">https://review.typo3.org/#/c/34344/4</a><br />and<br /><a class="external" href="../../external.html?link=https://review.typo3.org/#/c/34421/1">https://review.typo3.org/#/c/34421/1</a></p>
+
+
+	<p>Please report feedback right in Gerrit and please don't forget to vote there as well, you'll earn points!<br />Thanks</p></div>
+  </div>
+  
+
+  <div id="change-237179" class="journal has-notes">
+    <h4><a href="61361.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-21" title="2014-11-21 10:56">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237179-notes"><p>Tested and voted +1. Thank you very much Markus!</p></div>
+  </div>
+  
+
+  <div id="change-237445" class="journal has-notes has-details">
+    <h4><a href="61361.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4192">Anja Leichsenring</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-24" title="2014-11-24 10:00">8 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-237445-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/f582179a089a2306271fbb4d3b97d954e010fab9" class="changeset" title="[FEATURE] Template Path fallback for Fluid Standalone View TemplateView received the feature of ...">f582179a089a2306271fbb4d3b97d954e010fab9</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-61361-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/61361.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="61361.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/61361 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:58:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,908 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/62074 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:59:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #62074: Calculated absolute path to tslib directory does not exist. - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/62074.atom" rel="alternate" title="Core - Bug #62074: Calculated absolute path to tslib directory does not exist." type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (3)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-62074-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #62074</h2>
+
+<div class="issue status-9 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Calculated absolute path to tslib directory does not exist.</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 11:55">10 months</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-05" title="2015-02-05 14:25">6 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-10-07</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.5</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I started a fresh empty installation with TYPO3 6.2.5. The installation has been done automatically based on the file FIRST_INSTALL.</p>
+
+
+	<p>The Frontend only shows:</p>
+
+
+	<p>*Calculated absolute path to tslib directory does not exist.
+*</p>
+
+
+<pre>
+drwxrwsrwx  4 www-data www-data 4096 Okt  7 11:37 fileadmin
+lrwxrwxrwx  1 user  user    15 Okt  7 10:33 index.php -&gt; typo3/index.php
+lrwxrwxrwx  1 user  user    15 Okt  6 22:05 typo3 -&gt; typo3_src/typo3
+drwxrwsr-x  4 www-data www-data 4096 Okt  7 11:10 typo3conf
+lrwxrwxrwx  1 user  user    15 Okt  6 22:04 typo3_src -&gt; typo3_src-6.2.5
+drwxrwxrwx  3 user  user  4096 Sep 23 15:33 typo3_src-6.2.5
+drwxrwsr-x 13 www-data www-data 4096 Okt  7 11:37 typo3temp
+drwxrwsr-x  5 www-data www-data 4096 Okt  7 11:07 uploads
+root@Server-Ubuntu-64 /home/user/public_html/typo3 # pwd
+/home/user/public_html/typo3
+</pre>
+
+	<p>The new site has the example setup:</p>
+
+
+<pre>
+
+# Default PAGE object:
+page = PAGE
+page.10 = TEXT
+page.10.value = HELLO WORLD!
+</pre>
+
+	<p>I did not install any extensions by myself. Only the first installation process did install them.</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-11800">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62089" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62089.html" class="issue status-7 priority-3 closed">Feature #62089</a>: error message: Wrong symbolic link to index.php.
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-10-07</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/62074/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/62074/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=62074&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-232133" class="journal has-notes">
+    <h4><a href="62074.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 12:40">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232133-notes"><p>Can you please try to move the "typo3_src-6.2.5" one level up and tell us, if this changes something?</p></div>
+  </div>
+  
+
+  <div id="change-232138" class="journal has-notes">
+    <h4><a href="62074.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 13:29">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232138-notes"><p>I have moved the TYPO3 source a directory level up:</p>
+
+
+<pre>
+
+root@Server-Ubuntu-64 /home/user/public_html/typo3 # mv typo3_src-6.2.5 ..
+root@Server-Ubuntu-64 /home/user/public_html/typo3 # rm typo3_src
+root@Server-Ubuntu-64 /home/user/public_html/typo3 # ln -s ../typo3_src-6.2.5 typo3_src
+
+root@Server-Ubuntu-64 /home/user/public_html/typo3 # ls -l
+total 16
+drwxrwsrwx  4 www-data www-data 4096 Okt  7 11:44 fileadmin
+lrwxrwxrwx  1 user  user    15 Okt  7 10:33 index.php -&gt; typo3/index.php
+lrwxrwxrwx  1 user  user    15 Okt  6 22:05 typo3 -&gt; typo3_src/typo3
+drwxrwsr-x  4 www-data www-data 4096 Okt  7 11:10 typo3conf
+lrwxrwxrwx  1 user  user    18 Okt  7 13:25 typo3_src -&gt; ../typo3_src-6.2.5
+drwxrwsr-x 13 www-data www-data 4096 Okt  7 11:37 typo3temp
+drwxrwsr-x  5 www-data www-data 4096 Okt  7 11:07 uploads
+
+</pre>
+
+	<p>Still the same error.</p></div>
+  </div>
+  
+
+  <div id="change-232147" class="journal has-notes">
+    <h4><a href="62074.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 14:43">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232147-notes"><p>alright, then you need some debugging what is wrong with your environment.</p>
+
+
+	<p>typo3/sysext/core/Classes/Core/SystemEnvironmentBuilder.php<br />method definePaths()</p>
+
+
+	<p>at the end add:<br />die(PATH_site . ';' . TYPO3_mainDir);</p></div>
+  </div>
+  
+
+  <div id="change-232151" class="journal has-notes">
+    <h4><a href="62074.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 14:58">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232151-notes"><p>The result is:</p>
+
+
+<pre>
+/home/user/public_html/;typo3/
+</pre>
+
+<pre>
+ls -l /home/user/public_html/typo3/typo3/sysext/core/Classes/Core/SystemEnvironmentBuilder.php
+-rwxrwxrwx 1 user user 19937 Okt  7 14:56 /home/user/public_html/typo3/typo3/sysext/core/Classes/Core/SystemEnvironmentBuilder.php
+
+</pre>
+
+	<p>The TYPO3 root should be here:<br /><pre>
+/home/user/public_html/typo3/
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-232152" class="journal has-notes">
+    <h4><a href="62074.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 15:28">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232152-notes"><p>So PATH_site is wrong, what do you have for PATH_thisScript?</p></div>
+  </div>
+  
+
+  <div id="change-232161" class="journal has-notes">
+    <h4><a href="62074.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 15:58">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232161-notes"><p>As written in <a href="53037.html" class="issue status-9 priority-1 closed" title="Install Tool: Folder structure is too strict (Closed)">#53037</a> you seam to have a broken linkages.</p>
+
+
+<pre>
+lrwxrwxrwx  1 user  user    15 Okt  7 10:33 index.php -&gt; typo3/index.php
+</pre>
+
+	<p>The index.php should link to typo3_src/index.php</p></div>
+  </div>
+  
+
+  <div id="change-232162" class="journal has-notes">
+    <h4><a href="62074.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 16:00">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232162-notes"><p>ls from my test system:</p>
+
+
+<pre>
+drwxrws--- 10 www-data www-data  4096 Sep 26 09:51 fileadmin
+lrwxrwxrwx  1 opitz    www-data    19 Okt 14  2013 index.php -&gt; typo3_src/index.php
+lrwxrwxrwx  1 opitz    www-data    15 Okt 14  2013 typo3 -&gt; typo3_src/typo3
+drwxrws---  5 opitz    www-data  4096 Sep 26 09:51 typo3conf
+drwxrwxr-x  4 opitz    www-data  4096 Okt  6 17:22 typo3-src
+drwxrws--- 16 opitz    www-data 28672 Sep 26 09:51 typo3temp
+</pre></div>
+  </div>
+  
+
+  <div id="change-232163" class="journal has-notes">
+    <h4><a href="62074.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/824">Franz Holzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 16:00">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232163-notes"><p>I get this:</p>
+
+
+<pre>
+PATH_thisScript: /home/user/public_html/typo3/index.php
+</pre>
+
+	<p>Yes, the link to index.php is wrong.</p>
+
+
+<pre>
+index.php -&gt; typo3/index.php
+</pre>
+
+	<p>instead of</p>
+
+
+<pre>
+index.php -&gt; typo3_src/index.php
+</pre>
+
+	<p>After changing this, I get:</p>
+
+
+<pre>
+ HELLO WORLD! 
+</pre>
+
+	<p>The error message should point out this information:<br /><strong>Wrong symbolic link to index.php.</strong></p></div>
+  </div>
+  
+
+  <div id="change-232175" class="journal has-notes">
+    <h4><a href="62074.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 16:59">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232175-notes"><p>That's not a bug, you just set the symlink wrong. Please close the issue. If you like to throw a warning in such a case, consider it as a new feature.</p></div>
+  </div>
+  
+
+  <div id="change-232176" class="journal has-notes has-details">
+    <h4><a href="62074.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-07" title="2014-10-07 17:09">10 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-232176-notes"><p>We can't know what the issue is behind the scene so no other error message IMHO => closed.</p></div>
+  </div>
+  
+
+  <div id="change-232217" class="journal has-notes">
+    <h4><a href="62074.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-08" title="2014-10-08 00:25">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-232217-notes"><p>See <a href="62089.html" class="issue status-7 priority-3 closed" title="error message: Wrong symbolic link to index.php. (Resolved)">#62089</a> for a possible solution.</p></div>
+  </div>
+  
+
+  <div id="change-248379" class="journal has-notes">
+    <h4><a href="62074.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36621">Alfred Bez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-02" title="2015-02-02 16:34">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248379-notes"><p>I have the same error message, but only when I run <br /><pre>
+php typo3/cli_dispatch.phpsh whatever
+</pre></p>
+
+
+	<p>ls:<br /><pre>
+drwxr-xr-x 10 p123456789 users 4096  2. Feb 15:33 fileadmin
+lrwxrwxrwx  1 p123456789 users   19 24. Nov 13:50 index.php -&gt; typo3_src/index.php
+lrwxrwxrwx  1 p123456789 users   15 24. Nov 13:50 typo3 -&gt; typo3_src/typo3
+drwxr-xr-x  4 p123456789 users 4096  2. Feb 15:33 typo3conf
+lrwxrwxrwx  1 p123456789 users   15 10. Dez 17:21 typo3_src -&gt; typo3_src-6.2.9
+drwxr-xr-x  3 p123456789 users 4096 28. Jan 22:03 typo3_src-6.2.9
+drwxr-xr-x 15 p123456789 users 4096  2. Feb 15:33 typo3temp
+drwxr-xr-x 12 p123456789 users 4096  2. Feb 15:33 uploads
+</pre></p>
+
+
+	<p>Error message:<br /><pre>
+php typo3/cli_dispatch.phpsh crawler
+X-Powered-By: PHP/5.5.18
+Content-type: text/plain
+
+Calculated absolute path to tslib directory does not exist.
+
+Something in the main file, folder and link structure is wrong and must be fixed! A typical document root contains a couple of symbolic links:
+* A symlink "typo3_src" pointing to the TYPO3 CMS core.
+* A symlink "typo3" - the backend entry point - pointing to "typo3_src/typo3" 
+* A symlink "index.php" - the frontend entry point - points to "typo3_src/index.php" 
+</pre></p>
+
+
+	<p>It's a project with one website (3 languages and more than 130 Pages), TYPO3 v6.2.9.</p></div>
+  </div>
+  
+
+  <div id="change-248387" class="journal has-notes">
+    <h4><a href="62074.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-02" title="2015-02-02 17:22">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248387-notes"><p>Hi Alfred,</p>
+
+
+	<p>and the directory typo3_src-6.2.9 is a clean checkout? Or did you symlink something else in it?<br />Can you post the response of ls inside this directory?</p>
+
+
+	<p>Is it a new install or an update and it worked before?</p></div>
+  </div>
+  
+
+  <div id="change-248476" class="journal has-notes">
+    <h4><a href="62074.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36621">Alfred Bez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 08:56">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248476-notes"><p>Hi Alexander,</p>
+
+
+	<p>ls:<br /><pre>
+insgesamt 1568
+drwxr-xr-x 3 p123456789 users    4096 28. Jan 22:03 ./
+drwxr-xr-x 9 p123456789 users    4096  2. Feb 17:00 ../
+-rw-r--r-- 1 p123456789 users 1512722 10. Dez 11:45 ChangeLog
+-rw-r--r-- 1 p123456789 users    3816 10. Dez 11:45 composer.json
+-rw-r--r-- 1 p123456789 users     691 10. Dez 11:45 .editorconfig
+-rw-r--r-- 1 p123456789 users    5472 10. Dez 11:45 _.htaccess
+-rw-r--r-- 1 p123456789 users     921 10. Dez 11:45 index.php
+-rw-r--r-- 1 p123456789 users    9479 10. Dez 11:45 INSTALL.md
+-rw-r--r-- 1 p123456789 users   18425 10. Dez 11:45 LICENSE.txt
+-rw-r--r-- 1 p123456789 users    9420 10. Dez 11:45 NEWS.md
+-rw-r--r-- 1 p123456789 users    5578 10. Dez 11:45 README.md
+drwxr-xr-x 9 p123456789 users    4096  2. Feb 16:14 typo3/
+p123456789:/home/www/p123456789/html/typo3/typo3_src-6.2.9 &gt;
+</pre></p>
+
+
+	<p>It is a new install.</p></div>
+  </div>
+  
+
+  <div id="change-248480" class="journal has-notes">
+    <h4><a href="62074.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 10:02">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248480-notes"><p>@Alfred: Please check if your PHP configuration for CLI differs from the WEB configuration somehow.</p></div>
+  </div>
+  
+
+  <div id="change-248481" class="journal has-notes">
+    <h4><a href="62074.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 10:03">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248481-notes"><p>Hi Alfred,</p>
+
+
+	<p>hmmm looks ok so far. So something else must happen.</p>
+
+
+	<p>Can you please edit a file:</p>
+
+
+	<p>/typo3/sysext/core/Classes/Core/SystemEnvironmentBuilder.php<br />Around line 184 should be something like:</p>
+
+
+<pre>
+if (!is_dir(PATH_tslib)) {
+    static::dieWithMessage('Calculated absolute path to tslib directory does not exist.' . LF . LF
+        . 'Something in the main file, folder and link structure is wrong and must be fixed! A typical document root contains a couple of symbolic links:' . LF
+        . '* A symlink "typo3_src" pointing to the TYPO3 CMS core.' . LF
+        . '* A symlink "typo3" - the backend entry point - pointing to "typo3_src/typo3"' . LF
+        . '* A symlink "index.php" - the frontend entry point - points to "typo3_src/index.php"');
+}
+</pre>
+
+	<p>can you please add before <em>static::dieWithMessage</em> following:</p>
+
+
+<pre>
+var_dump(PATH_thisScript, PATH_site);
+</pre>
+
+	<p>Then you will see, witch path TYPO3 thinks he is in?</p></div>
+  </div>
+  
+
+  <div id="change-248482" class="journal has-notes">
+    <h4><a href="62074.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36621">Alfred Bez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 10:07">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248482-notes"><p>@Alexander<br /><pre>
+string(18) "/usr/local/bin/php" 
+string(9) "/usr/loca" 
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-248592" class="journal has-notes">
+    <h4><a href="62074.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 12:20">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248592-notes"><p>Oh, that's very false.<br />What does<br /><pre>
+php -v
+</pre><br />outputs?</p>
+
+
+	<p>And does it work by running the command like<br /><pre>
+./typo3/cli_dispatch.phpsh bla
+</pre><br />(Without the "php" on command line.)</p></div>
+  </div>
+  
+
+  <div id="change-248598" class="journal has-notes">
+    <h4><a href="62074.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36621">Alfred Bez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 12:57">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248598-notes"><pre>
+~ &gt; php -v
+PHP 5.5.18 (cgi-fcgi) (built: Oct 24 2014 11:13:40)
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.5.0, Copyright (c) 1998-2014 Zend Technologies
+</pre>
+
+<pre>
+p123456789:/home/www/p123456789/html/typo3 &gt; ./typo3/cli_dispatch.phpsh bla
+This script must have a 'cliKey' as first argument. Valid keys are:
+
+  extbase
+  lowlevel_admin
+  lowlevel_cleaner
+  lowlevel_refindex
+  scheduler
+
+X-Powered-By: PHP/5.5.18
+Content-type: text/html
+</pre>
+
+	<p>There is no difference when I change <strong>bla</strong> to <strong>scheduler</strong>...</p></div>
+  </div>
+  
+
+  <div id="change-248603" class="journal has-notes">
+    <h4><a href="62074.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-03" title="2015-02-03 13:20">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248603-notes"><p>So you are using the php for cgi and not cli. Du you have an executable called php5-cli?</p>
+
+
+	<p>If not, what system are you running? Is the PHP self compiled or installed from a package?</p></div>
+  </div>
+  
+
+  <div id="change-248881" class="journal has-notes">
+    <h4><a href="62074.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36621">Alfred Bez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-05" title="2015-02-05 11:05">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248881-notes"><p>I have an executable called <strong>php_cli</strong><br /><pre>
+p123456789:/usr/local/bin &gt; l php*
+lrwxrwxrwx 1 mw mw 14 24. Nov 13:46 php -&gt; ../php/bin/php*
+lrwxrwxrwx 1 mw mw 18 24. Nov 13:46 php_cli -&gt; ../php/bin/php_cli*
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-248882" class="journal has-notes">
+    <h4><a href="62074.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-05" title="2015-02-05 11:09">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248882-notes"><p>And what does <em>php_cli -v</em> response? Does <em>php_cli ./typo3/cli_dispatch.phpsh scheduler</em> works?</p></div>
+  </div>
+  
+
+  <div id="change-248888" class="journal has-notes">
+    <h4><a href="62074.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36621">Alfred Bez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-05" title="2015-02-05 11:23">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248888-notes"><pre>
+p123456789:~ &gt; php_cli -v
+PHP 5.5.18 (cli) (built: Oct 24 2014 11:13:29)
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.5.0, Copyright (c) 1998-2014 Zend Technologies
+p123456789:~ &gt; php -v
+PHP 5.5.18 (cgi-fcgi) (built: Oct 24 2014 11:13:40)
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.5.0, Copyright (c) 1998-2014 Zend Technologies
+</pre>
+
+	<p>Looks like <em>php_cli ./typo3/cli_dispatch.phpsh scheduler</em> works:<br /><pre>
+p123456789:/home/www/p123456789/html/typo3 &gt; php_cli ./typo3/cli_dispatch.phpsh scheduler
+p123456789:/home/www/p123456789/html/typo3 &gt;
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-248905" class="journal has-notes">
+    <h4><a href="62074.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-05" title="2015-02-05 13:57">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248905-notes"><p>Fine if this works. :-)</p></div>
+  </div>
+  
+
+  <div id="change-248908" class="journal has-notes">
+    <h4><a href="62074.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36621">Alfred Bez</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-05" title="2015-02-05 14:25">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248908-notes"><p>thanks for your help</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-62074-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/62074.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="62074.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/62074 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:59:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,727 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/61287 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:37:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #61287: Immediately logged out from FE after felogin - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/61287.atom" rel="alternate" title="Core - Bug #61287: Immediately logged out from FE after felogin" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-61287-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #61287</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Immediately logged out from FE after felogin</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/1796">Claudio Strizzolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-01" title="2014-09-01 09:54">11 months</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-05" title="2014-09-05 10:11">11 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-09-01</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I am upgrading a working site from Typo3 4.5 to 6.2.4. Almost everything seems to work fine except for some pages that should be accessible only by FE users through a felogin form, which worked correctly with 4.5.</p>
+
+
+	<p>The felogin form itself seems to work correctly: if the user supplies the right password, he logs in and can see the protected contents on that page. But if he changes to a different page he loses his "logged-in" status. So if he tries to view another page reserved to FE users he cannot do it, as if he never logged in. Even if he tries to load again the first page (that one that was shown after the initial login), he is not able to do it: the user is reported as if I never logged in and the login form is shown again.</p>
+
+
+	<p>It looks like the user gets logged out immediately.</p>
+
+
+	<p>I tried by playing with the permalogin switch without success.</p>
+
+
+	<p>I am using the ig_ldap_sso_auth extension to authenticate users against a LDAP database. On Typo3 4.5 I used the extension eu_ldap. However, I do not think that the autentication step is reponsible because the user can actually log in through the FE form (BTW, BE users can log in too using the same LDAP database).<br />No problems at all with the BE, instead.</p>
+
+
+	<p>I looked at the cookies at different steps:</p>
+
+
+	<p>Before login: no cookies</p>
+
+
+	<p>After login and viewing the first protected page, which is the same page as the login page, no redirect to a different page:<br />    cookie: fe_typo_user<br />    value: e52b5...</p>
+
+
+	<p>Jump to another page (not protected):<br />    same cookie</p>
+
+
+	<p>Jump back to the first protected page:<br />    same cookie</p>
+
+
+	<p>Although the cookie is still set, the login form is displayed again. The login form should be displayed only for not logged FE users, instead, so it looks like I am not logged on any more.</p>
+
+
+	<p>Some settings that might be involved follow:</p>
+
+
+<blockquote>
+
+	<p>$GLOBALS['TYPO3_CONF_VARS']['SYS']['cookieDomain']</p>
+
+
+</blockquote>
+
+	<p>I tried with either an empty string and the address of my site. In both cases I can login to the BE but in the FE I get the wrong behaviour I described.</p>
+
+
+<blockquote>
+
+	<p>$GLOBALS['TYPO3_CONF_VARS']['SYS']['cookieSecure']</p>
+
+
+</blockquote>
+
+	<p>0</p>
+
+
+<blockquote>
+
+	<p>$GLOBALS['TYPO3_CONF_VARS']['FE']['cookieDomain']</p>
+
+
+</blockquote>
+
+	<p>Empty string, then the value of $GLOBALS['TYPO3_CONF_VARS']['SYS']['cookieDomain'] should be used.</p>
+
+
+<blockquote>
+
+	<p>$GLOBALS['TYPO3_CONF_VARS']['FE']['lifetime']</p>
+
+
+</blockquote>
+
+	<p>3600</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/27445/snap1.png" class="icon icon-attachment">snap1.png</a>  
+  
+  <span class="size">(51.6 kB)</span>
+  
+  
+    <span class="author">Claudio Strizzolo, 2014-09-01 15:32</span>
+  
+  </p>
+
+<p><a href="../attachments/download/27446/snap2.png" class="icon icon-attachment">snap2.png</a>  
+  
+  <span class="size">(30.2 kB)</span>
+  
+  
+    <span class="author">Claudio Strizzolo, 2014-09-01 15:32</span>
+  
+  </p>
+
+<p><a href="../attachments/download/27451/snap3.png" class="icon icon-attachment">snap3.png</a>  
+  
+  <span class="size">(62.5 kB)</span>
+  
+  
+    <span class="author">Claudio Strizzolo, 2014-09-02 08:27</span>
+  
+  </p>
+
+<p><a href="../attachments/download/27452/snap4.png" class="icon icon-attachment">snap4.png</a>  
+  
+  <span class="size">(15.4 kB)</span>
+  
+  
+    <span class="author">Claudio Strizzolo, 2014-09-02 08:50</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-11650">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="60264" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="60264.html" class="issue status-7 priority-1 closed">Bug #60264</a>: felogin permalogin not working with typo3 6.2.x -&gt; cookie...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-07-11</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/61287/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/61287/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=61287&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-228491" class="journal has-notes">
+    <h4><a href="61287.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-01" title="2014-09-01 14:20">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228491-notes"><p>There has been a bug with permalogin that will be fixed with 6.2.5. (<a href="60264.html" class="issue status-7 priority-1 closed" title="felogin permalogin not working with typo3 6.2.x -&gt; cookie expires with session (Resolved)">#60264</a>)<br />Maybe you can test, if this also resolves your problem?<br /><a class="external" href="../../external.html?link=http://review.typo3.org/31754">http://review.typo3.org/31754</a></p></div>
+  </div>
+  
+
+  <div id="change-228492" class="journal has-notes">
+    <h4><a href="61287.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1796">Claudio Strizzolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-01" title="2014-09-01 14:25">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228492-notes"><p>Hi Markus,<br />unfortunately that patch does not resolve my problem.</p></div>
+  </div>
+  
+
+  <div id="change-228496" class="journal has-notes">
+    <h4><a href="61287.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-01" title="2014-09-01 14:59">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228496-notes"><p>Hi Claudio,</p>
+
+
+	<p>can you please post a complete description of your setup?</p>
+
+
+	<ul>
+	<li>Page structure incl. which page is accessible with which condition</li>
+		<li>Login form settings</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-228498" class="journal has-notes has-details">
+    <h4><a href="61287.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1796">Claudio Strizzolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-01" title="2014-09-01 15:32">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/27445/snap1.png">snap1.png</a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/27446/snap2.png">snap2.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228498-notes"><p>See snap1.png.<br />Basically the page "Gestione archivi" and the pages under it should be readable only by logged in users. A reminder should be displayed to any users (either logged in or not), if they try to view any of those pages, saying that the content is readable only if they log in plus some more information, therefore the protection is not at the page level, but at the page content elements level.<br />In the snapshot you can see the content elements of "Gestione archivi", the other pages are similar:</p>
+
+
+	<ul>
+	<li>a block that must be always displayed ("Questa pagina consente..."): no filter on it.</li>
+		<li>the Login form, with protection "Hide at login".</li>
+		<li>"Sito per il pubblico" and "Sito per gli utenti INFN" with protection "Show at any login".</li>
+	</ul>
+
+
+	<p>Now, when I load the page "Gestione archivi" the first time, I get the Login form. I fill the form and log in correctly. Some TS code makes me able to see if I am logged in when staying on a page or not. The page is reloaded, the TS code says I am logged in, the login form disappears ad the two blocks "Sito per il pubblico" and "Sito per gli utenti INFN" get displayed correctly. Correct up to now.<br />After that, if I try to access either one of the protected subpages of "Gestione archivi", or an unprotected page (like "Wireless"), the TS code says I am not logged in: accordingly, I cannot see the protected contents. If I return back to "Gestione archivi", the Login form is displayed again, as if I never succeeded in logging in.</p>
+
+
+	<p>The login plugin settings are in snapshot snap2.png.</p>
+
+
+	<p>TS felogin settings:</p>
+
+
+	<p>plugin.tx_felogin_pi1 {
+  # General Record Storage Page ID here<br />  storagePid = 294</p>
+
+
+	<pre><code>showPermaLogin = 1</code></pre>
+
+
+	<pre><code>templateFile=fileadmin/template/layout09/felogin/felogin_interno.html<br />}</code></pre></div>
+  </div>
+  
+
+  <div id="change-228510" class="journal has-notes has-details">
+    <h4><a href="61287.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-01" title="2014-09-01 17:05">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> deleted (<strike><i>felogin</i></strike>)</li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228510-notes"><p>I setup a test site with your setup and couldn't find any problems.</p>
+
+
+	<p>Maybe some extension is making troubles? Which are installed?</p></div>
+  </div>
+  
+
+  <div id="change-228536" class="journal has-notes has-details">
+    <h4><a href="61287.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1796">Claudio Strizzolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-02" title="2014-09-02 08:27">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/27451/snap3.png">snap3.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228536-notes"><p>A lot of extensions are installed: the site is rather complex and offers a lot of services.<br />You may see the list of extensions in the attached image.<br />LDAP / SSO Authentication (ig_ldap_sso_auth) is not in the image but is installed too.</p></div>
+  </div>
+  
+
+  <div id="change-228537" class="journal has-notes has-details">
+    <h4><a href="61287.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1796">Claudio Strizzolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-02" title="2014-09-02 08:50">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/27452/snap4.png">snap4.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228537-notes"><p>I tried to remove most of the extensions. I let only the ones that should be strictly needed to make the basic site work (see attached image).<br />Unfortunately the problem is still there.</p></div>
+  </div>
+  
+
+  <div id="change-228599" class="journal has-notes">
+    <h4><a href="61287.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-02" title="2014-09-02 23:51">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228599-notes"><p>I'm almost sure that realurl is not the culprit. I don't know the other extensions though.<br />You mentioned ig_ldap_sso_auth, which should not be responsible, but maybe it still does something strange.</p>
+
+
+	<p>I'm at a point, where I can only recommend you to debug this instance. Start with typo3/sysext/core/Classes/Authentication/AbstractUserAuthentication.php</p></div>
+  </div>
+  
+
+  <div id="change-228666" class="journal has-notes">
+    <h4><a href="61287.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1796">Claudio Strizzolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-04" title="2014-09-04 10:57">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228666-notes"><p>Hi Markus,<br />I'm still working on the problem.<br />I tried also by changing the PHP version on the server (5.4 vs. 5.5) but the problem is still there.<br />Would you be so kind to post the Install Tool settings for both the FE and SYS you used in your working testbed? Maybe I have a wrong setting somewhere. I guess the FE and SYS sections of typo3conf/LocalConfiguration.php should be enough.<br />Thanks in advance.</p></div>
+  </div>
+  
+
+  <div id="change-228674" class="journal has-notes">
+    <h4><a href="61287.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-04" title="2014-09-04 12:12">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228674-notes"><p>Sure, here we go:</p>
+
+
+<pre>
+'FE' =&gt; array(
+    'debug' =&gt; '0',
+    'lifetime' =&gt; '',
+    'loginSecurityLevel' =&gt; 'rsa',
+),
+'SYS' =&gt; array(
+    'UTF8filesystem' =&gt; '1',
+    'caching' =&gt; array(
+        'cacheConfigurations' =&gt; array(
+            'extbase_object' =&gt; array(
+                'backend' =&gt; 'TYPO3\\CMS\\Core\\Cache\\Backend\\ApcBackend',
+                'frontend' =&gt; 'TYPO3\\CMS\\Core\\Cache\\Frontend\\VariableFrontend',
+                'groups' =&gt; array(
+                    'system',
+                ),
+                'options' =&gt; array(
+                    'defaultLifetime' =&gt; 0,
+                ),
+            ),
+        ),
+    ),
+    'clearCacheSystem' =&gt; '0',
+    'compat_version' =&gt; '6.2',
+    'devIPmask' =&gt; '*',
+    'displayErrors' =&gt; '1',
+    'enableDeprecationLog' =&gt; 'file',
+    'encryptionKey' =&gt; '....',
+    'exceptionalErrors' =&gt; '28674',
+    'isInitialInstallationInProgress' =&gt; FALSE,
+    'lockingMode' =&gt; 'semaphore',
+    'sitename' =&gt; 'T3 Master',
+    'sqlDebug' =&gt; '1',
+    'systemLocale' =&gt; 'en_GB.utf8',
+    'systemLog' =&gt; 'error_log',
+    'systemLogLevel' =&gt; '0',
+    't3lib_cs_convMethod' =&gt; 'mbstring',
+    't3lib_cs_utils' =&gt; 'mbstring',
+    'trustedHostsPattern' =&gt; 'kleindev',
+),
+</pre></div>
+  </div>
+  
+
+  <div id="change-228750" class="journal has-notes">
+    <h4><a href="61287.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1796">Claudio Strizzolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-05" title="2014-09-05 10:02">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228750-notes"><p>I have discovered that the problem is somehow related to the ig_ldap_sso_auth extension, although it pops up only after the login step. If I disable that extension and authenticate locally, the problem disappears.<br />I do not know yet if it is just a misconfiguration or a bug in that extension, in any case this bug report related to felogin can be closed.<br />Thanks for your help.</p></div>
+  </div>
+  
+
+  <div id="change-228753" class="journal has-details">
+    <h4><a href="61287.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-05" title="2014-09-05 10:11">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-61287-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/61287.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="61287.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/61287 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:37:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

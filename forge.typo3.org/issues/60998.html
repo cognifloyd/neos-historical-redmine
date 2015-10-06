@@ -1,0 +1,1487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/60998 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:03:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #60998: PageRepository::shouldFieldBeOverlaid raises PHP warning - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/60998.atom" rel="alternate" title="Core - Bug #60998: PageRepository::shouldFieldBeOverlaid raises PHP warning" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (4)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/23379">Michael Sollmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39230">Florian Engelke</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-60998-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #60998</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>PageRepository::shouldFieldBeOverlaid raises PHP warning</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/36255">Stefan Rotsch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-15" title="2014-08-15 16:10">12 months</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-19" title="2015-03-19 09:30">5 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-08-15</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Frontend</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2354">next-patchlevel</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>Yes</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>With TYPO3 6.2.4, the sys_log shows a lot of PHP warnings:<br /><pre>
+Core: Error handler (FE): PHP Warning: trim() expects parameter 1 to be string, array given in [...]/typo3/sysext/frontend/Classes/Page/PageRepository.php line 1416
+</pre></p>
+
+
+	<p>When looking at the shouldFieldBeOverlaid method, the PHPDoc comment states the type of $value being "mixed":<br /><pre>
+1396:      * @param mixed $value Current value of the field
+</pre></p>
+
+
+	<p>$value is assigned to $checkValue later:<br /><pre>
+1409:    $checkValue = $value;
+</pre></p>
+
+
+	<p>Then the critical trim() is executed without verifying the type of $checkValue:<br /><pre>
+1416:    if (trim($checkValue) === '') {
+1417:        $shouldFieldBeOverlaid = FALSE;
+1418:    }
+</pre></p>
+
+
+	<p>At some point there should be a type check against $checkValue instead of assuming it to be a string.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/27773/Screen%20Shot%202014-10-24%20at%2009.08.10.png" class="icon icon-attachment">Screen Shot 2014-10-24 at 09.08.10.png</a>  
+  
+  <span class="size">(161.4 kB)</span>
+  
+  
+    <span class="author">Lars Malach, 2014-10-24 09:28</span>
+  
+  </p>
+
+<p><a href="../attachments/download/28614/pages_language_overlay_meida.png" class="icon icon-attachment">pages_language_overlay_meida.png</a>  
+  
+  <span class="size">(129.4 kB)</span>
+  
+  
+    <span class="author">Florian Engelke, 2015-03-18 10:19</span>
+  
+  </p>
+
+<p><a href="../attachments/download/28621/Uncaught%20TYPO3%20Exception.txt" class="icon icon-attachment">Uncaught TYPO3 Exception.txt</a>  
+    <a href="../attachments/28621/Uncaught%20TYPO3%20Exception.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(11.9 kB)</span>
+  
+  
+    <span class="author">Florian Engelke, 2015-03-18 16:50</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-11759">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="47869" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="47869.html" class="issue status-7 priority-2 closed">Bug #47869</a>: Failed localization of FILES content object related to pages
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-05-03</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11758">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="58352" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="58352.html" class="issue status-7 priority-2 closed">Bug #58352</a>: Invalid localization overlay of cObject FILES
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-04-30</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12565">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="65800" /></td>
+<td class="subject">precedes 
+    Core - 
+    <a href="65800.html" class="issue status-9 priority-1 closed">Bug #65800</a>: PageRepository::shouldFieldBeOverlaid raises PHP warning ...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2015-03-18</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/60998/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/60998/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=60998&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/c56c5c6dc396b9cebbe480dde9e7130a81167b1a" title="Revision c56c5c6d">Revision c56c5c6d</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-24" title="2014-11-24 08:07">8 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Fix PHP warning in shouldFieldBeOverlaid()</p>
+
+
+	<p>PageRepository::shouldFieldBeOverlaid now properly checks for array-typed<br />values when mergeIfNotBlank behaviour is requested.</p>
+
+
+	<p>Resolves: <a href="60998.html" class="issue status-7 priority-1 closed" title="PageRepository::shouldFieldBeOverlaid raises PHP warning (Resolved)">#60998</a><br />Releases: master, 6.2<br />Change-Id: I9b536d2261eea6325e0f74365a3a4c85e37b1241<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/34320">http://review.typo3.org/34320</a><br />Reviewed-by: Mathias Schreiber &lt;<a class="email" href="mailto:mathias.schreiber@wmdb.de">mathias.schreiber@wmdb.de</a>&gt;<br />Tested-by: Mathias Schreiber &lt;<a class="email" href="mailto:mathias.schreiber@wmdb.de">mathias.schreiber@wmdb.de</a>&gt;<br />Reviewed-by: Andreas Fernandez &lt;<a class="email" href="mailto:a.fernandez@scripting-base.de">a.fernandez@scripting-base.de</a>&gt;<br />Reviewed-by: Stefan Neufeind &lt;<a class="email" href="mailto:typo3.neufeind@speedpartner.de">typo3.neufeind@speedpartner.de</a>&gt;<br />Reviewed-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;<br />Tested-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/411fe210f188820716a1ae102f1fc89824ea9e1b" title="Revision 411fe210">Revision 411fe210</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-24" title="2014-11-24 08:11">8 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Fix PHP warning in shouldFieldBeOverlaid()</p>
+
+
+	<p>PageRepository::shouldFieldBeOverlaid now properly checks for array-typed<br />values when mergeIfNotBlank behaviour is requested.</p>
+
+
+	<p>Resolves: <a href="60998.html" class="issue status-7 priority-1 closed" title="PageRepository::shouldFieldBeOverlaid raises PHP warning (Resolved)">#60998</a><br />Releases: master, 6.2<br />Change-Id: I9b536d2261eea6325e0f74365a3a4c85e37b1241<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/34523">http://review.typo3.org/34523</a><br />Reviewed-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;<br />Tested-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/3ce5c4791949b80d8a1a387acbac164089a46de1" title="Revision 3ce5c479">Revision 3ce5c479</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-19" title="2015-03-19 09:04">5 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[FOLLOWUP][BUGFIX] Fix PHP warning in shouldFieldBeOverlaid()</p>
+
+
+	<p>We have to check the type of the variable properly.<br />In case we have a non-empty array, we must not run trim() on it.</p>
+
+
+	<p>Releases: master, 6.2<br />Resolves: <a href="60998.html" class="issue status-7 priority-1 closed" title="PageRepository::shouldFieldBeOverlaid raises PHP warning (Resolved)">#60998</a><br />Change-Id: I3bef04a3e64d4c811c71a110fa0bfba4fc3fc361<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/37928">http://review.typo3.org/37928</a><br />Reviewed-by: Florian Engelke &lt;<a class="email" href="mailto:engelke@louis.info">engelke@louis.info</a>&gt;<br />Tested-by: Florian Engelke &lt;<a class="email" href="mailto:engelke@louis.info">engelke@louis.info</a>&gt;<br />Reviewed-by: Wolfgang Baumgartner &lt;<a class="email" href="mailto:wolfgang.baumgartner@hswt.de">wolfgang.baumgartner@hswt.de</a>&gt;<br />Tested-by: Wolfgang Baumgartner &lt;<a class="email" href="mailto:wolfgang.baumgartner@hswt.de">wolfgang.baumgartner@hswt.de</a>&gt;<br />Reviewed-by: Wouter Wolters &lt;<a class="email" href="mailto:typo3@wouterwolters.nl">typo3@wouterwolters.nl</a>&gt;<br />Tested-by: Wouter Wolters &lt;<a class="email" href="mailto:typo3@wouterwolters.nl">typo3@wouterwolters.nl</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/0671b4ca5e6ec661e0d0c0ccd0e46888f2fcbd9d" title="Revision 0671b4ca">Revision 0671b4ca</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-19" title="2015-03-19 09:05">5 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[FOLLOWUP][BUGFIX] Fix PHP warning in shouldFieldBeOverlaid()</p>
+
+
+	<p>We have to check the type of the variable properly.<br />In case we have a non-empty array, we must not run trim() on it.</p>
+
+
+	<p>Releases: master, 6.2<br />Resolves: <a href="60998.html" class="issue status-7 priority-1 closed" title="PageRepository::shouldFieldBeOverlaid raises PHP warning (Resolved)">#60998</a><br />Change-Id: I3bef04a3e64d4c811c71a110fa0bfba4fc3fc361<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/37940">http://review.typo3.org/37940</a><br />Reviewed-by: Wouter Wolters &lt;<a class="email" href="mailto:typo3@wouterwolters.nl">typo3@wouterwolters.nl</a>&gt;<br />Tested-by: Wouter Wolters &lt;<a class="email" href="mailto:typo3@wouterwolters.nl">typo3@wouterwolters.nl</a>&gt;</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-227309" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-15" title="2014-08-15 16:53">12 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-227309-notes"><p>Hi Stefan, thanks for the report!</p>
+
+
+	<p>Can you provide a stacktrace for this? (Enable the Developer preset in the Install Tool to get a full exception incl. stack trace)<br />It seems really weird that a field value of a table is an array!?<br />It looks like the bug is actually somewhere else.</p></div>
+  </div>
+  
+
+  <div id="change-231066" class="journal has-notes">
+    <h4><a href="60998.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2312">Jens Schmietendorf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-25" title="2014-09-25 09:36">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231066-notes"><pre>
+
+Uncaught TYPO3 Exception
+#1: PHP Warning: trim() expects parameter 1 to be string, array given in /Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/Page/PageRepository.php line 1416 (More information)
+
+TYPO3\CMS\Core\Error\Exception thrown in file
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/core/Classes/Error/ErrorHandler.php in line 101.
+
+30 TYPO3\CMS\Core\Error\ErrorHandler::handleError(2, "trim() expects parameter 1 to be string, array given", "/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typ…o3/sysext/frontend/Classes/Page/PageRepository.php", 1416, array)
+
+29 trim(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/Page/PageRepository.php:
+
+01414:    }
+01415:
+
+01416:    if (trim($checkValue) === '') {
+
+01417:     $shouldFieldBeOverlaid = FALSE;
+01418:    }
+
+28 TYPO3\CMS\Frontend\Page\PageRepository::shouldFieldBeOverlaid("tt_content", "image", array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/Page/PageRepository.php:
+
+01381:    $localizedReferences = $fileRepository-&gt;findByRelation($tableName, $fieldName, $localizedId);
+01382:    $localizedReferencesValue = $localizedReferences ?: '';
+
+01383:    if ($this-&gt;shouldFieldBeOverlaid($tableName, $fieldName, $localizedReferencesValue)) {
+
+01384:     $references = $localizedReferences;
+01385:    }
+
+27 TYPO3\CMS\Frontend\Page\PageRepository::getFileReferences("tt_content", "image", array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/FilesContentObject.php:
+
+00315:    $referencesFieldName,
+00316:    $element
+
+00317:   );
+
+00318:
+00319:   $this-&gt;addToArray($references, $fileObjects);
+
+26 TYPO3\CMS\Frontend\ContentObject\FilesContentObject::handleFileReferences(array, array, array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/FilesContentObject.php:
+
+00078:    }
+00079:
+
+00080:    $this-&gt;handleFileReferences($conf, (array)$this-&gt;cObj-&gt;data, $fileObjects);
+
+00081:   }
+00082:   if ($conf['files'] || $conf['files.']) {
+
+25 TYPO3\CMS\Frontend\ContentObject\FilesContentObject::render(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+00751:      $contentObject = $this-&gt;getContentObject($name);
+00752:      if ($contentObject) {
+
+00753:       $content .= $contentObject-&gt;render($conf);
+
+00754:      } else {
+00755:       // Call hook functions for extra processing
+
+24 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("FILES", array, "/stdWrap/.cObject")
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+02280:   */
+02281:  public function stdWrap_cObject($content = '', $conf = array()) {
+
+02282:   return $this-&gt;cObjGetSingle($conf['cObject'], $conf['cObject.'], '/stdWrap/.cObject');
+
+02283:  }
+02284:
+
+23 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::stdWrap_cObject("", array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+02101:      // Call the function with the prefix stdWrap_ to make sure nobody can execute functions just by adding their name to the TS Array
+02102:      $functionName = 'stdWrap_' . $functionName;
+
+02103:      $content = $this-&gt;{$functionName}($content, $singleConf);
+
+02104:     } elseif ($functionType == 'boolean' &#38;&#38; !$conf[$functionName]) {
+02105:      $isExecuted[$functionName] = TRUE;
+
+22 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::stdWrap("", array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/LoadRegisterContentObject.php:
+
+00040:       $theValue = $this-&gt;cObj-&gt;stdWrap($conf[$register], $conf[$registerProperties]);
+00041:      } elseif (isset($conf[$registerProperties])) {
+
+00042:       $theValue = $this-&gt;cObj-&gt;stdWrap('', $conf[$registerProperties]);
+
+00043:      }
+00044:      $GLOBALS['TSFE']-&gt;register[$register] = $theValue;
+
+21 TYPO3\CMS\Frontend\ContentObject\LoadRegisterContentObject::render(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+01058:    return $this-&gt;getContentObject('RESTORE_REGISTER')-&gt;render();
+01059:   } else {
+
+01060:    return $this-&gt;getContentObject('LOAD_REGISTER')-&gt;render($conf);
+
+01061:   }
+01062:  }
+
+20 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::LOAD_REGISTER(array, "LOAD_REGISTER")
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/css_styled_content/Classes/Controller/CssStyledContentController.php:
+
+00462:   if (isset($conf['preRenderRegisters.'])) {
+00463:    $restoreRegisters = TRUE;
+
+00464:    $this-&gt;cObj-&gt;LOAD_REGISTER($conf['preRenderRegisters.'], 'LOAD_REGISTER');
+
+00465:   }
+00466:   // Specific configuration for the chosen rendering method
+
+19 TYPO3\CMS\CssStyledContent\Controller\CssStyledContentController::render_textpic("", array)
+
+18 call_user_func_array(array, array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+06578:       $content,
+06579:       $conf
+
+06580:      ));
+
+06581:     } else {
+06582:      $GLOBALS['TT']-&gt;setTSlogMessage('Method "' . $parts[1] . '" did not exist in class "' . $parts[0] . '"', 3);
+
+17 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::callUserFunction("TYPO3\CMS\CssStyledContent\Controller\CssStyledContentController-&gt;render_textpic", array, "")
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/UserContentObject.php:
+
+00039:   }
+00040:   $this-&gt;cObj-&gt;includeLibs($conf);
+
+00041:   $tempContent = $this-&gt;cObj-&gt;callUserFunction($conf['userFunc'], $conf, '');
+
+00042:   if ($this-&gt;cObj-&gt;doConvertToUserIntObject) {
+00043:    $this-&gt;cObj-&gt;doConvertToUserIntObject = FALSE;
+
+16 TYPO3\CMS\Frontend\ContentObject\UserContentObject::render(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+00751:      $contentObject = $this-&gt;getContentObject($name);
+00752:      if ($contentObject) {
+
+00753:       $content .= $contentObject-&gt;render($conf);
+
+00754:      } else {
+00755:       // Call hook functions for extra processing
+
+15 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("USER", array, "20")
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+00694:     if ((int)$theKey &#38;&#38; strpos($theKey, '.') === FALSE) {
+00695:      $conf = $setup[$theKey . '.'];
+
+00696:      $content .= $this-&gt;cObjGetSingle($theValue, $conf, $addKey . $theKey);
+
+00697:     }
+00698:    }
+
+14 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGet(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectArrayContentObject.php:
+
+00038:
+00039:   $this-&gt;cObj-&gt;includeLibs($conf);
+
+00040:   $content = $this-&gt;cObj-&gt;cObjGet($conf);
+
+00041:   $wrap = isset($conf['wrap.']) ? $this-&gt;cObj-&gt;stdWrap($conf['wrap'], $conf['wrap.']) : $conf['wrap'];
+00042:   if ($wrap) {
+
+13 TYPO3\CMS\Frontend\ContentObject\ContentObjectArrayContentObject::render(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+00751:      $contentObject = $this-&gt;getContentObject($name);
+00752:      if ($contentObject) {
+
+00753:       $content .= $contentObject-&gt;render($conf);
+
+00754:      } else {
+00755:       // Call hook functions for extra processing
+
+12 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("COA", array, "image")
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/CaseContentObject.php:
+
+00040:   $key = strlen($conf[$key]) ? $key : 'default';
+00041:   $name = $conf[$key];
+
+00042:   $theValue = $this-&gt;cObj-&gt;cObjGetSingle($name, $conf[$key . '.'], $key);
+
+00043:   if (isset($conf['stdWrap.'])) {
+00044:    $theValue = $this-&gt;cObj-&gt;stdWrap($theValue, $conf['stdWrap.']);
+
+11 TYPO3\CMS\Frontend\ContentObject\CaseContentObject::render(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+00751:      $contentObject = $this-&gt;getContentObject($name);
+00752:      if ($contentObject) {
+
+00753:       $content .= $contentObject-&gt;render($conf);
+
+00754:      } else {
+00755:       // Call hook functions for extra processing
+
+10 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("CASE", array, "tt_content")
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+00733:     // Getting the cObject
+00734:     $GLOBALS['TT']-&gt;incStackPointer();
+
+00735:     $content .= $this-&gt;cObjGetSingle($name, $conf, $key);
+
+00736:     $GLOBALS['TT']-&gt;decStackPointer();
+00737:    } else {
+
+9 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("&lt;tt_content", NULL, "")
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentContentObject.php:
+
+00105:        $this-&gt;cObj-&gt;lastChanged($row['tstamp']);
+00106:        $cObj-&gt;start($row, $conf['table']);
+
+00107:        $tmpValue = $cObj-&gt;cObjGetSingle($renderObjName, $renderObjConf, $renderObjKey);
+
+00108:        $cobjValue .= $tmpValue;
+00109:       }
+
+8 TYPO3\CMS\Frontend\ContentObject\ContentContentObject::render(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+00751:      $contentObject = $this-&gt;getContentObject($name);
+00752:      if ($contentObject) {
+
+00753:       $content .= $contentObject-&gt;render($conf);
+
+00754:      } else {
+00755:       // Call hook functions for extra processing
+
+7 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("CONTENT", array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/FluidTemplateContentObject.php:
+
+00208:     $this-&gt;view-&gt;assign(
+00209:      $variableName,
+
+00210:      $this-&gt;cObj-&gt;cObjGetSingle($cObjType, $variables[$variableName . '.'])
+
+00211:     );
+00212:    } else {
+
+6 TYPO3\CMS\Frontend\ContentObject\FluidTemplateContentObject::assignContentObjectVariables(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/FluidTemplateContentObject.php:
+
+00078:   $this-&gt;setExtbaseVariables($conf);
+00079:   $this-&gt;assignSettings($conf);
+
+00080:   $this-&gt;assignContentObjectVariables($conf);
+
+00081:   $this-&gt;assignContentObjectDataAndCurrent($conf);
+00082:
+
+5 TYPO3\CMS\Frontend\ContentObject\FluidTemplateContentObject::render(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+00751:      $contentObject = $this-&gt;getContentObject($name);
+00752:      if ($contentObject) {
+
+00753:       $content .= $contentObject-&gt;render($conf);
+
+00754:      } else {
+00755:       // Call hook functions for extra processing
+
+4 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("FLUIDTEMPLATE", array, "10")
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:
+
+00694:     if ((int)$theKey &#38;&#38; strpos($theKey, '.') === FALSE) {
+00695:      $conf = $setup[$theKey . '.'];
+
+00696:      $content .= $this-&gt;cObjGetSingle($theValue, $conf, $addKey . $theKey);
+
+00697:     }
+00698:    }
+
+3 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGet(array)
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/frontend/Classes/Page/PageGenerator.php:
+
+00222:   $GLOBALS['TT']-&gt;incStackPointer();
+00223:   $GLOBALS['TT']-&gt;push($GLOBALS['TSFE']-&gt;sPre, 'PAGE');
+
+00224:   $pageContent = $GLOBALS['TSFE']-&gt;cObj-&gt;cObjGet($GLOBALS['TSFE']-&gt;pSetup);
+
+00225:   if ($GLOBALS['TSFE']-&gt;pSetup['wrap']) {
+00226:    $pageContent = $GLOBALS['TSFE']-&gt;cObj-&gt;wrap($pageContent, $GLOBALS['TSFE']-&gt;pSetup['wrap']);
+
+2 TYPO3\CMS\Frontend\Page\PageGenerator::renderContent()
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/cms/tslib/index_ts.php:
+
+00209:   // Content generation
+00210:   if (!$TSFE-&gt;isINTincScript()) {
+
+00211:    \TYPO3\CMS\Frontend\Page\PageGenerator::renderContent();
+
+00212:    $TSFE-&gt;setAbsRefPrefix();
+00213:   }
+
+1 require("/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/typo3/sysext/cms/tslib/index_ts.php")
+
+/Users/XXXXX/Documents/htdocs/typo3_src-6.2.5/index.php:
+
+00026:  -&gt;redirectToInstallerIfEssentialConfigurationDoesNotExist();
+00027:
+
+00028: require(PATH_tslib . 'index_ts.php');
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-231185" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-26" title="2014-09-26 00:36">10 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+       <li><strong>Is Regression</strong> changed from <i>No</i> to <i>Yes</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-231185-notes"><p>Thanks for the trace.</p>
+
+
+	<p>Clear thing now, the problem was introduced with <a class="external" href="../../external.html?link=https://review.typo3.org/29739">https://review.typo3.org/29739</a><br />See also related changes</p></div>
+  </div>
+  
+
+  <div id="change-231302" class="journal has-notes">
+    <h4><a href="60998.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-28" title="2014-09-28 21:13">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231302-notes"><p>Hi Jens,</p>
+
+
+	<p>could you maybe also post some steps how to reproduce this? TypoScript language settings and maybe changes you made to the TCA of tt_content.</p>
+
+
+	<p>Also a vardump of $value and $GLOBALS['TCA'][$table]['columns'][$field] in shouldFieldBeOverlaid() when $field  'image' and $table  'tt_content' could probably help in finding out what goes wrong here.</p>
+
+
+<pre>
+
+        if ($table === 'tt_content' &#38;&#38; $field == 'image') {
+            debug($value, 'value');
+            debug($GLOBALS['TCA'][$table]['columns'][$field], 'TCA');
+        }
+</pre>
+
+	<p>Only preventing the error is no problem but I'm not sure why you get the error.</p>
+
+
+	<p>gr. Frans</p></div>
+  </div>
+  
+
+  <div id="change-233751" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3416">Lars Malach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-24" title="2014-10-24 09:28">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/27773/Screen%20Shot%202014-10-24%20at%2009.08.10.png">Screen Shot 2014-10-24 at 09.08.10.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-233751-notes"><p>Here is a var_dump generated with:<br /><pre>
+            if ($table === 'tt_content' &#38;&#38; $field == 'image' &#38;&#38; !is_string($value)) {
+                DebuggerUtility::var_dump($value, 'value');
+                DebuggerUtility::var_dump($GLOBALS['TCA'][$table]['columns'][$field], 'TCA');
+            }
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-236290" class="journal has-notes">
+    <h4><a href="60998.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38509">Philipp Wrann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-14" title="2014-11-14 14:08">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236290-notes"><p>Got this too.... very annoying behaviour</p>
+
+
+	<p>sys_language_mode = content_fallback<br />sys_language_overlay = 1<br />sys_language_softMergeIfNotBlank = tt_content:image,pages:media</p>
+
+
+	<p>Hope this helps fixing the issue</p></div>
+  </div>
+  
+
+  <div id="change-236292" class="journal has-notes">
+    <h4><a href="60998.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38509">Philipp Wrann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-14" title="2014-11-14 14:26">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236292-notes"><p>Also this seems to be related to the environment</p>
+
+
+	<p>On my productive system the error is thrown, locally everything is working just fine.<br />Identical setup and both running PHP 5.3 and requested from empty cache</p></div>
+  </div>
+  
+
+  <div id="change-236293" class="journal has-notes">
+    <h4><a href="60998.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38509">Philipp Wrann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-14" title="2014-11-14 14:31">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236293-notes"><p>When setting the config to:<br />sys_language_mode = ignore<br />sys_language_overlay = 0</p>
+
+
+	<p>It works, maybe the missing fallback values where the problem</p></div>
+  </div>
+  
+
+  <div id="change-236807" class="journal has-notes">
+    <h4><a href="60998.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-18" title="2014-11-18 21:27">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236807-notes"><p>Ok, the problem is the mergeIfNotBlank setting in TCA.<br />In the case of images the $value passed to shouldFieldBeOverlaid() is an array with the file references.<br />Of course we can't run a trim() on that array.</p></div>
+  </div>
+  
+
+  <div id="change-236808" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-18" title="2014-11-18 21:28">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-236808-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34320">http://review.typo3.org/34320</a></p></div>
+  </div>
+  
+
+  <div id="change-236809" class="journal has-notes">
+    <h4><a href="60998.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-18" title="2014-11-18 21:30">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236809-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34320">http://review.typo3.org/34320</a></p></div>
+  </div>
+  
+
+  <div id="change-236853" class="journal has-notes">
+    <h4><a href="60998.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-19" title="2014-11-19 00:44">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236853-notes"><p>Patch set 3 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34320">http://review.typo3.org/34320</a></p></div>
+  </div>
+  
+
+  <div id="change-236869" class="journal has-notes">
+    <h4><a href="60998.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-19" title="2014-11-19 09:54">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236869-notes"><p>Patch set 4 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34320">http://review.typo3.org/34320</a></p></div>
+  </div>
+  
+
+  <div id="change-237427" class="journal has-notes">
+    <h4><a href="60998.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-24" title="2014-11-24 08:07">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237427-notes"><p>Patch set 1 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/34523">http://review.typo3.org/34523</a></p></div>
+  </div>
+  
+
+  <div id="change-237430" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-24" title="2014-11-24 08:30">8 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-237430-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/c56c5c6dc396b9cebbe480dde9e7130a81167b1a" class="changeset" title="[BUGFIX] Fix PHP warning in shouldFieldBeOverlaid() PageRepository::shouldFieldBeOverlaid now pr...">c56c5c6dc396b9cebbe480dde9e7130a81167b1a</a>.</p></div>
+  </div>
+  
+
+  <div id="change-249333" class="journal has-notes">
+    <h4><a href="60998.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/41326">Wolfgang Baumgartner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-09" title="2015-02-09 07:07">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-249333-notes"><p>I'm still getting this warning in typo3 6.2.9 (php 5.4.36):</p>
+
+
+	<p><a href="1.html" class="issue status-9 priority-2 closed" title="Use SPL when searching/listing files. (Closed)">#1</a>: PHP Warning: trim() expects parameter 1 to be string, array given in /var/www/typo3repo/typo3_src-6.2.9/typo3/sysext/frontend/Classes/Page/PageRepository.php line 1416 (More information)</p>
+
+
+	<p>TYPO3\CMS\Core\Error\Exception thrown in file<br />/var/www/typo3repo/typo3_src-6.2.9/typo3/sysext/core/Classes/Error/ErrorHandler.php in line 101.</p>
+
+
+	<p>53 TYPO3\CMS\Core\Error\ErrorHandler::handleError(2, "trim() expects parameter 1 to be string, array given", "/var/www/typo3repo/typo3_src-6.2.9/typo3/sysext/frontend/Classes/Page/PageRepository.php", 1416, array)</p>
+
+
+	<p>52 trim(array)</p>
+
+
+	<p>/var/www/typo3repo/typo3_src-6.2.9/typo3/sysext/frontend/Classes/Page/PageRepository.php:</p>
+
+
+	<p>01414:    }<br />01415:</p>
+
+
+	<p>01416:    if ($checkValue === array() || trim($checkValue) === '') {</p>
+
+
+	<p>01417:     $shouldFieldBeOverlaid = FALSE;<br />01418:    }</p>
+
+
+	<p>I patched the line 1416:<br />if ($checkValue === array() || (!is_array($checkValue) &#38;&#38; trim($checkValue) === '')) {</p></div>
+  </div>
+  
+
+  <div id="change-249339" class="journal has-notes">
+    <h4><a href="60998.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-09" title="2015-02-09 09:55">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-249339-notes"><p>Please open a new ticket for this and please post some information what to do to reproduce this. Thanks.</p></div>
+  </div>
+  
+
+  <div id="change-252947" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39230">Florian Engelke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-18" title="2015-03-18 10:19">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/28614/pages_language_overlay_meida.png">pages_language_overlay_meida.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-252947-notes"><p>Wolfgang Baumgartner wrote:</p>
+
+
+<blockquote>
+
+	<p>I'm still getting this warning in typo3 6.2.9 (php 5.4.36):</p>
+
+
+	<p><a href="1.html" class="issue status-9 priority-2 closed" title="Use SPL when searching/listing files. (Closed)">#1</a>: PHP Warning: trim() expects parameter 1 to be string, array given in /var/www/typo3repo/typo3_src-6.2.9/typo3/sysext/frontend/Classes/Page/PageRepository.php line 1416 (More information)</p>
+
+
+	<p>TYPO3\CMS\Core\Error\Exception thrown in file<br />/var/www/typo3repo/typo3_src-6.2.9/typo3/sysext/core/Classes/Error/ErrorHandler.php in line 101.</p>
+
+
+	<p>53 TYPO3\CMS\Core\Error\ErrorHandler::handleError(2, "trim() expects parameter 1 to be string, array given", "/var/www/typo3repo/typo3_src-6.2.9/typo3/sysext/frontend/Classes/Page/PageRepository.php", 1416, array)</p>
+
+
+	<p>52 trim(array)</p>
+
+
+	<p>/var/www/typo3repo/typo3_src-6.2.9/typo3/sysext/frontend/Classes/Page/PageRepository.php:</p>
+
+
+	<p>01414:    }<br />01415:</p>
+
+
+	<p>01416:    if ($checkValue === array() || trim($checkValue) === '') {</p>
+
+
+	<p>01417:     $shouldFieldBeOverlaid = FALSE;<br />01418:    }</p>
+
+
+	<p>I patched the line 1416:<br />if ($checkValue === array() || (!is_array($checkValue) &#38;&#38; trim($checkValue) === '')) {</p>
+
+
+</blockquote>
+
+	<p>I have the same Problems ( TYPO3 6.2.11 / PHP 5.5.21)</p>
+
+
+	<p>The Array has one FileReference (media) from pages_language_overlay.</p>
+
+
+<pre>
+array(1 item)
+   0 =&gt; TYPO3\CMS\Core\Resource\FileReferenceprototypeobject
+      propertiesOfFileReference =&gt; array(32 items)
+      uidOfFileReference =&gt; NULL
+      name =&gt; NULL
+      originalFile =&gt; TYPO3\CMS\Core\Resource\Fileprototypeobject
+      mergedProperties =&gt; array(empty)
+</pre>
+
+	<p>If have the Option: <code>$GLOBALS['TCA']['pages_language_overlay']['columns']['media']['l10n_mode'] = 'mergeIfNotBlank';</code></p>
+
+
+	<p><img src="../attachments/download/28614.png" alt="" /></p></div>
+  </div>
+  
+
+  <div id="change-252973" class="journal has-notes">
+    <h4><a href="60998.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-18" title="2015-03-18 15:51">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252973-notes"><p>Please post the FULL stacktrace, thanks!</p></div>
+  </div>
+  
+
+  <div id="change-252974" class="journal has-notes">
+    <h4><a href="60998.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39230">Florian Engelke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-18" title="2015-03-18 16:00">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252974-notes"><blockquote>
+
+	<p>Uncaught TYPO3 Exception<br /><a href="1.html" class="issue status-9 priority-2 closed" title="Use SPL when searching/listing files. (Closed)">#1</a>: PHP Warning: trim() expects parameter 1 to be string, array given in /home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/Page/PageRepository.php line 1416 (More information)</p>
+
+
+	<p>TYPO3\CMS\Core\Error\Exception thrown in file<br />/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/core/Classes/Error/ErrorHandler.php in line 101.</p>
+
+
+	<p>20 TYPO3\CMS\Core\Error\ErrorHandler::handleError(2, "trim() expects parameter 1 to be string, array given", "/home/shared_typo3/typo3_source/typo3_src-6.2.11/t…o3/sysext/frontend/Classes/Page/PageRepository.php", 1416, array)<br />19 trim(array)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/Page/PageRepository.php:<br />01414:    }<br />01415: <br />01416:    if ($checkValue === array() || trim($checkValue) === '') {<br />01417:     $shouldFieldBeOverlaid = FALSE;<br />01418:    }</p>
+
+
+	<p>18 TYPO3\CMS\Frontend\Page\PageRepository::shouldFieldBeOverlaid("pages_language_overlay", "media", array)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/Page/PageRepository.php:<br />01381:    $localizedReferences = $fileRepository->findByRelation($tableName, $fieldName, $localizedId);<br />01382:    $localizedReferencesValue = $localizedReferences ?: '';<br />01383:    if ($this->shouldFieldBeOverlaid($tableName, $fieldName, $localizedReferencesValue)) {<br />01384:     $references = $localizedReferences;<br />01385:    }</p>
+
+
+	<p>17 TYPO3\CMS\Frontend\Page\PageRepository::getFileReferences("pages", "media", array)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/core/Classes/Resource/Service/FrontendContentAdapterService.php:<br />00088:    foreach (static::$migrateFields[$table] as $migrateFieldName => $oldFieldNames) {<br />00089:     if ($row !== NULL &#38;&#38; isset($row[$migrateFieldName]) &#38;&#38; self::fieldIsInType($migrateFieldName, $table, $row)) {<br />00090:      $files = self::getPageRepository()->getFileReferences($table, $migrateFieldName, $row);<br />00091:      $fileFieldContents = array(<br />00092:       'paths' => array(),</p>
+
+
+	<p>16 TYPO3\CMS\Core\Resource\Service\FrontendContentAdapterService::modifyDBRow(array, "pages")</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:<br />00566:   global $TYPO3_CONF_VARS;<br />00567:   if ($TYPO3_CONF_VARS['FE']['activateContentAdapter'] &#38;&#38; is_array($data) &#38;&#38; !empty($data) &#38;&#38; !empty($table)) {<br />00568:    \TYPO3\CMS\Core\Resource\Service\FrontendContentAdapterService::modifyDBRow($data, $table);<br />00569:   }<br />00570:   $this->data = $data;</p>
+
+
+	<p>15 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::start(array, "pages")</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/Menu/TextMenuContentObject.php:<br />00065:    $GLOBALS['TSFE']->register['count_MENUOBJ']++;<br />00066:    // Initialize the cObj with the page record of the menu item<br />00067:    $this->WMcObj->start($this->menuArr[$key], 'pages');<br />00068:    $this->I = array();<br />00069:    $this->I['key'] = $key;</p>
+
+
+	<p>14 TYPO3\CMS\Frontend\ContentObject\Menu\TextMenuContentObject::writeMenu()</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/Menu/AbstractMenuContentObject.php:<br />01507:      // Reset the menu item count for the submenu<br />01508:      $GLOBALS['TSFE']->register['count_MENUOBJ'] = 0;<br />01509:      $content = $submenu->writeMenu();<br />01510:      // Restore the item count now that the submenu has been handled<br />01511:      $GLOBALS['TSFE']->register['count_MENUOBJ'] = $tempCountMenuObj;</p>
+
+
+	<p>13 TYPO3\CMS\Frontend\ContentObject\Menu\AbstractMenuContentObject::subMenu("50", NULL)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/Menu/TextMenuContentObject.php:<br />00236:   // Add part to the accumulated result + fetch submenus<br />00237:   if (!$this->I['spacer']) {<br />00238:    $this->I['theItem'] .= $this->subMenu($this->I['uid'], $this->WMsubmenuObjSuffixes[$key]['sOSuffix']);<br />00239:   }<br />00240:   $part = isset($this->I['val']['wrapItemAndSub.']) ? $this->WMcObj->stdWrap($this->I['val']['wrapItemAndSub'], $this->I['val']['wrapItemAndSub.']) : $this->I['val']['wrapItemAndSub'];</p>
+
+
+	<p>12 TYPO3\CMS\Frontend\ContentObject\Menu\TextMenuContentObject::extProc_afterLinking(0)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/Menu/TextMenuContentObject.php:<br />00160:    }<br />00161:    // Calling extra processing function<br />00162:    $this->extProc_afterLinking($key);<br />00163:   }<br />00164:   return $this->extProc_finish();</p>
+
+
+	<p>11 TYPO3\CMS\Frontend\ContentObject\Menu\TextMenuContentObject::writeMenu()</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/HierarchicalMenuContentObject.php:<br />00047:    $menu->start($GLOBALS['TSFE']->tmpl, $GLOBALS['TSFE']->sys_page, '', $conf, 1);<br />00048:    $menu->makeMenu();<br />00049:    $theValue .= $menu->writeMenu();<br />00050:   } catch (\TYPO3\CMS\Frontend\ContentObject\Menu\Exception\NoSuchMenuTypeException $e) {<br />00051:   }</p>
+
+
+	<p>10 TYPO3\CMS\Frontend\ContentObject\HierarchicalMenuContentObject::render(array)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:<br />00749:      $contentObject = $this->getContentObject($name);<br />00750:      if ($contentObject) {<br />00751:       $content .= $contentObject->render($conf);<br />00752:      } else {<br />00753:       // Call hook functions for extra processing</p>
+
+
+	<p>9 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("HMENU", array, "10")</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:<br />00694:     if ((int)$theKey &#38;&#38; strpos($theKey, '.') === FALSE) {<br />00695:      $conf = $setup[$theKey . '.'];<br />00696:      $content .= $this->cObjGetSingle($theValue, $conf, $addKey . $theKey);<br />00697:     }<br />00698:    }</p>
+
+
+	<p>8 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGet(array)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectArrayContentObject.php:<br />00038: <br />00039:   $this->cObj->includeLibs($conf);<br />00040:   $content = $this->cObj->cObjGet($conf);<br />00041:   $wrap = isset($conf['wrap.']) ? $this->cObj->stdWrap($conf['wrap'], $conf['wrap.']) : $conf['wrap'];<br />00042:   if ($wrap) {</p>
+
+
+	<p>7 TYPO3\CMS\Frontend\ContentObject\ContentObjectArrayContentObject::render(array)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:<br />00749:      $contentObject = $this->getContentObject($name);<br />00750:      if ($contentObject) {<br />00751:       $content .= $contentObject->render($conf);<br />00752:      } else {<br />00753:       // Call hook functions for extra processing</p>
+
+
+	<p>6 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("COA", array, "subparts.navmenu")</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/TemplateContentObject.php:<br />00126:      $this->cObj->data[$this->cObj->currentValKey] = $GLOBALS['TSFE']->register['SUBPART_' . $theKey];<br />00127:      // Get subpart cObject and substitute it!<br />00128:      $subpartArray[$PRE . $theKey . $POST] = $this->cObj->cObjGetSingle($theValue['name'], $theValue['conf'], 'subparts.' . $theKey);<br />00129:     }<br />00130:     // Reset current to empty</p>
+
+
+	<p>5 TYPO3\CMS\Frontend\ContentObject\TemplateContentObject::render(array)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:<br />00749:      $contentObject = $this->getContentObject($name);<br />00750:      if ($contentObject) {<br />00751:       $content .= $contentObject->render($conf);<br />00752:      } else {<br />00753:       // Call hook functions for extra processing</p>
+
+
+	<p>4 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGetSingle("TEMPLATE", array, "20")</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/ContentObject/ContentObjectRenderer.php:<br />00694:     if ((int)$theKey &#38;&#38; strpos($theKey, '.') === FALSE) {<br />00695:      $conf = $setup[$theKey . '.'];<br />00696:      $content .= $this->cObjGetSingle($theValue, $conf, $addKey . $theKey);<br />00697:     }<br />00698:    }</p>
+
+
+	<p>3 TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::cObjGet(array)</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/frontend/Classes/Page/PageGenerator.php:<br />00212:   $GLOBALS['TT']->incStackPointer();<br />00213:   $GLOBALS['TT']->push($GLOBALS['TSFE']->sPre, 'PAGE');<br />00214:   $pageContent = $GLOBALS['TSFE']->cObj->cObjGet($GLOBALS['TSFE']->pSetup);<br />00215:   if ($GLOBALS['TSFE']->pSetup['wrap']) {<br />00216:    $pageContent = $GLOBALS['TSFE']->cObj->wrap($pageContent, $GLOBALS['TSFE']->pSetup['wrap']);</p>
+
+
+	<p>2 TYPO3\CMS\Frontend\Page\PageGenerator::renderContent()</p>
+
+
+	<p>/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/cms/tslib/index_ts.php:<br />00210:   // Content generation<br />00211:   if (!$TSFE->isINTincScript()) {<br />00212:    \TYPO3\CMS\Frontend\Page\PageGenerator::renderContent();<br />00213:    $TSFE->setAbsRefPrefix();<br />00214:   }</p>
+
+
+	<p>1 require("/home/shared_typo3/typo3_source/typo3_src-6.2.11/typo3/sysext/cms/tslib/index_ts.php")</p>
+
+
+	<p>/home/user/public_html/project/index.php:<br />00166: // *<strong><b></strong>*</b>**<strong>**</strong>****<br />00167: <br />00168: require(PATH_tslib . 'index_ts.php');<br />00169: <br />00170:</p>
+
+
+</blockquote></div>
+  </div>
+  
+
+  <div id="change-252980" class="journal has-notes">
+    <h4><a href="60998.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-18" title="2015-03-18 16:30">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252980-notes"><p>Oh I guess I found the issue: FrontendContentAdapterService<br />This adjusts the values of those columns and that's why that stuff fails.</p></div>
+  </div>
+  
+
+  <div id="change-252981" class="journal has-notes">
+    <h4><a href="60998.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-18" title="2015-03-18 16:38">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252981-notes"><p>Can you try to disable it? [SYS][activateContentAdapter]</p></div>
+  </div>
+  
+
+  <div id="change-252982" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39230">Florian Engelke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-18" title="2015-03-18 16:50">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/28621/Uncaught%20TYPO3%20Exception.txt">Uncaught TYPO3 Exception.txt</a><a href="../attachments/28621/Uncaught%20TYPO3%20Exception.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-252982-notes"><p>I disabled <strong lang="FE">[activateContentAdapter]</strong> (don't find the Option in SYS) and clear the cache.</p>
+
+
+<pre>
+        'FE' =&gt; array(
+               'activateContentAdapter' =&gt; '0',
+</pre>
+
+	<p>Same result. Error in attachment.</p></div>
+  </div>
+  
+
+  <div id="change-252991" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-18" title="2015-03-18 17:27">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-252991-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37928">http://review.typo3.org/37928</a></p></div>
+  </div>
+  
+
+  <div id="change-252992" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-18" title="2015-03-18 17:28">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-252992-notes"><p>Ok, to sum this up:<br />mergeIfNotBlank on pages:media field causes the translation routine to resolve the file references and provides those to the shouldFieldBeOverlaid() method.<br />The check is lacking proper handling for non-empty arrays.</p></div>
+  </div>
+  
+
+  <div id="change-252993" class="journal has-details">
+    <h4><a href="60998.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-18" title="2015-03-18 17:28">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-253086" class="journal has-notes">
+    <h4><a href="60998.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-19" title="2015-03-19 09:05">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-253086-notes"><p>Patch set 1 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37940">http://review.typo3.org/37940</a></p></div>
+  </div>
+  
+
+  <div id="change-253089" class="journal has-notes has-details">
+    <h4><a href="60998.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-19" title="2015-03-19 09:30">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-253089-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/3ce5c4791949b80d8a1a387acbac164089a46de1" class="changeset" title="[FOLLOWUP][BUGFIX] Fix PHP warning in shouldFieldBeOverlaid() We have to check the type of the v...">3ce5c4791949b80d8a1a387acbac164089a46de1</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-60998-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/60998.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="60998.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/60998 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:03:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

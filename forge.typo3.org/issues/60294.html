@@ -1,0 +1,686 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/60294 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:36:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #60294: If a local file storage is outside the document root, images are sometimes not shown if multiple images are on a page. - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/60294.atom" rel="alternate" title="Core - Bug #60294: If a local file storage is outside the document root, images are sometimes not shown if multiple images are on a page." type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/37194">Jost Baron</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-60294-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #60294</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>If a local file storage is outside the document root, images are sometimes not shown if multiple images are on a page.</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/37194">Jost Baron</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-13" title="2014-07-13 23:32">about 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 22:30">about 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-07-13</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>This possibility was introduced with this patcheset: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/27760/">https://review.typo3.org/#/c/27760/</a></p>
+
+
+	<p>If there are many (5-10) images on a page, some of them are not shown. Maybe it is a concurrency-issue, it happens with apache and mod_php.</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-11474">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="36420" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="36420.html" class="issue status-7 priority-1 closed child">Task #36420</a>: Filemount in local file system (not on webserver) leads t...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-04-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11523">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="59662" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="59662.html" class="issue status-9 priority-1 closed">Bug #59662</a>: Problem with subsequent calls to $configurationManager-&gt;s...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-06-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11571">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="59432" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="59432.html" class="issue status-1 priority-3">Bug #59432</a>: setLocalConfigurationValueByPath() writes LocalConfigurat...
+</td>
+<td class="status">New</td>
+<td class="start_date">2014-06-10</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12120">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62301" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62301.html" class="issue status-10 priority-4 closed">Bug #62301</a>: ConfigurationManager setters make system unstable
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-10-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12121">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="60650" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="60650.html" class="issue status-7 priority-2 closed">Bug #60650</a>: ConfigurationManager::getConfigurationValueByPath ignores...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-07-29</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/60294/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/60294/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=60294&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-224060" class="journal has-notes">
+    <h4><a href="60294.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-14" title="2014-07-14 09:54">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224060-notes"><p>Do you have see error messages? What is generated instead of the images. I doubt this is a concurrency problem as there is no parallelism for generating images.</p></div>
+  </div>
+  
+
+  <div id="change-224061" class="journal has-notes">
+    <h4><a href="60294.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37194">Jost Baron</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-14" title="2014-07-14 11:08">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224061-notes"><p>I can't identify a definite error message in the log, only two candidates:</p>
+
+
+<pre>
+[error] [client x.y.z.w] PHP Catchable fatal error:  Argument 1 passed to TYPO3\\CMS\\Core\\Utility\\ArrayUtility::setValueByPath() must be an array, integer given, called in
+/.../typo3_src-6.2.4/typo3/sysext/core/Classes/Configuration/ConfigurationManager.php on line 202 and defined in /.../typo3_src-6.2.4/typo3/sysext/core/Classes/Utility/ArrayUtility.php
+on line 176, referer: [...]
+
+[notice] child pid 8662 exit signal Bus error (7)
+</pre>
+
+	<p>The used PHP-Version is the one that comes with the latest Ubuntu 12.04 LTS as mod_php.</p>
+
+
+	<p>In the frontend, there was only an empty space where the image should be - when viewing the image info, the image file was small (2 Bytes or something).</p>
+
+
+	<p>Sorry for the vague info, can't reproduce this anymore, since I've fixed it by moving the fileadmin into the document root.</p></div>
+  </div>
+  
+
+  <div id="change-224897" class="journal has-notes">
+    <h4><a href="60294.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37194">Jost Baron</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 18:55">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224897-notes"><p>I've looked a bit more into this, it also happens in a fcgid-setup.</p>
+
+
+	<p>The problem is that the <code>$localconfiguration</code> retrieved in line 201 of <code>TYPO3\CMS\Core\Configuration\ConfigurationManager</code> is invalid. It is the integer 1. Thus the error message posted above.</p>
+
+
+	<p>The above two error messages are sometimes accompanied by this one:<br /><pre>
+[fcgid:warn] [pid 24055] [client 127.0.0.1:52844] mod_fcgid: stderr: PHP Fatal error:  Uncaught exception 'UnexpectedValueException'
+with message 'LocalConfiguration invalid.' in
+[...]/typo3_src-6.2.4/typo3/sysext/core/Classes/Configuration/ConfigurationManager.php:276, referer: [...]
+</pre></p>
+
+
+	<p>So if I had to do a wild guess, I'd say that the LocalConfiguration is rewritten by each of the requests to an image (can confirm that), and locking does not work (maybe because its an eID script?). But I have no idea how to check if this is the actual reason, and how to fix it.</p>
+
+
+	<p>Also, some more info on my setup (had to rebuild it):</p>
+
+
+	<p>1. There is a folder "fileadmin" outside the document root<br />2. That folder is linked with a symlink in the document root, since otherwise TypoScript templates are not found and the install tool complains.<br />3. The storage record is non-hidden, has an absolute path, uses case sensitive paths, is set as default storage, the folder for temporary files is not set, is searchable, is writable, is online, but is <b>not public</b>. Setting it to public results in TYPO3 complaining and setting it non-public again. <br />4. The whole installation was updated from 4.2.</p></div>
+  </div>
+  
+
+  <div id="change-224902" class="journal has-notes">
+    <h4><a href="60294.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 20:04">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224902-notes"><blockquote>
+
+	<p>[notice] child pid 8662 exit signal Bus error (7)</p>
+
+
+</blockquote>
+
+	<p>This is very weird, so there is a server problem as well.</p>
+
+
+	<p>Never heard that LocalConfiguration is rewritten all the time.</p>
+
+
+	<p>Having the storage non-public does not make sense from what you wrote.<br />What is the URL of the not working image?</p></div>
+  </div>
+  
+
+  <div id="change-224903" class="journal has-notes">
+    <h4><a href="60294.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37194">Jost Baron</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 20:37">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224903-notes"><p>The image URI is <code>/index.php?eID=dumpFile&#38;t=p&#38;p=149&#38;token=f86d6f4e47afc8c040d1a79a3903c91887536699</code></p>
+
+
+	<p>I've looked again, when accessing the above URL the <code>LocalConfiguration.php</code> is at least touched, the last modification time changes. I've made sure nothing else (like the AJAX-requests from the Backend) is requesting something. I do have an <code>AdditionalConfiguration.php</code>-file, but its last modification was 10 days ago.</p></div>
+  </div>
+  
+
+  <div id="change-224904" class="journal has-notes">
+    <h4><a href="60294.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 20:47">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224904-notes"><p>If you access the image URL directly. What do you see?</p></div>
+  </div>
+  
+
+  <div id="change-224906" class="journal has-notes">
+    <h4><a href="60294.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37194">Jost Baron</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 20:58">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224906-notes"><p>I see the correct image (always, but especially for the images that did not work when embedded into the page).</p>
+
+
+	<p>Also, the non-working images on a single page change with each request, seemingly at random. It does not matter if the images are cached (TYPO3 returns a 304 code) or if the images are really transferred. The response for the not working images a HTTP 500.</p></div>
+  </div>
+  
+
+  <div id="change-224912" class="journal has-notes">
+    <h4><a href="60294.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 21:08">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224912-notes"><p>Hi!</p>
+
+
+	<p>Can you please switch to Development context and enable error logs, such that we get a full trace for the PHP errors above.<br />The 500 errors seem to stem from these error. We need to find the dependency, which the requests seem to interfere.</p></div>
+  </div>
+  
+
+  <div id="change-224918" class="journal has-notes">
+    <h4><a href="60294.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 21:12">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224918-notes"><p>What is in your AdditionalConfiguration?</p></div>
+  </div>
+  
+
+  <div id="change-224920" class="journal has-notes">
+    <h4><a href="60294.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37194">Jost Baron</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 21:19">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224920-notes"><p>There are no more error messages, only one I have not posted yet is this one:<br /><pre>
+[Wed Jul 23 21:11:58.037103 2014] [fcgid:warn] [pid 31189] (104)Connection reset by peer: [client 127.0.0.1:53970] mod_fcgid: error reading data from FastCGI server, referer: [...]
+[Wed Jul 23 21:11:58.037190 2014] [core:error] [pid 31189] [client 127.0.0.1:53970] End of script output before headers: index.php, referer: [...]
+</pre></p>
+
+
+	<p>But thats only the fcgid-equivalent of the one above with the bus error.</p>
+
+
+	<p>My <code>AdditionalConfiguration.php</code> contains this:</p>
+
+
+<pre>
+&lt;?php
+    include_once('ServerspecificConfiguration.php');
+</pre>
+
+	<p>The <code>ServerspecificConfiguration.php</code> contains this (or something similar):</p>
+
+
+<pre>
+&lt;?php
+use \TYPO3\CMS\Core\Configuration\ConfigurationManager;
+
+ConfigurationManager::setLocalConfigurationValueByPath('DB/database', 'foobar');
+ConfigurationManager::setLocalConfigurationValueByPath('DB/host',     'localhost');
+ConfigurationManager::setLocalConfigurationValueByPath('DB/password', 'foobar');
+ConfigurationManager::setLocalConfigurationValueByPath('DB/username', 'foobar');
+
+ConfigurationManager::setLocalConfigurationValueByPath('GFX/colorspace', 'RGB');
+
+ConfigurationManager::setLocalConfigurationValueByPath('MAIL/transport',                'foobar');
+ConfigurationManager::setLocalConfigurationValueByPath('MAIL/transport_smtp_server',    'foobar');
+ConfigurationManager::setLocalConfigurationValueByPath('MAIL/transport_smtp_username',  'foobar');
+ConfigurationManager::setLocalConfigurationValueByPath('MAIL/transport_smtp_password',  '');
+ConfigurationManager::setLocalConfigurationValueByPath('MAIL/transport_smtp_encrypt',   '');
+
+ConfigurationManager::setLocalConfigurationValueByPath('SYS/enableDeprecationLog', 'file');
+</pre></div>
+  </div>
+  
+
+  <div id="change-224923" class="journal has-notes">
+    <h4><a href="60294.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 21:58">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224923-notes"><p>Ok, here we come closer to the problem why your LocalConfiguration file is rewritten all the time.</p>
+
+
+	<p>ConfigurationManager::setLocalConfigurationValueByPath() rewrites the file on EVERY call!</p>
+
+
+	<p>What you want to do is actually:<br /><pre><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="predefined">$GLOBALS</span>[<span class="string"><span class="delimiter">'</span><span class="content">TYPO3_CONF_VARS</span><span class="delimiter">'</span></span>][<span class="string"><span class="delimiter">'</span><span class="content">DB</span><span class="delimiter">'</span></span>][<span class="string"><span class="delimiter">'</span><span class="content">database</span><span class="delimiter">'</span></span>] = <span class="string"><span class="delimiter">'</span><span class="content">foobar</span><span class="delimiter">'</span></span>;
+<span class="line-numbers">2</span><span class="predefined">$GLOBALS</span>[<span class="string"><span class="delimiter">'</span><span class="content">TYPO3_CONF_VARS</span><span class="delimiter">'</span></span>][<span class="string"><span class="delimiter">'</span><span class="content">DB</span><span class="delimiter">'</span></span>][<span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span>] = <span class="string"><span class="delimiter">'</span><span class="content">host</span><span class="delimiter">'</span></span>;
+<span class="line-numbers">3</span>...
+</span></code></pre></p>
+
+
+	<p>You do not want to persist this configuration, you just want to override it.</p>
+
+
+	<p>Keep in mind that the LocalConfiguration is cached and may not always be read from the file, only the AdditionalConfiguration is read everytime.</p></div>
+  </div>
+  
+
+  <div id="change-224926" class="journal has-notes">
+    <h4><a href="60294.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37194">Jost Baron</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 22:25">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-224926-notes"><p>Ok, this has solved the problem. Thanks for your time!</p>
+
+
+	<p>Shouldn't the LocalConfiguration.php be protected against concurrent write access, in case someone does a thing like I did? In that case a performance hit would occur since requests become serialized, but there would not be any random failures.</p></div>
+  </div>
+  
+
+  <div id="change-224927" class="journal has-notes has-details">
+    <h4><a href="60294.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-23" title="2014-07-23 22:30">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-224927-notes"><p>Great!</p>
+
+
+	<p>Well, there should never be a situation where one might trigger two requests in parallel that modify the LocalConfiguration file.<br />Moreover locking at this low level is really tough and generally there is no clean locking mechanism for PHP that works everywhere.</p>
+
+
+	<p>So my answer is, No.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-60294-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/60294.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="60294.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/60294 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:36:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,873 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/66614 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:37:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #66614: FAL processed files are deleted - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/66614.atom" rel="alternate" title="Core - Bug #66614: FAL processed files are deleted" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-66614-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #66614</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>FAL processed files are deleted</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-04-27" title="2015-04-27 20:19">3 months</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 12:01">about 1 month</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2015-04-27</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2968">7.3 (Packages)</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td>Stabilization Sprint</td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>hard</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <a name="How-to-reproduce"></a>
+<h2 >How to reproduce<a href="#How-to-reproduce" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>set `config.noScaleUp = 0` in TS</li>
+		<li>add a magic image to RTE</li>
+		<li>preview the page in FE</li>
+	</ul>
+
+
+	<p>Result: Image broken</p>
+
+
+	<a name="Root-cause"></a>
+<h2 >Root cause<a href="#Root-cause" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Setting config.noScaleUp causes this line to be executed in typo3/sysext/frontend/Classes/Page/PageGenerator.php:88<br /><pre>
+$GLOBALS['TYPO3_CONF_VARS']['GFX']['im_noScaleUp'] = isset($GLOBALS['TSFE']-&gt;config['config']['noScaleUp'])
+   ? '' . $GLOBALS['TSFE']-&gt;config['config']['noScaleUp']
+   : $GLOBALS['TYPO3_CONF_VARS']['GFX']['im_noScaleUp'];
+</pre></p>
+
+
+	<p>This makes ['GFX']['im_noScaleUp'] a <strong>string</strong>, while in BE (when the preview image is generated in RTE) this is only loaded from install tool, where this is a <strong>boolean</strong> value.</p>
+
+
+	<p>This tiny difference has the effect that the calculated checksums used to determine whether a processed file already exists mismatch and the already generated processed file is deleted from disk.</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-12871">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="67071" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="67071.html" class="issue status-7 priority-1 closed">Task #67071</a>: Add cleanup tool for processed files to Install Tool
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2015-05-21</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12960">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="67385" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="67385.html" class="issue status-7 priority-2 closed">Bug #67385</a>: SQL parser does not support string as join condition
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2015-06-10</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/66614/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/66614/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=66614&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/ab13da3d0958e00991661c6f48c97fb4e430ddb2" title="Revision ab13da3d">Revision ab13da3d</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 09:40">about 1 month</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Avoid unnecessary generation of processed files</p>
+
+
+	<p>Removing [GFX] off the checksum data used to identify a processed file<br />ensures that data type inconsistencies within [GFX] do not cause a<br />regeneration of the processed file.</p>
+
+
+	<p>A new upgrade wizard for the Install Tool is added to migrate existing<br />processed files without the need to regenerate those.</p>
+
+
+	<p>Resolves: <a href="66614.html" class="issue status-7 priority-1 closed" title="FAL processed files are deleted (Resolved)">#66614</a><br />Releases: master, 6.2<br />Change-Id: Id90ce923b26ee726d15cf3d0cfcafc4ec4d7405d<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a><br />Reviewed-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Reviewed-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;<br />Tested-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;<br />Reviewed-by: Stefan Neufeind &lt;<a class="email" href="mailto:typo3.neufeind@speedpartner.de">typo3.neufeind@speedpartner.de</a>&gt;<br />Reviewed-by: Alexander Opitz &lt;<a class="email" href="mailto:opitz.alexander@googlemail.com">opitz.alexander@googlemail.com</a>&gt;<br />Tested-by: Alexander Opitz &lt;<a class="email" href="mailto:opitz.alexander@googlemail.com">opitz.alexander@googlemail.com</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/9067813e321bf862b2da7574d9c44aa88df64356" title="Revision 9067813e">Revision 9067813e</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 11:19">about 1 month</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] SQL parser does not support string as join condition</p>
+
+
+	<p>The SQL parser is capable of parsing</p>
+
+
+	<pre><code>JOIN T1 ON T1.some_field = T2.some_other_field</code></pre>
+
+
+	<p>and</p>
+
+
+	<pre><code>JOIN T1 ON T1.some_field = 4</code></pre>
+
+
+	<p>but not</p>
+
+
+	<pre><code>JOIN T1 ON T1.some_field = 'some string'</code></pre>
+
+
+	<p>Change-Id: I7806699ea44685ab717cc0e8a75f7b53a1b2b1cc<br />Resolves: <a href="67385.html" class="issue status-7 priority-2 closed" title="SQL parser does not support string as join condition (Resolved)">#67385</a><br />Related: <a href="66614.html" class="issue status-7 priority-1 closed" title="FAL processed files are deleted (Resolved)">#66614</a><br />Releases: master, 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/40144">http://review.typo3.org/40144</a><br />Reviewed-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Tested-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Reviewed-by: Alexander Opitz &lt;<a class="email" href="mailto:opitz.alexander@googlemail.com">opitz.alexander@googlemail.com</a>&gt;<br />Reviewed-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;<br />Tested-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/6d44ed99e9090955b3e66ddfa2034af63eb8e948" title="Revision 6d44ed99">Revision 6d44ed99</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 11:25">about 1 month</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] SQL parser does not support string as join condition</p>
+
+
+	<p>The SQL parser is capable of parsing</p>
+
+
+	<pre><code>JOIN T1 ON T1.some_field = T2.some_other_field</code></pre>
+
+
+	<p>and</p>
+
+
+	<pre><code>JOIN T1 ON T1.some_field = 4</code></pre>
+
+
+	<p>but not</p>
+
+
+	<pre><code>JOIN T1 ON T1.some_field = 'some string'</code></pre>
+
+
+	<p>Change-Id: I7806699ea44685ab717cc0e8a75f7b53a1b2b1cc<br />Resolves: <a href="67385.html" class="issue status-7 priority-2 closed" title="SQL parser does not support string as join condition (Resolved)">#67385</a><br />Related: <a href="66614.html" class="issue status-7 priority-1 closed" title="FAL processed files are deleted (Resolved)">#66614</a><br />Releases: master, 6.2<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/40145">http://review.typo3.org/40145</a><br />Reviewed-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;<br />Tested-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/66ab2d684b6a9c7afa18a93175d02c411beac3d6" title="Revision 66ab2d68">Revision 66ab2d68</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 11:30">about 1 month</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Avoid unnecessary generation of processed files</p>
+
+
+	<p>Removing [GFX] off the checksum data used to identify a processed file<br />ensures that data type inconsistencies within [GFX] do not cause a<br />regeneration of the processed file.</p>
+
+
+	<p>A new upgrade wizard for the Install Tool is added to migrate existing<br />processed files without the need to regenerate those.</p>
+
+
+	<p>Resolves: <a href="66614.html" class="issue status-7 priority-1 closed" title="FAL processed files are deleted (Resolved)">#66614</a><br />Releases: master, 6.2<br />Change-Id: Id90ce923b26ee726d15cf3d0cfcafc4ec4d7405d<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/40143">http://review.typo3.org/40143</a><br />Reviewed-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;<br />Tested-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/acdca0a628d736af9143bd9ce90725bd119b3651" title="Revision acdca0a6">Revision acdca0a6</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/2592">Morton Jonuschat</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-20" title="2015-07-20 19:27">14 days</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Make ProcessedFileChecksumUpdate compatible with DBAL</p>
+
+
+	<p>Use explicit CAST statements in the SQL queries performed by the<br />updater to allow other DBMS to compare a VARCHAR with an INT field.</p>
+
+
+	<p>The SQLparser has been extended to support CAST statements as part<br />of a JOIN clause.</p>
+
+
+	<p>Resolves: <a href="67708.html" class="issue status-7 priority-1 closed" title="Invalid SQL: ProcessedFileChecksumUpdate compares BLOB with INTEGER column (Resolved)">#67708</a><br />Related: <a href="66614.html" class="issue status-7 priority-1 closed" title="FAL processed files are deleted (Resolved)">#66614</a><br />Releases: master<br />Change-Id: I4a13eae92290b9ce8149aa5ef93df1305c02715a<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/40576">http://review.typo3.org/40576</a><br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:markus.klein@typo3.org">markus.klein@typo3.org</a>&gt;<br />Reviewed-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Tested-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Reviewed-by: Xavier Perseguers &lt;<a class="email" href="mailto:xavier@typo3.org">xavier@typo3.org</a>&gt;<br />Reviewed-by: Christian Kuhn &lt;<a class="email" href="mailto:lolli@schwarzbu.ch">lolli@schwarzbu.ch</a>&gt;<br />Tested-by: Christian Kuhn &lt;<a class="email" href="mailto:lolli@schwarzbu.ch">lolli@schwarzbu.ch</a>&gt;</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-256977" class="journal has-notes has-details">
+    <h4><a href="66614.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-04-27" title="2015-04-27 20:23">3 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-256977-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/38972">http://review.typo3.org/38972</a></p></div>
+  </div>
+  
+
+  <div id="change-256978" class="journal has-details">
+    <h4><a href="66614.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-04-27" title="2015-04-27 20:26">3 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Description</strong> updated (<a href="../../external.html?link=https://forge.typo3.org/journals/diff/256978?detail_id=219727" title="View differences">diff</a>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-256979" class="journal has-notes has-details">
+    <h4><a href="66614.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-04-27" title="2015-04-27 21:07">3 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Accepted</i></li>
+      
+       <li><strong>Priority</strong> changed from <i>Must have</i> to <i>Should have</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>next-patchlevel</i></strike>)</li>
+      
+       <li><strong>Complexity</strong> changed from <i>no-brainer</i> to <i>hard</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-256979-notes"><p>Abandoned patch.</p>
+
+
+	<p>The issue is way more dramatic.</p>
+
+
+	<p>We have the situation that user experience will differ for BE and FE, if GFX|im_noScaleUp does not match config.noScaleUp.<br />BE and FE would behave differently.</p></div>
+  </div>
+  
+
+  <div id="change-257823" class="journal has-notes has-details">
+    <h4><a href="66614.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-04" title="2015-05-04 16:55">3 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Priority</strong> changed from <i>Should have</i> to <i>Must have</i></li>
+      
+       <li><strong>Target version</strong> set to <i>next-patchlevel</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-257823-notes"><p><a href="56147.html" class="issue status-4 priority-2 child" title="Regenerate missing RTE magic image on rendering (Needs Feedback)">#56147</a> deals with the issue that processed files are not regenerated. This is related here, since with this bug you can trigger the other bug easily.<br />Actually, if <a href="56147.html" class="issue status-4 priority-2 child" title="Regenerate missing RTE magic image on rendering (Needs Feedback)">#56147</a> would be working, I would have never noticed this bug here.</p>
+
+
+	<p>Regarding this issue: We decided to remove the [GFX] part from the checksum and add a cleanup-util to the Install Tool.</p></div>
+  </div>
+  
+
+  <div id="change-259371" class="journal has-notes has-details">
+    <h4><a href="66614.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-21" title="2015-05-21 02:32">2 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>next-patchlevel</i> to <i>6.2.13</i></li>
+      
+       <li><strong>Sprint Focus</strong> set to <i>Stabilization Sprint</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-259371-notes"><p>I figured out the whole process now.</p>
+
+
+	<ol>
+	<li>After inserting the magic file into RTE</li>
+		<li>a ProcessedFile is generated for the thumb</li>
+		<li>When calling FE, it tries to render the file but (due to the data type issue) a new thumb (with new filename) is generated (so a new ProcessedFile)</li>
+		<li>Having the click-enlarge static template loaded of RTE, causes it to render the name of the original processed file (from <del>>cObj</del>>parameters, which contains the parsed RTE content), which has been deleted by the last step, when the new processed file was generated.</li>
+		<li>In FE it looks like the thumb-regeneration has failed, which is not true. Just the filename of the original thumb is used, which does not exist anymore.</li>
+	</ol>
+
+
+	<p>Ultima ratio:<br />Fixing the configuration change issue (removing GFX from the checksum) fixes the issue. The remaining FAL handling is totally fine in this case.</p>
+
+
+Implementation steps are:
+	<ol>
+	<li>Remove [GFX] from the checksum generated in \TYPO3\CMS\Core\Resource\Processing\AbstractGraphicalTask::getChecksumData()</li>
+		<li>Add a cleanup utility to Install-Tool, which allows to remove all processed files (<a href="67071.html" class="issue status-7 priority-1 closed" title="Add cleanup tool for processed files to Install Tool (Resolved)">#67071</a>)</li>
+	</ol></div>
+  </div>
+  
+
+  <div id="change-259374" class="journal has-notes has-details">
+    <h4><a href="66614.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-21" title="2015-05-21 02:37">2 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-259374-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-259441" class="journal has-notes">
+    <h4><a href="66614.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-21" title="2015-05-21 17:19">2 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-259441-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-259458" class="journal has-notes">
+    <h4><a href="66614.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-21" title="2015-05-21 18:54">2 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-259458-notes"><p>Patch set 3 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-259610" class="journal has-notes">
+    <h4><a href="66614.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-23" title="2015-05-23 02:26">2 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-259610-notes"><p>Patch set 4 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-259765" class="journal has-notes">
+    <h4><a href="66614.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-26" title="2015-05-26 12:54">2 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-259765-notes"><p>Patch set 5 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-259833" class="journal has-notes">
+    <h4><a href="66614.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-26" title="2015-05-26 23:54">2 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-259833-notes"><p>Patch set 6 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-259842" class="journal has-notes">
+    <h4><a href="66614.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-27" title="2015-05-27 09:25">2 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-259842-notes"><p>Patch set 7 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-259844" class="journal has-notes">
+    <h4><a href="66614.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-27" title="2015-05-27 09:31">2 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-259844-notes"><p>Patch set 8 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-259926" class="journal has-notes">
+    <h4><a href="66614.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-28" title="2015-05-28 22:08">2 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-259926-notes"><p>Patch set 9 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-260636" class="journal has-notes">
+    <h4><a href="66614.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-06" title="2015-06-06 15:38">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-260636-notes"><p>Patch set 10 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-260660" class="journal has-notes">
+    <h4><a href="66614.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-06" title="2015-06-06 23:39">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-260660-notes"><p>Patch set 11 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-260794" class="journal has-notes">
+    <h4><a href="66614.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-09" title="2015-06-09 11:05">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-260794-notes"><p>Patch set 12 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-260830" class="journal has-details">
+    <h4><a href="66614.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-09" title="2015-06-09 14:34">about 1 month</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>6.2.13</i> to <i>7.3 (Packages)</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-260852" class="journal has-notes">
+    <h4><a href="66614.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-09" title="2015-06-09 17:22">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-260852-notes"><p>Patch set 13 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/39644">http://review.typo3.org/39644</a></p></div>
+  </div>
+  
+
+  <div id="change-260901" class="journal has-notes">
+    <h4><a href="66614.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 09:50">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-260901-notes"><p>Patch set 1 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/40143">http://review.typo3.org/40143</a></p></div>
+  </div>
+  
+
+  <div id="change-260903" class="journal has-notes has-details">
+    <h4><a href="66614.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 10:01">about 1 month</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-260903-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/ab13da3d0958e00991661c6f48c97fb4e430ddb2" class="changeset" title="[BUGFIX] Avoid unnecessary generation of processed files Removing [GFX] off the checksum data us...">ab13da3d0958e00991661c6f48c97fb4e430ddb2</a>.</p></div>
+  </div>
+  
+
+  <div id="change-260905" class="journal has-notes has-details">
+    <h4><a href="66614.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 10:12">about 1 month</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-260905-notes"><p>Patch set 2 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/40143">http://review.typo3.org/40143</a></p></div>
+  </div>
+  
+
+  <div id="change-260922" class="journal has-notes has-details">
+    <h4><a href="66614.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-10" title="2015-06-10 12:01">about 1 month</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-260922-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/66ab2d684b6a9c7afa18a93175d02c411beac3d6" class="changeset" title="[BUGFIX] Avoid unnecessary generation of processed files Removing [GFX] off the checksum data us...">66ab2d684b6a9c7afa18a93175d02c411beac3d6</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-66614-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/66614.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="66614.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/66614 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:37:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
