@@ -1,0 +1,817 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/32106 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #32106: Support for Object source in PropertyMapper - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/32106.atom" rel="alternate" title="TYPO3.Flow - Feature #32106: Support for Object source in PropertyMapper" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (3)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-32106-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #32106</h2>
+
+<div class="issue status-2 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Support for Object source in PropertyMapper</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-11-26" title="2011-11-26 14:45">over 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-24" title="2013-06-24 09:59">about 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Accepted</td>
+    <th class="start-date">Start date:</th><td class="start-date">2011-11-26</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Property</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td>hard</td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>Yes</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Hi,</p>
+
+
+	<p>i'm trying to ditch my old TypeConverters in my Admin Package. I'm trying to replace them with the core TypeConverters by added some Converters to convert from float, boolean, etc to string.</p>
+
+
+	<p>One thing i can't do with the default propertyMapper is to convert from a object like DateTime or a Collection.</p>
+
+
+	<p>Currently i use an extended version of the propertyMapper that allows objects as source type in the determineSourceType function.<br />I attached a diff for the changes i made.</p>
+
+
+	<p>Would be great to get this into core.</p>
+
+
+	<p>Greetings Marc</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/19512/PropertyMapper.diff" class="icon icon-attachment">PropertyMapper.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/19512/PropertyMapper.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(449 Bytes)</span>
+  
+  
+    <span class="author">Marc Neuhaus, 2011-11-26 14:45</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-95210" class="journal has-notes">
+    <h4><a href="32106.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-11-28" title="2011-11-28 06:01">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-95210-notes"><p>Hey Marc,</p>
+
+
+	<p>what are you trying to archieve? Do you want to convert an object to other objects; or objects to strings etc?</p>
+
+
+	<p>The reason why I am asking is that Christopher and I have made a concept of making the Property Mapper aware of the reverse direction "Object --> Simple Type"; which makes the behavior again deterministic.</p>
+
+
+	<p>If you need the "Object to Object" conversion case, I'd be curious about some more detailed use-cases.</p>
+
+
+	<p>I am afraid that the "get_class" which you do in the patch is not enough, as it does not take object hierarchies / inheritance into account...</p>
+
+
+	<p>Greets,<br />Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-95219" class="journal has-notes">
+    <h4><a href="32106.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-11-28" title="2011-11-28 10:08">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-95219-notes"><p>I'm trying to archive a conversion back to a simple string to display the Entities, Collections, Datetimes,... without additional Fluid markup.</p>
+
+
+	<p>After implementing the Entity -> String converter yesterday i realized as well, that the get_class doesn't suffice for this because of the undetermined amount of Entity classes it's capable to convert.</p>
+
+
+	<p>What i have done now is to return "object" from the determineSourceType function and make the detailed check in the canConvertFrom.</p>
+
+
+<pre>
+    protected function determineSourceType($source) {
+        if (is_string($source)) {
+            return 'string';
+        } elseif (is_array($source)) {
+            return 'array';
+        } elseif (is_float($source)) {
+            return 'float';
+        } elseif (is_integer($source)) {
+            return 'integer';
+        } elseif (is_bool($source)) {
+            return 'boolean';
+        } elseif (is_object($source)) {
+            return "object";
+        } else {
+            throw new \TYPO3\FLOW3\Property\Exception\InvalidSourceException('The source is not of type string, array, object, float, integer or boolean, but of type "' . gettype($source) . '"', 1297773150);
+        }
+    }
+</pre>
+
+	<p>Here are 3 examples:</p>
+
+
+	<p>DateTime<br /><pre>
+    protected $sourceTypes = array('object');
+    public function canConvertFrom($source, $targetType) {
+        if(is_object($source) &#38;&#38; $source instanceof \DateTime &#38;&#38; $targetType == "string")
+            return TRUE;
+    }
+</pre></p>
+
+
+	<p>Collection<br /><pre>
+    protected $sourceTypes = array('object', 'array', 'ArrayObject', 'SplObjectStorage', 'Doctrine\Common\Collections\Collection', 'Doctrine\Common\Collections\ArrayCollection', 'Doctrine\ORM\PersistentCollection');
+    public function canConvertFrom($source, $targetType) {
+        if(is_array($source))
+            return TRUE;
+        return in_array(get_class($source), $this-&gt;sourceTypes);
+    }
+</pre></p>
+
+
+	<p>Object<br /><pre>
+    protected $sourceTypes = array('object');
+    public function canConvertFrom($source, $targetType) {
+        return method_exists($source, "__toString");
+    }
+</pre></p>
+
+
+	<p>Greetings Marc</p></div>
+  </div>
+  
+
+  <div id="change-95287" class="journal has-notes">
+    <h4><a href="32106.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-11-29" title="2011-11-29 09:06">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-95287-notes"><p>Thanks Marc for your detailed explanations,</p>
+
+
+	<p>As already said, Christopher and me have made a very flexible draft about converting from objects back to simple types, also taking possible recursion etc. into account.</p>
+
+
+	<p>Because of this, I'd rather not integrate your patch right now, but instead implement a clean solution later. If you'd like to work on this, let me know; then I'll post our ideas in a more detailed fashion.</p>
+
+
+	<p>Hope that makes sense for you :-)</p>
+
+
+	<p>Greets, Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-95292" class="journal has-notes">
+    <h4><a href="32106.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-11-29" title="2011-11-29 09:41">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-95292-notes"><p>Yea, sure post you ideas. I'll take a shot at implementing them :)</p>
+
+
+	<p>Greetings Marc</p></div>
+  </div>
+  
+
+  <div id="change-95633" class="journal has-notes">
+    <h4><a href="32106.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-01" title="2011-12-01 16:46">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-95633-notes"><a name="Concept-for-implementing-a-reverse-direction-into-the-Property-Mapper"></a>
+<h1 >Concept for implementing a reverse direction into the Property Mapper<a href="#Concept-for-implementing-a-reverse-direction-into-the-Property-Mapper" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>We'll take a little mathematical look at the Property Mapper, as it helps (at least for me) to get its functionality clear.</p>
+
+
+	<a name="Mathematical-view-of-Property-Mapping"></a>
+<h2 >Mathematical view of Property Mapping<a href="#Mathematical-view-of-Property-Mapping" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>This is already implemented; it's just for clarification.</li>
+		<li>The property mapper is a function <strong>p</strong> which converts from <code>source</code> to <code>dest</code>: <code>dest = p(source)</code></li>
+		<li>We want to implement the other direction (from <code>dest</code> to <code>source</code>), so we are looking for a reverse function <code>p-1</code> with the following properties:
+	<ul>
+	<li><code>p-1(p(s)) = s</code> does NOT hold in all cases, as we show by example:
+	<ul>
+	<li>let's convert the string "x1" into a number.</li>
+		<li>This number will be 0 because of invalid input.</li>
+		<li>Thus, if the number 0 is converted back into a string, this is "0". And "0" != "x1" </li>
+	</ul>
+	</li>
+		<li>Instead, the following Invariant has to be true <strong>always</strong>: <code>p(source) = p(p-1(p(source)))</code>
+	<ul>
+	<li>This reads as: "If you convert from source to destination, that must result in the same as converting from source to dest, back to source and back to dest again" </li>
+		<li>Take the number example from above, this is true here.</li>
+	</ul>
+	</li>
+	</ul>
+	</li>
+		<li>The property mapping function <strong>p</strong> uses multiple <strong>type converters</strong> <code>t1...tn</code></li>
+	</ul>
+
+
+	<a name="Type-Converter"></a>
+<h2 >Type Converter<a href="#Type-Converter" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>Each type converter contains:
+	<ul>
+	<li>n source types</li>
+		<li>1 target type</li>
+		<li>canConvert function</li>
+	</ul>
+	</li>
+		<li>It works in the following way:
+	<ol>
+	<li>First, the Type Converter is asked for the nested <strong>source properties</strong> of the input, and their target types.
+	<ol>
+	<li>Then, the property mapper converta the nested source properties recursively.</li>
+	</ol>
+	</li>
+		<li>Then, the target type is built, using the already converted sub-properties.</li>
+	</ol></li>
+	</ul>
+
+
+	<a name="Extending-Type-Converters-into-the-other-direction"></a>
+<h2 >Extending Type Converters into the other direction<a href="#Extending-Type-Converters-into-the-other-direction" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>Basically, this also works when converting from target to source, in the same manner:
+	<ul>
+	<li>Each type converter is responsible for <strong>1</strong> incoming type (which is the <strong>target type from above</strong>)</li>
+		<li>Each type converter is responsible for <strong>n</strong> outgoing types (which are the <strong>source types from above</strong>)</li>
+	</ul>
+	</li>
+		<li>Then, it should work in the following way (similar as above):
+	<ol>
+	<li>First, the type converter is asked for the nested properties which need to be converted to simple types; and their expected simple type
+	<ol>
+	<li>Then, the property mapper converts the nested target properties recursively into the expected simple type</li>
+	</ol>
+	</li>
+		<li>Then, the source type is built, using the already-converted sub-properties</li>
+	</ol></li>
+	</ul>
+
+
+	<a name="Summary"></a>
+<h2 >Summary<a href="#Summary" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><code>sourceTypes</code> of simpleType->object direction become <strong>target types</strong> of object->simpleType direction</li>
+		<li><code>targetType</code> of simpleType->object direction becomes <strong>source Type</strong> of object->simpleType direction</li>
+		<li>There need to be two seperate <code>canConvert(From|To)</code> functions, one for each direction</li>
+		<li>There need to be two seperate <code>get(Source|Target)ChildPropertiesToBeConverted</code> functions, one for each direction</li>
+		<li>There need to be two seperate <code>getTypeOfChildProperty</code> / <code>getTargetTypeOfChildProperty</code> functions, one for each direction</li>
+		<li>There need to be two seperate <code>convertFrom|convertTo</code> methods, one for each direction.</li>
+	</ul>
+
+
+	<p>The API for the "Back" direction should be specified in a <strong>new</strong> interface; such that a type converter can decide if it should be only used in the one or in both directions.</p>
+
+
+	<a name="Development-Process"></a>
+<h2 >Development Process<a href="#Development-Process" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>Development of the reverse direction should be done test-driven, convered with functional and unit tests.</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-95814" class="journal has-notes">
+    <h4><a href="32106.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-05" title="2011-12-05 06:14">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-95814-notes"><p>Hey Marc,</p>
+
+
+	<p>If you need any help, do not hesitate to contact me :)</p>
+
+
+	<p>Greets,<br />Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-99338" class="journal has-notes">
+    <h4><a href="32106.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-12" title="2012-01-12 07:16">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-99338-notes"><p>Hey Marc,</p>
+
+
+	<p>do you need any help on this, or anything else I can do to support you here?</p>
+
+
+	<p>Greets,<br />Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-99350" class="journal has-notes">
+    <h4><a href="32106.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-12" title="2012-01-12 11:27">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-99350-notes"><p>Hey Sebastian,</p>
+
+
+	<p>unfortunately i've been drowning in Work the last 3 Weeks :/</p>
+
+
+	<p>i promise to get back to this as soon as i can!</p>
+
+
+	<p>Greetings Marc</p></div>
+  </div>
+  
+
+  <div id="change-99363" class="journal has-notes">
+    <h4><a href="32106.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-12" title="2012-01-12 13:01">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-99363-notes"><p>cool Marc, thanks for the update :-)</p>
+
+
+	<p>Greetings, Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-101871" class="journal has-notes">
+    <h4><a href="32106.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-02-07" title="2012-02-07 14:12">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-101871-notes"><p>Hey,</p>
+
+
+	<p>any news already? :)</p>
+
+
+	<p>Greets, Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-102774" class="journal has-notes">
+    <h4><a href="32106.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-02-14" title="2012-02-14 10:57">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-102774-notes"><p>Hey Sebastian,</p>
+
+
+	<p>sorry for my late Reply.</p>
+
+
+	<p>Sadly i'm still drowning in an ocean of work and can't see an end at the moment.<br />My FLOW3 Admin is stalling because of this as well currently :/<br />I think for now i'll have to postpone this indefinitely, i'm very sorry.</p>
+
+
+	<p>Greetings Marc</p></div>
+  </div>
+  
+
+  <div id="change-106093" class="journal has-notes has-details">
+    <h4><a href="32106.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-03-09" title="2012-03-09 09:17">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>hard</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-106093-notes"><p>(I felt free to set to "Accepted" because I think there's enough agree for the need for it)</p>
+
+
+	<p>Sebastian, I read a bit through your summary above; a basic question came up: it seems you tend to use the same class/"file" for both directions, by adding additional methods.<br />Although that seems fine in theory, I think we may come up to pretty large classes, especially when adding helper methods.<br />For the reason I didn't get the big picture of the mapper (although I already digged through when writing my OpenGraph package) let me ask the question: could the current concrete TypeConverter classes <strong>functionality</strong> be reused? Because if not, it might be really an idea to add an additional namespace "NonPrimitive" (or such) where the opposite directions are implemented, with the same function set, but for the opposite direction of conversion.</p>
+
+
+	<p>In the mailing list, you named a "context", allow me quoting you here regarding the idea of an Object -> Json  mapper:</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>Extend Property Mapping to support the reverse direction "object -></li>
+	</ul>
+
+
+</blockquote>
+
+    Simple Type", and also under a specific "context".
+
+<blockquote>
+
+	<ul>
+	<li>For JSON, you'd then call property mapping "object -> array" under</li>
+	</ul>
+
+
+</blockquote>
+
+    the context "json" 
+
+	<p>Where do you exactly see this context "attached"? Or, what <strong>is</strong> a context? It could even be an object itself which contains the converting directives; would you agree?<br />So there might be a pretty raw Object -> Array converter, but intercepted by the <code>\TYPO3.FLOW3\Property\TypeConverter\Context\JsonContext</code>?</p></div>
+  </div>
+  
+
+  <div id="change-170446" class="journal has-notes">
+    <h4><a href="32106.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-06-24" title="2013-06-24 09:59">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-170446-notes"><blockquote>
+
+	<p>Sebastian, I read a bit through your summary above; a basic question came up: it seems you tend to use the same class/"file" for both directions, by adding additional methods.<br />Although that seems fine in theory, I think we may come up to pretty large classes, especially when adding helper methods.<br />For the reason I didn't get the big picture of the mapper (although I already digged through when writing my OpenGraph package) let me ask the question: could the current concrete TypeConverter classes <strong>functionality</strong> be reused?</p>
+
+
+</blockquote>
+
+	<p>Good question. Probably not. However the "to object" and "from object" directions must be kept closely in sync; that's why I am still a little bit in favour of having them inside one class or at least closely related.</p>
+
+
+<blockquote>
+
+	<p>Because if not, it might be really an idea to add an additional namespace "NonPrimitive" (or such) where the opposite directions are implemented, with the same function set, but for the opposite direction of conversion.</p>
+
+
+</blockquote>
+
+	<p>I'd be OK with having a "Reverse*" naming or the like, or "ArrayReverseConverter", "ReverseArrayConverter" or anything like that.</p>
+
+
+<blockquote>
+
+	<p>In the mailing list, you named a "context", allow me quoting you here regarding the idea of an Object -> Json  mapper:</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>Extend Property Mapping to support the reverse direction "object -></li>
+	</ul>
+
+
+</blockquote>
+
+	<p>Simple Type", and also under a specific "context".</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>For JSON, you'd then call property mapping "object -> array" under</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>the context "json"</p>
+
+
+	<p>Where do you exactly see this context "attached"? Or, what <strong>is</strong> a context? It could even be an object itself which contains the converting directives; would you agree?</p>
+
+
+</blockquote>
+
+	<p>A "Context" for me would be just a string (maybe hierarchical like "json" or "json/specialconversion") which is attached to the property mapping configuration (I think).</p>
+
+
+	<p>The "context" would influence the choice of the type converter, just like source, destination type and priority.</p>
+
+
+<blockquote>
+
+	<p>So there might be a pretty raw Object -> Array converter, but intercepted by the <code>\TYPO3.FLOW3\Property\TypeConverter\Context\JsonContext</code>?</p>
+
+
+</blockquote>
+
+	<p>Hm, I feel that's dangerous because it would make the conversion process quite a lot more intransparent.</p>
+
+
+	<p>Greets,<br />Sebastian</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-32106-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/32106.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="32106.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/32106 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

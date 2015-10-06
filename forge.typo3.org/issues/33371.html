@@ -1,0 +1,815 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/33371 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #33371: HTTP 1.1 Support - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/33371.atom" rel="alternate" title="TYPO3.Flow - Feature #33371: HTTP 1.1 Support" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/4355">Jacob Floyd</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-33371-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #33371</h2>
+
+<div class="issue status-7 priority-1 closed parent details">
+  
+
+  
+
+<div class="subject">
+<div><h3>HTTP 1.1 Support</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-22" title="2012-01-22 17:15">over 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-06-20" title="2012-06-20 21:16">about 3 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-05-17</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Http</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1773">TYPO3 Flow Base Distribution - 1.1 RC1</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td>nightmare</td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Implement proper HTTP 1.1 support.</p>
+
+
+	<p>This issue is a stub for the corresponding FLOW3 1.1 key feature (until I come up with some better description)</p>
+  </div>
+
+
+
+
+
+
+<hr />
+<div id="issue_tree">
+<div class="contextual">
+  
+</div>
+<p><strong>Subtasks</strong></p>
+<form><table class="list issues"><tr class="issue issue-37259 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="37259" /></td><td class="subject"><a href="37259.html" class="issue status-7 priority-1 closed child">Task #37259</a>: Improve spec coverage of Request / Response classes</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr></table></form>
+</div>
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-6467">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="37212" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="37212.html" class="issue status-2 priority-1">Feature #37212</a>: Edge Side Includes (ESI)
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2012-05-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6023">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="35243" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="35243.html" class="issue status-7 priority-1 closed">Feature #35243</a>: HTTP 1.1 Support – Foundations
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-03-26</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/33371/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/33371/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=33371&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/331a78e8ba19923951a83d50e5f30cc09068db61" title="Revision 331a78e8">Revision 331a78e8</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-11" title="2012-04-11 14:09">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][TASK] Sub package name case and location adjustments</p>
+
+
+	<p>This change set contains (mostly) renames and relocations of FLOW3 sub<br />namespaces. These changes are necessary to meet the FLOW3 coding<br />guidelines and naming conventions and to support the new CLI / HTTP<br />and MVC structure.</p>
+
+
+	<p>\TYPO3\FLOW3\AOP -> \TYPO3\FLOW3\Aop<br />\TYPO3\FLOW3\MVC -> \TYPO3\FLOW3\Mvc<br />\TYPO3\FLOW3\MVC\CLI -> \TYPO3\FLOW3\Cli<br />\TYPO3\FLOW3\MVC\Web\Routing -> \TYPO3\FLOW3\Mvc\Routing<br />\TYPO3\FLOW3\MVC\Web\Request -> \TYPO3\FLOW3\Mvc\ActionRequest<br />\TYPO3\FLOW3\MVC\Web\Response -> \TYPO3\FLOW3\Http\Response<br />\TYPO3\FLOW3\MVC\Web\SubRequest -> \TYPO3\FLOW3\Mvc\ActionRequest<br />TYPO3\FLOW3\MVC\Web\SubResponse -> TYPO3\FLOW3\Http\Response<br />\TYPO3\FLOW3\MVC\Controller\CommandController -><br />    \TYPO3\FLOW3\Cli\CommandController<br />\TYPO3\FLOW3\Property\DataType\Uri -> \TYPO3\FLOW3\Http\Uri</p>
+
+
+	<p>\TYPO3\FLOW3\MVC\Web\RequestBuilder doesn't exist anymore. If<br />you need to create requests, do "new ActionRequest($parentRequest)" <br />\TYPO3\FLOW3\MVC\Web\SubRequestBuilder doesn't exist anymore.<br />If you need to create sub requests, do "new ActionRequest($parentRequest)""</p>
+
+
+	<p>Note that this change set contains most but not every single adjustment<br />to the new locations as it is part of a bigger change for the respective<br />feature.</p>
+
+
+	<p>Change-Id: Idd28eb709d9543aff97b333dcbf6fa4d544b5746<br />Resolves: <a href="33705.html" class="issue status-7 priority-2 closed" title="Inconsistent spelling of sub package and class names (Resolved)">#33705</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/eb813f9640c3a22c14711a61187ef5320150784c" title="Revision eb813f96">Revision eb813f96</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-11" title="2012-04-11 14:10">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Add missing getParentRequest() method in HTTP Response</p>
+
+
+	<p>Furthermore, some documentation cleanup.</p>
+
+
+	<p>Related: <a href="35243.html" class="issue status-7 priority-1 closed" title="HTTP 1.1 Support – Foundations (Resolved)">#35243</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1<br />Change-Id: I310dad852b8ac0053bd5c2a6c4b03e8f32c1c6d3</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/bbc5e3349d8378329da28a052b683ec847d9abd6" title="Revision bbc5e334">Revision bbc5e334</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-11" title="2012-04-11 14:10">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Provide method getContent() for HTTP request</p>
+
+
+	<p>This implements a method for retrieving the HTTP request body.</p>
+
+
+	<p>Change-Id: I6c11fc7a72ee3da76b73c87a48ab0c2dc8fb53e6<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/0e05ccc570e5d0a46c860e23d38eec3566e6e36e" title="Revision 0e05ccc5">Revision 0e05ccc5</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-11" title="2012-04-11 14:10">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][FEATURE] HTTP 1.1 Support – Foundations</p>
+
+
+	<p>This commit contains the foundations for a better HTTP support in<br />FLOW3. It extracts request and response handling into a dedicated<br />sub package "Http" and clearly distinguishes between HTTP requests<br />and "action requests".</p>
+
+
+	<p>While this change set does contain a few new features which are<br />related to HTTP support, it is by far not complete and rather serves<br />as a foundation for further features which are following.</p>
+
+
+	<p>Change-Id: I557e6c45cdf20970f9410374aa03ee115e7789cd<br />Resolves: <a href="35243.html" class="issue status-7 priority-1 closed" title="HTTP 1.1 Support – Foundations (Resolved)">#35243</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/238efb0698735cf49457da7f9fe01671b757a905" title="Revision 238efb06">Revision 238efb06</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-23" title="2012-05-23 13:57">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Temporarily remove nested response code</p>
+
+
+	<p>This temporarily removes the code in HTTP Response which<br />tackles support of nested responses. This feature needs<br />to be implemented only when most of the other features,<br />including Cache Control, are in place.</p>
+
+
+	<p>Change-Id: Idd85fcb53be412d3df5c603da37d4015f71c36c0<br />Releases: 1.1, 1.2<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a></p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/26f83dd314e9b38d7d7bca10ec3d4b27e467ab5e" title="Revision 26f83dd3">Revision 26f83dd3</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-23" title="2012-05-23 16:21">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Support for HTTP PUT/DELETE arguments</p>
+
+
+	<p>This adds transparent argument support for arguments<br />in PUT and DELETE requests which are passed through<br />the request body. Depending on the content type of<br />the request, the message body is parsed and then<br />mapped into arguments for further use in controllers.</p>
+
+
+	<p>The following content content types are currently<br />supported:</p>
+
+
+	<ul>
+	<li>application/x-www-form-urlencoded</li>
+		<li>application/json</li>
+		<li>xml</li>
+	</ul>
+
+
+	<p>Change-Id: Ifa6712e38d68c94cd9ec79a499d25ee577fc2d57<br />Resolves: <a href="36913.html" class="issue status-7 priority-1 closed" title="HTTP PUT data not regonized as arguments  (Resolved)">#36913</a><br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/5151598fee6f1b4bd95aa6b750c04fa55e172a29" title="Revision 5151598f">Revision 5151598f</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-23" title="2012-05-23 16:25">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Temporarily remove nested response code</p>
+
+
+	<p>This temporarily removes the code in HTTP Response which<br />tackles support of nested responses. This feature needs<br />to be implemented only when most of the other features,<br />including Cache Control, are in place.</p>
+
+
+	<p>Change-Id: Icfbf4186c08997c4ce69838bbe4145a8af1e4b0b<br />Releases: 1.1, 1.2<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a></p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/8ce2f8da04576f850dc1bb02c22fdd582f02df86" title="Revision 8ce2f8da">Revision 8ce2f8da</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-23" title="2012-05-23 16:37">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Support for HTTP PUT/DELETE arguments</p>
+
+
+	<p>This adds transparent argument support for arguments<br />in PUT and DELETE requests which are passed through<br />the request body. Depending on the content type of<br />the request, the message body is parsed and then<br />mapped into arguments for further use in controllers.</p>
+
+
+	<p>The following content content types are currently<br />supported:</p>
+
+
+	<ul>
+	<li>application/x-www-form-urlencoded</li>
+		<li>application/json</li>
+		<li>xml</li>
+	</ul>
+
+
+	<p>Change-Id: Id938025a7359b6ec3b29cec5fd7259db97703a16<br />Resolves: <a href="36913.html" class="issue status-7 priority-1 closed" title="HTTP PUT data not regonized as arguments  (Resolved)">#36913</a><br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/149a012ea5afbc6e02014d6ec564ae7f0788a767" title="Revision 149a012e">Revision 149a012e</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-25" title="2012-05-25 15:48">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Make Message / Response setters chainable</p>
+
+
+	<p>This makes the setter methods of the Message and the<br />Response class chainable.</p>
+
+
+	<p>Change-Id: I826ad686a6d0649c42767a950de2e7e169e312b6<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/b18a9a51db14f3f45e17c1f36323b54b8428af90" title="Revision b18a9a51">Revision b18a9a51</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-25" title="2012-05-25 15:48">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] More convenience methods in Response</p>
+
+
+	<p>This adds a few more convenience methods for setting<br />headers and cache control directives in the Response<br />object:</p>
+
+
+	<ul>
+	<li>setDate() / getDate()</li>
+		<li>setLastmodified() / getLastModified()</li>
+		<li>setMaximumAge() / getMaximumAge()</li>
+		<li>setSharedMaximumAge() / getSharedMaximumAge()</li>
+	</ul>
+
+
+	<p>Change-Id: I8c253574bfb6be5ca42ce17d16bcf49d4d268933<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/fb8b06479e34efb38e610d4ad2684569d6092004" title="Revision fb8b0647">Revision fb8b0647</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-25" title="2012-05-25 15:48">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Support for HTTP Cache-Control headers</p>
+
+
+	<p>This adds support for the Cache-Control header.<br />The "Headers" object now handles the Cache-Control<br />header in a special way by keeping track of the<br />various cache directives separately. Those can<br />be set through the method setCacheControlDirective()<br />and get('Cache-Control') returns a rendered version<br />based on the previously set directives.</p>
+
+
+	<p>Alternatively, a whole Cache-Control header can also<br />be set through set() / setHeader(). The given field<br />value will then be parsed and the individual cache<br />directives are stored internally.</p>
+
+
+	<p>This patch also corrects the behavior of set() and<br />get() to convert date / time values always to GMT.<br />Also added a related note in the comments of the<br />respective API methods.</p>
+
+
+	<p>This patch also adds the new API methods setPrivate()<br />and setPublic() to the Response class.</p>
+
+
+	<p>Change-Id: I7d7bae82e40ff24b176be6fae2b4a69c040c992b<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/60c22ce6a6eb8ede184069ad52573ad3b4163c3a" title="Revision 60c22ce6">Revision 60c22ce6</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-25" title="2012-05-25 17:34">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Response setExpires() / getExpires()</p>
+
+
+	<p>This adds two new convenience methods to the Response<br />API which allow for setting and retrieving the Expires<br />HTTP header.</p>
+
+
+	<p>Change-Id: Iba33b8f34c702ddecb9e6ed51bdc071270c27ef9<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/27f162261c23b560e4fe408a03b7237dede3454a" title="Revision 27f16226">Revision 27f16226</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-25" title="2012-05-25 22:09">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Support for HTTP Cache-Control headers</p>
+
+
+	<p>This adds support for the Cache-Control header.<br />The "Headers" object now handles the Cache-Control<br />header in a special way by keeping track of the<br />various cache directives separately. Those can<br />be set through the method setCacheControlDirective()<br />and get('Cache-Control') returns a rendered version<br />based on the previously set directives.</p>
+
+
+	<p>Alternatively, a whole Cache-Control header can also<br />be set through set() / setHeader(). The given field<br />value will then be parsed and the individual cache<br />directives are stored internally.</p>
+
+
+	<p>This patch also corrects the behavior of set() and<br />get() to convert date / time values always to GMT.<br />Also added a related note in the comments of the<br />respective API methods.</p>
+
+
+	<p>This patch also adds the new API methods setPrivate()<br />and setPublic() to the Response class.</p>
+
+
+	<p>Change-Id: I7d7bae82e40ff24b176be6fae2b4a69c040c992b<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/c403439441bd05ab025d3547fca2bf07c25d7d83" title="Revision c4034394">Revision c4034394</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-25" title="2012-05-25 22:09">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] More convenience methods in Response</p>
+
+
+	<p>This adds a few more convenience methods for setting<br />headers and cache control directives in the Response<br />object:</p>
+
+
+	<ul>
+	<li>setDate() / getDate()</li>
+		<li>setLastmodified() / getLastModified()</li>
+		<li>setMaximumAge() / getMaximumAge()</li>
+		<li>setSharedMaximumAge() / getSharedMaximumAge()</li>
+	</ul>
+
+
+	<p>Change-Id: I8c253574bfb6be5ca42ce17d16bcf49d4d268933<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/11f8eb8e96ad0f103b384734e17062bd57777d6b" title="Revision 11f8eb8e">Revision 11f8eb8e</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-25" title="2012-05-25 22:09">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Make Message / Response setters chainable</p>
+
+
+	<p>This makes the setter methods of the Message and the<br />Response class chainable.</p>
+
+
+	<p>Change-Id: I826ad686a6d0649c42767a950de2e7e169e312b6<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/3e5836faa8fb8d70b301521ab6ccc0022d72ae55" title="Revision 3e5836fa">Revision 3e5836fa</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-29" title="2012-05-29 10:18">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Response setExpires() / getExpires()</p>
+
+
+	<p>This adds two new convenience methods to the Response<br />API which allow for setting and retrieving the Expires<br />HTTP header.</p>
+
+
+	<p>Change-Id: Iba33b8f34c702ddecb9e6ed51bdc071270c27ef9<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/63283d92fa34cff7ce5b3dcd244b1aae1711e652" title="Revision 63283d92">Revision 63283d92</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-29" title="2012-05-29 10:25">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Make HTTP responses standards compliant</p>
+
+
+	<p>This adds a new API method to the HTTP response which<br />is called by a request handler to assure conformity<br />with RFC 2616 and other related specifications.</p>
+
+
+	<p>While there are a lot of rules to consider, this patch<br />only introduces a first set of important checks which<br />are all explained by a corresponding test.</p>
+
+
+	<p>Change-Id: I8b7a9bf53061cfc371c22bdec018c1918c63a4fe<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/462fec11312d0ad520e0ced8a201bf7adde2e544" title="Revision 462fec11">Revision 462fec11</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-29" title="2012-05-29 10:31">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Make HTTP responses standards compliant</p>
+
+
+	<p>This adds a new API method to the HTTP response which<br />is called by a request handler to assure conformity<br />with RFC 2616 and other related specifications.</p>
+
+
+	<p>While there are a lot of rules to consider, this patch<br />only introduces a first set of important checks which<br />are all explained by a corresponding test.</p>
+
+
+	<p>Change-Id: I8b7a9bf53061cfc371c22bdec018c1918c63a4fe<br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/ef3e8fbbae550efc12af8fa69e1b39eafeddab6f" title="Revision ef3e8fbb">Revision ef3e8fbb</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-29" title="2012-05-29 22:41">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][TASK] Switch from MIME to Media Types</p>
+
+
+	<p>The term MIME type is outdated, at least if used in a web context. The correct<br />term is "Internet Media Type". Furthermore, our list of MIME types (or media<br />types) was not up to date.</p>
+
+
+	<p>This patch introduces a new utility class "MediaTypes" which replaces<br />"FileTypes". Along with the new class comes a script which allows the core team<br />to conveniently update the list of Media Types and filename extensions.</p>
+
+
+	<p>This is a breaking change as the FileTypes class is deprecated with it. The old<br />methods are still available but should not be used anymore. A code migration to<br />use the new ones instead is shipped with the change.</p>
+
+
+	<p>Change-Id: I8f0997f79f09c828dbce5c7a34b4487a522aab0c<br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/fc4c4ab510ddc1705f0c06a40e90335b5301ee4c" title="Revision fc4c4ab5">Revision fc4c4ab5</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-30" title="2012-05-30 14:24">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][TASK] Switch from MIME to Media Types</p>
+
+
+	<p>The term MIME type is outdated, at least if used in a web context. The correct<br />term is "Internet Media Type". Furthermore, our list of MIME types (or media<br />types) was not up to date.</p>
+
+
+	<p>This patch introduces a new utility class "MediaTypes" which replaces<br />"FileTypes". Along with the new class comes a script which allows the core team<br />to conveniently update the list of Media Types and filename extensions.</p>
+
+
+	<p>This is a breaking change as the FileTypes class is deprecated with it. The old<br />methods are still available but should not be used anymore. A code migration to<br />use the new ones instead is shipped with the change.</p>
+
+
+	<p>Change-Id: I8f0997f79f09c828dbce5c7a34b4487a522aab0c<br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-103292" class="journal has-notes">
+    <h4><a href="33371.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4355">Jacob Floyd</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-02-19" title="2012-02-19 00:10">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103292-notes"><p>@robert - I've seen/heard your comments in the scrum protocols/meeetings about this HTTP work you're doing.</p>
+
+
+	<p>I've been browsing the ietf specs to understand what implementing HTTP might entail, and I must admit: I am ecstatic. Whatever you're doing will be awesome.</p>
+
+
+	<p>So, in my browsing, I've found <a href="../../external.html?link=http://www.ietf.org/rfc/rfc2616.txt" title="HTTP/1.1" class="external">2616</a>, and <a href="../../external.html?link=http://www.ietf.org/rfc/rfc6265.txt" title="Cookies" class="external">6265</a>. I also looked at <a href="../../external.html?link=http://www.ietf.org/rfc/rfc3229.txt" title="HTTP Deltas" class="external">3229</a> which looks pretty sweet for sending page changes via AJAX.</p>
+
+
+	<p>And then there are related specs about URIs and URLs: <a href="../../external.html?link=http://www.ietf.org/rfc/rfc3986.txt" title="URI" class="external">3986</a> which updates <a href="../../external.html?link=http://www.ietf.org/rfc/rfc1738.txt" title="URL" class="external">1738</a> and obsoletes <a href="../../external.html?link=http://www.ietf.org/rfc/rfc1808.txt" title="Relative URL" class="external">1808</a>, <a href="../../external.html?link=http://www.ietf.org/rfc/rfc2396.txt" title="URI" class="external">2396</a>, and <a href="../../external.html?link=http://www.ietf.org/rfc/rfc2732.txt" title="IPv6 in URL" class="external">2732</a>.</p>
+
+
+	<p>Which specs are you handling in FLOW3? Are you only working on <a href="../../external.html?link=http://www.ietf.org/rfc/rfc2616.txt" title="HTTP/1.1" class="external">2616</a> and <a href="../../external.html?link=http://www.ietf.org/rfc/rfc6265.txt" title="Cookies" class="external">6265</a>? Or are you also doing <a href="../../external.html?link=http://www.ietf.org/rfc/rfc3229.txt" title="HTTP Deltas" class="external">3229</a>, and <a href="../../external.html?link=http://www.ietf.org/rfc/rfc3986.txt" title="URI" class="external">3986</a>?</p></div>
+  </div>
+  
+
+  <div id="change-117863" class="journal has-details">
+    <h4><a href="33371.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-25" title="2012-05-25 09:40">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>1.1</i> to <i>1.1 RC1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-120625" class="journal has-details">
+    <h4><a href="33371.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-06-20" title="2012-06-20 21:16">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-33371-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/33371.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="33371.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/33371 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

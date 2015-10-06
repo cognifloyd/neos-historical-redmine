@@ -1,0 +1,1377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/31638 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #31638: Rewrite Rendering Process based on Fluid and TypoScript - Base Distribution - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/31638.atom" rel="alternate" title="Base Distribution - Feature #31638: Rewrite Rendering Process based on Fluid and TypoScript" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 current sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Base Distribution</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/rb/master_backlog/typo3neos-distribution-base" class="rb-master-backlogs">Backlogs</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="level-1 current sorting-0">Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-form" class="level-2 sorting-0">TYPO3.Form</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-imagine" class="level-2 sorting-0">TYPO3.Imagine</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-media" class="level-2 sorting-0">TYPO3.Media</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="level-2 sorting-0">TYPO3.Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos-nodetypes" class="level-2 sorting-0">TYPO3.Neos.NodeTypes</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-party" class="level-2 sorting-0">TYPO3.Party</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-setup" class="level-2 sorting-0">TYPO3.Setup</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-sitekickstarter" class="level-2 sorting-0">TYPO3.SiteKickstarter</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-twitter-bootstrap" class="level-2 sorting-0">TYPO3.Twitter.Bootstrap</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr" class="level-2 sorting-0">TYPO3.TYPO3CR</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-typoscript" class="level-2 sorting-0">TYPO3.TypoScript</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-coordination" class="level-1 sorting-0">Coordination Group</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-website-communication" class="level-1 sorting-0">Website and Communication</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues/report">Summary</a><br />
+
+
+
+
+
+
+            <div id="backlogs_view_issues_sidebar"></div>
+            <script type="text/javascript">
+              jQuery(document).ready(function() {
+                jQuery('#backlogs_view_issues_sidebar').load('../../external.html?link=https://forge.typo3.org/rb/hooks/sidebar/project/typo3neos-distribution-base');
+              });
+            </script>
+          
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=434" class="query">! Stories This Sprint</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=435" class="query">! Work Packages</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/316">Christopher Hlubek</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4355">Jacob Floyd</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-31638-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #31638</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Rewrite Rendering Process based on Fluid and TypoScript</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2011-11-07" title="2011-11-07 10:12">over 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-08-28" title="2012-08-28 11:41">almost 3 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2011-11-07</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>The rendering process based on TypoScript and Fluid needs to be rewritten.</p>
+
+
+	<a name="Current-Rendering-Process"></a>
+<h1 >Current Rendering Process<a href="#Current-Rendering-Process" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Currently, <strong>both</strong> TypoScript and Fluid are involved in rendering. TypoScript controls the rendering while Fluid is just used to render the individual parts. Thus, TypoScript renders the content. The process is as follows:</p>
+
+
+	<ol>
+	<li><code>TYPO3\TYPO3\Controller\Frontend\NodeController::show</code> gets a node passed, and triggers <code>render</code> on the view</li>
+		<li><code>TYPO3\TYPO3\View\TypoScriptView</code> picks up:
+	<ol>
+	<li>it asks the TyposcriptObjectFactory to get a typoscript object name based on the current node type.</li>
+		<li>then it checks if the current TypoScript tree has a <strong>top-level object</strong> for the which matches the expected TypoScript object name</li>
+		<li>if yes, this is used. If no, we instanciate a default one.</li>
+	</ol>
+	</li>
+		<li>TypoScript <code>Page</code> object renders a <code>Template</code> TypoScript object
+	<ol>
+	<li>For that, it assigns the <code>presentationPropertyNames</code> to the template, after wrapping them into a proxy object which evaluate <strong>TS Processors</strong></li>
+		<li>then, the <code>Node</code> object is assigned to the template</li>
+		<li>Then, the template is rendered (see below), and the result is possibly wrapped again.</li>
+	</ol>
+	</li>
+		<li><code>TYPO3\TYPO3\TypoScript\Template</code> is a Fluid TemplateView and renders the template.
+	<ol>
+	<li>Especially important is the <code>\TYPO3\TYPO3\TypoScript\Section</code> (inheriting from <code>TYPO3\TYPO3\TypoScript\ContentArray</code> and <code>\TYPO3\TypoScript\AbstractContentArrayObject</code>), which creates TypoScript sub-objects for <strong>every</strong> sub node, by asking the <code>\TYPO3\TypoScript\ObjectFactory</code> again. This is how recursion is handled.</li>
+	</ol></li>
+	</ol>
+
+
+	<a name="Drawbacks-of-the-current-rendering-process"></a>
+<h2 >Drawbacks of the current rendering process<a href="#Drawbacks-of-the-current-rendering-process" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>very complex</li>
+		<li>TypoScriptView is quite inflexible</li>
+		<li>recursive rendering creates very many objects, but is not really extensible.</li>
+	</ul>
+
+
+	<a name="Requirements-for-revamped-rendering"></a>
+<h1 >Requirements for revamped rendering<a href="#Requirements-for-revamped-rendering" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li>Nodes can appear multiple times on a page. The rendering must be able to distinguish between these cases.</li>
+		<li>When rendering a nodePath, we need to be able to render it completely out-of-context. I.e. render just a single content element being part of a bigger page. This could look somehow like: .../somePage/someSection/text?typoscriptObjectPath=page.sections.someSection.text
+	<ul>
+	<li>This is needed for Varnish, ESI, etc.</li>
+		<li>Thus, the question is <strong>how to address nodes and their rendering information without ambiguity</strong></li>
+	</ul>
+	</li>
+		<li>Make Fluid replaceable by other rendering system?? TODO</li>
+		<li>TODO: TypoScript objects should be ONLY allowed on FOLDER nodes.</li>
+		<li>Bonus: wouldn't it be cool to use TypoScript in combination with Fluid <strong>outside</strong> of Phoenix as well?</li>
+	</ul>
+
+
+	<a name="Pros-and-Cons"></a>
+<h1 >Pros and Cons<a href="#Pros-and-Cons" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li><strong>Fluid Template</strong>
+	<ul>
+	<li>+ easy to understand, easy to write</li>
+		<li>- only replaceable in an all-or-nothing manner</li>
+		<li>- not context dependent; so it is hard to implement things like "in the right column, all images should be 500 px wide maximum" </li>
+	</ul>
+	</li>
+		<li><strong>TypoScript</strong>: 
+	<ul>
+	<li>+ adjustable and overridable on a very fine-grained level through use of TypoScript paths</li>
+		<li>+ processors are a powerful way to fine-tune rendering.</li>
+		<li>+ presentationModel enables creating "virtual nodes" which are declared just through TypoScript.</li>
+		<li>- hard to write</li>
+		<li>- presentationModel is hard to grasp and adds a lot of boilerplate code</li>
+	</ul></li>
+	</ul>
+
+
+	<a name="New-Rendering-Process"></a>
+<h1 >New Rendering Process<a href="#New-Rendering-Process" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li><strong>central problem: Adressing.</strong> How do we address stuff like "render node X in context Y"? Y must be identified by a path.</li>
+		<li><strong>central problem: collections.</strong> How do we render a <strong>collection of nodes</strong>? Through an &lt;f:for&gt; loop? Or differently?</li>
+	</ul>
+
+
+	<ul>
+	<li>TODO: continue here...</li>
+	</ul>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-5424">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="11628" /></td>
+<td class="subject">related to 
+    TYPO3.Neos - 
+    <a href="11628.html" class="issue status-7 priority-3 closed">Feature #11628</a>: Make secondLevelMenu a submenu of current page
+</td>
+<td class="status">Resolved</td>
+<td class="start_date"></td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-5444">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="31796" /></td>
+<td class="subject">related to 
+    TYPO3.Neos - 
+    <a href="31796.html" class="issue status-9 priority-1 closed">Feature #31796</a>: Plugins have to be able to set page header information
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2011-11-14</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-5420">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="26924" /></td>
+<td class="subject">related to 
+    TYPO3.Neos - 
+    <a href="26924.html" class="issue status-9 priority-4 closed">Bug #26924</a>: StopException in Plugins handled wrong
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2011-05-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-5419">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="30097" /></td>
+<td class="subject">related to 
+    TYPO3.TypoScript - 
+    <a href="30097.html" class="issue status-9 priority-2 closed">Bug #30097</a>: Content must be renderable using a nodePath and a TypoScr...
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2011-09-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-5422">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="13544" /></td>
+<td class="subject">blocks 
+    TYPO3.Neos - 
+    <a href="13544.html" class="issue status-7 priority-2 closed">Task #13544</a>: Add possibility to select a page template
+</td>
+<td class="status">Resolved</td>
+<td class="start_date"></td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/31638/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/31638/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=31638&amp;project_id=typo3neos-distribution-base')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr/repository/revisions/9b696c95d91d59709ca9dcbfdf50c1f8dcb81a0a" title="Revision 9b696c95">Revision 9b696c95</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 18:07">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Add toString() in Node, helpful for debugging</p>
+
+
+	<p>This is part of "completely refactored rendering", and helpful<br />for outputting a node while debugging.</p>
+
+
+	<p>Change-Id: I54f7090ef07958dc8a054738f77b35d620813246<br />Related: <a href="31638.html" class="issue status-7 priority-1 closed" title="Rewrite Rendering Process based on Fluid and TypoScript (Resolved)">#31638</a></p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-typoscript/repository/revisions/f6a02eb32c5caeb68428ac4da8583703f9f00098" title="Revision f6a02eb3">Revision f6a02eb3</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-30" title="2012-03-30 14:46">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][FEATURE] Refactored rendering</p>
+
+
+	<p>Completely refactored rendering, including the new TypoScript<br />with lazy evaluation, Eel and FlowQuery.</p>
+
+
+	<p>Change-Id: Ia731e1822fb2d66500d83a523e115ee40cad8a9d<br />Resolves: <a href="31638.html" class="issue status-7 priority-1 closed" title="Rewrite Rendering Process based on Fluid and TypoScript (Resolved)">#31638</a></p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/repository/revisions/bb2cb76ef6ee12ae8be405847ea7d7e33802c5d4" title="Revision bb2cb76e">Revision bb2cb76e</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-30" title="2012-03-30 18:46">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][FEATURE] Refactored rendering</p>
+
+
+	<p>Completely refactored rendering, including the new TypoScript<br />with lazy evaluation, Eel and FlowQuery.</p>
+
+
+	<p>Change-Id: I087434541eae8277c1ea2a91e32d8d53a9d03978<br />Resolves: <a href="31638.html" class="issue status-7 priority-1 closed" title="Rewrite Rendering Process based on Fluid and TypoScript (Resolved)">#31638</a></p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/repository/revisions/6524f9f3166560abb7b445acb739ff7e0f0d4dce" title="Revision 6524f9f3">Revision 6524f9f3</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-30" title="2012-03-30 19:12">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Add TYPO3.Eel subpackage to distribution</p>
+
+
+	<p>Change-Id: Ic4f269ba34b0852d69e43933524830cf039579e1<br />Related: <a href="31638.html" class="issue status-7 priority-1 closed" title="Rewrite Rendering Process based on Fluid and TypoScript (Resolved)">#31638</a></p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/repository/revisions/e06665a0c35bbafccc3c5de836a6c74a2feac620" title="Revision e06665a0">Revision e06665a0</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-31" title="2012-03-31 09:25">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Make unit tests run through again, fix regression with links</p>
+
+
+	<p>Change-Id: I3ca8dfba80f2a929bf9d0c1d7daeccef39a008f0<br />Related: <a href="31638.html" class="issue status-7 priority-1 closed" title="Rewrite Rendering Process based on Fluid and TypoScript (Resolved)">#31638</a></p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-94091" class="journal has-notes">
+    <h4><a href="31638.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2011-11-14" title="2011-11-14 12:08">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-94091-notes"><p>Had some discussions with Robert about it. Current state:</p>
+
+
+	<ul>
+	<li>We think that <strong>three</strong> trees are relevant for rendering. First, there is the <strong>TYPO3CR Node Tree</strong>, which gives us the nodes which we want to render. Second, the <strong>TypoScript "Prototype Tree"</strong>, which is the TypoScript configuration tree. This states things like "in the 3rd column, all images shall have a max width of 500 px". Third, there is the <strong>Rendering Tree</strong>, which is the instanciated TypoScript Prototype Tree with the TYPO3CR Nodes. This is closely mapped to the resulting page.</li>
+		<li>The <strong>root</strong> of the trees are as follows:
+	<ul>
+	<li>In the <strong>TYPO3CR Node Tree</strong>, we use the <strong>nearest TYPO3CR:Folder</strong> as the node where the rendering starts</li>
+		<li>We also use this TypoScript configuration for rendering all subnodes.</li>
+	</ul>
+	</li>
+		<li>the TypoScript <strong>instance tree</strong> does not need to be buildable, as people could do this directly in the template. It's an edge case we do not need to focus on now.</li>
+		<li>The TypoScript configuration needs some way to define <strong>prototype inheritance</strong>, and <strong>collections</strong>.</li>
+		<li>maybe we can drop the explicit Presentation Model.</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-94165" class="journal has-notes">
+    <h4><a href="31638.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2208">Christian Müller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2011-11-15" title="2011-11-15 13:57">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-94165-notes"><p>Some updates:</p>
+
+
+	<p>We have thought about some concepts and got some impressions from that:</p>
+
+
+	<p>1) CSS Selector syntax will not be enough as we need to be able to define NEW structures via Typoscript.<br />2) Prototypes for rendering are generally a good idea, we would need a way to override properties of prototypes in subobjects, so you can change the prototype for different concrete contexts of rendering (left/right section for example)<br />3) we need a way to create a new object from the prototypes via configuration and a way to render specific nodes (for example having a special element that renders the content and a menu of headlines for a page -> we need to render a Menu which is not defined in TYPO3CR + the TYPO3CR content but probably in another place)<br />4) for collection rendering a CSS like syntax would be nice, to have the ability to influence single node rendering (first node should have headline h1, and every third node should have a &lt;br /&gt; after, something like that - so a nicer syntax for v4 optionSplit-like stuff)</p>
+
+
+	<p>All in all the ideas tend to go in the right direction but the "feel" is not there yet, for know all these parts are too separate and not easy to describe. We need a holistic concept that involves all of the above and with an understandable syntax (second step after defining the overall concept).</p></div>
+  </div>
+  
+
+  <div id="change-94605" class="journal has-notes">
+    <h4><a href="31638.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2208">Christian Müller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2011-11-21" title="2011-11-21 12:46">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-94605-notes"><strong>TypoScript Object</strong>
+	<ul>
+	<li>Instance of a TypoScript Prototype</li>
+		<li>dynamically built at runtime, not declarable in TypoScript syntax</li>
+		<li>not addressable in TypoScript</li>
+	</ul>
+
+
+<strong>TypoScript Prototype</strong>
+	<ul>
+	<li>Example: "TYPO3.TYPO3:Head", "TYPO3.TYPO3:Body", "TYPO3.TYPO3:Section" </li>
+		<li>Blueprints for the runtime TypoScript objects used for rendering</li>
+		<li>is not necessarily backed by a PHP class</li>
+		<li>implement prototype inheritance: Com.FooBar:Text3 < TYPO3.TYPO3:Text</li>
+		<li>with JavaScript semantics (DIFFERENT from v4):<br />- Com.FooBar:Text3 < TYPO3.TYPO3:Text<br />- TYPO3.TYPO3:Text.property ALSO affects Com.FooBar:Text3 (TODO: Dot Syntax!!)</li>
+		<li>every <strong>TypoScript Object</strong> is responsible for rendering a corresponding <strong>TYPO3CR:Node</strong>. This node is resolved by a <strong>Node Resolving Strategy</strong>, for example:<br />- getCurrentNode(): "Current" node in the Node Tree (which should be renderer)<br />- getByNodePath("...."): Fetch node with this path<br />- node(TYPE, PROPERTIES, SUBNODES): Create runtime node<br />- null() -- special case of a runtime node</li>
+	</ul>
+
+
+<strong>TypoScript Prototype Resolver Strategy</strong>
+	<ul>
+	<li>Answers the question: "I have a TYPO3CR Node, which TypoScript prototype shall I use for rendering this node?" (especially used in TYPO3.TYPO3:Section)</li>
+		<li>has much context information available:<br />- TYPO3CR Node (of course including context)<br />- TypoScript Prototype Hierarchy from the last TYPO3CR:Folder node onwards (example: TYPO3.TYPO3:Page > TYPO3.TYPO3:Body > TYPO3.TYPO3:Section)</li>
+		<li>must be exchangeable (Strategy Pattern)</li>
+		<li>could implement for example some "CSS Selector like" syntax</li>
+		<li>TODO: syntax still remains an open question</li>
+	</ul>
+
+
+<strong>TypoScript rendering context</strong>
+	<ul>
+	<li>contains all information to unambiguously render a given Node, under a given TypoScript Prototype hierarchy</li>
+		<li>Example: /sites/phoenixdemotypo3org/download/sidebar/textuufas?typoScriptPath = TYPO3.TYPO3:Page > TYPO3.TYPO3:Body > TYPO3.TYPO3:Section > TYPO3.TYPO3:Text<br />- Path until folder node: /sites/phoenixdemotypo3org/download<br />- Path until content element in TYPO3CR: sidebar/textuufas <-- this is returned by "getCurrentNode" in TS Object<br />- TypoScript Prototype hierarchy: TYPO3.TYPO3:Page > TYPO3.TYPO3:Body > TYPO3.TYPO3:Section > TYPO3.TYPO3:Text</li>
+	</ul>
+
+
+	<p><strong>ROUGH EXAMPLE DEFAULTS FOR PROTOTYPES</strong><br /><pre>
+
+TYPO3.TYPO3:Head {
+     - node = getCurrentNode()
+}
+TYPO3.TYPO3:Body {
+    - node = getCurrentNode()
+    sections {
+         left = Section
+         main = Section   
+    }
+}
+TYPO3.TYPO3:Page {
+     - node = getCurrentNode()
+     head = Head (context = this.context)
+     body = Body (context = this.context)
+}
+TYPO3.TYPO3:Section {
+    - node = getCurrentNode()
+}
+TYPO3.TYPO3:Text {
+     - template = file(...)
+     - node = getCurrentNode()
+     headlineLevel = 1   
+}
+</pre></p>
+
+
+	<p><strong>Own Prototypes derived from defaults</strong></p>
+
+
+<pre>
+Com.FooBar:Text3 &lt; TYPO3.TYPO3:Text {
+     - template = file(...)
+     - node = nodeWithUuid(...
+     headlineLevel = 1   
+}
+Com.FooBar:StaticText &lt; TYPO3.TYPO3:Text {
+    - node = node(TYPO3:Text, foo=bar, baz=bar)
+}
+Com.FooBar:Page1 &lt; TYPO3.TYPO3:Page
+Com.FooBar:Page2 &lt; TYPO3.TYPO3:Page
+
+</pre>
+
+	<p>Some use cases but no code because the syntax is not there, but all use cases are possible with those concepts:</p>
+
+
+	<p><strong>Use Case 1</strong><br />2 column content rendering<br />TYPO3CR Node Hierarchy<br /><pre>
+- Page
+  - Section: left
+      - Text 1
+      - Text N
+  - Section: right
+      - Text 1
+      - Text N
+</pre></p>
+
+
+	<p>Use case 2:<br />2 column content rendering with fixed right column content (right column static, same on all pages)<br />Var. A: Text in TS defined<br />Var. B: Text in a "global" text node<br />TYPO3CR Node Hierarchy<br /><pre>
+- Page
+  - Section: main
+      - Text 1
+      - Text N
+</pre></p>
+
+
+	<p><strong>Use Case 3</strong><br />2 column content rendering with right column content derived from left column (structure/index on right side)<br />TYPO3CR Node Hierarchy<br /><pre>
+- Page
+  - Section: main
+      - Text 1
+      - Text N
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-94860" class="journal has-notes">
+    <h4><a href="31638.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2011-11-23" title="2011-11-23 13:55">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-94860-notes"><p>Just a rough idea for the "selector syntax" to target TS objects in a collection:<br />We could use a syntax similar to the <a href="../../external.html?link=http://api.jquery.com/category/selectors/" class="external">jQuery CSS selector syntax</a>.<br />Example:<br /><pre>
+[...]
+&lt;node type="TYPO3.TYPO3:Page" nodeName="somepage"&gt;
+    &lt;properties&gt;
+        &lt;title&gt;Some Page&lt;/title&gt;
+    &lt;/properties&gt;
+    &lt;node type="TYPO3.TYPO3:Section" nodeName="sidebar"&gt;
+        &lt;node type="TYPO3.TYPO3:Html" nodeName="text1"&gt;
+            &lt;properties&gt;
+                &lt;source&gt;&lt;![CDATA[some text]]&gt;&lt;/source&gt;
+            &lt;/properties&gt;
+        &lt;/node&gt;
+    &lt;/node&gt;
+&lt;/node&gt;
+</pre><br />title of the somepage page:<br /><pre>
+#somepage &gt; properties &gt; title
+</pre><br /></pre><br />first html node of sidebar section:<br /><pre>
+#sidebar node[type="TYPO3.TYPO3:Html"]:first
+
+There are PHP libraries for that (which probably need some adjustments)</p></pre></div>
+  </div>
+  
+
+  <div id="change-98963" class="journal has-notes">
+    <h4><a href="31638.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-01-06" title="2012-01-06 10:22">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-98963-notes"><a name="TYPO3-v4-Concepts-in-Relation-to-TYPO3-Phoenix-concepts"></a>
+<h2 >TYPO3 v4 Concepts in Relation to TYPO3 Phoenix concepts<a href="#TYPO3-v4-Concepts-in-Relation-to-TYPO3-Phoenix-concepts" class="wiki-anchor">&para;</a></h2>
+
+
+<pre>
+CONTENT / RECORDS
+Find one or multiple nodes depending on current context, AND TRIGGER RENDERING
+-&gt; MISSING: Concept to describe "Collection of Nodes" 
+-&gt; roughly corresponds to *Node Resolving Strategy*, just without the render triggering
+
+CASE
+-&gt; roughly: 'TypoScript Prototype Resolver Strategy
+-&gt; CREATES NEW RUNTIME INSTANCES of TypoScript objects
+
+CONTENT_OBJECT_ARRAY (COA) ??
+"Collection of TypoScript objects" 
+
+HMENU / TMENU /...
+Menu -&gt; Render "Node Structure" 
+
+Content Objects:
+FILE / FORM / HTML / TEXT / IMAGE / IMAGERESOURCE / IMAGETEXT / MEDIA / MULTIMEDIA / USER / USER_INT
+
+PAGE / TEMPLATE / FLUIDTEMPLATE
+"meta-stuff" 
+
+(EDITPANEL) ??
+
+REGISTER??
+</pre>
+
+	<a name="Consequences"></a>
+<h2 >Consequences<a href="#Consequences" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><strong>CONTENT</strong> <strong>finds nodes</strong></li>
+		<li><strong>TYPO3v4</strong> creates TypoScript objects <strong>LAZILY</strong> (i.e. when rendering); Phoenix does it <strong>EAGERLY</strong> --> loss of flexibility</li>
+	</ul>
+
+
+<pre>
+foo = CONTENT
+foo.resolvingStrategy = childNodes
+
+foo.renderingConfiguration = CASE
+foo.renderingConfiguration.[type] = TYPE ## MUST BE MORE INTELLIGENT, merge configuration ....
+
+Content::render($renderingContext) {
+    NodeCollection $nodes = $this-&gt;findNodesSomehow();
+    return $nodes-&gt;render($this-&gt;renderingConfiguration);
+}
+ </pre></div>
+  </div>
+  
+
+  <div id="change-98964" class="journal has-notes">
+    <h4><a href="31638.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-01-06" title="2012-01-06 10:26">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-98964-notes"><p><strong>IDEA</strong>: We split TypoScript into a TypoScript PARSER which returns one giant array like in v4, and a TypoScript EVALUATOR which LAZILY turns the array into TypoScript objects and renders them.</p></div>
+  </div>
+  
+
+  <div id="change-98973" class="journal has-notes">
+    <h4><a href="31638.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-01-06" title="2012-01-06 14:13">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-98973-notes"><pre>
+
+* "exports.*" -&gt; *exports.page1 = Page* --&gt; then, "page1" is renderable.
+
+$typoScript = array(
+    'page1' =&gt; array(
+        __tsObjectName =&gt; 'TYPO3:Page',
+        implementationClassName =&gt; ....
+        '__tsDefaults' =&gt; array(
+            'TYPO3:Page' =&gt; array(
+
+            )
+        )
+        'template' =&gt; 'pageTemplate.html',
+        'sections' =&gt; array(
+            '__tsDefaults' =&gt; array(
+                '__tsObjectName' =&gt; 'TYPO3:NodeCollection'
+        ),
+            'main' =&gt; array(
+                '__tsObjectName' =&gt; 'TYPO3:Text'
+            )
+        )
+    )
+);
+
+* $typoScriptString depends on current page....
+* TypoScriptRuntime $ts = TypoScriptParser::parse($typoScriptString, $context)
+* $ts-&gt;render('page1');
+** $tsArray['page1'] --&gt; what is the TS Object at this point?
+** $pageTsObject = new Page($ts, 'page1');
+** // $pageTsObject-&gt;setXY... # HERE; processors are evaluated
+** return $pageTsObject-&gt;render();
+*** # In Page
+*** $variableContainer-&gt;add('context', $context);
+*** return $fluidTemplate-&gt;render();
+*** # Durch ViewHelper
+*** $sectionNode = $this-&gt;getSection($sectionName); --&gt; Get CR node
+*** $ts-&gt;pushContext($sectionNode);
+*** $sectionContent = $ts-&gt;render($currentTsPath . '.sections.' . $sectionName);
+*** $ts-&gt;popContext();
+* $ts-&gt;renderPath
+
+*TypoScript* --&gt; *RenderTree* // Node / ContextSpecific Config
+
+pageTemplate.html
+&lt;html&gt;
+&lt;body&gt;
+&lt;ts:page.section name="main" /&gt;
+--oder--
+&lt;f:for each="{context.node.sections.main}" as="node"&gt;
+# Relative by default, prepend "/" for global path
+&lt;ts:render path="sections.main" context="{node}" /&gt;
+&lt;/f:for&gt;
+&lt;/bod&gt;
+&lt;/html&gt;
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-103418" class="journal has-notes">
+    <h4><a href="31638.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-20" title="2012-02-20 11:51">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103418-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-103419" class="journal has-notes">
+    <h4><a href="31638.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-20" title="2012-02-20 11:52">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103419-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-103425" class="journal has-notes">
+    <h4><a href="31638.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-20" title="2012-02-20 14:08">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103425-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9122">http://review.typo3.org/9122</a></p></div>
+  </div>
+  
+
+  <div id="change-103426" class="journal has-notes">
+    <h4><a href="31638.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-20" title="2012-02-20 14:09">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103426-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-103427" class="journal has-notes">
+    <h4><a href="31638.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-20" title="2012-02-20 14:09">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103427-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-103428" class="journal has-notes">
+    <h4><a href="31638.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-20" title="2012-02-20 14:10">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103428-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-103521" class="journal has-notes">
+    <h4><a href="31638.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-21" title="2012-02-21 06:27">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103521-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-103522" class="journal has-notes">
+    <h4><a href="31638.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-21" title="2012-02-21 06:41">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103522-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-103523" class="journal has-notes">
+    <h4><a href="31638.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-21" title="2012-02-21 06:48">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103523-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-103524" class="journal has-notes">
+    <h4><a href="31638.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-21" title="2012-02-21 06:49">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103524-notes"><p>Patch set 5 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-103528" class="journal has-notes">
+    <h4><a href="31638.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-21" title="2012-02-21 08:02">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103528-notes"><p>Patch set 5 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-103529" class="journal has-notes">
+    <h4><a href="31638.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-02-21" title="2012-02-21 08:03">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103529-notes"><p>Patch set 6 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108376" class="journal has-notes">
+    <h4><a href="31638.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-23" title="2012-03-23 06:22">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108376-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9122">http://review.typo3.org/9122</a></p></div>
+  </div>
+  
+
+  <div id="change-108377" class="journal has-notes">
+    <h4><a href="31638.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-23" title="2012-03-23 06:30">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108377-notes"><p>Patch set 7 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108378" class="journal has-notes">
+    <h4><a href="31638.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-23" title="2012-03-23 06:33">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108378-notes"><p>Patch set 8 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108379" class="journal has-notes">
+    <h4><a href="31638.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-23" title="2012-03-23 06:41">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108379-notes"><p>Patch set 6 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-108389" class="journal has-notes">
+    <h4><a href="31638.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-23" title="2012-03-23 10:02">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108389-notes"><p>Patch set 9 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108390" class="journal has-notes">
+    <h4><a href="31638.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-23" title="2012-03-23 10:34">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108390-notes"><p>Patch set 7 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-108392" class="journal has-notes">
+    <h4><a href="31638.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-23" title="2012-03-23 10:47">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108392-notes"><p>Patch set 8 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-108394" class="journal has-notes">
+    <h4><a href="31638.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-23" title="2012-03-23 11:13">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108394-notes"><p>Patch set 10 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108397" class="journal has-notes">
+    <h4><a href="31638.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-23" title="2012-03-23 11:19">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108397-notes"><p>Patch set 9 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-108687" class="journal has-notes">
+    <h4><a href="31638.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 12:05">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108687-notes"><p>Patch set 10 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-108688" class="journal has-notes">
+    <h4><a href="31638.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 12:06">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108688-notes"><p>Patch set 11 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108690" class="journal has-notes">
+    <h4><a href="31638.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 12:52">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108690-notes"><p>Patch set 12 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108693" class="journal has-notes">
+    <h4><a href="31638.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 13:46">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108693-notes"><p>Patch set 11 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-108694" class="journal has-notes">
+    <h4><a href="31638.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 13:46">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108694-notes"><p>Patch set 13 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108695" class="journal has-notes">
+    <h4><a href="31638.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 13:59">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108695-notes"><p>Patch set 14 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108697" class="journal has-notes">
+    <h4><a href="31638.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 14:08">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108697-notes"><p>Patch set 15 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108698" class="journal has-notes">
+    <h4><a href="31638.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 14:10">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108698-notes"><p>Patch set 16 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108699" class="journal has-notes">
+    <h4><a href="31638.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 14:39">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108699-notes"><p>Patch set 17 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108737" class="journal has-notes">
+    <h4><a href="31638.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 16:31">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108737-notes"><p>Patch set 18 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-108738" class="journal has-notes">
+    <h4><a href="31638.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 16:32">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108738-notes"><p>Patch set 12 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-108739" class="journal has-notes">
+    <h4><a href="31638.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-26" title="2012-03-26 16:32">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-108739-notes"><p>Patch set 19 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-109416" class="journal has-notes">
+    <h4><a href="31638.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-30" title="2012-03-30 13:53">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-109416-notes"><p>Patch set 13 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-109419" class="journal has-notes">
+    <h4><a href="31638.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-30" title="2012-03-30 14:03">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-109419-notes"><p>Patch set 14 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-109420" class="journal has-notes">
+    <h4><a href="31638.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-30" title="2012-03-30 14:04">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-109420-notes"><p>Patch set 20 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-109435" class="journal has-notes">
+    <h4><a href="31638.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-30" title="2012-03-30 14:43">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-109435-notes"><p>Patch set 21 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-109436" class="journal has-notes">
+    <h4><a href="31638.html#note-45" class="journal-link">#45</a>
+    
+    <a name="note-45"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-30" title="2012-03-30 14:46">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-109436-notes"><p>Patch set 15 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9119">http://review.typo3.org/9119</a></p></div>
+  </div>
+  
+
+  <div id="change-109503" class="journal has-notes">
+    <h4><a href="31638.html#note-46" class="journal-link">#46</a>
+    
+    <a name="note-46"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-30" title="2012-03-30 18:47">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-109503-notes"><p>Patch set 22 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/9120">http://review.typo3.org/9120</a></p></div>
+  </div>
+  
+
+  <div id="change-109536" class="journal has-notes has-details">
+    <h4><a href="31638.html#note-47" class="journal-link">#47</a>
+    
+    <a name="note-47"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-03-31" title="2012-03-31 02:39">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-109536-notes"><p>Applied in changeset commit:f6a02eb32c5caeb68428ac4da8583703f9f00098.</p></div>
+  </div>
+  
+
+  <div id="change-129941" class="journal has-details">
+    <h4><a href="31638.html#note-48" class="journal-link">#48</a>
+    
+    <a name="note-48"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2012-08-28" title="2012-08-28 11:41">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Tracker</strong> changed from <i>Major Feature</i> to <i>Feature</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-31638-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/31638.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="31638.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/31638 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

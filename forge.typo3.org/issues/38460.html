@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/38460 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:14:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #38460: Using media-element --&gt; Flashfallback fails - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/38460.atom" rel="alternate" title="Core - Bug #38460: Using media-element --&gt; Flashfallback fails" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (8)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/37656">Nic Oemler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/24166">Andreas Mayer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2016">Hartmut Steglich</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2967">Thomas Maurer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2540">Alexander Bigga</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/391">Peter Niederlag</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37858">Marcel Burkhalter</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-38460-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #38460</h2>
+
+<div class="issue status-2 priority-1 child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="61834.html" class="issue status-2 priority-4 overdue parent">Epic #61834</a>: Create future proof Content Element with strong default</p><div><p><a href="61836.html" class="issue status-2 priority-4 overdue child parent">Task #61836</a>: Reorganize Content Element properties within backend Extension</p><div><p><a href="61842.html" class="issue status-1 priority-4 overdue child parent">Task #61842</a>: Refactor CSS-Styled-Content + Content Elements</p><div><h3>Using media-element --&gt; Flashfallback fails</h3></div></div></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/37656">Nic Oemler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-06-28" title="2012-06-28 15:20">about 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-18" title="2015-01-18 21:20">7 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Accepted</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-06-28</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Content Rendering</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>4.7</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>easy</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Using the media-element on 4.7.1 with workaround from #Bug <a href="37938.html" class="issue status-1 priority-2" title="Using HTML5 for audio not (easily) possible due to flexform (New)">#37938</a> HTML5-output is fine in all browsers which can handle this. In Firefox flashfallback does not work and gives the User "File not found". If you take a look at the sourcecode you see the right path and if you copy the path to the browser, the right file is loaded. I tested it on 5 different installations (blank, fresh install, introductionpackage, updated from 4.6) and same error on all installations.</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-7238">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="41279" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="41279.html" class="issue status-2 priority-1">Bug #41279</a>: Media Element Flash fallback fails
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2012-09-23</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/38460/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/38460/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=38460&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-129742" class="journal has-notes">
+    <h4><a href="38460.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/24166">Andreas Mayer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-26" title="2012-08-26 18:49">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-129742-notes"><p>I have a similar issue with Typo3/4.7.4.</p>
+
+
+	<p>Steps to reproduce:</p>
+
+
+	<p>1. Create empty Typo3/4.7.4, DOCTYPE html5, minimal template<br />2. Insert a HTML5 media element<br />2a. Add mp4/WebM sources<br />2b. Add fallback flash source</p>
+
+
+	<p>Results:</p>
+
+
+	<p>HTML code is generated correctly. HTML5 video renders fine in Firefox. If you try in Internet Explorer, loading the video fails. The Webserver log says:</p>
+
+
+	<p><code>(mydomain) 86.33.124.73 - [26/Aug/2012:17:45:09 +0200] "GET /typo3/contrib/flashmedia/video.flv HTTP/1.1" 404 199 "http://(mydomain)/typo3/contrib/flashmedia/flvplayer.swf" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)" 3.03</code></p>
+
+
+	<p>This file (/typo3/contrib/flashmedia/video.flv) doesn't exist so the server returns 404.</p>
+
+
+	<p>Expected results:</p>
+
+
+	<p>flvplayer.swf should load the fallback FLV file instead of the missing file "video.flv".</p>
+
+
+	<p>If I can provide more helpful information, please let me know.</p></div>
+  </div>
+  
+
+  <div id="change-129743" class="journal has-notes has-details">
+    <h4><a href="38460.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/24166">Andreas Mayer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-08-26" title="2012-08-26 18:52">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Priority</strong> changed from <i>Should have</i> to <i>Must have</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-129743-notes"><p>Suggesting priority "Must have" because this is a major bug on an existing feature (HTML5 video).</p></div>
+  </div>
+  
+
+  <div id="change-135706" class="journal has-notes">
+    <h4><a href="38460.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/24166">Andreas Mayer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-10-09" title="2012-10-09 17:22">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-135706-notes"><p>Possibly a duplicate of bug <a href="41279.html" class="issue status-2 priority-1" title="Media Element Flash fallback fails (Accepted)">#41279</a>.</p></div>
+  </div>
+  
+
+  <div id="change-136194" class="journal has-notes">
+    <h4><a href="38460.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-10-12" title="2012-10-12 18:38">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-136194-notes"><p>A small bloated fix for the issue that the player urls don't support the absRefPrefix option. I got the same issue with the video.flv after I fixed that issue first.</p>
+
+
+<pre>
+tt_content.swfobject.20.video.player = {TSFE:absRefPrefix}{$styles.content.media.flowPlayer}
+tt_content.swfobject.20.video.player.insertData = 1
+
+tt_content.swfobject.20.audio.player = {TSFE:absRefPrefix}{$styles.content.media.flowPlayer}
+tt_content.swfobject.20.audio.player.insertData = 1
+
+tt_content.qtobject.20.video.player &lt; tt_content.swfobject.20.video.player
+tt_content.qtobject.20.audio.player &lt; tt_content.swfobject.20.audio.player
+
+tt_content.media.20.mimeConf.swfobject.video.player &lt; tt_content.swfobject.20.video.player
+tt_content.media.20.mimeConf.swfobject.audio.player &lt; tt_content.swfobject.20.audio.player
+tt_content.media.20.mimeConf.qtobject.video.player &lt; tt_content.qtobject.20.video.player
+tt_content.media.20.mimeConf.qtobject.audio.player &lt; tt_content.qtobject.20.audio.player
+
+tt_content.media.20.mimeConf.flowplayer.video.player = {TSFE:absRefPrefix}{$styles.content.media.flowPlayer}
+tt_content.media.20.mimeConf.flowplayer.video.player.insertData = 1
+tt_content.media.20.mimeConf.flowplayer.audio.player &lt; tt_content.media.20.mimeConf.flowplayer.video.player
+</pre></div>
+  </div>
+  
+
+  <div id="change-136196" class="journal has-details">
+    <h4><a href="38460.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-10-12" title="2012-10-12 19:05">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-136197" class="journal has-notes">
+    <h4><a href="38460.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-10-12" title="2012-10-12 19:16">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-136197-notes"><p>I adjusted the solution above to fix the fallback behaviour too. Just set this typoscript in the template where you include the CSC static typoscript. It seems that the wrong player was used and absRefPrefix was not supported yet. Would be great if someone can try it out and a report back if it's not just working in my case. :-)</p>
+
+
+	<p>BTW: The following resource is really helpful to understand the degradion process.</p>
+
+
+	<p><a class="external" href="../../external.html?link=http://flowplayer.blacktrash.org/graceful.html">http://flowplayer.blacktrash.org/graceful.html</a></p></div>
+  </div>
+  
+
+  <div id="change-136223" class="journal has-notes">
+    <h4><a href="38460.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/24166">Andreas Mayer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-10-13" title="2012-10-13 02:16">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-136223-notes"><p>Thank you, this is working for me. I hope that this fix makes it into the next minor release.</p></div>
+  </div>
+  
+
+  <div id="change-136854" class="journal has-notes">
+    <h4><a href="38460.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1618">Christian Hennecke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-10-17" title="2012-10-17 10:27">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-136854-notes"><p>I can confirm that this issue still exists in TYPO3 4.7.5 (which contains a bugfix for the media element) and that Stefan's TypoScript does fix it.</p></div>
+  </div>
+  
+
+  <div id="change-140641" class="journal has-notes">
+    <h4><a href="38460.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/464">Thomas Scholze</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2012-11-16" title="2012-11-16 12:23">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-140641-notes"><p>The fix works for me too, TYPO3 v4.7.7.<br />Thank you.</p></div>
+  </div>
+  
+
+  <div id="change-149064" class="journal has-notes">
+    <h4><a href="38460.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2775">Lorenz Ulrich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-29" title="2013-01-29 11:51">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149064-notes"><p>Works for me in latest 4.7, too. From comparing the TypoScript posted here by Stefan, I'm not sure if it's really a bug or if it only occurs in certain setups (the page affected in my case is using absRefPrefix).</p>
+
+
+	<p>Does someone know if this is reproducible in a site with default settings (no absRefPrefix)? If so, we should push a patch for css_styled_content to Gerrit.</p></div>
+  </div>
+  
+
+  <div id="change-149241" class="journal has-notes">
+    <h4><a href="38460.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/24166">Andreas Mayer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-01-30" title="2013-01-30 01:39">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-149241-notes"><p>Lorenz Ulrich wrote:</p>
+
+
+<blockquote>
+
+	<p>Does someone know if this is reproducible in a site with default settings (no absRefPrefix)? If so, we should push a patch for css_styled_content to Gerrit.</p>
+
+
+</blockquote>
+
+	<p>I had this problem, too, and I have never used absRefPrefix.</p></div>
+  </div>
+  
+
+  <div id="change-154010" class="journal has-notes">
+    <h4><a href="38460.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3051">Matthias Krappitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-09" title="2013-03-09 14:29">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-154010-notes"><p>Same problem also occurs on TYPO3 6.0.4. No problem when switching to flowplayer with the TS given above, except for the fact that I can't find a way to turn autoplay off in flowplayer by default.</p></div>
+  </div>
+  
+
+  <div id="change-154078" class="journal has-details">
+    <h4><a href="38460.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/202">Stefan Galinski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-03-11" title="2013-03-11 09:00">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Content Rendering</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>easy</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-167055" class="journal has-notes">
+    <h4><a href="38460.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/880">Christian Buelter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-05-27" title="2013-05-27 15:50">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-167055-notes"><p>Issue still exists in TYPO3 6.1.1</p>
+
+
+	<p>Typoscript code above works for me.</p></div>
+  </div>
+  
+
+  <div id="change-168968" class="journal has-notes">
+    <h4><a href="38460.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4318">Tobias Gaertner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-06-11" title="2013-06-11 10:30">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-168968-notes"><p>TS does only work partly for me<br />TYPO3 v.4.7.8</p>
+
+
+	<p>with the TS above it works fie in FF and IE10 (I have only a mp4-Video that should also work in Safari and Chrome)<br />In chrome the Player works but crashes if I stop the video. In Safari it does not work at all.</p>
+
+
+	<p>Maybe its because of the video-format? But the fallback does'n work at all!</p></div>
+  </div>
+  
+
+  <div id="change-172862" class="journal has-notes">
+    <h4><a href="38460.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2540">Alexander Bigga</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-07-11" title="2013-07-11 10:46">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-172862-notes"><p>The TS patch is working for me on TYPO3 4.7.12. We don't use absRefPrefix.</p>
+
+
+	<p>IE8 is now using the right flowplayer (not flvplayer) and plays the flash video.</p>
+
+
+	<p>Chromium, FF 17 and Opera play the provided mp4 or webm versions as expected.</p>
+
+
+	<p>So, what about taking this patch to the next bugfix release?</p></div>
+  </div>
+  
+
+  <div id="change-190527" class="journal has-notes has-details">
+    <h4><a href="38460.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/391">Peter Niederlag</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-18" title="2013-11-18 14:24">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Is Regression</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-190527-notes"><p>same problem on 6.1-beta1, replacing the flvplayer.swf by the flowplayer as suggested by Stefan Galinski works.</p></div>
+  </div>
+  
+
+  <div id="change-230974" class="journal has-details">
+    <h4><a href="38460.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2779">Felix Kopp</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-24" title="2014-09-24 12:43">10 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#61842</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-245528" class="journal has-notes">
+    <h4><a href="38460.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-18" title="2015-01-18 21:20">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-245528-notes"><p>Is this issue still pending in 6.2?</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-38460-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/38460.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="38460.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/38460 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:14:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/32415 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #32415: Authentication + Doctrine event listeners = apache segfault - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/32415.atom" rel="alternate" title="TYPO3.Flow - Bug #32415: Authentication + Doctrine event listeners = apache segfault" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-32415-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #32415</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Authentication + Doctrine event listeners = apache segfault</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/247">Fernando Arconada</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-09" title="2011-12-09 14:02">over 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-13" title="2012-01-13 17:01">over 3 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2011-12-09</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1231">TYPO3 Flow Base Distribution - 1.1</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+	<th>Affected Flow version:</th><td>Git master</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>here it is the proof of concept<br /><a class="external" href="../../external.html?link=https://github.com/farconada/F2.PoC">https://github.com/farconada/F2.PoC</a></p>
+
+
+	<p>If yout try to login whith a valid username password the apache segfaults<br />If you disable<br />$this->persistenceManager->injectEntityManager($entityManager);<br />the all works</p>
+
+
+	<p>ideas?</p>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-97437" class="journal has-details">
+    <h4><a href="32415.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-19" title="2011-12-19 13:43">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Karsten Dambekalns</i></li>
+      
+       <li><strong>Target version</strong> set to <i>1.1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-97438" class="journal has-notes has-details">
+    <h4><a href="32415.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-19" title="2011-12-19 14:24">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-97438-notes"><p>I had feared that, and I was right: your code works fine on my machine (after fixing the one missing class name change for the listener interface).</p>
+
+
+	<p>Segmentation faults are a classic and when PHP segfaults you can sometimes change your code to fix it. But more often than not I have seen segfaults go away or occur only with specific combinations of libraries used by PHP, compile-time option changes or extensions being added or removed.</p>
+
+
+	<p>I don't really know how to proceed here, even if I replictated your setup and could reproduce the error, it might just as well not be fixable.</p></div>
+  </div>
+  
+
+  <div id="change-97443" class="journal has-notes">
+    <h4><a href="32415.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/247">Fernando Arconada</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-19" title="2011-12-19 14:52">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-97443-notes"><p>Tested in another machine, and It crash also.<br />Tested with Fedora 15 32bit and Fedora 15 64bit<br />I could try with CentOS 5.7 also.<br />Any idea, time ago I had another segfault with was fixed in FLOW3 core, was related to AOP, no idea in this situation.<br />I could also give you access to a computer that segfaults.</p>
+
+
+	<p>What do you think</p>
+
+
+	<p>PD: it only crash after successfully login with username/password and default provider in developer environment</p></div>
+  </div>
+  
+
+  <div id="change-97444" class="journal has-notes">
+    <h4><a href="32415.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/247">Fernando Arconada</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-19" title="2011-12-19 15:04">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-97444-notes"><p>the core dump backtrace</p>
+
+
+	<p>[nemesis@root ~]# gdb /usr/sbin/httpd /tmp/core.30141<br />GNU gdb (GDB) Fedora (7.3.1-46.fc15)<br />Copyright (C) 2011 Free Software Foundation, Inc.<br />License GPLv3+: GNU GPL version 3 or later &lt;<a class="external" href="../../external.html?link=http://gnu.org/licenses/gpl.html">http://gnu.org/licenses/gpl.html</a>&gt;<br />This is free software: you are free to change and redistribute it.<br />There is NO WARRANTY, to the extent permitted by law.  Type "show copying" <br />and "show warranty" for details.<br />This GDB was configured as "i686-redhat-linux-gnu".<br />For bug reporting instructions, please see:<br />&lt;<a class="external" href="../../external.html?link=http://www.gnu.org/software/gdb/bugs/>">http://www.gnu.org/software/gdb/bugs/&gt;</a>...<br />Reading symbols from /usr/sbin/httpd...(no debugging symbols found)...done.<br />[New LWP 30141]<br />[Thread debugging using libthread_db enabled]<br />Core was generated by `/usr/sbin/httpd'.<br />Program terminated with signal 11, Segmentation fault.<br />#0  0x01290a50 in zend_object_store_get_object () from /etc/httpd/modules/libphp5.so<br />Missing separate debuginfos, use: debuginfo-install httpd-2.2.21-1.fc15.i686<br />(gdb) bt<br />#0  0x01290a50 in zend_object_store_get_object () from /etc/httpd/modules/libphp5.so<br /><a href="1.html" class="issue status-9 priority-2 closed" title="Use SPL when searching/listing files. (Closed)">#1</a>  0x0128c5bc in zend_objects_get_address () from /etc/httpd/modules/libphp5.so<br /><a href="2.html" class="issue status-9 priority-2 closed" title="authorName in PackageInfo.xml should be changed (Closed)">#2</a>  0x0128c7ec in zend_std_get_properties () from /etc/httpd/modules/libphp5.so<br /><a href="3.html" class="issue status-9 priority-2 closed" title="Add custom autoloader for phpCR package (Closed)">#3</a>  0x00e8dcbc in igbinary_serialize_array_sleep (incomplete_class=false, h=0x23d78f78, ce=0x23bb9fcc, <br />    z=0x23c78dec, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1011<br /><a href="4.html" class="issue status-9 priority-3 closed" title="Default autoloader should handle sub-direcories of Classes directory (Closed)">#4</a>  igbinary_serialize_object (z=0x23c78dec, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1187<br /><a href="5.html" class="issue status-9 priority-2 closed" title="Remove use of DIRECTORY_SEPARATOR (Closed)">#5</a>  igbinary_serialize_zval (z=&lt;optimized out&gt;, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1223<br /><a href="6.html" class="issue status-9 priority-2 closed" title="Tests have different results with different file systems (Closed)">#6</a>  igbinary_serialize_zval (igsd=0xbfb20d30, z=&lt;optimized out&gt;) at /root/igbinary-1.1.1/igbinary.c:1215<br /><a href="7.html" class="issue status-9 priority-2 closed" title="Some core tests fail when executed in certain order (Closed)">#7</a>  0x00e8ddc7 in igbinary_serialize_array_sleep (incomplete_class=false, h=0x23d70450, ce=0x239a8dd4, <br />    z=0x23856690, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1037<br /><a href="8.html" class="issue status-9 priority-2 closed" title="T3P_Core_PAckageConfFileComponentsConfigurationSourceTest-&gt;test_getComponentConfigurations_matche... (Closed)">#8</a>  igbinary_serialize_object (z=0x23856690, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1187<br /><a href="9.html" class="issue status-9 priority-2 closed" title="AOP Framework doesn't work at all - invalid type &quot;...BasicClass_AOPProxy&quot; (Closed)">#9</a>  igbinary_serialize_zval (z=&lt;optimized out&gt;, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1223<br /><a href="10.html" class="issue status-9 priority-2 closed" title="Register component types automatically from interfaces (Closed)">#10</a> igbinary_serialize_zval (igsd=0xbfb20d30, z=&lt;optimized out&gt;) at /root/igbinary-1.1.1/igbinary.c:1215<br /><a href="11.html" class="issue status-9 priority-2 closed" title="Add wildcard support for components in Components.ini (Closed)">#11</a> 0x00e90516 in igbinary_serialize_array_sleep (incomplete_class=false, h=0x23d6ffd8, ce=0x22d06008, <br />    z=0x22d18d98, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1037<br /><a href="12.html" class="issue status-9 priority-2 closed" title="Add support for autowiring (Closed)">#12</a> igbinary_serialize_object (z=0x22d18d98, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1187<br /><a href="13.html" class="issue status-9 priority-2 closed" title="Implement support for lifecycle methods (Closed)">#13</a> igbinary_serialize_zval (igsd=0xbfb20d30, z=&lt;optimized out&gt;) at /root/igbinary-1.1.1/igbinary.c:1223<br /><a href="14.html" class="issue status-7 priority-2 closed" title="Define the packageInfo.xml format (Resolved)">#14</a> 0x00e8b8fa in igbinary_serialize8 (i=&lt;optimized out&gt;, igsd=&lt;optimized out&gt;)<br />    at /root/igbinary-1.1.1/igbinary.c:627<br /><a href="15.html" class="issue status-9 priority-2 closed" title="Test selector should contain the last selected test after run (Closed)">#15</a> igbinary_serialize8 (i=&lt;optimized out&gt;, igsd=&lt;optimized out&gt;) at /root/igbinary-1.1.1/igbinary.c:1215<br /><a href="16.html" class="issue status-9 priority-1 closed" title="Add feature for running single tests (Closed)">#16</a> igbinary_serialize_null (igsd=&lt;optimized out&gt;) at /root/igbinary-1.1.1/igbinary.c:681<br /><a href="17.html" class="issue status-9 priority-2 closed" title="Optimize reflection usage by introducing a cache (Closed)">#17</a> igbinary_serialize_zval (z=0x22d18d98, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1221<br /><a href="18.html" class="issue status-9 priority-2 closed" title="Test of package Log is not executed although it exists (Closed)">#18</a> igbinary_serialize_array (incomplete_class=false, object=false, z=&lt;optimized out&gt;, igsd=0xbfb20d30)<br />    at /root/igbinary-1.1.1/igbinary.c:895<br /><a href="19.html" class="issue status-9 priority-2 closed" title="Add a feature for replacing &quot;new&quot; with &quot;getComponent&quot; in php source files (Closed)">#19</a> igbinary_serialize_zval (igsd=0xbfb20d30, z=&lt;optimized out&gt;) at /root/igbinary-1.1.1/igbinary.c:1225<br /><a href="20.html" class="issue status-9 priority-2 closed" title="Implement support for introductions / intertype-declarations (Closed)">#20</a> 0x00e892b5 in igbinary_serialize_array_sleep (incomplete_class=false, h=0x23d720a8, ce=0x22cb70ec, <br />    z=0x22cbb380, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1037<br /><a href="21.html" class="issue status-9 priority-2 closed" title="Implement support for pointcut definitions (Closed)">#21</a> igbinary_serialize_object (z=0x22cbb380, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1187<br /><a href="22.html" class="issue status-9 priority-2 closed" title="Enhance pointcut expression parser: within() (Closed)">#22</a> igbinary_serialize_zval (z=&lt;optimized out&gt;, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1223<br /><a href="23.html" class="issue status-7 priority-2 closed" title="Implement &quot;context&quot; support (Resolved)">#23</a> igbinary_serialize_zval (z=&lt;optimized out&gt;, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:818<br /><a href="24.html" class="issue status-9 priority-2 closed" title="Fix documentation in T3P_T3Lib_HashSet (Closed)">#24</a> igbinary_serialize_array (igsd=0xbfb20d30, z=&lt;optimized out&gt;, object=false, incomplete_class=false)<br />    at /root/igbinary-1.1.1/igbinary.c:895<br /><a href="25.html" class="issue status-9 priority-2 closed" title="Sometimes tests fail but the fail message is not displayed (Closed)">#25</a> 0x00e97eb1 in igbinary_serialize_zval (z=0x23d725a0, igsd=0xbfb20d30) at /root/igbinary-1.1.1/igbinary.c:1225<br /><a href="26.html" class="issue status-9 priority-2 closed" title="getSession() in T3P_phpCRJackrabbit_Workspace is broken (Closed)">#26</a> igbinary_serialize_array (incomplete_class=false, object=false, z=&lt;optimized out&gt;, igsd=0xbfb20d30)<br />    at /root/igbinary-1.1.1/igbinary.c:895<br /><a href="27.html" class="issue status-9 priority-2 closed" title="Add support for visibility modifier in pointcut expressions (Closed)">#27</a> ps_srlzr_encode_igbinary (newstr=0xbfb20e0c, newlen=0xbfb20efc) at /root/igbinary-1.1.1/igbinary.c:447<br /><a href="28.html" class="issue status-9 priority-2 closed" title="Add support for argument modifiers in pointcut expressions (Closed)">#28</a> 0x011523fd in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="29.html" class="issue status-9 priority-2 closed" title="Class files in sub directories are not loaded (Closed)">#29</a> 0x01154d0d in ?? () from /etc/httpd/modules/libphp5.so<br />---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---<br /><a href="30.html" class="issue status-9 priority-2 closed" title="Add feature to detect circular pointcut references (Closed)">#30</a> 0x012fd606 in execute_internal () from /etc/httpd/modules/libphp5.so<br /><a href="31.html" class="issue status-9 priority-2 closed" title="Define an exception hierarchy (Closed)">#31</a> 0x00a9b301 in xdebug_execute_internal () from /usr/lib/php/modules/xdebug.so<br /><a href="32.html" class="issue status-7 priority-2 closed" title="Design and implement a configuration manager (Resolved)">#32</a> 0x012e1365 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="33.html" class="issue status-9 priority-2 closed" title="Restructure unit tests (Closed)">#33</a> 0x01291a0e in execute () from /etc/httpd/modules/libphp5.so<br /><a href="34.html" class="issue status-9 priority-2 closed" title="Make dependency injection for unit tests possible (Closed)">#34</a> 0x00a9b00a in xdebug_execute () from /usr/lib/php/modules/xdebug.so<br /><a href="35.html" class="issue status-9 priority-2 closed" title="Refactor T3P_Core_AOPFramework: Extract build methods (Closed)">#35</a> 0x012e1061 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="36.html" class="issue status-7 priority-1 closed" title="Add automatic documentation in AOP proxy classes (Resolved)">#36</a> 0x01291a0e in execute () from /etc/httpd/modules/libphp5.so<br /><a href="37.html" class="issue status-9 priority-2 closed" title="AOP: Test introducing multiple interfaces (Closed)">#37</a> 0x00a9b00a in xdebug_execute () from /usr/lib/php/modules/xdebug.so<br /><a href="38.html" class="issue status-9 priority-2 closed" title="Undefined constants and non-initialized properties (Closed)">#38</a> 0x012e1061 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="39.html" class="issue status-9 priority-2 closed" title="No access control on raw repository (Closed)">#39</a> 0x01291a0e in execute () from /etc/httpd/modules/libphp5.so<br /><a href="40.html" class="issue status-9 priority-2 closed" title="Check all classes for Array type hinting (Closed)">#40</a> 0x00a9b00a in xdebug_execute () from /usr/lib/php/modules/xdebug.so<br /><a href="41.html" class="issue status-9 priority-2 closed" title="Custom autoloaders are registered too late (Closed)">#41</a> 0x0125e2a3 in zend_call_function () from /etc/httpd/modules/libphp5.so<br />#42 0x011a53bc in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="43.html" class="issue status-9 priority-1 closed" title="make extensibility of Components.conf possible (Closed)">#43</a> 0x012fd606 in execute_internal () from /etc/httpd/modules/libphp5.so<br /><a href="44.html" class="issue status-9 priority-2 closed" title="Fix injection of straight values with Setter Injection (Closed)">#44</a> 0x00a9b301 in xdebug_execute_internal () from /usr/lib/php/modules/xdebug.so<br /><a href="45.html" class="issue status-9 priority-2 closed" title="Core ComponentObjectBuilder: Create test for different types of constructor arguments (Closed)">#45</a> 0x012e1365 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="46.html" class="issue status-7 priority-1 closed" title="Implement After Advice (Resolved)">#46</a> 0x01291a0e in execute () from /etc/httpd/modules/libphp5.so<br /><a href="47.html" class="issue status-7 priority-2 closed" title="Implement pointcut designator for annotations (Resolved)">#47</a> 0x00a9b00a in xdebug_execute () from /usr/lib/php/modules/xdebug.so<br /><a href="48.html" class="issue status-9 priority-2 closed" title="ValueStreamRegistry is a Singleton outside the IoC container (Closed)">#48</a> 0x012e1061 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="49.html" class="issue status-9 priority-1 closed" title="Fix comments and clean up code in phpCR tests (Closed)">#49</a> 0x01291a0e in execute () from /etc/httpd/modules/libphp5.so<br /><a href="50.html" class="issue status-9 priority-2 closed" title="Documentation: watch that no mismatching .jar files are on java classpath (Closed)">#50</a> 0x00a9b00a in xdebug_execute () from /usr/lib/php/modules/xdebug.so<br /><a href="51.html" class="issue status-9 priority-2 closed" title="Two tests for AOP introductions fail (Closed)">#51</a> 0x012e1061 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="52.html" class="issue status-9 priority-2 closed" title="T3P_Framework_AOP_Pointcut: too many recursions (Closed)">#52</a> 0x01291a0e in execute () from /etc/httpd/modules/libphp5.so<br /><a href="53.html" class="issue status-9 priority-2 closed" title="TestRunner throws ReflectionException (PHP6) (Closed)">#53</a> 0x00a9b00a in xdebug_execute () from /usr/lib/php/modules/xdebug.so<br /><a href="54.html" class="issue status-9 priority-2 closed" title="Optimize speed of regular expressions in TypoScript parser (Closed)">#54</a> 0x012e1061 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="55.html" class="issue status-9 priority-2 closed" title="Namespaces are not available for the definition of processor methods (Closed)">#55</a> 0x01291a0e in execute () from /etc/httpd/modules/libphp5.so<br /><a href="56.html" class="issue status-9 priority-2 closed" title="DirectoryIterator returns an Path with /C under Windows (Closed)">#56</a> 0x00a9b00a in xdebug_execute () from /usr/lib/php/modules/xdebug.so<br /><a href="57.html" class="issue status-9 priority-2 closed" title="Unsetting elements of content arrays does not work (Closed)">#57</a> 0x012e1061 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="58.html" class="issue status-9 priority-2 closed" title="Create support for &quot;Component Manager aware&quot; components (Closed)">#58</a> 0x01291a0e in execute () from /etc/httpd/modules/libphp5.so<br /><a href="59.html" class="issue status-1 priority-2" title="Implement MVC pattern for TestRunner (New)">#59</a> 0x00a9b00a in xdebug_execute () from /usr/lib/php/modules/xdebug.so<br /><a href="60.html" class="issue status-9 priority-2 closed" title="Problems with constructor arguments and DI in non-adviced constructor interceptors (Closed)">#60</a> 0x012e1061 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="61.html" class="issue status-9 priority-1 closed" title="Errors in Framework_Utility_Environment::getScriptRequestPathAndName with mod_fcgid (Closed)">#61</a> 0x01291a0e in execute () from /etc/httpd/modules/libphp5.so<br /><a href="62.html" class="issue status-9 priority-2 closed" title="Decide on and implement TypoScript Array access (Closed)">#62</a> 0x00a9b00a in xdebug_execute () from /usr/lib/php/modules/xdebug.so<br />#63 0x0126c9c9 in zend_execute_scripts () from /etc/httpd/modules/libphp5.so<br /><a href="64.html" class="issue status-9 priority-1 closed" title="More Details for Apache2 &quot;prefork&quot; setup? (Closed)">#64</a> 0x01213370 in php_execute_script () from /etc/httpd/modules/libphp5.so<br /><a href="65.html" class="issue status-7 priority-2 closed" title="Move &quot;Validation&quot; to its own subpackage (Resolved)">#65</a> 0x012fee30 in ?? () from /etc/httpd/modules/libphp5.so<br /><a href="66.html" class="issue status-7 priority-2 closed" title="Add the feature &quot;Mapping Results&quot; to the Property Mapper (Resolved)">#66</a> 0x009c992e in ap_run_handler ()<br /><a href="67.html" class="issue status-7 priority-2 closed" title="Refine the generic &quot;Error&quot; class (Resolved)">#67</a> 0x009c9da6 in ap_invoke_handler ()<br />---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---<br /><a href="68.html" class="issue status-7 priority-2 closed" title="Add validateProperty() to the Validator interface (Resolved)">#68</a> 0x009d839c in ap_internal_redirect ()<br /><a href="69.html" class="issue status-7 priority-2 closed" title="Add validation to the PropertyMapper (Resolved)">#69</a> 0x0040fcf2 in ?? () from /etc/httpd/modules/mod_rewrite.so<br /><a href="70.html" class="issue status-7 priority-2 closed" title="Implement a Validator Resolver (Resolved)">#70</a> 0x009c992e in ap_run_handler ()<br /><a href="71.html" class="issue status-7 priority-2 closed" title="Add Validators for generic base types (Resolved)">#71</a> 0x009c9da6 in ap_invoke_handler ()<br /><a href="72.html" class="issue status-9 priority-2 closed" title="Fix @package and @subpackage annotation in all Framework classes (Closed)">#72</a> 0x009d8d20 in ap_process_request ()<br /><a href="73.html" class="issue status-9 priority-2 closed" title="Fix MVC CLI Request Handler / -Builder (Closed)">#73</a> 0x009d5850 in ?? ()<br /><a href="74.html" class="issue status-7 priority-2 closed" title="Request Builder doesn't convert POST arguments into Request arguments (Resolved)">#74</a> 0x009d0eee in ap_run_process_connection ()<br /><a href="75.html" class="issue status-7 priority-2 closed" title="Move T3_Framework_MVC_URI to a more fitting subpackage (Resolved)">#75</a> 0x009de57d in ?? ()<br /><a href="76.html" class="issue status-9 priority-2 closed" title="Rename test methods, add @test annotation, extend base class (Closed)">#76</a> 0x009deeeb in ?? ()<br /><a href="77.html" class="issue status-9 priority-2 closed" title="typo in MINUMUM_PHP_VERSION (Closed)">#77</a> 0x009defbc in ?? ()<br />#78 0x009dfba0 in ap_mpm_run ()<br /><a href="79.html" class="issue status-9 priority-2 closed" title="ssl vhost of 5-0 dev website buggy &amp; link in trac-ticket-mails wrong (Closed)">#79</a> 0x009b272f in main ()</p></div>
+  </div>
+  
+
+  <div id="change-97531" class="journal has-notes">
+    <h4><a href="32415.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-19" title="2011-12-19 23:26">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-97531-notes"><p>What happens if you disable igbinary?</p></div>
+  </div>
+  
+
+  <div id="change-97534" class="journal has-notes">
+    <h4><a href="32415.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/247">Fernando Arconada</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2011-12-19" title="2011-12-19 23:46">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-97534-notes"><p>I have disabled some php extensions but nothing<br />I have updated the package at GitHub cause I have a clue: Only segfaults if you try to loggin with a User created with the Command inside the package</p></div>
+  </div>
+  
+
+  <div id="change-98706" class="journal has-notes has-details">
+    <h4><a href="32415.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-04" title="2012-01-04 20:42">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-98706-notes"><p>I can reproduce the segmentation fault with the updated PoC code.</p>
+
+
+	<p>It occurs with current master and is not fixed with the updated Doctrine 2 libraries.</p></div>
+  </div>
+  
+
+  <div id="change-98883" class="journal has-notes has-details">
+    <h4><a href="32415.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-05" title="2012-01-05 16:19">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-98883-notes"><p>Ok, I finally wanted to se if this goes away when not adding any event listeners. So I checked out the AbstractController. Aha. You create a new EntityManager and inject it to the PersistenceManager. <strong>Do not do that.</strong></p>
+
+
+	<p>A fix is available in <a class="external" href="../../external.html?link=https://github.com/farconada/F2.PoC/pull/1">https://github.com/farconada/F2.PoC/pull/1</a></p></div>
+  </div>
+  
+
+  <div id="change-98884" class="journal has-details">
+    <h4><a href="32415.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-05" title="2012-01-05 16:19">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>TYPO3 Flow Base Distribution</i> to <i>TYPO3.Flow</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-98885" class="journal has-details">
+    <h4><a href="32415.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-05" title="2012-01-05 16:26">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Has patch</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-98972" class="journal has-notes">
+    <h4><a href="32415.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/247">Fernando Arconada</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-06" title="2012-01-06 13:52">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-98972-notes"><p>I have tested your soluction and works quite well</p>
+
+
+	<p>So the best way to use doctrine event listeners is:<br />//Event listener para indexacion de objetos<br />        $entityManager = $this->objectManager->get('Doctrine\Common\Persistence\ObjectManager');<br />        $entityManager->getEventManager()->addEventListener(<br />            array(\Doctrine\ORM\Events::postUpdate, \Doctrine\ORM\Events::postPersist, \Doctrine\ORM\Events::preRemove), $this->doctrineEventListener<br />        );</p>
+
+
+	<p>where $this->doctrineEventListener is a class that has methods like <br />public function postPersist(\Doctrine\ORM\Event\LifecycleEventArgs $args);<br />public function postUpdate(\Doctrine\ORM\Event\LifecycleEventArgs $args);<br />public function preRemove(\Doctrine\ORM\Event\LifecycleEventArgs $args);</p>
+
+
+	<p>Thanks for your solution</p></div>
+  </div>
+  
+
+  <div id="change-99491" class="journal has-details">
+    <h4><a href="32415.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-01-13" title="2012-01-13 17:01">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-32415-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/32415.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="32415.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/32415 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

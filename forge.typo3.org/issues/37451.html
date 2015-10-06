@@ -1,0 +1,687 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/37451 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:00:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Task #37451: Rework usage of Roles in the security framework - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/37451.atom" rel="alternate" title="TYPO3.Flow - Task #37451: Rework usage of Roles in the security framework" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-37451-watcher"></span>
+
+
+</div>
+
+
+<h2>Task #37451</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Rework usage of Roles in the security framework</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3198">Rens Admiraal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-23" title="2012-05-23 22:04">about 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-14" title="2013-08-14 15:59">almost 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-05-23</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/3198">Rens Admiraal</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Security</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1966">TYPO3 Flow Base Distribution - 2.0</a></td>
+    
+</tr>
+<tr>
+	<th>Sprint:</th><td></td>
+	<th>Has patch:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Roles are now simple string values but there's actually an entity object for it. We need the Roles to be persisted (like for example to to add new roles in the phoenix backend)</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-7606">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="28862" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="28862.html" class="issue status-7 priority-2 closed">Bug #28862</a>: Inconsistent handling of roles as objects and strings in ...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2011-08-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/37451/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/37451/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=37451&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/a79904d9c67634f6562632db0bc4cbc45465504a" title="Revision a79904d9">Revision a79904d9</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3198">Rens Admiraal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-23" title="2012-05-23 22:04">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Add hasRole() method to Account entity</p>
+
+
+	<p>At the moment the roles still have to be persisted as<br />strings in the serialized roles property in the database.<br />Already converting all roles to objects would require<br />some more refactoring.<br />This change is tested on already existing, and on new<br />users.</p>
+
+
+	<p>Change-Id: Ibb4989f43d4e92e2e19732786999654eb6531fb8<br />Releases: 1.2<br />Related: <a href="37451.html" class="issue status-7 priority-2 closed" title="Rework usage of Roles in the security framework (Resolved)">#37451</a></p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/f0776fb3e7c561940617b0011ce36fc3609084f5" title="Revision f0776fb3">Revision f0776fb3</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-04-10" title="2013-04-10 17:25">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][FEATURE] Handle roles consistently as objects</p>
+
+
+	<p>With this change roles are consistently used as objects.</p>
+
+
+	<p>To prevent naming conflicts between roles from different packages the<br />package key is added to the role names.</p>
+
+
+	<p>The handling of roles now is more strict and does not allow the use of<br />not configured (non-existent) roles anymore.</p>
+
+
+	<p>Roles are now referenced as real instances instead of their string<br />identifiers in models. Roles which were defined in policies are now<br />automatically mirrored to the RoleRepository (usually stored as a<br />table in a database).</p>
+
+
+	<p>The getRoles() method has been removed from TokenInterface.</p>
+
+
+	<p>Change-Id: I39f335baa01fbe9b883e98e85cb1f063bbaf5744<br />Resolves: <a href="28862.html" class="issue status-7 priority-2 closed" title="Inconsistent handling of roles as objects and strings in Account (Resolved)">#28862</a><br />Resolves: <a href="43578.html" class="issue status-7 priority-2 closed" title="Enable role creation through API (Resolved)">#43578</a><br />Related: <a href="37451.html" class="issue status-7 priority-2 closed" title="Rework usage of Roles in the security framework (Resolved)">#37451</a><br />Related: <a href="27698.html" class="issue status-7 priority-2 closed" title="Roles should use an adequate data type to get persisted as entities  (Resolved)">#27698</a><br />Releases: 2.0, master</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/28e52aa8883c1fabc630b2f0f7756f72adaf1707" title="Revision 28e52aa8">Revision 28e52aa8</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-04-11" title="2013-04-11 12:27">over 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][FEATURE] Handle roles consistently as objects</p>
+
+
+	<p>With this change roles are consistently used as objects.</p>
+
+
+	<p>To prevent naming conflicts between roles from different packages the<br />package key is added to the role names.</p>
+
+
+	<p>The handling of roles now is more strict and does not allow the use of<br />not configured (non-existent) roles anymore.</p>
+
+
+	<p>Roles are now referenced as real instances instead of their string<br />identifiers in models. Roles which were defined in policies are now<br />automatically mirrored to the RoleRepository (usually stored as a<br />table in a database).</p>
+
+
+	<p>The getRoles() method has been removed from TokenInterface.</p>
+
+
+	<p>Change-Id: I39f335baa01fbe9b883e98e85cb1f063bbaf5744<br />Resolves: <a href="28862.html" class="issue status-7 priority-2 closed" title="Inconsistent handling of roles as objects and strings in Account (Resolved)">#28862</a><br />Resolves: <a href="43578.html" class="issue status-7 priority-2 closed" title="Enable role creation through API (Resolved)">#43578</a><br />Related: <a href="37451.html" class="issue status-7 priority-2 closed" title="Rework usage of Roles in the security framework (Resolved)">#37451</a><br />Related: <a href="27698.html" class="issue status-7 priority-2 closed" title="Roles should use an adequate data type to get persisted as entities  (Resolved)">#27698</a><br />Releases: 2.0, master</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-117767" class="journal has-details">
+    <h4><a href="37451.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-24" title="2012-05-24 09:41">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>TYPO3 Flow Base Distribution</i> to <i>TYPO3.Flow</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-117768" class="journal has-details">
+    <h4><a href="37451.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-24" title="2012-05-24 09:41">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Security</i></li>
+      
+       <li><strong>Has patch</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-117778" class="journal has-notes">
+    <h4><a href="37451.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3198">Rens Admiraal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-24" title="2012-05-24 10:13">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-117778-notes"><p>Some short notes from a discussion with Christian:</p>
+
+
+	<ul>
+	<li>Role is an entity</li>
+		<li>Maybe we should keep special roles in memory only (like anonymous and everybody, which are both not assigned by relation but by context)</li>
+		<li>Matching on string values should still be possible</li>
+		<li>Roles configured in Policy.yaml should automatically be persisted (probably in the policyService)</li>
+		<li>Identifier has to be unique, but should probably not be annotated @ORM\Id</li>
+		<li>There should be an easy way to find all parent roles</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-126580" class="journal has-notes">
+    <h4><a href="37451.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-02" title="2012-08-02 08:59">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-126580-notes"><p>Rens Admiraal wrote:</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>Role is an entity</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>yes!</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>Maybe we should keep special roles in memory only (like anonymous and everybody, which are both not assigned by relation but by context)</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>yes, anonymous and everybody are hard-wired in the security framework and certainly should stay like that. So: don't persist.</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>Matching on string values should still be possible</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>you mean hasRole($string) etc? Then sure!</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>Roles configured in Policy.yaml should automatically be persisted (probably in the policyService)</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>And there we start mixing things up … I think what you really want is persisting groups, not persisting roles. Let's discuss that.</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>Identifier has to be unique, but should probably not be annotated @ORM\Id</li>
+		<li>There should be an easy way to find all parent roles</li>
+	</ul>
+
+
+</blockquote></div>
+  </div>
+  
+
+  <div id="change-128864" class="journal has-details">
+    <h4><a href="37451.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3198">Rens Admiraal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-19" title="2012-08-19 22:58">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Assigned To</strong> set to <i>Rens Admiraal</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-129082" class="journal has-notes has-details">
+    <h4><a href="37451.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3198">Rens Admiraal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-08-21" title="2012-08-21 13:03">almost 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Store roles as an entity</i> to <i>Rework usage of Roles in the security framework</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-129082-notes"><p>The changes pushed to the review queue implement the following concept:</p>
+
+
+	<ul>
+	<li>Roles are defined in a programmatic way (Policy.yaml)</li>
+		<li>The policyService / securityContext handle Roles as objects (not as string, exception: the hasRole requires a string representation)</li>
+		<li>Roles reside in their own package namespace (like Foo.MyPackage.RoleName)</li>
+		<li>'Old style definition' should still work</li>
+		<li>The framework should support nestable groups which can have roles assigned to make roles configuration more flexible in an application if needed</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-141553" class="journal has-notes has-details">
+    <h4><a href="37451.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-21" title="2012-11-21 14:02">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-141553-notes"><p>See <a class="external" href="../../external.html?link=https://review.typo3.org/#/q/topic:roles,n,z">https://review.typo3.org/#/q/topic:roles,n,z</a></p></div>
+  </div>
+  
+
+  <div id="change-141554" class="journal has-notes has-details">
+    <h4><a href="37451.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-11-21" title="2012-11-21 14:04">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>2.0</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-141554-notes"><p>What those changes are missing as of today - to fully replace the idea of the <code>AuthorizationGroup</code> - is an <code>addRole()</code> method</p></div>
+  </div>
+  
+
+  <div id="change-144667" class="journal has-details">
+    <h4><a href="37451.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-12-09" title="2012-12-09 21:25">over 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>2.0</i> to <i>2.1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-166435" class="journal has-details">
+    <h4><a href="37451.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-05-21" title="2013-05-21 13:28">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> deleted (<strike><i>2.1</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-177650" class="journal has-details">
+    <h4><a href="37451.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-14" title="2013-08-14 15:59">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>Target version</strong> set to <i>2.0</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-37451-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/37451.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="37451.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/37451 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:00:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

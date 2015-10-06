@@ -1,0 +1,651 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/37402 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:00:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #37402: Make request handling RESTfuller - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/37402.atom" rel="alternate" title="TYPO3.Flow - Feature #37402: Make request handling RESTfuller" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-37402-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #37402</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Make request handling RESTfuller</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-22" title="2012-05-22 20:19">about 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-25" title="2013-01-25 16:20">over 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-05-22</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 70%;"></td><td class="todo" style="width: 30%;"></td></tr></table><p class="pourcent">70%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Http</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1758">TYPO3 Flow Base Distribution - 1.1 beta 2</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Currently quite some work is required in order to create a FLOW3 based REST service. See comments: <a class="external" href="../../external.html?link=https://github.com/bwaidelich/REST-Test/commit/08749c0304d0f917781ca29f558dbb83f610fb57">https://github.com/bwaidelich/REST-Test/commit/08749c0304d0f917781ca29f558dbb83f610fb57</a></p>
+
+
+	<p>Those features should be part of the core IMO:</p>
+
+
+	<a name="format-negotiation"></a>
+<h3 >format negotiation:<a href="#format-negotiation" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>We used to have a convenience method <a href="../../external.html?link=http://git.typo3.org/FLOW3/Packages/TYPO3.FLOW3.git?a=blob;f=Classes/Utility/Environment.php;hb=d1a05a20c8e6f024291752c63aa58b29d6add618#l171" class="external">Environment:getAcceptedFormats()</a> that determined the accepted format from the requests accept headers. The http request should be able to determine those itself.<br /><strong>Note:</strong> It would be nice if the request had a <strong>list</strong> of accepted formats so the controller could specify a list of supported formats and the first match would be used.</p>
+
+
+	<a name="consume-input-streams-see-36913"></a>
+<h3 >consume input streams (see <a href="36913.html" class="issue status-7 priority-1 closed" title="HTTP PUT data not regonized as arguments  (Resolved)">#36913</a>)<a href="#consume-input-streams-see-36913" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Streams should be converted to arguments for POST &#38; PUT requests.<br />Based on the content type the stream needs to be parsed (see <a class="external" href="../../external.html?link=https://github.com/bwaidelich/REST-Test/blob/master/Classes/RestRequestHandler.php#L119">https://github.com/bwaidelich/REST-Test/blob/master/Classes/RestRequestHandler.php#L119</a>)</p>
+
+
+	<a name="improve-provided-RestController"></a>
+<h3 >improve provided RestController<a href="#improve-provided-RestController" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>The RestController should be able to set the Content-Type header of the response according to some pattern (see <a class="external" href="../../external.html?link=https://github.com/bwaidelich/REST-Test/blob/master/Classes/Controller/AbstractRestController.php#L40">https://github.com/bwaidelich/REST-Test/blob/master/Classes/Controller/AbstractRestController.php#L40</a>)<br />Also redirection and error handling need to be adjusted</p>
+
+
+	<p>I don't know what we could achieve for 1.1 still, but maybe we can at least make it easier for 3rd parties to hook in</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-6489">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="35243" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="35243.html" class="issue status-7 priority-1 closed">Feature #35243</a>: HTTP 1.1 Support – Foundations
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-03-26</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6488">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="36340" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="36340.html" class="issue status-7 priority-2 closed">Task #36340</a>: Environment class needs to be cleaned up
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-04-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6490">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="36913" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="36913.html" class="issue status-7 priority-1 closed">Bug #36913</a>: HTTP PUT data not regonized as arguments 
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-05-07</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6491">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="37403" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="37403.html" class="issue status-7 priority-2 closed">Bug #37403</a>: IdentityRoutePart should set __identity array
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-05-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6522">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="37604" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="37604.html" class="issue status-7 priority-2 closed">Feature #37604</a>: Make Flow RestController useless by improving MVC stack
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-05-30</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/37402/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/37402/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=37402&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/02fc35beae76ab7488245e92ffdb2489a17c1b01" title="Revision 02fc35be">Revision 02fc35be</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-22" title="2012-05-22 21:48">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] IdentityRoutePart should return __identity array</p>
+
+
+	<p>IdentityRoutePart::matchValue() currently returns the identifier<br />of the ObjectPathMapping record directly.<br />This makes it difficult to merge arguments with data from the<br />requestBody (e.g. for PUT requests).</p>
+
+
+	<p>This change adjusts the route part so that it sets $this->value<br />to an array in the format array('__identity' => '&lt;Identifier&gt;')</p>
+
+
+	<p>Change-Id: I8b8cca1e20a2caf85ba51680ca79c4d74c16ed8b<br />Fixes: <a href="37403.html" class="issue status-7 priority-2 closed" title="IdentityRoutePart should set __identity array (Resolved)">#37403</a><br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/26f83dd314e9b38d7d7bca10ec3d4b27e467ab5e" title="Revision 26f83dd3">Revision 26f83dd3</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-23" title="2012-05-23 16:21">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Support for HTTP PUT/DELETE arguments</p>
+
+
+	<p>This adds transparent argument support for arguments<br />in PUT and DELETE requests which are passed through<br />the request body. Depending on the content type of<br />the request, the message body is parsed and then<br />mapped into arguments for further use in controllers.</p>
+
+
+	<p>The following content content types are currently<br />supported:</p>
+
+
+	<ul>
+	<li>application/x-www-form-urlencoded</li>
+		<li>application/json</li>
+		<li>xml</li>
+	</ul>
+
+
+	<p>Change-Id: Ifa6712e38d68c94cd9ec79a499d25ee577fc2d57<br />Resolves: <a href="36913.html" class="issue status-7 priority-1 closed" title="HTTP PUT data not regonized as arguments  (Resolved)">#36913</a><br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/8ce2f8da04576f850dc1bb02c22fdd582f02df86" title="Revision 8ce2f8da">Revision 8ce2f8da</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-23" title="2012-05-23 16:37">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Support for HTTP PUT/DELETE arguments</p>
+
+
+	<p>This adds transparent argument support for arguments<br />in PUT and DELETE requests which are passed through<br />the request body. Depending on the content type of<br />the request, the message body is parsed and then<br />mapped into arguments for further use in controllers.</p>
+
+
+	<p>The following content content types are currently<br />supported:</p>
+
+
+	<ul>
+	<li>application/x-www-form-urlencoded</li>
+		<li>application/json</li>
+		<li>xml</li>
+	</ul>
+
+
+	<p>Change-Id: Id938025a7359b6ec3b29cec5fd7259db97703a16<br />Resolves: <a href="36913.html" class="issue status-7 priority-1 closed" title="HTTP PUT data not regonized as arguments  (Resolved)">#36913</a><br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/94d958a57f662a27c5411df52707778e6c077301" title="Revision 94d958a5">Revision 94d958a5</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-29" title="2012-05-29 10:17">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Set property mapping configuration in RestController</p>
+
+
+	<p>Since Iac7bbb2a58ad890701fff2b0ad6b16a0e0b15bba we use a<br />whitelist-based approach to configure property mapping.<br />This change hooks into the create/update action of the<br />RestController and sets the required property mapping<br />configuration.</p>
+
+
+	<p>Change-Id: I6edbef57b42ed7afa176fbe231c500ff5fec8b14<br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Related: <a href="36776.html" class="issue status-7 priority-2 closed" title="Property Mapping should be based on whitelist; configuration should be generated by form (Resolved)">#36776</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/ef3e8fbbae550efc12af8fa69e1b39eafeddab6f" title="Revision ef3e8fbb">Revision ef3e8fbb</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-29" title="2012-05-29 22:41">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][TASK] Switch from MIME to Media Types</p>
+
+
+	<p>The term MIME type is outdated, at least if used in a web context. The correct<br />term is "Internet Media Type". Furthermore, our list of MIME types (or media<br />types) was not up to date.</p>
+
+
+	<p>This patch introduces a new utility class "MediaTypes" which replaces<br />"FileTypes". Along with the new class comes a script which allows the core team<br />to conveniently update the list of Media Types and filename extensions.</p>
+
+
+	<p>This is a breaking change as the FileTypes class is deprecated with it. The old<br />methods are still available but should not be used anymore. A code migration to<br />use the new ones instead is shipped with the change.</p>
+
+
+	<p>Change-Id: I8f0997f79f09c828dbce5c7a34b4487a522aab0c<br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/fc4c4ab510ddc1705f0c06a40e90335b5301ee4c" title="Revision fc4c4ab5">Revision fc4c4ab5</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-30" title="2012-05-30 14:24">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][TASK] Switch from MIME to Media Types</p>
+
+
+	<p>The term MIME type is outdated, at least if used in a web context. The correct<br />term is "Internet Media Type". Furthermore, our list of MIME types (or media<br />types) was not up to date.</p>
+
+
+	<p>This patch introduces a new utility class "MediaTypes" which replaces<br />"FileTypes". Along with the new class comes a script which allows the core team<br />to conveniently update the list of Media Types and filename extensions.</p>
+
+
+	<p>This is a breaking change as the FileTypes class is deprecated with it. The old<br />methods are still available but should not be used anymore. A code migration to<br />use the new ones instead is shipped with the change.</p>
+
+
+	<p>Change-Id: I8f0997f79f09c828dbce5c7a34b4487a522aab0c<br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Related: <a href="33371.html" class="issue status-7 priority-1 closed parent" title="HTTP 1.1 Support (Resolved)">#33371</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/c7da751a3cba3427acc14c6f5a3d568e05f7da49" title="Revision c7da751a">Revision c7da751a</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-30" title="2012-05-30 20:16">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] IdentityRoutePart should return __identity array</p>
+
+
+	<p>IdentityRoutePart::matchValue() currently returns the identifier<br />of the ObjectPathMapping record directly.<br />This makes it difficult to merge arguments with data from the<br />requestBody (e.g. for PUT requests).</p>
+
+
+	<p>This change adjusts the route part so that it sets $this->value<br />to an array in the format array('__identity' => '&lt;Identifier&gt;')</p>
+
+
+	<p>Change-Id: I8b8cca1e20a2caf85ba51680ca79c4d74c16ed8b<br />Fixes: <a href="37403.html" class="issue status-7 priority-2 closed" title="IdentityRoutePart should set __identity array (Resolved)">#37403</a><br />Related: <a href="37402.html" class="issue status-7 priority-2 closed" title="Make request handling RESTfuller (Resolved)">#37402</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-118241" class="journal has-details">
+    <h4><a href="37402.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-29" title="2012-05-29 10:54">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Tracker</strong> changed from <i>Task</i> to <i>Feature</i></li>
+      
+       <li><strong>Category</strong> changed from <i>MVC</i> to <i>Http</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>PHP Version</strong> set to <i>5.3</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>medium</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-118500" class="journal has-details">
+    <h4><a href="37402.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-30" title="2012-05-30 13:03">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>70</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-118501" class="journal has-notes has-details">
+    <h4><a href="37402.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-30" title="2012-05-30 13:06">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-118501-notes"><p>Almost done, the remaining work will be done for 1.2, see <a href="37604.html" class="issue status-7 priority-2 closed" title="Make Flow RestController useless by improving MVC stack (Resolved)">#37604</a>.</p></div>
+  </div>
+  
+
+  <div id="change-148665" class="journal has-notes">
+    <h4><a href="37402.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-01-25" title="2013-01-25 16:20">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-148665-notes"><p>Moved comments to <a href="37604.html" class="issue status-7 priority-2 closed" title="Make Flow RestController useless by improving MVC stack (Resolved)">#37604</a></p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-37402-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/37402.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="37402.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/37402 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:00:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

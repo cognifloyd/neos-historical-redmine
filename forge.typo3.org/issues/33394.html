@@ -1,0 +1,954 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/33394 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #33394: Logical expression parser for BooleanNode - TYPO3.Fluid - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:#FFFFFF;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/33394.atom" rel="alternate" title="TYPO3.Fluid - Feature #33394: Logical expression parser for BooleanNode" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-color:#FFFFFF;background-image:url(../headerimages/517.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" accesskey="4" style="color:#FFFFFF">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Fluid</h1>
+        <div id="quicklinks"><p>Wiki of the <a href="../../external.html?link=http://forge.typo3.org/projects/typo3v4-mvc/wiki" class="external">Extbase Project</a></p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 current sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=195" class="query">1.0 beta 1</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (6)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38392">Leon de Rijke</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38523">Sven Radetzky</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-33394-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #33394</h2>
+
+<div class="issue status-4 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Logical expression parser for BooleanNode</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-01-23" title="2012-01-23 19:01">over 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-08-14" title="2014-08-14 14:10">12 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Needs Feedback</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-01-23</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 90%;"></td><td class="todo" style="width: 10%;"></td></tr></table><p class="pourcent">90%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Core</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>In boolean ViewHelper attributes, like the f:if condition, one might want to use boolean expressions and boolean operators like &#38;&#38; (and), || (or) or ! (not).</p>
+
+
+	<p>The <code>BooleanNode</code> needs to parse this logical expressions.</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-7555">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="26665" /></td>
+<td class="subject">related to 
+    TYPO3.Fluid - 
+    <a href="26665.html" class="issue status-7 priority-2 closed parent">Feature #26665</a>: Fluid: Implement String comparison
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2010-03-10</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-8701">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="33215" /></td>
+<td class="subject">related to 
+    TYPO3.Fluid - 
+    <a href="33215.html" class="issue status-1 priority-2">Feature #33215</a>: RFC: Dynamic values in ObjectAccess paths
+</td>
+<td class="status">New</td>
+<td class="start_date">2012-01-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6895">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="39564" /></td>
+<td class="subject">related to 
+    TYPO3.Eel - 
+    <a href="39564.html" class="issue status-7 priority-2 closed">Feature #39564</a>: Eel Parser RegEx should support quoted strings containing...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-08-07</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-6609">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="38379" /></td>
+<td class="subject">related to 
+    TYPO3.Eel - 
+    <a href="38379.html" class="issue status-1 priority-2">Feature #38379</a>: Implement a Eel-ViewHelper
+</td>
+<td class="status">New</td>
+<td class="start_date">2012-06-25</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-7274">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="40338" /></td>
+<td class="subject">duplicated by 
+    TYPO3.Fluid - 
+    <a href="40338.html" class="issue status-9 priority-3 closed">Feature #40338</a>: Make possible to combine conditions with f:if
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2012-08-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9388">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="48221" /></td>
+<td class="subject">blocks 
+    Core - 
+    <a href="48221.html" class="issue status-1 priority-1">Feature #48221</a>: BooleanNode must support logical OR/AND
+</td>
+<td class="status">New</td>
+<td class="start_date">2013-05-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/33394/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/33394/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=33394&amp;project_id=package-typo3-fluid')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-100263" class="journal has-notes has-details">
+    <h4><a href="33394.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-01-23" title="2012-01-23 19:01">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-100263-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/8614">http://review.typo3.org/8614</a></p></div>
+  </div>
+  
+
+  <div id="change-115472" class="journal has-details">
+    <h4><a href="33394.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-07" title="2012-05-07 17:06">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> deleted (<strike><i>1.1</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-115473" class="journal has-details">
+    <h4><a href="33394.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-07" title="2012-05-07 17:14">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-115476" class="journal has-notes">
+    <h4><a href="33394.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-07" title="2012-05-07 17:18">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-115476-notes"><p>Thanks for the reminder.</p>
+
+
+	<p>This change will be obsolete, if Eel is available in Fluid for FLOW3 and also in Fluid for extbase</p></div>
+  </div>
+  
+
+  <div id="change-120378" class="journal has-notes">
+    <h4><a href="33394.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4355">Jacob Floyd</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 20:21">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-120378-notes"><p>How will Eel be integrated in Fluid? A view helper? I couldn't find a ticket about that - is there one? Do we need one?</p>
+
+
+	<p>If there is a ticket, and we are going to use Eel instead of implementing the logical operators within the boolean ViewHelper attributes, then this issue should depend on the other issue.</p></div>
+  </div>
+  
+
+  <div id="change-121310" class="journal has-notes">
+    <h4><a href="33394.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-25" title="2012-06-25 19:12">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-121310-notes"><p><del>There is no other Issue/Ticket yet.</del> Just created two tickets.</p>
+
+
+	<p>IMHO we need to do two separate steps</p>
+
+
+	<ul>
+	<li>First of all Eel should be available within Fluid (the FLOW3-Package). I think the easiest way would be to implement a Eel-ViewHelper. (<a href="38379.html" class="issue status-1 priority-2" title="Implement a Eel-ViewHelper (New)">#38379</a>)</li>
+		<li>Then the Eel-Package (and this new VH) should be backported to extbase (and become a part of extbase) (#38380)</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-121370" class="journal has-notes">
+    <h4><a href="33394.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-26" title="2012-06-26 05:57">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-121370-notes"><p>Actually Eel should be integrated into Fluid using the syntax of "${eel-expression}".</p>
+
+
+	<p>Greets, sebastian</p></div>
+  </div>
+  
+
+  <div id="change-121381" class="journal has-notes">
+    <h4><a href="33394.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-26" title="2012-06-26 08:30">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-121381-notes"><p>Hej Sebastian,</p>
+
+
+	<p>what's the advantage of having a new build-into-fluid syntax ( ${..} ) instead an eel viewhelper, except of being a little shorter? I think a viewhelper will be much easier to implement instead of extending the fluid template parser.</p></div>
+  </div>
+  
+
+  <div id="change-121396" class="journal has-notes">
+    <h4><a href="33394.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-26" title="2012-06-26 10:23">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-121396-notes"><p>Tobias Liebig wrote:</p>
+
+
+<blockquote>
+
+	<p>what's the advantage of having a new build-into-fluid syntax ( ${..} )</p>
+
+
+</blockquote>
+
+	<p>Can you think of an example and compare the syntax?<br />I'm not sure how that would look like in eel, but with a new ViewHelper it is probably rather technical:<br /><pre>
+<code class="xml syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="tag">&lt;f:if</span> <span class="attribute-name">condition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{f:eel(query: 'foo == \'bar\'')}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+</span></code><br /></pre></p></div>
+  </div>
+  
+
+  <div id="change-121399" class="journal has-notes">
+    <h4><a href="33394.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-26" title="2012-06-26 10:30">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-121399-notes"><p>Bastian Waidelich wrote:</p>
+
+
+<blockquote>
+
+	<p>Tobias Liebig wrote:</p>
+
+
+<blockquote>
+
+	<p>what's the advantage of having a new build-into-fluid syntax ( ${..} )</p>
+
+
+</blockquote>
+
+	<p>Can you think of an example and compare the syntax?<br />I'm not sure how that would look like in eel, but with a new ViewHelper it is probably rather technical:<br />[...]</p>
+
+
+</blockquote>
+
+	<p>i'd be totally fine with that, if it means its easier to implement, which actually means we could have it earlier in Fluid for extbase :-)</p>
+
+
+	<p>i guess in Sebastians suggestion it would be like:</p>
+
+
+<pre>
+<code class="xml syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="tag">&lt;f:if</span> <span class="attribute-name">condition</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${'foo == \'bar\''}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+</span></code><br /></pre></div>
+  </div>
+  
+
+  <div id="change-121480" class="journal has-notes">
+    <h4><a href="33394.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-26" title="2012-06-26 15:26">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-121480-notes"><p>Hey,</p>
+
+
+	<p>@Bastian: even easier:</p>
+
+
+<code><pre>
+&lt;f:if condition="${foo == 'bar'}"&gt;
+</pre></code>
+
+	<p>@Tobias: I'd rather not implement a half-baked solution which has poor usability -- rather change the Fluid parser for that.</p>
+
+
+	<p>Actually the eel parser contains already a RegEx for detecting eel expressions: <a class="external" href="../../external.html?link=http://git.typo3.org/FLOW3/Packages/TYPO3.Eel.git?a=blob;f=Classes/Package.php">http://git.typo3.org/FLOW3/Packages/TYPO3.Eel.git?a=blob;f=Classes/Package.php</a></p>
+
+
+	<p>It's still very poor and needs to be dramatically improved, but once that is done Fluid can be extended quite easily to support that. However the improvement can be done test-driven.</p>
+
+
+	<p>Greets, Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-121487" class="journal has-notes">
+    <h4><a href="33394.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-26" title="2012-06-26 15:46">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-121487-notes"><p>Sebastian Kurfuerst wrote:</p>
+
+
+<blockquote>
+
+	<p>@Tobias: I'd rather not implement a half-baked solution which has poor usability</p>
+
+
+</blockquote>
+
+	<p>I agree. No problem in having an eel ViewHelper in some other extension but I'd not "ship" that with Fluid.<br />If implementing eel to the parser turns out to be too complex for now, we should at least support literal comparison (<a href="6757.html" class="issue status-7 priority-2 closed child" title="support literal strings in boolean arguments (Resolved)">#6757</a>)</p></div>
+  </div>
+  
+
+  <div id="change-126997" class="journal has-notes">
+    <h4><a href="33394.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-08-06" title="2012-08-06 12:14">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-126997-notes"><p>I'm not sure if it's a good idea to add a new syntax construct for expressions in fluid. It could confuse people on when to choose eel syntax "${ ... }" and when to choose standard fluid syntax "{ ... }".<br />If I'm not mistaken, eel could theoretically completely replace standard fluid syntax in functionality, right? So why not make it really replace the fluid internal expression parsing. Maybe the current parser could still be a fallback solution for when the eel package isn't available or not installed properly, but they should share the same fluid syntax IMO.</p></div>
+  </div>
+  
+
+  <div id="change-127152" class="journal has-notes">
+    <h4><a href="33394.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/316">Christopher Hlubek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-08-07" title="2012-08-07 13:44">almost 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-127152-notes"><p>I think to re-use the same expression parser is generally a great idea and was also a motivation when writing Eel. But there are some (minor?) problems we need to solve to make it a smooth replacement:</p>
+
+
+Object / Array access looks the same in Fluid and Eel, but there a some differences:
+	<ul>
+	<li>Fluids ObjectAccessorNode does support access to public getters (getFoo() and isFoo()) and public properties (for objects, array keys (for arrays and ArrayAccess).</li>
+		<li>Eel allows to call just about any public method of an object, which could be unwanted in Fluid (imagine a destructive method being called in the view). So we need some method whitelisting or language feature support (e.g. disable method calls in Fluid Eel) here to make it safe.</li>
+		<li>Additionally we need to replicate the ObjectAccessorNodes behaviour when accessing properties to make Eel a replacement in Fluid. But that should be rather trivial.</li>
+	</ul>
+
+
+	<p>I think using the same syntax could cause some harder edge cases, imagine building arrays for example:</p>
+
+
+<pre>
+&lt;f:if condition="{blog.name == 'My blog'}"&gt;
+&lt;f:link.action ... arguments="{blog: post.blog}"&gt;My blog&lt;/f:link.action&gt;
+&lt;/f:if&gt;
+</pre>
+
+	<p>Syntax-wise the arguments array looks like an Eel expression, but it is handled by an ArrayNode in Fluid. For an Eel Expression, it has to be written as <code>arguments="{{blog: post.blog}}"</code> or we introduce a Ruby 1.9 like shorthand "object" / array notation: <code>arguments="{blog: post.blog}"</code>. But there are a lot of templates in the wild, where something like <code>arguments="{name: '{f:some.viewhelper(arg: \"Foo\"})'"</code> is used. Right now I think this works in Fluid because it just uses Regular expressions and recursively parses the template (Sebastian?).</p>
+
+
+	<p>To make it consistent we would need to replace everything but the shorthand syntax in Fluid with Eel expressions.</p>
+
+
+	<p>Alexander Berl wrote:</p>
+
+
+<blockquote>
+
+	<p>If I'm not mistaken, eel could theoretically completely replace standard fluid syntax in functionality, right? So why not make it really replace the fluid internal expression parsing. Maybe the current parser could still be a fallback solution for when the eel package isn't available or not installed properly, but they should share the same fluid syntax IMO.</p>
+
+
+</blockquote></div>
+  </div>
+  
+
+  <div id="change-152034" class="journal has-notes">
+    <h4><a href="33394.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-02-21" title="2013-02-21 00:24">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-152034-notes"><p>Any chance to get this going again maybe? I think it would be a huge step forward and would appreciate it.</p></div>
+  </div>
+  
+
+  <div id="change-160212" class="journal has-notes">
+    <h4><a href="33394.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-04-16" title="2013-04-16 16:08">over 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-160212-notes"><p>Christopher Hlubek wrote:</p>
+
+
+<blockquote>
+
+Object / Array access looks the same in Fluid and Eel, but there a some differences:
+	<ul>
+	<li>Fluids ObjectAccessorNode does support access to public getters (getFoo() and isFoo()) and public properties (for objects, array keys (for arrays and ArrayAccess).</li>
+		<li>Eel allows to call just about any public method of an object, which could be unwanted in Fluid (imagine a destructive method being called in the view). So we need some method whitelisting or language feature support (e.g. disable method calls in Fluid Eel) here to make it safe.</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>As far as I see, the method calling is controlled by the Context. So would it be a possible solution to create a "FluidContext" which throws an exception in its call method?<br />Then within Fluid if Eel is available, a new EelEvaluator is created as well as a FluidContext and all expressions evaluated that way.</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>Additionally we need to replicate the ObjectAccessorNodes behaviour when accessing properties to make Eel a replacement in Fluid. But that should be rather trivial.</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>Isn't the ObjectAccessor already used in the Eel Context::get() method, which afaik is responsible for all non-method call access (i.e. public properties and everything accessible via getters).</p>
+
+
+	<p>I'm not sure when/where the ${} syntax is needed though... also the array notation has to be checked, but I can't imagine that being a big problem.</p></div>
+  </div>
+  
+
+  <div id="change-165377" class="journal has-notes">
+    <h4><a href="33394.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-15" title="2013-05-15 16:29">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-165377-notes"><p>Just a small ping ... Anything we can help with maybe?</p></div>
+  </div>
+  
+
+  <div id="change-165453" class="journal has-notes">
+    <h4><a href="33394.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-16" title="2013-05-16 08:46">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-165453-notes"><p>I didn't put any effort into this patch as it seems like eel should solve the issue.<br />No idea about if and when eel is available in Fluid and backported to extbase too.</p></div>
+  </div>
+  
+
+  <div id="change-165568" class="journal has-notes">
+    <h4><a href="33394.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-16" title="2013-05-16 14:39">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-165568-notes"><p>Stefan Neufeind wrote:</p>
+
+
+<blockquote>
+
+	<p>Just a small ping ... Anything we can help with maybe?</p>
+
+
+</blockquote>
+
+	<p>You're free to try working out a solution to the problems mentioned in using Eel inside Fluid, maybe with the hints I gave it will be a good starting point. Anything you find will be valuable information and maybe even a good solution turns out that can be used directly</p></div>
+  </div>
+  
+
+  <div id="change-166149" class="journal has-notes">
+    <h4><a href="33394.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-19" title="2013-05-19 14:55">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-166149-notes"><p>Just some update, as I did some more digging into the problem:</p>
+
+
+	<p>My basic idea would be to create an EelExpressionNode in Fluid, which evaluates by creating a Fluid Eel Context and an Eel Evaluator, then sending the expression through that. The CompilingEvaluator could be nicely used with the Template Compiling.</p>
+
+
+	<p>However, the main problem is one that Christopher already brought up:<br /><pre>
+arguments="{name: '{f:some.viewhelper(arg: \"Foo\"})'" 
+</pre></p>
+
+
+	<p>The problem here is, that we cannot simply put the whole arguments string as Eel expression, as Eel doesn't understand viewhelpers.<br />A solution could be, to parse out all shorthand viewhelpers inside attributes, create their own ViewHelperNode that assigns the result to a new variable, then replace the shorthand syntax inside the attribute string with the variable and put it all into the Eel expression.</p>
+
+
+	<p>Also, with that approach, all the need for <code>${}</code> or <code>{{}}</code> array syntax is leviated, as the evaluator only works with the inner part of this Eel syntax anyway. As a benefit, the dynamic array index access syntax <code>somearray[some.variable]</code> would work out of the box. I therefore put the issue for that as related.</p></div>
+  </div>
+  
+
+  <div id="change-166842" class="journal has-notes">
+    <h4><a href="33394.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2938">Tymoteusz Motylewski</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-05-24" title="2013-05-24 11:18">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-166842-notes"><p>The lack of condition combinations in Fluid is one of the biggest pains in the daily development.<br />From Extbase/TYPO3 CMS perspective it would make more sense to first implement non-eel solution, so we don't have to wait until eel stabilizes and then backport it. This way we could include it in the next 6.2LTS release. See sample implementation of combining conditions from Claus Due here <a class="external" href="../../external.html?link=https://github.com/NamelessCoder/vhs/blob/master/Classes/ViewHelpers/ConditionViewHelper.php">https://github.com/NamelessCoder/vhs/blob/master/Classes/ViewHelpers/ConditionViewHelper.php</a><br />What do you think? Are you willing to merge such a change if I propose it? Or is it not an option?</p></div>
+  </div>
+  
+
+  <div id="change-181342" class="journal has-notes">
+    <h4><a href="33394.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2013-09-06" title="2013-09-06 16:12">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181342-notes"><p>It seems to me that waiting for the Eel dependency is dragging this issue into the nether-world. Yes Eel may support reg-expr, but in my mind the need for basic comparators is more critical than support for regular expressions.</p>
+
+
+	<p>Maybe the solution should be to support the basic comparators first, add Eel support later.</p>
+
+
+	<p>A conditional is a core operator, even in PHP itself an "if" statement does not support regular expressions, only comparator operators. I think eel should be it's own Viewhelper and it should NOT be a dependency for the conditional Viewhelper. It is creating an unnecessary layer of bloat if you dont need to use reg-expr at all.</p>
+
+
+	<p>In my mind, all these issues can be easily solved if all ViewHelper output can be assigned to a template variable, as I suggested in [[<a class="external" href="48355.html">http://forge.typo3.org/issues/48355</a>]] and as I further describe in the same issue; if Fluid is opened up to the whole PHP API you don't even need Eel as &lt;f:preg_match  /&gt; and any other PHP function would be available to Fluid.</p>
+
+
+	<p>By doing this it would eliminate the number of Core Viewhelpers that need to be written, and it would speed up template parsing by using PHP directly and not loading zillions of viewhelpers that replicate PHP functionality.</p>
+
+
+	<p>In the end I feel these discussions of "missing features" stifle Fluid development and create unnecessary constraints and convulations, when you already have the perfect templating API in PHP. It is there, underneath everything, and IMHO it is shamefully not accessible from a template.</p>
+
+
+	<p>It seems like Fluid is doomed to reinvent the wheel.</p></div>
+  </div>
+  
+
+  <div id="change-222830" class="journal has-notes">
+    <h4><a href="33394.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-07-04" title="2014-07-04 10:48">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-222830-notes"><p>What's the status on this one? Either this patch should be integrated or Eel expressions made available in Fluid, also thinking about how to implement this in TYPO3 CMS Fluid.</p></div>
+  </div>
+  
+
+  <div id="change-227243" class="journal has-notes">
+    <h4><a href="33394.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-08-14" title="2014-08-14 12:56">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-227243-notes"><p>The nether-world is a comfortable place. ;-)</p>
+
+
+	<p>I still really think the whole PHP API should be opened up to Fluid. It would solve all these unnecessary problems. I have not found or heard if there is a discussion anywhere about this topic. I was also told that there is a design "philosophy" for Fluid but I have not seem to have found the corresponding document or discussion. I do not think either exists.</p>
+
+
+	<p>I suspect so much effort has been put into Eel, that some or someone does not want to have it made obsolete. In my personal opinion, Eel integration would just create another unnecessary abstraction on top of another abstraction (Fluid) which is built upon another abstraction (PHP).  I also suspect for some it is hard to accept that Eel is code bloat. It just adds another level of unnecessary parsing.</p>
+
+
+	<p>In my mind Eel was created as a "jQuery" like solution to create some elegancy in TypoScript to problems that were already being solved by custom user functions. In Fluid, Eel is a solution looking for a problem. IMHO the extra processing overhead it generates in templating is illogical.</p>
+
+
+	<p>jQuery was invented because it solved a real problem of elegantly manipulating HTML DOM where there was so many different and ugly ways to do it across the various browser implementations. In Typo3 there is no such variance, the underlying implementation (PHP) is a constant.</p>
+
+
+	<p>I would understand the need for Eel if Typo3 was built using a mix of PHP, Ruby, Java, Haskell and Python and you needed a common interface between them all. Is there a Haskell port of Typo3? I didn't think so...</p></div>
+  </div>
+  
+
+  <div id="change-227245" class="journal has-notes">
+    <h4><a href="33394.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-08-14" title="2014-08-14 13:21">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-227245-notes"><p>FYI, i created a changeSet for TYPO3.Fluid to integrate Eel into the parser 2 weeks ago: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/31707/">https://review.typo3.org/#/c/31707/</a></p>
+
+
+	<p>Regarding the added complexity: i agree that is sometimes a problem, yet in this case eel itself has been proven to be really sturdy with boolean expressions, etc.</p>
+
+
+	<p>Regarding the performance: The integration in that changeSet uses the CompilingEelParser, which produces real php code that is cached as real php code inside the fluid template cache.</p>
+
+
+	<p>Cheers<br />Marc</p></div>
+  </div>
+  
+
+  <div id="change-227253" class="journal has-notes">
+    <h4><a href="33394.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38984">Dave no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-08-14" title="2014-08-14 14:10">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-227253-notes"><p>But Eel does not solve all the other problems, it just adds to the bloat. Where as by opening up the entire PHP API to Fluid it eliminates most of them. Not just boolean expressions but basically anything PHP can do. All it takes to get the <strong>entire</strong> PHP API is a little reflection, by asking if a native function or method exists and if it does call it as if it was a ViewHelper and return the output.</p>
+
+
+	<p>Surely reinventing the wheel is not part of the Fluid design philosophy?</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-33394-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/33394.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="33394.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/33394 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/35894 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:00:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #35894: CheckboxViewHelper and RadioViewHelper missing an existence check for formObject, and thus an exception is being thrown - TYPO3.Fluid - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:#FFFFFF;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/35894.atom" rel="alternate" title="TYPO3.Fluid - Bug #35894: CheckboxViewHelper and RadioViewHelper missing an existence check for formObject, and thus an exception is being thrown" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-color:#FFFFFF;background-image:url(../headerimages/517.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" accesskey="4" style="color:#FFFFFF">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Fluid</h1>
+        <div id="quicklinks"><p>Wiki of the <a href="../../external.html?link=http://forge.typo3.org/projects/typo3v4-mvc/wiki" class="external">Extbase Project</a></p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 current sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=195" class="query">1.0 beta 1</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/4302">Florian Carstens</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36492">Sebastian </a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-35894-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #35894</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>CheckboxViewHelper and RadioViewHelper missing an existence check for formObject, and thus an exception is being thrown</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3184">Sebastian Wojtowicz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-04-12" title="2012-04-12 12:08">over 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 17:38">about 3 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-04-12</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/3184">Sebastian Wojtowicz</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">ViewHelpers</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1773">TYPO3 Flow Base Distribution - 1.1 RC1</a></td>
+    
+    <th class="estimated-hours">Estimated time:</th><td class="estimated-hours">0.10 hour</td>
+    
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+	<th>Affected Flow version:</th><td>Git master</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Scenario:<br /><pre>
+Controller:
+    indexAction(FormObject $formObject = NULL){ ... }
+Template:
+    &lt;f:form ... object="{formObject}' &gt;
+        &lt;f:form.checkbox property="somePropertyOfFormObject" value="yes"/&gt;
+        ...
+ </pre></p>
+
+
+	<p>This scenario fails with<br /><pre>
+#1243325768: No value found for key "TYPO3\Fluid\ViewHelpers\FormViewHelper-&gt;formObject" 
+</pre></p>
+
+
+	<p>The problem is that in the CheckboxViewHelper and the RadioViewHelper we call <code> $this->getPropertyValue()</code> which callls <code>$formObject = $this->viewHelperVariableContainer->get('TYPO3\Fluid\ViewHelpers\FormViewHelper', 'formObject');</code> even though we did not check if the formObject exists, so that instead we get thrown an exception.</p>
+
+
+	<p>For example in CheckboxViewHelper.php, Line 80 before we call getPropertyValue() we only check<br /><pre>
+if ($this-&gt;isObjectAccessorMode())
+</pre><br />while all other [InputType]ViewHelper always check (in the getValue() function):<br /><pre>
+if ($this-&gt;isObjectAccessorMode() &#38;&#38; $this-&gt;viewHelperVariableContainer-&gt;exists('TYPO3\Fluid\ViewHelpers\FormViewHelper', 'formObject'))
+</pre></p>
+
+
+	<p>So I think that in CheckboxViewHelper, Line 80 and in RadioViewHelper, Line 81 there should also be the same check for the existence of the formObject. Unless someone knows of a better place to inject that bugfix.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/repository/revisions/cbe93048c094cdc1eec2feafc70bd1ee1d99c47b" title="Revision cbe93048">Revision cbe93048</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3198">Rens Admiraal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 15:22">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Fix unusable checkbox/radio if formObject is NULL</p>
+
+
+	<p>When using a form object inside of a form view helper inside an index<br />action template and a checkbox is referring to a property $sth of<br />$someFormObject, the form object can be NULL with code like:</p>
+
+
+	<pre><code>indexAction(\Some\Type $someFormObject = NULL){ ... }</code></pre>
+
+
+	<pre><code>&amp;lt;f:form ... object="{someFormObject}"&amp;gt;<br />  &amp;lt;f:form.checkbox property="{sth}" value="yes" checked="{sth.value} == yes"/&amp;gt;<br /> &amp;lt;/f:form&amp;gt;</code></pre>
+
+
+	<p>Initially calling the index action makes someFormObject NULL. If the submitted<br />form had validation errors someFormObject is NULL, too. This possibility<br />was ignored in a call for the formObject from within the CheckboxViewHelper as<br />well as from the RadioViewHelper.</p>
+
+
+	<p>So you would get an exception telling you<br /> No value found for key "TYPO3\Fluid\ViewHelpers\FormViewHelper->formObject"</p>
+
+
+	<p>This change fixes that bug and thus also sets the checkbox and radio<br />"checked" attribute properly when a validation error occurred.</p>
+
+
+	<p>Change-Id: I3d272504927fb9401e9cadc974b6b6c57ac08b6b<br />Fixes: <a href="35894.html" class="issue status-7 priority-1 closed" title="CheckboxViewHelper and RadioViewHelper missing an existence check for formObject, and thus an exc... (Resolved)">#35894</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/repository/revisions/dec3b187b6db773a5a84dec70918c22f428cb994" title="Revision dec3b187">Revision dec3b187</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3198">Rens Admiraal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 17:36">about 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Fix unusable checkbox/radio if formObject is NULL</p>
+
+
+	<p>When using a form object inside of a form view helper inside an index<br />action template and a checkbox is referring to a property $sth of<br />$someFormObject, the form object can be NULL with code like:</p>
+
+
+	<pre><code>indexAction(\Some\Type $someFormObject = NULL){ ... }</code></pre>
+
+
+	<pre><code>&amp;lt;f:form ... object="{someFormObject}"&amp;gt;<br />  &amp;lt;f:form.checkbox property="{sth}" value="yes" checked="{sth.value} == yes"/&amp;gt;<br /> &amp;lt;/f:form&amp;gt;</code></pre>
+
+
+	<p>Initially calling the index action makes someFormObject NULL. If the submitted<br />form had validation errors someFormObject is NULL, too. This possibility<br />was ignored in a call for the formObject from within the CheckboxViewHelper as<br />well as from the RadioViewHelper.</p>
+
+
+	<p>So you would get an exception telling you<br /> No value found for key "TYPO3\Fluid\ViewHelpers\FormViewHelper->formObject"</p>
+
+
+	<p>This change fixes that bug and thus also sets the checkbox and radio<br />"checked" attribute properly when a validation error occurred.</p>
+
+
+	<p>Change-Id: I3d272504927fb9401e9cadc974b6b6c57ac08b6b<br />Fixes: <a href="35894.html" class="issue status-7 priority-1 closed" title="CheckboxViewHelper and RadioViewHelper missing an existence check for formObject, and thus an exc... (Resolved)">#35894</a><br />Releases: 1.1, 1.2</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-113011" class="journal has-details">
+    <h4><a href="35894.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-04-18" title="2012-04-18 22:45">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>1.0.4</i> to <i>1.0.5</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-117977" class="journal has-notes has-details">
+    <h4><a href="35894.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37529">Sebastian Wojtowicz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-26" title="2012-05-26 02:59">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>1.0.5</i> to <i>1.1 beta 2</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>10</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-117977-notes"><p>The problem is that we get formObject = NULL <br />1. ... if we visit the index action <br />2. ... if the form submit fails</p>
+
+
+	<p>So upper code changes fix the exception, but at least the checkbox code doesn't seem to expect this and so the automatic checked=checked or not checked setting reflecting the last submitted form values simply does not work. So this needs to be fixed as well.</p></div>
+  </div>
+  
+
+  <div id="change-117978" class="journal has-notes has-details">
+    <h4><a href="35894.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-26" title="2012-05-26 03:26">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-117978-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/11637">http://review.typo3.org/11637</a></p></div>
+  </div>
+  
+
+  <div id="change-117979" class="journal has-notes">
+    <h4><a href="35894.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-26" title="2012-05-26 03:30">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-117979-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/11637">http://review.typo3.org/11637</a></p></div>
+  </div>
+  
+
+  <div id="change-117980" class="journal has-notes">
+    <h4><a href="35894.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-26" title="2012-05-26 03:31">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-117980-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/11637">http://review.typo3.org/11637</a></p></div>
+  </div>
+  
+
+  <div id="change-118495" class="journal has-details">
+    <h4><a href="35894.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-30" title="2012-05-30 12:58">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Assigned To</strong> set to <i>Sebastian Wojtowicz</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-118605" class="journal has-notes">
+    <h4><a href="35894.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-30" title="2012-05-30 22:37">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-118605-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/11637">http://review.typo3.org/11637</a></p></div>
+  </div>
+  
+
+  <div id="change-118644" class="journal has-details">
+    <h4><a href="35894.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-05-31" title="2012-05-31 13:51">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>1.1 beta 2</i> to <i>1.1 RC1</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-119146" class="journal has-notes">
+    <h4><a href="35894.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-07" title="2012-06-07 11:43">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-119146-notes"><p>Patch set 5 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/11637">http://review.typo3.org/11637</a></p></div>
+  </div>
+  
+
+  <div id="change-120299" class="journal has-notes">
+    <h4><a href="35894.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 10:53">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-120299-notes"><p>Patch set 6 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/11637">http://review.typo3.org/11637</a></p></div>
+  </div>
+  
+
+  <div id="change-120331" class="journal has-notes">
+    <h4><a href="35894.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 15:19">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-120331-notes"><p>Patch set 7 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/11637">http://review.typo3.org/11637</a></p></div>
+  </div>
+  
+
+  <div id="change-120332" class="journal has-notes">
+    <h4><a href="35894.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 15:22">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-120332-notes"><p>Patch set 8 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/11637">http://review.typo3.org/11637</a></p></div>
+  </div>
+  
+
+  <div id="change-120338" class="journal has-notes">
+    <h4><a href="35894.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 15:41">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-120338-notes"><p>Patch set 1 for branch <strong>FLOW3-1.1</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/12164">http://review.typo3.org/12164</a></p></div>
+  </div>
+  
+
+  <div id="change-120358" class="journal has-notes">
+    <h4><a href="35894.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 17:20">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-120358-notes"><p>Patch set 2 for branch <strong>FLOW3-1.1</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/12164">http://review.typo3.org/12164</a></p></div>
+  </div>
+  
+
+  <div id="change-120360" class="journal has-notes">
+    <h4><a href="35894.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 17:36">about 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-120360-notes"><p>Patch set 3 for branch <strong>FLOW3-1.1</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/12164">http://review.typo3.org/12164</a></p></div>
+  </div>
+  
+
+  <div id="change-120364" class="journal has-notes has-details">
+    <h4><a href="35894.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3198">Rens Admiraal</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2012-06-18" title="2012-06-18 17:38">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>10</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-120364-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/repository/revisions/dec3b187b6db773a5a84dec70918c22f428cb994" class="changeset" title="[BUGFIX] Fix unusable checkbox/radio if formObject is NULL When using a form object inside of a ...">dec3b187b6db773a5a84dec70918c22f428cb994</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-35894-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/35894.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="35894.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/35894 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:00:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

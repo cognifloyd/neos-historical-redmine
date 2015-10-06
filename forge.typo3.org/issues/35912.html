@@ -1,0 +1,953 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/35912 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:00:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #35912: Improve performance on Windows - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/35912.atom" rel="alternate" title="TYPO3.Flow - Feature #35912: Improve performance on Windows" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (3)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/574">Thomas Allmer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-35912-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #35912</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Improve performance on Windows</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-12" title="2012-04-12 19:23">over 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-21" title="2012-05-21 16:11">about 3 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-04-12</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Cache</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1231">TYPO3 Flow Base Distribution - 1.1</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td>nightmare</td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Performance of FLOW3 on Windows is still quite bad.<br />Something can't go right there (e.g. <code>flow3:objectmanagement:proxyclasses</code> takes > 5 seconds even with frozen packages and no changes!)</p>
+
+
+	<p>Test code (in <strong>TYPO3.FLOW3/Classes/Core/Booting/Sequence.php</strong>, line 88ff):<br /><pre>
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="local-variable">$start</span> = <span class="predefined">microtime</span>(<span class="predefined-constant">TRUE</span>);
+<span class="line-numbers">2</span><span class="local-variable">$step</span>(<span class="local-variable">$bootstrap</span>);
+<span class="line-numbers">3</span><span class="local-variable">$end</span> = <span class="predefined">microtime</span>(<span class="predefined-constant">TRUE</span>);
+<span class="line-numbers">4</span><span class="predefined">echo</span> <span class="local-variable">$step</span>-&gt;getIdentifier() . <span class="string"><span class="delimiter">'</span><span class="content">: </span><span class="delimiter">'</span></span> . (<span class="local-variable">$end</span> - <span class="local-variable">$start</span>) . <span class="predefined-constant">PHP_EOL</span>;
+</span></code><br /></pre></p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-6414">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="11964" /></td>
+<td class="subject">duplicated by 
+    TYPO3 Flow Base Distribution - 
+    <a href="11964.html" class="issue status-9 priority-2 closed">Task #11964</a>: Profile under windows
+</td>
+<td class="status">Closed</td>
+<td class="start_date"></td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/35912/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/35912/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=35912&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/fb277f305a7cbfb73d60ce2de218790f3093fdb8" title="Revision fb277f30">Revision fb277f30</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-25" title="2012-04-25 23:21">over 3 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[FEATURE] Track all configuration changes</p>
+
+
+	<p>This change set greatly improves the file monitoring of FLOW3's<br />system relevant files, such as class files, settings, object<br />configuration, policies and translations.</p>
+
+
+	<p>In Development context, changes to any of the above will be<br />tracked and the related caches are flushed. For performance<br />reasons, the new mechanism does not rely on the tagging<br />feature of the cache framework, but uses the new Simple<br />File Backend and rather flushes a few caches too many than<br />missing an important change.</p>
+
+
+	<p>Change-Id: I52b9f659740aef5d929a102ef5902b1fd1d2a588<br />Resolves: <a href="5849.html" class="issue status-7 priority-2 closed" title="Rebuild proxy classes if security policy changes (Resolved)">#5849</a><br />Resolves: <a href="33811.html" class="issue status-7 priority-1 closed" title="Not all caches are flushed (automatically) if needed (Resolved)">#33811</a><br />Related: <a href="35912.html" class="issue status-7 priority-1 closed" title="Improve performance on Windows (Resolved)">#35912</a><br />Releases: 1.1</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-111754" class="journal has-notes">
+    <h4><a href="35912.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-12" title="2012-04-12 19:27">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-111754-notes"><ul>
+	<li>initializeClassLoader: 0.0006 s</li>
+		<li>initializeSignalSlot:  0.0005 s</li>
+		<li>initializePa..gement:  0.0265 s</li>
+		<li>resolveRequestHandler: 0.0001 s</li>
+		<li>handleRequest:         9.0000 s</li>
+	</ul>
+
+
+	<a name="Unfrozen-packages"></a>
+<h2 >Unfrozen packages:<a href="#Unfrozen-packages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="With-flushed-cache"></a>
+<h3 >With flushed cache:<a href="#With-flushed-cache" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="CLI"></a>
+<h4 >CLI:<a href="#CLI" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>typo3.flow3:configuration: 0.28000903129578<br />typo3.flow3:systemlogger: 0.0081501007080078<br />typo3.flow3:errorhandling: 0.0033819675445557<br />typo3.flow3:cachemanagement: 0.015058994293213<br />typo3.flow3:configuration: 0.27552604675293<br />typo3.flow3:systemlogger: 0.008310079574585<br />typo3.flow3:errorhandling: 0.0032238960266113<br />typo3.flow3:cachemanagement: 0.014833927154541<br />typo3.flow3:objectmanagement:compiletime:create: 0.0036430358886719<br />typo3.flow3:reflectionservice: 0.032308101654053<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>13.951103925705</strong><br />typo3.flow3:classfilemonitor: <strong>6.9370899200439</strong><br />typo3.flow3:configuration: 0.27573204040527<br />typo3.flow3:systemlogger: 0.009706974029541<br />typo3.flow3:errorhandling: 0.0032820701599121<br />typo3.flow3:cachemanagement: 0.014349937438965<br />typo3.flow3:configuration: 0.27553606033325<br />typo3.flow3:systemlogger: 0.0078361034393311<br />typo3.flow3:errorhandling: 0.0031089782714844<br />typo3.flow3:cachemanagement: 0.014292001724243<br />typo3.flow3:objectmanagement:compiletime:create: 0.0035021305084229<br />typo3.flow3:reflectionservice: 0.10954284667969<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>3.8367900848389</strong><br />typo3.flow3:classfilemonitor: <strong>1.0235049724579</strong><br />typo3.flow3:objectmanagement:proxyclasses: <strong>5.497407913208</strong><br />typo3.flow3:classloader:cache: 0.0028209686279297<br />typo3.flow3:reflectionservice: 0.10109400749207<br />typo3.flow3:objectmanagement:runtime: 0.025163888931274<br />typo3.flow3:classfilemonitor: <strong>2.7553489208221</strong><br />typo3.flow3:persistence: 0.10800004005432<br />typo3.flow3:session: 2.0980834960938E-5<br />typo3.flow3:resources: 0.085951089859009<br />typo3.flow3:i18n: <strong>2.2696490287781</strong><br />typo3.flow3:objectmanagement:proxyclasses: <strong>41.75418305397</strong><br />typo3.flow3:classloader:cache: 0.001399040222168<br />typo3.flow3:reflectionservice: 0.084878921508789<br />typo3.flow3:objectmanagement:runtime: 0.007681131362915<br />typo3.flow3:classfilemonitor: <strong>2.4305889606476</strong><br />typo3.flow3:persistence: 0.054832935333252<br />typo3.flow3:session: 1.9073486328125E-5<br />typo3.flow3:resources: 0.033905029296875<br />typo3.flow3:i18n: 0.011814832687378</p>
+
+
+	<a name="WEB"></a>
+<h4 >WEB:<a href="#WEB" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>typo3.flow3:configuration: 0.26645517349243<br />typo3.flow3:systemlogger: 0.0041310787200928<br />typo3.flow3:errorhandling: 0.0015931129455566<br />typo3.flow3:cachemanagement: 0.010852098464966<br />typo3.flow3:configuration: 0.27598595619202<br />typo3.flow3:systemlogger: 0.0082471370697021<br />typo3.flow3:errorhandling: 0.0031919479370117<br />typo3.flow3:cachemanagement: 0.014372825622559<br />typo3.flow3:objectmanagement:compiletime:create: 0.0034229755401611<br />typo3.flow3:reflectionservice: 0.10336184501648<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>3.591089963913</strong><br />typo3.flow3:classfilemonitor: 0.98727989196777<br />typo3.flow3:objectmanagement:proxyclasses: <strong>5.2025990486145</strong><br />typo3.flow3:classloader:cache: 0.0021789073944092<br />typo3.flow3:reflectionservice: 0.088250875473022<br />typo3.flow3:objectmanagement:runtime: 0.014894008636475<br />typo3.flow3:classfilemonitor: <strong>1.2787590026855</strong><br />typo3.flow3:persistence: 0.053558111190796<br />typo3.flow3:session: 0.022387981414795<br />typo3.flow3:resources: 0.053711175918579<br />typo3.flow3:i18n: 0.027100086212158</p>
+
+
+	<a name="After-flushing-cache"></a>
+<h3 >After flushing cache:<a href="#After-flushing-cache" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="CLI-2"></a>
+<h4 >CLI:<a href="#CLI-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>typo3.flow3:configuration: 0.27429103851318<br />typo3.flow3:systemlogger: 0.0078740119934082<br />typo3.flow3:errorhandling: 0.0032820701599121<br />typo3.flow3:cachemanagement: 0.014474153518677<br />typo3.flow3:configuration: 0.27696299552917<br />typo3.flow3:systemlogger: 0.0075881481170654<br />typo3.flow3:errorhandling: 0.00313401222229<br />typo3.flow3:cachemanagement: 0.014472961425781<br />typo3.flow3:objectmanagement:compiletime:create: 0.0035130977630615<br />typo3.flow3:reflectionservice: 0.11703205108643<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>3.7783071994781</strong><br />typo3.flow3:classfilemonitor: <strong>1.035218000412</strong><br />typo3.flow3:objectmanagement:proxyclasses: <strong>5.4628348350525</strong><br />typo3.flow3:classloader:cache: 0.0030350685119629<br />typo3.flow3:reflectionservice: 0.10151219367981<br />typo3.flow3:objectmanagement:runtime: 0.015977144241333<br />typo3.flow3:classfilemonitor: <strong>2.7635118961334</strong><br />typo3.flow3:persistence: 0.072417974472046<br />typo3.flow3:session: 2.0027160644531E-5<br />typo3.flow3:resources: 0.05144190788269<br />typo3.flow3:i18n: 0.02424693107605</p>
+
+
+	<a name="WEB-2"></a>
+<h4 >WEB:<a href="#WEB-2" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>typo3.flow3:configuration: 0.27178001403809<br />typo3.flow3:systemlogger: 0.0058019161224365<br />typo3.flow3:errorhandling: 0.0021679401397705<br />typo3.flow3:cachemanagement: 0.013669967651367<br />typo3.flow3:configuration: 0.27154803276062<br />typo3.flow3:systemlogger: 0.0076169967651367<br />typo3.flow3:errorhandling: 0.0030360221862793<br />typo3.flow3:cachemanagement: 0.013702154159546<br />typo3.flow3:objectmanagement:compiletime:create: 0.0035181045532227<br />typo3.flow3:reflectionservice: 0.10751605033875<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>3.5912771224976</strong><br />typo3.flow3:classfilemonitor: 0.99462199211121<br />typo3.flow3:objectmanagement:proxyclasses: <strong>5.2032110691071</strong><br />typo3.flow3:classloader:cache: 0.0022890567779541<br />typo3.flow3:reflectionservice: 0.087728023529053<br />typo3.flow3:objectmanagement:runtime: 0.013436079025269<br />typo3.flow3:classfilemonitor: <strong>2.5983421802521</strong><br />typo3.flow3:persistence: 0.044166088104248<br />typo3.flow3:session: 0.017938137054443<br />typo3.flow3:resources: 0.048172950744629<br />typo3.flow3:i18n: 0.022809028625488</p>
+
+
+	<a name="Frozen-packages"></a>
+<h2 >Frozen packages:<a href="#Frozen-packages" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="With-flushed-cache-2"></a>
+<h3 >With flushed cache:<a href="#With-flushed-cache-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="CLI-3"></a>
+<h4 >CLI:<a href="#CLI-3" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>typo3.flow3:configuration: 0.87447786331177<br />typo3.flow3:systemlogger: 0.025451898574829<br />typo3.flow3:errorhandling: 0.010462045669556<br />typo3.flow3:cachemanagement: 0.045729875564575<br />typo3.flow3:configuration: 0.85884499549866<br />typo3.flow3:systemlogger: 0.023602962493896<br />typo3.flow3:errorhandling: 0.0092759132385254<br />typo3.flow3:cachemanagement: 0.042110919952393<br />typo3.flow3:objectmanagement:compiletime:create: 0.012070894241333<br />typo3.flow3:reflectionservice: 0.34559988975525<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>8.3863041400909</strong><br />typo3.flow3:classfilemonitor: 0.0046439170837402<br />typo3.flow3:configuration: 0.85473489761353<br />typo3.flow3:systemlogger: 0.028511047363281<br />typo3.flow3:errorhandling: 0.0096709728240967<br />typo3.flow3:cachemanagement: 0.043780088424683<br />typo3.flow3:configuration: 0.83888292312622<br />typo3.flow3:systemlogger: 0.023492813110352<br />typo3.flow3:errorhandling: 0.0094640254974365<br />typo3.flow3:cachemanagement: 0.043058156967163<br />typo3.flow3:objectmanagement:compiletime:create: 0.010662078857422<br />typo3.flow3:reflectionservice: 0.31837201118469<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>8.0112340450287</strong><br />typo3.flow3:classfilemonitor: 0.0036420822143555<br />typo3.flow3:objectmanagement:proxyclasses: <strong>9.920511007309</strong><br />typo3.flow3:classloader:cache: 0.0093400478363037<br />typo3.flow3:reflectionservice: 0.28168106079102<br />typo3.flow3:objectmanagement:runtime: 0.031605005264282<br />typo3.flow3:classfilemonitor: 0.014365911483765</p>
+
+
+	<p>Fatal error: Call to a member function getEventManager() on a non-object in TYPO3.FLOW3\Classes\Persistence\Doctrine\PersistenceManager.php on line 69<br /> ... WTF?</p>
+
+
+	<a name="WEB-3"></a>
+<h4 >WEB:<a href="#WEB-3" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>typo3.flow3:configuration: 0.79074287414551<br />typo3.flow3:systemlogger: 0.010040998458862<br />typo3.flow3:errorhandling: 0.0043220520019531<br />typo3.flow3:cachemanagement: 0.041990041732788<br />typo3.flow3:configuration: 0.86032795906067<br />typo3.flow3:systemlogger: 0.023704051971436<br />typo3.flow3:errorhandling: 0.0095930099487305<br />typo3.flow3:cachemanagement: 0.042849063873291<br />typo3.flow3:objectmanagement:compiletime:create: 0.010447978973389<br />typo3.flow3:reflectionservice: 0.34821319580078<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>7.9961500167847</strong><br />typo3.flow3:classfilemonitor: 0.0045878887176514<br />typo3.flow3:configuration: 0.828125<br />typo3.flow3:systemlogger: 0.027530908584595<br />typo3.flow3:errorhandling: 0.009788990020752<br />typo3.flow3:cachemanagement: 0.043015956878662<br />typo3.flow3:configuration: 0.82987499237061<br />typo3.flow3:systemlogger: 0.023891925811768<br />typo3.flow3:errorhandling: 0.0094349384307861<br />typo3.flow3:cachemanagement: 0.047674179077148<br />typo3.flow3:objectmanagement:compiletime:create: 0.010698080062866<br />typo3.flow3:reflectionservice: 0.31634402275085<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>7.9863939285278</strong><br />typo3.flow3:classfilemonitor: 0.0035929679870605<br />typo3.flow3:objectmanagement:proxyclasses: <strong>9.8292360305786</strong><br />typo3.flow3:classloader:cache: 0.0085949897766113<br />typo3.flow3:reflectionservice: 0.27890706062317<br />typo3.flow3:objectmanagement:runtime: 0.032037973403931<br />typo3.flow3:classfilemonitor: 0.01673412322998<br />Fatal error: Call to a member function getEventManager() on a non-object in TYPO3.FLOW3\Classes\Persistence\Doctrine\PersistenceManager.php on line 69<br /> ... WTF?</p>
+
+
+	<a name="After-flushing-cache-2"></a>
+<h3 >After flushing cache:<a href="#After-flushing-cache-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<a name="CLI-4"></a>
+<h4 >CLI:<a href="#CLI-4" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>typo3.flow3:configuration: 0.87301683425903<br />typo3.flow3:systemlogger: 0.027798175811768<br />typo3.flow3:errorhandling: 0.0095109939575195<br />typo3.flow3:cachemanagement: 0.049597978591919<br />typo3.flow3:configuration: 0.89022493362427<br />typo3.flow3:systemlogger: 0.024230003356934<br />typo3.flow3:errorhandling: 0.0096278190612793<br />typo3.flow3:cachemanagement: 0.045016050338745<br />typo3.flow3:objectmanagement:compiletime:create: 0.010761022567749<br />typo3.flow3:reflectionservice: 0.32214999198914<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>8.4722709655762</strong><br />typo3.flow3:classfilemonitor: <strong>4.3205711841583</strong><br />typo3.flow3:objectmanagement:proxyclasses: <strong>14.739268064499</strong><br />typo3.flow3:classloader:cache: 0.0072231292724609<br />typo3.flow3:reflectionservice: 0.28924298286438<br />typo3.flow3:objectmanagement:runtime: 0.046913862228394<br />typo3.flow3:classfilemonitor: <strong>8.2421808242798</strong><br />typo3.flow3:persistence: 0.20943808555603<br />typo3.flow3:session: 5.1021575927734E-5<br />typo3.flow3:resources: 0.15151214599609<br />typo3.flow3:i18n: 0.073415994644165</p>
+
+
+	<a name="WEB-4"></a>
+<h4 >WEB:<a href="#WEB-4" class="wiki-anchor">&para;</a></h4>
+
+
+	<p>typo3.flow3:configuration: 0.93979287147522<br />typo3.flow3:systemlogger: 0.011085987091064<br />typo3.flow3:errorhandling: 0.0039348602294922<br />typo3.flow3:cachemanagement: 0.03145694732666<br />typo3.flow3:configuration: 0.88753294944763<br />typo3.flow3:systemlogger: 0.023303985595703<br />typo3.flow3:errorhandling: 0.0097010135650635<br />typo3.flow3:cachemanagement: 0.042484045028687<br />typo3.flow3:objectmanagement:compiletime:create: 0.010971069335938<br />typo3.flow3:reflectionservice: 0.31865286827087<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>8.1452510356903</strong><br />typo3.flow3:classfilemonitor: <strong>4.2189481258392</strong><br />typo3.flow3:objectmanagement:proxyclasses: <strong>14.255503177643</strong><br />typo3.flow3:classloader:cache: 0.0024669170379639<br />typo3.flow3:reflectionservice: 0.23856401443481<br />typo3.flow3:objectmanagement:runtime: 0.023723125457764<br />typo3.flow3:classfilemonitor: <strong>3.0890989303589</strong><br />typo3.flow3:persistence: 0.085095882415771<br />typo3.flow3:session: 0.028102159500122<br />typo3.flow3:resources: 0.072228908538818<br />typo3.flow3:i18n: 0.024872779846191</p>
+
+
+	<p><em>Windows 7, 64bit, 8GB Ram, Dual-CPU @ 2.40 GHz</em></p></div>
+  </div>
+  
+
+  <div id="change-112567" class="journal has-notes">
+    <h4><a href="35912.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/574">Thomas Allmer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-16" title="2012-04-16 17:50">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-112567-notes"><p>here are some more data from my laptop:<br />Windows 7, 64bit, 4GB Ram, Intel Core i5 M520 @2.40 GHz (2 Cores)</p>
+
+
+	<p>flow3.org Site with default frozen packages<br />all done with CLI Development Context (just ./flow3)</p>
+
+
+	<a name="SETUP-ONE-WAMP-with-APC-on-a-NTSC-Partition"></a>
+<h2 >SETUP ONE: WAMP with APC on a NTSC Partition<a href="#SETUP-ONE-WAMP-with-APC-on-a-NTSC-Partition" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="Run-ONE-has-cleared-Temporary-Files"></a>
+<h3 >Run ONE (has cleared Temporary Files)<a href="#Run-ONE-has-cleared-Temporary-Files" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>typo3.flow3:configuration:0.31413078308105<br />typo3.flow3:systemlogger:0.017487049102783<br />typo3.flow3:errorhandling:0.007310152053833<br />typo3.flow3:cachemanagement:0.025290012359619<br />typo3.flow3:configuration:0.23531699180603<br />typo3.flow3:systemlogger:0.018084049224854<br />typo3.flow3:errorhandling:0.0074889659881592<br />typo3.flow3:cachemanagement:0.028381109237671<br />typo3.flow3:cachemanagement:forceflush:3.4093856811523E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.0075850486755371<br />typo3.flow3:reflectionservice:0.083595991134644<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>22.969246864319</strong><br />typo3.flow3:classfilemonitor: <strong>2.2320339679718</strong><br />typo3.flow3:configuration:0.26226091384888<br />typo3.flow3:systemlogger:0.019915819168091<br />typo3.flow3:errorhandling:0.008350133895874<br />typo3.flow3:cachemanagement:0.026226043701172<br />typo3.flow3:configuration:0.24542903900146<br />typo3.flow3:systemlogger:0.017745971679688<br />typo3.flow3:errorhandling:0.0076868534088135<br />typo3.flow3:cachemanagement:0.025263071060181<br />typo3.flow3:cachemanagement:forceflush:3.1948089599609E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.0072238445281982<br />typo3.flow3:reflectionservice:0.2607250213623<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>5.3540909290314</strong><br />typo3.flow3:classfilemonitor:0.19288611412048<br />typo3.flow3:objectmanagement:proxyclasses: <strong>6.4099040031433</strong><br />typo3.flow3:classloader:cache:0.0043611526489258<br />typo3.flow3:reflectionservice:0.1514139175415<br />typo3.flow3:objectmanagement:runtime:0.024550914764404<br />typo3.flow3:classfilemonitor:0.63861417770386<br />typo3.flow3:persistence:0.18685603141785<br />typo3.flow3:session:3.6001205444336E-5<br />typo3.flow3:resources:0.14097499847412<br />typo3.flow3:i18n: <strong>18.985946893692</strong><br />typo3.flow3:objectmanagement:proxyclasses: <strong>63.889156103134</strong><br />typo3.flow3:classloader:cache:0.0033078193664551<br />typo3.flow3:reflectionservice:0.19417309761047<br />typo3.flow3:objectmanagement:runtime:0.021937847137451<br />typo3.flow3:classfilemonitor:0.66572213172913<br />typo3.flow3:persistence:0.11249709129333<br />typo3.flow3:session:3.0994415283203E-5<br />typo3.flow3:resources:0.065850019454956<br />typo3.flow3:i18n:0.030537843704224</p>
+
+
+	<a name="Run-TWO"></a>
+<h3 >Run TWO:<a href="#Run-TWO" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>typo3.flow3:configuration:0.23952293395996<br />typo3.flow3:systemlogger:0.017570018768311<br />typo3.flow3:errorhandling:0.0074539184570312<br />typo3.flow3:cachemanagement:0.025405168533325<br />typo3.flow3:configuration:0.22714114189148<br />typo3.flow3:systemlogger:0.016543865203857<br />typo3.flow3:errorhandling:0.0067901611328125<br />typo3.flow3:cachemanagement:0.023562908172607<br />typo3.flow3:cachemanagement:forceflush:2.9087066650391E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.0069339275360107<br />typo3.flow3:reflectionservice:0.22704696655273<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>5.8308291435242</strong><br />typo3.flow3:classfilemonitor:0.21426701545715<br />typo3.flow3:objectmanagement:proxyclasses: <strong>6.8538370132446</strong><br />typo3.flow3:classloader:cache:0.0046789646148682<br />typo3.flow3:reflectionservice:0.15822505950928<br />typo3.flow3:objectmanagement:runtime:0.025456190109253<br />typo3.flow3:classfilemonitor:0.65951991081238<br />typo3.flow3:persistence:0.16434597969055<br />typo3.flow3:session:3.6001205444336E-5<br />typo3.flow3:resources:0.13998293876648<br />typo3.flow3:i18n:0.081700086593628</p>
+
+
+	<a name="Run-THREE"></a>
+<h3 >Run THREE:<a href="#Run-THREE" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>typo3.flow3:configuration:0.25425291061401<br />typo3.flow3:systemlogger:0.01751184463501<br />typo3.flow3:errorhandling:0.0075409412384033<br />typo3.flow3:cachemanagement:0.025485992431641<br />typo3.flow3:configuration:0.23578786849976<br />typo3.flow3:systemlogger:0.017436981201172<br />typo3.flow3:errorhandling:0.0075550079345703<br />typo3.flow3:cachemanagement:0.025358915328979<br />typo3.flow3:cachemanagement:forceflush:2.9802322387695E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.0071859359741211<br />typo3.flow3:reflectionservice:0.2507951259613<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>6.1625151634216</strong><br />typo3.flow3:classfilemonitor:0.27468419075012<br />typo3.flow3:objectmanagement:proxyclasses: <strong>7.3136079311371</strong><br />typo3.flow3:classloader:cache:0.0064220428466797<br />typo3.flow3:reflectionservice:0.21808886528015<br />typo3.flow3:objectmanagement:runtime:0.034700870513916<br />typo3.flow3:classfilemonitor:0.97622179985046<br />typo3.flow3:persistence:0.16377902030945<br />typo3.flow3:session:3.2901763916016E-5<br />typo3.flow3:resources:0.12626099586487<br />typo3.flow3:i18n:0.073508977890015</p>
+
+
+	<a name="SETUP-TWO-WAMP-with-APC-on-a-FAT32-Partition-on-a-RAMDisk1"></a>
+<h2 >SETUP TWO: WAMP with APC on a FAT32 Partition on a RAMDisk<sup><a href="#fn1">1</a></sup><a href="#SETUP-TWO-WAMP-with-APC-on-a-FAT32-Partition-on-a-RAMDisk1" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Same WAMP as before but now the full Webroot of the Vhost with the Flow3Org Folder is on a RAMDisk with FAT32. This should be MUCH fast when accessing files, as everything is in RAM no real disk.<br />This needed some addjustments as FAT32 does not support any type of symlink. So all the files get actually copied (but thats shouldn be too much trouble on a RAMdisk). I replaced the symlink commands with copy and \TYPO3\FLOW3\Utility\Files::copyDirectoryRecursively</p>
+
+
+	<p>Anyway it didn't help at all :/ I mean you can just ignore "typo3.flow3:resources" but it was even slower than the setup before.<br />So the disk or NTFS speed wasn't the bottleneck? Or does the Software for the RamDisk needs to much Processing Power?</p>
+
+
+	<p>[1]: <a class="external" href="../../external.html?link=http://memory.dataram.com/products-and-services/software/ramdisk">http://memory.dataram.com/products-and-services/software/ramdisk</a></p>
+
+
+	<a name="Run-ONE-has-cleared-Temporary-Files-2"></a>
+<h3 >Run ONE (has cleared Temporary Files)<a href="#Run-ONE-has-cleared-Temporary-Files-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>typo3.flow3:configuration:0.36185002326965<br />typo3.flow3:systemlogger:0.029039144515991<br />typo3.flow3:errorhandling:0.01284384727478<br />typo3.flow3:cachemanagement:0.031984090805054<br />typo3.flow3:configuration:0.35802292823792<br />typo3.flow3:systemlogger:0.027029037475586<br />typo3.flow3:errorhandling:0.012096881866455<br />typo3.flow3:cachemanagement:0.029048919677734<br />typo3.flow3:cachemanagement:forceflush:2.9087066650391E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.011135101318359<br />typo3.flow3:reflectionservice:0.096519947052002<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>24.515897035599</strong><br />typo3.flow3:classfilemonitor: <strong>5.4715940952301</strong><br />typo3.flow3:configuration:0.1692750453949<br />typo3.flow3:systemlogger:0.014623880386353<br />typo3.flow3:errorhandling:0.0064518451690674<br />typo3.flow3:cachemanagement:0.015578985214233<br />typo3.flow3:configuration:0.17132306098938<br />typo3.flow3:systemlogger:0.014369964599609<br />typo3.flow3:errorhandling:0.0065200328826904<br />typo3.flow3:cachemanagement:0.016362905502319<br />typo3.flow3:cachemanagement:forceflush:1.9073486328125E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.0055561065673828<br />typo3.flow3:reflectionservice:0.15971207618713<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>4.5549728870392</strong><br />typo3.flow3:classfilemonitor:0.32699084281921<br />typo3.flow3:objectmanagement:proxyclasses: <strong>5.6001369953156</strong><br />typo3.flow3:classloader:cache:0.0048530101776123<br />typo3.flow3:reflectionservice:0.15240001678467<br />typo3.flow3:objectmanagement:runtime:0.024173974990845<br />typo3.flow3:classfilemonitor:0.78241086006165<br />typo3.flow3:persistence:0.12768197059631<br />typo3.flow3:session:2.0027160644531E-5<br />typo3.flow3:resources:23.225322008133<br />typo3.flow3:i18n: <strong>14.036583900452</strong><br />typo3.flow3:objectmanagement:proxyclasses: <strong>87.487552165985</strong><br />typo3.flow3:classloader:cache:0.002636194229126<br />typo3.flow3:reflectionservice:0.11351084709167<br />typo3.flow3:objectmanagement:runtime:0.012242078781128<br />typo3.flow3:classfilemonitor:0.62616491317749<br />typo3.flow3:persistence:0.081347942352295<br />typo3.flow3:session:1.9073486328125E-5<br />typo3.flow3:resources:24.954337120056<br />typo3.flow3:i18n:0.098872900009155</p>
+
+
+	<a name="Run-TWO-2"></a>
+<h3 >Run TWO:<a href="#Run-TWO-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>typo3.flow3:configuration:0.36506605148315<br />typo3.flow3:systemlogger:0.028500080108643<br />typo3.flow3:errorhandling:0.012869119644165<br />typo3.flow3:cachemanagement:0.031785011291504<br />typo3.flow3:configuration:0.33643007278442<br />typo3.flow3:systemlogger:0.027488946914673<br />typo3.flow3:errorhandling:0.012026071548462<br />typo3.flow3:cachemanagement:0.030471086502075<br />typo3.flow3:cachemanagement:forceflush:3.0994415283203E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.010627031326294<br />typo3.flow3:reflectionservice:0.29692482948303<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>6.1257178783417</strong><br />typo3.flow3:classfilemonitor:0.32388806343079<br />typo3.flow3:objectmanagement:proxyclasses: <strong>7.6284339427948</strong><br />typo3.flow3:classloader:cache:0.0046229362487793<br />typo3.flow3:reflectionservice:0.14821219444275<br />typo3.flow3:objectmanagement:runtime:0.025232076644897<br />typo3.flow3:classfilemonitor:0.7908399105072<br />typo3.flow3:persistence:0.12251901626587<br />typo3.flow3:session:2.0027160644531E-5<br />typo3.flow3:resources:23.124845981598<br />typo3.flow3:i18n:0.046424865722656</p>
+
+
+	<a name="Run-THREE-2"></a>
+<h3 >Run THREE:<a href="#Run-THREE-2" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>typo3.flow3:configuration:0.40626811981201<br />typo3.flow3:systemlogger:0.031677961349487<br />typo3.flow3:errorhandling:0.013302087783813<br />typo3.flow3:cachemanagement:0.032528877258301<br />typo3.flow3:configuration:0.35124182701111<br />typo3.flow3:systemlogger:0.027683019638062<br />typo3.flow3:errorhandling:0.012206077575684<br />typo3.flow3:cachemanagement:0.0291428565979<br />typo3.flow3:cachemanagement:forceflush:2.8133392333984E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.010607957839966<br />typo3.flow3:reflectionservice:0.31193590164185<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>8.5187201499939</strong><br />typo3.flow3:classfilemonitor:0.4394519329071<br />typo3.flow3:objectmanagement:proxyclasses: <strong>10.211659193039</strong><br />typo3.flow3:classloader:cache:0.006281852722168<br />typo3.flow3:reflectionservice:0.19323682785034<br />typo3.flow3:objectmanagement:runtime:0.029526948928833<br />typo3.flow3:classfilemonitor:0.96623992919922<br />typo3.flow3:persistence:0.14798593521118<br />typo3.flow3:session:2.1934509277344E-5<br />typo3.flow3:resources:31.791902065277<br />typo3.flow3:i18n:0.04790210723877</p>
+
+
+	<a name="SETUP-THREE-VirtualBox-with-Debian-no-APC"></a>
+<h2 >SETUP THREE: VirtualBox with Debian (no APC):<a href="#SETUP-THREE-VirtualBox-with-Debian-no-APC" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>It's the the same Windows 7 Laptop with a bridged network and I'm connected to it via ssh.</p>
+
+
+	<a name="Run-ONE-has-cleared-Temporary-Files-3"></a>
+<h3 >Run ONE (has cleared Temporary Files)<a href="#Run-ONE-has-cleared-Temporary-Files-3" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>typo3.flow3:configuration:0.12798690795898<br />typo3.flow3:systemlogger:0.002025842666626<br />typo3.flow3:errorhandling:0.00098800659179688<br />typo3.flow3:cachemanagement:0.007253885269165<br />typo3.flow3:configuration:0.12167382240295<br />typo3.flow3:systemlogger:0.0020818710327148<br />typo3.flow3:errorhandling:0.0010020732879639<br />typo3.flow3:cachemanagement:0.006727933883667<br />typo3.flow3:cachemanagement:forceflush:1.5974044799805E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.0017611980438232<br />typo3.flow3:reflectionservice:0.010868787765503<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>11.022831201553</strong><br />typo3.flow3:classfilemonitor:0.28118586540222<br />typo3.flow3:configuration:0.12374901771545<br />typo3.flow3:systemlogger:0.0019950866699219<br />typo3.flow3:errorhandling:0.0014629364013672<br />typo3.flow3:cachemanagement:0.0065429210662842<br />typo3.flow3:configuration:0.12388801574707<br />typo3.flow3:systemlogger:0.0020151138305664<br />typo3.flow3:errorhandling:0.00089502334594727<br />typo3.flow3:cachemanagement:0.0063209533691406<br />typo3.flow3:cachemanagement:forceflush:2.1934509277344E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.0015249252319336<br />typo3.flow3:reflectionservice:0.10037994384766<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>1.4139840602875</strong><br />typo3.flow3:classfilemonitor:0.020915985107422<br />typo3.flow3:objectmanagement:proxyclasses: <strong>1.8261530399323</strong><br />typo3.flow3:classloader:cache:0.00050997734069824<br />typo3.flow3:reflectionservice:0.10236096382141<br />typo3.flow3:objectmanagement:runtime:0.0054521560668945<br />typo3.flow3:classfilemonitor:0.020391941070557<br />typo3.flow3:persistence:0.031031847000122<br />typo3.flow3:session:2.5033950805664E-5<br />typo3.flow3:resources:0.01110315322876<br />typo3.flow3:i18n:1.5472700595856<br />typo3.flow3:objectmanagement:proxyclasses: <strong>18.207201004028</strong><br />typo3.flow3:classloader:cache:0.0005500316619873<br />typo3.flow3:reflectionservice:0.10491704940796<br />typo3.flow3:objectmanagement:runtime:0.0066149234771729<br />typo3.flow3:classfilemonitor:0.017029047012329<br />typo3.flow3:persistence:0.029564142227173<br />typo3.flow3:session:3.1948089599609E-5<br />typo3.flow3:resources:0.0079519748687744<br />typo3.flow3:i18n:0.0047850608825684</p>
+
+
+	<a name="Run-TWO-3"></a>
+<h3 >Run TWO:<a href="#Run-TWO-3" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>typo3.flow3:configuration:0.12163710594177<br />typo3.flow3:systemlogger:0.0020179748535156<br />typo3.flow3:errorhandling:0.00092196464538574<br />typo3.flow3:cachemanagement:0.0060291290283203<br />typo3.flow3:configuration:0.12191319465637<br />typo3.flow3:systemlogger:0.002047061920166<br />typo3.flow3:errorhandling:0.001039981842041<br />typo3.flow3:cachemanagement:0.0061960220336914<br />typo3.flow3:cachemanagement:forceflush:1.5020370483398E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.0017240047454834<br />typo3.flow3:reflectionservice:0.10337805747986<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>1.3875679969788</strong><br />typo3.flow3:classfilemonitor:0.01531195640564<br />typo3.flow3:objectmanagement:proxyclasses: <strong>1.7831211090088</strong><br />typo3.flow3:classloader:cache:0.00031590461730957<br />typo3.flow3:reflectionservice:0.10096216201782<br />typo3.flow3:objectmanagement:runtime:0.0060441493988037<br />typo3.flow3:classfilemonitor:0.017793893814087<br />typo3.flow3:persistence:0.02872896194458<br />typo3.flow3:session:2.3841857910156E-5<br />typo3.flow3:resources:0.010877132415771<br />typo3.flow3:i18n:0.0043652057647705</p>
+
+
+	<a name="Run-THREE-3"></a>
+<h3 >Run THREE:<a href="#Run-THREE-3" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>typo3.flow3:configuration:0.12266802787781<br />typo3.flow3:systemlogger:0.0025391578674316<br />typo3.flow3:errorhandling:0.0011699199676514<br />typo3.flow3:cachemanagement:0.0061540603637695<br />typo3.flow3:configuration:0.12189602851868<br />typo3.flow3:systemlogger:0.0026230812072754<br />typo3.flow3:errorhandling:0.00093388557434082<br />typo3.flow3:cachemanagement:0.0063381195068359<br />typo3.flow3:cachemanagement:forceflush:1.7881393432617E-5<br />typo3.flow3:objectmanagement:compiletime:create:0.0012540817260742<br />typo3.flow3:reflectionservice:0.09977388381958<br />typo3.flow3:objectmanagement:compiletime:finalize: <strong>1.399288892746</strong><br />typo3.flow3:classfilemonitor:0.01502799987793<br />typo3.flow3:objectmanagement:proxyclasses: <strong>1.789400100708</strong><br />typo3.flow3:classloader:cache:0.00053691864013672<br />typo3.flow3:reflectionservice:0.10394382476807<br />typo3.flow3:objectmanagement:runtime:0.0059390068054199<br />typo3.flow3:classfilemonitor:0.018316030502319<br />typo3.flow3:persistence:0.030678987503052<br />typo3.flow3:session:1.6212463378906E-5<br />typo3.flow3:resources:0.0092267990112305<br />typo3.flow3:i18n:0.0053219795227051</p>
+
+
+	<a name="Compare"></a>
+<h2 >Compare:<a href="#Compare" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Windows Run ONE:<br />typo3.flow3:objectmanagement:compiletime:finalize: 22.969246864319<br />typo3.flow3:objectmanagement:compiletime:finalize: 5.3540909290314<br />typo3.flow3:objectmanagement:proxyclasses: 6.4099040031433<br />typo3.flow3:objectmanagement:proxyclasses: 63.889156103134<br />~98,62</p>
+
+
+	<p>Windows Run TWO:<br />typo3.flow3:objectmanagement:compiletime:finalize: 5.8308291435242<br />typo3.flow3:objectmanagement:proxyclasses: 6.8538370132446<br />~12,68 (~1/8)</p>
+
+
+	<p>Debian Run ONE:<br />typo3.flow3:objectmanagement:compiletime:finalize: 11.022831201553<br />typo3.flow3:objectmanagement:compiletime:finalize: 1.4139840602875<br />typo3.flow3:objectmanagement:proxyclasses: 1.8261530399323<br />typo3.flow3:objectmanagement:proxyclasses: 18.207201004028<br />~32,47</p>
+
+
+	<p>Debian Run TWO:<br />typo3.flow3:objectmanagement:compiletime:finalize: 1.3875679969788<br />typo3.flow3:objectmanagement:proxyclasses: 1.7831211090088<br />~3,16 (~1/10)</p>
+
+
+	<p>So Run ONE takes about three times as long and Run TWO take about four times as long, if you just look at objectmanagement:compiletime:finalize and objectmanagement:proxyclasses.</p></div>
+  </div>
+  
+
+  <div id="change-112574" class="journal has-notes">
+    <h4><a href="35912.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-16" title="2012-04-16 18:14">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-112574-notes"><p>@Thomas Thanks a lot for the testing! I've seen Windows laptops where it was faster but I'm pretty sure something goes wrong with the subrequest. I would be interested in numbers from other systems (= Mac/Linux)</p></div>
+  </div>
+  
+
+  <div id="change-112578" class="journal has-notes">
+    <h4><a href="35912.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-16" title="2012-04-16 18:34">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-112578-notes"><p>I saw a list of 20000 objects render for more then 15 minutes on windows. Besides that this is a bad idea anyway, it should not take so long.</p></div>
+  </div>
+  
+
+  <div id="change-112764" class="journal has-notes">
+    <h4><a href="35912.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/360">Irene Höppner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-17" title="2012-04-17 15:46">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-112764-notes"><p>Windows (exactly said ntfs) has huuuge problems with performance if it has to handle lots of small files. Maybe that's one of the problems...</p></div>
+  </div>
+  
+
+  <div id="change-112771" class="journal has-notes">
+    <h4><a href="35912.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/574">Thomas Allmer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-17" title="2012-04-17 16:04">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-112771-notes"><p>Irene Höppner wrote:</p>
+
+
+<blockquote>
+
+	<p>Windows (exactly said ntfs) has huuuge problems with performance if it has to handle lots of small files. Maybe that's one of the problems...</p>
+
+
+</blockquote>
+
+	<p>that's exactly what I thought too... <br />but using FAT32 and a RAMDisk was even worse... see my test results above... so I doubt its only a problem with NTFS...</p></div>
+  </div>
+  
+
+  <div id="change-113208" class="journal has-notes has-details">
+    <h4><a href="35912.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-04-19" title="2012-04-19 21:24">over 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Cache</i></li>
+      
+       <li><strong>Complexity</strong> set to <i>nightmare</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-113208-notes"><p>Allright, here are some numbers from my MacBook Pro 2.66 GHz, 8 GB RAM with SSD. I ran these tests with the new file monitoring I've been working on today.</p>
+
+
+	<p>flow3.typo3.org distribution without any frozen caches.</p>
+
+
+	<p><strong>CLI with empty caches:</strong></p>
+
+
+	<p>typo3.flow3:configuration: 0.054586887359619<br />typo3.flow3:systemlogger: 0.0018491744995117<br />typo3.flow3:errorhandling: 0.00091791152954102<br />typo3.flow3:cachemanagement: 0.0047760009765625<br />typo3.flow3:configuration: 0.070320844650269<br />typo3.flow3:systemlogger: 0.0024950504302979<br />typo3.flow3:errorhandling: 0.00095510482788086<br />typo3.flow3:cachemanagement: 0.0048651695251465<br />typo3.flow3:cachemanagement:forceflush: 1.0967254638672E-5<br />typo3.flow3:objectmanagement:compiletime:create: 0.051064968109131<br />typo3.flow3:reflectionservice: 0.16687822341919<br />typo3.flow3:objectmanagement:compiletime:finalize: 9.7601149082184<br />typo3.flow3:systemfilemonitor: 0.21332287788391<br />typo3.flow3:configuration: 0.061176061630249<br />typo3.flow3:systemlogger: 0.0024659633636475<br />typo3.flow3:errorhandling: 0.0011069774627686<br />typo3.flow3:cachemanagement: 0.0055298805236816<br />typo3.flow3:configuration: 0.058912992477417<br />typo3.flow3:systemlogger: 0.0016498565673828<br />typo3.flow3:errorhandling: 0.0009000301361084<br />typo3.flow3:cachemanagement: 0.0050208568572998<br />typo3.flow3:cachemanagement:forceflush: 1.1920928955078E-5<br />typo3.flow3:objectmanagement:compiletime:create: 0.0017020702362061<br />typo3.flow3:reflectionservice: 0.055745840072632<br />typo3.flow3:objectmanagement:compiletime:finalize: 0.83430099487305<br />typo3.flow3:systemfilemonitor: 0.025731086730957<br />typo3.flow3:objectmanagement:proxyclasses: 1.1017479896545<br />typo3.flow3:classloader:cache: 0.00034809112548828<br />typo3.flow3:reflectionservice: 0.04471492767334<br />typo3.flow3:objectmanagement:runtime: 0.0052928924560547<br />typo3.flow3:systemfilemonitor: 0.03460693359375<br />typo3.flow3:persistence: 0.19334816932678<br />typo3.flow3:session: 2.1934509277344E-5<br />typo3.flow3:resources: 0.11785197257996<br />typo3.flow3:i18n: 2.6607758998871<br />typo3.flow3:objectmanagement:proxyclasses: 17.408144950867<br />typo3.flow3:classloader:cache: 0.00050902366638184<br />typo3.flow3:reflectionservice: 0.043591022491455<br />typo3.flow3:objectmanagement:runtime: 0.0058629512786865<br />typo3.flow3:systemfilemonitor: 0.033476114273071<br />typo3.flow3:persistence: 0.020555019378662<br />typo3.flow3:session: 1.5974044799805E-5<br />typo3.flow3:resources: 0.0065140724182129<br />typo3.flow3:i18n: 0.0036249160766602</p>
+
+
+	<p>Total time: 12s</p>
+
+
+	<p><strong>CLI second run:</strong></p>
+
+
+	<p>typo3.flow3:configuration: 0.059010028839111<br />typo3.flow3:systemlogger: 0.0015878677368164<br />typo3.flow3:errorhandling: 0.00079703330993652<br />typo3.flow3:cachemanagement: 0.0044209957122803<br />typo3.flow3:configuration: 0.060646057128906<br />typo3.flow3:systemlogger: 0.0015139579772949<br />typo3.flow3:errorhandling: 0.00084590911865234<br />typo3.flow3:cachemanagement: 0.0044529438018799<br />typo3.flow3:cachemanagement:forceflush: 1.0967254638672E-5<br />typo3.flow3:objectmanagement:compiletime:create: 0.001162052154541<br />typo3.flow3:reflectionservice: 0.049525022506714<br />typo3.flow3:objectmanagement:compiletime:finalize: 0.78819394111633<br />typo3.flow3:systemfilemonitor: 0.027003049850464<br />typo3.flow3:objectmanagement:proxyclasses: 1.0473079681396<br />typo3.flow3:classloader:cache: 0.00027704238891602<br />typo3.flow3:reflectionservice: 0.04342794418335<br />typo3.flow3:objectmanagement:runtime: 0.0041968822479248<br />typo3.flow3:systemfilemonitor: 0.031425952911377<br />typo3.flow3:persistence: 0.021962881088257<br />typo3.flow3:session: 1.5974044799805E-5<br />typo3.flow3:resources: 0.0084171295166016<br />typo3.flow3:i18n: 0.0039389133453369</p>
+
+
+	<p>Total time: 1.5s</p>
+
+
+	<p><strong>CLI run after one controller class was modified:</strong></p>
+
+
+	<p>typo3.flow3:configuration: 0.057188034057617<br />typo3.flow3:systemlogger: 0.0016429424285889<br />typo3.flow3:errorhandling: 0.00079607963562012<br />typo3.flow3:cachemanagement: 0.0048038959503174<br />typo3.flow3:configuration: 0.060167074203491<br />typo3.flow3:systemlogger: 0.0017421245574951<br />typo3.flow3:errorhandling: 0.00080204010009766<br />typo3.flow3:cachemanagement: 0.0045828819274902<br />typo3.flow3:cachemanagement:forceflush: 1.0013580322266E-5<br />typo3.flow3:objectmanagement:compiletime:create: 0.0012118816375732<br />typo3.flow3:reflectionservice: 0.046766996383667<br />typo3.flow3:objectmanagement:compiletime:finalize: 0.79989504814148<br />typo3.flow3:systemfilemonitor: 0.2239191532135<br />typo3.flow3:objectmanagement:proxyclasses: 2.6019530296326<br />typo3.flow3:classloader:cache: 0.00026893615722656<br />typo3.flow3:reflectionservice: 0.049686908721924<br />typo3.flow3:objectmanagement:runtime: 0.0038700103759766<br />typo3.flow3:systemfilemonitor: 0.064115047454834<br />typo3.flow3:persistence: 0.024020910263062<br />typo3.flow3:session: 1.215934753418E-5<br />typo3.flow3:resources: 0.0070350170135498<br />typo3.flow3:i18n: 0.0042970180511475</p>
+
+
+	<p>Total time: 2.9 s</p></div>
+  </div>
+  
+
+  <div id="change-114982" class="journal has-notes">
+    <h4><a href="35912.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-02" title="2012-05-02 17:04">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-114982-notes"><p>ok guys, this is my stats. Running on a Linux Debian Squeeze, Xen Enterprise Server (VM), 2,3 GHz, 1024 MB RAM.<br />Commands and their result of course in that order.<br />Btw: I modified the echo to <br /><pre><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="predefined">echo</span> <span class="predefined">str_pad</span>(<span class="local-variable">$step</span>-&gt;getIdentifier(), <span class="integer">50</span>, <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>) . <span class="string"><span class="delimiter">'</span><span class="content">: </span><span class="delimiter">'</span></span> . <span class="predefined">number_format</span>(<span class="local-variable">$end</span> - <span class="local-variable">$start</span>, <span class="integer">5</span>, <span class="string"><span class="delimiter">'</span><span class="content">,</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">.</span><span class="delimiter">'</span></span>) . <span class="predefined-constant">PHP_EOL</span>;
+</span></code></pre> for a better-comparable output (fix-padded columns).</p>
+
+
+	<a name="flow3-flow3cacheflush-force"></a>
+<h3 >./flow3 flow3:cache:flush --force<a href="#flow3-flow3cacheflush-force" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+typo3.flow3:configuration                         : 0,06209
+typo3.flow3:systemlogger                          : 0,00252
+typo3.flow3:errorhandling                         : 0,00123
+typo3.flow3:cachemanagement                       : 0,00570
+</pre>
+
+	<a name="flow3"></a>
+<h3 >./flow3<a href="#flow3" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+typo3.flow3:configuration                         : 0,06204
+typo3.flow3:systemlogger                          : 0,00247
+typo3.flow3:errorhandling                         : 0,00124
+typo3.flow3:cachemanagement                       : 0,00565
+typo3.flow3:configuration                         : 0,06075
+typo3.flow3:systemlogger                          : 0,00232
+typo3.flow3:errorhandling                         : 0,00115
+typo3.flow3:cachemanagement                       : 0,00544
+typo3.flow3:cachemanagement:forceflush            : 0,00001
+typo3.flow3:objectmanagement:compiletime:create   : 0,00206
+typo3.flow3:reflectionservice                     : 0,01369
+typo3.flow3:objectmanagement:compiletime:finalize : 6,80219
+typo3.flow3:systemfilemonitor                     : 0,32879
+typo3.flow3:configuration                         : 0,06295
+typo3.flow3:systemlogger                          : 0,00263
+typo3.flow3:errorhandling                         : 0,00130
+typo3.flow3:cachemanagement                       : 0,00687
+typo3.flow3:configuration                         : 0,06239
+typo3.flow3:systemlogger                          : 0,00268
+typo3.flow3:errorhandling                         : 0,00135
+typo3.flow3:cachemanagement                       : 0,00604
+typo3.flow3:cachemanagement:forceflush            : 0,00002
+typo3.flow3:objectmanagement:compiletime:create   : 0,00227
+typo3.flow3:reflectionservice                     : 0,11998
+typo3.flow3:objectmanagement:compiletime:finalize : 1,02334
+typo3.flow3:systemfilemonitor                     : 0,06789
+typo3.flow3:objectmanagement:proxyclasses         : 1,43865
+typo3.flow3:classloader:cache                     : 0,00042
+typo3.flow3:reflectionservice                     : 0,11491
+typo3.flow3:objectmanagement:runtime              : 0,00710
+typo3.flow3:systemfilemonitor                     : 0,06551
+typo3.flow3:persistence                           : 0,03386
+typo3.flow3:session                               : 0,00001
+typo3.flow3:resources                             : 0,01033
+typo3.flow3:i18n                                  : 1,09235
+typo3.flow3:objectmanagement:proxyclasses        : 12,51410
+typo3.flow3:classloader:cache                     : 0,00090
+typo3.flow3:reflectionservice                     : 0,11620
+typo3.flow3:objectmanagement:runtime              : 0,00656
+typo3.flow3:systemfilemonitor                     : 0,06374
+typo3.flow3:persistence                           : 0,03311
+typo3.flow3:session                               : 0,00002
+typo3.flow3:resources                             : 0,01067
+typo3.flow3:i18n                                  : 0,01155
+</pre>
+
+	<a name="flow3-help"></a>
+<h3 >./flow3 help<a href="#flow3-help" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+typo3.flow3:configuration                         : 0,06113
+typo3.flow3:systemlogger                          : 0,00244
+typo3.flow3:errorhandling                         : 0,00124
+typo3.flow3:cachemanagement                       : 0,00579
+typo3.flow3:configuration                         : 0,06088
+typo3.flow3:systemlogger                          : 0,00243
+typo3.flow3:errorhandling                         : 0,00120
+typo3.flow3:cachemanagement                       : 0,00560
+typo3.flow3:cachemanagement:forceflush            : 0,00001
+typo3.flow3:objectmanagement:compiletime:create   : 0,00206
+typo3.flow3:reflectionservice                     : 0,11249
+typo3.flow3:objectmanagement:compiletime:finalize : 1,01905
+typo3.flow3:systemfilemonitor                     : 0,05919
+typo3.flow3:objectmanagement:proxyclasses         : 1,41990
+typo3.flow3:classloader:cache                     : 0,00044
+typo3.flow3:reflectionservice                     : 0,11151
+typo3.flow3:objectmanagement:runtime              : 0,00645
+typo3.flow3:systemfilemonitor                     : 0,06167
+typo3.flow3:persistence                           : 0,03277
+typo3.flow3:session                               : 0,00001
+typo3.flow3:resources                             : 0,01048
+typo3.flow3:i18n                                  : 0,01164
+</pre>
+
+	<p>I'll provide Windows stats soon.</p></div>
+  </div>
+  
+
+  <div id="change-114985" class="journal has-notes">
+    <h4><a href="35912.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2751">Adrian Föder</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-02" title="2012-05-02 17:16">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-114985-notes"><p>ok, here Windows 7, 64bit, 8GB RAM, Intel Core i7-2720QM @ 2.20 GHz, 8 Threads (is that important)?</p>
+
+
+	<a name="flow3-flow3cacheflush-force"></a>
+<h3 >./flow3 flow3:cache:flush --force<a href="#flow3-flow3cacheflush-force" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+typo3.flow3:configuration                         : 0,06577
+typo3.flow3:systemlogger                          : 0,00255
+typo3.flow3:errorhandling                         : 0,00121
+typo3.flow3:cachemanagement                       : 0,00531
+</pre>
+
+	<a name="flow3"></a>
+<h3 >./flow3<a href="#flow3" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+typo3.flow3:configuration                         : 0,06469
+typo3.flow3:systemlogger                          : 0,00270
+typo3.flow3:errorhandling                         : 0,00132
+typo3.flow3:cachemanagement                       : 0,00530
+typo3.flow3:configuration                         : 0,07086
+typo3.flow3:systemlogger                          : 0,00344
+typo3.flow3:errorhandling                         : 0,00155
+typo3.flow3:cachemanagement                       : 0,00545
+typo3.flow3:cachemanagement:forceflush            : 0,00001
+typo3.flow3:objectmanagement:compiletime:create   : 0,00169
+typo3.flow3:reflectionservice                     : 0,01539
+typo3.flow3:objectmanagement:compiletime:finalize : 4,86031
+typo3.flow3:systemfilemonitor                     : 0,13754
+typo3.flow3:configuration                         : 0,07104
+typo3.flow3:systemlogger                          : 0,00412
+typo3.flow3:errorhandling                         : 0,00124
+typo3.flow3:cachemanagement                       : 0,00551
+typo3.flow3:configuration                         : 0,06857
+typo3.flow3:systemlogger                          : 0,00307
+typo3.flow3:errorhandling                         : 0,00130
+typo3.flow3:cachemanagement                       : 0,00520
+typo3.flow3:cachemanagement:forceflush            : 0,00001
+typo3.flow3:objectmanagement:compiletime:create   : 0,00170
+typo3.flow3:reflectionservice                     : 0,06137
+typo3.flow3:objectmanagement:compiletime:finalize : 0,83642
+typo3.flow3:systemfilemonitor                     : 0,05678
+typo3.flow3:objectmanagement:proxyclasses         : 1,32563
+typo3.flow3:classloader:cache                     : 0,00068
+typo3.flow3:reflectionservice                     : 0,04828
+typo3.flow3:objectmanagement:runtime              : 0,00442
+typo3.flow3:systemfilemonitor                     : 0,05561
+typo3.flow3:persistence                           : 0,02637
+typo3.flow3:session                               : 0,00001
+typo3.flow3:resources                             : 0,02098
+typo3.flow3:i18n                                  : 7,52904
+typo3.flow3:objectmanagement:proxyclasses        : 21,32258
+typo3.flow3:classloader:cache                     : 0,00102
+typo3.flow3:reflectionservice                     : 0,04835
+typo3.flow3:objectmanagement:runtime              : 0,00505
+typo3.flow3:systemfilemonitor                     : 0,06527
+typo3.flow3:persistence                           : 0,02585
+typo3.flow3:session                               : 0,00001
+typo3.flow3:resources                             : 0,01133
+typo3.flow3:i18n                                  : 0,00488
+</pre>
+
+	<a name="flow3-help"></a>
+<h3 >./flow3 help<a href="#flow3-help" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+typo3.flow3:configuration                         : 0,07297
+typo3.flow3:systemlogger                          : 0,00248
+typo3.flow3:errorhandling                         : 0,00125
+typo3.flow3:cachemanagement                       : 0,00513
+typo3.flow3:configuration                         : 0,06498
+typo3.flow3:systemlogger                          : 0,00270
+typo3.flow3:errorhandling                         : 0,00125
+typo3.flow3:cachemanagement                       : 0,00537
+typo3.flow3:cachemanagement:forceflush            : 0,00001
+typo3.flow3:objectmanagement:compiletime:create   : 0,00170
+typo3.flow3:reflectionservice                     : 0,05492
+typo3.flow3:objectmanagement:compiletime:finalize : 0,80001
+typo3.flow3:systemfilemonitor                     : 0,05578
+typo3.flow3:objectmanagement:proxyclasses         : 1,19641
+typo3.flow3:classloader:cache                     : 0,00056
+typo3.flow3:reflectionservice                     : 0,06066
+typo3.flow3:objectmanagement:runtime              : 0,00506
+typo3.flow3:systemfilemonitor                     : 0,05693
+typo3.flow3:persistence                           : 0,02497
+typo3.flow3:session                               : 0,00001
+typo3.flow3:resources                             : 0,01120
+typo3.flow3:i18n                                  : 0,00483
+</pre>
+
+	<p>I have to say that, on this machine, it really works fast and nice; but I absolutely experienced veeery long waiting times on my last Windows machine. But however, the 21 seconds for the proxyclasses are relatively slow even here.</p></div>
+  </div>
+  
+
+  <div id="change-117380" class="journal has-notes has-details">
+    <h4><a href="35912.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-05-21" title="2012-05-21 16:11">about 3 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-117380-notes"><p>This is solved for now. Further speed improvements should be done by someone with access to a Windows machine and clear debugging/profiling data to measure progress.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-35912-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/35912.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="35912.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/35912 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:00:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/3513 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:55:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #3513: Created logfiles are read-only for either command line user or web user - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/3513.atom" rel="alternate" title="TYPO3.Flow - Bug #3513: Created logfiles are read-only for either command line user or web user" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-3513-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #3513</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Created logfiles are read-only for either command line user or web user</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-05-29" title="2009-05-29 11:04">about 6 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2010-10-20" title="2010-10-20 11:39">almost 5 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2009-05-29</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Log</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/182">TYPO3 Flow Base Distribution - 1.0 alpha 1</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td></td>
+	<th>Affected Flow version:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>The logfiles created by the FileBackend automatically are owned by the current user running the script - that may be the webserver's user if FLOW3 is accessed from the web or another user if called from the command line. The problem is that whoever runs FLOW3 first, owns the log file and the default access rights are something like <pre>-rw-r--r-</pre>. If the other user tries to run FLOW3, it will fail because it can't write to the log file.</p>
+
+
+	<p>Therefore we should set the access rights to <pre>-rw-rw---</pre> upon creating the file. This should happen in the open() method of the FileBackend.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/1200/patch3513_distribution.diff" class="icon icon-attachment">patch3513_distribution.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/1200/patch3513_distribution.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+   - Patch file for the FLOW3 distribution
+  <span class="size">(1.7 kB)</span>
+  
+  
+    <span class="author">Tim Eilers, 2009-06-01 17:57</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/1201/patch3513_flow3.diff" class="icon icon-attachment">patch3513_flow3.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/1201/patch3513_flow3.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+   - Patch file for the FLOW3 package
+  <span class="size">(4.2 kB)</span>
+  
+  
+    <span class="author">Tim Eilers, 2009-06-01 17:57</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-229">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="3534" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="3534.html" class="issue status-7 priority-1 closed">Bug #3534</a>: File permission issues
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2009-06-02</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/3513/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/3513/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=3513&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/6dccf80129af845ebfd78952d8c16482b36c9e0d" title="Revision 6dccf801">Revision 6dccf801</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-05-29" title="2009-05-29 11:26">about 6 years</a> ago</span></p>
+    <div class="wiki">
+        <ul>
+	<li>FLOW3: (Log) The FileBackend now chmods the newly created log file with 0660. Resolves <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></li>
+	</ul>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/b3431ea773399ec998d9fe00ef6da0534f321e9b" title="Revision b3431ea7">Revision b3431ea7</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-05-29" title="2009-05-29 12:23">about 6 years</a> ago</span></p>
+    <div class="wiki">
+        <ul>
+	<li>FLOW3: (Log) Okay, my last commit contained some plain stupid code ... Well, this fixes it. The FileBackend now checks if the logfile URL is a plain file or some userspace stream handler (such as the ones we use in unit tests). If it's a plain file, the newly created file is chmodded 0666 because we currently don't have a better solution at hand. Addresses <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></li>
+	</ul>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/3eb9952085210425ca32c4df5d5bbc5339749984" title="Revision 3eb99520">Revision 3eb99520</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-06-02" title="2009-06-02 10:57">about 6 years</a> ago</span></p>
+    <div class="wiki">
+        <ul>
+	<li>FLOW3: (Log) The FileBackend now supports a new option "createParentDirectories". When turned on (default = off), the logger creates the full path to the log file if the directories don't yet exist. Addresses <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></li>
+		<li>FLOW3: (Environment) Added a new function getSAPIType() which returns the <em>type</em> of PHP's SAPI - i.e. "Web" or "CLI". Addresses <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></li>
+		<li>FLOW3: Changed the settings for the log file URL. Now log files for CLI and Web reside in dedicated sub directories. Resolves <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></li>
+		<li>FLOW3: (MVC) Whyever, the AbstractController only supported Web Requests. Fixed that.</li>
+	</ul>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base/repository/revisions/14240e9434421fbd87e4ae17367081354c7a784d" title="Revision 14240e94">Revision 14240e94</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-06-02" title="2009-06-02 10:57">about 6 years</a> ago</span></p>
+    <div class="wiki">
+        <ul>
+	<li>FLOW3: (Log) The FileBackend now supports a new option "createParentDirectories". When turned on (default = off), the logger creates the full path to the log file if the directories don't yet exist. Addresses <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></li>
+		<li>FLOW3: (Environment) Added a new function getSAPIType() which returns the <em>type</em> of PHP's SAPI - i.e. "Web" or "CLI". Addresses <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></li>
+		<li>FLOW3: Changed the settings for the log file URL. Now log files for CLI and Web reside in dedicated sub directories. Resolves <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></li>
+		<li>FLOW3: (MVC) Whyever, the AbstractController only supported Web Requests. Fixed that.</li>
+	</ul>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base/repository/revisions/ea52469b4dab5b9f544f4c20b3b7c3bcda500591" title="Revision ea52469b">Revision ea52469b</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-06-02" title="2009-06-02 11:00">about 6 years</a> ago</span></p>
+    <div class="wiki">
+        <p>*Changed the settings for the log file URL. Now log files for CLI and Web reside in dedicated sub directories. Refs <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base/repository/revisions/41b79d1b5f9c1a1d6a490c41a021da1fe2fcac30" title="Revision 41b79d1b">Revision 41b79d1b</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-06-02" title="2009-06-02 11:21">about 6 years</a> ago</span></p>
+    <div class="wiki">
+        <ul>
+	<li>FLOW3: An updated version of the setfilepermission.sh. It surely is a bit too permissive but it works for now and can be optimized in later releases. Addresses <a href="3513.html" class="issue status-7 priority-1 closed" title="Created logfiles are read-only for either command line user or web user (Resolved)">#3513</a></li>
+	</ul>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-7136" class="journal has-notes has-details">
+    <h4><a href="3513.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-05-29" title="2009-05-29 12:00">about 6 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-7136-notes"><p>Applied in changeset r2459.</p></div>
+  </div>
+  
+
+  <div id="change-7142" class="journal has-notes has-details">
+    <h4><a href="3513.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/20">Tim Eilers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-05-29" title="2009-05-29 14:17">about 6 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>New</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-7142-notes"><p>Setting the access right to<br /><pre>
+-rw-rw----
+</pre> <br />doesn't solve the problem.</p>
+
+
+	<a name="Imaginary-environment"></a>
+<h1 >Imaginary environment<a href="#Imaginary-environment" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>Imagine the following situation:<br />Webserver User = www-data<br />CLI User = johndoe (Group users)<br />Assuming the setfilepermissions.sh script has been run.</p>
+
+
+	<a name="Web-call-first"></a>
+<h2 >Web call first<a href="#Web-call-first" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Now FLOW3 will be called by Web (f.e. the Default View) at first. The Logfile is created for the used context (lets assume Production). Then the permission will look like this (not a full ls -al, i am just typing the needed data):<br /><pre>
+-rw-rw---- www-data www-data FLOW3_Production.log
+</pre><br />Now FLOW3 is called by CLI by johndoe. You will get an exception, cause johndoe is not allowed to write to the logfile.</p>
+
+
+	<a name="CLI-call-first"></a>
+<h2 >CLI call first<a href="#CLI-call-first" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>In this case FLOW is called by CLI first.<br />The permission will look like this:<br /><pre>
+-rw-rw---- johndoe users FLOW3_Production.log
+</pre><br />Now a FLOW3 web call will fail, cause it can't write to the logfile.</p>
+
+
+	<a name="special-case-CLI-user-is-root-not-johndoe"></a>
+<h2 >special case: CLI user is root, not johndoe<a href="#special-case-CLI-user-is-root-not-johndoe" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Then CLI will never have a problem, cause root is allowed to write to the logfile even if it belongs to www-data. But Web will have a problem, if FLOW3 was called by CLI first, cause the log belongs to root and will not be writeable by www-data.</p>
+
+
+	<a name="solution-ideas"></a>
+<h1 >solution ideas<a href="#solution-ideas" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li>chmod the Log Directory to 777 -> from a security view very bad!</li>
+		<li>set SGUID for Log Directory -> if CLI is called first the logile will look like this:</li>
+	</ul>
+
+
+<pre>
+-rw-rw---- johndoe www-data FLOW3_Production.log
+</pre> 
+
+But the problem still persists if the Web call was first, then CLI under johndoe will fail. (But not when CLI user is root. So this could be a good solution if the CLI user is root everytime. But i think the solution at the bottom is more "universal" 
+	<ul>
+	<li>precreate the Logs with the setfilepermissions.sh script -> bad, cause there could be other contextes or other logfiles later</li>
+	</ul>
+
+
+	<a name="final-solution-suggestion"></a>
+<h1 >final solution suggestion<a href="#final-solution-suggestion" class="wiki-anchor">&para;</a></h1>
+
+
+	<ul>
+	<li>predefined seperate log directories for Web and CLI</li>
+		<li>both dirs will be set to webserver user by the setfilepermissions.sh script -> change the script to set the owner/group of CLI log directory to the user running that script (because he will mostly be the user running CLI calls later)</li>
+		<li>change the Logging Framework to use the seperate log directories depending on the "context" (Web or CLI)</li>
+		<li>remove the chmod 660 again or change it to 640 or similar (at least remove the group write permission)</li>
+	</ul>
+
+
+	<p>There will still be a problem if the user who uploads / creates / extracts the FLOW3 distribution + runs the setfilepermissions.sh script and the user who runs CLI requests later will differ. (f.e. script user = root, CLI user = johndoe).<br />I think this should be covered in the documentation where CLI requests are explained. In my opinion there are not most cases where that happens. Often CLI's are used at root and if it is another user it is often the one who uploads the distribution and runs the script.</p></div>
+  </div>
+  
+
+  <div id="change-7169" class="journal has-notes has-details">
+    <h4><a href="3513.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/20">Tim Eilers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-06-01" title="2009-06-01 17:57">about 6 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/1200/patch3513_distribution.diff">patch3513_distribution.diff</a><a href="../../external.html?link=https://forge.typo3.org/attachments/1200/patch3513_distribution.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/1201/patch3513_flow3.diff">patch3513_flow3.diff</a><a href="../../external.html?link=https://forge.typo3.org/attachments/1201/patch3513_flow3.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-7169-notes"><p>Please check the attached patches. I don't wont to commit them by myself (and i can't, cause i only could do it for the package but not for distribution).<br />I also didn't know how to show directory diffs. So you have to create Data/Logs/Web and Data/Logs/CLI in the distribution.</p>
+
+
+	<p>The idea behind it:<br />I did not put the SAPI name into the Log File path or something else, because it could be something like "apache2handler" or "cgi" (see <a class="external" href="../../external.html?link=http://de.php.net/manual/en/function.php-sapi-name.php">http://de.php.net/manual/en/function.php-sapi-name.php</a> and i think that is not very intuitive. So all requests coming from the web are collected into the "Web" Folder.</p>
+
+
+	<p>Perhaps this is not the final solution but an idea how to solve it...</p></div>
+  </div>
+  
+
+  <div id="change-7186" class="journal has-details">
+    <h4><a href="3513.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-06-02" title="2009-06-02 09:40">about 6 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Robert Lemke</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>100</i> to <i>50</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-7190" class="journal has-notes has-details">
+    <h4><a href="3513.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2009-06-02" title="2009-06-02 11:00">about 6 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>50</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-7190-notes"><p>Applied in changeset r2517.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-3513-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/3513.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="3513.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/3513 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:55:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/34133 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #34133: RFC: Handle Semicolons in Path part of URIs as Scoped Path Parameters - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/34133.atom" rel="alternate" title="TYPO3.Flow - Feature #34133: RFC: Handle Semicolons in Path part of URIs as Scoped Path Parameters" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (3)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4355">Jacob Floyd</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-34133-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #34133</h2>
+
+<div class="issue status-1 priority-3 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>RFC: Handle Semicolons in Path part of URIs as Scoped Path Parameters</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/4355">Jacob Floyd</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-02-21" title="2012-02-21 11:27">over 3 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-02-21" title="2012-02-21 15:17">over 3 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">New</td>
+    <th class="start-date">Start date:</th><td class="start-date">2012-02-21</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Could have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Property</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <a name="Scoped-Path-Parameters"></a>
+<h1 >Scoped Path Parameters<a href="#Scoped-Path-Parameters" class="wiki-anchor">&para;</a></h1>
+
+
+	<p>The URI RFCs hint at what I think will make an awesome, unique, feature for Flow3, and Typo3 Phoenix: Scoped Path Parameters. It's a powerful feature that could allow all sorts of search faceting, <a href="../../external.html?link=http://www.w3.org/DesignIssues/MatrixURIs.html" title="Tim Berners-Lee&#039;s 1996 thoughts on the possibility of Matrix URIs - We&#039;d have to use JavaScript to achieve the same relative Matrix effect today" class="external">matrices</a>, or scoped parameters available for use in packages.</p>
+
+
+	<p>One of the possible uses for a path parameter in Typo3 might be to view historical versions of pages or branches of the page tree. You could set the version parameter on a particular part of the hierarchical path (not necessarily the final segment that identifies the page) and get past published versions of a page in that branch. Workspaces are great for queuing future work and pushing it through the required workflow stages, but workspaces are awkward for managing past versions. But I digress - what exactly is a path parameter?</p>
+
+
+	<a name="What-is-a-Path-Parameter"></a>
+<h2 >What is a <em>Path Parameter</em>?<a href="#What-is-a-Path-Parameter" class="wiki-anchor">&para;</a></h2>
+
+
+<blockquote>
+
+	<p>A URI path pa­ram­e­ter is part of a path seg­ment that oc­curs after its name. Path pa­ram­e­ters offer a unique op­por­tu­ni­ty to con­trol the rep­re­sen­ta­tions of re­sources. Since they can't be ma­nip­u­lat­ed by stan­dard Web forms, they have to be con­struct­ed out of band. Since they're part of the path, they're se­quen­tial, un­like query strings. Most im­por­tant­ly, how­ev­er, their be­haviour is not ex­plic­it­ly de­fined. - <a href="../../external.html?link=http://doriantaylor.com/policy/http-url-path-parameter-syntax" title="HTTP Path Parameter Syntax by Dorian Taylor" class="external">HTTP Path Parameter Syntax</a></p>
+
+
+</blockquote>
+
+	<p>Consider the latest version of the URI spec (<a href="../../external.html?link=http://datatracker.ietf.org/doc/rfc3986/" title="Uniform Resource Identifier [URI]: Generic Syntax" class="external">3986</a>) which says:</p>
+
+
+<blockquote>
+
+	<p>URI producing applications<br />often use the reserved characters allowed in a segment to delimit<br />scheme-specific or dereference-handler-specific subcomponents.  For<br />example, the semicolon (";") and equals ("=") reserved characters are<br />often used to delimit parameters and parameter values applicable to<br />that segment.  The comma (",") reserved character is often used for<br />similar purposes.  For example, one URI producer might use a segment<br />such as "name;v=1.1" to indicate a reference to version 1.1 of<br />"name", whereas another might use a segment such as "name,1.1" to<br />indicate the same.  Parameter types may be defined by scheme-specific<br />semantics, but in most cases the syntax of a parameter is specific to<br />the implementation of the URI's dereferencing algorithm.<br />- <a href="../../external.html?link=http://tools.ietf.org/html/rfc3986#section-3.3" title="Uniform Resource Identifier [URI]: Generic Syntax - Section 3.3 Last Paragraph" class="external">3986</a></p>
+
+
+</blockquote>
+
+	<p>Though <a href="../../external.html?link=http://datatracker.ietf.org/doc/rfc3986/" title="Uniform Resource Identifier [URI]: Generic Syntax" class="external">3986</a> has an EBNF definition that allows for parameters in the path (like &quot;name;v=1.1&quot;), I think it's clearer to see in the previous version (<a href="../../external.html?link=http://datatracker.ietf.org/doc/rfc2396/" title="Uniform Resource Identifiers [URI]: Generic Syntax" class="external">2396</a> ) where it shows that each path_segment (separated by a "/" can be followed by parameters.<br />[...]</p>
+
+
+	<a name="Examples"></a>
+<h2 >Examples<a href="#Examples" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>So, In a path like <code>/foo/bar/baz</code>, you could add parameters that apply to a particular branch of the page tree: <code>/foo;v=1.1/bar;authgroup=employee/baz;views=map,calendar</code></p>
+
+
+	<p>This means that <code>http://www.blah.com/some;param1=foo/crazy;param2=bar/path.html</code> is a perfectly valid url (see <a href="../../external.html?link=http://www.skorks.com/2010/05/what-every-developer-should-know-about-urls/" title="What Every Developer Should Know About URLs by Alan Snorkin" class="external">this article</a> and <a href="../../external.html?link=http://doriantaylor.com/policy/http-url-path-parameter-syntax" title="HTTP Path Parameter Syntax" class="external">this page</a> on the subject).</p>
+
+
+	<a name="Other-examples"></a>
+<h3 >Other examples<a href="#Other-examples" class="wiki-anchor">&para;</a></h3>
+
+
+	<ul>
+	<li><code>/products;filter=family-friendly/videos;rating=pg?q=dragon</code></li>
+	</ul>
+
+
+	<ul>
+	<li><code>/foo/abc/bar/def</code><br /><code>/foo;v=2.8/abc/bar/def;diff=with-current</code><br /><code>/foo;L=en/abc/bar;L=de/def</code><br /><code>/foo/abc;w=draft/bar/def;diff=with-other-authors</code></li>
+	</ul>
+
+
+	<ul>
+	<li><code>/map;type=topo/south-america/Brasil/São-Pualo;type=subway,cycle</code></li>
+	</ul>
+
+
+	<ul>
+	<li><code>/users;auth-group=super/John-Smith</code><br />is obviously a different view of the same resource:<br /><code>/users/John-Smith</code><br />only this one is the public view, and the other is the super-user view</li>
+	</ul>
+
+
+	<p>If I were to implement amazon.com's faceted search with path parameters, it might do this:<br />With Path Params: <code>http://www.amazon.com/Movies-TV;format=DVD,Blu-Ray;genre=drama;stars=3+;price=$0.01-$20/Movies;actor=Christopher-Lee;director=Alan-Gibson</code></p>
+
+
+<blockquote>
+
+	<p>Original: <code>http://www.amazon.com/gp/search/ref=sr_nr_p_36_0?bbn=2649512011&#38;qid=1329629982&#38;rh=n%3A2625373011%2Cp_n_format_browse-bin%3A2650304011%7C2650305011%2Cn%3A%212625374011%2Cn%3A2649512011%2Cp_72%3A3014476011%2Cp_n_theme_browse-bin%3A2650368011%2Cp_36%3A3052254011&#38;rnid=3052254011&#38;low-price=0.01&#38;high-price=20&#38;x=0&#38;y=0#/ref=sr_nr_p_n_feature_three_br_2?rh=n%3A2625373011%2Cp_n_format_browse-bin%3A2650304011%7C2650305011%2Cn%3A%212625374011%2Cn%3A2649512011%2Cp_72%3A3014476011%2Cp_n_theme_browse-bin%3A2650368011%2Cp_36%3A1-2000%2Cp_n_feature_three_browse-bin%3A2651257011&#38;bbn=2649512011&#38;ie=UTF8&#38;qid=1329630193&#38;rnid=2651254011</code></p>
+
+
+</blockquote>
+
+	<a name="Implementation"></a>
+<h2 >Implementation<a href="#Implementation" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>TYPO3\FLOW3\Property\DataType\Uri breaks things down into the different URI components</li>
+		<li>TYPO3\FLOW3\MVC\Web\Routing\UriBuilder deals with URIs throughout Flow3</li>
+	</ul>
+
+
+	<p>UriBuilder\setArguments allows prefixed query args: <code>array('prefix1' => array('foo' => 'bar')) gets "&#38;prefix1[foo]=bar"</code>. This could also be done with a path parameter (which intrinsically has a 'scope', ie, earlier pages or templates in the rootline won't be able to use a parameter set on their children. The parameter applies only from that level on.) <code>&#38;prefix1[foo]=bar</code> might become <code>my-controller/prefix1;foo=bar/fun-stuff</code>.</p>
+
+
+	<a name="Routing"></a>
+<h3 >Routing<a href="#Routing" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>I think that Flow3 needs to handle the path parameters by default. Packages should not be required to create special routes just to handle these parameters - they should be loaded in some kind of array that is accessible from within the package. The default handling could be changed if required for a particular installation (see defaults below).</p>
+
+
+So, I'd imagine that routing would happen like this (or something like it):
+	<ol>
+	<li>Separate a given URI (possibly an requested resource) into the various parts, like now: host, user, path, query ...</li>
+		<li>Additionally parse the path segment to place all of the path params in a path_param array - something that helps respect the 'scoped' nature of these parameters - They are much more specific than the general query string parameters.</li>
+		<li>Strip all of the path parameters from the path and process routing as usual.
+	<ul>
+	<li>This is important - routing matches only on the path-segments, not on the path parameters. A new kind of routing rule could be used to redirect a request based on one or more of the path parameters, but the requested resource <strong>does not change</strong> based on the params. The view might look different, or have additional features, but the path sans parameters and path with parameters identifies <em>the <strong>same</strong> node</em>.</li>
+	</ul></li>
+	</ol>
+
+
+	<a name="Defaults-and-Security"></a>
+<h3 >Defaults and Security<a href="#Defaults-and-Security" class="wiki-anchor">&para;</a></h3>
+
+
+	<p>Accessing the same node, no matter the path parameters is important. Be default, or at least to begin with, path parameters should be detected, stripped, and the request should be redirected with a '302 Found' to the same URL sans the parameters. Then when someone begins to use path parameters in their package, the package can enable them - probably with a special routing rule that turns them on, but only for a particular branch or segment of the path and/or tree.</p>
+
+
+	<p>Back to the point of path parameters not changing the node in the content tree: Allowing redirection to other nodes could introduce some security issues with url spoofing that would not be fun to deal with. Right now, the most common use of the semicolon is to hack insecure software. Tomcat uses the path parameter to pass JSESSIONID when cookies can't easily be included in some request. This Tomcat feature has been the basis for hacking and phishing as some browsers didn't understand the semicolon. To make sure Flow3 doesn't have the same problem - I think support for path parameters is a must, even if all that's done is drop them.</p>
+
+
+	<a name="Final-thoughts"></a>
+<h2 >Final thoughts<a href="#Final-thoughts" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Even though some browsers might have issues (the articles I saw online were somewhat dated, so the issues may have been resolved) I think Flow3 should support this, because browsers are not the only content consumers around. Flow3 can be the basis for some robust APIs that are merely for inter-server communication. Browsers also don't support HTTPs PUT or DELETE on form elements, but Flow3 is getting amazing support for those... Please Support Path Parameters.</p>
+
+
+	<p>Another important path parameters side effect (hopefully) would be improved and more robust caching of pages that require authentication (say of a particular usergroup).</p>
+
+
+	<p>As a side note, the specs also indicate that semicolons can be used in place of ampersands in the query string. I don't know if Flow3 supports that right now, but I think it should. (If needed, I can file another feature request about that.)</p>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-103544" class="journal has-notes">
+    <h4><a href="34133.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-02-21" title="2012-02-21 11:36">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103544-notes"><p>Without having read everything yet, I'd like to point to the arg_separator.* directives of PHP (see <a class="external" href="../../external.html?link=http://www.sitepoint.com/php-and-standards-arg_separatoroutput/">http://www.sitepoint.com/php-and-standards-arg_separatoroutput/</a> for a nice article outlining some of the confusion around those). Whatever we do, <strong>if</strong> the server has a setting to use ➜ as the output separator, we should follow suit, IMHO.</p>
+
+
+	<p>How would that fit together?</p></div>
+  </div>
+  
+
+  <div id="change-103550" class="journal has-notes">
+    <h4><a href="34133.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4355">Jacob Floyd</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-02-21" title="2012-02-21 11:52">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103550-notes"><p>…moved to original description.</p></div>
+  </div>
+  
+
+  <div id="change-103551" class="journal has-notes">
+    <h4><a href="34133.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4355">Jacob Floyd</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-02-21" title="2012-02-21 12:06">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103551-notes"><p>Karsten Dambekalns wrote:</p>
+
+
+<blockquote>
+
+	<p>Without having read everything yet, I'd like to point to the arg_separator.* directives of PHP (see <a class="external" href="../../external.html?link=http://www.sitepoint.com/php-and-standards-arg_separatoroutput/">http://www.sitepoint.com/php-and-standards-arg_separatoroutput/</a> for a nice article outlining some of the confusion around those). Whatever we do, <strong>if</strong> the server has a setting to use ➜ as the output separator, we should follow suit, IMHO.</p>
+
+
+	<p>How would that fit together?</p>
+
+
+</blockquote>
+
+	<p>Do we really want to support using session.use_trans_sid? From that article, and others I've read, it sounds like it'll give invalid urls within HTML docs (using &#38; instead of &amp;amp;. Overall, session.use_trans_sid sounds like it'll cause us a lot more grief than its worth. I'd rather Flow3 take care of sticking a session ID in the url (as a path param, of course) if that's necessary.</p>
+
+
+	<p>I also think that using arg_separator.output would be a very clean way to have an installation use ';' instead of '&#38;'. Flow3 would just use that when generating or working with the query string. Even though session.use_trans_sid is disabled, Flow3 should still be able to grab this setting, or ignore it by choosing it's own way.</p>
+
+
+	<p>However, I think arg_separator.output is only for the query string. Any Path Parameter handling we do will end up being part of flow3, as not many (none that I know of) apps support these scoped parameters.</p></div>
+  </div>
+  
+
+  <div id="change-103576" class="journal has-notes">
+    <h4><a href="34133.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2012-02-21" title="2012-02-21 15:17">over 3 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-103576-notes"><p>Hi.</p>
+
+
+	<p>Jacob Floyd wrote:</p>
+
+
+<blockquote>
+
+	<p>Do we really want to support using session.use_trans_sid?</p>
+
+
+</blockquote>
+
+	<p>I don't give a dime about trans_sid :)</p>
+
+
+<blockquote>
+
+	<p>I also think that using arg_separator.output would be a very clean way to have an installation use ';' instead of '&#38;'. Flow3 would just use that when generating or working with the query string.</p>
+
+
+</blockquote>
+
+	<p>Exactly.</p>
+
+
+	<p>Interesting would be what happens if arg_separator.input is set to ';' - FLOW3 should still work, of course ;)</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-34133-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/34133.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="34133.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/34133 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

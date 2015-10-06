@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/30267 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #30267: site:import task broken - TYPO3.Neos - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/30267.atom" rel="alternate" title="TYPO3.Neos - Bug #30267: site:import task broken" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 current sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Neos</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="level-1 current sorting-0">Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-form" class="level-2 sorting-0">TYPO3.Form</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-imagine" class="level-2 sorting-0">TYPO3.Imagine</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-media" class="level-2 sorting-0">TYPO3.Media</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="level-2 current sorting-0">TYPO3.Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos-nodetypes" class="level-2 sorting-0">TYPO3.Neos.NodeTypes</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-party" class="level-2 sorting-0">TYPO3.Party</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-setup" class="level-2 sorting-0">TYPO3.Setup</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-sitekickstarter" class="level-2 sorting-0">TYPO3.SiteKickstarter</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-twitter-bootstrap" class="level-2 sorting-0">TYPO3.Twitter.Bootstrap</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr" class="level-2 sorting-0">TYPO3.TYPO3CR</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-typoscript" class="level-2 sorting-0">TYPO3.TypoScript</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-coordination" class="level-1 sorting-0">Coordination Group</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-website-communication" class="level-1 sorting-0">Website and Communication</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-30267-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #30267</h2>
+
+<div class="issue status-9 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>site:import task broken</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/9">Martin Brüggemann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-09-25" title="2011-09-25 12:02">almost 4 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-10-01" title="2011-10-01 00:00">almost 4 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2011-09-25</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Services</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I cloned the TYPO3 Phoenix base repository and tried to import the flow3org-Site-Package with:</p>
+
+
+<pre>
+./flow3 site:import --package-key=TYPO3.Flow3Org
+</pre>
+
+	<p>Unfortunately, this doesn't work anymore. I get the following exception:</p>
+
+
+<pre>
+Uncaught Exception in FLOW3 #1297759968: Exception while property mapping at property path "":No converter found which can be used to convert from "boolean" to "string".
+thrown in file /Volumes/Data/Users/herr/Sites/_ZFWSPACE/Flow3Org/Data/Temporary/Development/Cache/Code/FLOW3_Object_Classes/TYPO3_FLOW3_Property_PropertyMapper_Original.php
+in line 129
+Reference code: 20110925115603994843
+
+  Nested exception:
+
+  Uncaught Exception in FLOW3 No converter found which can be used to convert from "boolean" to "string".
+  thrown in file /Volumes/Data/Users/herr/Sites/_ZFWSPACE/Flow3Org/Data/Temporary/Development/Cache/Code/FLOW3_Object_Classes/TYPO3_FLOW3_Property_PropertyMapper_Original.php
+  in line 222
+Reference code: 20110925115603ce7894
+
+#0 TYPO3\FLOW3\Error\DebugExceptionHandler::echoExceptionCli()
+   /Volumes/Data/Users/herr/Sites/_ZFWSPACE/Flow3Org/Packages/Framework/TYPO3.FLOW3/Classes/Error/AbstractExceptionHandler.php:59
+
+#1 TYPO3\FLOW3\Error\AbstractExceptionHandler::handleException()
+</pre>
+
+	<p>I recreated the database and tried again, but it seems to be a bug with the site:import command. Or am I using the wrong import command?</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-5229">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="29539" /></td>
+<td class="subject">related to 
+    TYPO3.Neos - 
+    <a href="29539.html" class="issue status-9 priority-1 closed">Bug #29539</a>: Importing a Site from XML does not work if DB is not empty
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2011-09-07</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-5241">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="30493" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="30493.html" class="issue status-7 priority-2 closed">Bug #30493</a>: CLI argument handling chokes on = use
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2011-10-01</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/30267/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/30267/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=30267&amp;project_id=package-typo3-neos')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-88405" class="journal has-notes">
+    <h4><a href="30267.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/9">Martin Brüggemann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-09-27" title="2011-09-27 20:16">almost 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-88405-notes"><p>Piping the Sites.xml directly to the import commands works:</p>
+
+
+<pre>
+./flow3 site:import &lt; Packages/Sites/TYPO3.Flow3Org/Resources/Private/Content/Sites.xml
+</pre></div>
+  </div>
+  
+
+  <div id="change-88419" class="journal has-notes has-details">
+    <h4><a href="30267.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-09-28" title="2011-09-28 09:53">almost 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Karsten Dambekalns</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-88419-notes"><p>Works for me in both ways of invocation. If this is an issue even after upgrading to the latest sources, please attach the log and the generated backtrace (see reference code) of the exception.</p></div>
+  </div>
+  
+
+  <div id="change-88425" class="journal has-notes">
+    <h4><a href="30267.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-09-28" title="2011-09-28 10:10">almost 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-88425-notes"><p>Could this somehow be related to <a href="29539.html" class="issue status-9 priority-1 closed" title="Importing a Site from XML does not work if DB is not empty (Closed)">#29539</a>?</p></div>
+  </div>
+  
+
+  <div id="change-88864" class="journal has-notes">
+    <h4><a href="30267.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/9">Martin Brüggemann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-09-30" title="2011-09-30 20:41">almost 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-88864-notes"><p>Hi Karsten, this seems to be a general FLOW3 command argument handling error. If I switch back from trunk to FLOW3 beta2 everything works fine again.</p></div>
+  </div>
+  
+
+  <div id="change-88876" class="journal has-notes">
+    <h4><a href="30267.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-09-30" title="2011-09-30 21:56">almost 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-88876-notes"><p>Martin Brüggemann wrote:</p>
+
+
+<blockquote>
+
+	<p>Hi Karsten, this seems to be a general FLOW3 command argument handling error. If I switch back from trunk to FLOW3 beta2 everything works fine again.</p>
+
+
+</blockquote>
+
+	<p>Weird, I cannot reproduce this with current master, import worked fine for me.</p>
+
+
+	<p>Can you update the exception message above? The line numbers don't match the Property Mapper as of now ...</p></div>
+  </div>
+  
+
+  <div id="change-88885" class="journal has-notes">
+    <h4><a href="30267.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/9">Martin Brüggemann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-09-30" title="2011-09-30 22:37">almost 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-88885-notes"><p>Maybe I'm totally wrong. To avoid that, I restarted with fresh FLOW3 trunk again and again, but the error remains. I start a fresh FLOW3 project like this:</p>
+
+
+	<a name="1-Cloned-a-brand-new-flow3-project-with"></a>
+<h2 >1) Cloned a brand new flow3 project with:<a href="#1-Cloned-a-brand-new-flow3-project-with" class="wiki-anchor">&para;</a></h2>
+
+
+<pre>
+git clone --recursive git://git.typo3.org/FLOW3/Distributions/Base.git Base
+</pre> 
+
+	<a name="2-Tried-to-kickstart-a-package-with"></a>
+<h2 >2) Tried to kickstart a package with:<a href="#2-Tried-to-kickstart-a-package-with" class="wiki-anchor">&para;</a></h2>
+
+
+<pre>
+./flow3 kickstart:package --package-key=Katze.KatzenModule
+</pre>
+
+	<p>resolves in this error:<br /><pre>
+Uncaught exception #1297759968 in line 299 of /Volumes/Data/Users/herr/Sites/_ZFWSPACE/FLOW3Doku/Data/Temporary/Development/Cache/Code/FLOW3_Object_Classes/TYPO3_FLOW3_MVC_Controller_Argument_Original.php: Exception while property mapping at property path "":No converter found which can be used to convert from "boolean" to "string".
+
+22 TYPO3\FLOW3\Property\PropertyMapper_Original::convert(boolean, (string)string, TYPO3\FLOW3\MVC\Controller\MvcPropertyMappingConfiguration)
+21 TYPO3\FLOW3\MVC\Controller\Argument_Original::setValue(boolean)
+20 TYPO3\FLOW3\MVC\Controller\CommandController_Original::mapRequestArgumentsToControllerArguments()
+19 TYPO3\FLOW3\MVC\Controller\CommandController_Original::processRequest(TYPO3\FLOW3\MVC\CLI\Request, TYPO3\FLOW3\MVC\CLI\Response)
+18 TYPO3\FLOW3\MVC\Dispatcher_Original::dispatch(TYPO3\FLOW3\MVC\CLI\Request, TYPO3\FLOW3\MVC\CLI\Response)
+17 TYPO3\FLOW3\MVC\Dispatcher::dispatch(TYPO3\FLOW3\MVC\CLI\Request, TYPO3\FLOW3\MVC\CLI\Response)
+16 call_user_func_array(array, array)
+15 TYPO3\FLOW3\MVC\Dispatcher::FLOW3_AOP_Proxy_invokeJoinPoint(TYPO3\FLOW3\AOP\JoinPoint)
+14 TYPO3\FLOW3\AOP\Advice\AdviceChain_Original::proceed(TYPO3\FLOW3\AOP\JoinPoint)
+13 TYPO3\FLOW3\Security\Aspect\RequestDispatchingAspect_Original::setAccessDeniedResponseHeader(TYPO3\FLOW3\AOP\JoinPoint)
+12 TYPO3\FLOW3\AOP\Advice\AroundAdvice_Original::invoke(TYPO3\FLOW3\AOP\JoinPoint)
+11 TYPO3\FLOW3\AOP\Advice\AdviceChain_Original::proceed(TYPO3\FLOW3\AOP\JoinPoint)
+10 TYPO3\FLOW3\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\FLOW3\AOP\JoinPoint)
+9 TYPO3\FLOW3\AOP\Advice\AroundAdvice_Original::invoke(TYPO3\FLOW3\AOP\JoinPoint)
+8 TYPO3\FLOW3\AOP\Advice\AdviceChain_Original::proceed(TYPO3\FLOW3\AOP\JoinPoint)
+7 TYPO3\FLOW3\Security\Aspect\RequestDispatchingAspect_Original::initializeSecurity(TYPO3\FLOW3\AOP\JoinPoint)
+6 TYPO3\FLOW3\AOP\Advice\AroundAdvice_Original::invoke(TYPO3\FLOW3\AOP\JoinPoint)
+5 TYPO3\FLOW3\AOP\Advice\AdviceChain_Original::proceed(TYPO3\FLOW3\AOP\JoinPoint)
+4 TYPO3\FLOW3\MVC\Dispatcher::dispatch(TYPO3\FLOW3\MVC\CLI\Request, TYPO3\FLOW3\MVC\CLI\Response)
+3 TYPO3\FLOW3\Core\Bootstrap::handleCommandLineRequest()
+2 TYPO3\FLOW3\Core\Bootstrap::run()
+1 require((/Volumes/Data/Users/herr/Sites/_ZFWSPACE/FLOW3Doku/Packages/Framework/TYPO3.FLOW3/Scripts/flow3.php)/Volumes/Data/Users/herr/Sites/_ZFWSPACE/FLOW3Doku/Packages/Framework/TYPO3.FLOW3/Scripts/flow3.php)
+</pre></p>
+
+
+	<a name="3-If-I-start-the-help-command-for-the-packagekickstart-with"></a>
+<h2 >3) If I start the help command for the package:kickstart with:<a href="#3-If-I-start-the-help-command-for-the-packagekickstart-with" class="wiki-anchor">&para;</a></h2>
+
+
+<pre>
+./flow3 help kickstart:package
+</pre>
+
+	<p>it says:</p>
+
+
+<pre>
+ARGUMENTS:
+  --package-key        The package key, for example "MyCompany.MyPackageName" 
+</pre>
+
+	<a name="4-If-I-try-to-set-the-argument-without-the-explicit-notation-package-key-like-the-following-it-works"></a>
+<h2 >4) If I try to set the argument without the explicit notation (--package-key) like the following it works:<a href="#4-If-I-try-to-set-the-argument-without-the-explicit-notation-package-key-like-the-following-it-works" class="wiki-anchor">&para;</a></h2>
+
+
+<pre>
+./flow3 help kickstart:package Katze.KatzenModule
+</pre>
+
+	<p>So, is it just wrong to use the --packge-key notation? Maybe the help method just should be updated?</p></div>
+  </div>
+  
+
+  <div id="change-88886" class="journal has-notes">
+    <h4><a href="30267.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2208">Christian Müller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-09-30" title="2011-09-30 22:43">almost 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-88886-notes"><p>just leave the = out!</p>
+
+
+	<p>./flow3 kickstart:package --package-key Katze.KatzenModule</p>
+
+
+	<p>nice one btw :)</p></div>
+  </div>
+  
+
+  <div id="change-88888" class="journal has-notes">
+    <h4><a href="30267.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/9">Martin Brüggemann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-09-30" title="2011-09-30 22:48">almost 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-88888-notes"><p>YEEEEEEEEEEESSS!!! Thanks Christian! That's it! Don't know why I thought there has to bee a "=" divider between key and value.</p></div>
+  </div>
+  
+
+  <div id="change-88910" class="journal has-notes has-details">
+    <h4><a href="30267.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/10">Karsten Dambekalns</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-10-01" title="2011-10-01 00:00">almost 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-88910-notes"><p>Martin Brüggemann wrote:</p>
+
+
+<blockquote>
+
+	<p>Don't know why I thought there has to bee a "=" divider between key and value.</p>
+
+
+</blockquote>
+
+	<p>Well, on Unix-like systems both ways usually work. Either way, the use of = should not result in the exception it results in.</p>
+
+
+	<p>I'll close this one and open a new issue.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-30267-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/30267.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="30267.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/30267 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:59:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
