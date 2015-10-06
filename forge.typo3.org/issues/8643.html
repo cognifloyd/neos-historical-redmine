@@ -1,0 +1,590 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/8643 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:56:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Story #8643: As a Developer I want a Plugin API Concept - Base Distribution - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/8643.atom" rel="alternate" title="Base Distribution - Story #8643: As a Developer I want a Plugin API Concept" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 current sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Base Distribution</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/rb/master_backlog/typo3neos-distribution-base" class="rb-master-backlogs">Backlogs</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="level-1 current sorting-0">Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-form" class="level-2 sorting-0">TYPO3.Form</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-imagine" class="level-2 sorting-0">TYPO3.Imagine</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-media" class="level-2 sorting-0">TYPO3.Media</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="level-2 sorting-0">TYPO3.Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos-nodetypes" class="level-2 sorting-0">TYPO3.Neos.NodeTypes</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-party" class="level-2 sorting-0">TYPO3.Party</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-setup" class="level-2 sorting-0">TYPO3.Setup</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-sitekickstarter" class="level-2 sorting-0">TYPO3.SiteKickstarter</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-twitter-bootstrap" class="level-2 sorting-0">TYPO3.Twitter.Bootstrap</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr" class="level-2 sorting-0">TYPO3.TYPO3CR</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-typoscript" class="level-2 sorting-0">TYPO3.TypoScript</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-coordination" class="level-1 sorting-0">Coordination Group</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-website-communication" class="level-1 sorting-0">Website and Communication</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues/report">Summary</a><br />
+
+
+
+
+
+
+            <div id="backlogs_view_issues_sidebar"></div>
+            <script type="text/javascript">
+              jQuery(document).ready(function() {
+                jQuery('#backlogs_view_issues_sidebar').load('../../external.html?link=https://forge.typo3.org/rb/hooks/sidebar/project/typo3neos-distribution-base');
+              });
+            </script>
+          
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=434" class="query">! Stories This Sprint</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=435" class="query">! Work Packages</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-8643-watcher"></span>
+
+
+</div>
+
+
+<h2>Story #8643</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>As a Developer I want a Plugin API Concept</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/124">Daniel Poetzinger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2010-07-04" title="2010-07-04 00:34">about 5 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2011-05-05" title="2011-05-05 13:49">about 4 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2010-07-04</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+
+<tr><th>Story points</th><td>-</td></tr><tr><th>Velocity based estimate</th><td>-</td></tr>
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>- Documentation of API<br />- Dummy Controller Example</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-642">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="8773" /></td>
+<td class="subject">related to 
+    TYPO3.Fluid - 
+    <a href="8773.html" class="issue status-7 priority-2 closed">Major Feature #8773</a>: Implement support for Widgets
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2010-07-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/8643/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/8643/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=8643&amp;project_id=typo3neos-distribution-base')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-19848" class="journal has-details">
+    <h4><a href="8643.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2010-07-09" title="2010-07-09 13:50">about 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>1204</i> to <i>Core Team</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-19853" class="journal has-details">
+    <h4><a href="8643.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2010-07-09" title="2010-07-09 13:51">about 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>593</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-20828" class="journal has-notes">
+    <h4><a href="8643.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2010-07-28" title="2010-07-28 19:08">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-20828-notes"><p><a class="external" href="../../external.html?link=http://ietherpad.com/O1ilAI68qc">http://ietherpad.com/O1ilAI68qc</a><br /><pre>
+Widget / Plugin API Ideas
+
+http://forge.typo3.org/issues/8643 (main issue)
+http://forge.typo3.org/issues/8773 (widget API)
+http://forge.typo3.org/issues/8774 (query-&gt;execute Proxy)
+
+GLOSSARY
+PACKAGE
+... a FLOW3 Package
+
+Page
+... a collection of content
+
+Content Aggregate Root (short: CAR)  (name to be discussed)
+... a content object which has an externally visible identity (URI). Under this URI, a rendered representation of  this content object can be found.
+... somehow is the generalization of the "Page" concept in TYPO3 v4
+Examples: "Page" is instance of "Content  Aggregate Root", but also "News" could be instance of "Content Aggregate  Root" 
+
+PLUGIN
+... a selection of controllers &#38; actions which can be inserted to a PAGE like a normal content element, which is configured through TypoScript (or YAML?).
+... NEVER a Content Aggregate Root (as it lives INSIDE a page)
+... configurable (context specific)
+... needs Interaction (?)
+Examples: see below
+
+WIDGET
+... a specialized ViewHelper that calls one/a selection of controllers; can be inserted into a FLUID TEMPLATE ("Plugin inside a Template")
+
+The domain model of a package ...
+... should be usable as "Content" 
+... can be made translateable, or even attached to StructureNodes (and can have multiple versions ?!)
+
+EXAMPLES of TypoScript-Driven Model-Based output
+
+* Single news article which should be fully rendered on a page (v4: "Insert Records")
+-&gt; Domain Model from News-Package
+-&gt; "drag-drop" -- News-Article will be attached to a Structure Node
+-&gt; rendering will be determined via TypoScript / Fluid "News" TS Object
+-&gt; News Package provides "News TS Object" (which is empty and inherits from AbstractContentObject)
+// Default News TS Object Configuration (this is implicit)
+prototype&lt;News&gt; {
+    template.file = /the/default/template.html
+}
+
+* On the homepage a teaser for the above news article should be rendered
+-&gt; Same as above but the TS Object Fluid template has to be replaced
+// overridden News TS Object Configuration
+page.sections.teasers prototype&lt;News&gt; {
+    template.file = /my/teaser/template.html
+}
+
+* Now I want to display a list of News articles
+-&gt; Generic List object (e.g. List&lt;News&gt;)
+-&gt; Same as above, but this time the editor inserts a List&lt;News&gt;
+? what should happen internally here -- on the level of structure nodes
+-&gt; Then some kind of configuration interface appears (sort order, max items, constraints..)
+? How do you specify the default sort order -&gt; see above, creates a TS configuration (that might be attached to the current Structure node??)
+
+* Now I want to click on an item of the above list and see the detail view of the corresponding article
+-&gt; we mark the "News" DO as "Content Aggregate Root", which means it gets an externally visible identity (i.e. an URI), and can be rendered on a separate "Web-Page". This "web-page" does not exist in the TYPO3 page tree as "Page".
+-&gt; we render the StructureNode where the "News" DO is attached to.
+? how can we change content and layout of surrounding elements? Example: a static but editable text
+-&gt; use a (generic) "single view" plugin which can display (arbitary) "content aggregate roots". The "single view" plugin has no URI (i.e. it is NO "content aggregate root"), but belongs to the Page DO where it is attached to (and this in turn has a URI as it is a "Content Aggregate Root").
+? a plugin is never a CAR
+
+* VIRTUAL STRUCTURE NODES / List-Domain Object
+-&gt; like "Saved Search" or "Virtual Folder" in mail program
+
+EXAMPLES OF PLUGINS
+
+* Forms
+* User Registration
+* Lost Password
+* Multi-File uploader
+
+EXAMPLES OF WIDGETS
+
+* Every widget will get a UUID (at first call)
+* some data (like Widget arguments) can be registered as Widget Configuration
+--&gt; Widget Configuration is Persistent and will be serialized transparently and stored in user session (belonging to UUID of widget)
+--&gt; f.e. in AJAX requests, you only have access to Widget Configuration
+
+* Page browser of objects
+Example:
+&lt;f:paginate objects="{blogs}" as="paginatedBlogs"&gt;
+    ... do something with {paginatedBlogs} ...
+&lt;/f:paginate&gt;
+
+&lt;!-- START UNFINISHED --&gt;
+class \F3\Fluid\ViewHelpers\Widget\Paginate extends .....\AbstractWidget (extends AbstractViewHelper) {
+    $controllersAndActions = ...
+    public function render($objects, $as) {
+        $as = \SomeService::modifyQueryForObjects($objects);
+        $this-&gt;templateVariableContainer-&gt;add($as)..
+        $this-&gt;addWidgetVariable(
+        $content = $this-&gt;view-&gt;render(); // UGLY!!
+        $content .= $this-&gt;renderChildren();
+    }
+}
+
+Internally: call F3\Fluid\Widgets\Paginate\Controller\PaginateController extends ...AbstractWidgetController
+public function index($currentPage = 0) {
+    $objects = $this-&gt;settings['objects'];
+    $as = $this-&gt;settings['as'];
+
+    $query = $this-&gt;persistenceManager-&gt;getQueryForResultSet($objects);
+    // calculate how many pages are available
+    $numberOfPages = $query-&gt;count() / $objectsPerPage;
+
+    // modify query (merge existing start/limit)
+    $as = $query-&gt;execute(); // again returns a lazy proxy
+    $this-&gt;templateVariableContainer-&gt;add(...); // UGLY!!!!
+    $output = ... build HTML for pagination selector ...
+    $output = $this-&gt;renderChildren();
+    return $output;
+}
+
+&lt;!-- STOP UNFINISHED --&gt;
+
+* Filter of objects
+
+* Sorter
+* Google Maps
+
+* Ajax search / autocompletion
+Example: 
+&lt;f:form.textfield.autocomplete property="title" objectsToSearch="{blogs}" /&gt;
+
+-&gt; render(): called from widget (by default)
+F3\Fluid\....\AutocompletionWidget extends ...AbstractWidget {
+    public function render($property, $objectsToSearch) {
+        $this-&gt;tag-&gt;.....
+        return $this-&gt;tag-&gt;render();
+    }
+     public function persistArguments() {
+        $this-&gt;persistArgument('query', $this-&gt;persistenceManager-&gt;getQueryForResultSet($this-&gt;arguments['objectsToSearch'])); // will be saved in session scope
+        // TODO: discuss names!
+    }
+}
+
+class \...\SomeController extends ...ActionController {
+    $supportedRequestTypes = array('...\AjaxWidgetRequest');
+    public function searchAction($searchWord) {
+        $query = $this-&gt;modifyQuery($this-&gt;settings['query'], $searchWord);
+        $query-&gt;execute();
+        // format as JSON and return
+    }
+}
+    -&gt; we need a new RequestHandler that restores widget configuration from session (which is stored under the unique ID of the widget)
+
+TODOs
+
+TODO: we need a constraint system ("News is only allowed inside a Page DO")
+
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-21774" class="journal has-notes has-details">
+    <h4><a href="8643.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2010-08-20" title="2010-08-20 12:19">almost 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-21774-notes"><p>The rough concept is done - enough for this sprint.<br />Next step is to refine it and create a prototype.</p></div>
+  </div>
+  
+
+  <div id="change-73368" class="journal has-details">
+    <h4><a href="8643.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base/activity?from=2011-05-05" title="2011-05-05 13:49">about 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>Core Team</i> to <i>Base Distribution</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>593</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-8643-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/8643.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="8643.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/8643 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:56:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

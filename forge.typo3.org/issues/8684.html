@@ -1,0 +1,961 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/8684 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:56:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Task #8684: Refactor PropertyMenu so that Opening and Closing is handled with an animation. - TYPO3.Neos - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/8684.atom" rel="alternate" title="TYPO3.Neos - Task #8684: Refactor PropertyMenu so that Opening and Closing is handled with an animation." type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 current sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Neos</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="level-1 current sorting-0">Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-form" class="level-2 sorting-0">TYPO3.Form</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-imagine" class="level-2 sorting-0">TYPO3.Imagine</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-media" class="level-2 sorting-0">TYPO3.Media</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="level-2 current sorting-0">TYPO3.Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos-nodetypes" class="level-2 sorting-0">TYPO3.Neos.NodeTypes</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-party" class="level-2 sorting-0">TYPO3.Party</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-setup" class="level-2 sorting-0">TYPO3.Setup</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-sitekickstarter" class="level-2 sorting-0">TYPO3.SiteKickstarter</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-twitter-bootstrap" class="level-2 sorting-0">TYPO3.Twitter.Bootstrap</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr" class="level-2 sorting-0">TYPO3.TYPO3CR</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-typoscript" class="level-2 sorting-0">TYPO3.TypoScript</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-coordination" class="level-1 sorting-0">Coordination Group</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-website-communication" class="level-1 sorting-0">Website and Communication</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/185">Michael Feinbier</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2276">Nils Dehl</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-8684-watcher"></span>
+
+
+</div>
+
+
+<h2>Task #8684</h2>
+
+<div class="issue status-10 priority-2 closed child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="10733.html" class="issue status-9 priority-3 closed parent">Bug #10733</a>: As a backend user, I want a clean visual design for the whole UI</p><div><h3>Refactor PropertyMenu so that Opening and Closing is handled with an animation.</h3></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-06" title="2010-07-06 13:16">about 5 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-07-27" title="2011-07-27 16:01">about 4 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Rejected</td>
+    <th class="start-date">Start date:</th><td class="start-date">2010-07-06</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/2208">Christian Müller</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 80%;"></td><td class="todo" style="width: 20%;"></td></tr></table><p class="pourcent">80%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">UI</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/1223">Base Distribution - Sprint 7</a></td>
+    
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>The property menu opens up when the user f.e. edits the page properties or creates a new page (see screenshot attached to story).</p>
+
+
+	<p>Right now, this is directly implemented inside F3.TYPO3.Content.Edit.PagePropertiesDialog, and not inside the abstract class. Additionally, the module is shown directly, not via an animated slide down.</p>
+
+
+	<p>This should be changed.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/3467/forge_8684.patch" class="icon icon-attachment">forge_8684.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/3467/forge_8684.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(7.5 kB)</span>
+  
+  
+    <span class="author">Michael Feinbier, 2010-07-18 17:29</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/3631/forge_8684-v2.patch" class="icon icon-attachment">forge_8684-v2.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/3631/forge_8684-v2.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(9.6 kB)</span>
+  
+  
+    <span class="author">Michael Feinbier, 2010-08-12 22:53</span>
+  
+  </p>
+
+<p><a href="../attachments/download/3984/accordion-menu.asx" class="icon icon-attachment">accordion-menu.mov</a>  
+  
+  <span class="size">(138.3 kB)</span>
+  
+  
+    <span class="author">Bastian Waidelich, 2010-10-15 11:30</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-19648" class="journal has-details">
+    <h4><a href="8684.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-06" title="2010-07-06 13:20">about 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>593</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-19656" class="journal has-details">
+    <h4><a href="8684.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-06" title="2010-07-06 14:11">about 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>JavaScript</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-19699" class="journal has-details">
+    <h4><a href="8684.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-06" title="2010-07-06 18:35">about 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Tags</strong> set to <i>#easy</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-19743" class="journal has-notes">
+    <h4><a href="8684.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/185">Michael Feinbier</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-07" title="2010-07-07 10:13">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-19743-notes"><p>I'd like to have a look at this task and work on it.</p></div>
+  </div>
+  
+
+  <div id="change-19804" class="journal has-details">
+    <h4><a href="8684.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-08" title="2010-07-08 16:59">about 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-20148" class="journal has-notes">
+    <h4><a href="8684.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-14" title="2010-07-14 09:58">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-20148-notes"><p>Hey Michael,</p>
+
+
+	<p>I just wanted to ask what the current status on this issue is. Do you have any open questions, or is there anything we can do to support you solving this issue? You'll find us in the usual Jabber chatroom.</p>
+
+
+	<p>Thanks in advance for a short status!</p>
+
+
+	<p>Greets,<br />Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-20156" class="journal has-notes">
+    <h4><a href="8684.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/185">Michael Feinbier</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-14" title="2010-07-14 12:03">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-20156-notes"><p>Hi Sebastian,</p>
+
+
+	<p>I am working on that actually! But it is not as that easy as it sounds. The main Task is a refactoring of the UI.ModuleMenu which holds for example the PageProperties Dialog. The ModuleMenu needs a better layout so that the ModuleDialog can be added as collapsible Panel to animate it. Furthermore the ContentDialog needs to be somehow better connected in the ModuleMenu so that it's height (and padding from the rootline) is automatically determined by the layout. This does not work yet.</p>
+
+
+	<p>But I'm on it :)</p>
+
+
+	<p>cheers</p></div>
+  </div>
+  
+
+  <div id="change-20368" class="journal has-notes has-details">
+    <h4><a href="8684.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/185">Michael Feinbier</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-18" title="2010-07-18 17:29">about 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/3467/forge_8684.patch">forge_8684.patch</a><a href="../../external.html?link=https://forge.typo3.org/attachments/3467/forge_8684.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-20368-notes"><p>so finally I can provide a little patch of some changes :)</p>
+
+
+	<p>The bad thing first. I think it is not possible to animate the <code>ModuleDialogContainer</code> when it get's shown for example as a collapsible panel. This is because the <code>ModuleDialog</code> wraps around it so that it is not connected to the ContentArea which needs to be animated. To make the animation work the <code>ModuleDialogContainer</code> and the <code>ContentArea</code> have to be part of the same border layout (mdc as north panel, content area as center panel). But this would mean some basic restructuring of the whole container concept. Let's talk about that later.</p>
+
+
+What is done?
+	<ul>
+	<li>refactoring of the whole <code>showModuleDialog</code> of the ModuleMenu: the DOM coupling of the contentDialog was removed and replaced by the add-method of the parent layout container.</li>
+		<li>changing the layouts in <code>SectionMenu, ModuleMenu and ModuleDialog</code> from vbox to better layout managers</li>
+		<li>loading of the form in PagePropertiesDialog is moved to an own method of the dialog. It is called once <code>afterRender</code> instead of <code>onRender</code></li>
+	</ul>
+
+
+This leads to the following improvements:
+	<ul>
+	<li>The whole ModuleMenu and -Dialog is able to determine it's dimensions automatically. The ModuleMenu changes its height dynamically. Neither in the <code>ModuleMenu</code> nor in the <code>PagePropertiesDialog</code> (and in all ModuleDialogs) you need to set a height. Everything is done by the LayoutManager. Only the initial ModuleMenu needs a start height (50px - this can be improved, too)</li>
+		<li>The contentDialog is now known by the parent layoutManager thus it is not added to the DOM directly but added as a 'true' child of the <code>moduleMenu</code></li>
+		<li>The loading-mask of the <code>PagePropertiesDialog</code> is now positioned correctly.</li>
+	</ul>
+
+
+Known Problems:
+	<ul>
+	<li>I did not make it work to lay the content dialog buttons over the content-area via CSS. I think it can be done by CSS - the content dialog container is added to the parent in the same way as before (but via .add()). I think/hope that this is a small thing for a CSS-Guru.</li>
+		<li>When the <code>ModuleMenuContainer</code> expands, the content area get's an additional vertical scrollbar which isn't needed. I am working on that.</li>
+	</ul>
+
+
+	<p>Happy to hear your feedback!</p>
+
+
+	<p>Micha</p></div>
+  </div>
+  
+
+  <div id="change-20404" class="journal has-notes">
+    <h4><a href="8684.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-19" title="2010-07-19 19:55">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-20404-notes"><p>Hey,</p>
+
+
+	<p>I finally had some time to look at your patch. First of all, I think it really improves things quite a bit :-)</p>
+
+
+	<p>Michael Feinbier wrote:</p>
+
+
+<blockquote>
+
+	<p>so finally I can provide a little patch of some changes :)</p>
+
+
+	<p>The bad thing first. I think it is not possible to animate the <code>ModuleDialogContainer</code> when it get's shown for example as a collapsible panel. This is because the <code>ModuleDialog</code> wraps around it so that it is not connected to the ContentArea which needs to be animated. To make the animation work the <code>ModuleDialogContainer</code> and the <code>ContentArea</code> have to be part of the same border layout (mdc as north panel, content area as center panel). But this would mean some basic restructuring of the whole container concept. Let's talk about that later.</p>
+
+
+</blockquote>
+
+	<p>OK; we need to discuss how we can make this animation work nevertheless ;-) Triggering "doLayout" everytime should work, but I guess that's too expensive. What do you think about the following:</p>
+
+
+	<ol>
+	<li>calculate the height of the form</li>
+		<li>animate the height of F3.TYPO3.UserInterface.ModuleMenu to the correct height</li>
+	</ol>
+
+
+	<p>The ModuleMenu is on the same level as the ContentArea, so then animation should work, right?</p>
+
+
+<blockquote>
+
+What is done?
+	<ul>
+	<li>refactoring of the whole <code>showModuleDialog</code> of the ModuleMenu: the DOM coupling of the contentDialog was removed and replaced by the add-method of the parent layout container.</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>nice!</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>changing the layouts in <code>SectionMenu, ModuleMenu and ModuleDialog</code> from vbox to better layout managers</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>Great! From your patch it seems that you also changed "ModuleDialogContainer" to "form" layout; Does this have any special reason, or is it just a left-over? :-)</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>loading of the form in PagePropertiesDialog is moved to an own method of the dialog. It is called once <code>afterRender</code> instead of <code>onRender</code></li>
+	</ul>
+
+
+</blockquote>
+
+<blockquote>
+
+This leads to the following improvements:
+	<ul>
+	<li>The whole ModuleMenu and -Dialog is able to determine it's dimensions automatically. The ModuleMenu changes its height dynamically. Neither in the <code>ModuleMenu</code> nor in the <code>PagePropertiesDialog</code> (and in all ModuleDialogs) you need to set a height. Everything is done by the LayoutManager. Only the initial ModuleMenu needs a start height (50px - this can be improved, too)</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>Nice, this is already quite some improvement.</p>
+
+
+<blockquote>
+
+	<p>...</p>
+
+
+</blockquote>
+
+<blockquote>
+
+Known Problems:
+	<ul>
+	<li>I did not make it work to lay the content dialog buttons over the content-area via CSS. I think it can be done by CSS - the content dialog container is added to the parent in the same way as before (but via .add()). I think/hope that this is a small thing for a CSS-Guru.</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>In fact it's not that easy. As the content dialog buttons are added to the ContentDialog now, it will not display these buttons anymore because ExtJS uses "overflow:hidden" for the parent containers. That's why I'd suggest to add the buttons to the F3.TYPO3.UserInterface.ContentArea, as it was before.</p>
+
+
+<blockquote>
+
+	<ul>
+	<li>When the <code>ModuleMenuContainer</code> expands, the content area get's an additional vertical scrollbar which isn't needed. I am working on that.</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>Interesting, which browser are you using? Here, this works without another scrollbar.</p>
+
+
+	<p>Thanks for the time you are devoting to v5, it's really encouraging to see your work!</p>
+
+
+	<p>Greets,<br />Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-20409" class="journal has-details">
+    <h4><a href="8684.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-19" title="2010-07-19 21:31">about 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Assigned To</strong> set to <i>Michael Feinbier</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-20615" class="journal has-notes has-details">
+    <h4><a href="8684.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/185">Michael Feinbier</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-25" title="2010-07-25 14:49">about 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>80</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-20615-notes"><p>just a short update. I made the  animations work :) But there a 2 or 3 little things to do make it work completely. I think it will work on monday or tuesday evening.</p></div>
+  </div>
+  
+
+  <div id="change-20619" class="journal has-notes">
+    <h4><a href="8684.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-07-25" title="2010-07-25 18:47">about 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-20619-notes"><p>Hey,</p>
+
+
+	<p>great news :-) I'm really looking forward to it!</p>
+
+
+	<p>Greets,<br />Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-21381" class="journal has-notes has-details">
+    <h4><a href="8684.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/185">Michael Feinbier</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-08-12" title="2010-08-12 22:53">almost 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/3631/forge_8684-v2.patch">forge_8684-v2.patch</a><a href="../../external.html?link=https://forge.typo3.org/attachments/3631/forge_8684-v2.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-21381-notes"><p>Finally I can provide a patch with working animations :)<br />They are not perfect yet, but I think it will do a while.</p>
+
+
+	<p>There are 2 little things which I cannot solve myself:<br />- The ContentDialog styling broke a little bit. My CSS skills are not good enough to fix it. Maybe some CSS guru can have a look<br />- The removing of the Panel (closing) throws a JS error message. I don't know why at the moment but it is no 'real' problem. Everything works fine.</p>
+
+
+	<p>Happy to hear your feedback!</p></div>
+  </div>
+  
+
+  <div id="change-21477" class="journal has-details">
+    <h4><a href="8684.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-08-16" title="2010-08-16 11:18">almost 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-21778" class="journal has-details">
+    <h4><a href="8684.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-08-20" title="2010-08-20 12:35">almost 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>593</i> to <i>628</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-22629" class="journal has-notes">
+    <h4><a href="8684.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/185">Michael Feinbier</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-09-14" title="2010-09-14 17:23">almost 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-22629-notes"><p>Hi,</p>
+
+
+	<p>is there anything I can do for this issiue?<br />I am waiting for any response :)</p></div>
+  </div>
+  
+
+  <div id="change-23771" class="journal has-notes has-details">
+    <h4><a href="8684.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-10-15" title="2010-10-15 11:30">almost 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/3984/accordion-menu.asx">accordion-menu.mov</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-23771-notes"><p>Attached video shows how accordion menus are expected to work (just like the "finder" navigation on Mac OS)</p></div>
+  </div>
+  
+
+  <div id="change-23811" class="journal has-notes">
+    <h4><a href="8684.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-10-16" title="2010-10-16 10:45">almost 5 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-23811-notes"><p>Hey,<br />I think that this is not relevant for this task ;-) As it is not about the Accordion Menu ;)</p></div>
+  </div>
+  
+
+  <div id="change-24143" class="journal has-details">
+    <h4><a href="8684.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-10-21" title="2010-10-21 10:55">almost 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#7921</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-24146" class="journal has-details">
+    <h4><a href="8684.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-10-21" title="2010-10-21 10:56">almost 5 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> changed from <i>#7921</i> to <i>#8797</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-26335" class="journal has-details">
+    <h4><a href="8684.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-11-24" title="2010-11-24 12:40">over 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> changed from <i>#8797</i> to <i>#11041</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-26374" class="journal has-details">
+    <h4><a href="8684.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/8">Robert Lemke</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-11-24" title="2010-11-24 13:06">over 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> changed from <i>#11041</i> to <i>#10733</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-27279" class="journal has-notes has-details">
+    <h4><a href="8684.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2208">Christian Müller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-12-13" title="2010-12-13 14:25">over 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> changed from <i>Michael Feinbier</i> to <i>Christian Müller</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-27279-notes"><p>Hi Michael,</p>
+
+
+	<p>thank you for your wor. I will check what we finally will use as the layouts and PopertyMenu itself was refactored lately. We plan to bring the next sprint out with this animation included so I took over the task to possibly refactor your code to the new PropertyMenu or if impossible do it differently.</p>
+
+
+	<p>Feel free to come by in our IRC channel or just assign yourself tasks if you are interested.</p></div>
+  </div>
+  
+
+  <div id="change-27282" class="journal has-notes">
+    <h4><a href="8684.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2010-12-13" title="2010-12-13 14:47">over 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-27282-notes"><p>Ah, one more note: We're using the IRC channel "t3px" at irc.freenode.net<br />Greets,<br />Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-30590" class="journal has-notes">
+    <h4><a href="8684.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-01-19" title="2011-01-19 18:17">over 4 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-30590-notes"><p>I just tried it out, and it seems quite hard; that's why I suggest to wait for ExtJS 4 and see if this helps for us :-)</p>
+
+
+	<p>Greets,<br />Sebastian</p></div>
+  </div>
+  
+
+  <div id="change-30672" class="journal has-details">
+    <h4><a href="8684.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-01-20" title="2011-01-20 06:31">over 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>On Hold</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-74013" class="journal has-details">
+    <h4><a href="8684.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-05-10" title="2011-05-10 08:44">about 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>Base Distribution</i> to <i>TYPO3.Neos</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-74035" class="journal has-details">
+    <h4><a href="8684.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/11">Sebastian Kurfuerst</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-05-10" title="2011-05-10 08:50">about 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>UI</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-81049" class="journal has-details">
+    <h4><a href="8684.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2208">Christian Müller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2011-07-27" title="2011-07-27 16:01">about 4 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>On Hold</i> to <i>Rejected</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>Sprint 7</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-8684-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/8684.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="8684.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/8684 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 21:56:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
