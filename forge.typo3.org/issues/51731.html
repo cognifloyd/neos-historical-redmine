@@ -1,0 +1,800 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/51731 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:35:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #51731: Store sessions outside DB - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/51731.atom" rel="alternate" title="Core - Feature #51731: Store sessions outside DB" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (5)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2192">Timo Webler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/348">Steffen Müller</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-51731-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #51731</h2>
+
+<div class="issue status-5 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Store sessions outside DB</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 16:46">almost 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-18" title="2015-01-18 23:05">7 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">On Hold</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-09-04</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 10%;"></td><td class="todo" style="width: 90%;"></td></tr></table><p class="pourcent">10%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Performance</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2976">8</a></td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>nightmare</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>On high traffic sites it's sometimes necessary to store session records outside the main database because of a high rate of <code>update</code> queries on the FE session tables. This issue becomes even more pressing when using DB replication or remote database servers.</p>
+
+
+	<p>I suggest to add a session storage service so it can be implemented to use different storage backends. These storage backend implementations can be based on caching backends or totally unrelated to the core.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/24881/dkd_redis_sessions.zip" class="icon icon-attachment">dkd_redis_sessions.zip</a>  
+   - Redis session storage service
+  <span class="size">(3.4 kB)</span>
+  
+  
+    <span class="author">Thorsten Kahler, 2013-09-04 23:14</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-9662">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="16302" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="16302.html" class="issue status-9 priority-2 closed">Bug #16302</a>: alt_doc.php does BE session verification twice
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2006-06-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9852">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="53598" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="53598.html" class="issue status-7 priority-2 closed child">Bug #53598</a>: Select/Delete fe_sessions twice per request
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-11-13</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/51731/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/51731/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=51731&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/c50ee9f32186eb71439cad2e80b6198b03d9a461" title="Revision c50ee9f3">Revision c50ee9f3</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 20:24">almost 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[WIP][FEATURE] Classic session storage service</p>
+
+
+	<ul>
+	<li>!!! known bug: T3_SERVICES prohibits multiple instances of services so sessions in frontend are broken because FE and BE sessions are used in same request</li>
+		<li>implementation of SessionStorageInterface based on traditional code from class AbstractUserAuthentication</li>
+		<li>duplicated code could be removed from AbstractUserAuthentication later</li>
+	</ul>
+
+
+	<p>Change-Id: Idad0fd2b3368a4c7ef5f163264becb1c9783c2b6<br />Resolves: <a href="51731.html" class="issue status-5 priority-2" title="Store sessions outside DB (On Hold)">#51731</a><br />Releases: 6.2</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/97d077daafaa83d38d01eb1b263bb6e3f3661d82" title="Revision 97d077da">Revision 97d077da</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-24" title="2013-09-24 12:38">almost 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[WIP][FEATURE] Classic session storage service</p>
+
+
+	<ul>
+	<li>!!! known bug: T3_SERVICES prohibits multiple instances of services so sessions in frontend are broken because FE and BE sessions are used in same request</li>
+		<li>implementation of SessionStorageInterface based on traditional code from class AbstractUserAuthentication</li>
+		<li>duplicated code could be removed from AbstractUserAuthentication later</li>
+	</ul>
+
+
+	<p>Change-Id: Idad0fd2b3368a4c7ef5f163264becb1c9783c2b6<br />Resolves: <a href="51731.html" class="issue status-5 priority-2" title="Store sessions outside DB (On Hold)">#51731</a><br />Releases: 6.2</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-180762" class="journal has-notes has-details">
+    <h4><a href="51731.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 17:44">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>10</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-180762-notes"><p>Suggested implementation in sandbox <a href="../../external.html?link=https://git.typo3.org/Packages/TYPO3.CMS.git/shortlog/refs/heads/sandbox/thorsten/session-api" class="external">sandbox/thorsten/session-api</a></p></div>
+  </div>
+  
+
+  <div id="change-180810" class="journal has-notes has-details">
+    <h4><a href="51731.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 20:37">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-180810-notes"><p>Cool stuff, Thorsten, you already seem to have made some nice progress!</p>
+
+
+	<p>Are you planning to move the whole database storage as it is now into a service also? That would enable you to get rid of all those "if (sessionStorage)" you have currently in the code.</p>
+
+
+	<p>Looking at how Flow Session handling currently is implemented, it's a mix of session storage and session keeping (resume, handle the ID, the cookie etc). Separating the "Storage" in it's own concearn sounds like a good plan.</p>
+
+
+	<p>Maybe you could also take a look at Symfony for some inspiration on the interface, as they provide some neat additions like Bags and some other helper-methods.</p>
+
+
+	<p>At the end, to be able to test this for review it would be great if you could provide some implementation example as an extension.</p></div>
+  </div>
+  
+
+  <div id="change-180811" class="journal has-notes">
+    <h4><a href="51731.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 20:38">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180811-notes"><p>And the last question: Will you be able to tackle the first implementation before feature freeze (15th of October)? It would be helpful if you are able to join our Code Sprint in October so you can also discuss the API with the guys (and get some "live-reviews"): Enhances the chance of it being included in the release. ;)</p></div>
+  </div>
+  
+
+  <div id="change-180840" class="journal has-notes">
+    <h4><a href="51731.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 23:08">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180840-notes"><p>Ernesto Baschny wrote:</p>
+
+
+<blockquote>
+
+	<p>Are you planning to move the whole database storage as it is now into a service also? That would enable you to get rid of all those "if (sessionStorage)" you have currently in the code.</p>
+
+
+</blockquote>
+
+	<p>I was thinking about using the current implementation as a DB session storage service. Didn't know if it's clever to remove the existing  and working code in 6.2 LTS. But if there's an agreement to declare the API stable moving the whole implementation to a storage service would be the next logical step.</p>
+
+
+<blockquote>
+
+	<p>Looking at how Flow Session handling currently is implemented, it's a mix of session storage and session keeping (resume, handle the ID, the cookie etc). Separating the "Storage" in it's own concearn sounds like a good plan.</p>
+
+
+</blockquote>
+
+	<p>There's room for improvement of the whole session handling but IMO not before release of the LTS version. But the storage part should be stable enough to be used later on.</p></div>
+  </div>
+  
+
+  <div id="change-180843" class="journal has-notes has-details">
+    <h4><a href="51731.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 23:14">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/24881/dkd_redis_sessions.zip">dkd_redis_sessions.zip</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-180843-notes"><p>Ernesto Baschny wrote:</p>
+
+
+<blockquote>
+
+	<p>At the end, to be able to test this for review it would be great if you could provide some implementation example as an extension.</p>
+
+
+</blockquote>
+
+	<p>I've developed a proof of concept implementation in parallel to the API, of course. It uses Redis via TYPO3s Redis caching backend as a session storage backend. The extension isn't finished yet but already works (see <a href="../../external.html?link=https://forge.typo3.org/attachments/download/24881" class="attachment">dkd_redis_sessions.zip</a>)</p></div>
+  </div>
+  
+
+  <div id="change-180844" class="journal has-notes">
+    <h4><a href="51731.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 23:22">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180844-notes"><p>Ernesto Baschny wrote:</p>
+
+
+<blockquote>
+
+	<p>And the last question: Will you be able to tackle the first implementation before feature freeze (15th of October)? It would be helpful if you are able to join our Code Sprint in October so you can also discuss the API with the guys (and get some "live-reviews"): Enhances the chance of it being included in the release. ;)</p>
+
+
+</blockquote>
+
+	<p>To facilitate reviews it's probably useful to have "classic" implementation (using the current code) and maybe an implementation using the DB caching backend. Let's see how far I can get with that.</p></div>
+  </div>
+  
+
+  <div id="change-181378" class="journal has-notes has-details">
+    <h4><a href="51731.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 20:30">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>10</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-181378-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/c50ee9f32186eb71439cad2e80b6198b03d9a461" class="changeset" title="[WIP][FEATURE] Classic session storage service * !!! known bug: T3_SERVICES prohibits multiple i...">c50ee9f32186eb71439cad2e80b6198b03d9a461</a>.</p>
+
+
+	<p>[Edit: It seems Gerrit is a bit too avid ;-)]</p></div>
+  </div>
+  
+
+  <div id="change-181386" class="journal has-notes has-details">
+    <h4><a href="51731.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 20:50">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>Accepted</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>100</i> to <i>10</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-181386-notes"><p>TYPO3s services don't work too well as a way to select and instantiate a storage backend because <code><a href="../../external.html?link=http://forge.typo3.org/projects/typo3v4-core/repository/revisions/master/entry/typo3/sysext/core/Classes/Utility/GeneralUtility.php#L4343" class="external">GeneralUtitility::makeInstanceService()</a></code> implements a pseudo-singleton. That's not a problem in the backend, but in the frontend BE user sessions are checked besides the FE user sessions. But due to the singleton characteristic of the session storage service <code>init()</code> is only called once and you can't switch between FE and BE session storages without an enormous effort.</p>
+
+
+	<p>In short: it's possible to instantiate <em>different</em> instances of the storage service for FE and BE, but not <em>multiple</em> which is required in FE.</p>
+
+
+If we want to stick with the services approach I could imagine different ways:
+	<ol>
+	<li>Implement different classes for BE and FE session storage; these can be stubs which inherit all functionality from a common parent class and only serve to satisfy the pseudo-singleton behaviour<br />This seems to be the leanest approach, yet it still means some overhead in terms of empty classes:<br /><pre><code class="PHP syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="class">ClassicStorage</span> <span class="keyword">extends</span> \<span class="constant">TYPO3</span>\<span class="constant">CMS</span>\<span class="constant">Core</span>\<span class="constant">Service</span>\<span class="constant">AbstractService</span> <span class="keyword">implements</span> <span class="constant">StorageInterface</span> {
+<span class="line-numbers"> 2</span><span class="comment">// implementation here</span>
+<span class="line-numbers"> 3</span>}
+<span class="line-numbers"> 4</span><span class="keyword">class</span> <span class="class">ClassicStorageFrontend</span> <span class="keyword">extends</span> <span class="constant">ClassicStorage</span> {
+<span class="line-numbers"> 5</span><span class="comment">// no code here or method init() at most</span>
+<span class="line-numbers"> 6</span>}
+<span class="line-numbers"> 7</span><span class="keyword">class</span> <span class="class">ClassicStorageBackend</span> <span class="keyword">extends</span> <span class="constant">ClassicStorage</span> {
+<span class="line-numbers"> 8</span><span class="comment">// no code here or method init() at most</span>
+<span class="line-numbers"> 9</span>}</span></code></pre></li>
+		<li>Make the service a factory that only creates a storage object of the requested type (FE, BE)<br />Maybe the factory class could be generic and such part of the core. Then this wouldn't mean much of a change to the current design of the <em>implementations</em>. Concerning the architecture this is just one pattern too much to solve the underlying issue properly.<br /><pre><code class="PHP syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="keyword">class</span> <span class="class">AbstractUserAuthentication</span> {
+<span class="line-numbers">2</span><span class="keyword">public</span> <span class="keyword">function</span> <span class="function">start</span>() {
+<span class="line-numbers">3</span>  <span class="local-variable">$storageFactory</span> = <span class="constant">GeneralUtility</span>::makeInstanceService(<span class="string"><span class="delimiter">'</span><span class="content">sessionStorage</span><span class="delimiter">'</span></span>);
+<span class="line-numbers">4</span>  <span class="local-variable">$this</span>-&gt;sessionStorage = <span class="local-variable">$storageFactory</span>-&gt;getInstance(<span class="local-variable">$this</span>-&gt;session_table == <span class="string"><span class="delimiter">'</span><span class="content">fe_sessions</span><span class="delimiter">'</span></span> ? <span class="string"><span class="delimiter">'</span><span class="content">frontend</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">backend</span><span class="delimiter">'</span></span>);
+<span class="line-numbers">5</span>  <span class="comment">// ...</span>
+<span class="line-numbers">6</span>}
+</span></code></pre></li>
+		<li>Change <code>GeneralUtitility::makeInstanceService()</code> to use <code>$serviceType</code> and <code>serviceSubtype</code> besides <code>className</code> to identify service instances<br />This will break some service implementations for sure so IMHO it's not an option. Nevertheless the current behaviour could be achieved by marking the service class as singleton.<br /><pre><code class="PHP syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="keyword">class</span> <span class="class">AuthenticationService</span> <span class="keyword">extends</span> \<span class="constant">TYPO3</span>\<span class="constant">CMS</span>\<span class="constant">Sv</span>\<span class="constant">AbstractAuthenticationService</span> <span class="keyword">implements</span> \<span class="constant">TYPO3</span>\<span class="constant">CMS</span>\<span class="constant">Core</span>\<span class="constant">SingletonInterface</span> {
+<span class="line-numbers">2</span><span class="comment">// ...</span>
+<span class="line-numbers">3</span>}</span></code></pre></li>
+		<li>Tell the storage which kind of session is meant<br />This is as ugly as it gets, regardless of the implementation:<br /><pre><code class="PHP syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="keyword">class</span> <span class="class">AbstractUserAuthentication</span> {
+<span class="line-numbers"> 2</span><span class="comment">// ...</span>
+<span class="line-numbers"> 3</span><span class="keyword">public</span> <span class="keyword">function</span> <span class="function">fetchUserSession</span>() {
+<span class="line-numbers"> 4</span>  <span class="local-variable">$session</span> = <span class="local-variable">$this</span>-&gt;sessionStorage-&gt;get(<span class="local-variable">$this</span>-&gt;id, <span class="local-variable">$this</span>-&gt;session_table);
+<span class="line-numbers"> 5</span>  <span class="comment">// ...</span>
+<span class="line-numbers"> 6</span>}
+<span class="line-numbers"> 7</span><span class="comment">// ...</span>
+<span class="line-numbers"> 8</span>}
+<span class="line-numbers"> 9</span><span class="keyword">class</span> <span class="class">SessionStorage</span> {
+<span class="line-numbers"><strong>10</strong></span>  <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">get</span>(<span class="local-variable">$identifier</span>, <span class="local-variable">$type</span>) {
+<span class="line-numbers">11</span>    <span class="keyword">if</span> (<span class="local-variable">$type</span> === <span class="string"><span class="delimiter">'</span><span class="content">fe_sessions</span><span class="delimiter">'</span></span>} {
+<span class="line-numbers">12</span>      <span class="comment">// ...</span>
+<span class="line-numbers">13</span>    } <span class="keyword">else</span> {
+<span class="line-numbers">14</span>      <span class="comment">// ...</span>
+<span class="line-numbers">15</span>    }
+<span class="line-numbers">16</span>  }
+<span class="line-numbers">17</span><span class="comment">// ...</span>
+<span class="line-numbers">18</span>}
+</span></code></pre><pre><code class="PHP syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="keyword">class</span> <span class="class">AbstractUserAuthentication</span> {
+<span class="line-numbers"> 2</span><span class="comment">// ...</span>
+<span class="line-numbers"> 3</span><span class="keyword">public</span> <span class="keyword">function</span> <span class="function">fetchUserSession</span>() {
+<span class="line-numbers"> 4</span>  <span class="local-variable">$this</span>-&gt;sessionStorage-&gt;injectAuthentication(<span class="local-variable">$this</span>);
+<span class="line-numbers"> 5</span>  <span class="local-variable">$session</span> = <span class="local-variable">$this</span>-&gt;sessionStorage-&gt;get(<span class="local-variable">$this</span>-&gt;id);
+<span class="line-numbers"> 6</span>  <span class="comment">// ...</span>
+<span class="line-numbers"> 7</span>}
+<span class="line-numbers"> 8</span><span class="comment">// ...</span>
+<span class="line-numbers"> 9</span>}
+<span class="line-numbers"><strong>10</strong></span><span class="keyword">class</span> <span class="class">SessionStorage</span> {
+<span class="line-numbers">11</span>  <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">injectAuthentication</span>(<span class="constant">AbstractUserAuthentication</span> <span class="local-variable">$auth</span>) {
+<span class="line-numbers">12</span>    <span class="local-variable">$this</span>-&gt;authentication = <span class="local-variable">$authentication</span>;
+<span class="line-numbers">13</span>  }
+<span class="line-numbers">14</span>  <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">get</span>(<span class="local-variable">$identifier</span>) {
+<span class="line-numbers">15</span>    <span class="keyword">if</span> (<span class="local-variable">$this</span>-&gt;authentication-&gt;session_table === <span class="string"><span class="delimiter">'</span><span class="content">fe_sessions</span><span class="delimiter">'</span></span>} {
+<span class="line-numbers">16</span>      <span class="comment">// ...</span>
+<span class="line-numbers">17</span>    } <span class="keyword">else</span> {
+<span class="line-numbers">18</span>      <span class="comment">// ...</span>
+<span class="line-numbers">19</span>    }
+<span class="line-numbers"><strong>20</strong></span>  }
+<span class="line-numbers">21</span><span class="comment">// ...</span>
+<span class="line-numbers">22</span>}
+</span></code></pre></li>
+	</ol>
+
+
+	<p>Any other opinions or ideas?</p></div>
+  </div>
+  
+
+  <div id="change-183978" class="journal has-notes has-details">
+    <h4><a href="51731.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-24" title="2013-09-24 13:30">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>10</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-183978-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/97d077daafaa83d38d01eb1b263bb6e3f3661d82" class="changeset" title="[WIP][FEATURE] Classic session storage service * !!! known bug: T3_SERVICES prohibits multiple i...">97d077daafaa83d38d01eb1b263bb6e3f3661d82</a>.</p></div>
+  </div>
+  
+
+  <div id="change-183981" class="journal has-notes has-details">
+    <h4><a href="51731.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-24" title="2013-09-24 13:55">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>New</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-183981-notes"><p>Merge was to sandbox only, patch is not in master, yet, reopened.</p></div>
+  </div>
+  
+
+  <div id="change-183982" class="journal has-notes">
+    <h4><a href="51731.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-24" title="2013-09-24 14:00">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-183982-notes"><p>Christian Kuhn wrote:</p>
+
+
+<blockquote>
+
+	<p>Merge was to sandbox only, patch is not in master, yet, reopened.</p>
+
+
+</blockquote>
+
+	<p>Thanks :)</p></div>
+  </div>
+  
+
+  <div id="change-184904" class="journal has-details">
+    <h4><a href="51731.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-02" title="2013-10-02 11:47">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Thorsten Kahler</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-186753" class="journal has-notes has-details">
+    <h4><a href="51731.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-14" title="2013-10-14 22:44">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>On Hold</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>6.2.0</i></strike>)</li>
+      
+       <li><strong>% Done</strong> changed from <i>100</i> to <i>10</i></li>
+      
+       <li><strong>Complexity</strong> changed from <i>hard</i> to <i>nightmare</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-186753-notes"><p>To get this cleanly done needs much more work and some major changes in <code>AbstractUserAuthentication</code> and its subclasses. Thus this feature is delayed to the next release after 6.2.</p></div>
+  </div>
+  
+
+  <div id="change-245598" class="journal has-details">
+    <h4><a href="51731.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-18" title="2015-01-18 23:05">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Assigned To</strong> deleted (<strike><i>Thorsten Kahler</i></strike>)</li>
+      
+       <li><strong>Target version</strong> set to <i>8</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-51731-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/51731.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="51731.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/51731 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:35:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

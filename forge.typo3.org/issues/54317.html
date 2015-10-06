@@ -1,0 +1,874 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/54317 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:16:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #54317: Neos installation fails on managed server (hosteurope) - TYPO3.Neos - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/54317.atom" rel="alternate" title="TYPO3.Neos - Bug #54317: Neos installation fails on managed server (hosteurope)" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 current sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Neos</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="level-1 current sorting-0">Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-form" class="level-2 sorting-0">TYPO3.Form</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-imagine" class="level-2 sorting-0">TYPO3.Imagine</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-media" class="level-2 sorting-0">TYPO3.Media</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="level-2 current sorting-0">TYPO3.Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos-nodetypes" class="level-2 sorting-0">TYPO3.Neos.NodeTypes</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-party" class="level-2 sorting-0">TYPO3.Party</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-setup" class="level-2 sorting-0">TYPO3.Setup</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-sitekickstarter" class="level-2 sorting-0">TYPO3.SiteKickstarter</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-twitter-bootstrap" class="level-2 sorting-0">TYPO3.Twitter.Bootstrap</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr" class="level-2 sorting-0">TYPO3.TYPO3CR</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-typoscript" class="level-2 sorting-0">TYPO3.TypoScript</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-coordination" class="level-1 sorting-0">Coordination Group</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-website-communication" class="level-1 sorting-0">Website and Communication</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (4)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39562">Vladimir B</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39410">Pavlina Drosos</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38062">Matthias no-lastname-given</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-54317-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #54317</h2>
+
+<div class="issue status-9 priority-2 closed child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="54392.html" class="issue status-9 priority-5 closed parent">Bug #54392</a>: Installation issues</p><div><h3>Neos installation fails on managed server (hosteurope)</h3></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/1853">Dominic Garms</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-11" title="2013-12-11 03:53">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-10-02" title="2014-10-02 11:26">10 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-12-11</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Hello,</p>
+
+
+	<p>after the "Your environment is suited for installing TYPO3 Flow" the installation redirects to <a class="external" href="../../external.html?link=http://neos.dmfmedia.de/setup/index">http://neos.dmfmedia.de/setup/index</a> and following message is shown:</p>
+
+
+	<p>Flow: The compile run failed. Please check the error output or system log for more information.</p>
+
+
+	<p>error_log:<br />File does not exist: /www/neos/demo/Web/_Resources/Static, referer: <a class="external" href="../../external.html?link=http://neos.dmfmedia.de/setup">http://neos.dmfmedia.de/setup</a></p>
+
+
+	<p>Not sure what exactly fails or if the .htaccess mod_rewrite fails. The server is TYPO3 CMS ready and usually works without any issues. PHP 5.3.27 with Suhosin-Patch is in use.</p>
+
+
+	<p>Regards,</p>
+
+
+	<p>Dominic</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10051">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54347" /></td>
+<td class="subject">related to 
+    TYPO3.Neos - 
+    <a href="54347.html" class="issue status-9 priority-5 closed child">Bug #54347</a>: Noes won&#39;t install or run
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-12-12</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10052">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54314" /></td>
+<td class="subject">related to 
+    TYPO3.Neos - 
+    <a href="54314.html" class="issue status-7 priority-2 closed">Bug #54314</a>: Reflecting class TYPO3\Neos\Domain\Service\TypoScriptServ...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-12-10</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10054">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54380" /></td>
+<td class="subject">related to 
+    TYPO3.Neos - 
+    <a href="54380.html" class="issue status-9 priority-2 closed child">Bug #54380</a>: Neos installation fails on fresh Ubuntu Server
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-12-13</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/54317/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/54317/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=54317&amp;project_id=package-typo3-neos')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-196169" class="journal has-notes">
+    <h4><a href="54317.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-11" title="2013-12-11 08:40">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196169-notes"><p>Same for me, similar Server same hoster.</p>
+
+
+	<p>1. there must be a way to check permissions instead of using flows setpermission<br />2. if there is sth. missing the installer needs to show that :=) - even if it's hard<br />3. It's scary that the exception is neither shown, nor saved in the FS as stated :(</p>
+
+
+	<p>I'm thankfull for any hint.</p>
+
+
+	<p>You can try on your own here:</p>
+
+
+	<p><a class="external" href="../../external.html?link=http://neos.kay-strobach.de/setup/">http://neos.kay-strobach.de/setup/</a><br /><a class="external" href="../../external.html?link=http://neos.kay-strobach.de/info.php">http://neos.kay-strobach.de/info.php</a></p></div>
+  </div>
+  
+
+  <div id="change-196192" class="journal has-notes">
+    <h4><a href="54317.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39562">Vladimir B</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-11" title="2013-12-11 13:35">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196192-notes"><p>We have absolutely the same problem with HostEurope and TYPO3 Neos 1.0</p></div>
+  </div>
+  
+
+  <div id="change-196221" class="journal has-notes has-details">
+    <h4><a href="54317.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-11" title="2013-12-11 20:10">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Bastian Waidelich</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-196221-notes"><p>Hey guys, thanks for reporting.<br />I'll ask Hosteurope to provide me with a test account so that we can streamline the Neos setup process. Or if anyone of you could give me temporary access that would be very helpful.</p></div>
+  </div>
+  
+
+  <div id="change-196301" class="journal has-notes">
+    <h4><a href="54317.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-12" title="2013-12-12 11:02">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196301-notes"><p>@bastian, i can give you partial access ftp and http, sadly i have just one ssh accout - please contact me via skype: kaystrobach</p></div>
+  </div>
+  
+
+  <div id="change-196334" class="journal has-notes">
+    <h4><a href="54317.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-12" title="2013-12-12 15:12">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196334-notes"><p>Status update: I quickly tried this on a HE vServer, but I didn't get very far with my limited shell knowledge. The awesome Martin Brüggemann (from <a class="external" href="../../external.html?link=http://www.t3n.de/">www.t3n.de</a>) now looks into this and is about to order a HE webhosting package.<br />In the meantime: I've seen that the log stops at "Reflecting class TYPO3\Neos\Domain\Service\TypoScriptService".<br />Could anyone check whether this is the same issue as <a href="54314.html" class="issue status-7 priority-2 closed" title="Reflecting class TYPO3\Neos\Domain\Service\TypoScriptService while compiling (Resolved)">#54314</a> ? (<strong>Note:</strong> I linked a different issue before by accident)</p></div>
+  </div>
+  
+
+  <div id="change-196343" class="journal has-notes">
+    <h4><a href="54317.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-12" title="2013-12-12 16:38">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196343-notes"><p>thanks to bastian deleting 2 lines like described here <a href="54314.html" class="issue status-7 priority-2 closed" title="Reflecting class TYPO3\Neos\Domain\Service\TypoScriptService while compiling (Resolved)">#54314</a> fixed it. <a class="external" href="../../external.html?link=http://neos.kay-strobach.de/">http://neos.kay-strobach.de</a> is now up an running.</p></div>
+  </div>
+  
+
+  <div id="change-196450" class="journal has-details">
+    <h4><a href="54317.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-13" title="2013-12-13 13:03">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#54392</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-196756" class="journal has-notes">
+    <h4><a href="54317.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-16" title="2013-12-16 15:35">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196756-notes"><p>NEOS 1.0.1 is still broken!</p></div>
+  </div>
+  
+
+  <div id="change-196757" class="journal has-notes">
+    <h4><a href="54317.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-16" title="2013-12-16 15:41">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196757-notes"><p>Kay Strobach wrote:</p>
+
+
+<blockquote>
+
+	<p>NEOS 1.0.1 is still broken!</p>
+
+
+</blockquote>
+
+	<p>Please be more specific</p></div>
+  </div>
+  
+
+  <div id="change-196758" class="journal has-notes">
+    <h4><a href="54317.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-16" title="2013-12-16 15:42">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196758-notes"><p>Folks, Martin successfully installed Neos 1.0.1 on a managed server ("Hosteurope WebHosting Premium-Paket").</p>
+
+
+Unfortunately the PHP CLI is <strong>very</strong> restricted on HE, it lacks support for:
+	<ul>
+	<li>Access to external resources (e.g. via file_get_contents) - this is required for composer to work</li>
+		<li>'date.timezone' is not configured in php.ini</li>
+		<li>The 'mbstring' extension is not installed</li>
+	</ul>
+
+
+	<p>Besides, PHP runs in safe-mode on the CLI, so no sub-processes can be started.</p>
+
+
+	<p>This means that neos can be installed with the graphical Setup tool, but it won't be possible to execute "./flow ..." commands on the command line.</p>
+
+
+	<p>I don't understand why the CLI is so restricted at HE because with access to the console one can just create a PHP file and invoke it via HTTP (which removes most of the restrictions).<br />Hopefully HE will enable this at some point. Right now there's nothing we can do as far as I see it..</p></div>
+  </div>
+  
+
+  <div id="change-196799" class="journal has-notes">
+    <h4><a href="54317.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-16" title="2013-12-16 21:40">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196799-notes"><p>How to use composer @hosteurope:</p>
+
+
+	<p>download composer<br /><pre>
+curl -s https://getcomposer.org/installer | php
+</pre></p>
+
+
+	<p>create a file called composer:</p>
+
+
+<pre>
+php -d suhosin.executor.include.whitelist=phar,http://,https:// composer.phar "$@" 
+</pre>
+
+	<p>after <code>chmod +x composer</code> use it with</p>
+
+
+<pre>
+./composer create-project typo3/neos-base-distribution TYPO3-Neos-1.0
+</pre>
+
+	<p>This worked perfectly fine for me with VERSION 1.0.0 +  the mentioned patch, sadly 1.0.1 is broken again ... :( .<br />I can also make the batch file more sophisticated, so that it detects, if the phar archive is already present, and if not download it :D</p>
+
+
+	<p>New Error with 1.0.1:</p>
+
+
+<pre>
+PHP Fatal error:  Call to a member function getHash() on a non-object inneos/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Media_Domain_Service_ImageService.php on line 54, referer: http://.../neos/login
+</pre></div>
+  </div>
+  
+
+  <div id="change-196800" class="journal has-notes">
+    <h4><a href="54317.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-16" title="2013-12-16 22:16">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196800-notes"><p>PS: I talked to the HE Support, and they told my, that they might perhaps update php in Q1 or Q2 ... grrr</p></div>
+  </div>
+  
+
+  <div id="change-196802" class="journal has-notes">
+    <h4><a href="54317.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-16" title="2013-12-16 22:39">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196802-notes"><p>Perhaps it's an option to set <strong>subRequestPhpIniPathAndFilename</strong> in a special way for the HE Installations ... :(</p></div>
+  </div>
+  
+
+  <div id="change-196804" class="journal has-notes">
+    <h4><a href="54317.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-16" title="2013-12-16 22:47">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196804-notes"><pre>
+Uncaught exception in line 119 of /.../neos/Data/Temporary/Production/Doctrine/Proxies/__CG__TYPO3FlowResourceResource.php: Entity was not found. - See also: 2013121622452866debc.txt
+
+Uncaught exception in line 119 of /.../neos/Data/Temporary/Production/Doctrine/Proxies/__CG__TYPO3FlowResourceResource.php: Entity was not found.
+
+106 TYPO3\Flow\Persistence\Doctrine\Proxies\__CG__\TYPO3\Flow\Resource\Resource::__load()
+105 TYPO3\Flow\Persistence\Doctrine\Proxies\__CG__\TYPO3\Flow\Resource\Resource::getResourcePointer()
+104 TYPO3\Media\Domain\Service\ImageService_Original::transformImage(TYPO3\Media\Domain\Model\Image, array|2|)
+103 TYPO3\Media\Domain\Model\ImageVariant_Original::initializeObject(2)
+102 TYPO3\Media\Domain\Model\ImageVariant_Original::__wakeup()
+101 TYPO3\Media\Domain\Model\ImageVariant::__wakeup()
+100 unserialize("a:7:{s:9:"alignment";s:0:"";s:7:"caption";s:25:"&lt;p&gt;Enter caption here&lt;/p&gt;";s:5:"image";O:37:"TYPO3\Media\Domain\Model\ImageVariant":3:{s:16:"*originalImage";O:30:"TYPO3\Media\Domain\Model\Image":10:{s:32:"*Persistence_Object_Identifier";s:36:"bf7e59eb-6ded-09b6-970a-7c250056274b";s:8:"*width";i:1280;s:9:"*height";i:960;s:7:"*type";i:2;s:16:"*imageVariants";a:0:{}s:15:"*lastModified";O:8:"DateTime":3:{s:4:"date";s:19:"2013-12-12 17:02:38";s:13:"timezone_type";i:3;s:8:"timezone";s:13:"Europe/Berlin";}s:8:"*title";s:0:"";s:10:"*caption";s:0:"";s:32:"Flow_Persistence_RelatedEntities";a:1:{s:8:"resource";a:3:{s:12:"propertyName";s:8:"resource";s:10:"entityType";s:28:"TYPO3\Flow\Resource\Resource";s:10:"identifier";s:36:"e03749da-c896-7aa0-3734-43a37783f160";}}s:7:"*tags";O:33:"Doctrine\ORM\PersistentCollection":2:{s:39:"Doctrine\ORM\PersistentCollectioncoll";O:43:"Doctrine\Common\Collections\ArrayCollection":1:{s:54:"Doctrine\Common\Collections\ArrayCollection_elements";a:0:{}}s:46:"Doctrine\ORM\PersistentCollectioninitialized";b:1;}}s:25:"*processingInstructions";a:2:{i:0;a:2:{s:7:"command";s:4:"crop";s:7:"options";a:2:{s:5:"start";a:2:{s:1:"x";i:0;s:1:"y";i:0;}s:4:"size";a:2:{s:5:"width";i:1280;s:6:"height";i:960;}}}i:1;a:2:{s:7:"command";s:6:"resize";s:7:"options";a:1:{s:4:"size";a:2:{s:5:"width";i:1280;s:6:"height";i:960;}}}}s:8:"*alias";N;}s:15:"alternativeText";s:0:"";s:5:"title";s:0:"";s:4:"link";s:0:"";s:10:"hasCaption";b:0;}")
+99 Doctrine\DBAL\Types\ArrayType::convertToPHPValue("a:7:{s:9:"alignment";s:0:"";s:7:"caption";s:25:"&lt;p&gt;Enter caption here&lt;/p&gt;";s:5:"image";O:37:"TYPO3\Media\Domain\Model\ImageVariant":3:{s:16:"*originalImage";O:30:"TYPO3\Media\Domain\Model\Image":10:{s:32:"*Persistence_Object_Identifier";s:36:"bf7e59eb-6ded-09b6-970a-7c250056274b";s:8:"*width";i:1280;s:9:"*height";i:960;s:7:"*type";i:2;s:16:"*imageVariants";a:0:{}s:15:"*lastModified";O:8:"DateTime":3:{s:4:"date";s:19:"2013-12-12 17:02:38";s:13:"timezone_type";i:3;s:8:"timezone";s:13:"Europe/Berlin";}s:8:"*title";s:0:"";s:10:"*caption";s:0:"";s:32:"Flow_Persistence_RelatedEntities";a:1:{s:8:"resource";a:3:{s:12:"propertyName";s:8:"resource";s:10:"entityType";s:28:"TYPO3\Flow\Resource\Resource";s:10:"identifier";s:36:"e03749da-c896-7aa0-3734-43a37783f160";}}s:7:"*tags";O:33:"Doctrine\ORM\PersistentCollection":2:{s:39:"Doctrine\ORM\PersistentCollectioncoll";O:43:"Doctrine\Common\Collections\ArrayCollection":1:{s:54:"Doctrine\Common\Collections\ArrayCollection_elements";a:0:{}}s:46:"Doctrine\ORM\PersistentCollectioninitialized";b:1;}}s:25:"*processingInstructions";a:2:{i:0;a:2:{s:7:"command";s:4:"crop";s:7:"options";a:2:{s:5:"start";a:2:{s:1:"x";i:0;s:1:"y";i:0;}s:4:"size";a:2:{s:5:"width";i:1280;s:6:"height";i:960;}}}i:1;a:2:{s:7:"command";s:6:"resize";s:7:"options";a:1:{s:4:"size";a:2:{s:5:"width";i:1280;s:6:"height";i:960;}}}}s:8:"*alias";N;}s:15:"alternativeText";s:0:"";s:5:"title";s:0:"";s:4:"link";s:0:"";s:10:"hasCaption";b:0;}", Doctrine\DBAL\Platforms\MySqlPlatform)
+98 TYPO3\Flow\Persistence\Doctrine\DataTypes\ObjectArray_Original::convertToPHPValue("a:7:{s:9:"alignment";s:0:"";s:7:"caption";s:25:"&lt;p&gt;Enter caption here&lt;/p&gt;";s:5:"image";O:37:"TYPO3\Media\Domain\Model\ImageVariant":3:{s:16:"*originalImage";O:30:"TYPO3\Media\Domain\Model\Image":10:{s:32:"*Persistence_Object_Identifier";s:36:"bf7e59eb-6ded-09b6-970a-7c250056274b";s:8:"*width";i:1280;s:9:"*height";i:960;s:7:"*type";i:2;s:16:"*imageVariants";a:0:{}s:15:"*lastModified";O:8:"DateTime":3:{s:4:"date";s:19:"2013-12-12 17:02:38";s:13:"timezone_type";i:3;s:8:"timezone";s:13:"Europe/Berlin";}s:8:"*title";s:0:"";s:10:"*caption";s:0:"";s:32:"Flow_Persistence_RelatedEntities";a:1:{s:8:"resource";a:3:{s:12:"propertyName";s:8:"resource";s:10:"entityType";s:28:"TYPO3\Flow\Resource\Resource";s:10:"identifier";s:36:"e03749da-c896-7aa0-3734-43a37783f160";}}s:7:"*tags";O:33:"Doctrine\ORM\PersistentCollection":2:{s:39:"Doctrine\ORM\PersistentCollectioncoll";O:43:"Doctrine\Common\Collections\ArrayCollection":1:{s:54:"Doctrine\Common\Collections\ArrayCollection_elements";a:0:{}}s:46:"Doctrine\ORM\PersistentCollectioninitialized";b:1;}}s:25:"*processingInstructions";a:2:{i:0;a:2:{s:7:"command";s:4:"crop";s:7:"options";a:2:{s:5:"start";a:2:{s:1:"x";i:0;s:1:"y";i:0;}s:4:"size";a:2:{s:5:"width";i:1280;s:6:"height";i:960;}}}i:1;a:2:{s:7:"command";s:6:"resize";s:7:"options";a:1:{s:4:"size";a:2:{s:5:"width";i:1280;s:6:"height";i:960;}}}}s:8:"*alias";N;}s:15:"alternativeText";s:0:"";s:5:"title";s:0:"";s:4:"link";s:0:"";s:10:"hasCaption";b:0;}", Doctrine\DBAL\Platforms\MySqlPlatform)
+97 Doctrine\ORM\Internal\Hydration\AbstractHydrator::gatherRowData(array|17|, array|17|, array|1|, array|1|)
+96 Doctrine\ORM\Internal\Hydration\ObjectHydrator::hydrateRowData(array|17|, array|17|, array|1|)
+95 Doctrine\ORM\Internal\Hydration\ObjectHydrator::hydrateAllData()
+94 Doctrine\ORM\Internal\Hydration\AbstractHydrator::hydrateAll(Doctrine\DBAL\Driver\PDOStatement, Doctrine\ORM\Query\ResultSetMapping, array|0|)
+93 Doctrine\ORM\AbstractQuery::execute(NULL, 1)
+92 Doctrine\ORM\AbstractQuery::getResult()
+91 TYPO3\Flow\Persistence\Doctrine\Query_Original::getResult()
+90 TYPO3\Flow\Persistence\Doctrine\QueryResult_Original::initialize()
+89 TYPO3\Flow\Persistence\Doctrine\QueryResult_Original::toArray()
+88 TYPO3\TYPO3CR\Domain\Repository\NodeDataRepository_Original::findByParentAndNodeType("/sites/neosdemotypo3org/main/node524a87808ab3e/column1", NULL, TYPO3\TYPO3CR\Domain\Model\Workspace, NULL, NULL, FALSE)
+87 TYPO3\TYPO3CR\Domain\Repository\NodeDataRepository_Original::findByParentAndNodeTypeInContext("/sites/neosdemotypo3org/main/node524a87808ab3e/column1", NULL, TYPO3\Neos\Domain\Service\ContentContext, NULL, NULL)
+86 TYPO3\TYPO3CR\Domain\Model\Node_Original::getChildNodes()
+85 TYPO3\Neos\TypoScript\ContentCollectionImplementation_Original::getCollection()
+84 TYPO3\TypoScript\TypoScriptObjects\AbstractCollectionImplementation::evaluate()
+83 TYPO3\Neos\TypoScript\ContentCollectionImplementation_Original::evaluate()
+82 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos.NodeTypes:TwoColumn&gt;/columns&lt;TYPO3.TypoScript:Collection&gt;/itemRenderer&lt;TYPO3.Neos.NodeTypes:MultiColumnItem&gt;/columnContent", "Exception")
+81 TYPO3\TypoScript\Core\Runtime_Original::render("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos.NodeTypes:TwoColumn&gt;/columns&lt;TYPO3.TypoScript:Collection&gt;/itemRenderer&lt;TYPO3.Neos.NodeTypes:MultiColumnItem&gt;/columnContent")
+80 TYPO3\TypoScript\ViewHelpers\RenderViewHelper_Original::render("columnContent", NULL, NULL)
+79 call_user_func_array(array|2|, array|3|)
+78 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+77 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+76 FluidCache_Standalone_template_file_MultiColumnItem_8cc6c0422f84047450034b4b601cbe9db762f9a0::render(TYPO3\Fluid\Core\Rendering\RenderingContext)
+75 TYPO3\Fluid\View\AbstractTemplateView::render()
+74 TYPO3\TypoScript\TypoScriptObjects\TemplateImplementation_Original::evaluate()
+73 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos.NodeTypes:TwoColumn&gt;/columns&lt;TYPO3.TypoScript:Collection&gt;/itemRenderer", "Exception")
+72 TYPO3\TypoScript\Core\Runtime_Original::render("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos.NodeTypes:TwoColumn&gt;/columns&lt;TYPO3.TypoScript:Collection&gt;/itemRenderer")
+71 TYPO3\TypoScript\TypoScriptObjects\AbstractCollectionImplementation::evaluate()
+70 TYPO3\TypoScript\TypoScriptObjects\CollectionImplementation_Original::evaluate()
+69 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos.NodeTypes:TwoColumn&gt;/columns", "Exception")
+68 TYPO3\TypoScript\Core\Runtime_Original::render("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos.NodeTypes:TwoColumn&gt;/columns")
+67 TYPO3\TypoScript\ViewHelpers\RenderViewHelper_Original::render("columns", NULL, NULL)
+66 call_user_func_array(array|2|, array|3|)
+65 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+64 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+63 FluidCache_Standalone_template_file_MultiColumn_8a2166d8e08bdda5bdb7e50c1179b9a7b0c24bea::render(TYPO3\Fluid\Core\Rendering\RenderingContext)
+62 TYPO3\Fluid\View\AbstractTemplateView::render()
+61 TYPO3\TypoScript\TypoScriptObjects\TemplateImplementation_Original::evaluate()
+60 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos.NodeTypes:TwoColumn&gt;", "Exception")
+59 TYPO3\TypoScript\Core\Runtime_Original::render("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos.NodeTypes:TwoColumn&gt;")
+58 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+57 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;", "Exception")
+56 TYPO3\TypoScript\Core\Runtime_Original::render("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer&lt;TYPO3.Neos:ContentCase&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;")
+55 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::renderMatcher("default")
+54 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+53 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer", "Exception")
+52 TYPO3\TypoScript\Core\Runtime_Original::render("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;/itemRenderer")
+51 TYPO3\TypoScript\TypoScriptObjects\AbstractCollectionImplementation::evaluate()
+50 TYPO3\Neos\TypoScript\ContentCollectionImplementation_Original::evaluate()
+49 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;", "Exception")
+48 TYPO3\TypoScript\Core\Runtime_Original::render("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;/element&lt;TYPO3.Neos:ContentCollection&gt;")
+47 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+46 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;", "Exception")
+45 TYPO3\TypoScript\Core\Runtime_Original::render("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main&lt;TYPO3.Neos:PrimaryContent&gt;/default&lt;TYPO3.TypoScript:Matcher&gt;")
+44 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::renderMatcher("default")
+43 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+42 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main", "NULL", NULL)
+41 TYPO3\TypoScript\Core\Runtime_Original::evaluate("landingPage&lt;TYPO3.Neos:Page&gt;/body&lt;TYPO3.TypoScript:Template&gt;/content/main")
+40 TYPO3\TypoScript\TypoScriptObjects\Helpers\TypoScriptPathProxy_Original::objectAccess()
+39 TYPO3\Fluid\Core\Parser\SyntaxTree\ObjectAccessorNode_Original::getPropertyPath(TYPO3\Fluid\Core\ViewHelper\TemplateVariableContainer, "content.main", TYPO3\Fluid\Core\Rendering\RenderingContext)
+38 {closure}()
+37 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()
+36 TYPO3\Fluid\ViewHelpers\Format\RawViewHelper_Original::render(NULL)
+35 call_user_func_array(array|2|, array|1|)
+34 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+33 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+32 FluidCache_Standalone_template_file_Default_21e07064aef7cdaa5c071034aaaef1a98611684d::section_02083f4579e08a612425c0c1a17ee47add783b94(TYPO3\Fluid\Core\Rendering\RenderingContext)
+31 TYPO3\Fluid\View\AbstractTemplateView::renderSection("body", NULL, FALSE)
+30 TYPO3\Fluid\View\AbstractTemplateView::renderStandaloneSection("body", NULL, FALSE)
+29 TYPO3\Fluid\View\AbstractTemplateView::renderSection("body")
+28 TYPO3\TypoScript\TypoScriptObjects\TemplateImplementation_Original::evaluate()
+27 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage&lt;TYPO3.Neos:Page&gt;/body", "NULL", TYPO3\TypoScript\TypoScriptObjects\ArrayImplementation)
+26 TYPO3\TypoScript\Core\Runtime_Original::evaluate("landingPage&lt;TYPO3.Neos:Page&gt;/body", TYPO3\TypoScript\TypoScriptObjects\ArrayImplementation)
+25 TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject::tsValue("body")
+24 TYPO3\TypoScript\TypoScriptObjects\ArrayImplementation_Original::evaluate()
+23 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("landingPage", "Exception")
+22 TYPO3\TypoScript\Core\Runtime_Original::render("landingPage")
+21 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+20 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("root&lt;TYPO3.TypoScript:Case&gt;/layout&lt;TYPO3.TypoScript:Matcher&gt;", "Exception")
+19 TYPO3\TypoScript\Core\Runtime_Original::render("root&lt;TYPO3.TypoScript:Case&gt;/layout&lt;TYPO3.TypoScript:Matcher&gt;")
+18 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::renderMatcher("layout")
+17 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+16 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal("root", "Exception")
+15 TYPO3\TypoScript\Core\Runtime_Original::render("root")
+14 TYPO3\Neos\View\TypoScriptView_Original::render()
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+9 call_user_func_array(array|2|, array|2|)
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-196926" class="journal has-notes">
+    <h4><a href="54317.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-18" title="2013-12-18 13:37">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196926-notes"><p>Kay Strobach wrote:</p>
+
+
+<blockquote>
+
+	<p>This worked perfectly fine for me with VERSION 1.0.0 +  the mentioned patch, sadly 1.0.1 is broken again ... :( .<br />I can also make the batch file more sophisticated, so that it detects, if the phar archive is already present, and if not download it :D</p>
+
+
+	<p>New Error with 1.0.1:</p>
+
+
+	<p>PHP Fatal error:  Call to a member function getHash() on a non-object [...]</p>
+
+
+</blockquote>
+
+	<p>Did you flush all caches after upgrading?<br />I don't think that any of the changes from 1.0.0 to 1.0.1 broke that: <a class="external" href="../../external.html?link=http://docs.typo3.org/neos/TYPO3NeosDocumentation/Appendixes/ChangeLogs/101.html">http://docs.typo3.org/neos/TYPO3NeosDocumentation/Appendixes/ChangeLogs/101.html</a></p></div>
+  </div>
+  
+
+  <div id="change-196933" class="journal has-notes">
+    <h4><a href="54317.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-18" title="2013-12-18 13:54">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196933-notes"><p>Yes i did, will try to reinstall soon.</p></div>
+  </div>
+  
+
+  <div id="change-197820" class="journal has-notes">
+    <h4><a href="54317.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-01-03" title="2014-01-03 14:17">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197820-notes"><p>reinstall -> setup failed with white screen after importing the default site<br />frontend not reachable.</p>
+
+
+	<p>Called HE Support, there is no timeframe for php 5.4 ... grrr</p></div>
+  </div>
+  
+
+  <div id="change-197827" class="journal has-notes">
+    <h4><a href="54317.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39819">Chr is</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-01-03" title="2014-01-03 15:47">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197827-notes"><p>Using subRequestPhpIniPathAndFilename did not do the trick for me with my shared hosting environment.</p>
+
+
+	<p>In my case the setting of php-cli.ini <strong>like this</strong> did the job (!German!):</p>
+
+
+	<p><a class="external" href="../../external.html?link=https://wiki.hostsharing.net/index.php?title=TYPO3_Neos_installieren#Workaround_falls_Einstellungen_einer_eigenen_php-cli.ini_nicht_von_Flow_ber.C3.BCcksichtigt_werden">https://wiki.hostsharing.net/index.php?title=TYPO3_Neos_installieren#Workaround_falls_Einstellungen_einer_eigenen_php-cli.ini_nicht_von_Flow_ber.C3.BCcksichtigt_werden</a></p>
+
+
+	<p>PS: There is no PHP 5.4 here as well, but it seems to work.</p></div>
+  </div>
+  
+
+  <div id="change-197966" class="journal has-notes">
+    <h4><a href="54317.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-01-05" title="2014-01-05 10:05">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197966-notes"><p>mhmm, neos is back to life:</p>
+
+
+things done:
+	<ol>
+	<li>fix composer like described in my note before</li>
+		<li>fix the flow excutable with my own php ini, max_execution_time=0 and memory_limit=512M</li>
+	</ol>
+
+
+	<p>This worked so far, perhaps these 2 values can be directly added into the flow executable to fix shared hosting finally ...</p></div>
+  </div>
+  
+
+  <div id="change-211139" class="journal has-details">
+    <h4><a href="54317.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-03-31" title="2014-03-31 15:12">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Assigned To</strong> deleted (<strike><i>Bastian Waidelich</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-231702" class="journal has-notes has-details">
+    <h4><a href="54317.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/5241">Philipp Hanebrink</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-10-02" title="2014-10-02 11:26">10 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-231702-notes"><p>No feedback was given within 9 month, so I consider this issue resolved. <br />If the issue persists, please open a new issue at <a class="external" href="../../external.html?link=https://jira.typo3.org/">https://jira.typo3.org/</a></p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-54317-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/54317.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="54317.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/54317 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:16:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

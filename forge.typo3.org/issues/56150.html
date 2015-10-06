@@ -1,0 +1,750 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/56150 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:41:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #56150: Exception with &quot;Hidden&quot; sys_file_references when using levelmedia -  RootlineUtility::enrichWithRelationFields ignores disable field - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/56150.atom" rel="alternate" title="Core - Bug #56150: Exception with &quot;Hidden&quot; sys_file_references when using levelmedia -  RootlineUtility::enrichWithRelationFields ignores disable field" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (6)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-56150-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #56150</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Exception with &quot;Hidden&quot; sys_file_references when using levelmedia -  RootlineUtility::enrichWithRelationFields ignores disable field</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-20" title="2014-02-20 14:34">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-14" title="2014-03-14 22:30">over 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-02-20</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2354">next-patchlevel</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.1</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.4</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Test scenario in TYPO3 6.2:</p>
+
+
+	<p>A Page (e.g. ID=15) has 2 sys_file_reference relations (pages.media)</p>
+
+
+	<p>Frontend output is via levelmedia, for instance</p>
+
+
+	<pre><code>file {<br />       import.data = levelfield:1, media<br />       treatIdAsReference = 1<br />       import.listNum = 0<br />       }</code></pre>
+
+
+	<p>In 6.2 whichever reference is sorted to the top in the backend is output as expected so far.<br />(in 6.1 this does not work because sorting_foreign was ignored <a class="external" href="46383.html#change-204405">http://forge.typo3.org/issues/46383#change-204405</a>)  but that is fixed for 6.2 with <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/26727/">https://review.typo3.org/#/c/26727/</a></p>
+
+
+	<p>Now the editor uses the "Light bulb" icon to hide the first reference.</p>
+
+
+	<p><ins>Expected result:</ins> The second reference should be shown now.<br /><ins><br />Observed result:</ins> Exception thrown <em>"#1317178794: No fileusage (sys_file_reference) found for given UID"</em></p>
+
+
+	<p><ins>Reason:</ins></p>
+
+
+	<ul>
+	<li><code>levelmedia</code> means the rootline is checked for the references.</li>
+		<li>They are put there by the function <code>enrichWithRelationFields</code> in <code>\TYPO3\CMS\Core\Utility\RootlineUtility</code></li>
+		<li>This loads relations by generating a SQL query.</li>
+		<li>This query checks that record isn't <code>deleted=1</code> and in 6.2 also orders by <code>foreign_sortby</code> (in 6.1 it doesn't)</li>
+		<li>However it does not check for <code>disabled=1</code></li>
+	</ul>
+
+
+	<p>This means that both sys_file_reference entries go into the "enriched" rootline data.</p>
+
+
+	<p>Then the <code>import.listNum = 0</code> means that the first one is returned.</p>
+
+
+	<p>That one is hidden.</p>
+
+
+	<p>So when we get to <code> TYPO3\CMS\Core\Resource\ResourceFactory::getFileReferenceObject</code> the exception is thrown because only the hidden reference has arrived.</p>
+
+
+	<p>This is pretty confusing for editors as they are using seemingly harmless, legal operations in TYPO3 ("hiding") and this ends up killing entire page trees in the frontend. As when the rootline is checked of course all the pages below can be affected. A typical application of levelmedia is banners for a chapter and so this situation could "exceptionalize" an entire website chapter just due to hinding a banner.<br />This is hitting live projects with 6.1</p>
+
+
+	<p>In 6.2 they can solve that by resorting the references but in 6.1 they can't</p>
+
+
+	<p>It would be easy to change <code>enrichWithRelationFields</code> to respect <code>$GLOBALS['TCA'][$table]['ctrl']['enablecolumns']['disabled']</code> in general or for <code>sys_file_reference</code> specifically.</p>
+
+
+	<p>However the comment in <code>TYPO3\CMS\Frontend\Page\PageRepository::getRootLine</code> says:</p>
+
+
+	<pre><code>NOTICE: This function only takes deleted pages into account! So hidden, starttime and endtime restricted pages are included no matter what.</code></pre>
+
+
+	<p>So this seems to be necessary/desired behaviour?</p>
+
+
+	<p>Is it possible to make levelmedia in 6.1/6.2 "hidden-safe" without breaking that behaviour (e.g. by applying the hidden check only for sys_file_reference relations in <code>enrichWithRelationFields</code> )</p>
+
+
+	<p>Or could at least the exception "No fileusage (sys_file_reference) found for given UID" be replaced with a more graceful failure that allows the page to be rendered? Editors will then just scratch their heads why there is no image instead of going into panic.</p>
+
+
+	<p>This was all not a problem in 4.x because pages.media was just a comma separated list of values, there was no "hiding" of a relation from that, and no foreign sorting either. So checking hidden was indeed irrelevant for levelmedia in 4.x</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10512">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="46383" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="46383.html" class="issue status-7 priority-1 closed">Bug #46383</a>: levelmedia ignores sorting of media records
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-03-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/56150/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/56150/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=56150&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/6227339c02b820710d0dccda90a854896895fe5c" title="Revision 6227339c">Revision 6227339c</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-14" title="2014-03-14 21:34">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] RootlineUtility does not consider disablefield</p>
+
+
+	<p>Make sure RootlineUtility::enrichWithRelationFields() respects<br />the setting of $TCA[$table]['ctrl']['enablecolumns']['disabled'] when<br />fetching foreign data for the rootline.</p>
+
+
+	<p>Otherwise hidden relations from sys_file_reference are added to the<br />rootline and cause exceptions in the frontend, instead of being ignored.</p>
+
+
+	<p>Resolves: <a href="56150.html" class="issue status-7 priority-1 closed" title="Exception with &quot;Hidden&quot; sys_file_references when using levelmedia -  RootlineUtility::enrichWithR... (Resolved)">#56150</a><br />Releases: 6.2, 6.1<br />Change-Id: I21917fec1407a10818058da8ea879b0bb39441a4<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/28277">https://review.typo3.org/28277</a><br />Tested-by: Wouter Wolters<br />Reviewed-by: Alexander Opitz<br />Tested-by: Alexander Opitz<br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/d5160a91eea9f150dc9a42a1a7e55c7c18e8de1c" title="Revision d5160a91">Revision d5160a91</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-14" title="2014-03-14 21:49">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] RootlineUtility does not consider disablefield</p>
+
+
+	<p>Make sure RootlineUtility::enrichWithRelationFields() respects<br />the setting of $TCA[$table]['ctrl']['enablecolumns']['disabled'] when<br />fetching foreign data for the rootline.</p>
+
+
+	<p>Otherwise hidden relations from sys_file_reference are added to the<br />rootline and cause exceptions in the frontend, instead of being ignored.</p>
+
+
+	<p>Resolves: <a href="56150.html" class="issue status-7 priority-1 closed" title="Exception with &quot;Hidden&quot; sys_file_references when using levelmedia -  RootlineUtility::enrichWithR... (Resolved)">#56150</a><br />Releases: 6.2, 6.1<br />Change-Id: I21917fec1407a10818058da8ea879b0bb39441a4<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/28400">https://review.typo3.org/28400</a><br />Reviewed-by: Anja Leichsenring<br />Tested-by: Anja Leichsenring</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-204653" class="journal has-notes has-details">
+    <h4><a href="56150.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-20" title="2014-02-20 16:49">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Priority</strong> changed from <i>-- undefined --</i> to <i>Must have</i></li>
+      
+       <li><strong>Target version</strong> set to <i>next-patchlevel</i></li>
+      
+       <li><strong>TYPO3 Version</strong> changed from <i>6.2</i> to <i>6.1</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-204653-notes"><p>Hi Christian,</p>
+
+
+	<p>thanks for this in-depth report!</p>
+
+
+	<p>Yes, the foreign_sortby was introduced by me, but not backported, as it might be a breaking change.</p>
+
+
+	<p>I fully agree that the exception, which is ok IMO, must be caught and must not break the FE.</p>
+
+
+	<p>The general question, whether getRootLine() should all enable fields has a lot of consequences probably, that's why I've to hand this over to people with more in-depth knowledge about this area in the Core.</p>
+
+
+	<p>Since this is also a problem for 6.1 live sites, as you wrote above, I'm setting the version to 6.1 for this ticket.</p>
+
+
+	<p>Regards Markus</p></div>
+  </div>
+  
+
+  <div id="change-204828" class="journal has-notes">
+    <h4><a href="56150.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-21" title="2014-02-21 14:39">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-204828-notes"><p>For live 6.1 sites I've just made a quixk and dirty xclass fix. It just backports the enrichWithRelationFields from current 6.2 (importing the solution for  <a href="46383.html" class="issue status-7 priority-1 closed" title="levelmedia ignores sorting of media records (Resolved)">#46383</a> to 6.1) and adds disableClause.</p>
+
+
+	<p>This delivers correct behaviour for a 6.1 site affected by the bug.</p>
+
+
+	<ul>
+	<li>sorting OK</li>
+		<li>All references hidden  - no exception, behaviour as if no refs</li>
+		<li>one reference hidden, one visible - visible one picked by listNum=0 regardless of sorting</li>
+	</ul>
+
+
+	<p>Question -</p>
+
+
+	<p><strong>is RootlineUtility only used in the Frontend or also called from the Backend?</strong></p>
+
+
+	<p>If it's also used from the BE I'd check the TYPO3_MODE as "hidden" should not be "invisible" in the backend.</p></div>
+  </div>
+  
+
+  <div id="change-205311" class="journal has-notes">
+    <h4><a href="56150.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-25" title="2014-02-25 18:47">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205311-notes"><p>I fear it is also used in BE. But I'm not sure.</p></div>
+  </div>
+  
+
+  <div id="change-205523" class="journal has-details">
+    <h4><a href="56150.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-26" title="2014-02-26 18:08">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Assigned To</strong> deleted (<strike><i>Frans Saris</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-205542" class="journal has-notes">
+    <h4><a href="56150.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-26" title="2014-02-26 20:50">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205542-notes"><p>Hi Markus,</p>
+
+
+	<p>In <code>TYPO3\CMS\Core\Utility\RootlineUtility::__construct</code> there is a check for the <code>$GLOBALS['TSFE']->sys_page</code> object for the page context, maybe by checking for this in <code>enrichWithRelationFields</code> we could avoid side effects when the RootlineUtility is used for something else than rendering a frontend page?</p></div>
+  </div>
+  
+
+  <div id="change-206304" class="journal has-notes">
+    <h4><a href="56150.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-04" title="2014-03-04 15:31">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206304-notes"><p>If TS is parsed in BE (like for extbase) I guess the sys_page is present as well.</p></div>
+  </div>
+  
+
+  <div id="change-206764" class="journal has-notes">
+    <h4><a href="56150.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-06" title="2014-03-06 15:56">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206764-notes"><p>So then I guess the information that is available within the scope of that function is possibly not sufficient to be sure that everything is safe.</p>
+
+
+	<p>I see two possibilities right now,</p>
+
+
+1.
+	<ul>
+	<li>add some kind of parameter that says "I explicitly want to enrich a rootline for FE rendering" - although I don't really like the concept of adding such parameters
+	<ul>
+	<li>perhaps from <em>TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::rootLineValue</em> which is called to make the rootline for levelmedia</li>
+		<li>reason: Comment for this function says <strong>"@todo Define visibility"</strong> 
+	<ul>
+	<li>so someone seems to be aware that this function returns a rootline with undefined treatment of visibility?</li>
+	</ul>
+	</li>
+		<li>This function "_rootLineValue_" is used <ins>exclusively</ins> from <em>TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::getData</em>
+	<ul>
+	<li>That one again has <strong>"@todo Define visibility"</strong>  in the comment</li>
+		<li><em>getData</em> is basically just a big switch construct which treats the different TS functions like leveltitle,levelmedia,leveluid,levelfield etc... <br />so it is pretty much limiting things to a Typoscript Frontend context where we would want the change to be effective</li>
+	</ul>
+	</li>
+		<li>Also since this is basically the cObj class, it should be frontend, or at least simulation of frontend?</li>
+	</ul></li>
+	</ul>
+
+
+2.
+	<ul>
+	<li>Just change it and test a lot... ;)</li>
+	</ul>
+
+
+	<p>I've had no problem with the Xclass solution that adds the visibility/disablefield check so far on a live project but of course that is ony one site.</p></div>
+  </div>
+  
+
+  <div id="change-206803" class="journal has-notes">
+    <h4><a href="56150.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-06" title="2014-03-06 20:20">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206803-notes"><p>@todo Define visibility</p>
+
+
+	<p>refers to the protection of the method itself. This was added when all the function got access modified. Back then it was not known which function are protected or not, so all of them got public.<br />It will take years to finally make those protected, which are actually used only internally and we never know, if such a function has been used by an extension.<br />You'll find these todos everywhere in Core.</p>
+
+
+	<p>I propose to simply add it for now to have a solution in Gerrit. Then it can be tested and can be part of the next beta version, before backporting it to 6.1.</p>
+
+
+	<p>Can you push a patch?</p></div>
+  </div>
+  
+
+  <div id="change-206847" class="journal has-notes">
+    <h4><a href="56150.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-07" title="2014-03-07 00:16">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206847-notes"><p>Ok thanks for the explanation on "visibility" :)</p>
+
+
+	<p>I found the "Contribution Walkthrough Tutorial" on wiki.typo3.org, I'll digest that and proceed.</p></div>
+  </div>
+  
+
+  <div id="change-207661" class="journal has-notes has-details">
+    <h4><a href="56150.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-11" title="2014-03-11 22:08">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-207661-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/28277">https://review.typo3.org/28277</a></p></div>
+  </div>
+  
+
+  <div id="change-207699" class="journal has-notes">
+    <h4><a href="56150.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-12" title="2014-03-12 00:02">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-207699-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/28277">https://review.typo3.org/28277</a></p></div>
+  </div>
+  
+
+  <div id="change-208070" class="journal has-notes">
+    <h4><a href="56150.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-13" title="2014-03-13 21:38">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-208070-notes"><p>Patch set 3 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/28277">https://review.typo3.org/28277</a></p></div>
+  </div>
+  
+
+  <div id="change-208239" class="journal has-notes">
+    <h4><a href="56150.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-14" title="2014-03-14 21:35">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-208239-notes"><p>Patch set 1 for branch <strong>TYPO3_6-1</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/28400">https://review.typo3.org/28400</a></p></div>
+  </div>
+  
+
+  <div id="change-208249" class="journal has-notes has-details">
+    <h4><a href="56150.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/586">Christian Reiter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-14" title="2014-03-14 22:30">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-208249-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/d5160a91eea9f150dc9a42a1a7e55c7c18e8de1c" class="changeset" title="[BUGFIX] RootlineUtility does not consider disablefield Make sure RootlineUtility::enrichWithRel...">d5160a91eea9f150dc9a42a1a7e55c7c18e8de1c</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-56150-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/56150.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="56150.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/56150 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:41:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,1110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/57463 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:39:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #57463: Upgrading 6.2: PHP Fatal error: Could not acquire lock for ClassLoader cache creation. - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/57463.atom" rel="alternate" title="Core - Bug #57463: Upgrading 6.2: PHP Fatal error: Could not acquire lock for ClassLoader cache creation." type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (7)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/39340">Marc Willmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/40124">Roman Eberle</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/850">Florian Seirer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/41056">Enrico Noack</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3493">Daniel Wagner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39145">TSniper no-lastname-given</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2088">Herbert Sojnik</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-57463-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #57463</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Upgrading 6.2: PHP Fatal error: Could not acquire lock for ClassLoader cache creation.</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-31" title="2014-03-31 17:19">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-11" title="2015-03-11 11:23">5 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-03-31</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2354">next-patchlevel</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <pre>
+PHP Fatal error:  Uncaught exception 'RuntimeException' with message 'Could not acquire lock for ClassLoader cache creation.' in [...]/typo3update/typo3-src/typo3/sysext/core/Classes/Core/ClassLoader.php:723
+Stack trace:
+#0 [...]/typo3update/typo3-src/typo3/sysext/core/Classes/Core/ClassLoader.php(239): TYPO3\\CMS\\Core\\Core\\ClassLoader-&gt;acquireLock()
+#1 [...]/typo3update/typo3-src/typo3/sysext/core/Classes/Core/ClassLoader.php(176): TYPO3\\CMS\\Core\\Core\\ClassLoader-&gt;buildCachedClassLoadingInformation('typo3_cms_core_...', 'TYPO3\\CMS\\Core\\...')
+#2 [internal function]: TYPO3\\CMS\\Core\\Core\\ClassLoader-&gt;loadClass('TYPO3\\CMS\\Core\\...')
+#3 [...]/typo3update/typo3-src/typo3/sysext/core/Classes/Core/Bootstrap.php(316): spl_autoload_call('TYPO3\\CMS\\Core\\...')
+#4 [...]/typo3update/typo3-src/typo3/sysext/core/Classes/Core/Bootstrap.php(233): TYPO3\\CMS\\Core\\Core\\Bootstrap-&gt;initializePackageManagement('TYPO3\\CMS\\Core\\...')
+#5 [...]/typo3update/typo3-src in [...]/typo3update/typo3-src/typo3/sysext/core/Classes/Core/ClassLoader.php on line 723
+</pre>
+
+	<p>If typo3temp exists, we should also check if it is writable. If we try to acquire a lock this will fail, cause we think this look can't be acquired as someone else have it which isn't true.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/28470/2015-02-17_13-35-46.jpg" class="icon icon-attachment">2015-02-17_13-35-46.jpg</a>  
+  
+  <span class="size">(124 kB)</span>
+  
+  
+    <span class="author">TSniper no-lastname-given, 2015-02-17 13:36</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10870">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="57008" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="57008.html" class="issue status-7 priority-1 closed">Bug #57008</a>: New Installation: Could not acquire lock for ClassLoader
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-03-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11760">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="61900" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="61900.html" class="issue status-7 priority-2 closed child">Bug #61900</a>: ClassLoader: Stalled Lock file if ClassLoader caching fails.
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-09-26</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10869">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="57464" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="57464.html" class="issue status-4 priority-2">Bug #57464</a>: Upgrading 6.2: PHP Fatal error: [...]/typo3update/typo3co...
+</td>
+<td class="status">Needs Feedback</td>
+<td class="start_date">2014-03-31</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/57463/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/57463/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=57463&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/ae7f6bbd4e12f58549bc009e7b087d4e94fe9214" title="Revision ae7f6bbd">Revision ae7f6bbd</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-01" title="2014-04-01 21:05">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Check if lock directory is writable</p>
+
+
+	<p>We should check if directory is writable. Else fopen in acquireLock<br />would only fail with error after waiting time. Also we do not aspect<br />write permission issue here.</p>
+
+
+	<p>Resolves: <a href="57463.html" class="issue status-7 priority-2 closed" title="Upgrading 6.2: PHP Fatal error: Could not acquire lock for ClassLoader cache creation. (Resolved)">#57463</a><br />Releases: 6.2<br />Change-Id: Ia767a2355aecf1e816d4c130b151443e50e1a311<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/28988">https://review.typo3.org/28988</a><br />Reviewed-by: Markus Klein<br />Tested-by: Markus Klein<br />Reviewed-by: Stefan Neufeind<br />Tested-by: Stefan Neufeind</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-211169" class="journal has-details">
+    <h4><a href="57463.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-31" title="2014-03-31 17:21">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Upgrading 6.2: PHP Fatal error:  Uncaught exception &#39;RuntimeException&#39;</i> to <i>Upgrading 6.2: PHP Fatal error: Could not acquire lock for ClassLoader cache creation.</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-211172" class="journal has-notes has-details">
+    <h4><a href="57463.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-31" title="2014-03-31 17:38">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-211172-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/28988">https://review.typo3.org/28988</a></p></div>
+  </div>
+  
+
+  <div id="change-211173" class="journal has-notes">
+    <h4><a href="57463.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-31" title="2014-03-31 17:57">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-211173-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/28988">https://review.typo3.org/28988</a></p></div>
+  </div>
+  
+
+  <div id="change-211376" class="journal has-notes has-details">
+    <h4><a href="57463.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-01" title="2014-04-01 21:30">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-211376-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/ae7f6bbd4e12f58549bc009e7b087d4e94fe9214" class="changeset" title="[BUGFIX] Check if lock directory is writable We should check if directory is writable. Else fope...">ae7f6bbd4e12f58549bc009e7b087d4e94fe9214</a>.</p></div>
+  </div>
+  
+
+  <div id="change-215866" class="journal has-notes">
+    <h4><a href="57463.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40358">Brian Lynch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-07" title="2014-05-07 09:48">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-215866-notes"><p>I have installed the new Locker.php file and still have the exact same error, starting with: HP Fatal error:  Uncaught exception 'RuntimeException' with message 'Could not acquire lock for ClassLoader cache creation.<br /> and including the same final line ending in ...ClassLoader.php on line 723. (different paths of course)</p>
+
+
+	<p>I have two web sites running in separate sub-directories, one works and one does not. I have tired to clear temp files check permissions, etc. and nothing seems to help.</p>
+
+
+	<p>Website does not work, backend does not work, and install does not work. Same Error on all three.</p>
+
+
+	<p>I think this problem may still persist, maybe there is another cause, it's not permissions, I have checked against the running site, and I have relaxed permissions on the site that is not running, no change.</p>
+
+
+	<p>Ideas to check?</p></div>
+  </div>
+  
+
+  <div id="change-215870" class="journal has-notes">
+    <h4><a href="57463.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-07" title="2014-05-07 10:10">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-215870-notes"><p>Hi Brian,</p>
+
+
+	<p>you can take a look into the Locker.php itself. The function acquireExclusiveLock seems to return FALSE. As the Locker for ClassLoader uses LOCKING_METHOD_SIMPLE you only need to check this part.</p>
+
+
+	<p>At first it tries to identify lockfiles which are stale (this means not used anymore but not removed ... why ever this happens). In the second part (the for loop) it tries to create the look file until it works or a timeout happens.</p>
+
+
+	<p>You may try to remove the @ before the fopen and check your log files why this fopen fails.</p></div>
+  </div>
+  
+
+  <div id="change-218874" class="journal has-notes">
+    <h4><a href="57463.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36575">Alexander Schnitzler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-01" title="2014-06-01 15:20">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-218874-notes"><p>I just had the same issue with a fresh cloned TYPO3 6.2.3 source, running typo3/sysext/install/Start/Install.php from cli.</p>
+
+
+	<p>I want to build a CI environment for testing extensions, so I need to to call the Install.php to have a PackageStates.php created by the system. Anyway, it's not possible to run Install.php from cli. The issue with the lock file is, that it is created once and the Locker.php tries to create (fopen(... ,'x')) it a second time.</p>
+
+
+	<p>So I do not consider this issue solved.</p></div>
+  </div>
+  
+
+  <div id="change-218887" class="journal has-notes">
+    <h4><a href="57463.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-01" title="2014-06-01 20:45">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-218887-notes"><p>The issue here is that the class loader fails without a lock, but actually it should just move on and skip writing cache entries.</p></div>
+  </div>
+  
+
+  <div id="change-226799" class="journal has-notes">
+    <h4><a href="57463.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/32414">Philipp Idler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-07" title="2014-08-07 22:12">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-226799-notes"><p>I have had this issue too. Tried to upgrade a 6.2.1 installation to 6.2.4.<br />After updating php from 5.3.x to 5.4.x everything works as expected.<br />Perhaps this helps.</p></div>
+  </div>
+  
+
+  <div id="change-227317" class="journal has-notes">
+    <h4><a href="57463.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2839">Stephan Bauer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-15" title="2014-08-15 20:03">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-227317-notes"><p>Same problem here:<br />Fatal error: Uncaught exception 'RuntimeException' with message 'Could not acquire lock for ClassLoader cache creation.' in /data/www/web7/htdocs/secure-registration/typo3_src-6.2.5beta/typo3/sysext/core/Classes/Core/ClassLoader.php:710</p></div>
+  </div>
+  
+
+  <div id="change-227345" class="journal has-notes">
+    <h4><a href="57463.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-17" title="2014-08-17 12:14">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-227345-notes"><p>As I already wrote, please check following and report back:</p>
+
+
+<pre>
+you can take a look into the Locker.php itself. The function acquireExclusiveLock seems to return FALSE. As the Locker for ClassLoader uses LOCKING_METHOD_SIMPLE you only need to check this part.
+
+At first it tries to identify lockfiles which are stale (this means not used anymore but not removed ... why ever this happens). In the second part (the for loop) it tries to create the look file until it works or a timeout happens.
+
+You may try to remove the @ before the fopen and check your log files why this fopen fails.
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-227458" class="journal has-notes">
+    <h4><a href="57463.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40124">Roman Eberle</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-18" title="2014-08-18 17:30">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-227458-notes"><p>i'm having this bug with <br />TYPO3 6.2.4 (no patches)<br />Apache/2.4.9 (Fedora) PHP/5.5.15</p>
+
+
+	<p>UPDATE:<br />bug resolved here, turned out to be extension related.<br />rebuilt extension "from scratch", based on femanagerextended_0.1.2<br />changed that may have helped resolving bug:<br />- db-field int(16) changed to varchar(255) in ext_tables.sql<br />- fixed wrong $TCA table index in ext_tables.php<br />- removed Configuration/Typoscript/setup.txt (using ext_typoscript_setup.txt)<br />- created empty folder Classes/Domain/Repository<br />=> conclusion: typoscript error? wrong TCA config? ...</p></div>
+  </div>
+  
+
+  <div id="change-228442" class="journal has-notes">
+    <h4><a href="57463.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39414">Dieter Porth</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-30" title="2014-08-30 21:17">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228442-notes"><p>I get this error too - with TYPO3 6.2.3.<br />I think, I changed an entry in the installtool and then the error occur. Nothing works. No backend, No Installtool, No frontend.</p>
+
+
+	<p>I tried the typical actions.</p>
+
+
+	<p>Hours later: <br />I deleted the file  "PackageStates.php" in the directory "typo3conf". After that the system works fine.</p>
+
+
+	<p>I don't know, if that was the location of the error. <br />I can't check it. I don't make a copy of that file while the error occurs the first time.</p>
+
+
+	<p>Dieter</p></div>
+  </div>
+  
+
+  <div id="change-228927" class="journal has-notes">
+    <h4><a href="57463.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40841">Hendrik Effing</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-08" title="2014-09-08 12:15">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228927-notes"><p>I had the same error today, TYPO3 6.2.4 on PHP 5.3.29, no FE, no BE Login possible, Exception like described. Tried different solutions, the last one seemed to solve the problem for me: rm all files in typo3temp/locks.</p>
+
+
+	<p>Maybe this helps to find a solution.</p>
+
+
+	<p>Hendrik</p></div>
+  </div>
+  
+
+  <div id="change-229393" class="journal has-notes">
+    <h4><a href="57463.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-12" title="2014-09-12 09:32">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-229393-notes"><p>I'm listening in this issue, but yet I miss more information. Words like "Tried different solutions" and "I tried the typical actions." do not help me to get to the point, why does it happen.</p>
+
+
+	<p>Cores ClassLoader will do following (in simple words):</p>
+
+
+	<p>- If class cache needs to be rewritten, a lock will be requested. In TYPO3 6.2 only SimpleFile lock will be used by ClassLoader.<br />- The SimpleFile lock creates a file in typo3temp/locks<br />- After this could be done, the class cache will be generated<br />- Afterwards SimpleFile is requested to release this lock</p>
+
+
+	<p>- Requests (read and write) which come in while the lock exists will wait some time till the exception is thrown.<br />- If the lock file is older then PHPs max_execution_time (or 120 seconds if not set) it will be removed automatically.</p>
+
+
+	<p>Nitpicks in this handling are multi server TYPO3 CMS systems, which use NFS (or similar) for their typo3temp, as the file existence or directory content is mostly cached inside the NFS client, which leads to unpredictable results for the lock file.</p>
+
+
+	<p>There is a blueprint to change the source code of the lock file handling as the yet existing source code isn't good manageable for developers. But the rewrite won't help us, why this issue happen.</p>
+
+
+	<p>So there are multiple questions:</p>
+
+
+	<p>- Why does the class loader do not end building his class cache and releases the lock? Does it fatal with an exception and forget to clean up the lock?<br />- Why is the lock not removed automatically? It seams some of you users try it a longer time.<br />- Can it be that the lock file was generated from another user or does it maybe have wrong permissions for the web user to remove it later? (First call from CLI second from Webserver?)<br />- Does this happens only on upgrade of your TYPO3 CMS system? If yes, what are the last things you did?</p>
+
+
+	<p>Hopefully this helps someone to find the issue on his system or can describe a reproduceable way for me.</p></div>
+  </div>
+  
+
+  <div id="change-231189" class="journal has-notes">
+    <h4><a href="57463.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-26" title="2014-09-26 09:22">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231189-notes"><p>First time I got a way, the described issue can happen. Please see the new report for this: <a href="61900.html" class="issue status-7 priority-2 closed child" title="ClassLoader: Stalled Lock file if ClassLoader caching fails. (Resolved)">#61900</a></p></div>
+  </div>
+  
+
+  <div id="change-234162" class="journal has-notes">
+    <h4><a href="57463.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3001">Kurt Gusbeth</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-28" title="2014-10-28 15:53">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-234162-notes"><p>I got the same error message after uploading an extension in Typo3 6.2.6.</p></div>
+  </div>
+  
+
+  <div id="change-235321" class="journal has-notes">
+    <h4><a href="57463.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/850">Florian Seirer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-06" title="2014-11-06 09:35">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235321-notes"><p>Same error here.<br />FE dead, BE dead, Install Tool dead after going from 6.2.4 to 6.2.6.</p>
+
+
+	<p>I also saw that all currently installed core extensions were missing from /typo3conf/packageStates.php. <br />The file started with the local extensions, and then all the not installed extensions.<br />No wonder nothing was working.</p>
+
+
+	<p>But even a working packageStates.php which I copied from the 6.2.4 backup didn't solve the problem on 6.2.6, so I had to revert back to 6.2.4.</p></div>
+  </div>
+  
+
+  <div id="change-235327" class="journal has-notes">
+    <h4><a href="57463.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-06" title="2014-11-06 10:39">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235327-notes"><p>@Florian</p>
+
+
+	<p>As the PackageStates.php isn't touched in the process of creating ClassLoader cache, it seams something else is broken on your system.</p>
+
+
+	<p>And "dead" doesn't help me to understand your issue, I need error messages from the log files.</p></div>
+  </div>
+  
+
+  <div id="change-235368" class="journal has-notes">
+    <h4><a href="57463.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/850">Florian Seirer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-06" title="2014-11-06 15:05">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235368-notes"><p>I just tried this again on another installation, and the end result is the same (fatal error in FE and BE, packageStates.php missing active core extensions).<br />But the error messages changed, so I will add a post to <a class="external" href="57120.html">https://forge.typo3.org/issues/57120</a> instead.</p></div>
+  </div>
+  
+
+  <div id="change-235433" class="journal has-notes">
+    <h4><a href="57463.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-07" title="2014-11-07 09:29">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235433-notes"><p>@Florian</p>
+
+
+	<p>That looks like the issue which leads you to this issue. It sounds like you need to clear opcode cache, after changing the symlink.</p></div>
+  </div>
+  
+
+  <div id="change-235481" class="journal has-notes">
+    <h4><a href="57463.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/41056">Enrico Noack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-07" title="2014-11-07 20:32">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235481-notes"><p>I got the same error after installing some extensions (pt_extbase, pt_extlist). I tried to resolve that by patching with <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/32982/">https://review.typo3.org/#/c/32982/</a> but it still happens.<br />Typo3 6.2.6</p>
+
+
+	<p>Here the censored Stacktrace<br /><pre>
+06.11.2014 21:13:39 [url]  FastCGI: "[...]/htdocs/neu_waldhoehe/typo3/ajax.php" aborted: incomplete headers (0 bytes) received from server after 60 sec, referer: http://[url]/typo3/backend.php
+06.11.2014 21:14:09 [url]  PHP Fatal error:  Uncaught exception 'RuntimeException' with message 'Could not acquire lock for ClassLoader cache creation.' in [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Core/ClassLoader.php:718, referer: http://[url]/typo3/backend.php
+06.11.2014 21:14:09 [url]  Stack trace:, referer: http://[url]/typo3/backend.php
+06.11.2014 21:14:09 [url]  #0 [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Core/ClassLoader.php(232): TYPO3\\CMS\\Core\\Core\\ClassLoader-&gt;acquireLock(), referer: http://[url]/typo3/backend.php
+06.11.2014 21:14:09 [url]  #1 [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Core/ClassLoader.php(169): TYPO3\\CMS\\Core\\Core\\ClassLoader-&gt;buildCachedClassLoadingInformation('typo3_cms_core_...', 'TYPO3\\CMS\\Core\\...'), referer: http://[url]/typo3/backend.php
+06.11.2014 21:14:09 [url]  #2 [internal function]: TYPO3\\CMS\\Core\\Core\\ClassLoader-&gt;loadClass('TYPO3\\CMS\\Core\\...'), referer: http://[url]/typo3/backend.php
+06.11.2014 21:14:09 [url]  #3 [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/ext_localconf.php(11): spl_autoload_call('TYPO3\\CMS\\Core\\...'), referer: http://[url]/typo3/backend.php
+06.11.2014 21:14:09 [url]  #4 [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Utility/ExtensionManagementUtility.php(1529): require('/mnt/webi/b0/29...'), referer: http://[url]/typo3/backend.php
+06.11.2014 21:14:09 [url]  #5 [...]/htdocs/typo3_src-6.2.6/typo3/sys in [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Core/ClassLoader.php on line 718, referer: http://[url]/typo3/backend.php
+06.11.2014 21:15:09 [url]  PHP Fatal error:  Uncaught exception 'RuntimeException' with message 'Could not acquire lock for ClassLoader cache creation.' in [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Core/ClassLoader.php:718, referer: http://[url]/typo3/backend.php
+06.11.2014 21:15:09 [url]  Stack trace:, referer: http://[url]/typo3/backend.php
+06.11.2014 21:15:09 [url]  #0 [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Core/ClassLoader.php(232): TYPO3\\CMS\\Core\\Core\\ClassLoader-&gt;acquireLock(), referer: http://[url]/typo3/backend.php
+06.11.2014 21:15:09 [url]  #1 [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Core/ClassLoader.php(169): TYPO3\\CMS\\Core\\Core\\ClassLoader-&gt;buildCachedClassLoadingInformation('typo3_cms_core_...', 'TYPO3\\CMS\\Core\\...'), referer: http://[url]/typo3/backend.php
+06.11.2014 21:15:09 [url]  #2 [internal function]: TYPO3\\CMS\\Core\\Core\\ClassLoader-&gt;loadClass('TYPO3\\CMS\\Core\\...'), referer: http://[url]/typo3/backend.php
+06.11.2014 21:15:09 [url]  #3 [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/ext_localconf.php(11): spl_autoload_call('TYPO3\\CMS\\Core\\...'), referer: http://[url]/typo3/backend.php
+06.11.2014 21:15:09 [url]  #4 [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Utility/ExtensionManagementUtility.php(1529): require('/mnt/webi/b0/29...'), referer: http://[url]/typo3/backend.php
+06.11.2014 21:15:09 [url]  #5 [...]/htdocs/typo3_src-6.2.6/typo3/sys in [...]/htdocs/typo3_src-6.2.6/typo3/sysext/core/Classes/Core/ClassLoader.php on line 718, referer: http://[url]/typo3/backend.php
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-235493" class="journal has-notes">
+    <h4><a href="57463.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-07" title="2014-11-07 21:35">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235493-notes"><p>@Enrico</p>
+
+
+	<p>The patch doesn't help after the issue already happened. But please take a look into your logfiles and search for the issue which happened while installing the extensions. This should be shortly before the error about the lock file.</p></div>
+  </div>
+  
+
+  <div id="change-235624" class="journal has-notes">
+    <h4><a href="57463.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/41056">Enrico Noack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-09" title="2014-11-09 10:05">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235624-notes"><p>@Alexander</p>
+
+
+	<p>Ther error before was<br /><pre>
+PHP Fatal error:  Class 'template' not found in [...]/htdocs/waldhoehe/t3lib/class.t3lib_div.php on line 4847, referer:[url]/typo3/backend.php
+</pre></p>
+
+
+	<p>but i dont think that one is related to the bug.</p>
+
+
+	<p>I will try to reproduce the error with deleted errorlog and will post the result here shortly.</p></div>
+  </div>
+  
+
+  <div id="change-235928" class="journal has-notes">
+    <h4><a href="57463.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4161">Markus Günther</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 11:11">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235928-notes"><p>I also got this error today after a provision of my vagrant machine ... The comment of Alex helped me alot. In typo3temp/lock a file already existed and so the error came up.</p>
+
+
+	<p>It is not much information, but maybe it helps a bit.</p>
+
+
+<pre>
+PHP Warning:  fopen(/var/www/test.dev/typo3temp/locks/0df7b553fc410fe7418c41d6290d81c6): failed to open stream: File exists in /var/www/test.dev/typo3_src-patched/typo3/sysext/core/Classes/Locking/Locker.php on line 266
+</pre></div>
+  </div>
+  
+
+  <div id="change-235935" class="journal has-notes">
+    <h4><a href="57463.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-12" title="2014-11-12 12:03">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235935-notes"><p>@Markus Günther</p>
+
+
+	<p>Thanks, but this don't help, there must be something before that message. ;)</p></div>
+  </div>
+  
+
+  <div id="change-239861" class="journal has-notes">
+    <h4><a href="57463.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3240">David Bruchmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-11" title="2014-12-11 09:19">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-239861-notes"><p>Trying to update from 4.5.37 to 6.2.9 I get the same error after disabling incompatible extensions.<br />As 6.2.9 is not yet so old it seems any bugfixes never found their way in the new version.</p>
+
+
+	<p>After deleting the lock-file in typo3temp/locks I can proceed now.</p></div>
+  </div>
+  
+
+  <div id="change-250060" class="journal has-notes has-details">
+    <h4><a href="57463.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39145">TSniper no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-17" title="2015-02-17 13:36">6 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/28470/2015-02-17_13-35-46.jpg">2015-02-17_13-35-46.jpg</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-250060-notes"><p>Hello,</p>
+
+
+	<p>i always have this issue after a new fresh install of 6.2.9 (download pre-distribution) and get to the extension manager. any help ?</p>
+
+
+	<p>Thanks,<br />best regards</p></div>
+  </div>
+  
+
+  <div id="change-250061" class="journal has-notes">
+    <h4><a href="57463.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39340">Marc Willmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-17" title="2015-02-17 13:39">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250061-notes"><p>TSniper - any NFS involved in your setup? I have solved this issue for my setup by do not using NFS for typo3temp anymore... seems to be a race condition bug which is only relevant in some NFS (or similar) setups...</p></div>
+  </div>
+  
+
+  <div id="change-250064" class="journal has-notes">
+    <h4><a href="57463.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-17" title="2015-02-17 14:05">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250064-notes"><p>Since integration of <a href="61900.html" class="issue status-7 priority-2 closed child" title="ClassLoader: Stalled Lock file if ClassLoader caching fails. (Resolved)">#61900</a> in 6.2.7 the lock file should be removed also after a crash while generating the cache.</p>
+
+
+	<p>So the question would be, what happened before so that the lock file wasn't removed. Please check your logfiles and check your typo3temp FS. Please also take a look into comment 15 in this issue.</p></div>
+  </div>
+  
+
+  <div id="change-250065" class="journal has-notes">
+    <h4><a href="57463.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39145">TSniper no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-17" title="2015-02-17 14:09">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250065-notes"><p>Marc Willmann wrote:</p>
+
+
+<blockquote>
+
+	<p>TSniper - any NFS involved in your setup? I have solved this issue for my setup by do not using NFS for typo3temp anymore... seems to be a race condition bug which is only relevant in some NFS (or similar) setups...</p>
+
+
+</blockquote>
+
+	<p>I'm using it under windows7 wamp 2.5 apache 2.4.9.</p></div>
+  </div>
+  
+
+  <div id="change-250236" class="journal has-notes">
+    <h4><a href="57463.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/494">Sebastian Fuchs</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-19" title="2015-02-19 14:08">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250236-notes"><p>Same problem here. Fresh installation of TYPO3 6.2.9 (php 5.3.x). <br />The error message comes during work with extension manager. <br />We could fix this by disabling suhosin completly for this vhost (before suhosin was running with exec etc. enabled).</p></div>
+  </div>
+  
+
+  <div id="change-250238" class="journal has-notes">
+    <h4><a href="57463.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-19" title="2015-02-19 14:27">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250238-notes"><p>Yes, nice that this issue happens to you. But I need other information. Please read my comments, especially comment 15.</p></div>
+  </div>
+  
+
+  <div id="change-250242" class="journal has-notes">
+    <h4><a href="57463.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39145">TSniper no-lastname-given</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-19" title="2015-02-19 14:39">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250242-notes"><p>Alexander Opitz wrote:</p>
+
+
+<blockquote>
+
+	<p>Yes, nice that this issue happens to you. But I need other information. Please read my comments, especially comment 15.</p>
+
+
+</blockquote>
+
+	<p>Hi Alexander,</p>
+
+
+	<p>Thank for the explication, but i didn't understand this "Nitpicks in this handling are multi server TYPO3 CMS systems, which use NFS (or similar) for their typo3temp, as the file existence or directory content is mostly cached inside the NFS client, which leads to unpredictable results for the lock file.". <br />I'm just using the latest wamp version 2.5 x64 and a fresh install typo3 6.2.9. just had clicked to choose the pre-installed t3bootstrap package to install it.</p>
+
+
+	<p>best greets</p></div>
+  </div>
+  
+
+  <div id="change-250247" class="journal has-notes">
+    <h4><a href="57463.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40975">Lorenzo Kappeler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-19" title="2015-02-19 15:05">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250247-notes"><p>I'm currently running into the same Issue. <br />According to <a class="external" href="../../external.html?link=http://wiki.typo3.org/Autoload">http://wiki.typo3.org/Autoload</a> I accidentally implemented the Autoloader for a Extension with Namespaces.<br />This is not necessary at all because as you can read at <a class="external" href="../../external.html?link=http://docs.typo3.org/typo3cms/CoreApiReference/ApiOverview/Autoloading/Index.html">http://docs.typo3.org/typo3cms/CoreApiReference/ApiOverview/Autoloading/Index.html</a></p>
+
+
+<blockquote>
+
+	<p>The examples below are related to non-namespaced classes. When using namespaces, autoloading will happen without any extra effort on your part.</p>
+
+
+</blockquote>
+
+	<p>Hope this helps you to reproduce the Error.</p>
+
+
+	<p>System:<br />TYPO3 6.2.6<br />Apache/2.2.15 (Unix)<br />Linux (CentOS) 2.6.32-431.23.3.el6.x86_64<br />Native Filesystem<br />Apche-User can write cache files and is owner of the written/created files</p></div>
+  </div>
+  
+
+  <div id="change-250251" class="journal has-notes">
+    <h4><a href="57463.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-19" title="2015-02-19 15:50">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250251-notes"><p>@TSniper</p>
+
+
+	<p>On windows I think you won't have NFS, so this won't be your issue. But please, take a look into your error logfiles to see, what happens before this error occurs and why the lock file isn't removed.</p>
+
+
+	<p>@Lorenzo</p>
+
+
+	<p>The problem is not writing/creating the cache files. The issue is, why isn't the lock removed after the real error occurred. Please take a look into your log files, if there is something which may help me.</p></div>
+  </div>
+  
+
+  <div id="change-250257" class="journal has-notes">
+    <h4><a href="57463.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40975">Lorenzo Kappeler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-19" title="2015-02-19 16:26">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250257-notes"><p>@Alexander</p>
+
+
+	<p>The PHP- and Access-Log files says nothing about the error and the Error-Log prints the same as already posted in the Ticket description.<br />Thats why i didn't posted the Stack Trace. My Intention was, according to <a href="15.html" class="issue status-9 priority-2 closed" title="Test selector should contain the last selected test after run (Closed)">#15</a> describe a Way to reproduce the Error.</p></div>
+  </div>
+  
+
+  <div id="change-250266" class="journal has-notes">
+    <h4><a href="57463.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-19" title="2015-02-19 18:01">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250266-notes"><p>But we need to find the issue, why the lock file doesn't get removed. We don't need to play around if the file isn't removed.</p></div>
+  </div>
+  
+
+  <div id="change-250267" class="journal has-notes">
+    <h4><a href="57463.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-19" title="2015-02-19 18:02">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250267-notes"><p>For example, if PHP dies unexpectedly you may find this in /var/log/messages ... but then we can't do anything against this.</p></div>
+  </div>
+  
+
+  <div id="change-252240" class="journal has-notes">
+    <h4><a href="57463.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/30341">Arek van Schaijk</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-11" title="2015-03-11 11:23">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252240-notes"><p>nvm</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-57463-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/57463.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="57463.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/57463 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:39:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

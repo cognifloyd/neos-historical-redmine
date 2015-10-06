@@ -1,0 +1,976 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/59216 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:41:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #59216: Image dimensions (width/height) are 0 when not scaled - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/59216.atom" rel="alternate" title="Core - Bug #59216: Image dimensions (width/height) are 0 when not scaled" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (6)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2016">Hartmut Steglich</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4002">Christian Ludwig</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-59216-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #59216</h2>
+
+<div class="issue status-9 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Image dimensions (width/height) are 0 when not scaled</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-30" title="2014-05-30 02:37">about 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-30" title="2015-01-30 10:05">6 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-05-30</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2966">7.1 (Cleanup)</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td>On Location Sprint</td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I have images inserted as media-references in page-records and use level-sliding for header-images with the below attached TypoScript. My source-images currently already have a width of 620 pixels, but could be larger would should be resized to maxW=620.</p>
+
+
+	<ul>
+	<li>If source-image is larger (will be resized) all is fine.</li>
+		<li>If source-image already has the correct size, the img-tag will point to the original file - but width/height will be zero:
+
+	<p>&lt;img width="0" height="0" border="0" alt="" src="fileadmin/someimg.jpg"&gt;</p></li>
+	</ul>
+
+
+	<ul>
+	<li>When I clear db-table sys_file_metadata and refresh the page, the img-width/height are added to the img-tag correctly.</li>
+		<li>When clearing the frontend-cache again, the size is zero again.</li>
+	</ul>
+
+
+	<p>Experienced with TYPO3 CMS 6.2.3, which afaik should already have all fixes from <a href="46020.html" class="issue status-9 priority-1 closed" title="Image size is 0 when not scaled (Closed)">#46020</a> etc.</p>
+
+
+<pre>
+obj.headerimage = FILES
+obj.headerimage {
+  references {
+    table = pages
+    #uid.data = leveluid:-1, slide
+    #fieldName = media
+    data = levelmedia:-1, slide
+  }
+  renderObj = IMAGE
+  renderObj {
+    file.import.data = file:current:publicUrl
+    file.maxW = 620
+  }
+}
+</pre>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/26961/screenshot.jpg" class="icon icon-attachment">screenshot.jpg</a>  
+  
+  <span class="size">(268.2 kB)</span>
+  
+  
+    <span class="author">Harald Dolderer, 2014-06-18 17:47</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-11936">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="45922" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="45922.html" class="issue status-2 priority-1">Bug #45922</a>: image replacement, width and height are kept even i chang...
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2013-02-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11247">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="46020" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="46020.html" class="issue status-9 priority-1 closed">Bug #46020</a>: Image size is 0 when not scaled
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-03-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11937">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="46446" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="46446.html" class="issue status-4 priority-1">Bug #46446</a>: sys_file doesn&#39;t get updated
+</td>
+<td class="status">Needs Feedback</td>
+<td class="start_date">2013-03-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11938">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="52658" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="52658.html" class="issue status-10 priority-2 closed">Bug #52658</a>: Overriding image does not change the dimensions
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2013-10-10</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11939">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54533" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="54533.html" class="issue status-10 priority-2 closed">Bug #54533</a>: imgResource.noScale doesn&#39;t scale image tag
+</td>
+<td class="status">Rejected</td>
+<td class="start_date"></td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11940">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="58019" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="58019.html" class="issue status-10 priority-1 closed">Bug #58019</a>: FAL Indexer for broken files: Column &#39;width&#39; cannot be null
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-04-17</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11942">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="60215" /></td>
+<td class="subject">related to 
+    FAL Indexing - 
+    <a href="60215.html" class="issue status-6 priority-2">Bug #60215</a>: sys_file_processedfile with empty identifier and name fields
+</td>
+<td class="status">Under Review</td>
+<td class="start_date">2014-07-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11941">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62247" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62247.html" class="issue status-10 priority-2 closed">Bug #62247</a>: FAL: Uppercase File Extensions of Image cannot be displayed 
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-10-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11915">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62400" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62400.html" class="issue status-10 priority-2 closed">Bug #62400</a>: Lot of entries in sys_file_processed with name=NULL and i...
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-10-22</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11919">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="61181" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="61181.html" class="issue status-10 priority-1 closed">Bug #61181</a>: FAL: file maxW and maxH are ignored
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-08-25</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11932">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="44105" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="44105.html" class="issue status-9 priority-1 closed">Bug #44105</a>: Image size does not get updated
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2012-12-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/59216/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/59216/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=59216&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-218679" class="journal has-notes">
+    <h4><a href="59216.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-30" title="2014-05-30 02:42">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-218679-notes"><p>Workaround for the moment that works whether img needs to be scaled (processed) or not:</p>
+
+
+	<pre><code>renderObj = IMG_RESOURCE<br />  renderObj {<br />    file.import.data = file:current:publicUrl<br />    file.maxW = 620<br />    stdWrap.wrap = &amp;lt;img src="|" width="620"&amp;gt;<br />  }</code></pre></div>
+  </div>
+  
+
+  <div id="change-218714" class="journal has-notes">
+    <h4><a href="59216.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-30" title="2014-05-30 11:56">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-218714-notes"><p>AFAIK the fieldName property is required. Don't know if that is related though.</p></div>
+  </div>
+  
+
+  <div id="change-218715" class="journal has-notes">
+    <h4><a href="59216.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-30" title="2014-05-30 12:00">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-218715-notes"><p>Just found that I'm missing image-dimensions for other text-with-images as well. After clearing sys_file_metadata all is well, for a while.</p></div>
+  </div>
+  
+
+  <div id="change-218718" class="journal has-notes">
+    <h4><a href="59216.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-30" title="2014-05-30 12:04">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-218718-notes"><p>Clearing sys_file_metadata and running the scheduler-job "File Abstraction Layer: Extract metadata in storage" I get metadata written to the DB - but with 0x0 pixels. How come? :-(</p></div>
+  </div>
+  
+
+  <div id="change-218775" class="journal has-notes">
+    <h4><a href="59216.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-30" title="2014-05-30 17:36">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-218775-notes"><p>Are you using a local or remote storage?</p>
+
+
+	<p>Could test what for results getimagesize() give you for one of the files? As that is used the get the image dimensions.</p>
+
+
+	<p>See <a class="external" href="../../external.html?link=https://github.com/TYPO3/TYPO3.CMS/blob/master/typo3/sysext/core/Classes/Resource/Index/Indexer.php::extractRequiredMetaData()">https://github.com/TYPO3/TYPO3.CMS/blob/master/typo3/sysext/core/Classes/Resource/Index/Indexer.php::extractRequiredMetaData()</a></p></div>
+  </div>
+  
+
+  <div id="change-218776" class="journal has-details">
+    <h4><a href="59216.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-30" title="2014-05-30 17:37">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-220653" class="journal has-notes">
+    <h4><a href="59216.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 07:09">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220653-notes"><p>the link above is unfortunately broken.<br />Same problem with image dimensions 0 for me.<br />We are using a local storage.</p></div>
+  </div>
+  
+
+  <div id="change-220659" class="journal has-notes">
+    <h4><a href="59216.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 09:08">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220659-notes"><p>The link should be: <a class="external" href="../../external.html?link=https://github.com/TYPO3/TYPO3.CMS/blob/master/typo3/sysext/core/Classes/Resource/Index/Indexer.php#L220">https://github.com/TYPO3/TYPO3.CMS/blob/master/typo3/sysext/core/Classes/Resource/Index/Indexer.php#L220</a></p></div>
+  </div>
+  
+
+  <div id="change-220709" class="journal has-notes">
+    <h4><a href="59216.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 14:13">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220709-notes"><p>@Harald, are the dimensions 0 in both database (sys_file_metadate) and in the tag (html source) or only in the tag?</p>
+
+
+	<p>Btw, please do not use:<br /><pre>
+  file.import.data = file:current:publicUrl
+</pre></p>
+
+
+	<p>but:<br /><pre>
+  file.import.data = file:current:originalUid // file:current:uid
+</pre></p>
+
+
+	<p>The the current file record is used. Else the file is again fetched by identifier the old way</p></div>
+  </div>
+  
+
+  <div id="change-220710" class="journal has-notes">
+    <h4><a href="59216.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 14:40">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220710-notes"><p>@Frans: width and height are 0 in the table sys_file_metadata and in the html source code.<br />Gererating metadata with sheduler Task fills the table also with height and width equal 0</p>
+
+
+	<p>Your change in line file.import.data seems to solve the problem.<br />Thank you for your quick responce.</p></div>
+  </div>
+  
+
+  <div id="change-220716" class="journal has-notes">
+    <h4><a href="59216.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 14:57">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220716-notes"><p>The metadata are only updated by scheduler if lastmodification date of file is newer than last_indexed of the corresponding sys_file record.</p>
+
+
+	<p>If you upload a new file in BE are the width and height of the new created sys_file_metadata record filled?</p></div>
+  </div>
+  
+
+  <div id="change-220718" class="journal has-notes">
+    <h4><a href="59216.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 15:06">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220718-notes"><p>too early pleased.<br />clearing the cache next time same again.</p></div>
+  </div>
+  
+
+  <div id="change-220722" class="journal has-notes">
+    <h4><a href="59216.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 15:56">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220722-notes"><p>Are you sure the width and height of sys_file_metadata are empty?</p>
+
+
+	<p>Did you do a clean install of 6.2 or an update from 6.0/6.1.</p></div>
+  </div>
+  
+
+  <div id="change-220732" class="journal has-notes has-details">
+    <h4><a href="59216.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 17:47">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/26961/screenshot.jpg">screenshot.jpg</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-220732-notes"><p>yes I'm sure.<br />See screenshot.<br />It's an update from 6.1.9</p></div>
+  </div>
+  
+
+  <div id="change-220734" class="journal has-notes">
+    <h4><a href="59216.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 18:05">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220734-notes"><p>Did you run all upgrade wizards in install tool and remove all obsolete columns from sys_file etc?</p></div>
+  </div>
+  
+
+  <div id="change-220736" class="journal has-notes">
+    <h4><a href="59216.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 18:32">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220736-notes"><p>yes, I tried, but there is another bug which prevents the update manager to finish.<br /><a class="external" href="59567.html">https://forge.typo3.org/issues/59567</a></p></div>
+  </div>
+  
+
+  <div id="change-220737" class="journal has-notes">
+    <h4><a href="59216.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 19:03">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220737-notes"><p>Could you check if the width and height column are still present in sys_file. That could cause your problems.</p></div>
+  </div>
+  
+
+  <div id="change-220744" class="journal has-notes">
+    <h4><a href="59216.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 20:03">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220744-notes"><p>that's it. This columns are present in 6.1 and are missing in 6.2.<br />May I create this columns by hand or is there another solution?</p></div>
+  </div>
+  
+
+  <div id="change-220745" class="journal has-notes">
+    <h4><a href="59216.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 20:13">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220745-notes"><p>see my comments for <a href="59567.html" class="issue status-1 priority-1" title="Upgrade Wizard stops at ALTER TABLE index_fulltext ENGINE=InnoDB;  (New)">#59567</a> maybe you can proceed the upgrade then.</p>
+
+
+	<p>If you remove the columns by hand you lose all width and height values that are already in DB.</p>
+
+
+	<p>Btw. Columns should be missing in 6.2. These are move from sys_file to sys_file_metadata</p></div>
+  </div>
+  
+
+  <div id="change-220748" class="journal has-notes">
+    <h4><a href="59216.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 20:22">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220748-notes"><p>The columns are present in sys_file in 6.1 and will be migrated over to the new columns in 6.2 on the sys_file_metadata table.<br />So you don't need these columns anymore in 6.2 after they've been migrated.</p>
+
+
+	<p>It is important that your run the migration wizards right after switching the TYPO3 sources.</p></div>
+  </div>
+  
+
+  <div id="change-220752" class="journal has-notes">
+    <h4><a href="59216.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 20:46">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220752-notes"><p>o.k,removing indexed search solves <a href="59567.html" class="issue status-1 priority-1" title="Upgrade Wizard stops at ALTER TABLE index_fulltext ENGINE=InnoDB;  (New)">#59567</a>.<br />The upgrade manager is now running till the end.<br />But the main problem is still available.<br />Between Upgrading to 6.2.3 and now no sites and no content was created.<br />Nothing was installed in addition.<br />You think installed indexed search interferes the update?</p></div>
+  </div>
+  
+
+  <div id="change-220753" class="journal has-notes">
+    <h4><a href="59216.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 20:52">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220753-notes"><p>The install tool database analyser doesn't show any columns to be deleted?</p>
+
+
+	<p>I find it strange that when you upload a new image the width and height in the new sys_file_metadata record are not set.</p></div>
+  </div>
+  
+
+  <div id="change-220755" class="journal has-notes">
+    <h4><a href="59216.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 21:24">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220755-notes"><p>I didn't say this.<br />New uploaded images are displayed in the right way, but it is impossible for me to upload many hundred images again and connect them with the content elements or news records. The problem is: Images which are displayed in a right way in 6.1. have the dimensions 0  after updating to 6.2. <br />I think I try the update tomorrow without indexed search again and report here again.</p></div>
+  </div>
+  
+
+  <div id="change-220759" class="journal has-notes">
+    <h4><a href="59216.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-18" title="2014-06-18 22:09">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220759-notes"><p>Oh, I understood that also for new uploaded files width and height where 0.</p>
+
+
+	<p>Have a look ar <a href="46020.html" class="issue status-9 priority-1 closed" title="Image size is 0 when not scaled (Closed)">#46020</a> for some hint how to get width and height filled again.</p>
+
+
+	<p>But I think if you clear the column last_indexed of sys_file and run the fal indexer scheduler task (indexer not the metadata task) the width and height values of sys_file_metadata should be set/filled.</p></div>
+  </div>
+  
+
+  <div id="change-220797" class="journal has-notes">
+    <h4><a href="59216.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-19" title="2014-06-19 13:32">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220797-notes"><p>unfortunately no.<br />importinig 6.1 database again and running the Upgrade withard again after patch7 from <a href="57495.html" class="issue status-7 priority-2 closed" title="Metadata db insert fails due to NULL value (Resolved)">#57495</a> is installed solved the issue.<br />Now I am ready for a holiday. Thank's a lot for your help.<br />See also <a href="57545.html" class="issue status-7 priority-2 closed" title="Missing metadata entry impossible to regenerate. (Resolved)">#57545</a></p></div>
+  </div>
+  
+
+  <div id="change-220802" class="journal has-notes">
+    <h4><a href="59216.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-19" title="2014-06-19 15:08">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220802-notes"><p>So you weren't on latest version of 6.2?</p></div>
+  </div>
+  
+
+  <div id="change-220817" class="journal has-notes">
+    <h4><a href="59216.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/27447">Harald Dolderer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-19" title="2014-06-19 16:27">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220817-notes"><p>I was on latest version 6.2.3 but I made the update from 6.1.9 to 6.2.3 comletly new (with the obove mentioned patch7 installed). This solves my issue. After upgrade manager has run the file dimensions are available and the images are displayed in the right way.</p></div>
+  </div>
+  
+
+  <div id="change-234960" class="journal has-details">
+    <h4><a href="59216.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-03" title="2014-11-03 15:12">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>New</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-243376" class="journal has-details">
+    <h4><a href="59216.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-06" title="2015-01-06 13:40">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>7.1 (Cleanup)</i></li>
+      
+       <li><strong>Sprint Focus</strong> set to <i>On Location Sprint</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-244164" class="journal has-notes has-details">
+    <h4><a href="59216.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-11" title="2015-01-11 12:01">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>File Abstraction Layer (FAL)</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-244164-notes"><p>Steffen can this issue be closed?</p></div>
+  </div>
+  
+
+  <div id="change-244177" class="journal has-notes">
+    <h4><a href="59216.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-11" title="2015-01-11 12:37">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-244177-notes"><p>@Frans: I guess you meant me? I currently don't have the usecase at hand anymore, to easily test again against a recent version.</p></div>
+  </div>
+  
+
+  <div id="change-247472" class="journal has-details">
+    <h4><a href="59216.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1741">Fabien Udriot</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-30" title="2015-01-30 10:05">6 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-59216-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/59216.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="59216.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/59216 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:41:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

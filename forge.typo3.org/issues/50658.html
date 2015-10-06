@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/50658 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:12:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #50658: refactor ShellCommandService to have separated access to StdIn StdErr and StdOut - TYPO3.Surf - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/50658.atom" rel="alternate" title="TYPO3.Surf - Feature #50658: refactor ShellCommandService to have separated access to StdIn StdErr and StdOut" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Surf</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/news" class="news">News</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 current sorting-10">Packages</a><select onchange="window.location.href='/projects/'+this.value"><option value="extensions">- Select Subproject-</option><option  value="package-admin">Admin</option><option  value="package-aopbrowser">AOPBrowser</option><option  value="package-assigncaptcha">ASSIGNCAPTCHA</option><option  value="package-backporter">Backporter</option><option  value="package-browser">Browser</option><option  value="package-ciudadana">Cámara</option><option  value="package-cccoguestbook">ccc_guestbook</option><option  value="package-changelog">Changelog</option><option  value="package-calendar">Community.Calendar</option><option  value="package-conference">Conference Management</option><option  value="package-documentationbrowser">Documentation Browser</option><option  value="package-documentationhowto">Documentation Howto</option><option  value="package-facebookphpsdk">Facebook PhpSDK Integration</option><option  value="package-firephp">FirePHP</option><option  value="package-flowpackshop">Flow e-commerce platform</option><option  value="package-flow3installer">FLOW3 Installer Script</option><option  value="package-viewhelperincubator">Fluid - ViewHelper - Incubator</option><option  value="package-viewhelpertest">Fluid Viewhelpertest</option><option  value="package-fluidbackporter">FluidBackporter</option><option  value="package-foocontentmanagement">Foo.ContentManagement</option><option  value="package-forge">Forge</option><option  value="package-gettingstarted">Getting Started</option><option  value="package-guzzle">Guzzle</option><option  value="package-ice">ICE - Interface Construction Environment</option><option  value="package-fluidtest">Integration tests for Fluid</option><option  value="package-cas">Jasig CAS Client : SSO </option><option  value="package-ldap">LDAP Authentication</option><option  value="package-moc-vimeo">MOC.Vimeo</option><option  value="package-mongodb">MongoDB</option><option  value="package-mootools-packager">MooTools.Packager</option><option  value="package-nothing">Nothing</option><option  value="package-notificationcenter">NotificationCenter</option><option  value="package-opengraph">OpenGraph</option><option  value="package-packagebuilder">Package Builder</option><option  value="package-paymentpaypal">Payment.Paypal</option><option  value="package-persevere">Persevere Perstence Backend</option><option  value="package-phoenixv4sandbox">PhoenixV4Sandbox</option><option  value="package-phonebooktutorial">Phonebook Tutorial</option><option  value="package-phpcodesniffer">PHPCodeSniffer</option><option  value="package-phpcr">PHPCR</option><option  value="package-planettypo3">Planet TYPO3</option><option  value="package-typo3planet">Package -TYPO3.Planet</option><option  value="package-semantic">Semantic Web Integration (v5)</option><option  value="package-smarty">Smarty</option><option  value="package-solr">Solr</option><option  value="package-scm">Source Code Management</option><option  value="package-subversion">Subversion</option><option  value="package-symfony-component-domcrawler">Symfony.Component.DomCrawler</option><option  value="package-symfony-component-yaml">Symfony.Component.Yaml</option><option  value="package-testpackage">Test Package</option><option  value="package-testing">Testing</option><option  value="package-tseditordemo">TSEditorDemo</option><option  value="package-twitter">Twitter</option><option  value="package-t3tt">TYPO3 Transition Tool</option><option  value="package-typo3-blog">TYPO3.Blog</option><option  value="package-typo3-comments">TYPO3.Comments</option><option  value="package-typo3-couchdb">TYPO3.CouchDB</option><option  value="package-free">Typo3.eDurian.NET</option><option  value="package-typo3-elasticsearch">TYPO3.ElasticSearch</option><option  value="package-typo3-expose">TYPO3.Expose</option><option  value="package-typo3-extjs">TYPO3.ExtJS</option><option  value="package-typo3-faker">TYPO3.Faker</option><option  value="package-typo3-formbuilder">TYPO3.FormBuilder</option><option  value="package-typo3-formexample">TYPO3.FormExample</option><option  value="package-typo3-jobqueue-common">TYPO3.Jobqueue.Common</option><option  value="package-typo3-jobqueue-beanstalkd">TYPO3.Jobqueue.Beanstalkd</option><option  value="package-typo3-jobqueue-redis">TYPO3.Jobqueue.Redis</option><option  value="package-typo3-mailform">TYPO3.MailForm</option><option  value="package-t3pl">TYPO3.pl - Website</option><option  value="package-typo3-release">TYPO3.Release</option><option  value="package-soap">TYPO3.SOAP</option><option selected="selected" value="package-typo3-surf">TYPO3.Surf</option><option  value="package-typo3-swiftmailer">TYPO3.SwiftMailer</option><option  value="package-typo3-tcpdf">TYPO3.TcPdf</option><option  value="package-phoenixinstaller">TYPO3v5 Installer Script</option><option  value="package-viewhelpertestbackporter">Viewhelpertest Backporter</option><option  value="package-webdav">WebDAV</option><option  value="package-webservices">Webservices</option><option  value="package-widget">Widget</option><option  value="package-yaml">YAML</option><option  value="package-zerberuss">Zerberuss</option></select><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2125">Jonas Renggli</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-50658-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #50658</h2>
+
+<div class="issue status-2 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>refactor ShellCommandService to have separated access to StdIn StdErr and StdOut</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/activity?from=2013-08-01" title="2013-08-01 16:35">about 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/activity?from=2013-08-01" title="2013-08-01 16:38">about 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Accepted</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-08-01</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>make use of the symfony/process component to separate the stdErr and stdOut streams in the ShellCommandService</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-9172">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="49362" /></td>
+<td class="subject">related to 
+    TYPO3.Surf - 
+    <a href="49362.html" class="issue status-1 priority-2">Feature #49362</a>: pipe stdout to another process in ShellCommandService
+</td>
+<td class="status">New</td>
+<td class="start_date">2013-06-23</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/50658/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/50658/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=50658&amp;project_id=package-typo3-surf')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-176003" class="journal has-notes">
+    <h4><a href="50658.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/activity?from=2013-08-01" title="2013-08-01 16:37">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-176003-notes"><p>me me me ...</p></div>
+  </div>
+  
+
+  <div id="change-176004" class="journal has-notes">
+    <h4><a href="50658.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/activity?from=2013-08-01" title="2013-08-01 16:38">about 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-176004-notes"><p>great to see someone is willing to work on this.<br />Go for it. Looking forward to your change in gerrit.</p></div>
+  </div>
+  
+
+  <div id="change-176006" class="journal has-details">
+    <h4><a href="50658.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/239">Tobias Liebig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-surf/activity?from=2013-08-01" title="2013-08-01 16:38">about 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-50658-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/50658.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="50658.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/50658 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:12:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/54982 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:29:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #54982: Performance of eID-scripts in TYPO3 6.2 - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/54982.atom" rel="alternate" title="Core - Bug #54982: Performance of eID-scripts in TYPO3 6.2" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (7)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36785">Julian Wundrak</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1175">Andreas Dörler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4014">Daniel Ostmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/346">Ralf Hettinger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2661">Stephan Großberndt</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-54982-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #54982</h2>
+
+<div class="issue status-7 priority-2 closed child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="55070.html" class="issue status-2 priority-3 overdue parent">Epic #55070</a>: Workpackages</p><div><p><a href="55065.html" class="issue status-1 priority-3 overdue child parent">Epic #55065</a>: WP: Overall System Performance (Backend and Frontend)</p><div><p><a href="52949.html" class="issue status-7 priority-3 closed child parent">Bug #52949</a>: Speed decrease since 4.5</p><div><h3>Performance of eID-scripts in TYPO3 6.2</h3></div></div></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-14" title="2014-01-14 15:26">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 16:24">5 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-01-14</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Performance</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>Yes</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.4</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Compared to TYPO3 4.5 EId calls in TYPO3 6.2 are very slow.</p>
+
+
+	<p>I made some tests with a simple extension which only includes and executes a mostly empty php file via the Eid mechanism.<br />tests where made with apache bench on a Windows machine.</p>
+
+
+	<p>ab comandline was: ab.exe -n 1000 -c 8 "url"</p>
+
+
+<pre>
+APC off        
+requests/s
+TYPO3 6.2    20    
+TYPO3 4.5.30    79    
+
+APC On (shm size = 64m)    
+requests/s
+TYPO3 6.2    23    
+TYPO3 4.5.30    147
+</pre>
+
+	<p>you see that 6.2 is roundabout 4 times slower with APC disbled and more than 6 times slower with APC enabled.<br />If I analyze this calls with a profiler I see that most of the time is wasted in the classloader cache.</p>
+
+
+	<p>Possible solutions:</p>
+
+
+	<p>optimize the classloader performance.<br />move the Eid Hook to an earlier place in the bootstrapping sequence.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/27491/eid_test.zip" class="icon icon-attachment">eid_test.zip</a>  
+   - eID-Test-Extension with log files
+  <span class="size">(16.2 kB)</span>
+  
+  
+    <span class="author">Stephan Großberndt, 2014-09-07 17:32</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-199137" class="journal has-details">
+    <h4><a href="54982.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-14" title="2014-01-14 15:27">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>6.2.0</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-199171" class="journal has-details">
+    <h4><a href="54982.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-14" title="2014-01-14 16:37">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#52949</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-200051" class="journal has-details">
+    <h4><a href="54982.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-20" title="2014-01-20 16:32">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Performance</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-205040" class="journal has-notes">
+    <h4><a href="54982.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-24" title="2014-02-24 11:49">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205040-notes"><p>Hi Rupert,</p>
+
+
+	<p>I'd like to take a look into this. Can you please add your Test Extension as zip file here?</p>
+
+
+	<p>Also I'd like to know more about your used software versions of PHP, apc, apache.</p>
+
+
+	<p>I don't think it will work to move the Eid hook in bootstrapping before class loader, course else we wouldn't have classes. ;)</p></div>
+  </div>
+  
+
+  <div id="change-216519" class="journal has-notes has-details">
+    <h4><a href="54982.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-13" title="2014-05-13 12:50">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-216519-notes"><p>Is this still valid? A lot of things have been optimized with the help of the performance workpackage in February and March 2014...</p></div>
+  </div>
+  
+
+  <div id="change-228867" class="journal has-notes has-details">
+    <h4><a href="54982.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2661">Stephan Großberndt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-07" title="2014-09-07 17:32">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/27491/eid_test.zip">eid_test.zip</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-228867-notes"><p>This is still valid. Even if the difference is less now - still about 2 times slower with and without APC.</p>
+
+
+	<p>I have created a eID-Test-Extension with four very simple test cases:</p>
+
+
+<pre>
+Requests per second [#/sec] (mean)
+
+Version: Non-APC || APC
+</pre>
+
+<pre>
+/index.php?eID=eid_test
+4.5.36-dev: 81.87 || 95.25
+6.2.-dev: 42.51 || 49.87
+</pre>
+
+<pre>
+/index.php?eID=eid_test_db
+4.5.36-dev: 74.19 || 92.10
+6.2.-dev: 40.27 || 45.61
+</pre>
+
+<pre>
+/index.php?eID=eid_test_feuser
+4.5.36-dev: 45.05 || 74.01
+6.2.-dev: 30.28 || 37.88
+</pre>
+
+<pre>
+/index.php?eID=eid_test_db_feuser
+4.5.36-dev: 81.52 || 100.15
+6.2.-dev: 41.07 || 47.75
+</pre>
+
+	<p>The extension directory also contains a logs/eid_test.bat with the ab.exe calls and subdirectories logs/apc logs/non-apc with the full ab.exe reports</p>
+
+
+	<p>These tests were run with xampp-win32-1.8.2-6-VC9-installer.exe - Apache 2.4.10, MySQL 5.5.39, PHP 5.4.31<br />APC tests were run with php_apc-3.1.10-5.4-vc9-x86.zip - ts/php_apc.dll, apc.shm_size = "256M"</p>
+
+
+	<p>As you can see there is a huge performance penalty if you use tslib_eidtools::initFeUser() and do not use tslib_eidtools::connectDB() before!</p></div>
+  </div>
+  
+
+  <div id="change-228874" class="journal has-notes">
+    <h4><a href="54982.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2661">Stephan Großberndt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-07" title="2014-09-07 17:54">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228874-notes"><p>So I just found out it is not necessary since 6.1 to do tslib_eidtools::connectDB(), it just does \TYPO3\CMS\Core\Utility\GeneralUtility::logDeprecatedFunction in 6.1 and later.</p>
+
+
+	<p>So you may just ignore the _db tests, but anyway - the difference is there.</p>
+
+
+<pre>
+Time per request: [ms] (mean)
+
+Version: Non-APC || APC
+</pre>
+
+<pre>
+/index.php?eID=eid_test_feuser
+4.5.36-dev: 177.570 || 108.093
+6.2.-dev: 264.232 || 211.180
+</pre></div>
+  </div>
+  
+
+  <div id="change-229346" class="journal has-details">
+    <h4><a href="54982.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-11" title="2014-09-11 16:07">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Alexander Opitz</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>6.2.0</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-246649" class="journal has-notes">
+    <h4><a href="54982.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/889">Marcus Schwemer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-24" title="2015-01-24 16:22">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-246649-notes"><p>Hi,</p>
+
+
+	<p>we run into the same issue using the extension "powermail_cond".</p>
+
+
+	<p>It would be very good if there would be some progress.</p>
+
+
+	<p>TIA<br />Marcus</p></div>
+  </div>
+  
+
+  <div id="change-251458" class="journal has-notes has-details">
+    <h4><a href="54982.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-02" title="2015-03-02 20:26">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-251458-notes"><p>Please re-check the speed with 6.2.10. With the new classloading mechanism this should be faster now.</p></div>
+  </div>
+  
+
+  <div id="change-251479" class="journal has-notes has-details">
+    <h4><a href="54982.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2661">Stephan Großberndt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-02" title="2015-03-02 21:55">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Very bad EId Performance in TYPO3 6.2</i> to <i>Very bad eID-Performance in TYPO3 6.2</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-251479-notes"><p>On the same machine as before:</p>
+
+
+<pre>
+Requests per second [#/sec] (mean)
+
+Version:         No-Cache || APC   || PHP 5.5 opcache
+
+/index.php?eID=eid_test
+4.5.36-dev PHP 5.4: 81.87 || 95.25 ||   -
+6.2.4      PHP 5.4: 42.51 || 49.87 ||   -
+6.2.4      PHP 5.5: 61.30 ||   -   || 332.89
+6.2.11-dev PHP 5.5: 63.08 ||   -   || 361.36
+7.2-dev    PHP 5.5: 65.42 ||   -   || 426.56
+
+/index.php?eID=eid_test_feuser
+4.5.36-dev PHP 5.4: 45.05 || 74.01 ||   -
+6.2.4      PHP 5.4: 30.28 || 37.88 ||   -
+6.2.4      PHP 5.5: 44.34 ||   -   || 191.62
+6.2.11-dev PHP 5.5: 45.36 ||   -   || 200.01
+7.2-dev    PHP 5.5: 46.36 ||   -   || 216.01
+</pre>
+
+	<p>For 7.2-dev I used in eid_test_feuser.php<br /><pre>
+&lt;?php
+
+$feUserObj = TYPO3\CMS\Frontend\Utility\EidUtility::initFeUser(); // Initialize FE user object
+
+var_dump('eid_test_feuser!');
+</pre></p>
+
+
+	<p>Whereas one might conclude: Performance is marginally better in TYPO3, update PHP to 5.5 and <strong>use php_opcache</strong>!</p>
+
+
+	<p>Until now I used the standard debian PHP packages but now I consider using dotdeb.org...</p></div>
+  </div>
+  
+
+  <div id="change-251481" class="journal has-notes">
+    <h4><a href="54982.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-02" title="2015-03-02 22:16">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251481-notes"><p>Can you please add TYPO3 4.5 with PHP 5.5 for comparision?</p></div>
+  </div>
+  
+
+  <div id="change-251486" class="journal has-notes">
+    <h4><a href="54982.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2661">Stephan Großberndt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-02" title="2015-03-02 22:51">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251486-notes"><pre>
+Requests per second [#/sec] (mean)
+
+Version:         No-Cache || APC   || PHP 5.5 opcache
+
+/index.php?eID=eid_test
+4.5.36-dev PHP 5.4: 81.87 || 95.25 ||   -
+6.2.4      PHP 5.4: 42.51 || 49.87 ||   -
+
+4.5.41-dev PHP 5.5: 88.06 ||   -   || 175.04
+6.2.4      PHP 5.5: 61.30 ||   -   || 332.89
+6.2.11-dev PHP 5.5: 63.08 ||   -   || 361.36
+7.2-dev    PHP 5.5: 65.42 ||   -   || 426.56
+
+/index.php?eID=eid_test_feuser
+4.5.36-dev PHP 5.4: 45.05 || 74.01 ||   -
+6.2.4      PHP 5.4: 30.28 || 37.88 ||   -
+
+4.5.41-dev PHP 5.5: 53.34 ||   -   || 137.76
+6.2.4      PHP 5.5: 44.34 ||   -   || 191.62
+6.2.11-dev PHP 5.5: 45.36 ||   -   || 200.01
+7.2-dev    PHP 5.5: 46.36 ||   -   || 216.01
+</pre></div>
+  </div>
+  
+
+  <div id="change-251541" class="journal has-notes has-details">
+    <h4><a href="54982.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 14:40">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-251541-notes"><p>Neat results :)  I guess we can finally close this one then :)</p></div>
+  </div>
+  
+
+  <div id="change-251548" class="journal has-notes">
+    <h4><a href="54982.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 15:36">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251548-notes"><p>I'm a bit puzzled.</p>
+
+
+	<p>for PHP5.5 and /index.php?eID=eid_test</p>
+
+
+	<p>4.5 is 88:63 better then 6.2 without cache but with opcache 4.5 is 137:200 slower then 6.2? This means opcache fastens 6.2 so much better then 4.5? Really?</p></div>
+  </div>
+  
+
+  <div id="change-251558" class="journal has-notes has-details">
+    <h4><a href="54982.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2661">Stephan Großberndt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-03" title="2015-03-03 16:24">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Very bad eID-Performance in TYPO3 6.2</i> to <i>Performance of eID-scripts in TYPO3 6.2</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-251558-notes"><p>Those were my results. The test extension is in this ticket, scripts as well. Test it yourself :-)</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-54982-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/54982.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="54982.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/54982 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:29:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

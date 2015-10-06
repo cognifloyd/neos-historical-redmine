@@ -1,0 +1,845 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/54517 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:27:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Task #54517: Replace substr() and strpos() with GeneralUtility::isFirstPartOfString when it makes sense - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/54517.atom" rel="alternate" title="Core - Task #54517: Replace substr() and strpos() with GeneralUtility::isFirstPartOfString when it makes sense" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2239">Stefan Froemken</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-54517-watcher"></span>
+
+
+</div>
+
+
+<h2>Task #54517</h2>
+
+<div class="issue status-2 priority-1 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Replace substr() and strpos() with GeneralUtility::isFirstPartOfString when it makes sense</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-19" title="2013-12-19 18:46">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-02" title="2015-02-02 12:52">6 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Accepted</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-12-19</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Performance</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2970">7.5</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>There a few hundred calls to strpos or substr with different parameters set, but they actually check wether a certain string is the first part of another string.</p>
+
+
+	<p>Since we got GeneralUtility::isFirstPartOfString for this task, any occurence of strpos and or substr should be replaced with that, unless it checks for another position than 0.</p>
+
+
+	<p>Additionally we should get rid of the 0 offset of the isFirstPartOfString method itself, since it decreases performance as well and is just superfluous for this task.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/25931/FE-images-with-links.png" class="icon icon-attachment">FE-images-with-links.png</a>  
+   - FE-images-with-links
+  <span class="size">(42.5 kB)</span>
+  
+  
+    <span class="author">Michiel Roos, 2014-01-30 21:13</span>
+  
+  </p>
+
+<p><a href="../attachments/download/25932/BE-login.png" class="icon icon-attachment">BE-login.png</a>  
+   - Backend login screen
+  <span class="size">(38.1 kB)</span>
+  
+  
+    <span class="author">Michiel Roos, 2014-01-30 21:13</span>
+  
+  </p>
+
+<p><a href="../attachments/download/25933/db_layout_php_id_1.png" class="icon icon-attachment">db_layout_php_id_1.png</a>  
+   - db_layout?id=1
+  <span class="size">(38.3 kB)</span>
+  
+  
+    <span class="author">Michiel Roos, 2014-01-30 21:13</span>
+  
+  </p>
+
+<p><a href="../attachments/download/25934/typo3_backend_php.png" class="icon icon-attachment">typo3_backend_php.png</a>  
+   - /typo3/backend.php
+  <span class="size">(37.3 kB)</span>
+  
+  
+    <span class="author">Michiel Roos, 2014-01-30 21:13</span>
+  
+  </p>
+
+<p><a href="../attachments/download/25935/typo3-mod.php_M-web_list_id_1.png" class="icon icon-attachment">typo3-mod.php_M-web_list_id_1.png</a>  
+   - mod.php?M=web_list&amp;id=1
+  <span class="size">(39.3 kB)</span>
+  
+  
+    <span class="author">Michiel Roos, 2014-01-30 21:13</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/25936/Array_Access___strpos.patch" class="icon icon-attachment">Array_Access___strpos.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/25936/Array_Access___strpos.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(129.6 kB)</span>
+  
+  
+    <span class="author">Michiel Roos, 2014-01-30 21:31</span>
+  
+  </p>
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/25937/isFirstPartOfStr.patch" class="icon icon-attachment">isFirstPartOfStr.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/25937/isFirstPartOfStr.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(146.3 kB)</span>
+  
+  
+    <span class="author">Michiel Roos, 2014-01-30 21:31</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10073">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54085" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="54085.html" class="issue status-7 priority-2 closed child">Task #54085</a>: Replace all strcmp() calls with ===
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-11-29</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12363">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="63929" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="63929.html" class="issue status-2 priority-2">Task #63929</a>: Deprecate usage of GeneralUtility::isFirstPartOfStr()
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2014-12-16</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10282">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="55445" /></td>
+<td class="subject">blocked by 
+    Core - 
+    <a href="55445.html" class="issue status-7 priority-2 closed">Task #55445</a>: Use array access instead of strpos($str, n, 1)
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-01-29</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/54517/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/54517/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=54517&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-197086" class="journal has-notes">
+    <h4><a href="54517.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-19" title="2013-12-19 19:44">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197086-notes"><p>Additionally it might be useful to introduce another method "isLastPartOfString" (that might use "isFirstPartOfString"), since there are lots of substr calls with negative values as well.</p>
+
+
+	<p>But that depends on the performance impact of the solution, since it won't work with strpos (or maybe strrpos) but will need at least another function to determine the length of the string to search for, so after all there might be no good alternatives for substr with individual parameters.</p></div>
+  </div>
+  
+
+  <div id="change-197112" class="journal has-notes">
+    <h4><a href="54517.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/324">Michiel Roos</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-20" title="2013-12-20 09:57">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197112-notes"><p>Also, as part of this patch, all occurences of substr($someString, n, 1) should be replaced with $someString{n-1}.</p></div>
+  </div>
+  
+
+  <div id="change-198619" class="journal has-notes has-details">
+    <h4><a href="54517.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-10" title="2014-01-10 11:47">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-198619-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/26732">https://review.typo3.org/26732</a></p></div>
+  </div>
+  
+
+  <div id="change-201380" class="journal has-notes">
+    <h4><a href="54517.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/324">Michiel Roos</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-30" title="2014-01-30 10:02">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201380-notes"><p>And then there are also cases where it is tested if there is a string of lenght 'n' starting at position 'm' in a string. So to follow Jo's suggestion, we would then also need a GeneralUtility::isAtPositionInString(). Or something similarly named.</p>
+
+
+	<p>This add complexity to the already crowded GeneralUtility.</p>
+
+
+	<p>Since most of the substr calls currently check against a string, I propose to convert those to plain strpos calls. This will avoid calling a method that calls a function and does additional unneeded checks (in a comparison case) and unneeded casting to string.</p>
+
+
+	<p>There are 232 such substr calls that compare against a string. Many of them are in critical areas like: LanguageService->sL(). Those methods should be as fast as possible. Let's not introduce any overhead there by using GeneralUtility::isFirstPartOfString().</p>
+
+
+	<p>Of these 232 calls, many are of the form substr($blah, 0, 1) === 'x'. These must first be replaced by 'array access': <a class="external" href="55445.html">http://forge.typo3.org/issues/55445</a></p>
+
+
+	<p>Also, existing calls to isFirstPartOfString (only 5 of them, but four are in the \TYPO3\CMS\Core\TypoScript\Parser\TypoScriptParser::checkIncludeLines()) that check against a single character to be at the end of a string must be converted to the array access form.<br />Find them: /isFirstPartOfStr\([^,]+,\s(?:'[^']'|"[^"])\)/</p>
+
+
+	<p>The remaining calls (about 148 of them) should be converted to strpos:<br />Find them: /substr\s*\(([^,]*)\s*,\s*(\d+)\s*,\s*\d+\s*\)\s((?:!|=)==?)\s('[^']*'|"[^"]")/<br />Replace them: strpos($1, $4) $3 $2</p></div>
+  </div>
+  
+
+  <div id="change-201382" class="journal has-notes">
+    <h4><a href="54517.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-30" title="2014-01-30 10:17">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201382-notes"><p>Actually this was my personal favorite too, since I just created this task on demand.<br />Claus Due and me already discussed that in the chat and came to the same conclusions.<br />Helmut Hummel joined the discussion though and suggested to stay with isFirstPartOfString due to readability and better possibilities for testing.<br />Steffen Ritter agreed to the fact that a simple strpos() and/or array access should not be wrapped within an additional method call but prominently explained in the CGL instead.</p>
+
+
+Pros for the plain solution without any additional method call are:
+	<ol>
+	<li>It's much faster</li>
+		<li>It uses less memory, since strings don't have to be copied to the method</li>
+		<li>readability is still quite good</li>
+	</ol>
+
+
+Cons:
+	<ol>
+	<li>It's not easy to test changes without a specific method</li>
+	</ol>
+
+
+	<p>Especially the memory aspect should be taken into account here as well, since the strings we are checking in TYPO3 6+ are much longer than the ones in TYPO3 4.x, due to the introduction of name spacing and other readability improvements.</p></div>
+  </div>
+  
+
+  <div id="change-201441" class="journal has-notes">
+    <h4><a href="54517.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-30" title="2014-01-30 14:56">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201441-notes"><p>Hi Joey!</p>
+
+
+	<p>Thanks for your passion about this topic.</p>
+
+
+	<p>Jo Hasenau wrote:</p>
+
+
+<blockquote>
+
+Pros for the plain solution without any additional method call are:
+	<ol>
+	<li>It's much faster</li>
+		<li>It uses less memory, since strings don't have to be copied to the method</li>
+	</ol>
+
+
+</blockquote>
+
+	<p>Since you seem to have experience with that. Can you provide numbers how much memory is saved and how much faster it gets for a "regular" frontend and/or backend request?<br />That could help to decide if it is worth discussing, changing, fixing it for hours if not days...</p>
+
+
+	<p>The above is no sarcasm at all. It's only my personal feeling that I'm wasting my time for minor things while not getting done the important stuff.</p>
+
+
+	<p>For this particular topic, I'm out. Please do whatever you think makes sense and is for the better of TYPO3 and our codebase.</p></div>
+  </div>
+  
+
+  <div id="change-201455" class="journal has-notes">
+    <h4><a href="54517.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-30" title="2014-01-30 15:36">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201455-notes"><p>It's not about precise numbers of frontend or backend requests, but about best practise here.<br />Maybe Rupi has got some deeper insight, since he did a lot of profiling already.</p>
+
+
+	<p>There are 3 different ways to solve "is a string the first part of another string" depending on the context.<br />Each of them is the fastest solution for one of the following scenarios:</p>
+
+
+	<p>1. I know the part string or at least the length of it</p>
+
+
+<pre>
+substr($string, 0, 3)  === '123'
+substr($string, 0, 3)  === $part
+</pre>
+
+	<p>2. I don't know the part or the length of it</p>
+
+
+<pre>
+$part !== '' &#38;&#38; strpos($string, $part)  === 0
+</pre>
+
+	<p>3. I know the length of the part is 1 and maybe I know it's position as well</p>
+
+
+<pre>
+$string{0} === '1'
+$string{0} === $part
+$string{4} === '1'
+$string{4} === $part
+</pre>
+
+	<p>If we were going to throw all these solutions into one single method it would slow down the whole process, since we had to introduce some checks as well.<br />So the only solution to avoid that overhead would be to find the average solution that would still be quite fast for any scenario.<br />Currently this would be for example:</p>
+
+
+<pre>
+substr($string, 0, strlen($part))  === $part
+</pre>
+
+	<p>Which could of course be subject for further optimization. But since this would just give us a one liner within a method, the method call does not make sense in any case, since it at least doubles the amount of memory used for that purpose, or slows down the process additionally.</p>
+
+
+	<p>IMHO GeneralUtility methods only make sense to have a common way to solve a problem which is a bit more complex than a one liner.<br />Otherwise it's just overengineering.</p></div>
+  </div>
+  
+
+  <div id="change-201529" class="journal has-notes has-details">
+    <h4><a href="54517.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/324">Michiel Roos</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-30" title="2014-01-30 21:13">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/25931/FE-images-with-links.png">FE-images-with-links.png</a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/25932/BE-login.png">BE-login.png</a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/25933/db_layout_php_id_1.png">db_layout_php_id_1.png</a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/25934/typo3_backend_php.png">typo3_backend_php.png</a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/25935/typo3-mod.php_M-web_list_id_1.png">typo3-mod.php_M-web_list_id_1.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-201529-notes"><p>Here are some test results for the following before - after situation:</p>
+
+
+	<p><strong>before:</strong><br />All occurrences of (strpos($uid, 'NEW') (=|!)== 0) replaced with (!)\TYPO3\CMS\Core\Utility\GeneralUtility::isFirstPartOfStr()<br /><pre>
+search:  strpos\s*\(([^,]*)\s*,\s([^\)]*)\)\s*(?:(!)|=)==?\s0
+replace: $3\\\\TYPO3\\\\CMS\\\\Core\\\\Utility\\\\GeneralUtility::isFirstPartOfStr($1, $2)
+</pre><br />All occurrences of (substr($this->iParts<sup><a href="#fn3">3</a></sup>, 0, 1)  '+') replaced with (!)\TYPO3\CMS\Core\Utility\GeneralUtility::isFirstPartOfStr()<br /><pre>
+search:  substr\s*\(([^,]*)\s*,\s*0\s*,\s*\d+\s*\)\s(?:(!)|=)==?\s('[^']*'|"[^"]")
+replace: $2\\\\TYPO3\\\\CMS\\\\Core\\\\Utility\\\\GeneralUtility::isFirstPartOfStr($1, $3)
+</pre></p>
+
+
+	<p><strong>after:</strong><br />All occurrences of substr($this->iParts<sup><a href="#fn3">3</a></sup>, 0, 1) = '+' replaced with $this->iParts<sup><a href="#fn3">3</a></sup>{0} === '+'<br /><pre>
+search:  substr\s*\(([^,]*)\s*,\s*0\s*,\s*\d+\s*\)\s(?:(!)|=)==?\s('[^']*'|"[^"]")
+replace: $1{$2}
+</pre><br />All occurrences of (substr($this->iParts<sup><a href="#fn3">3</a></sup>, 0, 4)  '++++') replaced with strpos($this-&gt;iParts[3], '++++') = 0;<br /><pre>
+search:  substr\s*\(([^,]*)\s*,\s*0\s*,\s*\d+\s*\)\s(?:(!)|=)==?\s('[^']*'|"[^"]")
+replace: $2\\\\TYPO3\\\\CMS\\\\Core\\\\Utility\\\\GeneralUtility::isFirstPartOfStr($1, $3)
+</pre></p>
+
+
+	<ol>
+	<li>FE images with links (Introduction package)<br /><img src="../attachments/download/25931.png" title="FE-images-with-links" alt="FE-images-with-links" /></li>
+		<li>Backend login<br /><img src="../attachments/download/25932.png" title="Backend login screen" alt="Backend login screen" /></li>
+		<li>TYPO3 backend.php<br /><img src="../attachments/download/25934.png" title="/typo3/backend.php" alt="/typo3/backend.php" /></li>
+		<li>DB layout page id 1<br /><img src="../attachments/download/25933.png" title="db_layout?id=1" alt="db_layout?id=1" /></li>
+		<li>Mod web_list page id 1<br /><img src="../attachments/download/25935.png" title="mod.php?M=web_list&id=1" alt="mod.php?M=web_list&id=1" /></li>
+	</ol></div>
+  </div>
+  
+
+  <div id="change-201533" class="journal has-notes has-details">
+    <h4><a href="54517.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/324">Michiel Roos</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-30" title="2014-01-30 21:31">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/25936/Array_Access___strpos.patch">Array_Access___strpos.patch</a><a href="../../external.html?link=https://forge.typo3.org/attachments/25936/Array_Access___strpos.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/25937/isFirstPartOfStr.patch">isFirstPartOfStr.patch</a><a href="../../external.html?link=https://forge.typo3.org/attachments/25937/isFirstPartOfStr.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-201533-notes"><p>But people, don't take my word for it. Measure it for yourself using these patches.</p></div>
+  </div>
+  
+
+  <div id="change-203531" class="journal has-notes">
+    <h4><a href="54517.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4244">Claus Due</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-11" title="2014-02-11 21:55">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-203531-notes"><p>Jo wrote:</p>
+
+
+<blockquote>
+
+	<p>IMHO GeneralUtility methods only make sense to have a common way to solve a problem which is a bit more complex than a one liner.<br />Otherwise it's just overengineering.</p>
+
+
+</blockquote>
+
+	<p>Spot on, agree 100% - but you already know that :)</p>
+
+
+	<p>The threshold LOC before a wrapper method makes sense might be somewhat arbitrary, but it's hard to disagree that one behavior which can be solved with language structures should <strong>not</strong> be solved with a wrapper method. It is, after all, why we also switched intval() to (integer) etc.</p></div>
+  </div>
+  
+
+  <div id="change-247970" class="journal has-notes has-details">
+    <h4><a href="54517.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-31" title="2015-01-31 15:01">6 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-247970-notes"><p>The proper solution here is to get rid of isFirstPartOfStr by applying the following logic:</p>
+
+
+The following 'rules' should used for the replacement:
+	<ul>
+	<li>Drop isFirstPartOfStr / StringUtility::beginsWith in favor of any occurence of<br />  strpos(haystack, needle) === 0<br />  strpos(haystack, needle, 0) === 0</li>
+		<li>Drop isFirstPartOfStr / StringUtility::beginsWith in favor of any occurence of<br />  substr(haystack, 0, strlen(needle)) === needle</li>
+		<li>Use variable{x} for any occurence of<br />  substr(string, x, 1)</li>
+		<li>Use array methods, when the string methods are simulating<br />  an explode or check substr with the third parameter set to TRUE</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-247971" class="journal has-details">
+    <h4><a href="54517.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-31" title="2015-01-31 15:01">6 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>6.2.0</i> to <i>7.5</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-248057" class="journal has-notes">
+    <h4><a href="54517.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-31" title="2015-01-31 17:43">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248057-notes"><p>@Benni:</p>
+
+
+	<p>I disagree: We should not get rid of those functions as they provide more functionality than a dumb strpos() call.<br />Regarding index of chars in strings: We should use the [x] syntax instead of {0}.<br />(Background: {} was introduced back some days, but was dropped again and docs say to prefer [])</p></div>
+  </div>
+  
+
+  <div id="change-248095" class="journal has-notes">
+    <h4><a href="54517.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-31" title="2015-01-31 18:45">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248095-notes"><p>The questions are:<br />Which of the current use cases really need that additional functionality?<br />Are there any places, where we don't know, if the provided variable is a string? - If there are cases, and if it is not possible to do a proper string conversion once before doing the check, we can still discuss how to proceed in these special cases.</p>
+
+
+	<p>So I would agree with you, that we could keep the methods, but we should avoid using them wherever possible.<br />They use up to 4 string conversions and 4 PHP function calls - with one of these functions being strlen() - plus the additional wrapper method call. All that just to achieve, what usually can be done with a single PHP function, maybe with one additional check.</p>
+
+
+	<p>Wherever possible means: If we know beforehand, what will then be checked again within the utility, don't use the utility but the simple PHP code. And this should be part of the coding guidelines.</p></div>
+  </div>
+  
+
+  <div id="change-248120" class="journal has-notes">
+    <h4><a href="54517.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-31" title="2015-01-31 19:52">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248120-notes"><p>Sure, simplify wherever possible!</p>
+
+
+	<p>But this is yet another instance of a cleanup which will give us headaches if we overlook that a variable is not a string. Let's have a special focus on this potential pitfall.</p></div>
+  </div>
+  
+
+  <div id="change-248356" class="journal has-notes">
+    <h4><a href="54517.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-02" title="2015-02-02 12:52">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-248356-notes"><p>I discussed those headaches with Mattes while having a look at another performance issue and we agreed that having a lot of smaller patches will be easier to review than the huge one we had i.e. with intval() vs. (int) - so I guess we can reduce the risk of having a regression to an absolute minimum as well.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-54517-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/54517.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="54517.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/54517 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:27:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

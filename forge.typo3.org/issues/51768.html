@@ -1,0 +1,855 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/51768 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:40:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #51768: IRRE - drag and drop sorting of items not possible in Internet Explorer  - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/51768.atom" rel="alternate" title="Core - Bug #51768: IRRE - drag and drop sorting of items not possible in Internet Explorer " type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2775">Lorenz Ulrich</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4951">Daniel Siepmann</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-51768-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #51768</h2>
+
+<div class="issue status-7 priority-2 closed parent details">
+  
+
+  
+
+<div class="subject">
+<div><h3>IRRE - drag and drop sorting of items not possible in Internet Explorer </h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3146">Torben Hansen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 12:46">almost 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-19" title="2014-11-19 10:30">9 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-04-20</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">IRRE</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2261">6.2.0</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.1</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.4</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>In Internet Explorer (tested with 9 and 10), it is not possible to use the drag and drop sorting feature of IRRE for items (see attached screenshot). When clicking on the icon and starting to move the mouse, the item does not move but text on the backend page gets selected.</p>
+
+
+	<p>I have tested this with a FAL file collection (type: selection of files) and also with a powermail form. Both use IRRE and have the possibility to sort the items by using drag and drop. The sorting works fine on Chrome and Firefox but fails on Internet Explorer as described above.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/24895/irre-drag-drop-ie.png" class="icon icon-attachment">irre-drag-drop-ie.png</a>  
+   - Screenshot
+  <span class="size">(2.8 kB)</span>
+  
+  
+    <span class="author">Torben Hansen, 2013-09-05 12:46</span>
+  
+  </p>
+
+<p><a href="../attachments/download/25906/backend-irre1.png" class="icon icon-attachment">backend-irre1.png</a>  
+   - 3 media relations
+  <span class="size">(22.4 kB)</span>
+  
+  
+    <span class="author">Torben Hansen, 2014-01-28 16:50</span>
+  
+  </p>
+
+<p><a href="../attachments/download/25907/backend-irre2-drag.png" class="icon icon-attachment">backend-irre2-drag.png</a>  
+   - 3 media ralations - first element dragged
+  <span class="size">(17.3 kB)</span>
+  
+  
+    <span class="author">Torben Hansen, 2014-01-28 16:50</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+<hr />
+<div id="issue_tree">
+<div class="contextual">
+  
+</div>
+<p><strong>Subtasks</strong></p>
+<form><table class="list issues"><tr class="issue issue-58053 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="58053" /></td><td class="subject"><a href="58053.html" class="issue status-7 priority-2 closed child">Bug #58053</a>: New prototype version hides elements during dragging in IE</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/662">Jigal van Hemert</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-58187 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="58187" /></td><td class="subject"><a href="58187.html" class="issue status-7 priority-1 closed child">Bug #58187</a>: New prototype version produces stack overflow error in IE8</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/662">Jigal van Hemert</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr></table></form>
+</div>
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10331">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="55572" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="55572.html" class="issue status-7 priority-2 closed child">Task #55572</a>: Switch IRRE to jQuery
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-02-02</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10358">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="55666" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="55666.html" class="issue status-9 priority-3 closed">Bug #55666</a>: Thumbs in FAL have very big sizes
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-02-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10991">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="55176" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="55176.html" class="issue status-7 priority-1 closed">Bug #55176</a>: Old prototype version in backend causes problems with bro...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-01-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/51768/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/51768/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=51768&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/d913adc0f1e2cb710fa84c21e42a39f1cde82fa4" title="Revision d913adc0">Revision d913adc0</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/4951">Daniel Siepmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-01" title="2014-02-01 10:31">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] IRRE drag and drop sorting now solved using jQuery UI</p>
+
+
+	<p>This also fixes “IRRE - drag and drop sorting of items<br />not possible in Internet Explorer”.</p>
+
+
+	<ul>
+	<li>Added jQuery-ui and jQuery to requirejs.</li>
+		<li>Reworked the IRRE-Header HTML and CSS.</li>
+		<li>Sortable is done by jQuery-Ui.</li>
+	</ul>
+
+
+	<p>Resolves: <a href="51768.html" class="issue status-7 priority-2 closed parent" title="IRRE - drag and drop sorting of items not possible in Internet Explorer  (Resolved)">#51768</a><br />Releases: 6.2<br />Change-Id: Idd121617f2cd5215604747cd0f18285a73dfed49<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a><br />Reviewed-by: Frans Saris<br />Tested-by: Frans Saris<br />Reviewed-by: Benjamin Mack<br />Tested-by: Benjamin Mack</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/1484cef5349a3008b6a1820147e8851666fef100" title="Revision 1484cef5">Revision 1484cef5</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-15" title="2014-04-15 03:28">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Updates prototype and scriptaculous, fixing IE9+ issues</p>
+
+
+	<p>Upgrades prototype from 1.6.0.3 to 1.7.1 and scriptaculous<br />from 1.8.2 to 1.9.0.</p>
+
+
+	<p>Solves the problem with sorting IRRE elements in IE9+, for example.</p>
+
+
+	<p>Resolves: <a href="51768.html" class="issue status-7 priority-2 closed parent" title="IRRE - drag and drop sorting of items not possible in Internet Explorer  (Resolved)">#51768</a><br />Releases: 6.2, 6.1, 6.0, 4.7, 4.5<br />Change-Id: I5ea11b2e926ae0f23d1c6d85a0ff5ba24995eebb<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/27090">https://review.typo3.org/27090</a><br />Reviewed-by: Stefan Neufeind<br />Tested-by: Stefan Neufeind<br />Reviewed-by: Markus Klein<br />Tested-by: Markus Klein</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/5dd53b1acd9b20e4b2039f5811b6d4b2d3a660ac" title="Revision 5dd53b1a">Revision 5dd53b1a</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-15" title="2014-04-15 03:34">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Updates prototype and scriptaculous, fixing IE9+ issues</p>
+
+
+	<p>Upgrades prototype from 1.6.0.3 to 1.7.1 and scriptaculous<br />from 1.8.2 to 1.9.0.</p>
+
+
+	<p>Solves the problem with sorting IRRE elements in IE9+, for example.</p>
+
+
+	<p>Resolves: <a href="51768.html" class="issue status-7 priority-2 closed parent" title="IRRE - drag and drop sorting of items not possible in Internet Explorer  (Resolved)">#51768</a><br />Releases: 6.2, 6.1, 6.0, 4.7, 4.5<br />Change-Id: I5ea11b2e926ae0f23d1c6d85a0ff5ba24995eebb<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/29471">https://review.typo3.org/29471</a><br />Reviewed-by: Markus Klein<br />Tested-by: Markus Klein</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/d9e65462ae81c18889eb9e8438fab2f89df7a2f4" title="Revision d9e65462">Revision d9e65462</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-15" title="2014-04-15 18:56">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Updates prototype and scriptaculous, fixing IE9+ issues</p>
+
+
+	<p>Upgrades prototype from 1.6.0.3 to 1.7.1 and scriptaculous<br />from 1.8.2 to 1.9.0.</p>
+
+
+	<p>Solves the problem with sorting IRRE elements in IE9+, for example.</p>
+
+
+	<p>Resolves: <a href="51768.html" class="issue status-7 priority-2 closed parent" title="IRRE - drag and drop sorting of items not possible in Internet Explorer  (Resolved)">#51768</a><br />Releases: 6.2, 6.1, 6.0, 4.7, 4.5<br />Change-Id: I5ea11b2e926ae0f23d1c6d85a0ff5ba24995eebb<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/29472">https://review.typo3.org/29472</a><br />Reviewed-by: Markus Klein<br />Tested-by: Markus Klein<br />Reviewed-by: Stefan Neufeind<br />Tested-by: Stefan Neufeind</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/f329f7627d6e7f44707844784c5fb6f7abfb4f9b" title="Revision f329f762">Revision f329f762</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-15" title="2014-04-15 18:56">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Updates prototype and scriptaculous, fixing IE9+ issues</p>
+
+
+	<p>Upgrades prototype from 1.6.0.3 to 1.7.1 and scriptaculous<br />from 1.8.2 to 1.9.0.</p>
+
+
+	<p>Solves the problem with sorting IRRE elements in IE9+, for example.</p>
+
+
+	<p>Resolves: <a href="51768.html" class="issue status-7 priority-2 closed parent" title="IRRE - drag and drop sorting of items not possible in Internet Explorer  (Resolved)">#51768</a><br />Releases: 6.2, 6.1, 6.0, 4.7, 4.5<br />Change-Id: I5ea11b2e926ae0f23d1c6d85a0ff5ba24995eebb<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/29473">https://review.typo3.org/29473</a><br />Reviewed-by: Markus Klein<br />Tested-by: Markus Klein<br />Reviewed-by: Stefan Neufeind<br />Tested-by: Stefan Neufeind</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/aebc244115aaca75adca6ca062b39b64b714e073" title="Revision aebc2441">Revision aebc2441</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-15" title="2014-04-15 18:56">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Updates prototype and scriptaculous, fixing IE9+ issues</p>
+
+
+	<p>Upgrades prototype from 1.6.0.3 to 1.7.1 and scriptaculous<br />from 1.8.2 to 1.9.0.</p>
+
+
+	<p>Solves the problem with sorting IRRE elements in IE9+, for example.</p>
+
+
+	<p>Resolves: <a href="51768.html" class="issue status-7 priority-2 closed parent" title="IRRE - drag and drop sorting of items not possible in Internet Explorer  (Resolved)">#51768</a><br />Releases: 6.2, 6.1, 6.0, 4.7, 4.5<br />Change-Id: I5ea11b2e926ae0f23d1c6d85a0ff5ba24995eebb<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/29474">https://review.typo3.org/29474</a><br />Reviewed-by: Markus Klein<br />Reviewed-by: Stefan Neufeind<br />Tested-by: Stefan Neufeind</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-200653" class="journal has-notes">
+    <h4><a href="51768.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2775">Lorenz Ulrich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-23" title="2014-01-23 22:44">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-200653-notes"><p>I can confirm this. Is is IMO a must-fix for LTS since a lot of business customers use Internet Explorer.</p></div>
+  </div>
+  
+
+  <div id="change-200912" class="journal has-notes">
+    <h4><a href="51768.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3146">Torben Hansen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-27" title="2014-01-27 14:09">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-200912-notes"><p>TYPO3 (current 6.2 beta4) comes with old versions of Prototype (1.6.0.3) and Scriptaculous dragdrop.js (1.8.2).</p>
+
+
+	<p>I have debugged this in Scriptaculous drapdrop.js and found out, that the left-click does'nt seem to get recognised in <strong>initDrag: function(event)</strong>. In Internet Explorer, Event.isLeftClick(event) returns false. The isLeftClick function is part of Prototype and in this case, Prototype uses an outdated way of analyzing mousebutton events. The current version of Prototype has been updated to support IE9+ mouse events - see: <a class="external" href="../../external.html?link=https://github.com/sstephenson/prototype/blob/1fb9728/src/dom/event.js#L138">https://github.com/sstephenson/prototype/blob/1fb9728/src/dom/event.js#L138</a></p>
+
+
+	<p>I tried just to replace the TYPO3 Prototype 1.6.0.3 with the latest version 1.7.1.0 and the sorting seems to work again. In IE the dragged element disappears as soon as you start a drag-event, but this is another issue. As soon as you drop the dragged element, it is fine again and sorting works in IE.</p>
+
+
+	<p>I also updated both Prototype and Scriptaculous to the latest versons, but this breaks a lot of functions in TYPO3 backend.</p>
+
+
+	<p>At least the problem is identified now, but the question is how to fix it?</p>
+
+
+	<p>Does anybody know something about the upgrade policies for external JS libs in TYPO3 core? Should this bug be fixed in the current versions of Prototype/Scriptaculous that come with TYPO3 or should new versions of Prototype/Scripaculous be used and TYPO3 has to be updated to new functionality of Prototype/Scripaculous?</p></div>
+  </div>
+  
+
+  <div id="change-201086" class="journal has-notes has-details">
+    <h4><a href="51768.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 11:02">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Target version</strong> set to <i>6.2.0</i></li>
+      
+       <li><strong>Is Regression</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-201086-notes"><p>We do not want to support prototype/scriptaculous in the backend anymore and currently just keep it there for the sake of functionality we've already got in there using these libraries which needs to be replaced first.</p>
+
+
+	<p>Of course we need to get this bug solved somehow.</p>
+
+
+	<p>If we can figure out the bug and solve that in a patched scriptaculous without upgrading the library completely, I would prefer that.</p>
+
+
+	<p>Another alternative would be to replace the Sortable functionality by the equivalent jQuery(-UI) component, which would be the best idea in the long run, as we want to get rid of scriptaculous anyway. But this might be more error prone to achieve.</p>
+
+
+	<p><a class="external" href="../../external.html?link=http://jqueryui.com/sortable/">http://jqueryui.com/sortable/</a> vs <a class="external" href="../../external.html?link=http://madrobby.github.io/scriptaculous/sortable/">http://madrobby.github.io/scriptaculous/sortable/</a></p>
+
+
+	<p>If you are interested in trying that out, starting points are typo3/sysext/backend/Resources/Public/JavaScript/jsfunc.inline.js method "createDragAndDropSorting" and typo3/sysext/backend/Classes/Form/Element/InlineElement.php</p></div>
+  </div>
+  
+
+  <div id="change-201106" class="journal has-notes">
+    <h4><a href="51768.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 11:22">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201106-notes"><p>I did some research and upgraded scriptaculous to 1.9.0 and prototype to 1.7.1 and nothing yet seems to be broken. You should not upgrade the one without upgrading the other in my opinion, as scriptaculous depends on a certain prototype version.</p>
+
+
+<blockquote>
+
+	<p>I also updated both Prototype and Scriptaculous to the latest versons, but this breaks a lot of functions in TYPO3 backend</p>
+
+
+</blockquote>
+
+	<p>Can you elaborate on that, Torben? What exactly broke?</p>
+
+
+	<p>I currently cannot login with IE11, as I seem to be affected by the "Cookie detection" issue still (<a href="53818.html" class="issue status-7 priority-1 closed" title="Internet Explorer 11 BE Cookies problem (Resolved)">#53818</a>) to evaluate how the sorting is doing in this browser.</p>
+
+
+	<p>The version jump is not that high, and also these latest versions of prototype and scriptaculous are pretty old already (2010) and seem to fix IE9 and later issues. So it might be worth to examine this possibility also.</p></div>
+  </div>
+  
+
+  <div id="change-201119" class="journal has-notes has-details">
+    <h4><a href="51768.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 12:19">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-201119-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27090">https://review.typo3.org/27090</a></p></div>
+  </div>
+  
+
+  <div id="change-201120" class="journal has-notes">
+    <h4><a href="51768.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 12:21">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201120-notes"><p>See above linked review for updated libraries for potential side-effects. Thanks!</p></div>
+  </div>
+  
+
+  <div id="change-201163" class="journal has-notes has-details">
+    <h4><a href="51768.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3146">Torben Hansen</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 16:50">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/25906/backend-irre1.png">backend-irre1.png</a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/25907/backend-irre2-drag.png">backend-irre2-drag.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-201163-notes"><blockquote><blockquote>
+
+	<p>I also updated both Prototype and Scriptaculous to the latest versons, but this breaks a lot of functions in TYPO3 backend</p>
+
+
+</blockquote>
+
+	<p>Can you elaborate on that, Torben? What exactly broke?</p>
+
+
+</blockquote>
+
+	<p>I checked out your patch and the problems i ran into (flush cache menu did not work, collapsed IRRE items could not be expanded) did not appear.</p>
+
+
+	<p>Sorting now works in IE (tested with 10 + 11), but as soon as you drag an element, it disappears (see both screenshots). It seems this issue is known in Scriptaculous for a very long time <a class="external" href="../../external.html?link=https://github.com/madrobby/scriptaculous/issues/2">https://github.com/madrobby/scriptaculous/issues/2</a></p>
+
+
+	<p>Also the elements do have much more height (114px instead of 65px) in IE than on other browsers. I'll create a different issue for that later.</p>
+
+
+	<p>I think I will try to do some tests with JQueryUI sortable.</p></div>
+  </div>
+  
+
+  <div id="change-201212" class="journal has-notes">
+    <h4><a href="51768.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2775">Lorenz Ulrich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 22:13">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201212-notes"><p>I can confirm that it works with IE 10 and FAL. I will test with extensions (e.g. Powermail) before verifying the changeset.</p></div>
+  </div>
+  
+
+  <div id="change-201269" class="journal has-notes">
+    <h4><a href="51768.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-29" title="2014-01-29 11:01">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201269-notes"><p>There is a report that the drag'n'drop component will fail from Chrome32 on</p>
+
+
+	<p><a class="external" href="../../external.html?link=https://groups.google.com/forum/#!topic/prototype-scriptaculous/SpP4P92r-dk">https://groups.google.com/forum/#!topic/prototype-scriptaculous/SpP4P92r-dk</a></p></div>
+  </div>
+  
+
+  <div id="change-201510" class="journal has-notes">
+    <h4><a href="51768.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-30" title="2014-01-30 19:02">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201510-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a></p></div>
+  </div>
+  
+
+  <div id="change-201554" class="journal has-notes">
+    <h4><a href="51768.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-31" title="2014-01-31 00:07">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201554-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a></p></div>
+  </div>
+  
+
+  <div id="change-201586" class="journal has-notes">
+    <h4><a href="51768.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-31" title="2014-01-31 11:06">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201586-notes"><p>Patch set 3 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a></p></div>
+  </div>
+  
+
+  <div id="change-201760" class="journal has-notes">
+    <h4><a href="51768.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-31" title="2014-01-31 21:55">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201760-notes"><p>Patch set 4 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a></p></div>
+  </div>
+  
+
+  <div id="change-201764" class="journal has-notes">
+    <h4><a href="51768.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-31" title="2014-01-31 22:11">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201764-notes"><p>Patch set 5 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a></p></div>
+  </div>
+  
+
+  <div id="change-201766" class="journal has-notes">
+    <h4><a href="51768.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-31" title="2014-01-31 22:25">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201766-notes"><p>Patch set 6 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a></p></div>
+  </div>
+  
+
+  <div id="change-201767" class="journal has-notes">
+    <h4><a href="51768.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-31" title="2014-01-31 22:29">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201767-notes"><p>Patch set 7 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a></p></div>
+  </div>
+  
+
+  <div id="change-201774" class="journal has-notes">
+    <h4><a href="51768.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-31" title="2014-01-31 22:51">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201774-notes"><p>Patch set 8 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a></p></div>
+  </div>
+  
+
+  <div id="change-201803" class="journal has-notes">
+    <h4><a href="51768.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-01" title="2014-02-01 10:01">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201803-notes"><p>Patch set 9 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27164">https://review.typo3.org/27164</a></p></div>
+  </div>
+  
+
+  <div id="change-201817" class="journal has-notes has-details">
+    <h4><a href="51768.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4951">Daniel Siepmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-01" title="2014-02-01 11:30">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-201817-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/d913adc0f1e2cb710fa84c21e42a39f1cde82fa4" class="changeset" title="[TASK] IRRE drag and drop sorting now solved using jQuery UI This also fixes “IRRE - drag and dr...">d913adc0f1e2cb710fa84c21e42a39f1cde82fa4</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-51768-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/51768.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="51768.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/51768 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:40:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

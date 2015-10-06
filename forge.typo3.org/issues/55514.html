@@ -1,0 +1,707 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/55514 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:26:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #55514: Create new file or upload with Uppercase filename results in lowercase filename - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/55514.atom" rel="alternate" title="Core - Bug #55514: Create new file or upload with Uppercase filename results in lowercase filename" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/114">Lars Houmark</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-55514-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #55514</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Create new file or upload with Uppercase filename results in lowercase filename</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/2853">Jan Kiesewetter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-31" title="2014-01-31 14:18">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-22" title="2015-02-22 20:46">5 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-01-31</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>If I create a new file "Test.html" or folder "Test2" the file and folder will be created lowercase "test.html" and "test2".<br />Also every file I upload is renamed to lowercase.<br />I work with the current master branch.<br />This confuses me because of the uppercamelcase convention of Extbase.</p>
+
+
+	<p>Is this an intended behavior?</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10299">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="55359" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="55359.html" class="issue status-7 priority-1 closed">Bug #55359</a>: Image files with uppercase file extension don&#39;t work in e...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-01-27</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10345">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="55652" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="55652.html" class="issue status-9 priority-2 closed">Bug #55652</a>: Upload a file with Uppercase letters --&gt; Error in filelist
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-02-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/55514/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/55514/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=55514&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-201807" class="journal has-notes has-details">
+    <h4><a href="55514.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-01" title="2014-02-01 10:38">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-201807-notes"><p>Is the "Uses case sensitive identifiers" checkbox checked for your File Storage?</p>
+
+
+	<p>If not all file names are changed into lower case.</p></div>
+  </div>
+  
+
+  <div id="change-201927" class="journal has-notes">
+    <h4><a href="55514.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/400">Bernhard Kraft</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-02" title="2014-02-02 00:13">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201927-notes"><p>Where can I find this option?</p></div>
+  </div>
+  
+
+  <div id="change-202104" class="journal has-notes">
+    <h4><a href="55514.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/294">Tobias Liegl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-02" title="2014-02-02 18:53">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-202104-notes"><p>Didn't know of this option either. But it is on the rootpage (id=0). There you find your storages (e. g. fileadmin) and you can set the option "Uses case sensitive identifiers" there. For me it works to upload/create case sensitive files/folders with current master.</p></div>
+  </div>
+  
+
+  <div id="change-202410" class="journal has-notes">
+    <h4><a href="55514.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2853">Jan Kiesewetter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-04" title="2014-02-04 11:23">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-202410-notes"><p>OK, this option also works for me.<br />But, as this is a new option the default should be the old behavior.</p></div>
+  </div>
+  
+
+  <div id="change-202483" class="journal has-notes">
+    <h4><a href="55514.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-04" title="2014-02-04 19:42">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-202483-notes"><p>Did you run the upgrade wizards? These check if the filesystem is case sensitive and the value for each existing storage.</p>
+
+
+	<p>Gr. Frans</p></div>
+  </div>
+  
+
+  <div id="change-218993" class="journal has-notes">
+    <h4><a href="55514.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-02" title="2014-06-02 17:10">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-218993-notes"><p>No feedback within the last 90 days => closing this ticket.</p>
+
+
+	<p>If you think that this is the wrong decision or experience this issue again, then please write to the mailing list typo3.teams.bugs with issue number and an explanation or open a new ticket and add a relation to this ticket number.</p></div>
+  </div>
+  
+
+  <div id="change-219075" class="journal has-details">
+    <h4><a href="55514.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-03" title="2014-06-03 14:31">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-225330" class="journal has-notes">
+    <h4><a href="55514.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/114">Lars Houmark</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-07-25" title="2014-07-25 21:21">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-225330-notes"><p>I would like to see this reopened as I consider this a bug.</p>
+
+
+	<p>First of all the checkbox is <strong>off</strong> by default which can break systems that is case sensitive. It should be <strong>on</strong> as it seems that all system will work without problems (my local dev on Mac OS X will work just fine, but our production servers won't as they are case sensitive.</p>
+
+
+	<p>Second, if the checkbox is off, then TYPO3 should lowercase the uploaded file to ensure that it does not break - but this is not possible for files, since they may have been uploaded by other means, like deployment or FTP directly. Still, TYPO3 itself should lowercase the files when uploading, because the entire file selector breaks when a file with uppercase chars is uploaded and the checkbox is off.</p>
+
+
+	<p>FWIW...</p></div>
+  </div>
+  
+
+  <div id="change-227706" class="journal has-notes">
+    <h4><a href="55514.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4409">Peter Linzenkirchner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-21" title="2014-08-21 17:23">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-227706-notes"><p>I support the statement of Lars Houmark. "Off" as default ist indeed a bad solution: <br />- most sytems are case sensitive <br />- default on would work on all systems<br />The default should be changed to "on".</p></div>
+  </div>
+  
+
+  <div id="change-227709" class="journal has-notes">
+    <h4><a href="55514.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4409">Peter Linzenkirchner</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-21" title="2014-08-21 17:55">12 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-227709-notes"><p>Frans Saris wrote:</p>
+
+
+<blockquote>
+
+	<p>Did you run the upgrade wizards? These check if the filesystem is case sensitive and the value for each existing storage.</p>
+
+
+	<p>Gr. Frans</p>
+
+
+</blockquote>
+
+	<p>i didnt read this before my last answer. I can reproduce the problem now: I am used to install and update on my local test machine with mac os X which is not case sensitive and put the whole installation to the live system. it is is a tricky trap, i think. Many developer work on windows or mac os x and put the whole stuff to live on linux or unix.</p>
+
+
+	<p>Imagine the content is put in a new installation on DEV machines on Windows or Mac (or an complete update to 6.2 is done on DEV) and all idetifiers are transformed to lower case. After transferring to life on unix or linux none of them is working any more and the whole file upload system with all widgets are broken.</p></div>
+  </div>
+  
+
+  <div id="change-228198" class="journal has-notes">
+    <h4><a href="55514.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-27" title="2014-08-27 20:59">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228198-notes"><p>The fal indexer should recognise existing files by content hash and update the correct existing index record.</p>
+
+
+	<p>So running the indexer task in these situations should fix your issue.</p></div>
+  </div>
+  
+
+  <div id="change-231052" class="journal has-notes">
+    <h4><a href="55514.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1644">Andreas </a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-25" title="2014-09-25 00:20">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231052-notes"><p>On a MAC you get wrong data for the identifier in the sys_file with the Update Wizard. <br />Update was done offline on a MAC - took me quite long to figure out, that with the regular UPDATE WIZARD you can't do the update on a MAC - you'll get always wrong data for the identifier in the sys_file. No difference if you check the case sensitivity in the storage.</p></div>
+  </div>
+  
+
+  <div id="change-233073" class="journal has-notes">
+    <h4><a href="55514.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-17" title="2014-10-17 15:51">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-233073-notes"><p>There is a related issue <a class="external" href="57695.html">https://forge.typo3.org/issues/57695</a> with its corresponding feature-branch <a class="external" href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/compare/TYPO3:master...feature-57695-fal-unicode-normalization">https://github.com/artplan21/TYPO3.CMS/compare/TYPO3:master...feature-57695-fal-unicode-normalization</a> (not yet up-to-date anymore)…</p>
+
+
+	<p>Any feedback is (very) welcome …</p></div>
+  </div>
+  
+
+  <div id="change-233088" class="journal has-notes">
+    <h4><a href="55514.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2853">Jan Kiesewetter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-17" title="2014-10-17 18:53">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-233088-notes"><p>My point is, a file which is uploaded or created from a editor must not be renamed to lowercase regardless of the file system.<br />The file could be linked in the frontend and than has an unintended name.</p>
+
+
+	<p>If renaming of files while uploading or creating should be a feature, then the configuration should be changeable.</p></div>
+  </div>
+  
+
+  <div id="change-241944" class="journal has-notes">
+    <h4><a href="55514.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3240">David Bruchmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-21" title="2014-12-21 18:31">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-241944-notes"><p>I think the default setting is a bug too, especially because the Update-wizard is using upper-case-paths like <em>migration/RTE/RTEmagicC</em>...</p>
+
+
+	<p>So with the lower-case default-value the whole migration process is not working and it's hard to find the reason because in many cases TYPO3 is just not printing the html for the image-tags if the images can't be found.</p>
+
+
+	<p>I don't know why the option was invented at all but the current default setting at least is breaking a lot and definitely wrong.</p></div>
+  </div>
+  
+
+  <div id="change-244040" class="journal has-notes">
+    <h4><a href="55514.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/762">Urs Braem</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 22:16">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-244040-notes"><p>I've upgraded a site from 4.5 to 6.2 on a Mac with MAMP. I did notice the issue with this setting and during the upgrade, I enabled "Uses case sensitive identifiers" for the default file storage record "fileadmin".</p>
+
+
+	<p>Now I deployed this to a regular CentOS hosting with suPHP.<br />In the file storage record, "Uses case sensitive identifiers" is still enabled:</p>
+
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8" standalone="yes" ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index="sDEF"&gt;
+            &lt;language index="lDEF"&gt;
+                &lt;field index="basePath"&gt;
+                    &lt;value index="vDEF"&gt;fileadmin/&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index="pathType"&gt;
+                    &lt;value index="vDEF"&gt;relative&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index="caseSensitive"&gt;
+                    &lt;value index="vDEF"&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;
+</pre>
+
+	<p>In the file system, most directories have mixed case.<br />Nevertheless, most file paths are output in lowercase.<br />Some file paths are stored as duplicates, upper- and lowercase.</p>
+
+
+	<p>Most file links on the site don't work at all.</p>
+
+
+	<p>I'm just one step before renaming everything to lowercase in the filesystem<br /><a class="external" href="../../external.html?link=http://stackoverflow.com/questions/152514/how-to-rename-all-folders-and-files-to-lowercase-on-linux">http://stackoverflow.com/questions/152514/how-to-rename-all-folders-and-files-to-lowercase-on-linux</a><br />and in sys_file. Although that sounds very much like a bad idea.</p>
+
+
+	<p>What should we do?</p>
+
+
+	<p>@Frans, what do you mean by "The fal indexer"? The reference index updater? I've been running this many times and "index integrity is perfect"</p></div>
+  </div>
+  
+
+  <div id="change-244042" class="journal has-notes">
+    <h4><a href="55514.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/762">Urs Braem</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-09" title="2015-01-09 22:26">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-244042-notes"><p>Ah I found it. It's the scheduler task "File Abstraction Layer: Update storage index (scheduler)". Yay!</p></div>
+  </div>
+  
+
+  <div id="change-244625" class="journal has-notes">
+    <h4><a href="55514.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/762">Urs Braem</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-13" title="2015-01-13 21:20">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-244625-notes"><p>BUT the scheduler task didn't correct all entries. I had to do it manually. I wasn't sure if it only took the sys_file entries where the filename had some uppercase characters.  Is it really supposed to correct paths and file names, if the case is wrong?  Or did I try the wrong tool?</p></div>
+  </div>
+  
+
+  <div id="change-244812" class="journal has-notes">
+    <h4><a href="55514.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/762">Urs Braem</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-15" title="2015-01-15 12:50">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-244812-notes"><p>I see. Haven't tried it yet, but I guess the "Update storage index" scheduler must run on the non-case-sensitive system (with the "Uses case sensitive identifiers" option enabled in for the storage record), in my case, locally on the mac. On a case sensitive system (=the live server with apache) it won't find the corresponding file (example: sys_file saying myfile.pdf, filename being MyFile.pdf, Linux won't be able to find that file)</p>
+
+
+	<p>An approach to do it on thecase-sensitive system would be to do it (supposedly) the other way round: start with the file storage, not with the sys_file table: run through the file storage and compare found files with sys_file and do the corrections in sys_file accordingly.</p></div>
+  </div>
+  
+
+  <div id="change-250476" class="journal has-notes">
+    <h4><a href="55514.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/762">Urs Braem</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-22" title="2015-02-22 20:46">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250476-notes"><p>In a new case, I ran the FAL scheduler task locally (i.e. on a case insensitive mac), and received nearly correct sys_file data. But funny enough, the entries in sys_file for files in fileadmin/_migrated/media resisted being rewritten to the correct uppercase spelling. So all the images from the media field weren't displaying on the linux server.</p>
+
+
+	<p>I solved it by rewriting the file names to lowercase (<a class="external" href="../../external.html?link=http://stackoverflow.com/a/7787159/160968">http://stackoverflow.com/a/7787159/160968</a>), as just this directory was concerned. But that's of course not a hack that's viable for all cases.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-55514-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/55514.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="55514.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/55514 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:26:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

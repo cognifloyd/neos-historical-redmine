@@ -1,0 +1,754 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/51732 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:48:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #51732: Permissions Issue in 6.2alpha2 install tool &quot;drwxrws---&quot; - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/51732.atom" rel="alternate" title="Core - Bug #51732: Permissions Issue in 6.2alpha2 install tool &quot;drwxrws---&quot;" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (3)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38310">Benjamin Schmidt</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-51732-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #51732</h2>
+
+<div class="issue status-9 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Permissions Issue in 6.2alpha2 install tool &quot;drwxrws---&quot;</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/21">Den Denyer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 17:12">almost 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-18" title="2014-03-18 10:26">over 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-09-04</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Install Tool</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2261">6.2.0</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.4</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Installing new site from the master branch (Checked out &#38; updated as of Sept 4th)</p>
+
+
+	<p>Copied dummy files into /www/www.domain.com/* with  -pr flag after extracting from dummy tar with -xzvf to preserve permissions.</p>
+
+
+	<p>Permissions:<br /><a class="external" href="../../external.html?link=http://www.domain.com/">www.domain.com/</a>  755  drwxr-xr-x<br />./typo3conf      755  drwxr-xr-x<br />./typo3temp      755  drwxr-xr-x<br />./uploads        755  drwxr-xr-x<br />./fileadmin      755  drwxr-xr-x</p>
+
+
+	<p>Load installer in web browser, on step one no issues reported, APC installed and working, etc. Press "Next".</p>
+
+
+	<p>Permissions have now been changed automatically, breaking web access:</p>
+
+
+	<p><a class="external" href="../../external.html?link=http://www.domain.com/">www.domain.com/</a>  750  drwxrsx---<br />./typo3conf      750  drwxrsx---<br />./typo3temp      750  drwxrsx---<br />./uploads        750  drwxrsx---<br />./fileadmin      750  drwxrsx---</p>
+
+
+	<p>Manually correcting this with :</p>
+
+
+	<p>find . -type d -exec chmod 755 {} + &#38;&#38; find . -type f -exec chmod 644 {} +</p>
+
+
+	<p>Allows me to continue, but this doesn't seem right at all.</p>
+
+
+	<p>I checked out 6.1 HEAD and this works fine, so the issue is definitely introduced in 6.2.x. Soee also had the same issue, reported on the forums here: <a class="external" href="../../external.html?link=http://forum.typo3.org/index.php?t=msg&amp;th=198004&amp;#msg_693834">http://forum.typo3.org/index.php?t=msg&#38;th=198004&#38;#msg_693834</a></p>
+
+
+	<p>I checked with my host, Apache is running as the same user the files have as their "group" name, but public read/execute is required for them to be served. I believe this is fairly standard for apache configurations, so do not thing that drwxrsx--- is a sane thing to be changing filemodes to ?</p>
+
+
+	<p>Hope this helps, please contact me if you need any more information.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/25725/Install_Tool_-_System_environment_check.png" class="icon icon-attachment">Install_Tool_-_System_environment_check.png</a>  
+  
+  <span class="size">(41.5 kB)</span>
+  
+  
+    <span class="author">Benjamin Schmidt, 2013-12-27 18:18</span>
+  
+  </p>
+
+<p><a href="../attachments/download/25726/Install_Tool_-_Folder_structure.png" class="icon icon-attachment">Install_Tool_-_Folder_structure.png</a>  
+  
+  <span class="size">(38.9 kB)</span>
+  
+  
+    <span class="author">Benjamin Schmidt, 2013-12-27 18:18</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10101">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="52016" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="52016.html" class="issue status-9 priority-1 closed">Bug #52016</a>: wrong recommendations for typo3temp permission
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-09-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10100">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="53298" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="53298.html" class="issue status-9 priority-2 closed">Bug #53298</a>: Installer - file and folder permissions detection
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2013-11-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/51732/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/51732/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=51732&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-180761" class="journal has-notes">
+    <h4><a href="51732.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/21">Den Denyer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 17:37">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180761-notes"><p>Just to help direct people, this links to commit  2e3c9d5  from Christian Kuhn which was the Install Tool rewrite.</p>
+
+
+	<p>I believe the file :</p>
+
+
+	<p>/typo3/sysext/install/Classes/FolderStructure/DirectoryNode.php</p>
+
+
+	<p>Might be linked to this, as I identified some targetPermissions in there of 2770 which are linked to the issues I'm seeing. Hope this helps!!</p></div>
+  </div>
+  
+
+  <div id="change-181275" class="journal has-notes">
+    <h4><a href="51732.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/21">Den Denyer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 10:42">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181275-notes"><p>It seems as if permissions are modified again prior to or during the first login, as I had to take the same corrective action with the find/chmod command after logging in for the first time.</p>
+
+
+	<p>(First login was a blank screen, presumably due to inability to write cached css)</p>
+
+
+	<p>In fact, if I "flush all caches" and log out, I'm presented with a broken css-less login page, I then run the CHMOD command again at the terminal to reset permissions, refresh the login page and it's back to normal again.</p>
+
+
+	<p>Evidently something feels obligated to reset the permissions or re-writes files with inadequate permissions, it's rather frustrating. I've not yet identified what's doing it and when but thought I'd leave and update.</p></div>
+  </div>
+  
+
+  <div id="change-181294" class="journal has-notes">
+    <h4><a href="51732.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/21">Den Denyer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 11:43">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181294-notes"><p>Interacting with the extension manager also seems to break CSS (Again, permissions related).<br />Downloading extensions seems to work, but I can't activate/install them, though this might be version related rather than permissions, I have yet to find out.</p></div>
+  </div>
+  
+
+  <div id="change-184360" class="journal has-notes has-details">
+    <h4><a href="51732.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-27" title="2013-09-27 11:42">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Is Regression</strong> set to <i>No</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-184360-notes"><p>Yes, this is currently indeed suboptimal and needs to be fixed! Thanks for reporting.</p></div>
+  </div>
+  
+
+  <div id="change-190579" class="journal has-notes has-details">
+    <h4><a href="51732.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-18" title="2013-11-18 23:47">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>6.2.0</i></strike>)</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-190579-notes"><p>Is this still a problem?</p></div>
+  </div>
+  
+
+  <div id="change-190598" class="journal has-notes">
+    <h4><a href="51732.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/21">Den Denyer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-19" title="2013-11-19 01:20">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-190598-notes"><p>Last install, the permissions where rwxrws---  which in many cases is pretty infuriating, although they do work well once set up and left alone.</p>
+
+
+	<p>It requires the user to either sudo all creation/management commands on the cmdline as www/apache, or add their user to the web group. On shared hosting, this may not be possible or appropriate, so I can see the current permissions set causing a lot of support enquiries / upset users.</p>
+
+
+	<p>Perhaps a toggle / option is needed for "Install with secure permissions" vs "Install with Other user access permissions" would be useful? I appreciate the devs usually work on locked down personal machines where their users are part of the www-data user group, but many people on various hosting providers won't have this luxury.</p></div>
+  </div>
+  
+
+  <div id="change-190603" class="journal has-details">
+    <h4><a href="51732.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-19" title="2013-11-19 01:30">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+       <li><strong>Target version</strong> set to <i>next-patchlevel</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-190606" class="journal has-notes has-details">
+    <h4><a href="51732.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-19" title="2013-11-19 01:31">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Assigned To</strong> set to <i>Christian Kuhn</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-190606-notes"><p>@Christian: I hope you don't mind if I set you as Assignee here, but I guess you've most insight. Thanks.</p></div>
+  </div>
+  
+
+  <div id="change-197449" class="journal has-notes has-details">
+    <h4><a href="51732.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38310">Benjamin Schmidt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-27" title="2013-12-27 18:18">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/25725/Install_Tool_-_System_environment_check.png">Install_Tool_-_System_environment_check.png</a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/25726/Install_Tool_-_Folder_structure.png">Install_Tool_-_Folder_structure.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-197449-notes"><p>I do have the same problem with Typo3 version 6.2.0beta3. <br />Upgrading from version 6.1.7 to 6.2.0beta3 bashed my website by changing the permission of documentroot directory from 0755 to 2770 (setting setuid to a directory, WTF?). This happend after I klicked on "I know what I'am doing, continue!" (Screenshot "Install Tool - System environment check.png"). This is <strong>A EPIC FAIL</strong> because after this NO single file can be requested anymore over web AND I COULD NOT fix the permission over FTP because its my root directory. I had to fix it over the admin controlpanel.</p>
+
+
+	<p>The Install Tool also wanted to "fix" the permission of other folders (Screenshot "Install Tool - Folder structure.png"):</p>
+
+
+	<p>/typo3temp has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3temp/index.html has wrong permission<br />Target permission are 0660 but current permission are 0644<br />/typo3temp/compressor has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3temp/cs has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3temp/Cache has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3temp/GB has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3temp/llxml has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3temp/locks has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3temp/pics has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3temp/sprites has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3temp/temp has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3conf has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3conf/ext has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/typo3conf/l10n has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/uploads has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/uploads/index.html has wrong permission<br />Target permission are 0660 but current permission are 0644<br />/uploads/media has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/uploads/media/index.html has wrong permission<br />Target permission are 0660 but current permission are 0644<br />/uploads/pics has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/uploads/pics/index.html has wrong permission<br />Target permission are 0660 but current permission are 0644<br />/uploads/tf has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/uploads/tf/index.html has wrong permission<br />Target permission are 0660 but current permission are 0644<br />/fileadmin has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/fileadmin/_temp_ has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/fileadmin/_temp_/.htaccess has wrong permission<br />Target permission are 0660 but current permission are 0644<br />/fileadmin/_temp_/index.html has wrong permission<br />Target permission are 0660 but current permission are 0644<br />/fileadmin/user_upload has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/fileadmin/user_upload/_temp_ has wrong permission<br />Target permission are 2770 but current permission are 0755<br />/fileadmin/user_upload/_temp_/index.html has wrong permission<br />Target permission are 0660 but current permission are 0644<br />/fileadmin/user_upload/index.html has wrong permission<br />Target permission are 0660 but current permission are 0644<br />/ has wrong permission<br />Target permission are 2770 but current permission are 0755</p>
+
+
+	<p>My hoster is Hostpoint <a class="external" href="../../external.html?link=http://www.hostpoint.ch/">www.hostpoint.ch</a>. They use FreeBSD (<em>Apache/2.2.24 (FreeBSD) DAV/2 mod_ssl/2.2.24 OpenSSL/1.0.1e mod_hcgi/0.9.4</em>).</p>
+
+
+	<p>Take a look at this <a class="external" href="../../external.html?link=http://en.wikipedia.org/wiki/Setuid">http://en.wikipedia.org/wiki/Setuid</a> and search for <em>freebsd</em>.</p>
+
+
+	<p>Maybe its best to just not set the setuid bit.</p>
+
+
+	<p>Best regards,<br />Benjamin Schmidt</p></div>
+  </div>
+  
+
+  <div id="change-197450" class="journal has-notes">
+    <h4><a href="51732.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-27" title="2013-12-27 18:42">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197450-notes"><p>Benjamin. To be more precise, it does not set the setuid flag, but the setgid.</p>
+
+
+	<p>So it does make a lot of sense that the group is preserved for all files and folders in order to be accessible for the webserver.</p>
+
+
+	<p>In your case I consider 0755 a bit strange, because why do "others" need access to your document root?<br />A proper setup should ensure that the FTP user and the webserver share one group, to enable access for both of them.</p></div>
+  </div>
+  
+
+  <div id="change-197451" class="journal has-notes">
+    <h4><a href="51732.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/21">Den Denyer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-27" title="2013-12-27 20:16">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197451-notes"><p>I think the point that myself and Benjamin are alluding to is that many users are forced to work in shared hosting where the user/group setup is far from ideal, or the people who manage the hosting are unwilling to make amendments.  In situations such as the more secure permissions settings as detailed here make it impossible to work with the installer, and then obviously Typo3. Unless one wants to either put off new users, or generate a massive amount of incoming support overhead, I would definitely recommend relaxing the permissions settings or, ideally, introducing an option (Dropdown / radio button) in the installer to choose between strict and insecure permissions settings.</p>
+
+
+	<p>Luckily on the install I trashed I had SSH access, I know many people who have hosting that is not even as accommodating as that and if the provided "solution" is to "Change hosting", you may as well be posting them a link to drupal.org :)</p>
+
+
+	<p>I like the idea of secure permissions, it's just I feel a great many people's setups aren't compatible.</p></div>
+  </div>
+  
+
+  <div id="change-197453" class="journal has-notes">
+    <h4><a href="51732.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38310">Benjamin Schmidt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-27" title="2013-12-27 20:23">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197453-notes"><p>Hello Markus</p>
+
+
+	<p>You are right, its the setgid, NOT the setuid.</p>
+
+
+	<p>And yes, the 0755 could also be 0700 (for directory). But "Others" still don't have access to my files/directories (even they have 0777) because my DocumentRoot dir is in my customer directory having the right 0700, which means NO access to all it files and subdirectories for others except the owner of this "customer folder". I have tested that.</p>
+
+
+	<p>The main problem is: I wanted to upgraded typo3 from 6.1.7 to 6.2.0beta3 and it failed very bad.</p>
+
+
+	<p>My website is hosted by Hostpoint, which is a big webhoster here in swiss. So I am very sure other users will have the same problem too if nothing changes until final release. And no, I don't work for Hostpoint and I dont think they are causing this issue because of some miscellaneous (I love this word) system configuration.</p>
+
+
+	<p>By the way I also had to change in Install Tool -> All configuration -> $TYPO3_CONF_VARS['BE']:<br /><em lang="BE">[fileCreateMask] = 0660<br />[BE][folderCreateMask] = 2770</em><br />to<br /><em lang="BE">[fileCreateMask] = 0644<br />[BE][folderCreateMask] = 0755</em></p>
+
+
+	<p>Above I never had to change before, and I did an upgrade and not a new fresh installation.</p>
+
+
+	<p>My website still doesn't work. I will report back when it does.</p>
+
+
+	<p>I upgraded to 6.2.0beta3 to help making typo3 better.</p>
+
+
+	<p>Best regards,<br />Benjamin Schmidt</p></div>
+  </div>
+  
+
+  <div id="change-197489" class="journal has-notes">
+    <h4><a href="51732.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-28" title="2013-12-28 21:24">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197489-notes"><p>At first, thanks to both of you for submitting issues and testing 6.2!</p>
+
+
+	<p>Regarding the All Configuration settings: I guess you need to set this now, since these settings are taken into account everywhere now. (FAL takes care of these)</p>
+
+
+	<p>I fully understand that on shared hosting you usually are not able to change the permissions. (I'm on multiple shared hostings as well, but fortunately never had issues with the directory permissions.)</p>
+
+
+	<p>The problem for me (I can only speak of myself here) is that I can't test such interesting permission setups. I also don't know Hostpoint, but I can tell you that one of the biggest hosters in Austria is also not capable of hosting TYPO3 (because of several problems) even though they pretend to.</p>
+
+
+	<p>I already added Ernesto, our release manager for 6.2, to this ticket and I can only hand this over to him. As far as I know we already have some tickets concerning the permission checking of the Install Tool and there are changes planned to be implemented before the final release.</p></div>
+  </div>
+  
+
+  <div id="change-197589" class="journal has-notes">
+    <h4><a href="51732.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38310">Benjamin Schmidt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-30" title="2013-12-30 20:40">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197589-notes"><p>My website is now working with typo3 version 6.2.0beta3 :)</p>
+
+
+I just had to patch (remove one single line) the following extensions:
+	<ul>
+	<li>multicolumn <a href="54650.html" class="issue status-7 priority-1 closed" title="Compatibility with TYPO3 CMS 6.2 (Resolved)">#54650</a></li>
+		<li>feedforward <a href="54649.html" class="issue status-1 priority-1" title="Compatibility with TYPO3 CMS 6.2 (New)">#54649</a></li>
+		<li>stever_rsscontent (not active any more)</li>
+	</ul>
+
+
+	<p>Still, please do not harden typo3 by default if it can cause this much problems.</p>
+
+
+	<p>Nobody really cares about security or privacy today. The very few do, don't have a computer/mobile phone and therefore cant even use typo3. Typo3 must just work and hardening shall be an option for experienced users. But this is just my opinion.</p>
+
+
+	<p>Happy New Year</p></div>
+  </div>
+  
+
+  <div id="change-208707" class="journal has-notes has-details">
+    <h4><a href="51732.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-18" title="2014-03-18 10:26">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Closed</i></li>
+      
+       <li><strong>Target version</strong> changed from <i>next-patchlevel</i> to <i>6.2.0</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-208707-notes"><p>This was fixed in <a href="52668.html" class="issue status-7 priority-2 closed parent" title="Install Tool: Remove permission checking and fixing code from &quot;folder structure&quot; (Resolved)">#52668</a>. New defaults are 0664 and 2775.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-51732-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/51732.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="51732.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/51732 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:48:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

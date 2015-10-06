@@ -1,0 +1,1869 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/51747 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:36:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #51747: Fatal Error after upgrading to 6.0.9 and 6.1.4 and deleting typo3temp/_processed_ - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/51747.atom" rel="alternate" title="Core - Bug #51747: Fatal Error after upgrading to 6.0.9 and 6.1.4 and deleting typo3temp/_processed_" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (10)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/38403">Florian Dehn</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36925">Jürgen König</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/25589">Christian Ducrot</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3382">Klaus Weidenbach</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2394">Markus Blaschke</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36431">Andrea Böhm</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/639">Michael Voehringer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1327">Sascha Seyfert</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/880">Christian Buelter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4345">Jonas Götze</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-51747-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #51747</h2>
+
+<div class="issue status-7 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Fatal Error after upgrading to 6.0.9 and 6.1.4 and deleting typo3temp/_processed_</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3927">Jochen Weiland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 21:27">almost 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-12" title="2013-09-12 08:22">almost 2 years</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-09-04</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2354">next-patchlevel</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.1</td>
+	<th>Is Regression:</th><td>Yes</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.4</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>After upgrading to TYPO3 versions 6.0.9 or 6.1.4 a fatal error will be generated after clearing the typo3temp directory (specifically the typo3temp/_processed_ subdirectory).</p>
+
+
+	<p>Issue seems to be somewhere in typo3/sysext/core/Classes/Resource/ResourceStorage.php</p>
+
+
+	<p>What I have found out so far: if the subdirectory typo3temp/_processed_ does not exist, it won't be auto-created. If you manually create the directory the exception is not thrown.</p>
+
+
+	<p>Error message: Fatal error: Uncaught exception 'TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException' with message 'You are not allowed to access the given folder' in /.../typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php:730 <br />Stack trace: #0 /.../typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php(1807): TYPO3\CMS\Core\Resource\ResourceStorage->assureFolderReadPermission(Object(TYPO3\CMS\Core\Resource\Folder)) <br /><a href="1.html" class="issue status-9 priority-2 closed" title="Use SPL when searching/listing files. (Closed)">#1</a> /.../typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/Folder.php(239): TYPO3\CMS\Core\Resource\ResourceStorage->hasFolderInFolder('typo3temp', Object(TYPO3\CMS\Core\Resource\Folder)) <br /><a href="2.html" class="issue status-9 priority-2 closed" title="authorName in PackageInfo.xml should be changed (Closed)">#2</a> /.../typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php(2239): TYPO3\CMS\Core\Resource\Folder->getSubfolder('typo3temp')</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/24882/Screen_Shot_2013-09-05_at_9.18.54_AM.png" class="icon icon-attachment">Screen_Shot_2013-09-05_at_9.18.54_AM.png</a>  
+  
+  <span class="size">(313.2 kB)</span>
+  
+  
+    <span class="author">Mikael Conley, 2013-09-05 09:44</span>
+  
+  </p>
+
+<p><a href="../attachments/download/24890/1375955684.txt" class="icon icon-attachment">1375955684.txt</a>  
+    <a href="../attachments/24890/1375955684.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+   - Debug
+  <span class="size">(8 kB)</span>
+  
+  
+    <span class="author">Jürgen König, 2013-09-05 11:48</span>
+  
+  </p>
+
+<p><a href="../attachments/download/24896/1375955684_pagemodule_dmnkhhn.txt" class="icon icon-attachment">1375955684_pagemodule_dmnkhhn.txt</a>  
+    <a href="../attachments/24896/1375955684_pagemodule_dmnkhhn.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(6.9 kB)</span>
+  
+  
+    <span class="author">Dominik Hahn, 2013-09-05 13:09</span>
+  
+  </p>
+
+<p><a href="../attachments/download/24897/1375955684_listmodule_dmnkhhn.txt" class="icon icon-attachment">1375955684_listmodule_dmnkhhn.txt</a>  
+    <a href="../attachments/24897/1375955684_listmodule_dmnkhhn.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(6.1 kB)</span>
+  
+  
+    <span class="author">Dominik Hahn, 2013-09-05 13:09</span>
+  
+  </p>
+
+<p><a href="../attachments/download/24907/Uncaught_TYPO3_Exception_RTE_image.txt" class="icon icon-attachment">Uncaught_TYPO3_Exception_RTE_image.txt</a>  
+    <a href="../attachments/24907/Uncaught_TYPO3_Exception_RTE_image.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(4.3 kB)</span>
+  
+  
+    <span class="author">Jürgen König, 2013-09-06 00:18</span>
+  
+  </p>
+
+<p><a href="../attachments/download/24908/Uncaught_TYPO3_Exception_RTE_image_fileadmin_processed.txt" class="icon icon-attachment">Uncaught_TYPO3_Exception_RTE_image_fileadmin_processed.txt</a>  
+    <a href="../attachments/24908/Uncaught_TYPO3_Exception_RTE_image_fileadmin_processed.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(4.3 kB)</span>
+  
+  
+    <span class="author">Jürgen König, 2013-09-06 00:18</span>
+  
+  </p>
+
+<p><a href="../attachments/download/24909/Uncaught_TYPO3_Exception_tx_news_sysfolder.txt" class="icon icon-attachment">Uncaught_TYPO3_Exception_tx_news_sysfolder.txt</a>  
+    <a href="../attachments/24909/Uncaught_TYPO3_Exception_tx_news_sysfolder.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(8 kB)</span>
+  
+  
+    <span class="author">Jürgen König, 2013-09-06 00:18</span>
+  
+  </p>
+
+<p><a href="../attachments/download/24910/Uncaught_TYPO3_Exception_1375955684.txt" class="icon icon-attachment">Uncaught_TYPO3_Exception_1375955684.txt</a>  
+    <a href="../attachments/24910/Uncaught_TYPO3_Exception_1375955684.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(6.3 kB)</span>
+  
+  
+    <span class="author">Henning F. Mettge, 2013-09-06 08:42</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-9384">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="51807" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="51807.html" class="issue status-7 priority-2 closed child">Task #51807</a>: RTE MagicImage should use the FAL processing API and not ...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-09-06</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-9386">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="51808" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="51808.html" class="issue status-7 priority-2 closed">Bug #51808</a>: ProcessedFiles need to be able to do file exists in proce...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-09-06</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/51747/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/51747/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=51747&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/52b11e5dd3ddfdddcda1f9abbbdb99d29fee9ea2" title="Revision 52b11e5d">Revision 52b11e5d</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 12:24">almost 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Recreate processig folder without permission checks</p>
+
+
+	<p>When fetching the processing folder and it does not<br />exist, it is created on the fly. This should be done<br />without checking permissions. However by making<br />storage 0 not browsable, permissions will be checked<br />when fetching subfolders.</p>
+
+
+	<p>Instead we now fetch the folder objects directly<br />from the driver, where no permission checks are done.</p>
+
+
+	<p>Resolves: <a href="51747.html" class="issue status-7 priority-1 closed" title="Fatal Error after upgrading to 6.0.9 and 6.1.4 and deleting typo3temp/_processed_ (Resolved)">#51747</a><br />Releases: 6.0, 6.1, 6.2<br />Change-Id: I1a4c3b183323151c436969a478c669adb3856476<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/23633">https://review.typo3.org/23633</a><br />Reviewed-by: Helmut Hummel<br />Tested-by: Helmut Hummel</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/4a80aa532c52aaaf4b2136ed58a70b1c61580ec6" title="Revision 4a80aa53">Revision 4a80aa53</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 12:25">almost 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Recreate processig folder without permission checks</p>
+
+
+	<p>When fetching the processing folder and it does not<br />exist, it is created on the fly. This should be done<br />without checking permissions. However by making<br />storage 0 not browsable, permissions will be checked<br />when fetching subfolders.</p>
+
+
+	<p>Instead we now fetch the folder objects directly<br />from the driver, where no permission checks are done.</p>
+
+
+	<p>Resolves: <a href="51747.html" class="issue status-7 priority-1 closed" title="Fatal Error after upgrading to 6.0.9 and 6.1.4 and deleting typo3temp/_processed_ (Resolved)">#51747</a><br />Releases: 6.0, 6.1, 6.2<br />Change-Id: I1a4c3b183323151c436969a478c669adb3856476<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/23655">https://review.typo3.org/23655</a><br />Reviewed-by: Helmut Hummel<br />Tested-by: Helmut Hummel</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/adf98024f4f6c2812ef462df8a02d85617d1ebf2" title="Revision adf98024">Revision adf98024</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 12:25">almost 2 years</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Recreate processig folder without permission checks</p>
+
+
+	<p>When fetching the processing folder and it does not<br />exist, it is created on the fly. This should be done<br />without checking permissions. However by making<br />storage 0 not browsable, permissions will be checked<br />when fetching subfolders.</p>
+
+
+	<p>Instead we now fetch the folder objects directly<br />from the driver, where no permission checks are done.</p>
+
+
+	<p>Resolves: <a href="51747.html" class="issue status-7 priority-1 closed" title="Fatal Error after upgrading to 6.0.9 and 6.1.4 and deleting typo3temp/_processed_ (Resolved)">#51747</a><br />Releases: 6.0, 6.1, 6.2<br />Change-Id: I1a4c3b183323151c436969a478c669adb3856476<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/23656">https://review.typo3.org/23656</a><br />Reviewed-by: Helmut Hummel<br />Tested-by: Helmut Hummel</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-180815" class="journal has-notes">
+    <h4><a href="51747.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 21:45">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180815-notes"><p>Jochen Weiland wrote:</p>
+
+
+<blockquote>
+
+	<p>Error message: Fatal error: Uncaught exception 'TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException' with message 'You are not allowed to access the given folder'</p>
+
+
+</blockquote>
+
+	<p>When exactly does this happen? I assume somewhere in the backend?</p></div>
+  </div>
+  
+
+  <div id="change-180816" class="journal has-details">
+    <h4><a href="51747.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 21:45">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> changed from <i>File Abstraction Layer (FAL)</i> to <i>1394</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-180817" class="journal has-notes">
+    <h4><a href="51747.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3927">Jochen Weiland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 21:48">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180817-notes"><p>Helmut Hummel wrote:</p>
+
+
+<blockquote>
+
+	<p>When exactly does this happen? I assume somewhere in the backend?</p>
+
+
+</blockquote>
+
+	<p>BE and FE: it happens in the backend when clicking on the "Admin->Language" menu entry as well as in the frontend after deleting the typo3temp/_processed_ folder (make sure that FE is not cached)</p></div>
+  </div>
+  
+
+  <div id="change-180818" class="journal has-notes">
+    <h4><a href="51747.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/507">Sascha Egerer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 21:49">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180818-notes"><p>Ah ok. I can now confirm it for "Admin->Language".</p></div>
+  </div>
+  
+
+  <div id="change-180819" class="journal has-notes">
+    <h4><a href="51747.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/507">Sascha Egerer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 21:51">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180819-notes"><pre>
+Uncaught TYPO3 Exception
+#1375955684: You are not allowed to access the given folder (More information)
+
+TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException thrown in file
+/fooo/typo3_src/TYPO3.CMS/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 730.
+
+71 TYPO3\CMS\Core\Resource\ResourceStorage::assureFolderReadPermission(TYPO3\CMS\Core\Resource\Folder)
+
+/fooo/typo3_src/TYPO3.CMS/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01805:   */
+01806:  public function hasFolderInFolder($folderName, Folder $folder) {
+01807:   $this-&gt;assureFolderReadPermission($folder);
+01808:   return $this-&gt;driver-&gt;folderExistsInFolder($folderName, $folder);
+01809:  }
+
+70 TYPO3\CMS\Core\Resource\ResourceStorage::hasFolderInFolder("typo3temp", TYPO3\CMS\Core\Resource\Folder)
+
+/fooo/typo3_src/TYPO3.CMS/typo3/sysext/core/Classes/Resource/Folder.php:
+00237:   */
+00238:  public function getSubfolder($name) {
+00239:   if (!$this-&gt;storage-&gt;hasFolderInFolder($name, $this)) {
+00240:    throw new \InvalidArgumentException('Folder "' . $name . '" does not exist in "' . $this-&gt;identifier . '"', 1329836110);
+00241:   }
+
+69 TYPO3\CMS\Core\Resource\Folder::getSubfolder("typo3temp")
+
+/fooo/typo3_src/TYPO3.CMS/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+02237:       $parentFolder = $this-&gt;driver-&gt;createFolder($folderPart, $parentFolder);
+02238:      } else {
+02239:       $parentFolder = $parentFolder-&gt;getSubfolder($folderPart);
+02240:      }
+02241:     }
+
+68 TYPO3\CMS\Core\Resource\ResourceStorage::getProcessingFolder()
+
+/fooo/typo3_src/TYPO3.CMS/typo3/sysext/core/Classes/Resource/Service/FileProcessingService.php:
+00119:   */
+00120:  protected function process(Resource\ProcessedFile $processedFile, Resource\ResourceStorage $targetStorage) {
+00121:   $targetFolder = $targetStorage-&gt;getProcessingFolder();
+00122:   if (!is_object($targetFolder)) {
+00123:    throw new \RuntimeException('Could not get processing folder for storage ' . $this-&gt;storage-&gt;getName(), 1350514301);
+
+67 TYPO3\CMS\Core\Resource\Service\FileProcessingService::process(TYPO3\CMS\Core\Resource\ProcessedFile, TYPO3\CMS\Core\Resource\ResourceStorage)
+
+/fooo/typo3_src/TYPO3.CMS/typo3/sysext/core/Classes/Resource/Service/FileProcessingService.php:
+00101:   // or (in case of preview images) already in the DB/in the processing folder
+00102:   if (!$processedFile-&gt;isProcessed()) {
+00103:    $this-&gt;process($processedFile, $targetStorage);
+00104:   }
+00105: 
+
+66 TYPO3\CMS\Core\Resource\Service\FileProcessingService::processFile(TYPO3\CMS\Core\Resource\File, TYPO3\CMS\Core\Resource\ResourceStorage, "Image.CropScaleMask", array)
+
+/fooo/typo3_src/TYPO3.CMS/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+01130:    throw new \InvalidArgumentException('Cannot process files of foreign storage', 1353401835);
+01131:   }
+01132:   $processedFile = $this-&gt;getFileProcessingService()-&gt;processFile($fileObject, $this, $context, $configuration);
+01133: 
+01134:   return $processedFile;
+
+...
+</pre></div>
+  </div>
+  
+
+  <div id="change-180820" class="journal has-notes">
+    <h4><a href="51747.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3927">Jochen Weiland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 21:52">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180820-notes"><p>To see the error in the FE you obviously need an image in the site that needs "processing" (so that the typo3temp/_processed_ folder is required)</p></div>
+  </div>
+  
+
+  <div id="change-180822" class="journal has-notes">
+    <h4><a href="51747.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/507">Sascha Egerer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 22:04">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180822-notes"><p>Could you please change line 130 &#38; 132 to TRUE in typo3/sysext/core/Classes/Resource/ResourceFactory.php</p>
+
+
+<pre>
+...
+                    'is_browsable' =&gt; TRUE,
+                    'is_public' =&gt; TRUE,
+                    'is_writable' =&gt; TRUE
+...
+</pre>
+
+	<p>Does it work then? DO NOT DO THIS ON YOUR PRODUCTION MACHINE! Just for debugging!</p></div>
+  </div>
+  
+
+  <div id="change-180825" class="journal has-notes has-details">
+    <h4><a href="51747.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 22:15">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-180825-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23625">https://review.typo3.org/23625</a></p></div>
+  </div>
+  
+
+  <div id="change-180826" class="journal has-notes">
+    <h4><a href="51747.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3927">Jochen Weiland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 22:17">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180826-notes"><p>Hi Sascha:</p>
+
+
+	<p>yes, changing the two lines seems to fix the problem</p></div>
+  </div>
+  
+
+  <div id="change-180827" class="journal has-notes">
+    <h4><a href="51747.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/507">Sascha Egerer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-04" title="2013-09-04 22:22">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180827-notes"><p>Ok I've added a page to gerrit. I'm not really sure why it has been changed to FALSE.<br />@Helmut Hummel is it ok to change it back to TRUE?</p></div>
+  </div>
+  
+
+  <div id="change-180936" class="journal has-notes">
+    <h4><a href="51747.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 09:26">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180936-notes"><p>Jochen Weiland wrote:</p>
+
+
+<blockquote>
+
+	<p>After upgrading to TYPO3 versions 6.0.9 or 6.1.4 a fatal error will be generated after clearing the typo3temp directory (specifically the typo3temp/_processed_ subdirectory).</p>
+
+
+	<p>Issue seems to be somewhere in typo3/sysext/core/Classes/Resource/ResourceStorage.php</p>
+
+
+	<p>What I have found out so far: if the subdirectory typo3temp/_processed_ does not exist, it won't be auto-created. If you manually create the directory the exception is not thrown.</p>
+
+
+</blockquote>
+
+	<p>Ah, OK this only happens if the typo3temp/_processed_ folder does not exist at all.</p>
+
+
+	<p>Workaround is to make sure it there.</p>
+
+
+	<p>Working on a fix now.</p></div>
+  </div>
+  
+
+  <div id="change-180937" class="journal has-notes">
+    <h4><a href="51747.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 09:28">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180937-notes"><p>Sascha Egerer wrote:</p>
+
+
+<blockquote>
+
+	<p>@Helmut Hummel is it ok to change it back to TRUE?</p>
+
+
+</blockquote>
+
+	<p>No, this is not OK. This is one of the main points of the security fixes that storage 0 is neither writable nor browsable.</p></div>
+  </div>
+  
+
+  <div id="change-180939" class="journal has-notes has-details">
+    <h4><a href="51747.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/29808">Mikael Conley</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 09:44">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/24882/Screen_Shot_2013-09-05_at_9.18.54_AM.png">Screen_Shot_2013-09-05_at_9.18.54_AM.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-180939-notes"><p>We got the same error for all non-admin editors on our installation. The subdirectory 'typo3temp/_processed_' does already exist so this is not a viable workaround. <br />I had to roll back the update...</p></div>
+  </div>
+  
+
+  <div id="change-180941" class="journal has-notes">
+    <h4><a href="51747.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36925">Jürgen König</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 09:46">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180941-notes"><p>HI, I also got a problem after updating from 6.1.3 which might be similar.</p>
+
+
+	<p>When I am logged in as a non-admin backend User. The access to some folders are somehow restricted. I could not really figure out why. Here the three main examples:<br />1. I have several sys-folders for tx_news. In two folders I can list the news, but not open them. I get the message "You are not allowed to access the given folder". In other folders everything is all right.<br />2. When I try to insert an image via RTE I can list the Images but not select an image: You are not allowed to access the given folder<br />3. When I go to the module file list, I forst get the error "You are not allowed to access the given folder" but alfter loading the folder tree, I can open all folders (including the one folder I could not access with 6.1.3)</p>
+
+
+	<p>As far as I have seen the admin can do all this.</p>
+
+
+	<p>I have no problem with the language module or with typo3temp/_processed_</p>
+
+
+	<p>Any idea?</p>
+
+
+	<p>Thanks Jürgen</p></div>
+  </div>
+  
+
+  <div id="change-180943" class="journal has-notes">
+    <h4><a href="51747.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 09:50">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180943-notes"><p>Patch set 1 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23633">https://review.typo3.org/23633</a></p></div>
+  </div>
+  
+
+  <div id="change-180946" class="journal has-notes">
+    <h4><a href="51747.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 10:02">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180946-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23633">https://review.typo3.org/23633</a></p></div>
+  </div>
+  
+
+  <div id="change-180947" class="journal has-notes has-details">
+    <h4><a href="51747.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 10:03">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-180947-notes"><p>Can you check if this fixes your problem?<br /><a class="external" href="../../external.html?link=https://review.typo3.org/23633">https://review.typo3.org/23633</a></p></div>
+  </div>
+  
+
+  <div id="change-180951" class="journal has-notes has-details">
+    <h4><a href="51747.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 10:08">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-180951-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23633">https://review.typo3.org/23633</a></p></div>
+  </div>
+  
+
+  <div id="change-180973" class="journal has-notes">
+    <h4><a href="51747.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36925">Jürgen König</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 11:05">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180973-notes"><p>Hi, I tried all 3 patches for my problem. Unfortunately it did not work. I deleted all typo3temp again, cleared all caches. The only change was, that I also got the problems with the admin user, but slightly different. When opening  a news as an admin I got no error message but an blank grey screen.</p>
+
+
+	<p>and I found one news in the folder with the error messages, which I could open without problems (as admin and editor...)???</p></div>
+  </div>
+  
+
+  <div id="change-180976" class="journal has-notes">
+    <h4><a href="51747.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/25589">Christian Ducrot</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 11:19">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180976-notes"><p>Jürgen König wrote:</p>
+
+
+<blockquote>
+
+	<p>Hi, I tried all 3 patches for my problem. Unfortunately it did not work.</p>
+
+
+</blockquote>
+
+	<p>Replace only the changes from "public function getProcessingFolder() {...}". There are other changes in ResourceStorage.php which breaks the installation if you replace the whole file and no other files.</p>
+
+
+	<p>Hint: If you still get a blank page, activate debugging in typo3conf/AdditionalConfiguration.php: $GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] = '1';</p></div>
+  </div>
+  
+
+  <div id="change-180980" class="journal has-notes">
+    <h4><a href="51747.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36925">Jürgen König</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 11:32">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180980-notes"><p>Thanks for the hint. When I replace only the changes from "public function getProcessingFolder() {...}" it works again for the admin user, but there is no change for the editor.</p></div>
+  </div>
+  
+
+  <div id="change-180982" class="journal has-notes">
+    <h4><a href="51747.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/880">Christian Buelter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 11:36">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180982-notes"><p>I had the same issue after upgrading to 6.1.4 and deleting all files and folders in typo3temp/.</p>
+
+
+	<p>A page with a tx_news plugin threw the exception.</p>
+
+
+	<p>Creating typo3temp/_processed_ manually fixed it.</p></div>
+  </div>
+  
+
+  <div id="change-180983" class="journal has-notes has-details">
+    <h4><a href="51747.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36925">Jürgen König</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 11:48">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/24890/1375955684.txt">1375955684.txt</a><a href="../attachments/24890/1375955684.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-180983-notes"><p>I deleted  typo3temp/_processed_ and created it manually -> No change...</p>
+
+
+	<p>I attach the Debug report as a text file</p></div>
+  </div>
+  
+
+  <div id="change-180984" class="journal has-notes">
+    <h4><a href="51747.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36925">Jürgen König</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 11:54">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180984-notes"><p>PS: the debug report ist including patch 3 as described above</p></div>
+  </div>
+  
+
+  <div id="change-180985" class="journal has-notes">
+    <h4><a href="51747.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3927">Jochen Weiland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 11:56">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180985-notes"><p>Patch 3 is working for me.</p></div>
+  </div>
+  
+
+  <div id="change-180991" class="journal has-notes">
+    <h4><a href="51747.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37109">Dominik Hahn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 12:14">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-180991-notes"><p>We are having the same problems with both TYPO 6.0.9 and TYPO 6.1.4.</p>
+
+
+	<p>I have applied patch 3 but the problem still exists.</p>
+
+
+	<p>We get the following error for every editor that tries to alter a page or that tries to list the content of a sysfolder.<br /><pre>
+Core: Exception handler (WEB): Uncaught TYPO3 Exception: #1375955684: You are not allowed to access the given folder | TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException thrown in file /websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 730. Requested URL: http://XYZ/typo3conf/ext/templavoila/mod1/index.php?id=2
+</pre></p>
+
+
+<pre>
+Core: Exception handler (WEB): Uncaught TYPO3 Exception: #1375955684: You are not allowed to access the given folder | TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException thrown in file /websites/XYZ/typo3_src-6.0.9/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 730. Requested URL: http://XYZ/typo3/mod.php?M=web_list&#38;id=5
+</pre></div>
+  </div>
+  
+
+  <div id="change-181003" class="journal has-notes">
+    <h4><a href="51747.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 12:55">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181003-notes"><p>Dominik Hahn wrote:</p>
+
+
+<blockquote>
+
+	<p>We are having the same problems with both TYPO 6.0.9 and TYPO 6.1.4.</p>
+
+
+	<p>I have applied patch 3 but the problem still exists.</p>
+
+
+</blockquote>
+
+	<p>Can you post a full backtrace of the exception here?</p>
+
+
+<blockquote>
+
+	<p>We get the following error for every editor that tries to alter a page</p>
+
+
+</blockquote>
+
+	<p>Access a page with the templavoila page module? Or editing page properties?</p>
+
+
+<blockquote>
+
+	<p>or that tries to list the content of a sysfolder.</p>
+
+
+</blockquote>
+
+	<p>What records are inside the sysfolder?</p></div>
+  </div>
+  
+
+  <div id="change-181004" class="journal has-notes has-details">
+    <h4><a href="51747.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37109">Dominik Hahn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 13:09">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/24896/1375955684_pagemodule_dmnkhhn.txt">1375955684_pagemodule_dmnkhhn.txt</a><a href="../attachments/24896/1375955684_pagemodule_dmnkhhn.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/24897/1375955684_listmodule_dmnkhhn.txt">1375955684_listmodule_dmnkhhn.txt</a><a href="../attachments/24897/1375955684_listmodule_dmnkhhn.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-181004-notes"><p>A full backtrace of both modules is attached.</p>
+
+
+	<p>Editing a page's properties is working without problems.</p>
+
+
+	<p>Listing the contents of a page is working fine.</p>
+
+
+	<p>Editing on of the standard page content elements via list module is working fine.</p>
+
+
+	<p>Editing the tt_news plugin via list module gives me:<br /><pre>
+Sie haben nicht die nötigen Rechte, um diese Änderung durchzuführen.
+Reason: ERROR: authMode "explicitDeny" failed for field "CType" with value "list" evaluated
+</pre></p>
+
+
+	<p>Sysfolders containing only pages are working fine, the sysfolder containing tt_news articles and the sysfolder containing data from a custom extension lead to that exception.</p></div>
+  </div>
+  
+
+  <div id="change-181032" class="journal has-notes">
+    <h4><a href="51747.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36431">Andrea Böhm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 15:57">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181032-notes"><p>After upgrading from 6.0.4 to 6.1.4 I get the same error message that Sascha Egerer posted (Uncaught TYPO3 Exception #1375955684 ...) when I try to insert an image using the RTE (being logged in the backend as admin).</p>
+
+
+	<p>The only workaround that seems to solve this is the patch for ResourceFactory.php posted here: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/23625/1">https://review.typo3.org/#/c/23625/1</a> .</p>
+
+
+	<p>But this patch is abandoned already ... I guess I've to go back to 6.0.4.</p>
+
+
+	<p>-Andrea</p>
+
+
+	<p>Update:</p>
+
+
+	<p>The ResourceFactory.php and the ResourceStorage.php patches don't resolve all issues for me:<br />- Editors still get the TYPO3 Exception #1375955684 when trying to add an image.<br />- The Install tool/Upgrade wizard now offers a "Migrate all RTE magic images from uploads/RTEmagicC_* to fileadmin/_migrated/RTE/". But when I do so I get a Fatal Error:<br />"Fatal error: Call to a member function isAdmin() on a non-object in [...]/typo3/sysext/core/Classes/Resource/Security/StoragePermissionsAspect.php on line 76"</p></div>
+  </div>
+  
+
+  <div id="change-181036" class="journal has-notes">
+    <h4><a href="51747.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 16:36">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181036-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23633">https://review.typo3.org/23633</a></p></div>
+  </div>
+  
+
+  <div id="change-181037" class="journal has-notes">
+    <h4><a href="51747.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 16:38">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181037-notes"><p>Andrea Böhm wrote:</p>
+
+
+<blockquote>
+
+	<p>After upgrading from 6.0.4 to 6.1.4 I get the same error message that Sascha Egerer posted (Uncaught TYPO3 Exception #1375955684 ...) when I try to insert an image using the RTE (being logged in the backend as admin).</p>
+
+
+</blockquote>
+
+	<p>Can you please also post a full backtrace of the exception here? I cannot reproduce this as admin.</p></div>
+  </div>
+  
+
+  <div id="change-181038" class="journal has-notes">
+    <h4><a href="51747.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 16:41">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181038-notes"><p>Dominik Hahn wrote:</p>
+
+
+<blockquote>
+
+	<p>A full backtrace of both modules is attached.</p>
+
+
+</blockquote>
+
+	<p>Thanks. Can you please try patch set 4. Should solve this problem.</p></div>
+  </div>
+  
+
+  <div id="change-181041" class="journal has-notes">
+    <h4><a href="51747.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 16:45">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181041-notes"><p>Andrea Böhm wrote:</p>
+
+
+<blockquote>
+
+	<p>Update:</p>
+
+
+	<p>The ResourceFactory.php and the ResourceStorage.php patches don't resolve all issues for me:<br />- Editors still get the TYPO3 Exception #1375955684 when trying to add an image.<br />- The Install tool/Upgrade wizard now offers a "Migrate all RTE magic images from uploads/RTEmagicC_* to fileadmin/_migrated/RTE/". But when I do so I get a Fatal Error:<br />"Fatal error: Call to a member function isAdmin() on a non-object in [...]/typo3/sysext/core/Classes/Resource/Security/StoragePermissionsAspect.php on line 76"</p>
+
+
+</blockquote>
+
+	<p>This is solved here: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/23621/">https://review.typo3.org/#/c/23621/</a> Bugreport is here <a href="51733.html" class="issue status-7 priority-1 closed" title="Fatal Error in Install Tool after Upgrading from 6.0.8 to 6.0.9 (Resolved)">#51733</a></p></div>
+  </div>
+  
+
+  <div id="change-181042" class="journal has-notes">
+    <h4><a href="51747.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 16:47">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181042-notes"><p>Helmut Hummel wrote:</p>
+
+
+<blockquote>
+
+	<p>Dominik Hahn wrote:</p>
+
+
+<blockquote>
+
+	<p>A full backtrace of both modules is attached.</p>
+
+
+</blockquote>
+
+	<p>Thanks. Can you please try patch set 4. Should solve this problem.</p>
+
+
+</blockquote>
+
+	<p>Can reproduce it, so no need for the backtrace</p></div>
+  </div>
+  
+
+  <div id="change-181043" class="journal has-notes">
+    <h4><a href="51747.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36431">Andrea Böhm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 16:55">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181043-notes"><p>Helmut Hummel wrote:</p>
+
+
+<blockquote>
+
+	<p>Andrea Böhm wrote:</p>
+
+
+<blockquote>
+
+	<p>After upgrading from 6.0.4 to 6.1.4 I get the same error message that Sascha Egerer posted (Uncaught TYPO3 Exception #1375955684 ...) when I try to insert an image using the RTE (being logged in the backend as admin).</p>
+
+
+</blockquote>
+
+	<p>Can you please also post a full backtrace of the exception here? I cannot reproduce this as admin.</p>
+
+
+</blockquote>
+
+	<p>With the ResourceFactory.php patch I don't get this message when I'm logged in as admin. Without this patch I get<br /><pre>
+#1375955684: You are not allowed to access the given folder (More information)
+
+TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException thrown in file
+/foooo/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 730.
+
+9 TYPO3\CMS\Core\Resource\ResourceStorage::assureFolderReadPermission(TYPO3\CMS\Core\Resource\Folder)
+
+/foooo/typo3/sysext/core/Classes/Resource/ResourceStorage.php:
+
+01865:   }
+01866:   $folder = $this-&gt;driver-&gt;getFolder($identifier);
+
+01867:   $this-&gt;assureFolderReadPermission($folder);
+
+01868: 
+01869:   return $folder;
+
+8 TYPO3\CMS\Core\Resource\ResourceStorage::getFolder("uploads/")
+
+/foooo/typo3/sysext/core/Classes/Resource/ResourceFactory.php:
+
+00379:    }
+00380:   }
+
+00381:   return $this-&gt;getStorageObject($storageUid)-&gt;getFolder($folderIdentifier);
+
+00382:  }
+00383: 
+
+7 TYPO3\CMS\Core\Resource\ResourceFactory::getFolderObjectFromCombinedIdentifier("uploads/")
+
+/foooo/typo3/sysext/core/Classes/Resource/Service/MagicImageService.php:
+
+00057:    // @todo Proper exception handling is missing here
+00058:    if ($targetFolderCombinedIdentifier) {
+
+00059:     $magicFolder = $fileFactory-&gt;getFolderObjectFromCombinedIdentifier($targetFolderCombinedIdentifier);
+
+00060:    }
+00061:    if (empty($magicFolder) || !$magicFolder instanceof \TYPO3\CMS\Core\Resource\Folder) {
+
+6 TYPO3\CMS\Core\Resource\Service\MagicImageService::getMagicFolder("uploads/")
+
+/foooo/typo3/sysext/core/Classes/Resource/Service/MagicImageService.php:
+
+00108:   if ($magicImageInfo[3]) {
+00109:    $targetFileName = 'RTEmagicC_' . PathUtility::pathInfo($imageFileObject-&gt;getName(), PATHINFO_FILENAME) . '.' . PathUtility::pathinfo($magicImageInfo[3], PATHINFO_EXTENSION);
+
+00110:    $magicFolder = $this-&gt;getMagicFolder($targetFolderCombinedIdentifier);
+
+00111:    if ($magicFolder instanceof \TYPO3\CMS\Core\Resource\Folder) {
+00112:     $magicImage = $magicFolder-&gt;addFile($magicImageInfo[3], $targetFileName, 'changeName');
+
+5 TYPO3\CMS\Core\Resource\Service\MagicImageService::createMagicImage(TYPO3\CMS\Core\Resource\File, array, "uploads/")
+
+/foooo/typo3/sysext/rtehtmlarea/Classes/SelectImage.php:
+
+00239:     'maxH' =&gt; $this-&gt;magicMaxHeight
+00240:    );
+
+00241:    $magicImage = $magicImageService-&gt;createMagicImage($fileObject, $imageConfiguration, $this-&gt;getRTEImageStorageDir());
+
+00242:    if ($magicImage instanceof \TYPO3\CMS\Core\Resource\FileInterface) {
+00243:     $filePath = $magicImage-&gt;getForLocalProcessing(FALSE);
+
+4 TYPO3\CMS\Rtehtmlarea\SelectImage::insertMagicImage(TYPO3\CMS\Core\Resource\File, NULL, "01_Ergotherapie_KWA_Klinik_Stift_Rottall.jpg", "data-htmlarea-file-uid="356" data-htmlarea-file-table="sys_file"")
+
+/foooo/typo3/sysext/rtehtmlarea/Classes/SelectImage.php:
+
+00200:    switch ($this-&gt;act) {
+00201:    case 'magic':
+
+00202:     $this-&gt;insertMagicImage($fileObject, $altText, $titleText, 'data-htmlarea-file-uid="' . $uid . '" data-htmlarea-file-table="' . $table . '"');
+
+00203:     die;
+00204:     break;
+
+3 TYPO3\CMS\Rtehtmlarea\SelectImage::insertImage()
+
+/foooo/typo3/sysext/rtehtmlarea/Classes/SelectImage.php:
+
+00087:   $this-&gt;fileProcessor-&gt;init($GLOBALS['FILEMOUNTS'], $GLOBALS['TYPO3_CONF_VARS']['BE']['fileExtensions']);
+00088:   $this-&gt;allowedItems = $this-&gt;getAllowedItems('magic,plain,image');
+
+00089:   $this-&gt;insertImage();
+
+00090:   // Creating backend template object:
+00091:   $this-&gt;doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Backend\\Template\\DocumentTemplate');
+
+2 TYPO3\CMS\Rtehtmlarea\SelectImage::init()
+
+/foooo/typo3/sysext/rtehtmlarea/Classes/Controller/SelectImageController.php:
+
+00076:   if (!$browserRendered) {
+00077:    $GLOBALS['SOBE']-&gt;browser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Rtehtmlarea\\SelectImage');
+
+00078:    $GLOBALS['SOBE']-&gt;browser-&gt;init();
+
+00079:    $modData = $GLOBALS['BE_USER']-&gt;getModuleData('select_image.php', 'ses');
+00080:    list($modData, $store) = $GLOBALS['SOBE']-&gt;browser-&gt;processSessionData($modData);
+
+1 TYPO3\CMS\Rtehtmlarea\Controller\SelectImageController::main()
+
+/foooo/typo3/sysext/rtehtmlarea/mod4/select_image.php:
+
+00047: // Make instance:
+00048: $SOBE = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Rtehtmlarea\\Controller\\SelectImageController');
+
+00049: $SOBE-&gt;main();
+
+00050: $SOBE-&gt;printContent();
+00051: ?&gt;
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-181047" class="journal has-notes">
+    <h4><a href="51747.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 17:11">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181047-notes"><p>Hi!</p>
+
+
+	<p>Andrea Böhm wrote:</p>
+
+
+<blockquote>
+
+	<p>With the ResourceFactory.php patch I don't get this message when I'm logged in as admin. Without this patch I get</p>
+
+
+</blockquote>
+
+	<p>Can you set TYPO3_CONF_VARS['BE']['RTE_imageStorageDir'] to "fileadmin/_processed_" in the install tool?</p>
+
+
+	<p>Then you should be able to add images in RTE, with admin and editor permissions.</p></div>
+  </div>
+  
+
+  <div id="change-181060" class="journal has-details">
+    <h4><a href="51747.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 17:59">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>6.0.9</i> to <i>next-patchlevel</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-181076" class="journal has-notes">
+    <h4><a href="51747.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37274">Paul A. Auwehla</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 18:38">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181076-notes"><p>I had the error as reported above after updating from 6.1.3 to 6.1.4:<br />TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException thrown in file<br />/www/typo3_sources/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceStorage.php in line 730.</p>
+
+
+	<p>Manually creating typo3temp/_processed_ resolved it. <br />But this is NOT a good solution.<br />Updating many old extensions to new typo3-Versions often needs to clear the typo3temp-folder.<br />And the folder typo3temp/_processed_ is just a dummy: Nothing is written into this folder.</p>
+
+
+	<p>So I changed line 126 <br />in typo3_src-6.1.4\typo3\sysext\core\Classes\Resource\ResourceFactory.php<br />from    'processingfolder' => 'typo3temp/_processed_/',<br />to    'processingfolder' => 'fileadmin/_processed_/',</p>
+
+
+	<p>This solved the problem for me, too.</p>
+
+
+	<p>By the way:<br />The error occured for me in the frontend when using perfectlightbox 3.1.4 <br />and ::Enlarge on Click:: in images properties of a page.</p></div>
+  </div>
+  
+
+  <div id="change-181081" class="journal has-notes">
+    <h4><a href="51747.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36431">Andrea Böhm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-05" title="2013-09-05 18:46">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181081-notes"><p>Helmut Hummel wrote:</p>
+
+
+<blockquote>
+
+	<p>Hi!</p>
+
+
+	<p>Andrea Böhm wrote:</p>
+
+
+<blockquote>
+
+	<p>With the ResourceFactory.php patch I don't get this message when I'm logged in as admin. Without this patch I get</p>
+
+
+</blockquote>
+
+	<p>Can you set TYPO3_CONF_VARS['BE']['RTE_imageStorageDir'] to "fileadmin/_processed_" in the install tool?</p>
+
+
+	<p>Then you should be able to add images in RTE, with admin and editor permissions.</p>
+
+
+</blockquote>
+
+	<p>I changed this like you said, but it did not solve the problem. <br />But I couldn't update the ext_localconf.php - I've to wait until tomorrow morning when the webhoster is reachable again (I don't have the permission to override these files which makes this whole update process even more complicated for me ...)</p>
+
+
+	<p>Should I revert to the original ResourceFactory.php?</p>
+
+
+	<p>-Andrea</p></div>
+  </div>
+  
+
+  <div id="change-181123" class="journal has-notes has-details">
+    <h4><a href="51747.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36925">Jürgen König</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 00:18">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/24907/Uncaught_TYPO3_Exception_RTE_image.txt">Uncaught_TYPO3_Exception_RTE_image.txt</a><a href="../attachments/24907/Uncaught_TYPO3_Exception_RTE_image.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/24908/Uncaught_TYPO3_Exception_RTE_image_fileadmin_processed.txt">Uncaught_TYPO3_Exception_RTE_image_fileadmin_processed.txt</a><a href="../attachments/24908/Uncaught_TYPO3_Exception_RTE_image_fileadmin_processed.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/24909/Uncaught_TYPO3_Exception_tx_news_sysfolder.txt">Uncaught_TYPO3_Exception_tx_news_sysfolder.txt</a><a href="../attachments/24909/Uncaught_TYPO3_Exception_tx_news_sysfolder.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-181123-notes"><p>Still got the blues...</p>
+
+
+	<p>I tried all above solutions, no effect...the editor can not insert images via RTE and cannot open most tx_news news.</p>
+
+
+	<p>I attach the debug reports:<br />- while inserting RTE Images<br />- inserting RTE images with  TYPO3_CONF_VARS['BE']['RTE_imageStorageDir'] set to "fileadmin/_processed_" <br />- opening tx-news</p>
+
+
+	<p>Would it help to restore the deleted images in typo3temp/_processed_ before the update to 6.1.4? Unfortunately I did not make a backup of these but maybe my provider did.</p>
+
+
+	<p>I tried to go back to 6.1.3, but I could not access the backend or the installtool..i got just a blank screen.</p>
+
+
+	<p>Jürgen</p></div>
+  </div>
+  
+
+  <div id="change-181130" class="journal has-notes">
+    <h4><a href="51747.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37109">Dominik Hahn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 08:38">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181130-notes"><p>Patch 4 restored most of the functionality. At least the page module is accessible for all editors and the list module seems to be working again.</p>
+
+
+	<p>Two things are still not working:</p>
+
+
+	<p>An editor trying to edit the tt_news plugin still gets:<br /><pre>
+Sie haben nicht die nötigen Rechte, um diese Änderung durchzuführen.
+Reason: ERROR: authMode "explicitDeny" failed for field "CType" with value "list" evaluated
+</pre></p>
+
+
+	<p>All editors get an error message in the BE that the images are missing (content elements, tt_news articles and flexible content elements). It's working fine for the admin though.</p>
+
+
+	<p>TemplaVoila/FCE:<br /><pre>
+Datei fehlt!
+Dieses Inhaltselement verlinkt auf eine Datei, die nicht existiert: Maier-Knapp-Herbst_01.png
+</pre><br />(this file is in the folder uploads/tx_templavoila)</p>
+
+
+	<p>tt_news:<br /><pre>
+Datei fehlt!
+Dieses Inhaltselement verlinkt auf eine Datei, die nicht existiert: DSC_8012.jpg
+</pre><br />(this file is in the folder uploads/pics)</p>
+
+
+	<p>What can I do about it? I don't understand why I should set the 'RTE_imageStorageDir' to temporary folder (containing only processed images at the moment) when TYPO3 moans about not finding the <em>original</em> images.<br />We have disabled the ability to upload files through the RTE so this one only affects normal content elements (images, text &#38; images), tt_news articles and flexible content elements.</p>
+
+
+	<p>Any help is greatly appreciated.</p></div>
+  </div>
+  
+
+  <div id="change-181131" class="journal has-notes has-details">
+    <h4><a href="51747.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39486">Henning F. Mettge</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 08:42">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/24910/Uncaught_TYPO3_Exception_1375955684.txt">Uncaught_TYPO3_Exception_1375955684.txt</a><a href="../attachments/24910/Uncaught_TYPO3_Exception_1375955684.html"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-181131-notes"><p>Hi,</p>
+
+
+	<p>the same problem here - as user and also as admin.</p>
+
+
+	<p>Updated to 6.1.4, all changes made (clearing cache etc.).</p>
+
+
+	<p>If I try to edit a content element on a page with a content element containing an image, the known error "TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException" is thrown.</p>
+
+
+	<p>Using the ResourceFactory.php patch setting is_browsable and is_writable to TRUE resolves the problem. I attached the full backtrace.</p>
+
+
+	<p>Ciao <br />Henning</p></div>
+  </div>
+  
+
+  <div id="change-181181" class="journal has-notes">
+    <h4><a href="51747.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36431">Andrea Böhm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 09:14">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181181-notes"><p>Still not working.</p>
+
+
+	<p>I've updated the files with the ones of Patch Set 4 (<a class="external" href="../../external.html?link=https://review.typo3.org/#/c/23633/">https://review.typo3.org/#/c/23633/</a>), ResourceFactory.php from <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/23625/">https://review.typo3.org/#/c/23625/</a> and the ext_localconf.php from <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/23621/">https://review.typo3.org/#/c/23621/</a>. And I've set TYPO3_CONF_VARS['BE']['RTE_imageStorageDir'] to "fileadmin/_processed_".</p>
+
+
+	<p>The ext_localconf.php solved the install tool problems with the upgrade wizard.</p>
+
+
+	<p>But editors still are not able to insert RTE images. And a new problem showed up: both admin and editors can't access the filelist module. Trying so results in the following error:</p>
+
+
+	<p>Fatal error: Call to undefined method TYPO3\CMS\Core\Resource\File::isMissing() in /foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceStorage.php on line 615</p>
+
+
+	<p>-Andrea</p>
+
+
+	<p>CORRECTION:<br />I did not mean to filelist module but the user_upload folder that should be accessible in this module.</p></div>
+  </div>
+  
+
+  <div id="change-181295" class="journal has-notes">
+    <h4><a href="51747.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 11:47">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181295-notes"><p>Andrea Böhm wrote:</p>
+
+
+<blockquote>
+
+	<p>Fatal error: Call to undefined method TYPO3\CMS\Core\Resource\File::isMissing() in /foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceStorage.php on line 615</p>
+
+
+</blockquote>
+
+	<p>You seem to have an inconsistent state of changes in your installation. isMissing() is introduced in master only and not backported to 6.0 or 6.1 (yet).</p>
+
+
+	<p>Please reset to the original ResourceStorage class as the problems with RTE images are not solved with the patch in <a class="external" href="../../external.html?link=https://review.typo3.org/23633">https://review.typo3.org/23633</a><br />This is only about recreating the typo3temp/_processed_ folder when it has been deleted (I will remove the other change and move it to another patch set)</p>
+
+
+	<p>Also everyone: Thanks for your reports and test so far; very helpful! To keep things separate, I'd like to continue with all RTE related problems in Ticket <a href="51807.html" class="issue status-7 priority-2 closed child" title="RTE MagicImage should use the FAL processing API and not storage-0 (Resolved)">#51807</a></p>
+
+
+	<p>Thanks!</p></div>
+  </div>
+  
+
+  <div id="change-181302" class="journal has-notes">
+    <h4><a href="51747.html#note-45" class="journal-link">#45</a>
+    
+    <a name="note-45"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 12:23">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181302-notes"><p>Patch set 5 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23633">https://review.typo3.org/23633</a></p></div>
+  </div>
+  
+
+  <div id="change-181303" class="journal has-notes">
+    <h4><a href="51747.html#note-46" class="journal-link">#46</a>
+    
+    <a name="note-46"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 12:24">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181303-notes"><p>Patch set 1 for branch <strong>TYPO3_6-1</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23655">https://review.typo3.org/23655</a></p></div>
+  </div>
+  
+
+  <div id="change-181304" class="journal has-notes">
+    <h4><a href="51747.html#note-47" class="journal-link">#47</a>
+    
+    <a name="note-47"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 12:25">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181304-notes"><p>Patch set 1 for branch <strong>TYPO3_6-0</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23656">https://review.typo3.org/23656</a></p></div>
+  </div>
+  
+
+  <div id="change-181305" class="journal has-notes has-details">
+    <h4><a href="51747.html#note-48" class="journal-link">#48</a>
+    
+    <a name="note-48"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 12:30">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-181305-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/adf98024f4f6c2812ef462df8a02d85617d1ebf2" class="changeset" title="[BUGFIX] Recreate processig folder without permission checks When fetching the processing folder...">adf98024f4f6c2812ef462df8a02d85617d1ebf2</a>.</p></div>
+  </div>
+  
+
+  <div id="change-181310" class="journal has-notes">
+    <h4><a href="51747.html#note-49" class="journal-link">#49</a>
+    
+    <a name="note-49"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 12:46">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181310-notes"><p>Hi!</p>
+
+
+	<p>Dominik Hahn wrote:</p>
+
+
+<blockquote>
+
+	<p>Patch 4 restored most of the functionality. At least the page module is accessible for all editors and the list module seems to be working again.</p>
+
+
+	<p>Two things are still not working:</p>
+
+
+	<p>An editor trying to edit the tt_news plugin still gets:<br />[...]</p>
+
+
+	<p>All editors get an error message in the BE that the images are missing (content elements, tt_news articles and flexible content elements). It's working fine for the admin though.</p>
+
+
+	<p>TemplaVoila/FCE:<br />[...]<br />(this file is in the folder uploads/tx_templavoila)</p>
+
+
+	<p>tt_news:<br />[...]<br />(this file is in the folder uploads/pics)</p>
+
+
+</blockquote>
+
+	<p>Please try coressponding patch in ticket <a href="51808.html" class="issue status-7 priority-2 closed" title="ProcessedFiles need to be able to do file exists in processing folder without permission checks (Resolved)">#51808</a></p>
+
+
+<blockquote>
+
+	<p>What can I do about it? I don't understand why I should set the 'RTE_imageStorageDir' to temporary folder (containing only processed images at the moment) when TYPO3 moans about not finding the <em>original</em> images.</p>
+
+
+</blockquote>
+
+	<p>You are right. This was a wrong hint and the problems have a different cause. Please use 'uploads/' again for now</p></div>
+  </div>
+  
+
+  <div id="change-181312" class="journal has-notes">
+    <h4><a href="51747.html#note-50" class="journal-link">#50</a>
+    
+    <a name="note-50"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36431">Andrea Böhm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 12:50">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181312-notes"><p>Helmut Hummel wrote:</p>
+
+
+<blockquote>
+
+	<p>Andrea Böhm wrote:</p>
+
+
+<blockquote>
+
+	<p>Fatal error: Call to undefined method TYPO3\CMS\Core\Resource\File::isMissing() in /foooo/typo3_src-6.1.4/typo3/sysext/core/Classes/Resource/ResourceStorage.php on line 615</p>
+
+
+</blockquote>
+
+	<p>You seem to have an inconsistent state of changes in your installation. isMissing() is introduced in master only and not backported to 6.0 or 6.1 (yet).</p>
+
+
+</blockquote>
+
+	<p>Thanks Helmut - using your ResourceStorage.php for 6.1 helped with this issue.</p>
+
+
+	<p>I'll now follow the RTE Bug thread.</p></div>
+  </div>
+  
+
+  <div id="change-181337" class="journal has-notes">
+    <h4><a href="51747.html#note-51" class="journal-link">#51</a>
+    
+    <a name="note-51"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 16:05">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-181337-notes"><p>OK, for anybody having problems with the current release, please try out this</p>
+
+
+	<p><a class="external" href="../../external.html?link=https://review.typo3.org/23660">https://review.typo3.org/23660</a> (patch set 5)</p>
+
+
+	<p>It rolls back permission restrictions for storage 0 and should solve all problems with RTE and old extensions (like tt_news)</p></div>
+  </div>
+  
+
+  <div id="change-181397" class="journal has-details">
+    <h4><a href="51747.html#note-52" class="journal-link">#52</a>
+    
+    <a name="note-52"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 22:21">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Is Regression</strong> set to <i>Yes</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-181404" class="journal has-details">
+    <h4><a href="51747.html#note-53" class="journal-link">#53</a>
+    
+    <a name="note-53"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-09-06" title="2013-09-06 22:22">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> changed from <i>1394</i> to <i>File Abstraction Layer (FAL)</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-51747-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/51747.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="51747.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/51747 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:36:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/54217 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:15:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #54217: Using &quot;(/)&quot; as defaultUriSuffix only works for top-level pages - TYPO3.Neos - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/54217.atom" rel="alternate" title="TYPO3.Neos - Bug #54217: Using &quot;(/)&quot; as defaultUriSuffix only works for top-level pages" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 current sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Neos</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-distribution-base" class="level-1 current sorting-0">Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-form" class="level-2 sorting-0">TYPO3.Form</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-imagine" class="level-2 sorting-0">TYPO3.Imagine</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-media" class="level-2 sorting-0">TYPO3.Media</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos" class="level-2 current sorting-0">TYPO3.Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos-nodetypes" class="level-2 sorting-0">TYPO3.Neos.NodeTypes</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-party" class="level-2 sorting-0">TYPO3.Party</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-setup" class="level-2 sorting-0">TYPO3.Setup</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-sitekickstarter" class="level-2 sorting-0">TYPO3.SiteKickstarter</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-twitter-bootstrap" class="level-2 sorting-0">TYPO3.Twitter.Bootstrap</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neoscr" class="level-2 sorting-0">TYPO3.TYPO3CR</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-typoscript" class="level-2 sorting-0">TYPO3.TypoScript</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-coordination" class="level-1 sorting-0">Coordination Group</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos-website-communication" class="level-1 sorting-0">Website and Communication</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-54217-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #54217</h2>
+
+<div class="issue status-9 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Using &quot;(/)&quot; as defaultUriSuffix only works for top-level pages</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-05" title="2013-12-05 17:05">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-02-10" title="2014-02-10 10:59">over 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-12-05</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>We've got an existing site on Neos that used to have URLs ending in "/". When upgrading to a recent Neos master (about two weeks ago), the URLs changed to ".html". On 1.0 Beta 2, we have set "defaultUriSuffix" in Routes.yaml to "(/)" ("/" was not accepted because the routing mechanism generally does not like routes ending in a slash).</p>
+
+
+	<p>This works fine for pages directly beneath the site root, but pages inside a subpage are not found. The system log says something like this:</p>
+
+
+<code>
+13-12-05 17:02:23 32682      NOTICE    Flow                 Router route(): No route matched the route path "subpage/subsubpage/".
+13-12-05 17:02:23 32682      DEBUG     Flow                 No CSRF required, safe request
+13-12-05 17:02:23 32682      CRITICAL  Flow                 Uncaught exception #1303209195 in line 74 of /data/www/mysite/Data/Temporary/Development/SubContextThinkpad/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Dispatcher.php: No controller could be resolved which would match your request. Package key: "", controller name: "Standard". (GET http://dev.mysite.localsite/subpage/subsubpage/) - See also: 2013120517022324e652.txt
+</code>
+
+	<p>I'm a bit clueless where to exactly look for this bug. When setting <code>defaultUriSuffix</code> to ".html", "http://dev.mysite.localsite/subpage/subsubpage.html" is found.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/25653/54217.diff" class="icon icon-attachment">54217.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/25653/54217.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(708 Bytes)</span>
+  
+  
+    <span class="author">Andreas Wolf, 2013-12-05 22:23</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10398">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="55492" /></td>
+<td class="subject">related to 
+    TYPO3.Neos - 
+    <a href="55492.html" class="issue status-7 priority-1 closed">Bug #55492</a>: Disabling the defaultUriSuffix breaks routing
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-01-31</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10028">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54187" /></td>
+<td class="subject">related to 
+    TYPO3.Neos - 
+    <a href="54187.html" class="issue status-7 priority-2 closed">Bug #54187</a>: Router ignores default Suffix from browser
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-12-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/54217/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/54217/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=54217&amp;project_id=package-typo3-neos')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/repository/revisions/eaaa9aef205283547df3dc0e1d7883a7fe09cd5f" title="Revision eaaa9aef">Revision eaaa9aef</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-02-17" title="2014-02-17 13:33">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][BUGFIX] Only accepts URLs with the configured URI suffix</p>
+
+
+	<p>This change removes two obsolete routes and adjusts the<br />``FrontendNodeRoutePartHandler`` so that it matches the full node path.</p>
+
+
+	<p>Background:<br />The route "Content with some format" accepted all URLs in the format<br />``{node}.{@format}`` which lead to duplicate content (if your default<br />suffix is empty and the user appends ".html") and weird errors (if an<br />arbitrary extension is added to the path, like "some/path.anything").</p>
+
+
+	<p>Besides this change simplifies the ``FrontendNodeRoutePartHandler`` so<br />that it does not ignore the ``splitString`` option if no dot could be<br />found in the request path.</p>
+
+
+	<p>This is a breaking change if you relied on the fact that any format<br />suffix is accepted by Neos.<br />If you provide a custom format (for example "ics") you should register<br />a custom route for it in your package::</p>
+
+
+	<pre><code>-<br />    name:  'ICS'<br />    uriPattern: '{node}.ics'<br />    defaults:<br />      '@package':    'TYPO3.Neos'<br />      '@controller': 'Frontend\Node'<br />      '@action':     'show'<br />      '@format':     'ics'<br />    routeParts:<br />      'node':<br />        handler:     'TYPO3\Neos\Routing\FrontendNodeRoutePartHandler'</code></pre>
+
+
+	<p>Releases: master, 1.0<br />Change-Id: Iea1b92b07daba69f5f76cd7ceb7b81f2d14d68a1<br />Fixes: <a href="54187.html" class="issue status-7 priority-2 closed" title="Router ignores default Suffix from browser (Resolved)">#54187</a><br />Related: <a href="54217.html" class="issue status-9 priority-2 closed" title="Using &quot;(/)&quot; as defaultUriSuffix only works for top-level pages (Closed)">#54217</a><br />Related: <a href="55492.html" class="issue status-7 priority-1 closed" title="Disabling the defaultUriSuffix breaks routing (Resolved)">#55492</a><br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/25980">https://review.typo3.org/25980</a><br />Tested-by: Bastian Waidelich<br />Reviewed-by: Dominique Feyer<br />Tested-by: Dominique Feyer<br />Reviewed-by: Aske Ertmann<br />Reviewed-by: Bastian Waidelich</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/repository/revisions/437ec25a5c3ee52b836267e0bf2805b8a253a058" title="Revision 437ec25a">Revision 437ec25a</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-02-26" title="2014-02-26 00:04">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][BUGFIX] Only accepts URLs with the configured URI suffix</p>
+
+
+	<p>This change removes two obsolete routes and adjusts the<br />``FrontendNodeRoutePartHandler`` so that it matches the full node path.</p>
+
+
+	<p>Background:<br />The route "Content with some format" accepted all URLs in the format<br />``{node}.{@format}`` which lead to duplicate content (if your default<br />suffix is empty and the user appends ".html") and weird errors (if an<br />arbitrary extension is added to the path, like "some/path.anything").</p>
+
+
+	<p>Besides this change simplifies the ``FrontendNodeRoutePartHandler`` so<br />that it does not ignore the ``splitString`` option if no dot could be<br />found in the request path.</p>
+
+
+	<p>This is a breaking change if you relied on the fact that any format<br />suffix is accepted by Neos.<br />If you provide a custom format (for example "ics") you should register<br />a custom route for it in your package::</p>
+
+
+	<pre><code>-<br />    name:  'ICS'<br />    uriPattern: '{node}.ics'<br />    defaults:<br />      '@package':    'TYPO3.Neos'<br />      '@controller': 'Frontend\Node'<br />      '@action':     'show'<br />      '@format':     'ics'<br />    routeParts:<br />      'node':<br />        handler:     'TYPO3\Neos\Routing\FrontendNodeRoutePartHandler'</code></pre>
+
+
+	<p>Releases: master, 1.0<br />Change-Id: Iea1b92b07daba69f5f76cd7ceb7b81f2d14d68a1<br />Fixes: <a href="54187.html" class="issue status-7 priority-2 closed" title="Router ignores default Suffix from browser (Resolved)">#54187</a><br />Related: <a href="54217.html" class="issue status-9 priority-2 closed" title="Using &quot;(/)&quot; as defaultUriSuffix only works for top-level pages (Closed)">#54217</a><br />Related: <a href="55492.html" class="issue status-7 priority-1 closed" title="Disabling the defaultUriSuffix breaks routing (Resolved)">#55492</a><br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/27656">https://review.typo3.org/27656</a><br />Reviewed-by: Bastian Waidelich<br />Tested-by: Bastian Waidelich<br />Reviewed-by: Aske Ertmann</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-192804" class="journal has-notes has-details">
+    <h4><a href="54217.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-05" title="2013-12-05 17:26">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Bastian Waidelich</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-192804-notes"><p>Hi Andreas,</p>
+
+
+	<p>thanks for the report.<br />If you want to remove the ".html" suffix replace the variable with an empty string as mentioned here: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/25569/">https://review.typo3.org/#/c/25569/</a> :<br /><pre>
+-
+  name: 'TYPO3 Neos'
+  uriPattern: '&lt;TYPO3NeosSubroutes&gt;'
+  subRoutes:
+    'TYPO3NeosSubroutes':
+      package: 'TYPO3.Neos'
+      variables:
+        'defaultUriSuffix': ''
+</pre></p>
+
+
+	<p>Does that work for you?</p></div>
+  </div>
+  
+
+  <div id="change-192810" class="journal has-notes">
+    <h4><a href="54217.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-05" title="2013-12-05 21:24">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-192810-notes"><p>Bastian Waidelich wrote:</p>
+
+
+<blockquote>
+
+	<p>Hi Andreas,</p>
+
+
+	<p>thanks for the report.<br />If you want to remove the ".html" suffix replace the variable with an empty string as mentioned here: <a class="external" href="../../external.html?link=https://review.typo3.org/#/c/25569/">https://review.typo3.org/#/c/25569/</a> :<br />[...]</p>
+
+
+	<p>Does that work for you?</p>
+
+
+</blockquote>
+
+	<p>I just tried that independently from your suggestion, but it does not really fix the problem. Instead of giving a 404, the first level is matched, giving a wrong page. This does not work for nodes that don't exist, but if the desired node exists, a wrong node (directly beneath the top level) is returned.</p>
+
+
+	<p>What I also noticed is that the FrontendNodeRoutePartHandler is called multiple times if the node does not exist (once with the full path, once with only the first level [which is then returned] and then thrice with the full path again).</p>
+
+
+	<p>The reason why my initial attempt did not work is that the "/" is set as the split string in Route.php in method `parse` in the `case self::ROUTEPART_TYPE_STATIC:` block. Therefore, the first part is queried and found, and the latter parts are not found anymore as there is no node with only the subpath. If the search was done recursively, it would probably work – and the correct node is also found, just the matching against the path does not work, because the path is cut off too early.</p></div>
+  </div>
+  
+
+  <div id="change-192814" class="journal has-notes has-details">
+    <h4><a href="54217.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-05" title="2013-12-05 22:23">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/25653/54217.diff">54217.diff</a><a href="../../external.html?link=https://forge.typo3.org/attachments/25653/54217.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-192814-notes"><p>I could fix this, at least for using "(/)" as the defaultUriSuffix. See attached patch for Flow. The trick is to not use / as the split string if that string is the last part in a route.</p>
+
+
+	<p>Downside of this approach is that the route "content with URI suffix and type" is broken afterwards, but this exact route is the reason why "" as the defaultUriSuffix does not work. In my eyes the concept of this route is broken anyways, as there is no way for Neos to determine which strings are allowed as "type". Together with the FrontendNodeRoutePartHandler, which can match any part of a node path (so /foo/bar/baz would match both for the node /foo/bar/baz without a type and the node /foo/bar with type "baz"), this looks like a pretty good road straight to URI hell ;-)</p>
+
+
+	<p>The patch is far from optimal, but for my usecase it fixes the problem.</p></div>
+  </div>
+  
+
+  <div id="change-192815" class="journal has-notes">
+    <h4><a href="54217.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-05" title="2013-12-05 22:25">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-192815-notes"><p>Update No. 2:</p>
+
+
+	<p>For "" as defaultUriSuffix, the problem can also be fixed by changing the order of "content with URI suffix format" and "content with URI suffix and type" in Configuration/Routes.Frontend.yaml. Then the latter route will never match, but the former will match for the correct page (even with a trailing slash in the URL).</p>
+
+
+	<p>Only thing missing is a clarification on why the route with type is needed at all...</p></div>
+  </div>
+  
+
+  <div id="change-192870" class="journal has-notes">
+    <h4><a href="54217.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-06" title="2013-12-06 15:36">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-192870-notes"><p>Andreas Wolf wrote:</p>
+
+
+	<p>Hi Andreas,</p>
+
+
+	<p>thanks for the elaborate feedback!</p>
+
+
+<blockquote>
+
+	<p>Only thing missing is a clarification on why the route with type is needed at all...</p>
+
+
+</blockquote>
+
+	<p>It seems this is a left-over that is completely obsolete. The {type} is never used in the code.<br />Could you please check whether <a class="external" href="../../external.html?link=https://review.typo3.org/25980">https://review.typo3.org/25980</a> solves the issue for you?</p></div>
+  </div>
+  
+
+  <div id="change-192871" class="journal has-details">
+    <h4><a href="54217.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2013-12-06" title="2013-12-06 15:36">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> deleted (<strike><i>Frontend</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-203145" class="journal has-notes">
+    <h4><a href="54217.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-02-09" title="2014-02-09 17:16">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-203145-notes"><p>This should be fixed with <a href="55492.html" class="issue status-7 priority-1 closed" title="Disabling the defaultUriSuffix breaks routing (Resolved)">#55492</a> - can someone please confirm?</p></div>
+  </div>
+  
+
+  <div id="change-203199" class="journal has-notes has-details">
+    <h4><a href="54217.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-neos/activity?from=2014-02-10" title="2014-02-10 10:59">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-203199-notes"><p>I close this as duplicate of <a href="54187.html" class="issue status-7 priority-2 closed" title="Router ignores default Suffix from browser (Resolved)">#54187</a> for now - feel free to comment/re-open if you don't agree</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-54217-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/54217.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="54217.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/54217 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:16:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

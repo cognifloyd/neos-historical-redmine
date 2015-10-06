@@ -1,0 +1,598 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/58862 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:19:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #58862: FormViewHelper doesn&#39;t accept NULL as value for $arguments - TYPO3.Fluid - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:#FFFFFF;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/58862.atom" rel="alternate" title="TYPO3.Fluid - Bug #58862: FormViewHelper doesn't accept NULL as value for $arguments" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-color:#FFFFFF;background-image:url(../headerimages/517.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/search" accesskey="4" style="color:#FFFFFF">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Fluid</h1>
+        <div id="quicklinks"><p>Wiki of the <a href="../../external.html?link=http://forge.typo3.org/projects/typo3v4-mvc/wiki" class="external">Extbase Project</a></p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 current sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=195" class="query">1.0 beta 1</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/40404">Kevin Fischer</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-58862-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #58862</h2>
+
+<div class="issue status-4 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>FormViewHelper doesn&#39;t accept NULL as value for $arguments</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/40404">Kevin Fischer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-05-16" title="2014-05-16 11:47">about 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-06-04" title="2014-06-04 12:49">about 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Needs Feedback</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-05-16</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">ViewHelpers</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>Has patch:</th><td>Yes</td>
+	<th>Affected Flow version:</th><td>Flow 2.0.0 beta 2</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Unlike other ViewHelpers like the ActionViewHelpers, the FormViewHelper doesn't accept NULL as value for the $arguments argument, because it's type-hinted as "array" in the render() method. This leads to PHP throwing a Catchable Fatal Error when passing NULL to it.</p>
+
+
+	<p>A patch file is attached.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/26725/patch.diff" class="icon icon-attachment">patch.diff</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/26725/patch.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(1.3 kB)</span>
+  
+  
+    <span class="author">Kevin Fischer, 2014-05-16 11:48</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-217101" class="journal has-details">
+    <h4><a href="58862.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40404">Kevin Fischer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-05-16" title="2014-05-16 11:48">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/26725/patch.diff">patch.diff</a><a href="../../external.html?link=https://forge.typo3.org/attachments/26725/patch.diff"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-217102" class="journal has-notes has-details">
+    <h4><a href="58862.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-05-16" title="2014-05-16 11:52">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Bastian Waidelich</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-217102-notes"><p>Hi Kevin,</p>
+
+
+	<p>just for clarification: Why would you want that?</p></div>
+  </div>
+  
+
+  <div id="change-217113" class="journal has-notes">
+    <h4><a href="58862.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40404">Kevin Fischer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-05-16" title="2014-05-16 11:58">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-217113-notes"><p>Hi Bastian,</p>
+
+
+	<p>I think it'd be good to have the arguments working streamlined across the standard ViewHelpers; and this includes the $arguments argument behaving the same everywhere and i.e. accepting NULL as a value.</p>
+
+
+	<p>Personally I've stumbled across this when I was implementing a partial that uses the FormViewHelper and has an optional argument to set the $arguments argument of the FormViewHelper, which may or may not be set from the outside. I expected the same behaviour as with the other mentioned ViewHelpers like Link\ActionViewHelper, but instead I got an error thrown at me.</p>
+
+
+	<p>Best regards.</p>
+
+
+	<p>PS: The amount of arguments is too damn high!</p></div>
+  </div>
+  
+
+  <div id="change-217127" class="journal has-notes">
+    <h4><a href="58862.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-05-16" title="2014-05-16 12:06">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-217127-notes"><p>Kevin Fischer wrote:</p>
+
+
+<blockquote>
+
+	<p>I think it'd be good to have the arguments working streamlined across the standard ViewHelpers</p>
+
+
+</blockquote>
+
+	<p>I agree. But we usually try to avoid <strong>mixed</strong> types as they're really error prone. So I'd suggest to fix the other ViewHelpers instead - but this would be a breaking change.</p>
+
+
+<blockquote>
+
+	<p>Personally I've stumbled across this when I was implementing a partial that uses the FormViewHelper and has an optional argument to set the $arguments argument of the FormViewHelper [...]</p>
+
+
+</blockquote>
+
+	<p>I see, that's a valid scenario of course..<br />But actually I think it might be a bug of the Fluid core if it really behaves this way. For:<br /><pre>
+<code class="html syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="tag">&lt;f:form</span> <span class="attribute-name">arguments</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">{null}</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+</span></code><br /></pre></p>
+
+
+	<p>I would expect render() to be called with the default value of the "arguments" parameter, which is "array()".</p>
+
+
+<blockquote>
+
+	<p>PS: The amount of arguments is too damn high!</p>
+
+
+</blockquote>
+
+	<p>What do you suggest?</p></div>
+  </div>
+  
+
+  <div id="change-217135" class="journal has-notes">
+    <h4><a href="58862.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40404">Kevin Fischer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-05-16" title="2014-05-16 12:30">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-217135-notes"><p>Bastian Waidelich wrote:</p>
+
+
+<blockquote>
+
+	<p>I agree. But we usually try to avoid <strong>mixed</strong> types as they're really error prone. So I'd suggest to fix the other ViewHelpers instead - but this would be a breaking change.</p>
+
+
+</blockquote>
+
+	<p>I see your point, but wouldn't moving the arguments defintion to initializeArguments() solve this problem as well, while allowing NULL values? Not accepting NULL for hinted parameters is a terrible, terrible mistake made by PHP.<br />Let me know if I should submit another patch that moves the argument definitions to initializeArgument().</p>
+
+
+<blockquote>
+
+	<p>I would expect render() to be called with the default value of the "arguments" parameter, which is "array()".</p>
+
+
+</blockquote>
+
+	<p>Imho this shouldn't be the case. What if you have a default value but want to override it with NULL? This wouldn't work anymore in this case. I don't know if this happens when arguments are defined using registerArgument(). I wouldn't mind it happening, but I also wouldn't expect it. This is a whole other story tho :)</p>
+
+
+<blockquote><blockquote>
+
+	<p>PS: The amount of arguments is too damn high!</p>
+
+
+</blockquote>
+
+	<p>What do you suggest?</p>
+
+
+</blockquote>
+
+	<p>I was just kidding because of the high occurance of "argument" in my posts :)<br /><a class="external" href="../../external.html?link=http://knowyourmeme.com/memes/the-rent-is-too-damn-high-jimmy-mcmillan">http://knowyourmeme.com/memes/the-rent-is-too-damn-high-jimmy-mcmillan</a></p></div>
+  </div>
+  
+
+  <div id="change-217145" class="journal has-notes">
+    <h4><a href="58862.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-05-16" title="2014-05-16 12:40">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-217145-notes"><p>Kevin Fischer wrote:</p>
+
+
+<blockquote>
+
+	<p>Let me know if I should submit another patch that moves the argument definitions to initializeArgument().</p>
+
+
+</blockquote>
+
+	<p>The patch is not needed, but if you could quickly test whether this really fixes the issue - that would be great!<br />We already discussed moving all arguments of the Fluid ViewHelpers to the initializeArgument(). This would make subclassing easier - but it also has some drawbacks (worse readability of the code (no type inference) and it's again a breaking change...)</p>
+
+
+<blockquote><blockquote>
+
+	<p>I would expect render() to be called with the default value of the "arguments" parameter, which is "array()".</p>
+
+
+</blockquote></blockquote>
+
+<blockquote>
+
+	<p>Imho this shouldn't be the case. What if you have a default value but want to override it with NULL?</p>
+
+
+</blockquote>
+
+	<p>True.. But didn't you suggest the same thing with "Not accepting NULL for hinted parameters is a terrible"?</p>
+
+
+<blockquote><blockquote><blockquote>
+
+	<p>PS: The amount of arguments is too damn high!</p>
+
+
+</blockquote>
+
+	<p>What do you suggest?</p>
+
+
+</blockquote>
+
+	<p>I was just kidding because of the high occurance of "argument" in my posts :)<br /><a class="external" href="../../external.html?link=http://knowyourmeme.com/memes/the-rent-is-too-damn-high-jimmy-mcmillan">http://knowyourmeme.com/memes/the-rent-is-too-damn-high-jimmy-mcmillan</a></p>
+
+
+</blockquote>
+
+	<p>:D</p></div>
+  </div>
+  
+
+  <div id="change-217151" class="journal has-notes">
+    <h4><a href="58862.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40404">Kevin Fischer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-05-16" title="2014-05-16 13:03">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-217151-notes"><p>Bastian Waidelich wrote:</p>
+
+
+<blockquote>
+
+	<p>The patch is not needed, but if you could quickly test whether this really fixes the issue - that would be great!</p>
+
+
+</blockquote>
+
+	<p>Yes, this would solve the problem. I've removed the $arguments argument from render() and added the following line to initializeArguments():<br /><pre>
+$this-&gt;registerArgument('arguments', 'array', 'Additional arguments', false, array());
+</pre></p>
+
+
+<blockquote>
+
+	<p>We already discussed moving all arguments of the Fluid ViewHelpers to the initializeArgument(). This would make subclassing easier - but it also has some drawbacks (worse readability of the code (no type inference) and it's again a breaking change...)</p>
+
+
+</blockquote>
+
+	<p>On the one hand, you're totally right there. Having all arguments in an outline or similiar is handy. But I don't dislike having them listed in the initializeArguments() either. But this everyone's personal opinion anyway.</p>
+
+
+<blockquote>
+
+	<p>True.. But didn't you suggest the same thing with "Not accepting NULL for hinted parameters is a terrible"?</p>
+
+
+</blockquote>
+
+	<p>No, what I meant is that in other languages, say Java, you can define a method like <code>public void foobar(ArrayList arguments)</code> and then call that method with <code>foobar(NULL)</code>, which is a totally legit way as any value can be NULL in Java and most other OOP-languages. PHP though seems to think that it's not and will throw the metioned Catchable Fatal Error when passing NULL to a type-hinted parameter like <code>public function render(array $arguments)</code>, as it expects an array, "but null is given".</p></div>
+  </div>
+  
+
+  <div id="change-219164" class="journal has-notes">
+    <h4><a href="58862.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38379">Aimo Künkel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-06-04" title="2014-06-04 10:38">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-219164-notes"><p>Hi all,</p>
+
+
+	<p>I'd really like to see all arguments of all fluid VHs moved to initializeArguments().<br />It would solve this problem, quite some other problems with calling VHs we have currently and would make extending VHs a lot easier.</p>
+
+
+	<p>At which state of discussion is this change currently?</p></div>
+  </div>
+  
+
+  <div id="change-219223" class="journal has-notes">
+    <h4><a href="58862.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40404">Kevin Fischer</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid/activity?from=2014-06-04" title="2014-06-04 12:49">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-219223-notes"><p>By the way: Just removing the "array" type hint as in the OP's .diff file wouldn't break anything, would it? It should be totally backward compatible, and as all the other mentioned ViewHelpers already do it like this, I'd highly suggest applying the same to the FormViewHelper.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-58862-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/58862.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="58862.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/58862 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:19:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

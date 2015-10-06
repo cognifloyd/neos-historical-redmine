@@ -1,0 +1,1368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/57272 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:53:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #57272: Extbase doesn&#39;t handle FAL translations correctly - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/57272.atom" rel="alternate" title="Core - Bug #57272: Extbase doesn't handle FAL translations correctly" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (45)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/39815">Markus Kasten</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39904">Thomas Schwarz</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/40350">Juri Kostik</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39404">Simon Würstle</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4192">Anja Leichsenring</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/760">Thomas Kakuschke</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3883">Viktor Livakivskyi</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37340">Stephan Brun</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36512">Maik Nergert</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39584">Danilo Bürger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39369">Thomas no-lastname-given</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38104">Bernhard Berger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/40783">Gerd Müller</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/48">Stefano Cecere</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/522">Markus Timtner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/40301">Nina Pinkowski</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37677">Ephraim Härer</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/459">Ben Robinson</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2775">Lorenz Ulrich</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2548">Karsten Nowak (undkonsorten)</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/495">Pascal Hinz</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/40659">Martina Ahlswede</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39970">Felix Jacobi</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3580">Tommy Juhnke</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36396">Heiko Kromm</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2853">Jan Kiesewetter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3016">Jörg Wagner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4812">Simon Schmidt</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2793">Georg Rienzner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2981">Felix Nagel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3545">Marc Hirdes</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/5046">Jasmina Ließmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39034">Mathias Bruckmoser</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4544">Eric Chavaillaz</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/5287">Sascha Friedl</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37090">Ludwig Rafelsberger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36404">Michael Schreiner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39985">Manuel Wohlers</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39604">Sebastian Peine</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/23201">Martin R. Krause</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/40846">Julian Stock</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-57272-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #57272</h2>
+
+<div class="issue status-6 priority-1 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Extbase doesn&#39;t handle FAL translations correctly</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/39815">Markus Kasten</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-25" title="2014-03-25 10:31">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-06" title="2015-07-06 09:49">29 days</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Under Review</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-03-25</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Extbase</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2354">next-patchlevel</a></td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.4</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>When a model is translated to another language and the translated version uses other FAL relations, the original FAL records are displayed in the frontend.</p>
+
+
+	<p>Example (news):<br />News-Record with title "TYPO3 release party" and FAL related file "ReleaseParty-EN.pdf" is the original record. The Translated record has the title "TYPO3 release Feier" and the FAL related file "ReleaseParty-DE.pdf".<br />The german frontend shows the german title "TYPO3 release Feier", but the file shown is "ReleaseParty-EN.pdf".</p>
+
+
+	<p>Relations to other domain objects seem to work fine. Tested with TYPO3 6.2 rc-2/master.</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-11378">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="40656" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="40656.html" class="issue status-7 priority-1 closed">Bug #40656</a>: t3lib_TCEforms_inline-&gt;createNewRecord doesn&#39;t create loc...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-09-05</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11271">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="47869" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="47869.html" class="issue status-7 priority-2 closed">Bug #47869</a>: Failed localization of FILES content object related to pages
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-05-03</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11377">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="48883" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="48883.html" class="issue status-1 priority-2">Bug #48883</a>: Wrong sys_language_uid in sys_file_reference
+</td>
+<td class="status">New</td>
+<td class="start_date">2013-06-05</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10823">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="57021" /></td>
+<td class="subject">related to 
+    news extension - 
+    <a href="57021.html" class="issue status-10 priority-1 closed">Bug #57021</a>: FAL media files in translated news records don&#39;t work
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-03-18</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11269">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="58352" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="58352.html" class="issue status-7 priority-2 closed">Bug #58352</a>: Invalid localization overlay of cObject FILES
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-04-30</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11838">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62127" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="62127.html" class="issue status-10 priority-1 closed">Bug #62127</a>: FAL image in translation of Record not working
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-10-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12075">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="63092" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="63092.html" class="issue status-1 priority-2">Bug #63092</a>: Inline/IRRE records: language field of child records is n...
+</td>
+<td class="status">New</td>
+<td class="start_date">2014-11-20</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11646">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="61253" /></td>
+<td class="subject">related to 
+    news extension - 
+    <a href="61253.html" class="issue status-10 priority-2 closed">Bug #61253</a>: localization of related files not taken into account
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-08-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-11238">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="59192" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="59192.html" class="issue status-2 priority-2">Bug #59192</a>: mergeIfNotBlank with FAL records
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2014-05-28</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12432">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="62629" /></td>
+<td class="subject">duplicated by 
+    news extension - 
+    <a href="62629.html" class="issue status-10 priority-2 closed">Bug #62629</a>: Translated Category Menu images are not shown
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2014-11-02</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12453">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="65179" /></td>
+<td class="subject">duplicated by 
+    news extension - 
+    <a href="65179.html" class="issue status-10 priority-2 closed">Bug #65179</a>: FAL: Translation don&#39;t show images (falMedia)
+</td>
+<td class="status">Rejected</td>
+<td class="start_date">2015-02-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/57272/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/57272/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=57272&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-212602" class="journal has-notes">
+    <h4><a href="57272.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3450">Raphael Zschorsch</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-10" title="2014-04-10 12:51">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-212602-notes"><p>I can reproduce this in <strong>TYPO3 6.2</strong> and with an own extension. Images are just not handled correctly, and in the translation of a record it should be possible to remove images or add new ones. But <strong>ONLY</strong> the images of the default record are shown in the frontend.</p>
+
+
+	<p>When using...</p>
+
+
+<pre>
+'l10n_mode' =&gt; 'noCopy'
+</pre>
+
+	<p>...in TCA, the fields are actually not copied and not shown in the frontend when displaying the translated record, but if I manually add another image to the translated record, the default language images are shown again. So I guess this is, apart from other translation handling issues in extbase/TYPO3 a <strong>major</strong> bug.</p>
+
+
+	<p>I also tried:</p>
+
+
+<pre>
+'l10n_mode' =&gt; 'mergeIfNotBlank'
+</pre>
+
+	<p>...but it doesn't work and only the default record images are shown.</p>
+
+
+	<p>A multilanguage CMS should really work with multiple languages IMHO.</p></div>
+  </div>
+  
+
+  <div id="change-218580" class="journal has-details">
+    <h4><a href="57272.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-28" title="2014-05-28 23:06">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Target version</strong> changed from <i>6.2.0</i> to <i>next-patchlevel</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-219259" class="journal has-notes">
+    <h4><a href="57272.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-04" title="2014-06-04 17:18">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-219259-notes"><p>Related to <a href="59192.html" class="issue status-2 priority-2" title="mergeIfNotBlank with FAL records (Accepted)">#59192</a></p></div>
+  </div>
+  
+
+  <div id="change-219443" class="journal has-notes">
+    <h4><a href="57272.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38520">Arun Chandran</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-05" title="2014-06-05 13:07">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-219443-notes"><p>FAL image localization problem faced in the case of flexforms also. I've created a flexform element based on this <a class="external" href="../../external.html?link=http://wiki.typo3.org/File_Abstraction_Layer#FlexForm">http://wiki.typo3.org/File_Abstraction_Layer#FlexForm</a>, but it has a problem when translating default content element records. When I translate default content element, the images are not copied to translated element. If we put "media" as the fieldname in flexform, it copied the images, but it shows some unwanted images along with that.</p></div>
+  </div>
+  
+
+  <div id="change-219452" class="journal has-notes">
+    <h4><a href="57272.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37988">Robert Heinig</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-05" title="2014-06-05 14:05">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-219452-notes"><p>Workaround for the original problem:</p>
+
+
+	<p>Within \TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper::getConstraint() there is an equals-constraint with "$parentObject" - this is the object that has the FAL-relation as one of its properties. When the equals-constraint is evaluated, this constraint will be transformed into a SQL-where with the uid of "$parentObject" and that´s the reason why only the FAL-relations of the not-localized object will be used, the uid of the localized object will be ignored, but the FAL-relations of the localized objects are stored with the uid of the localized objects.</p>
+
+
+	<p>There are different ways to hotfix:<br />You can just extend DataMapper, inject your class with the "config.tx_extbase.objects"-TypoScript and override getConstraint() to use "$parentObject->_getProperty('_localizedUid')" in the equals-constraint.<br />For a less global change you could check the table and field names within getConstraint() and restrict this change to the fields where you need it.<br />A more object oriented approach would be to also extend AbstractDomainObject, write some kind of "constraint uid getter", integrate this method within DataMapper::getConstraint() and return the "_localizedUid" property in the model classes where required - you could also pass the fieldname as an argument.</p></div>
+  </div>
+  
+
+  <div id="change-228432" class="journal has-notes">
+    <h4><a href="57272.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/48">Stefano Cecere</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-30" title="2014-08-30 08:15">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228432-notes"><p>as first solution, following Robert suggestions, i solved the problem modifyng \TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper::getConstraint()</p>
+
+
+	<p>line</p>
+
+
+<pre>
+$constraint = $query-&gt;equals($columnMap-&gt;getParentKeyFieldName(), $parentObject);
+</pre>
+
+	<p>becomes</p>
+
+
+<pre>
+if ($columnMap-&gt;getColumnName() == 'fal_related_files') {
+    $constraint = $query-&gt;equals($columnMap-&gt;getParentKeyFieldName(), $parentObject-&gt;_getProperty('_localizedUid'));
+} else {
+    $constraint = $query-&gt;equals($columnMap-&gt;getParentKeyFieldName(), $parentObject);
+}
+</pre></div>
+  </div>
+  
+
+  <div id="change-228438" class="journal has-notes">
+    <h4><a href="57272.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/48">Stefano Cecere</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-30" title="2014-08-30 15:49">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-228438-notes"><p>update: we can apply this temporary patch as a XCLASS (using it on 6.2.4)</p>
+
+
+	<p>in ext_localconf.php:</p>
+
+
+<pre>
+// XCLASS
+// fix https://forge.typo3.org/issues/57272
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Mapper\\DataMapper'] = array(
+    'className' =&gt; 'Tx_Myext_XClass_DataMapper'
+);
+
+</pre>
+
+	<p>and then in /Classes/XClasses/DataMapper.php</p>
+
+
+<pre>
+
+&lt;?php
+
+/**
+ * A mapper to map database tables configured in $TCA on domain objects.
+ */
+class Tx_Myext_XClass_DataMapper extends \TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper
+{
+
+    /**
+     * Builds and returns the constraint for multi value properties.
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
+     * @param \TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface $parentObject
+     * @param string $propertyName
+     * @param string $fieldValue
+     * @param array $relationTableMatchFields
+     * @return \TYPO3\CMS\Extbase\Persistence\Generic\Qom\ConstraintInterface $constraint
+     */
+    protected function getConstraint(\TYPO3\CMS\Extbase\Persistence\QueryInterface $query, \TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface $parentObject, $propertyName, $fieldValue = '', $relationTableMatchFields = array())
+    {
+        $columnMap = $this-&gt;getDataMap(get_class($parentObject))-&gt;getColumnMap($propertyName);
+        if ($columnMap-&gt;getParentKeyFieldName() !== NULL) {
+           if ($columnMap-&gt;getColumnName() == 'fal_related_files') {
+                $constraint = $query-&gt;equals($columnMap-&gt;getParentKeyFieldName(), $parentObject-&gt;_getProperty('_localizedUid'));
+            } else {
+                $constraint = $query-&gt;equals($columnMap-&gt;getParentKeyFieldName(), $parentObject);
+            }
+
+            if ($columnMap-&gt;getParentTableFieldName() !== NULL) {
+                $constraint = $query-&gt;logicalAnd($constraint, $query-&gt;equals($columnMap-&gt;getParentTableFieldName(), $this-&gt;getDataMap(get_class($parentObject))-&gt;getTableName()));
+            }
+        } else {
+            $constraint = $query-&gt;in('uid', \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $fieldValue));
+        }
+        if (count($relationTableMatchFields) &gt; 0) {
+            foreach ($relationTableMatchFields as $relationTableMatchFieldName =&gt; $relationTableMatchFieldValue) {
+                $constraint = $query-&gt;logicalAnd($constraint, $query-&gt;equals($relationTableMatchFieldName, $relationTableMatchFieldValue));
+            }
+        }
+        return $constraint;
+    }
+}
+
+</pre></div>
+  </div>
+  
+
+  <div id="change-229300" class="journal has-notes has-details">
+    <h4><a href="57272.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-11" title="2014-09-11 10:36">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-229300-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32718">http://review.typo3.org/32718</a></p></div>
+  </div>
+  
+
+  <div id="change-230553" class="journal has-notes">
+    <h4><a href="57272.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-21" title="2014-09-21 14:41">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230553-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32718">http://review.typo3.org/32718</a></p></div>
+  </div>
+  
+
+  <div id="change-230571" class="journal has-notes">
+    <h4><a href="57272.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-21" title="2014-09-21 18:20">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230571-notes"><p>Raphael Zschorsch wrote:</p>
+
+
+<blockquote>
+
+	<p>in the translation of a record it should be possible to remove images or add new ones. But <strong>ONLY</strong> the images of the default record are shown in the frontend.<br />...but it doesn't work and only the default record images are shown.</p>
+
+
+</blockquote>
+
+	<p>There are many things to consider with relations and translations. We can make most use cases work in Extbase (FAL images is the most obvious one), but should also make clear that the desired behavior heavily depends on the use case and extension developers may need to adapt annotations or TCA to make it work like desired (which in turn could make it hard for backports).</p>
+
+
+	<p>If you have a simple 1:n relation (a RelationalObject has exactly one AggregateRootObject):</p>
+
+
+	<p>AggregateRootObject  (ARO) ->  RelationalObject (RO)</p>
+
+
+	<p>Depending on your domain, you want different behaviors of the relations in case of localization</p>
+
+
+	<p>Case 1: Relations must <strong>not</strong> change. This means, that a specific ARO is always related to a specific RO in all localizations. This means that text fields are translatable (editable), but the relation is not editable for localizations to maintain consistency.</p>
+
+
+	<p>E.g.: Product -> Brand <br />It makes sense to translate the product and Brand description, but it does not make sense to localize the Product/Brand as for every localization the Product will always have the same Brand.</p>
+
+
+	<p>Case 2: Relations <strong>can</strong> change for localized entities. This means AROs can have relations to different ROs for every localization. This means not only text fields are localized but also relations (id fields or intermediate tables point to localized versions of an entity)<br />That is certainly more complicated, as additional behavior needs to be defined. Does not found relation on localized record mean the localization has none, or should a fallback be in place?<br />Accessing the ARO from a RO (inverse relation) should result in the localized ARO or the default? If it is the localized ARO, how about other relations that should behave like described in case 1?</p>
+
+
+	<p>Especially case 2 can be a nightmare to think through and define what is wanted, not to speak about implementing it.<br />"Unfortunately" images are now (with FAL) relations to entities and what we need is exactly case 2.<br />This is the issue we face now and we should solve it by well defining (and documenting) how things work (or should work) under which conditions.</p>
+
+
+	<p>Oh and btw. case 2 is not implemented in Extbase.</p>
+
+
+	<p>Here is what DataHandler currently does for relation fields, when "l10n_mode" is not set to "mergeIfNotBlank" or "exclude" <br /><pre>
+AggregateRootObject (default)   -&gt;  RelationalObject (default)
+</pre><br />If you now "translate" the aggregate root object in the backend with default l10n_mode the following happens:<br /><pre>
+AggregateRootObject (default)   -&gt;  RelationalObject (default)
+  |-&gt; AggregateRootObject (L1)   -&gt;  |-&gt; RelationalObject (L1)
+</pre><br />It means that the translated records have a back reference to the original language (l10n_parent) but also that the translated relation has a reference to the translated aggregate root object.</p>
+
+
+	<p>What the Extbase persistence does is fetching the records in the default language and performing a language overlay (it is a bit more complicated but it does not matter for now).</p>
+
+
+	<p>The example above would then work like a charm :</p>
+
+
+	<p>Fetch AggregateRootObject (default), overlay it, Fetch relations which is RelationalObject (default) and overlay it.</p>
+
+
+	<p>This means if your TCA is correct for your main object (News TCA for fal_media is at least inconsistent), then it works if you only need to localize relations, but not have completely different relations for localized entities.</p>
+
+
+	<p>When you need the latter, then you are in case 2 hell. E.g. if we would change it to behave like proposed and always fetch images for news records based on the localized record, then we would break existing installations that relied on the fact that translated news would not need images.</p>
+
+
+	<p>So the questions are:</p>
+
+
+	<p>1. What cases are there that need to be covered<br />1. How should the configuration for such cases be (re-use existing TCA properties or create new ones or use annotations)<br />1. How can we implement something in a backwards compatible way?</p></div>
+  </div>
+  
+
+  <div id="change-230575" class="journal has-notes">
+    <h4><a href="57272.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3883">Viktor Livakivskyi</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-21" title="2014-09-21 19:25">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230575-notes"><p>Hi, Helmut.</p>
+
+
+	<p>Thank you for a detailed description!</p>
+
+
+	<p>I'm still the one, who'd like to force "Case 2" to be handled by Extbase natively for any localization (including FAL) - not by hacks, workarounds or so.<br />And, sure, I see the complication of possible solution and I can imagine even more overhead in persistence.</p>
+
+
+	<p>But from the other hand this is not some rarely used feature, and it becomes hard for us to explain customer, why Extbase with FAL and 6.x better, then Pibase with usual file handling and 4.x, because customer misses features, that were existing for years in old TYPO3 versions. Sure, we can go back to 'file' and 'file_reference' and write own persistance layer for other localizable RO, but then I can ask myself a same question: "why da hell I need Extbase and FAL?".</p>
+
+
+	<p>So, answering your questions:</p>
+
+
+	<p><cite><br />Does not found relation on localized record mean the localization has none, or should a fallback be in place?<br /></cite><br />I think, here we can re-define a TCA option 'l10n_mode' (or add Extbase annotation?), with such options: <strong>includeNewChildren</strong> - no relation means no fallback (so, only translated and new added relations will be shown), <strong>includeNewChildrenAndFallbacks</strong> - missing relation falls back to master record (so, translated, new added and non-translated relations will be shown.</p>
+
+
+	<p><cite><br />Accessing the ARO from a RO (inverse relation) should result in the localized ARO or the default? If it is the localized ARO, how about other relations that should behave like described in case 1?<br /></cite><br />Here I may be wrong, but we should have the master ARO (uid) with translated fileds (title, description, etc.), like it is already done in Extbase. But, sure, a new option in TCA (or Extbase annotation) may be added for this.</p>
+
+
+	<p><cite><br />What cases are there that need to be covered?<br /></cite><br />Being able to change relations in translated versions:<br />1. Exchange image in relation for translated version of website.<br />2. Add more new images in translated version of website.</p>
+
+
+	<p><cite><br />How should the configuration for such cases be (re-use existing TCA properties or create new ones or use annotations)<br /></cite><br />Good question. And it opens even more complicated topic: why do we need a TCA at all? My dreams show fututre TYPO3 version (9.x, maybe) without TCA, but with only annotations in Extbase Domain Models. As result: we don't define validation rules, pre- and post- processings twice, but use single source for 3 ways: BE forms, FE forms and internal object creation via DataMapper. In such a case, I'd prefer annotations, but in real world we can stick to new TCA properties.</p>
+
+
+	<p><cite><br />How can we implement something in a backwards compatible way?<br /></cite><br />In case of new TCA properties, this can be achieved by making default properties behave, like it works now: changing relations in child records will not affect output of these records.</p></div>
+  </div>
+  
+
+  <div id="change-230597" class="journal has-notes">
+    <h4><a href="57272.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-21" title="2014-09-21 22:57">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230597-notes"><p>Hi Viktor.</p>
+
+
+	<p>Viktor Livakivskyi wrote:</p>
+
+
+<blockquote>
+
+	<p>I'm still the one, who'd like to force "Case 2" to be handled by Extbase natively for any localization (including FAL) - not by hacks, workarounds or so.<br />And, sure, I see the complication of possible solution and I can imagine even more overhead in persistence.</p>
+
+
+</blockquote>
+
+	<p>We absolutely need a solution.</p>
+
+
+<blockquote>
+
+	<p>I think, here we can re-define a TCA option 'l10n_mode' (or add Extbase annotation?)</p>
+
+
+</blockquote>
+
+	<p>One or the other or something different ;)<br />The question is: What is a good option respecting backwards compatibility, that is easy to understand and predictable in the result.</p>
+
+
+<blockquote>
+
+	<p>Being able to change relations in translated versions:<br />1. Exchange image in relation for translated version of website.<br />2. Add more new images in translated version of website.</p>
+
+
+</blockquote>
+
+	<p>Sure this is one case. But what are the consequences especially for inverse relations (as described above). It could be the case that everything turns out to work without issues, but currently I can't tell.</p>
+
+
+	<p>Any help is appreciated, especially creating extensive functional test cases. Frans started working on that:</p>
+
+
+	<p><a class="external" href="../../external.html?link=https://review.typo3.org/#/c/32718/">https://review.typo3.org/#/c/32718/</a></p>
+
+
+	<p>I updated the change yesterday providing a more generic solution, but the place where it should be configured is still not clear.</p>
+
+
+	<p>Functional tests should check the behavior with and without the (new?) configuration and also check related things like how it works with inverse relationships.</p>
+
+
+	<p>Would be great if you could help working on that.</p></div>
+  </div>
+  
+
+  <div id="change-231142" class="journal has-notes">
+    <h4><a href="57272.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3883">Viktor Livakivskyi</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-25" title="2014-09-25 15:59">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231142-notes"><p>Hi, Helmut.</p>
+
+
+	<p>Many thanks for your feedback.</p>
+
+
+	<p>Yes, I agree with you on having good overview over possible solutions and finding best and less migration-stressy one.<br />For the moment I see, that re-using of TCA option 'l10n_mode' may be handy, since everyone is familiar with it and nothing needs to be changed in existing installations, which rely on current behavior.</p>
+
+
+	<p>Inverse relations also will depend on same TCA option, so it might be a case, that entity1->entity2 relation is e.g. "includeNewChildren", but entity2->entity1 realtion will be "includeNewChildrenAndFallbacks", so we can fetch master entity1, if no translation is found.</p>
+
+
+	<p>I'd like to help with functional tests, but I'm not yet familiar with their concept - we've only started to invent unit-tests in our workflow. So, I'll come back later, when I have practice with functional tests and learn more the code, that needs to be tested.</p></div>
+  </div>
+  
+
+  <div id="change-231826" class="journal has-notes">
+    <h4><a href="57272.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2775">Lorenz Ulrich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-10-03" title="2014-10-03 10:13">10 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-231826-notes"><p>I just applied this test to a 6.2 with EXT:news. My initial findings are reported in <a href="59192.html" class="issue status-2 priority-2" title="mergeIfNotBlank with FAL records (Accepted)">#59192</a>. I'm working with sys_language_mode = strict.</p>
+
+
+	<p>This change basically enables the correct use of explicitely translated or added related items.</p>
+
+
+	<p>The only thing that is missing in my case is that the <strong>l10n_mode</strong> is taken into account. If the l10n_mode is set to "mergeIfNotBlank", I would expect TYPO3 to use the related items of the default language as long as no relation in the translated version is explicitely created. As soon as there is a relation in the translated version, only the item(s) in the translated version should be considered. This is how l10n_mode "mergeIfNotBlank" works IMO.</p></div>
+  </div>
+  
+
+  <div id="change-235361" class="journal has-notes">
+    <h4><a href="57272.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2548">Karsten Nowak (undkonsorten)</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-06" title="2014-11-06 14:38">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235361-notes"><p>With that patch (d39c8b2d) in TYPO3 6.2.4 and 6.2.6 images in translated news are correctly shown. But this works only for news with an parent data in default language. With news without parent data in default language no image is shown. In list and single view.</p>
+
+
+	<p>I used the last news from github. My TypoScript configuration: sys_language_mode = strict, no sys_language_overlay.</p>
+
+
+	<p>The following behavior is also very special.</p>
+
+
+	<p>German is default language and English is the first additional language in my TYPO3-Site.</p>
+
+
+	<ul>
+	<li>I add a new news data with image in english. In frontend the news on the english page is visible but without image.</li>
+		<li>I add a news data with image again but now in german language. I translate this data in english and add a image (image from default langauge was not copied). This news is showing in english frontend with image. Everything is fine.</li>
+		<li>I delete the relation between these german and english news and have now one separate german news and one separate english news. The english news has no information about his parent localization now. But in english frontend the same news is showing with image. Everything is fine. I think its the same situation like with the first news? Seeming not.</li>
+		<li>Now i delete the german news data which was the localized parent data before. Now in english frontend the complete news is not there? Nothing is shown.</li>
+	</ul>
+
+
+	<p>I hope anybody can understand me and can explain this.</p></div>
+  </div>
+  
+
+  <div id="change-235803" class="journal has-notes">
+    <h4><a href="57272.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2548">Karsten Nowak (undkonsorten)</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-10" title="2014-11-10 21:18">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-235803-notes"><p>Ok. I understand now.<br />I've got checked sys_file_reference. Here are my results:</p>
+
+
+	<p>1. i create a new news record in default language, then save it.<br />2. now i add a image to the news, change the language (1=english) of the record and save it.<br />3. in sys_file_reference the field sys_language_uid is filled with "0" default language but the news record is now in english</p>
+
+
+	<p>conclusion: no image in frontend</p>
+
+
+	<p>1. i create the news record and change the language to english before i saving this<br />2. now i go and add an image and saving the news<br />3. the right sys_language_uid is filled in sys_file_reference.</p>
+
+
+	<p>conclusion: image is shown in frontend</p>
+
+
+	<p>When a record in sys_file_reference is created the sys_language_uid from the last language of the record (before saving) will use and never change in future. I can change the language in the news record (and saving) but in sys_file_reference data the sys_language_uid is ever the same.</p>
+
+
+	<p>The same behavior is for sys_file_reference entries using in tt_content. But i think the frontend rendering is other. There is no problem with this.</p>
+
+
+	<p>For Extbase the sys_language_uid in sys_file_reference must be checked whenever the langugae of the referenced data is changed. Or rather checking the language of referenced data at the moment of saving.</p>
+
+
+	<p>I hope this helps to fix the problems with this patch (d39c8b2d).</p></div>
+  </div>
+  
+
+  <div id="change-237125" class="journal has-notes">
+    <h4><a href="57272.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/762">Urs Braem</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-20" title="2014-11-20 22:29">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237125-notes"><p>Am I correct that this is also related?:</p>
+
+
+<pre>
+&lt;f:link.page pageUid="{dokument.originalResource.publicUrl}"&gt;Download&lt;/f:link.page&gt;
+</pre>
+
+	<p>returns a link to the file of the default language record - instead of the one that was indicated in the localised record.</p>
+
+
+	<p>The TCA entry for this:</p>
+
+
+<pre>
+        'dokument' =&gt; array(
+                'exclude' =&gt; 0,
+                'label' =&gt; 'LLL:EXT:publikationen/Resources/Private/Language/locallang_db.xlf:tx_publikationen_domain_model_publikation.dokument',
+                'config' =&gt; \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('dokument', array(
+                        'appearance' =&gt; array(
+                                'createNewRelationLinkTitle' =&gt; 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                        ),
+                ), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
+        ),
+</pre></div>
+  </div>
+  
+
+  <div id="change-237162" class="journal has-notes">
+    <h4><a href="57272.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2548">Karsten Nowak (undkonsorten)</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-21" title="2014-11-21 08:56">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237162-notes"><p>I think so. But i don't checked this ;-). In news extension it helps to change the TCA for fal_related_files or fal_media.</p>
+
+
+	<p><a class="external" href="57021.html">https://forge.typo3.org/issues/57021</a></p>
+
+
+	<p>When i'm using the localize buttons in backend it's working fine. For records without default language it helps to localize the files before using.</p></div>
+  </div>
+  
+
+  <div id="change-237713" class="journal has-notes">
+    <h4><a href="57272.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/762">Urs Braem</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-26" title="2014-11-26 14:48">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237713-notes"><p>@Karsten</p>
+
+
+	<p>I tried adding</p>
+
+
+<pre>
+                                'showSynchronizationLink' =&gt; 1,
+                                'showAllLocalizationLink' =&gt; 1,
+                                'showPossibleLocalizationRecords' =&gt; 1
+</pre>
+
+	<p>to "appearance" in the code above, and then I was able to do some "localizing" in the backend, but none that made sense to me - and no effect in the frontend.</p></div>
+  </div>
+  
+
+  <div id="change-237895" class="journal has-notes">
+    <h4><a href="57272.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2548">Karsten Nowak (undkonsorten)</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-28" title="2014-11-28 09:34">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-237895-notes"><p>@Urs</p>
+
+
+	<p>I've tested again and here are my results:</p>
+
+
+	<p>1. news in default language with related file, translate this news and localizing the related file</p>
+
+
+	<ul>
+	<li>in frontend the file with path and title from the default language is shown</li>
+		<li>debug {relatedFile} in fluid template and change {relatedFile.originalResource.title} -> {relatedFile.title}, then the translated tile is shown but with the path to the same file like default language. Of course that's right, only the metadata were localized. Ok, another file is needed. But when i add the new file (localized before), there is no file in frontend. You're right.</li>
+	</ul>
+
+
+	<p>2. single translated news  without a parent record in default language</p>
+
+
+	<ul>
+	<li>here i add a related file (localized before) and everything is fine frontend. I add a new file (localized before too) again and this is also shown in frontend</li>
+	</ul>
+
+
+	<p>Mmmh.., crazy. In translated news it doesn't work but single news in translation works fine. The same behavior is with images.<br />Only for same files/media in default language and translated the localize buttons serve his functions.<br />When different files or media in localized news and in default language are needed, it seems to me it's required to use single news records in the relevant language.</p>
+
+
+	<p>I'm using sys_language_mode=strict and TYPO3 6.2.6</p></div>
+  </div>
+  
+
+  <div id="change-238479" class="journal has-notes">
+    <h4><a href="57272.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37962">Andreas Allacher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-02" title="2014-12-02 11:31">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-238479-notes"><p>This bug is also related:<br />Bug <a href="63092.html" class="issue status-1 priority-2" title="Inline/IRRE records: language field of child records is not updated when modifying parent languag... (New)">#63092</a></p>
+
+
+	<p>It is related to others regarding wrong sys_language but this one deals with the fact that I change the language AFTER I once saved the record and had FAL/IRRE records related to it (will not update language).</p>
+
+
+	<p>Furthermore the creation of IRRE related records does only updated default language, if the language is "> 0" but this ignores all language option (-1)</p></div>
+  </div>
+  
+
+  <div id="change-240887" class="journal has-notes">
+    <h4><a href="57272.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-15" title="2014-12-15 18:04">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-240887-notes"><p>Patch set 1 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/35486">http://review.typo3.org/35486</a></p></div>
+  </div>
+  
+
+  <div id="change-241540" class="journal has-notes">
+    <h4><a href="57272.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2548">Karsten Nowak (undkonsorten)</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-18" title="2014-12-18 12:24">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-241540-notes"><p>I have an error in frontend if I use this patch.</p>
+
+
+<pre>
+#1: PHP Warning: Missing argument 4 for TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper::getPreparedQuery(), called in /html/typo3/typo3_src-.2.9/typo3/sysext/extbase/Classes/Persistence/Generic/Mapper/DataMapper.php on line 332 and defined in /html/typo3/typo3_src-.2.9/typo3/sysext/extbase/Classes/Persistence/Generic/Mapper/DataMapper.php line 345
+</pre>
+
+	<p>TYPO3 6.2.9</p></div>
+  </div>
+  
+
+  <div id="change-241553" class="journal has-notes">
+    <h4><a href="57272.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-18" title="2014-12-18 12:56">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-241553-notes"><p>Could you please check your TYPO3-sources? That said function only has 3 arguments (typo3/sysext/extbase/Classes/Persistence/Generic/Mapper/DataMapper.php).</p></div>
+  </div>
+  
+
+  <div id="change-241599" class="journal has-notes">
+    <h4><a href="57272.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40055">Benjamin Butschell</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-12-18" title="2014-12-18 14:53">8 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-241599-notes"><p>I added a defaultvalue to $forceTranslationOverlay in method getPreparedQuery in file typo3/sysext/extbase/Classes/Persistence/Generic/Mapper/DataMapper.php and now the patch works.</p>
+
+
+<pre>
+    protected function getPreparedQuery(\TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface $parentObject, $propertyName, $fieldValue = '', $forceTranslationOverlay = FALSE)
+</pre></div>
+  </div>
+  
+
+  <div id="change-243781" class="journal has-notes">
+    <h4><a href="57272.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36396">Heiko Kromm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-08" title="2015-01-08 18:35">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-243781-notes"><p>With the defaultvalue for $forceTranslationOverlay patch works for me.</p></div>
+  </div>
+  
+
+  <div id="change-245992" class="journal has-notes">
+    <h4><a href="57272.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2548">Karsten Nowak (undkonsorten)</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-21" title="2015-01-21 12:00">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-245992-notes"><p>With the defaultvalue for $forceTranslationOverlay the patch works for me too.<br />Only in translated news without l18n_parent in default language I need to localize the image or files before. Otherwise they are not shown in frontend.</p></div>
+  </div>
+  
+
+  <div id="change-246160" class="journal has-notes">
+    <h4><a href="57272.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2853">Jan Kiesewetter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-23" title="2015-01-23 11:03">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-246160-notes"><p>I made a small extension in correspondence with Stefan Frömken to override the classes of the patch as a workaround:</p>
+
+
+	<p><a class="external" href="../../external.html?link=https://bitbucket.org/t3easy_de/faltranslation">https://bitbucket.org/t3easy_de/faltranslation</a></p>
+
+
+	<p>If you extend \TYPO3\CMS\Extbase\Domain\Model\FileReference in your own extension you have to override getOriginalResource in your extended model or extend \T3easy\Faltranslation\Domain\Model\FileReference.</p></div>
+  </div>
+  
+
+  <div id="change-250392" class="journal has-notes">
+    <h4><a href="57272.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36396">Heiko Kromm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-20" title="2015-02-20 17:03">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250392-notes"><p>Thanks a lot for your extension. It helps a lot localized datasets.<br />Unfortunatly the image is missing if you are in not default language and the dataset is of language type -1 "All languages".</p></div>
+  </div>
+  
+
+  <div id="change-252168" class="journal has-notes">
+    <h4><a href="57272.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3545">Marc Hirdes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-10" title="2015-03-10 15:56">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252168-notes"><p>Hey,</p>
+
+
+	<p>will there be a solution in the near future? Or is there a simple workaround. I currently develop an extension where the path to the files has to be different in any language.</p></div>
+  </div>
+  
+
+  <div id="change-252355" class="journal has-notes">
+    <h4><a href="57272.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-12" title="2015-03-12 11:26">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252355-notes"><p>Patch set 2 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/35486">http://review.typo3.org/35486</a></p></div>
+  </div>
+  
+
+  <div id="change-253320" class="journal has-notes">
+    <h4><a href="57272.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-22" title="2015-03-22 11:06">4 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-253320-notes"><p>Patch set 3 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/32718">http://review.typo3.org/32718</a></p></div>
+  </div>
+  
+
+  <div id="change-254766" class="journal has-notes">
+    <h4><a href="57272.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36396">Heiko Kromm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-04-02" title="2015-04-02 11:17">4 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-254766-notes"><p>Patch does not work for dataset of language type -1 "All languages"</p></div>
+  </div>
+  
+
+  <div id="change-259267" class="journal has-notes">
+    <h4><a href="57272.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-20" title="2015-05-20 10:04">3 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-259267-notes"><p>Hi, I did test the extension of Jan Kiesewetter (thanks a lot!!!) and it works well in TYPO3 6.2.13-dev.</p>
+
+
+	<p>Here <a class="external" href="../../external.html?link=http://www.csthermos.it/">http://www.csthermos.it/</a> you can find a working example.</p>
+
+
+	<p>All those tiles in the homepage are rendered by an Extbase plugin set with Language = All.<br />This plugin uses one record from the model "Mosaic" set with Language = All from a storage page.<br />Finally this record has MM relations with all those records of model Tile.<br />Those tiles are in default language but are also localized in french <a class="external" href="../../external.html?link=http://www.csthermos.it/fr/">http://www.csthermos.it/fr/</a><br />One tile "SOCIÉTÉ" has a localized image (you can see the french payoff of the logo)<br />I've tested also a localized tile without image and it correctly uses the default language tile image.</p>
+
+
+	<p>The only problem is that the french shows also a not localized tile "PETIZIONE IVA 22%" even if I set sys_language_overlay = hideNonTranslated (that instead works with tt_content records) but I guess that's another bug.</p>
+
+
+	<p>Another example from this website it's a product detail <a class="external" href="../../external.html?link=http://www.csthermos.it/prd/stufa-pelletbiomassa/sintesi-90/">www.csthermos.it/prd/stufa-pelletbiomassa/sintesi-90/</a><br />if you scroll to the bottom to the DOWNLOAD section you can find a pdf catalogue in italian and switching to the french there's the french version. So it's all ok.</p>
+
+
+	<p>Tested with:<br />sys_language_mode    = content_fallback ; 1,0<br />sys_language_overlay = hideNonTranslated<br />and <br />sys_language_overlay = 1</p>
+
+
+	<p>I hope that this will be fixed in 6.2 LTS because otherwise it's very very hard to handle multi-language sites that use Extbase.</p></div>
+  </div>
+  
+
+  <div id="change-264289" class="journal has-notes">
+    <h4><a href="57272.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36396">Heiko Kromm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-01" title="2015-07-01 17:44">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-264289-notes"><p>Is there a chance to get the patch into core?<br />As Christian said, it's really hard to handle multi-language sites. Including this patch will help a lot. Even if language "all" is not supported.</p></div>
+  </div>
+  
+
+  <div id="change-264612" class="journal has-notes">
+    <h4><a href="57272.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-06" title="2015-07-06 09:49">29 days</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-264612-notes"><p>Jeb, this patch is working great - besides the known issue with language "all".<br />But I agree with Heiko, this would be a smaller issue than the current situation.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-57272-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/57272.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="57272.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/57272 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:53:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

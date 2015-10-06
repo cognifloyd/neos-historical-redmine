@@ -1,0 +1,877 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/54091 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:28:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Task #54091: Use === operator instead of strlen() to check for zero length strings - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/54091.atom" rel="alternate" title="Core - Task #54091: Use === operator instead of strlen() to check for zero length strings" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-54091-watcher"></span>
+
+
+</div>
+
+
+<h2>Task #54091</h2>
+
+<div class="issue status-7 priority-2 closed child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="55070.html" class="issue status-2 priority-3 overdue parent">Epic #55070</a>: Workpackages</p><div><p><a href="55065.html" class="issue status-1 priority-3 overdue child parent">Epic #55065</a>: WP: Overall System Performance (Backend and Frontend)</p><div><p><a href="55078.html" class="issue status-9 priority-2 closed child parent">Story #55078</a>: Optimize PHP code performance in TYPO3 methods</p><div><h3>Use === operator instead of strlen() to check for zero length strings</h3></div></div></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-29" title="2013-11-29 17:00">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-18" title="2015-01-18 15:00">7 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-11-29</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Performance</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Use the === operator instead of the strlen() function to check for strings of length zero.</p>
+
+
+	<p>This can give a performance improvement of factor 3.</p>
+
+
+	<p>Short note: Although some source claim that strlen() has O(1), for some reason the comparison against an empty string is still faster.</p>
+
+
+	<p>Nevertheless, besides the possible performance improvement, this change also improves readability.</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-12982">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="67034" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="67034.html" class="issue status-7 priority-1 closed">Bug #67034</a>: Content Slide: slide.collect issues since 7.1.0
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2015-05-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12457">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="65239" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="65239.html" class="issue status-7 priority-1 closed">Bug #65239</a>: Missing (string) cast or isset() check in HTMLparser
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2015-02-23</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12322">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="64199" /></td>
+<td class="subject">duplicated by 
+    Core - 
+    <a href="64199.html" class="issue status-7 priority-2 closed">Task #64199</a>: Cleanup usage of strlen()
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2015-01-09</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-12858">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="67040" /></td>
+<td class="subject">precedes 
+    Core - 
+    <a href="67040.html" class="issue status-7 priority-1 closed">Bug #67040</a>: Backend broken on PostgreSQL - missing (string) cast in d...
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2015-05-19</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/54091/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/54091/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=54091&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/de27a20afbd8f413f60029afc5622c7b33212322" title="Revision de27a20a">Revision de27a20a</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-23" title="2014-02-23 11:24">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[CLEANUP] Replace strlen() with === for zero length check</p>
+
+
+	<p>It is faster to compare a string with === '' to find out if it's empty<br />than to run strlen() on it.</p>
+
+
+	<p>The replacement rules are applied as follows:
+ *    if (strlen($str))<br />   => if ((string)$str !== '')
+ *    if (!is_string($str) || strlen($str) === 0)<br />   => if (!is_string($str) || $str === '')
+ * If it can be seen easily that $str is a string,<br />   the typecast is omitted.</p>
+
+
+	<p>Resolves: <a href="54091.html" class="issue status-7 priority-2 closed child" title="Use === operator instead of strlen() to check for zero length strings (Resolved)">#54091</a><br />Releases: 6.2<br />Change-Id: I59c5cbccea4f98b8f282377e6aa67d970859a457<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a><br />Reviewed-by: Stefan Neufeind<br />Tested-by: Stefan Neufeind</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/4722b6cf5c97ab415d3d35687ed77750b97e3258" title="Revision 4722b6cf">Revision 4722b6cf</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-18" title="2015-01-18 14:37">7 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[CLEANUP] Replace strlen() with === for zero length check</p>
+
+
+	<p>It is faster to compare a string with === '' to find out if it's empty<br />than to run strlen() on it.</p>
+
+
+	<p>The replacement rules are applied as follows:
+ *    if (strlen($str))<br />   => if ((string)$str !== '')
+ *    if (!is_string($str) || strlen($str) === 0)<br />   => if (!is_string($str) || $str === '')
+ * If it can be seen easily that $str is a string,<br />   the typecast is omitted.</p>
+
+
+	<p>Change-Id: I888d70e42f925bd57ad23b873b72d6a38acb39ef<br />Resolves: <a href="54091.html" class="issue status-7 priority-2 closed child" title="Use === operator instead of strlen() to check for zero length strings (Resolved)">#54091</a><br />Releases: master<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/27794">http://review.typo3.org/27794</a><br />Reviewed-by: Mathias Schreiber &lt;<a class="email" href="mailto:mathias.schreiber@wmdb.de">mathias.schreiber@wmdb.de</a>&gt;<br />Tested-by: Mathias Schreiber &lt;<a class="email" href="mailto:mathias.schreiber@wmdb.de">mathias.schreiber@wmdb.de</a>&gt;<br />Reviewed-by: Stefan Neufeind &lt;<a class="email" href="mailto:typo3.neufeind@speedpartner.de">typo3.neufeind@speedpartner.de</a>&gt;<br />Tested-by: Stefan Neufeind &lt;<a class="email" href="mailto:typo3.neufeind@speedpartner.de">typo3.neufeind@speedpartner.de</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/a27dfad89f17e8a370ebba5376a88cba5c720fa2" title="Revision a27dfad8">Revision a27dfad8</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/2592">Morton Jonuschat</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-05-20" title="2015-05-20 00:20">3 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Add missing (string) cast in dbal/DatabaseConnection</p>
+
+
+	<p>This is a regression fix for <a href="54091.html" class="issue status-7 priority-2 closed child" title="Use === operator instead of strlen() to check for zero length strings (Resolved)">#54091</a>.<br />It has been forgotten to cast the lastQuery to a string before<br />checking if it's empty</p>
+
+
+	<p>Resolves: <a href="67040.html" class="issue status-7 priority-1 closed" title="Backend broken on PostgreSQL - missing (string) cast in dbal/DatabaseConnection (Resolved)">#67040</a><br />Related: <a href="54091.html" class="issue status-7 priority-2 closed child" title="Use === operator instead of strlen() to check for zero length strings (Resolved)">#54091</a><br />Releases: master<br />Change-Id: I6991cad799e686066f8205749baee4aed20a9127<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/39625">http://review.typo3.org/39625</a><br />Reviewed-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Tested-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Reviewed-by: Stephan Großberndt &lt;<a class="email" href="mailto:stephan@grossberndt.de">stephan@grossberndt.de</a>&gt;<br />Reviewed-by: Wouter Wolters &lt;<a class="email" href="mailto:typo3@wouterwolters.nl">typo3@wouterwolters.nl</a>&gt;<br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:markus.klein@typo3.org">markus.klein@typo3.org</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:markus.klein@typo3.org">markus.klein@typo3.org</a>&gt;</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/bde48583c67d54f13a4ba0295545bdef631934fb" title="Revision bde48583">Revision bde48583</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-15" title="2015-06-15 12:52">about 1 month</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] CONTENT cObject slide does not loop</p>
+
+
+	<p>The CONTENT cObject is looping over the SQL query<br />when sliding the rootline and/or collecting but never<br />repeats due to missing braces.</p>
+
+
+	<p>This happened during a cleanup merge in commit<br />4722b6cf5c97ab415d3d35687ed77750b97e3258.</p>
+
+
+	<p>The patch re-adds the braces.</p>
+
+
+	<p>Resolves: <a href="67034.html" class="issue status-7 priority-1 closed" title="Content Slide: slide.collect issues since 7.1.0 (Resolved)">#67034</a><br />Related: <a href="54091.html" class="issue status-7 priority-2 closed child" title="Use === operator instead of strlen() to check for zero length strings (Resolved)">#54091</a><br />Releases: master<br />Change-Id: Ifc912ea8d5d2861d6888ddc5ac7bd755e3ff6bb4<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/40244">http://review.typo3.org/40244</a><br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:markus.klein@typo3.org">markus.klein@typo3.org</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:markus.klein@typo3.org">markus.klein@typo3.org</a>&gt;<br />Reviewed-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;<br />Tested-by: Andreas Fernandez &lt;<a class="email" href="mailto:typo3@scripting-base.de">typo3@scripting-base.de</a>&gt;</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-192391" class="journal has-notes">
+    <h4><a href="54091.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-01" title="2013-12-01 16:30">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-192391-notes"><p>In general I like the idea.</p>
+
+
+	<p>Beware though that strlen() also returns 0 for FALSE, will cast non-strings to a string first (thus correctly gives string-length of integers etc.) and such.</p></div>
+  </div>
+  
+
+  <div id="change-196234" class="journal has-notes">
+    <h4><a href="54091.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-11" title="2013-12-11 23:02">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-196234-notes"><blockquote>
+
+	<p>Beware though that strlen() also returns 0 for FALSE, will cast non-strings to a string first (thus correctly gives string-length of integers etc.) and such.</p>
+
+
+</blockquote>
+
+	<p>So <br /><pre>
+(string)$foo === ''
+</pre><br />should do the job and strlen() can stay for those cases that expect a length > 0</p></div>
+  </div>
+  
+
+  <div id="change-201066" class="journal has-details">
+    <h4><a href="54091.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 09:54">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>6.2.0</i></li>
+      
+       <li><strong>Parent task</strong> changed from <i>#52949</i> to <i>#55078</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-201087" class="journal has-notes">
+    <h4><a href="54091.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 11:06">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201087-notes"><p>I tested strlen() a bit.</p>
+
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="local-variable">$c</span> = <span class="predefined-constant">FALSE</span>;
+<span class="line-numbers">2</span><span class="predefined">echo</span> <span class="predefined">strlen</span>(<span class="local-variable">$c</span>); <span class="comment">// 0</span>
+<span class="line-numbers">3</span><span class="predefined">echo</span> (<span class="predefined-type">string</span>)<span class="local-variable">$c</span> === <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span> ? <span class="string"><span class="delimiter">'</span><span class="content">empty</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">not empty</span><span class="delimiter">'</span></span>; <span class="comment">// empty</span>
+<span class="line-numbers">4</span><span class="predefined">echo</span> <span class="local-variable">$c</span> === <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span> ? <span class="string"><span class="delimiter">'</span><span class="content">empty</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">not empty</span><span class="delimiter">'</span></span>; <span class="comment">// not empty</span>
+</span></code></pre>
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="local-variable">$c</span> = <span class="predefined-constant">TRUE</span>;
+<span class="line-numbers">2</span><span class="predefined">echo</span> <span class="predefined">strlen</span>(<span class="local-variable">$c</span>); <span class="comment">// 1</span>
+<span class="line-numbers">3</span><span class="predefined">echo</span> (<span class="predefined-type">string</span>)<span class="local-variable">$c</span> === <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span> ? <span class="string"><span class="delimiter">'</span><span class="content">empty</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">not empty</span><span class="delimiter">'</span></span>; <span class="comment">// not empty</span>
+<span class="line-numbers">4</span><span class="predefined">echo</span> <span class="local-variable">$c</span> === <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span> ? <span class="string"><span class="delimiter">'</span><span class="content">empty</span><span class="delimiter">'</span></span> : <span class="string"><span class="delimiter">'</span><span class="content">not empty</span><span class="delimiter">'</span></span>; <span class="comment">// not empty</span>
+</span></code></pre>
+
+	<p>So it suffices to do the cast in cases were we are not sure about the type.</p></div>
+  </div>
+  
+
+  <div id="change-201131" class="journal has-notes has-details">
+    <h4><a href="54091.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 13:58">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-201131-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a></p></div>
+  </div>
+  
+
+  <div id="change-201133" class="journal has-notes">
+    <h4><a href="54091.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 14:17">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201133-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a></p></div>
+  </div>
+  
+
+  <div id="change-201142" class="journal has-notes">
+    <h4><a href="54091.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 14:43">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201142-notes"><p>Patch set 3 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a></p></div>
+  </div>
+  
+
+  <div id="change-201167" class="journal has-notes">
+    <h4><a href="54091.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-28" title="2014-01-28 17:21">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-201167-notes"><p>Patch set 4 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a></p></div>
+  </div>
+  
+
+  <div id="change-202178" class="journal has-notes">
+    <h4><a href="54091.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-03" title="2014-02-03 11:02">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-202178-notes"><p>Patch set 5 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a></p></div>
+  </div>
+  
+
+  <div id="change-202771" class="journal has-notes">
+    <h4><a href="54091.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-06" title="2014-02-06 22:08">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-202771-notes"><p>Patch set 6 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a></p></div>
+  </div>
+  
+
+  <div id="change-202775" class="journal has-details">
+    <h4><a href="54091.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-06" title="2014-02-06 22:18">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Subject</strong> changed from <i>Use === operator instead of strlen() to check for zero length stirngs</i> to <i>Use === operator instead of strlen() to check for zero length strings</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-202779" class="journal has-notes">
+    <h4><a href="54091.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-06" title="2014-02-06 23:26">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-202779-notes"><p>Patch set 7 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a></p></div>
+  </div>
+  
+
+  <div id="change-204360" class="journal has-notes">
+    <h4><a href="54091.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-18" title="2014-02-18 18:18">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-204360-notes"><p>Patch set 8 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a></p></div>
+  </div>
+  
+
+  <div id="change-204958" class="journal has-notes">
+    <h4><a href="54091.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-23" title="2014-02-23 11:23">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-204958-notes"><p>Patch set 9 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27091">https://review.typo3.org/27091</a></p></div>
+  </div>
+  
+
+  <div id="change-204960" class="journal has-notes has-details">
+    <h4><a href="54091.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-23" title="2014-02-23 11:30">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-204960-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/de27a20afbd8f413f60029afc5622c7b33212322" class="changeset" title="[CLEANUP] Replace strlen() with === for zero length check It is faster to compare a string with ...">de27a20afbd8f413f60029afc5622c7b33212322</a>.</p></div>
+  </div>
+  
+
+  <div id="change-204962" class="journal has-notes has-details">
+    <h4><a href="54091.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-23" title="2014-02-23 13:20">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Resolved</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-204962-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27794">https://review.typo3.org/27794</a></p></div>
+  </div>
+  
+
+  <div id="change-206217" class="journal has-notes">
+    <h4><a href="54091.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-04" title="2014-03-04 07:21">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206217-notes"><p>Patch set 1 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/28017">https://review.typo3.org/28017</a></p></div>
+  </div>
+  
+
+  <div id="change-206221" class="journal has-notes">
+    <h4><a href="54091.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/324">Michiel Roos</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-04" title="2014-03-04 08:08">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206221-notes"><p>To make travis pass all the failing tests:</p>
+
+
+	<p>One issue is in \TYPO3\CMS\Core\Utility\GeneralUtility::xml2arrayProcess()<br />Around line: 2273:<br />            if ((string)$val['attributes']['index'] !== '') {<br />                $tagName = $val['attributes']['index'];<br />            }</p>
+
+
+	<p>Two more string casts are needed in: typo3/sysext/extbase/Classes/Scheduler/FieldProvider.php around line 244</p>
+
+
+	<p>Two more string casts are needed in typo3/sysext/extensionmanager/Classes/Utility/EmConfUtility.php around line 95:<br />-       if (strlen($emConf['PHP_version'])) {<br />+       if ((string)$emConf['PHP_version'] !== '') {<br />          $emConf['constraints']['depends']['php'] = $emConf['PHP_version'];<br />        }<br />-       if (strlen($emConf['TYPO3_version'])) {<br />+       if ((string)$emConf['TYPO3_version'] !== '') {<br />          $emConf['constraints']['depends']['typo3'] = $emConf['TYPO3_version'];<br />        }</p></div>
+  </div>
+  
+
+  <div id="change-206241" class="journal has-notes">
+    <h4><a href="54091.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-04" title="2014-03-04 10:10">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206241-notes"><p>Patch set 2 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27794">https://review.typo3.org/27794</a></p></div>
+  </div>
+  
+
+  <div id="change-206419" class="journal has-notes">
+    <h4><a href="54091.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-05" title="2014-03-05 09:20">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206419-notes"><p>Patch set 3 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/27794">https://review.typo3.org/27794</a></p></div>
+  </div>
+  
+
+  <div id="change-218705" class="journal has-details">
+    <h4><a href="54091.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-30" title="2014-05-30 11:31">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> deleted (<strike><i>6.2.0</i></strike>)</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-230527" class="journal has-notes">
+    <h4><a href="54091.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-09-21" title="2014-09-21 01:05">11 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-230527-notes"><p>Patch set 4 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/27794">http://review.typo3.org/27794</a></p></div>
+  </div>
+  
+
+  <div id="change-244238" class="journal has-notes">
+    <h4><a href="54091.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-11" title="2015-01-11 18:51">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-244238-notes"><p>Patch set 5 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/27794">http://review.typo3.org/27794</a></p></div>
+  </div>
+  
+
+  <div id="change-244344" class="journal has-notes">
+    <h4><a href="54091.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-12" title="2015-01-12 14:43">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-244344-notes"><p>Patch set 6 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/27794">http://review.typo3.org/27794</a></p></div>
+  </div>
+  
+
+  <div id="change-245183" class="journal has-notes">
+    <h4><a href="54091.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-17" title="2015-01-17 11:27">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-245183-notes"><p>Patch set 7 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/27794">http://review.typo3.org/27794</a></p></div>
+  </div>
+  
+
+  <div id="change-245368" class="journal has-notes">
+    <h4><a href="54091.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-17" title="2015-01-17 22:30">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-245368-notes"><p>Patch set 8 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/27794">http://review.typo3.org/27794</a></p></div>
+  </div>
+  
+
+  <div id="change-245398" class="journal has-notes">
+    <h4><a href="54091.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-18" title="2015-01-18 12:03">7 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-245398-notes"><p>Patch set 9 for branch <strong>master</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/27794">http://review.typo3.org/27794</a></p></div>
+  </div>
+  
+
+  <div id="change-245465" class="journal has-notes has-details">
+    <h4><a href="54091.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-18" title="2015-01-18 15:00">7 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-245465-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/4722b6cf5c97ab415d3d35687ed77750b97e3258" class="changeset" title="[CLEANUP] Replace strlen() with === for zero length check It is faster to compare a string with ...">4722b6cf5c97ab415d3d35687ed77750b97e3258</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-54091-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/54091.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="54091.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/54091 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:28:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

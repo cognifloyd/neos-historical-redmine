@@ -1,0 +1,2085 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/52949 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:28:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #52949: Speed decrease since 4.5 - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/52949.atom" rel="alternate" title="Core - Bug #52949: Speed decrease since 4.5" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (54)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/4305">Alexander Jahn</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4016">Adrien Crivelli</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3251">Dirk Klimpel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2192">Timo Webler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38479">Florian Rival</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2981">Felix Nagel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3989">Patrick Schriner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/120">Mario Rimann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2480">Dimitri Koenig</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/888">Ingo Pfennigstorf</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/688">Tom K.</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/477">Joh. Feustel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/110">Ben van &#39;t Ende</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4205">Roland Waldner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/238">Georg Großberger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2039">Alexander Stehlik</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/27">Michael Stucki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39198">Mathias Brodala</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4514">Bernd Trippel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2775">Lorenz Ulrich</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1675">Henrik Ziegenhain</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37194">Jost Baron</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/414">Oliver Klee</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/760">Thomas Kakuschke</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/1175">Andreas Dörler</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2869">Rafal Brzeski</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/129">Jose Antonio Guerra</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3519">Marco Antonioli</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2022">Christof Rodejohann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39588">Joachim Beck</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2749">Simon Schaufelberger</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3580">Tommy Juhnke</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2948">Joerg Winter</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3408">Bastian Bringenberg</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/39179">Daniel Goerz</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/36785">Julian Wundrak</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/28716">Rafal Likus</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2125">Jonas Renggli</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/837">Christian Toffolo</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2661">Stephan Großberndt</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-52949-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #52949</h2>
+
+<div class="issue status-7 priority-3 closed child parent details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="55070.html" class="issue status-2 priority-3 overdue parent">Epic #55070</a>: Workpackages</p><div><p><a href="55065.html" class="issue status-1 priority-3 overdue child parent">Epic #55065</a>: WP: Overall System Performance (Backend and Frontend)</p><div><h3>Speed decrease since 4.5</h3></div></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-18" title="2013-10-18 13:13">almost 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-16" title="2015-07-16 13:08">18 days</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-09-19</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Could have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 84%;"></td><td class="todo" style="width: 16%;"></td></tr></table><p class="pourcent">84%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Performance</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time"><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/52949/time_entries">33.00 hours</a></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>hard</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>There is a very notable decrease in speed since 4.5.</p>
+
+
+	<p>A fully cached request in 4.5<br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        937 bytes
+
+Concurrency Level:      1
+Time taken for tests:   3.513 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      123800 bytes
+HTML transferred:       93700 bytes
+Requests per second:    28.47 [#/sec] (mean)
+Time per request:       35.129 [ms] (mean)
+Time per request:       35.129 [ms] (mean, across all concurrent requests)
+Transfer rate:          34.42 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    32   35   3.3     34      59
+Waiting:       32   35   3.3     34      58
+Total:         32   35   3.3     34      59
+
+Percentage of the requests served within a certain time (ms)
+  50%     34
+  66%     36
+  75%     37
+  80%     38
+  90%     38
+  95%     39
+  98%     45
+  99%     59
+ 100%     59 (longest request)
+</pre></p>
+
+
+	<p>A fully cached request in 6.2beta1<br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        752 bytes
+
+Concurrency Level:      1
+Time taken for tests:   14.486 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      105300 bytes
+HTML transferred:       75200 bytes
+Requests per second:    6.90 [#/sec] (mean)
+Time per request:       144.856 [ms] (mean)
+Time per request:       144.856 [ms] (mean, across all concurrent requests)
+Transfer rate:          7.10 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:   120  145  16.4    142     202
+Waiting:      119  144  16.4    141     201
+Total:        120  145  16.4    142     202
+
+Percentage of the requests served within a certain time (ms)
+  50%    142
+  66%    148
+  75%    150
+  80%    155
+  90%    167
+  95%    181
+  98%    202
+  99%    202
+ 100%    202 (longest request)
+</pre></p>
+
+
+	<p>Find attached sample xhprof and cachegrind files, plus the used (simple) TS template and some notes for the setup (1 page, no domain record).<br />Profiling was done with web3tracer.</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/25237/profiles.tar.gzip" class="icon icon-attachment">profiles.tar.gz</a>  
+   - Sample profile runs and used config
+  <span class="size">(314.7 kB)</span>
+  
+  
+    <span class="author">Philipp Gampe, 2013-10-18 13:14</span>
+  
+  </p>
+
+<p><a href="../attachments/download/25241/typo3-4-5-fully-cached.png" class="icon icon-attachment">typo3-4-5-fully-cached.png</a>  
+   - TYPO3 4.5
+  <span class="size">(470.6 kB)</span>
+  
+  
+    <span class="author">Philipp Gampe, 2013-10-18 16:48</span>
+  
+  </p>
+
+<p><a href="../attachments/download/25242/typo3-6-2beta1-fully-cached2.png" class="icon icon-attachment">typo3-6-2beta1-fully-cached2.png</a>  
+   - TYPO3 6.2
+  <span class="size">(1.4 MB)</span>
+  
+  
+    <span class="author">Philipp Gampe, 2013-10-18 16:48</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+<hr />
+<div id="issue_tree">
+<div class="contextual">
+  
+</div>
+<p><strong>Subtasks</strong></p>
+<form><table class="list issues"><tr class="issue issue-53029 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53029" /></td><td class="subject"><a href="53029.html" class="issue status-7 priority-2 closed child">Task #53029</a>: Improve performance of the class loader </td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53744 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53744" /></td><td class="subject"><a href="53744.html" class="issue status-7 priority-2 closed child">Task #53744</a>: Change ClassLoader cache from proxy require files to stan...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53747 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53747" /></td><td class="subject"><a href="53747.html" class="issue status-7 priority-2 closed child">Task #53747</a>: Change TCA cache from php code to serialized array</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-52642 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="52642" /></td><td class="subject"><a href="52642.html" class="issue status-2 priority-2 child">Feature #52642</a>: CF: Implement Simple db, apc &amp; memcached backend</td><td>Accepted</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53467 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53467" /></td><td class="subject"><a href="53467.html" class="issue status-6 priority-2 child">Task #53467</a>: Improve flush by tag performance for the file cache backend</td><td>Under Review</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2938">Tymoteusz Motylewski</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53556 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53556" /></td><td class="subject"><a href="53556.html" class="issue status-9 priority-2 closed child">Bug #53556</a>: classLoader-&gt;loadClass calls requireOnce twice per class</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53918 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53918" /></td><td class="subject"><a href="53918.html" class="issue status-7 priority-2 closed child">Bug #53918</a>: t3skin calls addIconSprite for each language</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53962 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53962" /></td><td class="subject"><a href="53962.html" class="issue status-7 priority-2 closed child">Bug #53962</a>: Class loader does not cache non existing classes</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53702 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53702" /></td><td class="subject"><a href="53702.html" class="issue status-7 priority-2 closed child">Bug #53702</a>: FAL fetches storages twice on every BE request</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54251 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="54251" /></td><td class="subject"><a href="54251.html" class="issue status-7 priority-2 closed child">Task #54251</a>: GeneralUtility::array_merge_recursive_overrule has bad pe...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53862 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53862" /></td><td class="subject"><a href="53862.html" class="issue status-7 priority-2 closed child">Bug #53862</a>: isValidUrl idna converts whole URI instead of domain only</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-52125 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="52125" /></td><td class="subject"><a href="52125.html" class="issue status-7 priority-2 closed child">Bug #52125</a>: Saving records takes ages to complete</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-52235 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="52235" /></td><td class="subject"><a href="52235.html" class="issue status-7 priority-1 closed child">Bug #52235</a>: Timeout when copying pages recursively due to cache-clear...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-52374 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="52374" /></td><td class="subject"><a href="52374.html" class="issue status-1 priority-2 child">Bug #52374</a>: Editing a sys_filemount is very slow</td><td>New</td><td><a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53598 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="53598" /></td><td class="subject"><a href="53598.html" class="issue status-7 priority-2 closed child">Bug #53598</a>: Select/Delete fe_sessions twice per request</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54982 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="54982" /></td><td class="subject"><a href="54982.html" class="issue status-7 priority-2 closed child">Bug #54982</a>: Performance of eID-scripts in TYPO3 6.2</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55022 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55022" /></td><td class="subject"><a href="55022.html" class="issue status-7 priority-2 closed child">Bug #55022</a>: PackageManager Cache is invalid if typo3 dir has symlinks</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56307 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="56307" /></td><td class="subject"><a href="56307.html" class="issue status-2 priority-3 child parent">Bug #56307</a>: Findings from Bootstrap/PackageManager/ClassLoader analyses</td><td>Accepted</td><td><a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 83%;"></td><td class="todo" style="width: 17%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56308 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56308" /></td><td class="subject"><a href="56308.html" class="issue status-9 priority-2 closed child">Bug #56308</a>: ClassLoaderCache superflouous</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56310 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56310" /></td><td class="subject"><a href="56310.html" class="issue status-7 priority-2 closed child">Bug #56310</a>: The PackageManager checks every boot if all required pack...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56311 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56311" /></td><td class="subject"><a href="56311.html" class="issue status-7 priority-2 closed child">Bug #56311</a>: PackageFactory does not need to be initialized on regular...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56312 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56312" /></td><td class="subject"><a href="56312.html" class="issue status-2 priority-2 child">Bug #56312</a>: Dependency Resolver does not need to be initialized</td><td>Accepted</td><td><a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56313 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56313" /></td><td class="subject"><a href="56313.html" class="issue status-7 priority-2 closed child">Bug #56313</a>: Cache Identifiers shorten the MD5 hash</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56314 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56314" /></td><td class="subject"><a href="56314.html" class="issue status-1 priority-2 child">Bug #56314</a>: setCacheHashOptions from Bootstrap not relevant for EID</td><td>New</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56315 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56315" /></td><td class="subject"><a href="56315.html" class="issue status-10 priority-2 closed child">Bug #56315</a>: Optimize TimeTracking init in eID Case</td><td>Rejected</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56316 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56316" /></td><td class="subject"><a href="56316.html" class="issue status-7 priority-2 closed child">Bug #56316</a>: inline BEUserAuth::getCookieName</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56317 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56317" /></td><td class="subject"><a href="56317.html" class="issue status-1 priority-2 child">Bug #56317</a>: Cache Local and Default Configuration to prevent duplicat...</td><td>New</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56318 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56318" /></td><td class="subject"><a href="56318.html" class="issue status-9 priority-2 closed child">Bug #56318</a>: Check wether the ConfigurationManager can be omitted/redu...</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56319 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56319" /></td><td class="subject"><a href="56319.html" class="issue status-7 priority-2 closed child">Bug #56319</a>: Merge Cache/Cache and CacheFactory into CacheManager</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56320 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56320" /></td><td class="subject"><a href="56320.html" class="issue status-10 priority-2 closed child">Bug #56320</a>: Check emptying the Flow Classes as far as possible</td><td>Rejected</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56322 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56322" /></td><td class="subject"><a href="56322.html" class="issue status-9 priority-2 closed child">Bug #56322</a>: GetAliasesForClass not used</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56323 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56323" /></td><td class="subject"><a href="56323.html" class="issue status-9 priority-2 closed child">Bug #56323</a>: cache_classes should cluster by Package instead of Class</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56324 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56324" /></td><td class="subject"><a href="56324.html" class="issue status-9 priority-2 closed child">Bug #56324</a>: Class Loader should not try to runtime resolve class-pathes</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56325 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56325" /></td><td class="subject"><a href="56325.html" class="issue status-7 priority-2 closed child">Bug #56325</a>: Move &quot;finalClassNameCache&quot; from GeneralUtility to ClassLo...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56326 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56326" /></td><td class="subject"><a href="56326.html" class="issue status-10 priority-2 closed child">Bug #56326</a>: Evaluate and Merge ClassAliasMap into Classloader class</td><td>Rejected</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56328 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56328" /></td><td class="subject"><a href="56328.html" class="issue status-9 priority-2 closed child">Bug #56328</a>: Extract complex &quot;class loader cache building&quot; code into C...</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56330 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56330" /></td><td class="subject"><a href="56330.html" class="issue status-10 priority-2 closed child">Bug #56330</a>: Add all classes which are needed anyhow within the minima...</td><td>Rejected</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56331 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56331" /></td><td class="subject"><a href="56331.html" class="issue status-7 priority-2 closed child">Bug #56331</a>: Evaluate if we can profit from concatenate all baseRequir...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56333 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56333" /></td><td class="subject"><a href="56333.html" class="issue status-9 priority-2 closed child">Bug #56333</a>: MicroOptimize ClassLoader</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56334 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56334" /></td><td class="subject"><a href="56334.html" class="issue status-1 priority-3 child">Bug #56334</a>: Prevent inclusion of LogLevel due to ConfigDefault referral</td><td>New</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56335 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56335" /></td><td class="subject"><a href="56335.html" class="issue status-7 priority-2 closed child">Bug #56335</a>: Prevent Inclusion of ResourceStorage from Bootstrap</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56336 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56336" /></td><td class="subject"><a href="56336.html" class="issue status-7 priority-2 closed child">Bug #56336</a>: Prevent Inclusion of MediaWizardProvider* in Base Bootstrap</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56337 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56337" /></td><td class="subject"><a href="56337.html" class="issue status-4 priority-2 child">Bug #56337</a>: Remove manual array calculation in Locales and put the ar...</td><td>Needs Feedback</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56340 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56340" /></td><td class="subject"><a href="56340.html" class="issue status-9 priority-2 closed child">Bug #56340</a>: Remove the VariableFrontend from requiredBaseClasses</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56341 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56341" /></td><td class="subject"><a href="56341.html" class="issue status-9 priority-2 closed child">Task #56341</a>: Evaluate if it is really reasonable to have TYPO3\CMS\Cor...</td><td>Closed</td><td><a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56538 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56538" /></td><td class="subject"><a href="56538.html" class="issue status-7 priority-2 closed child">Task #56538</a>: Cache the $GLOBALS[&#39;TYPO3_LOADED_EXT&#39;] as an array</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56933 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56933" /></td><td class="subject"><a href="56933.html" class="issue status-7 priority-2 closed child">Bug #56933</a>: Cached class loader misses are not considered on retrieval</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56934 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56934" /></td><td class="subject"><a href="56934.html" class="issue status-7 priority-2 closed child">Task #56934</a>: Move information in Package classes into composer files</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57862 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="57862" /></td><td class="subject"><a href="57862.html" class="issue status-7 priority-2 closed child parent">Story #57862</a>: Add possibility to make all TCA additions cached</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57863 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="57863" /></td><td class="subject"><a href="57863.html" class="issue status-7 priority-2 closed child">Task #57863</a>: Introduce a signal in ExtensionManagementUtility::loadBas...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57881 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="57881" /></td><td class="subject"><a href="57881.html" class="issue status-7 priority-2 closed child">Task #57881</a>: Make category TCA changes cacheable</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57942 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="57942" /></td><td class="subject"><a href="57942.html" class="issue status-7 priority-2 closed child">Task #57942</a>: Provide API to add cached TCA changes</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr></table></form>
+</div>
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-9773">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="52304" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="52304.html" class="issue status-7 priority-4 closed parent">Task #52304</a>: Performance issues
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2012-03-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10169">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54942" /></td>
+<td class="subject">related to 
+    Team Resources - 
+    <a href="54942.html" class="issue status-9 priority-2 closed">Task #54942</a>: Provide performance measurement and reporting system
+</td>
+<td class="status">Closed</td>
+<td class="start_date">2014-01-13</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/52949/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/52949/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=52949&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/2bfb2a64ada92c3de9a528609f737d6105af5970" title="Revision 2bfb2a64">Revision 2bfb2a64</a><br />
+        <span class="author">Added by Jost Baron  <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-11" title="2014-02-11 23:27">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[TASK] Improve EM performance when getting extension list from TER</p>
+
+
+	<p>When importing the extension list from TER, each version of each<br />extension is one database record. For each extension key the EM<br />calculates the newest version and sets the column 'current_version'<br />to 1 for the corresponsing extension record.</p>
+
+
+	<p>The old implementation issued one database query for each extension<br />key, resulting in about 6k queries, taking a long time to execute<br />(several minutes on my machine). After applying this patch the same<br />thing is done in three queries, speeding up the process.</p>
+
+
+	<p>Resolves: <a href="55820.html" class="issue status-7 priority-2 closed" title="Improve speed of loading the extension list from TER (Resolved)">#55820</a><br />Related: <a href="52949.html" class="issue status-7 priority-3 closed child parent" title="Speed decrease since 4.5 (Resolved)">#52949</a><br />Releases: 6.2<br />Change-Id: I55d3699a63b13e7c07af4babbf57d0d06f367027<br />Reviewed-on: <a class="external" href="../../external.html?link=https://review.typo3.org/27496">https://review.typo3.org/27496</a><br />Reviewed-by: Markus Klein<br />Tested-by: Markus Klein<br />Reviewed-by: Jost Baron<br />Tested-by: Jost Baron<br />Reviewed-by: Oliver Klee<br />Reviewed-by: Wouter Wolters<br />Tested-by: Wouter Wolters</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-187419" class="journal has-details">
+    <h4><a href="52949.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-18" title="2013-10-18 13:14">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/25237/profiles.tar.gzip">profiles.tar.gz</a> added</li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-187422" class="journal has-notes">
+    <h4><a href="52949.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-18" title="2013-10-18 13:51">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187422-notes"><p>Full VM for VirtualBox 4.2 (1GB): <a class="external" href="../../external.html?link=http://philippgampe.info/fileadmin/ubuntu-typo3.ova.zip">http://philippgampe.info/fileadmin/ubuntu-typo3.ova.zip</a></p></div>
+  </div>
+  
+
+  <div id="change-187425" class="journal has-notes">
+    <h4><a href="52949.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-18" title="2013-10-18 14:34">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187425-notes"><p>Philipp, did you also test the 4 other versions. Im interested to know if the last changes are the source of the bigger performance lost or that is was something we introduced in a earlier version. Compatibility layer etc.....</p></div>
+  </div>
+  
+
+  <div id="change-187451" class="journal has-notes has-details">
+    <h4><a href="52949.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-18" title="2013-10-18 16:48">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/25241/typo3-4-5-fully-cached.png">typo3-4-5-fully-cached.png</a> added</li>
+      
+       <li><strong>File</strong> <a href="../attachments/download/25242/typo3-6-2beta1-fully-cached2.png">typo3-6-2beta1-fully-cached2.png</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-187451-notes"><p>Will test the other versions later today. There does not seem to be a single bottleneck.</p></div>
+  </div>
+  
+
+  <div id="change-187513" class="journal has-notes">
+    <h4><a href="52949.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-20" title="2013-10-20 15:37">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187513-notes"><p>I ran all tests at least twice and warmed up the caches with a couple of browser requests beforehand. Thus those numbers represent a fully cached condition.<br />All tests are on the same virtual machine (see link above), on the same DB and a default set of packages/extensions. See the zip file attached for localconf.php, LocalConfiguration.php and PackageStates.php.</p>
+
+
+	<p>Tests are started from host and query the VM. It can be expected that additional I/O load has a bigger impact than on real-life servers.</p>
+
+
+	<p><strong>TYPO3_4-5</strong><br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        937 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.252 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      123800 bytes
+HTML transferred:       93700 bytes
+Requests per second:    79.86 [#/sec] (mean)
+Time per request:       12.522 [ms] (mean)
+Time per request:       12.522 [ms] (mean, across all concurrent requests)
+Transfer rate:          96.55 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       1
+Processing:    10   12   1.8     12      24
+Waiting:       10   12   1.8     12      23
+Total:         11   12   1.8     12      24
+
+Percentage of the requests served within a certain time (ms)
+  50%     12
+  66%     13
+  75%     13
+  80%     13
+  90%     14
+  95%     16
+  98%     20
+  99%     24
+ 100%     24 (longest request)
+</pre></p>
+
+
+	<p><strong>TYPO3_4-6</strong><br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        937 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.461 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      123800 bytes
+HTML transferred:       93700 bytes
+Requests per second:    68.44 [#/sec] (mean)
+Time per request:       14.612 [ms] (mean)
+Time per request:       14.612 [ms] (mean, across all concurrent requests)
+Transfer rate:          82.74 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       1
+Processing:    12   14   1.7     15      26
+Waiting:       12   14   1.7     14      26
+Total:         13   15   1.7     15      26
+
+Percentage of the requests served within a certain time (ms)
+  50%     15
+  66%     15
+  75%     15
+  80%     15
+  90%     16
+  95%     16
+  98%     20
+  99%     26
+ 100%     26 (longest request)
+</pre></p>
+
+
+	<p><strong>TYPO3_4-7</strong><br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        937 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.388 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      123800 bytes
+HTML transferred:       93700 bytes
+Requests per second:    72.02 [#/sec] (mean)
+Time per request:       13.884 [ms] (mean)
+Time per request:       13.884 [ms] (mean, across all concurrent requests)
+Transfer rate:          87.08 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       1
+Processing:    12   14   2.1     13      28
+Waiting:       12   13   2.1     13      28
+Total:         12   14   2.1     13      29
+
+Percentage of the requests served within a certain time (ms)
+  50%     13
+  66%     14
+  75%     14
+  80%     14
+  90%     15
+  95%     18
+  98%     22
+  99%     29
+ 100%     29 (longest request)
+</pre></p>
+
+
+	<p><strong>TYPO3_6-0</strong><br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        937 bytes
+
+Concurrency Level:      1
+Time taken for tests:   6.062 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      123800 bytes
+HTML transferred:       93700 bytes
+Requests per second:    16.50 [#/sec] (mean)
+Time per request:       60.620 [ms] (mean)
+Time per request:       60.620 [ms] (mean, across all concurrent requests)
+Transfer rate:          19.94 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    57   60   4.2     61      94
+Waiting:       57   60   4.2     61      94
+Total:         57   61   4.3     61      94
+
+Percentage of the requests served within a certain time (ms)
+  50%     61
+  66%     61
+  75%     62
+  80%     62
+  90%     63
+  95%     65
+  98%     70
+  99%     94
+ 100%     94 (longest request)
+</pre></p>
+
+
+	<p><strong>TYPO3_6-1</strong><br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        937 bytes
+
+Concurrency Level:      1
+Time taken for tests:   11.001 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      123800 bytes
+HTML transferred:       93700 bytes
+Requests per second:    9.09 [#/sec] (mean)
+Time per request:       110.012 [ms] (mean)
+Time per request:       110.012 [ms] (mean, across all concurrent requests)
+Transfer rate:          10.99 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    90  110   8.1    109     137
+Waiting:       90  109   7.7    109     136
+Total:         90  110   8.2    109     137
+
+Percentage of the requests served within a certain time (ms)
+  50%    109
+  66%    112
+  75%    112
+  80%    113
+  90%    121
+  95%    124
+  98%    135
+  99%    137
+ 100%    137 (longest request)
+</pre></p>
+
+
+	<p><strong>master</strong> as of today<br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        937 bytes
+
+Concurrency Level:      1
+Time taken for tests:   14.083 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      123800 bytes
+HTML transferred:       93700 bytes
+Requests per second:    7.10 [#/sec] (mean)
+Time per request:       140.831 [ms] (mean)
+Time per request:       140.831 [ms] (mean, across all concurrent requests)
+Transfer rate:          8.58 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       1
+Processing:   126  141   7.6    139     188
+Waiting:      126  140   7.6    139     188
+Total:        126  141   7.7    139     190
+
+Percentage of the requests served within a certain time (ms)
+  50%    139
+  66%    141
+  75%    143
+  80%    144
+  90%    147
+  95%    155
+  98%    165
+  99%    190
+ 100%    190 (longest request)
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-187521" class="journal has-notes">
+    <h4><a href="52949.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-20" title="2013-10-20 17:37">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187521-notes"><p>Do I see that right that this means:</p>
+
+
+	<p>Longest request 4.5 vs 6.0: factor ~4 slower<br />Longest request 6.0 vs 6.2: factor ~2 slower<br />Longest request 4.5 vs 6.2: factor ~8 slower</p>
+
+
+	<p>Oh darling....</p>
+
+
+	<p>Did you use PHP 5.3 as specified in the ticket here?</p></div>
+  </div>
+  
+
+  <div id="change-187523" class="journal has-notes">
+    <h4><a href="52949.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-20" title="2013-10-20 19:15">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187523-notes"><p>Yes I am using <strong>Ubuntu LTS 12.04</strong> which ships <strong>PHP 5.3.10</strong> with Suhosin. I expect that PHP 5.4 is 20-30% faster. PHP 5.5 is even faster.<br />Keep in mind that this is a VM and that I/O increase count higher here (more PHP cache files).</p>
+
+
+	<p>Also this is a very simple site. Complex sites might do better. Although I did a full cache scenario, therefore this are important numbers nevertheless.<br /><pre>
+<code class="html syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="line-numbers"> 2</span><span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="line-numbers"> 3</span><span class="tag">&lt;head&gt;</span>
+<span class="line-numbers"> 4</span>
+<span class="line-numbers"> 5</span><span class="tag">&lt;meta</span> <span class="attribute-name">charset</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">utf-8</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="line-numbers"> 6</span><span class="comment">&lt;!-- </span>
+<span class="line-numbers"> 7</span><span class="comment">    This website is powered by TYPO3 - inspiring people to share!</span>
+<span class="line-numbers"> 8</span><span class="comment">    TYPO3 is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL.</span>
+<span class="line-numbers"> 9</span><span class="comment">    TYPO3 is copyright 1998-2013 of Kasper Skaarhoj. Extensions are copyright of their respective owners.</span>
+<span class="line-numbers"><strong>10</strong></span><span class="comment">    Information and contribution at http://typo3.org/</span>
+<span class="line-numbers">11</span><span class="comment">--&gt;</span>
+<span class="line-numbers">12</span>
+<span class="line-numbers">13</span><span class="tag">&lt;title&gt;</span>Root-Simple-TEXT<span class="tag">&lt;/title&gt;</span>
+<span class="line-numbers">14</span><span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">generator</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">TYPO3 6.2 CMS</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="line-numbers">15</span>
+<span class="line-numbers">16</span><span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/css</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">typo3temp/stylesheet_8b9c2e8d89.css?1382018318</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">media</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">all</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="line-numbers">17</span>
+<span class="line-numbers">18</span><span class="tag">&lt;/head&gt;</span>
+<span class="line-numbers">19</span><span class="tag">&lt;body&gt;</span>
+<span class="line-numbers"><strong>20</strong></span><span class="tag">&lt;h1&gt;</span>Headline<span class="tag">&lt;/h1&gt;</span><span class="tag">&lt;p&gt;</span>Some longer Text
+<span class="line-numbers">21</span>which might be split across several lines
+<span class="line-numbers">22</span><span class="tag">&lt;/p&gt;</span><span class="tag">&lt;div&gt;</span>Some footer<span class="tag">&lt;/div&gt;</span>
+<span class="line-numbers">23</span>
+<span class="line-numbers">24</span><span class="tag">&lt;/body&gt;</span>
+<span class="line-numbers">25</span><span class="tag">&lt;/html&gt;</span>
+</span></code><br /></pre></p>
+
+
+	<p>This are just three TEXT objects.</p></div>
+  </div>
+  
+
+  <div id="change-187524" class="journal has-notes">
+    <h4><a href="52949.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-20" title="2013-10-20 19:24">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187524-notes"><p>Yes, especially when the page is extremely simple it shows that the surrounding overhead got slower a lot.</p></div>
+  </div>
+  
+
+  <div id="change-187530" class="journal has-notes">
+    <h4><a href="52949.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-20" title="2013-10-20 20:46">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187530-notes"><p>I do not think that we can justify an 400% increase for fully cached pages, because this is the most important scenario.</p>
+
+
+	<p>We really need to find out where this comes from and if we can take certain shortcuts on fully cached pages.</p></div>
+  </div>
+  
+
+  <div id="change-187555" class="journal has-notes">
+    <h4><a href="52949.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 08:25">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187555-notes"><p>PHP 5.4 is IMHO a must for TYPO3 6.x. This way we already "regain" a bit (although 4.5 would be equally faster as well). Fully cached pages are for sure extremely important and to be optimized first but we should not forget that in many cases USER_INT have to be found. Just think about the felogin which is not AJAX capable.</p></div>
+  </div>
+  
+
+  <div id="change-187557" class="journal has-notes">
+    <h4><a href="52949.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4305">Alexander Jahn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 09:13">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187557-notes"><p>Philipp,</p>
+
+
+	<p>would you mind installing APC and using it instead of <em>t3lib_cache_backend_FileBackend</em>? (see <a class="external" href="../../external.html?link=http://wiki.typo3.org/Caching_framework#t3lib_cache_backend_ApcBackend">http://wiki.typo3.org/Caching_framework#t3lib_cache_backend_ApcBackend</a>)</p>
+
+
+	<p><code><br />        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_reflection']['backend']     = 't3lib_cache_backend_ApcBackend';<br />        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_object']['backend']         = 't3lib_cache_backend_ApcBackend';<br /></code></p>
+
+
+	<p>We found this has a huge impact on performance.</p>
+
+
+	<p>This should especially be true on an IO-limited VM.</p></div>
+  </div>
+  
+
+  <div id="change-187603" class="journal has-notes">
+    <h4><a href="52949.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2705">Frank Gerards</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 11:34">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187603-notes"><p>@Xavier: I see this as you do, but in fact about 75% of the (german) hosting companies dont even offer PHP 5.4 (not to think of PHP 5.5), so TYPO3 6.x MUST run<br />with maximum performance on PHP 5.3...</p></div>
+  </div>
+  
+
+  <div id="change-187618" class="journal has-notes">
+    <h4><a href="52949.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 13:46">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187618-notes"><p>@Alexander I am aware of APC and the caching framework, however you (usually) do not a memory cache on shared hostings.</p>
+
+
+	<p>@Xavier the impact of PHP 5.4 and 5.5 is much higher on 6.x, because we make better use of OOP then in old CMS installations.</p>
+
+
+	<p>@Frank choosing the right hoster should not be that difficult. You can get good hosting for 10-15€/month (120-180€/a). That should be affortable for every buisiness, especially if their website is not just a place to post the contact information.</p>
+
+
+What I want to archive with this issue is:
+	<ul>
+	<li>find the bottlenecks introduced with the latest versions</li>
+		<li>(if possible) fix the code or</li>
+		<li>find shortcuts for fully cached pages (parameters in matching chash)</li>
+	</ul></div>
+  </div>
+  
+
+  <div id="change-187620" class="journal has-notes has-details">
+    <h4><a href="52949.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 13:46">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-187620-notes"><p>setting to accepted as the problem can be easily reproduced</p></div>
+  </div>
+  
+
+  <div id="change-187629" class="journal has-notes">
+    <h4><a href="52949.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 14:31">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187629-notes"><a name="Intro-package-without-cache"></a>
+<h2 >Intro package, without cache<a href="#Intro-package-without-cache" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li>Open homepage of intro package in 6.2, after clearing all caches</li>
+		<li><code>main()</code> takes 4,235,874 μs to complete
+	<ul>
+	<li><code>run_init::tslib/index_ts.php</code> takes 4,215,982 μs
+	<ul>
+	<li><code>TYPO3\CMS\Core\Core\Bootstrap::loadConfigurationAndInitialize</code> takes 3,108,059 μs
+	<ul>
+	<li><code>TYPO3\CMS\Core\Core\Bootstrap::initializePackageManagement</code> takes 3,100,639 μs
+	<ul>
+	<li><code>TYPO3\CMS\Core\Package\PackageManager::initialize</code> takes 3,092,816 μs
+	<ul>
+	<li><code>TYPO3\CMS\Core\Core\ClassLoader::setPackages</code> takes 3,084,159 μs
+	<ul>
+	<li><code>TYPO3\CMS\Core\Core\ClassAliasMap::setPackages</code> takes 3,083,876 μs
+	<ul>
+	<li><code>TYPO3\CMS\Core\Core\ClassAliasMap::buildMappingFiles</code> takes 3,034,559 μs</li>
+	</ul></li>
+	</ul></li>
+	</ul></li>
+	</ul></li>
+	</ul></li>
+	</ul></li>
+	</ul></li>
+	</ul>
+
+
+	<a name="Intro-package-second-run"></a>
+<h2 >Intro package, second run<a href="#Intro-package-second-run" class="wiki-anchor">&para;</a></h2>
+
+
+	<ul>
+	<li><code>main()</code> takes 746,521 μs to complete
+	<ul>
+	<li><code>run_init::tslib/index_ts.php</code> takes 730,117 μs
+	<ul>
+	<li>1. <code>TYPO3\CMS\Frontend\Page\PageGenerator::renderContent</code> takes 340,651 μs</li>
+		<li>2. <code>TYPO3\CMS\Core\Core\Bootstrap::loadExtensionTables</code> takes 102,665 μs</li>
+	</ul></li>
+	</ul></li>
+	</ul>
+
+
+	<p>So without cache, I would start by optimizing PackageManager</p></div>
+  </div>
+  
+
+  <div id="change-187640" class="journal has-notes">
+    <h4><a href="52949.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 15:19">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187640-notes"><p>Xavier Perseguers wrote:</p>
+
+
+<blockquote>
+
+	<p>[...]</p>
+
+
+	<p>So without cache, I would start by optimizing PackageManager</p>
+
+
+</blockquote>
+
+	<p>+1</p>
+
+
+	<p>I'seen comparable numbers on my dev VM and also <a href="../../external.html?link=https://forge.typo3.org/attachments/download/25242" class="attachment">typo3-6-2beta1-fully-cached2.png</a> points in that direction (24.33 % in <code>Core\Cache\Frontend\PhpFrontEnd::requireOnce()</code>).</p></div>
+  </div>
+  
+
+  <div id="change-187641" class="journal has-notes">
+    <h4><a href="52949.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 15:30">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187641-notes"><p>Keep in mind that the cache for the Package Manager and Class Loader are built completely upfront to prevent keeping the alias and class map in memory. These arrays contain about 2500 entries each on average and 3 of them have to be kept in memory.<br />I'm currently exploring a different approach to this, so please consider optimizing the queries of the session management for frontend and backend users for now which send about 2 queries each for example. Usually noone runs TYPO3 without caches in production and the  first single request will take some seconds untill all caches are populated. So I would propose to optimize the cached requests first, and with cached I mean USER and USER_INT as the latter is also cached somehow.</p></div>
+  </div>
+  
+
+  <div id="change-187663" class="journal has-notes">
+    <h4><a href="52949.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 17:20">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187663-notes"><p>I fully second Tom here. PackageManager Caches are filled on first request and if you do not change packages (which happens rarely on life sites), then the package manager cache will always be "warm".</p>
+
+
+	<p>I also stumbled over session management, which seems to be really ineffective. Having a backend user cookie (not taken into account above as request came from ab) will add at least another three milliseconds even if you are not logged in.</p></div>
+  </div>
+  
+
+  <div id="change-187668" class="journal has-notes">
+    <h4><a href="52949.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 17:39">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187668-notes"><p>@Thorsten Kahler</p>
+
+
+	<p>If you do profiling with Xdebug or something else, you will ever see such things like "24.33 % in Core\Cache\Frontend\PhpFrontEnd::requireOnce()" for files that will be included. To get more real numbers you should change your setup.</p>
+
+
+	<p>For Xdebug, disable xdebug.collect_includes ( <a class="external" href="../../external.html?link=http://xdebug.org/docs/all_settings">http://xdebug.org/docs/all_settings</a> ) to get better numbers about the parts that do the trouble.</p></div>
+  </div>
+  
+
+  <div id="change-187681" class="journal has-notes">
+    <h4><a href="52949.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 18:17">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187681-notes"><p>No this is without xdebug, but with xcache (32MB) enabled. All posted numbers are the second or third run, thus the xcache was always warm.</p></div>
+  </div>
+  
+
+  <div id="change-187682" class="journal has-notes">
+    <h4><a href="52949.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 18:20">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187682-notes"><p>Are these numbers generated with a bytecode cache or without?</p></div>
+  </div>
+  
+
+  <div id="change-187685" class="journal has-notes">
+    <h4><a href="52949.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 18:23">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187685-notes"><p>Interesting: Without xcache, the performance seems to be better.</p>
+
+
+	<p>(I will provide the numbers without bytecode cache in the next hour; <strong>the next two blocks are generated while running on battery, thus might be lower the needed</strong>).</p>
+
+
+	<p><strong>TYPO3_4-5</strong> slower without bytecode cache by a factor 4.5<br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        937 bytes
+
+Concurrency Level:      1
+Time taken for tests:   5.310 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      123800 bytes
+HTML transferred:       93700 bytes
+Requests per second:    18.83 [#/sec] (mean)
+Time per request:       53.099 [ms] (mean)
+Time per request:       53.099 [ms] (mean, across all concurrent requests)
+Transfer rate:          22.77 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    48   53   4.4     52      81
+Waiting:       47   53   4.4     52      81
+Total:         48   53   4.5     52      82
+
+Percentage of the requests served within a certain time (ms)
+  50%     52
+  66%     53
+  75%     56
+  80%     57
+  90%     58
+  95%     59
+  98%     61
+  99%     82
+ 100%     82 (longest request)
+</pre></p>
+
+
+	<p><strong>master</strong> faster without bytecode cache ???<br /><pre>
+$ ab -n 100 "http://ubuntu-typo3.local/dummy/index.php?id=1" 
+This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking ubuntu-typo3.local (be patient).....done
+
+Server Software:        Apache/2.2.22
+Server Hostname:        ubuntu-typo3.local
+Server Port:            80
+
+Document Path:          /dummy/index.php?id=1
+Document Length:        752 bytes
+
+Concurrency Level:      1
+Time taken for tests:   9.905 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      105300 bytes
+HTML transferred:       75200 bytes
+Requests per second:    10.10 [#/sec] (mean)
+Time per request:       99.052 [ms] (mean)
+Time per request:       99.052 [ms] (mean, across all concurrent requests)
+Transfer rate:          10.38 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       1
+Processing:    85   99   5.6     99     134
+Waiting:       85   99   5.6     99     134
+Total:         86   99   5.7    100     135
+
+Percentage of the requests served within a certain time (ms)
+  50%    100
+  66%    101
+  75%    101
+  80%    102
+  90%    103
+  95%    105
+  98%    114
+  99%    135
+ 100%    135 (longest request)
+</pre></p></div>
+  </div>
+  
+
+  <div id="change-187687" class="journal has-notes">
+    <h4><a href="52949.html#note-23" class="journal-link">#23</a>
+    
+    <a name="note-23"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-21" title="2013-10-21 18:28">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187687-notes"><p>@Philipp:</p>
+
+
+<blockquote><blockquote><blockquote>
+
+	<p>No this is without xdebug, but with xcache (32MB) enabled. All posted numbers are the second or third run, thus the xcache was always warm.<<<</p>
+
+
+</blockquote></blockquote></blockquote>
+
+	<p>I spoke to Thorsten Kahler and not to you and your numbers. You also do benchmarking and not profiling.</p></div>
+  </div>
+  
+
+  <div id="change-187764" class="journal has-notes">
+    <h4><a href="52949.html#note-24" class="journal-link">#24</a>
+    
+    <a name="note-24"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3927">Jochen Weiland</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-22" title="2013-10-22 12:32">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187764-notes"><p>Let us know if you want to test this in one of our hosting packages. There you can switch instantly between PHP 5.3/5.4 and enable/disable APC, i.e. use the same setup with different PHP/APC configurations.</p></div>
+  </div>
+  
+
+  <div id="change-187768" class="journal has-notes">
+    <h4><a href="52949.html#note-25" class="journal-link">#25</a>
+    
+    <a name="note-25"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-22" title="2013-10-22 12:45">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187768-notes"><p>Hi Jochen,</p>
+
+
+	<p>thats a nice offer. We should define scenarios first what we need to benchmark, the single page from cache isn't the only speed problem.</p></div>
+  </div>
+  
+
+  <div id="change-187770" class="journal has-notes">
+    <h4><a href="52949.html#note-26" class="journal-link">#26</a>
+    
+    <a name="note-26"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/340">Thorsten Kahler</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-22" title="2013-10-22 12:50">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187770-notes"><p>Alexander Opitz wrote:</p>
+
+
+<blockquote>
+
+	<p>@Philipp:</p>
+
+
+<blockquote>
+
+	<p>No this is without xdebug, but with xcache (32MB) enabled. All posted numbers are the second or third run, thus the xcache was always warm.<<<</p>
+
+
+</blockquote>
+
+	<p>I spoke to Thorsten Kahler and not to you and your numbers. You also do benchmarking and not profiling.</p>
+
+
+</blockquote>
+
+	<p>@Alex: I referred to Philipps diagram, so Philipp is the right one to answer.</p></div>
+  </div>
+  
+
+  <div id="change-187784" class="journal has-notes">
+    <h4><a href="52949.html#note-27" class="journal-link">#27</a>
+    
+    <a name="note-27"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-22" title="2013-10-22 13:59">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187784-notes"><p>PhpFrontend::requireOnce() does not do anything except:</p>
+
+
+<pre>
+return $this-&gt;backend-&gt;requireOnce($entryIdentifier);
+</pre>
+
+	<p>I profiled 6.2 with XDebug, top time eating classes are from the caching framework and class loader.</p>
+
+
+	<p><img src="../../external.html?link=http://img844.imageshack.us/img844/4457/ygqs.png" alt="" /></p>
+
+
+	<p>Notice the last line in the image. File typo3temp/Cache/Code/cache_classes/tx_realurl.php contains the following:</p>
+
+
+<pre>
+&lt;?php require __DIR__ . '/../../../../typo3conf/ext/realurl/class.tx_realurl.php';
+</pre> 
+
+	<p>What is that? Including the file from cache , which just includes the real file? If it is the same for every other file, we double amount of require_once classes, which <strong>is</strong> slow because it works with the file system.</p></div>
+  </div>
+  
+
+  <div id="change-187789" class="journal has-notes">
+    <h4><a href="52949.html#note-28" class="journal-link">#28</a>
+    
+    <a name="note-28"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-22" title="2013-10-22 14:33">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187789-notes"><p>@Thorsten</p>
+
+
+	<p>Oh I thought it was your diagram, shame on me.</p>
+
+
+	<p>But in real the require_once isn't such cost expensive without profiling, I got such high numbers with Xdebug before I disabled "xdebug.collect_includes".</p></div>
+  </div>
+  
+
+  <div id="change-187836" class="journal has-notes">
+    <h4><a href="52949.html#note-29" class="journal-link">#29</a>
+    
+    <a name="note-29"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-23" title="2013-10-23 08:16">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187836-notes"><p>@Dmitry</p>
+
+
+	<p>In refer to your message: "What is that? Including the file from cache , which just includes the real file?"</p>
+
+
+	<p>Please take a look at <a class="external" href="../../external.html?link=http://wiki.typo3.org/Blueprints/Packagemanager#Implementation_Details">http://wiki.typo3.org/Blueprints/Packagemanager#Implementation_Details</a> why we have this handling.</p></div>
+  </div>
+  
+
+  <div id="change-187873" class="journal has-notes">
+    <h4><a href="52949.html#note-30" class="journal-link">#30</a>
+    
+    <a name="note-30"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-23" title="2013-10-23 11:21">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187873-notes"><p>@All testers</p>
+
+
+	<p>After profiling and writing with Thomas Maroschik, I was able to identify a problem, which may also affect your tests.<br />If you have a symlink inside the path to your "/typo3temp/Cache/Code/" directory, the caching may fail.</p>
+
+
+	<p>To verify this problem, open in /typo3temp/Cache/Code/ your PackageManager_*.php and remove the following Part</p>
+
+
+<pre>
+__DIR__ !== '{your path}/typo3temp/Cache/Code/cache_core' ? FALSE :
+</pre>
+
+	<p>so your cache file should be read:</p>
+
+
+<pre>
+array (
+  'packageStatesConfiguration' =&gt;
+  array (
+    'packages' =&gt;
+    array (
+...
+</pre>
+
+	<p>And benchmark your installation again.</p>
+
+
+	<p>On my installation the reqests per second changed<br />with Xdebug from 145 to 229<br />without Xdebug from 221 to 305</p></div>
+  </div>
+  
+
+  <div id="change-187894" class="journal has-notes">
+    <h4><a href="52949.html#note-31" class="journal-link">#31</a>
+    
+    <a name="note-31"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-23" title="2013-10-23 14:21">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187894-notes"><p>Thanks Alexander.</p>
+
+
+	<p>Anyway, my numbers are from a default install with typo3_src link structure and real folders for the rest (automatically created by the installer).</p></div>
+  </div>
+  
+
+  <div id="change-188060" class="journal has-notes">
+    <h4><a href="52949.html#note-32" class="journal-link">#32</a>
+    
+    <a name="note-32"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-25" title="2013-10-25 11:02">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188060-notes"><p>@Alexander Opitz</p>
+
+
+	<p>Hmmm, this is interesting :)</p>
+
+
+	<p>Do you mean "The backend creates "proxy require" files so that the memory consumption of the autoloader is lowered"? Was memory a real issue for anybody? To me it does not look good to solve memory issues by doubling amount of inclusions.</p>
+
+
+	<p>After I removed that line, I got 6.78 rq/s. With that line it is 3.28 rq/s. Used "ab -n 100" for testing. What hardware do you have with such rq/s numbers?</p></div>
+  </div>
+  
+
+  <div id="change-188065" class="journal has-notes">
+    <h4><a href="52949.html#note-33" class="journal-link">#33</a>
+    
+    <a name="note-33"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-10-25" title="2013-10-25 11:36">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188065-notes"><p>@Dmitry</p>
+
+
+	<p>About memory consumption and the "proxy require" I can't tell much. The Blueprint is written by Thomas Maroschik. But while developing the PackageManager I did benchmarking the autoloader from TYPO3 6.0/6.1 his biggest issues are memory consumption for all the aliases parts. First try to remove this was eliminating the aliasing if not needed. But we came to the point where an alias is needed but isn't autoloaded. The second try from Thomas was using a Symlink structure. It was faster but APC and Xcache didn't performed well on them as they had problems with caching the data. So Thomas came with this solution of the "proxy require", they will be cached by APC, Xcache or OPcache. While using Xdebug, xhprof or something like that it will decrease the performance more then the symlink solution (thats what I get from my numbers).</p>
+
+
+	<p>The mentioned line doesn't have to do with this "proxy require" it is more or less a nitpik which may be removed, it prevents using the PackageManager and PackageObject cache which do not have to do with the "proxy require".</p>
+
+
+	<p>My Hardware/Software:</p>
+
+
+	<p>-  8 core 64Bit CPU<br />- 12 GB Ram<br />- Linux Kernel 3.11<br />- apache 2.4.6<br />- PHP 5.5.3 with OPcache 7.0.3<br />- MySQL 5.5.34</p>
+
+
+	<p>Test with "ab -n 1000 -c 100 typo3-master.sphinx"</p></div>
+  </div>
+  
+
+  <div id="change-188889" class="journal has-notes">
+    <h4><a href="52949.html#note-34" class="journal-link">#34</a>
+    
+    <a name="note-34"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-04" title="2013-11-04 20:29">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188889-notes"><p>Is it possible to get some cachegrind dumps?<br />I am rather busy this week, but reading a cachegrind file might be possible.</p>
+
+
+	<p>Just don't have the time to set up my whole profiling env this week</p></div>
+  </div>
+  
+
+  <div id="change-188894" class="journal has-notes">
+    <h4><a href="52949.html#note-35" class="journal-link">#35</a>
+    
+    <a name="note-35"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/1280">Philipp Gampe</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-04" title="2013-11-04 22:06">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188894-notes"><p>@Mathias please have a look into the profiles.tar.gz attached to the issue. It includes some "callgrind" files for both 4.5 and 6.2; keep in mind that they are create with a different tool the usual cachegrind files, but work fine in e.g. kcachegrid.</p></div>
+  </div>
+  
+
+  <div id="change-188895" class="journal has-notes">
+    <h4><a href="52949.html#note-36" class="journal-link">#36</a>
+    
+    <a name="note-36"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-04" title="2013-11-04 22:44">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188895-notes"><p>Thanks.<br />I need to check the includes and called functions to determine the version or do you have it in mind which dump was what?</p>
+
+
+Apart from that:<br />What do you think about search &#38; replace-no-brainer optimizations?<br />Things that come to mind:
+	<ul>
+	<li>is_file vs. file_exists</li>
+		<li>isset vs array_key_exists<br />Please also keep in mind that I didn't dig into the code yet.<br />When you cache file paths you check, do you use absolute paths?<br />If not, let's do that as well, since it will remove the entire include_path checks as well.</li>
+	</ul>
+
+
+	<p>From what I've seen so far the whole "is the file there" things takes up a huge chunk of time.<br />This would be a good thing to start digging.</p>
+
+
+	<p>Let's have a chat on that this weekend</p></div>
+  </div>
+  
+
+  <div id="change-188898" class="journal has-notes">
+    <h4><a href="52949.html#note-37" class="journal-link">#37</a>
+    
+    <a name="note-37"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-04" title="2013-11-04 23:11">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188898-notes"><p>@Mathias:<br />Is is_file really so much faster in the end? Both need to stat the file by the OS syscall.</p>
+
+
+	<p>isset is indeed faster, but it behaves differently when it comes to array values being NULL.<br />See example#2 here <a class="external" href="../../external.html?link=http://us2.php.net/array_key_exists">http://us2.php.net/array_key_exists</a></p>
+
+
+	<p>Therefore such changes might be dangerous.</p></div>
+  </div>
+  
+
+  <div id="change-188907" class="journal has-notes">
+    <h4><a href="52949.html#note-38" class="journal-link">#38</a>
+    
+    <a name="note-38"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-05" title="2013-11-05 08:28">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188907-notes"><p>Markus Klein wrote:</p>
+
+
+<blockquote>
+
+	<p>@Mathias:<br />Is is_file really so much faster in the end? Both need to stat the file by the OS syscall.</p>
+
+
+</blockquote>
+
+I made 3 benchmarks on this matter.
+	<ul>
+	<li>SAN FS (Nexenta) mounted via NFS (Ubuntu 12.04): 12% increase</li>
+		<li>SAN FS mounted via iSCSI onto VMWare ESXI (Ubuntu 12.04): 48% increase</li>
+		<li>Samsung 840 EVO Native OSX Mountain Lion: 120% increase</li>
+	</ul>
+
+
+	<p>So no, it is not "so much faster", but going 1kph faster still makes you win the race :)<br />I suggest to improve whereever we can, even for the slightest improvement.<br />I read something interesting about not using require but using include instead, since most of the time you try/catch that anyways (or exception out of it at least).<br />So it might be possible to get rid of a lot the file_exists (don't think all will be possible, though).</p>
+
+
+<blockquote>
+
+	<p>isset is indeed faster, but it behaves differently when it comes to array values being NULL.<br />See example#2 here <a class="external" href="../../external.html?link=http://us2.php.net/array_key_exists">http://us2.php.net/array_key_exists</a></p>
+
+
+</blockquote>
+
+	<p>Yeah, that's a typical one.<br />Personally I consider null values in arrays bad practice but opinions may of course differ here.<br />At least we should try to get rid of these whereever possible.<br />Maybe even change them all and then check what breaks.<br />The speed improvement is tremendous.</p>
+
+
+<blockquote>
+
+	<p>Therefore such changes might be dangerous.</p>
+
+
+</blockquote>
+
+	<p>No pain, no gain.<br />If the system was like 10% slower, fine - I wouldn't even bother.<br />But 800% or heck... even 50% is something we just cannot allow ourselves.</p></div>
+  </div>
+  
+
+  <div id="change-188908" class="journal has-notes">
+    <h4><a href="52949.html#note-39" class="journal-link">#39</a>
+    
+    <a name="note-39"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-05" title="2013-11-05 08:42">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188908-notes"><p>I agree that we <strong>must</strong> do whatever we can to improve performance. However I would prefer to profile typical calls, find 1-2 main bottlenecks, fix them whichever way makes it drop dramatically in term of cost and start again.</p></div>
+  </div>
+  
+
+  <div id="change-188909" class="journal has-notes">
+    <h4><a href="52949.html#note-40" class="journal-link">#40</a>
+    
+    <a name="note-40"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-05" title="2013-11-05 08:44">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188909-notes"><p>I think we also can't change all file_exists into is_file, as is_file returns false for symlinks.</p>
+
+
+	<p>@Mathias: Which PHP version did you use for your benchmarks?</p></div>
+  </div>
+  
+
+  <div id="change-188910" class="journal has-notes">
+    <h4><a href="52949.html#note-41" class="journal-link">#41</a>
+    
+    <a name="note-41"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-05" title="2013-11-05 09:06">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188910-notes"><p>Alexander Opitz wrote:</p>
+
+
+<blockquote>
+
+	<p>I think we also can't change all file_exists into is_file, as is_file returns false for symlinks.</p>
+
+
+</blockquote>
+
+	<p>Well, don't get me wrong, I don't know the "new" core and don't have the time to take a look at it since I have a company to run.<br />I can just take a look at cachegrinds and similar and come up with proposals.<br />I have to leave it up to you to decide which improvement belongs at which point in the code.</p>
+
+
+<blockquote>
+
+	<p>@Mathias: Which PHP version did you use for your benchmarks?</p>
+
+
+</blockquote>
+
+	<p>I used 5.3.25 or 27.<br />Just to suppress all "with 5.x everything will be faster/better/bla" that might come up (ignore if you don't feel addressed :)):<br />We can't afford to wait for stuff like that.<br />5.3 is the major player out in the field, waiting for newer versions just states being lazy.<br />If newer PHP version speed things up - even better.<br />But as for now we need to focus on what the market demands and the competition delivers in order to stay competitive. And just in case this didn't come through... that's the only thing I care about - TYPO3 being competitive.<br />If you guys get that done with the "100.000 files to require, although logic dictates it is slower" approach, that's fine with me.<br />We all just need to be on the same track here.<br />So sacrifying competitiveness for "by-the-book-code" is not an option :)</p>
+
+
+	<p>Xavier Perseguers wrote:</p>
+
+
+<blockquote>
+
+	<p>find 1-2 main bottlenecks, fix them whichever way makes it drop dramatically in term of cost and start again.</p>
+
+
+</blockquote>
+
+	<p>agreed.<br />Apart from that I will try to convince Rupi to revive and supply his old testing setup so we all have a common base to test on.<br />Luckily this instance covers what you mean by "typical calls", since it features basically everything a 4.3 frontend offered in that time.</p>
+
+
+	<p>So all in all:<br />I love everything you do for TYPO3, as long as you love everything I do for TYPO3 - joined forces for the greater good.</p></div>
+  </div>
+  
+
+  <div id="change-188990" class="journal has-notes">
+    <h4><a href="52949.html#note-42" class="journal-link">#42</a>
+    
+    <a name="note-42"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/390">Dmitry Dulepov</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-05" title="2013-11-05 19:22">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188990-notes"><p>Probably we can set something to cache at APC instead of file system if APC is available.</p></div>
+  </div>
+  
+
+  <div id="change-188994" class="journal has-notes">
+    <h4><a href="52949.html#note-43" class="journal-link">#43</a>
+    
+    <a name="note-43"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/348">Steffen Müller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-05" title="2013-11-05 22:40">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188994-notes"><p>Dmitry Dulepov wrote:</p>
+
+
+<blockquote>
+
+	<p>Probably we can set something to cache at APC instead of file system if APC is available.</p>
+
+
+</blockquote>
+
+	<p>Is APC meanwhile save on shared hosting environments to enable it by default on any installation? That was a blocker some years ago. Is this still true?</p></div>
+  </div>
+  
+
+  <div id="change-188995" class="journal has-notes">
+    <h4><a href="52949.html#note-44" class="journal-link">#44</a>
+    
+    <a name="note-44"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-05" title="2013-11-05 22:54">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-188995-notes"><p>APC ist still a problem in shared hosting when you not use FCGI. A solution more general would be better! And every solution which ist fast without any extra software would be even faster with a bytecode cache!</p></div>
+  </div>
+  
+
+  <div id="change-189013" class="journal has-notes">
+    <h4><a href="52949.html#note-45" class="journal-link">#45</a>
+    
+    <a name="note-45"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-06" title="2013-11-06 10:59">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-189013-notes"><p>The Install Tool has a "Configuration Preset" which detects if APC is present and has enough free memory and recommends in this case to switch some Extbase caches to it. So it's not "enabled by default" but a recommended setting through the Install Tool if available (and auto-configured this way if you install through the Step Installer and it detects this situation).</p>
+
+
+	<p>The "default" has still to be File or Database based caching - as these are always available.</p></div>
+  </div>
+  
+
+  <div id="change-189106" class="journal has-notes">
+    <h4><a href="52949.html#note-46" class="journal-link">#46</a>
+    
+    <a name="note-46"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-07" title="2013-11-07 11:00">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-189106-notes"><p>A speed improvement for fully cached pages: <a class="external" href="53404.html">http://forge.typo3.org/issues/53404</a></p></div>
+  </div>
+  
+
+  <div id="change-190122" class="journal has-notes">
+    <h4><a href="52949.html#note-47" class="journal-link">#47</a>
+    
+    <a name="note-47"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-14" title="2013-11-14 23:18">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-190122-notes"><blockquote>
+
+<a class="external" href="../../external.html?link=http://www.php.net/ChangeLog-5.php#5.5.6">http://www.php.net/ChangeLog-5.php#5.5.6</a>
+	<ul>
+	<li>Improved performance of array_merge() and func_get_args() by eliminating useless copying.</li>
+	</ul>
+
+
+</blockquote>
+
+	<p>This could bring quite a bit of performance for TYPO3 since array_merge() is used ~400 times in Core.</p>
+
+
+	<p>(Disclaimer: This is just a note and not an excuse for the necessary software improvements.)</p></div>
+  </div>
+  
+
+  <div id="change-190361" class="journal has-notes">
+    <h4><a href="52949.html#note-48" class="journal-link">#48</a>
+    
+    <a name="note-48"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-16" title="2013-11-16 19:49">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-190361-notes"><p>A very small performance thing, yet done on every request: <a class="external" href="53702.html">http://forge.typo3.org/issues/53702</a></p></div>
+  </div>
+  
+
+  <div id="change-191688" class="journal has-notes">
+    <h4><a href="52949.html#note-49" class="journal-link">#49</a>
+    
+    <a name="note-49"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2039">Alexander Stehlik</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-11-25" title="2013-11-25 23:08">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-191688-notes"><p>I think i found another one:</p>
+
+
+	<p><a class="external" href="53962.html">http://forge.typo3.org/issues/53962</a></p></div>
+  </div>
+  
+
+  <div id="change-197071" class="journal has-notes">
+    <h4><a href="52949.html#note-50" class="journal-link">#50</a>
+    
+    <a name="note-50"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/324">Michiel Roos</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2013-12-19" title="2013-12-19 16:23">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-197071-notes"><p>And this one is a big slowdown: <a class="external" href="53862.html">http://forge.typo3.org/issues/53862</a></p></div>
+  </div>
+  
+
+  <div id="change-199295" class="journal has-notes">
+    <h4><a href="52949.html#note-51" class="journal-link">#51</a>
+    
+    <a name="note-51"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-15" title="2014-01-15 14:36">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-199295-notes"><p>Since 6.2alpha2, many speedups are implemented. The backend really seams faster now. But on my frontend test (empty cached page), nothing changed (compared alpha2 with master of today). The speedup from <a href="53598.html" class="issue status-7 priority-2 closed child" title="Select/Delete fe_sessions twice per request (Resolved)">#53598</a> is measurable, but we regressed somewhere else so that we don't see any change in the comparison. Till yet, we are slower then 6.1.7 (for this test case).</p>
+
+
+	<p>How does it look for your tests?<br />@Dmitry can you post latest results from your system?</p></div>
+  </div>
+  
+
+  <div id="change-199308" class="journal has-notes">
+    <h4><a href="52949.html#note-52" class="journal-link">#52</a>
+    
+    <a name="note-52"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-15" title="2014-01-15 15:19">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-199308-notes"><p>@Dmitry You may need the patch from <a href="55022.html" class="issue status-7 priority-2 closed child" title="PackageManager Cache is invalid if typo3 dir has symlinks (Resolved)">#55022</a> for your setup (as described above on comment 30).</p></div>
+  </div>
+  
+
+  <div id="change-199515" class="journal has-details">
+    <h4><a href="52949.html#note-53" class="journal-link">#53</a>
+    
+    <a name="note-53"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-16" title="2014-01-16 16:41">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#55065</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-200060" class="journal has-details">
+    <h4><a href="52949.html#note-54" class="journal-link">#54</a>
+    
+    <a name="note-54"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-20" title="2014-01-20 16:48">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Performance</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-220847" class="journal has-notes has-details">
+    <h4><a href="52949.html#note-55" class="journal-link">#55</a>
+    
+    <a name="note-55"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-19" title="2014-06-19 17:46">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-220847-notes"><p>Quite a lot of actions happened in the last few weeks of 6.2 development concerning performance. Personally I consider this issue to be solved. Please give some detailed feedback on more current performance issues, otherwise this issue will be closed. Thanks in advance!</p></div>
+  </div>
+  
+
+  <div id="change-220849" class="journal has-notes">
+    <h4><a href="52949.html#note-56" class="journal-link">#56</a>
+    
+    <a name="note-56"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-19" title="2014-06-19 18:00">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220849-notes"><p>You consider this solved? What about the huge amount of open sub-tickets?</p></div>
+  </div>
+  
+
+  <div id="change-220876" class="journal has-notes">
+    <h4><a href="52949.html#note-57" class="journal-link">#57</a>
+    
+    <a name="note-57"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2749">Simon Schaufelberger</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-19" title="2014-06-19 19:01">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-220876-notes"><p>I would still consider the performance of the new extension manager as horrible, especially on windows. Don't know much about the rest.</p></div>
+  </div>
+  
+
+  <div id="change-255332" class="journal has-details">
+    <h4><a href="52949.html#note-58" class="journal-link">#58</a>
+    
+    <a name="note-58"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-04-09" title="2015-04-09 17:28">4 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Is Regression</strong> changed from <i>Yes</i> to <i>No</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-255336" class="journal has-notes">
+    <h4><a href="52949.html#note-59" class="journal-link">#59</a>
+    
+    <a name="note-59"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/637">Kay Strobach</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-04-09" title="2015-04-09 17:40">4 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-255336-notes"><p>Markus, can you please check the performance 7.x vs. 4.5 should be a lot faster, as we can skip the doubled class loading there ...</p></div>
+  </div>
+  
+
+  <div id="change-255338" class="journal has-notes">
+    <h4><a href="52949.html#note-60" class="journal-link">#60</a>
+    
+    <a name="note-60"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-04-09" title="2015-04-09 17:46">4 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-255338-notes"><p>I'm not checking anything here, just cleaning up the bug tracker.</p></div>
+  </div>
+  
+
+  <div id="change-266253" class="journal has-notes has-details">
+    <h4><a href="52949.html#note-61" class="journal-link">#61</a>
+    
+    <a name="note-61"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-16" title="2015-07-16 02:09">19 days</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Resolved</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-266253-notes"><p>I consider this as resolved. Especially with 6.2.14 and more especially with CMS7.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-52949-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/52949.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="52949.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/52949 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:28:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

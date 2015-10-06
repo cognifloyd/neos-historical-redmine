@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/51188 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:13:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #51188: Doctrine does not respect AOP-injected properties - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/51188.atom" rel="alternate" title="TYPO3.Flow - Bug #51188: Doctrine does not respect AOP-injected properties" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-51188-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #51188</h2>
+
+<div class="issue status-1 priority-2 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Doctrine does not respect AOP-injected properties</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/43">Andreas Wolf</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-19" title="2013-08-19 16:07">almost 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-12-07" title="2013-12-07 11:13">over 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">New</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-08-19</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Persistence</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+	<th>Affected Flow version:</th><td>Git master</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>When I add a property to a model via an aspect, this property is not taken into account by the automagic Doctrine schema generation. Therefore, the database field is not created and the property is also not persisted if I manually add the field via a hand-written migration.</p>
+
+
+	<p>Doctrine does not respect the properties because the reflection components do not return the property that was woven in by the ProxyClassBuilder. This can be reproduced by examining the output of <code>ReflectionService::getClassPropertyNames()</code> - the properties are missing there.</p>
+
+
+	<p>I think the root cause for this is that the reflection information is cached during compile-time before the proxy class files are built. Therefore, the injected properties are not available in the reflected (original) classes.</p>
+
+
+	<p>One potential caveat when fixing this is that both properties from MyClass and MyClass_Original have to be taken into account - I don't know how hard this will get using the PHP reflection mechanisms.</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-9263">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="27045" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="27045.html" class="issue status-1 priority-2">Bug #27045</a>: Introduced properties are not available in the reflection...
+</td>
+<td class="status">New</td>
+<td class="start_date">2011-05-26</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/51188/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/51188/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=51188&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-178190" class="journal has-notes">
+    <h4><a href="51188.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38109">Rafael Kähm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-19" title="2013-08-19 17:18">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-178190-notes"><p>You can use following dirty hack to show introduced properties in database:</p>
+
+
+	<p>You can put assignPropertiesToORM() method to your aspect class and modify rows 82-89.</p>
+
+
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="inline-delimiter">&lt;?php</span>
+<span class="line-numbers"> 2</span><span class="keyword">namespace</span> ..........
+<span class="line-numbers"> 3</span>
+<span class="line-numbers"> 4</span><span class="keyword">use</span> <span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Annotations</span> <span class="keyword">as</span> <span class="constant">Flow</span>;
+<span class="line-numbers"> 5</span><span class="keyword">use</span> <span class="constant">Doctrine</span>\<span class="constant">ORM</span>\<span class="constant">Mapping</span> <span class="keyword">as</span> <span class="constant">ORM</span>;
+<span class="line-numbers"> 6</span>
+<span class="line-numbers"> 7</span><span class="comment">/**</span>
+<span class="line-numbers"> 8</span><span class="comment"> * </span>
+<span class="line-numbers"> 9</span><span class="comment"> * @Flow\Scope(&quot;singleton&quot;)</span>
+<span class="line-numbers"><strong>10</strong></span><span class="comment"> * @Flow\Aspect</span>
+<span class="line-numbers">11</span><span class="comment"> */</span>
+<span class="line-numbers">12</span><span class="keyword">class</span> <span class="class">PropertyIntroductionAspect</span> {
+<span class="line-numbers">13</span>
+<span class="line-numbers">14</span>        <span class="comment">/**</span>
+<span class="line-numbers">15</span><span class="comment">         * @Flow\Inject</span>
+<span class="line-numbers">16</span><span class="comment">     * @var \TYPO3\Flow\Reflection\ReflectionService</span>
+<span class="line-numbers">17</span><span class="comment">     */</span>
+<span class="line-numbers">18</span>    <span class="keyword">protected</span> <span class="local-variable">$reflectionService</span>;
+<span class="line-numbers">19</span>
+<span class="line-numbers"><strong>20</strong></span>    <span class="comment">/**</span>
+<span class="line-numbers">21</span><span class="comment">     * @param \TYPO3\Flow\Reflection\ReflectionService $reflectionService Description</span>
+<span class="line-numbers">22</span><span class="comment">     */</span>
+<span class="line-numbers">23</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">injectReflectionService</span>(\<span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Reflection</span>\<span class="constant">ReflectionService</span> <span class="local-variable">$reflectionService</span>) {
+<span class="line-numbers">24</span>        <span class="local-variable">$this</span>-&gt;reflectionService = <span class="local-variable">$reflectionService</span>;
+<span class="line-numbers">25</span>    }
+<span class="line-numbers">26</span>
+<span class="line-numbers">27</span>    <span class="comment">/**</span>
+<span class="line-numbers">28</span><span class="comment">     * @var string</span>
+<span class="line-numbers">29</span><span class="comment">     * @Flow\Introduce(&quot;some Pointcut&quot;)</span>
+<span class="line-numbers"><strong>30</strong></span><span class="comment">     */</span>
+<span class="line-numbers">31</span>    <span class="keyword">protected</span> <span class="local-variable">$purpose</span>;
+<span class="line-numbers">32</span>
+<span class="line-numbers">33</span>    <span class="comment">/**</span>
+<span class="line-numbers">34</span><span class="comment">     * @var string</span>
+<span class="line-numbers">35</span><span class="comment">     * @Flow\Introduce(&quot;some other Pointcut&quot;)</span>
+<span class="line-numbers">36</span><span class="comment">     */</span>
+<span class="line-numbers">37</span>    <span class="keyword">protected</span> <span class="local-variable">$somethingElse</span>;
+<span class="line-numbers">38</span>
+<span class="line-numbers">39</span>    <span class="comment">/**</span>
+<span class="line-numbers"><strong>40</strong></span><span class="comment">     * Dirty hack for reflection service by introduced properties -&gt; introduced properties are not in persistence layer</span>
+<span class="line-numbers">41</span><span class="comment">     * </span>
+<span class="line-numbers">42</span><span class="comment">     * @todo : Remove this advice if http://forge.typo3.org/issues/27045 is resolved.</span>
+<span class="line-numbers">43</span><span class="comment">     * </span>
+<span class="line-numbers">44</span><span class="comment">     * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint The current join point</span>
+<span class="line-numbers">45</span><span class="comment">     * @return void</span>
+<span class="line-numbers">46</span><span class="comment">     * @Flow\Before(&quot;method(TYPO3\Flow\Persistence\Doctrine\EntityManagerFactory-&gt;create())&quot;)</span>
+<span class="line-numbers">47</span><span class="comment">     */</span>
+<span class="line-numbers">48</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">assignPropertiesToORM</span>(\<span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Aop</span>\<span class="constant">JoinPointInterface</span> <span class="local-variable">$joinPoint</span>) {
+<span class="line-numbers">49</span>            <span class="comment">// those are added as property even if not tagged with entity/valueobject</span>
+<span class="line-numbers"><strong>50</strong></span>        <span class="local-variable">$propertyTypeWhiteList</span> = <span class="predefined">array</span>(
+<span class="line-numbers">51</span>            <span class="string"><span class="delimiter">'</span><span class="content">DateTime</span><span class="delimiter">'</span></span>,
+<span class="line-numbers">52</span>            <span class="string"><span class="delimiter">'</span><span class="content">SplObjectStorage</span><span class="delimiter">'</span></span>,
+<span class="line-numbers">53</span>            <span class="string"><span class="delimiter">'</span><span class="content">Doctrine</span><span class="content">\C</span><span class="content">ommon</span><span class="content">\C</span><span class="content">ollections</span><span class="content">\C</span><span class="content">ollection</span><span class="delimiter">'</span></span>,
+<span class="line-numbers">54</span>            <span class="string"><span class="delimiter">'</span><span class="content">Doctrine</span><span class="content">\C</span><span class="content">ommon</span><span class="content">\C</span><span class="content">ollections</span><span class="content">\A</span><span class="content">rrayCollection</span><span class="delimiter">'</span></span>
+<span class="line-numbers">55</span>        );
+<span class="line-numbers">56</span>
+<span class="line-numbers">57</span>        <span class="local-variable">$aspectClassName</span> = <span class="predefined">get_class</span>(<span class="local-variable">$this</span>);
+<span class="line-numbers">58</span>        <span class="local-variable">$aspectClassShema</span> = <span class="local-variable">$this</span>-&gt;reflectionService-&gt;getClassSchema(<span class="local-variable">$aspectClassName</span>);
+<span class="line-numbers">59</span>
+<span class="line-numbers"><strong>60</strong></span>        <span class="local-variable">$introducedPropertyNames</span> = <span class="local-variable">$this</span>-&gt;reflectionService-&gt;getPropertyNamesByAnnotation(<span class="local-variable">$aspectClassName</span>, <span class="string"><span class="delimiter">'</span><span class="content">TYPO3</span><span class="content">\F</span><span class="content">low</span><span class="content">\A</span><span class="content">nnotations</span><span class="content">\I</span><span class="content">ntroduce</span><span class="delimiter">'</span></span>);
+<span class="line-numbers">61</span>
+<span class="line-numbers">62</span>        <span class="keyword">foreach</span> (<span class="local-variable">$introducedPropertyNames</span> <span class="keyword">as</span> <span class="local-variable">$propertyName</span>) {
+<span class="line-numbers">63</span>            <span class="local-variable">$isTransientProperty</span> = <span class="local-variable">$this</span>-&gt;reflectionService-&gt;isPropertyAnnotatedWith(<span class="local-variable">$aspectClassName</span>, <span class="local-variable">$propertyName</span>, <span class="string"><span class="delimiter">'</span><span class="content">TYPO3</span><span class="content">\F</span><span class="content">low</span><span class="content">\A</span><span class="content">nnotations</span><span class="content">\T</span><span class="content">ransient</span><span class="delimiter">'</span></span>);
+<span class="line-numbers">64</span>            <span class="keyword">if</span> (<span class="local-variable">$isTransientProperty</span>) {<span class="keyword">continue</span>;}
+<span class="line-numbers">65</span>
+<span class="line-numbers">66</span>            <span class="local-variable">$declaredType</span> = <span class="predefined">trim</span>(<span class="predefined">implode</span>(<span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>, <span class="local-variable">$this</span>-&gt;reflectionService-&gt;getPropertyTagValues(<span class="local-variable">$aspectClassName</span>, <span class="local-variable">$propertyName</span>, <span class="string"><span class="delimiter">'</span><span class="content">var</span><span class="delimiter">'</span></span>)), <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="char">\\</span><span class="delimiter">'</span></span>);
+<span class="line-numbers">67</span>            <span class="keyword">if</span> (<span class="predefined">preg_match</span>(<span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="content">\s</span><span class="content">/</span><span class="delimiter">'</span></span>, <span class="local-variable">$declaredType</span>) === <span class="integer">1</span> || <span class="predefined">empty</span>(<span class="local-variable">$declaredType</span>)) {
+<span class="line-numbers">68</span>                <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Reflection</span>\<span class="predefined-constant">Exception</span>\<span class="constant">InvalidPropertyTypeException</span>(<span class="predefined">sprintf</span>(<span class="string"><span class="delimiter">'</span><span class="content">Introduced in &quot;%s&quot; property &quot;%s&quot; has no @var annotation or type is not defined or is not annotated as &quot;TYPO3</span><span class="content">\F</span><span class="content">low</span><span class="content">\A</span><span class="content">nnotations</span><span class="content">\T</span><span class="content">ransient&quot;. Please define type for &quot;%s&quot; or annotate it as &quot;TYPO3</span><span class="content">\F</span><span class="content">low</span><span class="content">\A</span><span class="content">nnotations</span><span class="content">\T</span><span class="content">ransient&quot;.</span><span class="delimiter">'</span></span>, <span class="local-variable">$aspectClassName</span>, <span class="local-variable">$propertyName</span>, <span class="local-variable">$propertyName</span>), <span class="integer">1366547612</span>);
+<span class="line-numbers">69</span>            }
+<span class="line-numbers"><strong>70</strong></span>
+<span class="line-numbers">71</span>            <span class="keyword">try</span> {
+<span class="line-numbers">72</span>                <span class="local-variable">$parsedType</span> = \<span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Utility</span>\<span class="constant">TypeHandling</span>::parseType(<span class="local-variable">$declaredType</span>);
+<span class="line-numbers">73</span>            } <span class="keyword">catch</span> (\<span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Utility</span>\<span class="predefined-constant">Exception</span>\<span class="constant">InvalidTypeException</span> <span class="local-variable">$exception</span>) {
+<span class="line-numbers">74</span>                <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="constant">InvalidArgumentException</span>(<span class="predefined">sprintf</span>(<span class="local-variable">$exception</span>-&gt;getMessage(), <span class="string"><span class="delimiter">'</span><span class="content">class &quot;</span><span class="delimiter">'</span></span> . <span class="local-variable">$aspectClassName</span> . <span class="string"><span class="delimiter">'</span><span class="content">&quot; for property &quot;</span><span class="delimiter">'</span></span> . <span class="local-variable">$propertyName</span> . <span class="string"><span class="delimiter">'</span><span class="content">&quot;</span><span class="delimiter">'</span></span>), <span class="integer">1366551857</span>);
+<span class="line-numbers">75</span>            }
+<span class="line-numbers">76</span>            <span class="keyword">if</span> (!<span class="predefined">in_array</span>(<span class="local-variable">$parsedType</span>[<span class="string"><span class="delimiter">'</span><span class="content">type</span><span class="delimiter">'</span></span>], <span class="local-variable">$propertyTypeWhiteList</span>)
+<span class="line-numbers">77</span>            &#38;&#38; (<span class="predefined">class_exists</span>(<span class="local-variable">$parsedType</span>[<span class="string"><span class="delimiter">'</span><span class="content">type</span><span class="delimiter">'</span></span>]) || interface_exists(<span class="local-variable">$parsedType</span>[<span class="string"><span class="delimiter">'</span><span class="content">type</span><span class="delimiter">'</span></span>]))
+<span class="line-numbers">78</span>            &#38;&#38; !(<span class="local-variable">$this</span>-&gt;reflectionService-&gt;isClassAnnotatedWith(<span class="local-variable">$parsedType</span>[<span class="string"><span class="delimiter">'</span><span class="content">type</span><span class="delimiter">'</span></span>], <span class="string"><span class="delimiter">'</span><span class="content">TYPO3</span><span class="content">\F</span><span class="content">low</span><span class="content">\A</span><span class="content">nnotations</span><span class="content">\E</span><span class="content">ntity</span><span class="delimiter">'</span></span>) || <span class="local-variable">$this</span>-&gt;isClassAnnotatedWith(<span class="local-variable">$parsedType</span>[<span class="string"><span class="delimiter">'</span><span class="content">type</span><span class="delimiter">'</span></span>], <span class="string"><span class="delimiter">'</span><span class="content">Doctrine</span><span class="content">\O</span><span class="content">RM</span><span class="content">\M</span><span class="content">apping</span><span class="content">\E</span><span class="content">ntity</span><span class="delimiter">'</span></span>) || <span class="local-variable">$this</span>-&gt;isClassAnnotatedWith(<span class="local-variable">$parsedType</span>[<span class="string"><span class="delimiter">'</span><span class="content">type</span><span class="delimiter">'</span></span>], <span class="string"><span class="delimiter">'</span><span class="content">TYPO3</span><span class="content">\F</span><span class="content">low</span><span class="content">\A</span><span class="content">nnotations</span><span class="content">\V</span><span class="content">alueObject</span><span class="delimiter">'</span></span>))) {
+<span class="line-numbers">79</span>                <span class="keyword">continue</span>;
+<span class="line-numbers"><strong>80</strong></span>            }
+<span class="line-numbers">81</span>
+<span class="line-numbers">82</span>            <span class="comment">// get all affected classes stuff is still not present but if it is possible here then you can add this Property to all affected classes</span>
+<span class="line-numbers">83</span><span class="comment">//            foreach ($affectedClasses as $affectedClass){</span>
+<span class="line-numbers">84</span><span class="comment">//                $classSchema = $this-&gt;reflectionService-&gt;getClassSchema($affectedClass);</span>
+<span class="line-numbers">85</span><span class="comment">//                $classSchema-&gt;addProperty($propertyName, $declaredType, $this-&gt;isPropertyAnnotatedWith($aspectClassName, $propertyName, 'TYPO3\Flow\Annotations\Lazy'));</span>
+<span class="line-numbers">86</span><span class="comment">//                if ($this-&gt;reflectionService-&gt;isPropertyAnnotatedWith($className, $propertyName, 'TYPO3\Flow\Annotations\Identity')) {</span>
+<span class="line-numbers">87</span><span class="comment">//                    $classSchema-&gt;markAsIdentityProperty($propertyName);</span>
+<span class="line-numbers">88</span><span class="comment">//                }</span>
+<span class="line-numbers">89</span><span class="comment">//            }</span>
+<span class="line-numbers"><strong>90</strong></span>
+<span class="line-numbers">91</span>        }
+<span class="line-numbers">92</span>    }
+<span class="line-numbers">93</span>}
+<span class="line-numbers">94</span><span class="inline-delimiter">?&gt;</span>
+</span></code>
+
+	<p>this code is <a class="external" href="../../external.html?link=https://gist.github.com/RafaelKa/6270217">https://gist.github.com/RafaelKa/6270217</a> here</p></div>
+  </div>
+  
+
+  <div id="change-178191" class="journal has-notes">
+    <h4><a href="51188.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38109">Rafael Kähm</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-19" title="2013-08-19 17:30">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-178191-notes"><p>if you know which class becomes new properties then you need only following inside of assignPropertiesToORM() method:</p>
+
+
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="inline-delimiter">&lt;?php</span>
+<span class="line-numbers"> 2</span>
+<span class="line-numbers"> 3</span><span class="comment">// ...</span>
+<span class="line-numbers"> 4</span>    <span class="comment">/**</span>
+<span class="line-numbers"> 5</span><span class="comment">     * Dirty hack for reflection service by introduced properties -&gt; introduced properties are not in persistence layer</span>
+<span class="line-numbers"> 6</span><span class="comment">     *</span>
+<span class="line-numbers"> 7</span><span class="comment">     * @todo : Remove this advice if http://forge.typo3.org/issues/27045 is resolved.</span>
+<span class="line-numbers"> 8</span><span class="comment">     *</span>
+<span class="line-numbers"> 9</span><span class="comment">     * param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint The current join point</span>
+<span class="line-numbers"><strong>10</strong></span><span class="comment">     * @return void</span>
+<span class="line-numbers">11</span><span class="comment">     * @Flow\Before(&quot;method(TYPO3\Flow\Persistence\Doctrine\EntityManagerFactory-&gt;create())&quot;)</span>
+<span class="line-numbers">12</span><span class="comment">     */</span>
+<span class="line-numbers">13</span>    <span class="keyword">public</span> <span class="keyword">function</span> <span class="function">assignPropertiesToORM</span>() {
+<span class="line-numbers">14</span><span class="comment">// ...</span>
+<span class="line-numbers">15</span>        <span class="local-variable">$affectedProxy</span> = <span class="local-variable">$this</span>-&gt;reflectionService-&gt;getClassSchema(<span class="local-variable">$affectedClassName</span>);
+<span class="line-numbers">16</span>        <span class="local-variable">$affectedProxy</span>-&gt;addProperty(<span class="string"><span class="delimiter">'</span><span class="content">propertyName</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">string</span><span class="delimiter">'</span></span>);
+<span class="line-numbers">17</span><span class="comment">// ...</span>
+<span class="line-numbers">18</span>    }
+</span></code></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-51188-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/51188.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="51188.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/51188 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:13:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

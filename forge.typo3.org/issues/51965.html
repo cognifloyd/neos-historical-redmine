@@ -1,0 +1,791 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/51965 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:42:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #51965: New Install Tool redesign opportunity - TYPO3 CMS Usability Team - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:#000000;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/51965.atom" rel="alternate" title="TYPO3 CMS Usability Team - Feature #51965: New Install Tool redesign opportunity" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-color:#ffffff;background-image:url(../headerimages/78.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/usability/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/usability/search" accesskey="4" style="color:#000000">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3 CMS Usability Team</h1>
+        <div id="quicklinks"><p>User Interface Design (UI)<br />User Experience Concept (UX)</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/usability/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/usability/news" class="news">News</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/usability/wiki" class="wiki">Wiki</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 current sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues?query_id=134" class="query">&lt;ME&gt;</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/usability/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (8)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/39">Jens Hoffmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3721">Lars Zimmermann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4162">Martin Engel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/444">Björn Brockmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/110">Ben van &#39;t Ende</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2779">Felix Kopp</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2958">Cynthia Mattingly</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-51965-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #51965</h2>
+
+<div class="issue status-9 priority-1 closed parent details">
+  
+
+  
+
+<div class="subject">
+<div><h3>New Install Tool redesign opportunity</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-09-12" title="2013-09-12 23:40">almost 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2015-07-16" title="2015-07-16 10:16">19 days</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-09-17</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/39">Jens Hoffmann</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Design</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2969">Core - 7.4 (Backend)</a></td>
+    
+</tr>
+<tr>
+	<th>Tags:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Hi UX guys,</p>
+
+
+	<p>the Install Tool has been refactored "under the hood" and totally rearranged in the presentation. This is currently the "developers' style".<br />There are some patches coming in to "improve the usability", but we would love to see some input coming from the UX team.<br />Jens, Lars, please login to the test-instance you have access to and checkout the Install Tool. Click through the options and if you have some time, please present some consistent alternative "look&#38;feel" for it, considering first the current functionality.<br />If you think an overall "rearrangement" of options or menu is required, please discuss this before starting to present screens, as we have to first assess if this is still feasible to achieve in the remaining time.</p>
+
+
+	<p>That would be awesome!</p>
+
+
+	<p>Thanks!</p>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../attachments/download/24964/Install-Tool.zip" class="icon icon-attachment">Install-Tool.zip</a>  
+  
+  <span class="size">(4 MB)</span>
+  
+  
+    <span class="author">Jens Hoffmann, 2013-09-13 18:54</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+<hr />
+<div id="issue_tree">
+<div class="contextual">
+  
+</div>
+<p><strong>Subtasks</strong></p>
+<form><table class="list issues"><tr class="issue issue-52087 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="52087" /></td><td class="subject"><a href="52087.html" class="issue status-7 priority-1 closed child">Feature #52087</a>: Install Tool &gt; All Configuration: &quot;Write Configuration&quot; S...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr></table></form>
+</div>
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10664">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="56754" /></td>
+<td class="subject">related to 
+    TYPO3 CMS Usability Team - 
+    <a href="56754.html" class="issue status-7 priority-2 closed">Feature #56754</a>: Tex changes in the Install Tool
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-03-11</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10706">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="56941" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="56941.html" class="issue status-7 priority-3 closed">Task #56941</a>: Return the 1-2-3 step icons in the step installer
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-03-15</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/51965/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/51965/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=51965&amp;project_id=usability')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-182691" class="journal has-notes has-details">
+    <h4><a href="51965.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39">Jens Hoffmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-09-13" title="2013-09-13 10:19">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Jens Hoffmann</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-182691-notes"><p>Hi,</p>
+
+
+	<p>Christian got some feedback from my side already.<br />He was supposed to send some screenshots to me.<br />Maybe he could attach them here?</p>
+
+
+	<p>I will try to install the latest version and review the<br />status quo of the tool. Thanks for the reminder.</p>
+
+
+	<p>Greez Jens</p></div>
+  </div>
+  
+
+  <div id="change-182693" class="journal has-notes">
+    <h4><a href="51965.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-09-13" title="2013-09-13 10:48">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-182693-notes"><p>We could skype about it if you would like to get some more infos or directions on what areas deserve more "love" (in our opinion).</p></div>
+  </div>
+  
+
+  <div id="change-182748" class="journal has-notes">
+    <h4><a href="51965.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39">Jens Hoffmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-09-13" title="2013-09-13 18:34">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-182748-notes"><p>Here is the current Install-Process and the <br />Intall-Tool as Screens with some Feedback.</p>
+
+
+	<p>Todo's for the UX-Team are below as Bulletpoints.</p>
+
+
+	<p>Install:</p>
+
+
+	<ol>
+	<li><a class="external" href="../../external.html?link=http://redpen.io/xdk5sg">http://redpen.io/xdk5sg</a> Initial opening
+	<ul>
+	<li>Create new "additional" BTN styles</li>
+		<li>Come up with a dynamic 1-2-3 process indication / visual</li>
+	</ul>
+	</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/jgdh6x">http://redpen.io/jgdh6x</a> Automatically misconfigured rights </li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/6c5u4k">http://redpen.io/6c5u4k</a> Error after manual correction </li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/9z6hyw">http://redpen.io/9z6hyw</a> Enter DB Data</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/9bjtg2">http://redpen.io/9bjtg2</a> Select DB</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/vspngz">http://redpen.io/vspngz</a> Create user and import base data</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/ohge82">http://redpen.io/ohge82</a> Auto configuration and login
+	<ul>
+	<li>Design new "finished" screen</li>
+	</ul></li>
+	</ol>
+
+
+	<p>Backend:</p>
+
+
+	<ol>
+	<li><a class="external" href="../../external.html?link=http://redpen.io/y8g6jc">http://redpen.io/y8g6jc</a> Login (Automatically broken right .. again)</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/bf3tnk">http://redpen.io/bf3tnk</a> Backend .. Yeah .. Flat-Style :)</li>
+	</ol>
+
+
+	<p>Install-Tool:</p>
+
+
+	<ol>
+	<li><a class="external" href="../../external.html?link=http://redpen.io/fkr56n">http://redpen.io/fkr56n</a> Install Tool (Locked)</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/ndhyvf">http://redpen.io/ndhyvf</a> Login
+	<ul>
+	<li>Compare Design with BE-Login Layout</li>
+	</ul>
+	</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/2gjmbq">http://redpen.io/2gjmbq</a> Welcome
+	<ul>
+	<li>Visual styling of this page (Text-Size, Headlines, Inline CTA, Columns?)</li>
+		<li>Style sub-sections in the Menu.</li>
+	</ul>
+	</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/41fdv3">http://redpen.io/41fdv3</a> Important actions
+	<ul>
+	<li>Style the counter
+	<ul>
+	<li>TopWidget counter</li>
+		<li>Version counter</li>
+		<li>Issue counter</li>
+	</ul>
+	</li>
+	</ul>
+	</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/wsoxuz">http://redpen.io/wsoxuz</a> System environment</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/69d4mb">http://redpen.io/69d4mb</a> Configuration presets</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/aw349q">http://redpen.io/aw349q</a> Folder structure</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/pkebqf">http://redpen.io/pkebqf</a> Folder structure (Automatically .. File error .. again)</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/5usz81">http://redpen.io/5usz81</a> Forbidden (after Reload)</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/6zokc9">http://redpen.io/6zokc9</a> Test setup
+	<ul>
+	<li>Provide new test images</li>
+	</ul>
+	</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/5utyo2">http://redpen.io/5utyo2</a> Update wizard (Init)</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/j2z63k">http://redpen.io/j2z63k</a> Update wizard (After "all" updates)</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/18y3ao">http://redpen.io/18y3ao</a> Change configuration values</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/73gu8b">http://redpen.io/73gu8b</a> Change configuration values (Section open)</li>
+		<li><a class="external" href="../../external.html?link=http://redpen.io/c3zsnt">http://redpen.io/c3zsnt</a> Clean up your installation
+	<ul>
+	<li>Define a style for Accordions and Help Dialogs</li>
+	</ul></li>
+	</ol>
+
+
+	<p>More feedback will follow.</p>
+
+
+	<p>Greez Jens</p></div>
+  </div>
+  
+
+  <div id="change-182761" class="journal has-notes has-details">
+    <h4><a href="51965.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39">Jens Hoffmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-09-13" title="2013-09-13 18:54">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../attachments/download/24964/Install-Tool.zip">Install-Tool.zip</a> added</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-182761-notes"><p>All screens.</p></div>
+  </div>
+  
+
+  <div id="change-182774" class="journal has-notes">
+    <h4><a href="51965.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-09-13" title="2013-09-13 20:27">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-182774-notes"><p>Jens, some of the linked redpen links are not working, could you click through them and correct the wrong ones? I.e. <a class="external" href="../../external.html?link=http://redpen.io/1qx65g">http://redpen.io/1qx65g</a> .. Thanks!</p></div>
+  </div>
+  
+
+  <div id="change-182775" class="journal has-notes">
+    <h4><a href="51965.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/683">Christian Kuhn</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-09-13" title="2013-09-13 21:00">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-182775-notes"><p>Thanks Jens!</p>
+
+
+	<p>I started looking at some of your remarks and will try to start with further "easy" patches, I also added some remarks and questions already.</p>
+
+
+	<p>We already did some changes after your first feedback, eg. the number of failed tests in "Environment check" is now shown, and the "OK Haken" on all buttons are gone (while the exclamation mark buttons are still there).</p></div>
+  </div>
+  
+
+  <div id="change-183306" class="journal has-notes">
+    <h4><a href="51965.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39">Jens Hoffmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-09-18" title="2013-09-18 11:48">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-183306-notes"><p>I added feedback to all screens.<br />And fixed the broken once on RedPen.</p>
+
+
+	<p>@Team: Could you do so, too. (If i missed something, or you disagree with what I wrote).<br />@Ernesto &#38; Christian: How can we proceed?</p>
+
+
+	<p>Greez Jens</p></div>
+  </div>
+  
+
+  <div id="change-183451" class="journal has-notes">
+    <h4><a href="51965.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-09-19" title="2013-09-19 13:31">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-183451-notes"><p>Thanks for that input Jens, highly appreciated!</p>
+
+
+	<p>We need to split up some tasks from your list to keep them "doable".</p>
+
+
+	<p>One part would be to fix and adapt the textual part in the existing functionality. Do you have someone who could deliver these texts? Should we try to get some native speaker to help us out (maybe Jeff Segars..)?</p>
+
+
+	<p>Some other parts are "cosmetical adjustments" (CSS, styling) and larger parts are really added or enhanced functionality. For the last part I think Christian will most probably have the best overview of what could be "split out" as individual issues to be tackled.</p></div>
+  </div>
+  
+
+  <div id="change-187371" class="journal has-notes has-details">
+    <h4><a href="51965.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39">Jens Hoffmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-10-18" title="2013-10-18 00:26">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Needs Feedback</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-187371-notes"><p>@Ernesto:</p>
+
+
+	<ul>
+	<li>What is the status here? </li>
+		<li>Are some issues solved? </li>
+		<li>Should I reReview the Installer?</li>
+	</ul>
+
+
+	<p>Greez Jens</p></div>
+  </div>
+  
+
+  <div id="change-187441" class="journal has-notes">
+    <h4><a href="51965.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2013-10-18" title="2013-10-18 16:03">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-187441-notes"><p>@Jens, I will try to strip down your list into a) what's solved, b) what <strong>will</strong> be solved, c) what <strong>could</strong> be solved and d) what <strong>cannot</strong> be solved, so that we can focus on b and c (in this order).</p>
+
+
+	<p>But not today! :) Next week! Thanks for reminding me about it.</p></div>
+  </div>
+  
+
+  <div id="change-207474" class="journal has-notes">
+    <h4><a href="51965.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2958">Cynthia Mattingly</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2014-03-11" title="2014-03-11 10:37">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-207474-notes"><p>The install screen on a fresh version also has different text: <a class="external" href="../../external.html?link=https://redpen.io/xomjry">https://redpen.io/xomjry</a></p></div>
+  </div>
+  
+
+  <div id="change-207478" class="journal has-notes">
+    <h4><a href="51965.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2014-03-11" title="2014-03-11 10:43">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-207478-notes"><p>I posted a reply on the comment, Cynthia, thanks!</p></div>
+  </div>
+  
+
+  <div id="change-209968" class="journal has-notes">
+    <h4><a href="51965.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/39">Jens Hoffmann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2014-03-24" title="2014-03-24 08:57">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-209968-notes"><p>And all other points? What is the status here?<br />Was someone able to finish the open points? :)</p>
+
+
+	<p>Greez Jens</p></div>
+  </div>
+  
+
+  <div id="change-210003" class="journal has-notes">
+    <h4><a href="51965.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2014-03-24" title="2014-03-24 11:20">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-210003-notes"><p>Hi Jens, several things were indeed solved, but some are of course still open (or even open to discussion or lacking visuals). Would be boring if achieved 100%. To get more out of it, requires a more interactive work with some designer / UX, which was not possible due to time constraints on all sides.</p>
+
+
+	<p>I am happy with the solution so far, but it can be further improved and optimized in the versions to come. I would suggest to take a look at the current state for the 6.2.0 release, to compile a new list of findings or keep the open stuff open and separated from the already "done" things.</p>
+
+
+	<p>Some tiny optimizations could even still get it's way into 6.2.1, but bigger changes (i.e. "Subsections" in the menu) will be postponed for 6.3 or later.</p>
+
+
+	<p>I would prefer using InvisionApp for this in future, which allows easier browsing through the screens (instead of having individual screens for them). It proved to be very helpful in your 6.2 overview some months ago.</p></div>
+  </div>
+  
+
+  <div id="change-233983" class="journal has-details">
+    <h4><a href="51965.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2779">Felix Kopp</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2014-10-27" title="2014-10-27 01:08">9 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+       <li><strong>Target version</strong> changed from <i>TYPO3 6.2 LTS</i> to <i>7.0</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-252312" class="journal has-notes">
+    <h4><a href="51965.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2661">Stephan Großberndt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2015-03-11" title="2015-03-11 23:13">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-252312-notes"><p>Whats the status here? Target version cannot be 7.0 any more.</p></div>
+  </div>
+  
+
+  <div id="change-261824" class="journal has-details">
+    <h4><a href="51965.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2015-06-15" title="2015-06-15 17:45">about 1 month</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> changed from <i>7.0</i> to <i>7.4 (Backend)</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-266277" class="journal has-notes has-details">
+    <h4><a href="51965.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a> <a href="../../external.html?link=https://forge.typo3.org/projects/usability/activity?from=2015-07-16" title="2015-07-16 10:16">19 days</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-266277-notes"><p>Install Tool rework is taken care of, final styling is getting in currently.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-51965-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/51965.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="51965.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/51965 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:42:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

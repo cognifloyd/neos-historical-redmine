@@ -1,0 +1,612 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/57695 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:34:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #57695: Implement unicode normalization in TYPO3 Core&#39;s charset conversion routines, especially for filepaths in TYPO3 FAL&#39;s LocalDriver. - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/57695.atom" rel="alternate" title="Core - Feature #57695: Implement unicode normalization in TYPO3 Core's charset conversion routines, especially for filepaths in TYPO3 FAL's LocalDriver." type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (6)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/3493">Daniel Wagner</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-57695-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #57695</h2>
+
+<div class="issue status-1 priority-1 details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Implement unicode normalization in TYPO3 Core&#39;s charset conversion routines, especially for filepaths in TYPO3 FAL&#39;s LocalDriver.</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-06" title="2014-04-06 18:10">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-04" title="2014-06-04 00:38">about 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">New</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-04-06</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 80%;"></td><td class="todo" style="width: 20%;"></td></tr></table><p class="pourcent">80%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">File Abstraction Layer (FAL)</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <a name="Preface"></a>
+<h2 >Preface:<a href="#Preface" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>If you like the following idea, I could contribute the necessary code (tests and solutions) as pull requests (as long as nobody else is interested). If I overlooked something in the Core-API and this is completely nonsense and a waste of time, then shame on me. :-)</p>
+
+
+	<p>I know that the TYPO3 Core's unicode (utf8) charset handling is quite stable and well crafted. And I <ins>don't</ins> suspect the charset-conversion to be broken, but I think its incomplete. My research is based upon commit <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/69f5be0119f9fb285d6165ab3f73aa21c3a0de53" class="changeset" title="[TASK] Avoid sysLog calls in MailUtilityTest Resolves: #57676 Releases: 6.2 Change-Id: I6f694a2c...">69f5be0119f9fb285d6165ab3f73aa21c3a0de53</a> from today and my explanations below refer to the documentation under <a class="external" href="../../external.html?link=http://www.php.net/manual/en/class.normalizer.php">http://www.php.net/manual/en/class.normalizer.php</a> and the four related unicode normalization formats as mentioned in <a class="external" href="../../external.html?link=http://en.wikipedia.org/wiki/Unicode_equivalence">http://en.wikipedia.org/wiki/Unicode_equivalence</a> . I'll refer to these normalization formats as NFC, NFD, NFKC and NFKD.</p>
+
+
+	<a name="The-Missing-Feature"></a>
+<h2 >The Missing Feature:<a href="#The-Missing-Feature" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>Initially the following scenario seemed to be a hypothetic issue for me. As I started to move the same TYPO3 6.2 Installation  between hosts with UTF8-capable filesystems based upon different unicode normalizations it happened, that the FAL's local filesystem driver reindexes files as completely new files, if their filepath unicode-normalization changes. To reproduce this behaviour one has to create a file or folder containing the german umlaut “ü” in a TYPO3-Installation on Linux/Windows and move the whole Installation to a Mac and vice-versa. Depending on the method used to transfer the files from one host to the other, a different unicode-normalization might occur, leading to different filepaths and file-identifier hashes. This makes sense as TYPO3 absolutely ignores unicode-normalization. It is currently not designed to be moved between such host constellations.</p>
+
+
+	<a name="The-Proposal"></a>
+<h2 >The Proposal:<a href="#The-Proposal" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>If we focus on the filesystem, TYPO3 must implement at least one of the three unicode-normalization strategies (see below under *):</p>
+
+
+	<ol>
+	<li>No decomposition/composition (enforced), see below under (1)</li>
+		<li>Normalization Form D (NFD), see below under (2)</li>
+		<li>Normalization Form C (NFC), see below under (3)</li>
+	</ol>
+
+
+	<p>With the help of <a class="external" href="../../external.html?link=http://www.php.net/manual/en/class.normalizer.php">http://www.php.net/manual/en/class.normalizer.php</a> and existing fallback implementations we should define and implement a normalization strategy, which at least ensures consistent filepaths across all supported platforms. Additionally we could provide commands to convert all file paths between the strategies on the supported operating- and file-systems. Finally unicode-normalization could get integrated into the charset encoding processes in general.</p>
+
+
+	<p>Strategy 1) is what we currently have, which leads to the duplicate indexing-behaviour I mentioned above. This issue needs a solution. My current assumption is that Strategy 2) and/or 3) are easier to implement.</p>
+
+
+	<a name="My-personal-notes-and-research"></a>
+<h2 >My personal notes and research:<a href="#My-personal-notes-and-research" class="wiki-anchor">&para;</a></h2>
+
+
+	<p>NFC has advantages as well as disadvantages to NFD. None of these two formats seems to be far superior, but that's another topic.</p>
+
+
+	<p>The following is given in random order:</p>
+
+
+	<ul>
+	<li>1) No decomposition/composition<br />  - Found on most linux setups.<br />  - Means any canonical composition and compatibillity decomposition is supported, as nothing gets touched at all. (Really?)<br />  - Allows creation of visually identical looking filepaths, consisting of differently normalized pathname-fragments. Hence, in the current FAL implementation these identical looking filepaths will probably have different file-identifier hashes => proving tests shall follow.<br />  - Mixed normalized paths really occured in the past (try searching the web for):<br />    - - older Linux Samba Machines serving Shares mounted by Mac OS X and Windows at the same time - for germans the “umlaute” like “ü” where the ones that drove some people insane<br />    - - (PHP-based) projects like ownClound had and still have to solve several related issues.<br />    - In my experience, linux software itself always produces NFC normalization, but sometimes one of the three other ones may occur. It always depends on the default-behavior of the involved filesystems, tools, clients and services.</li>
+	</ul>
+
+
+	<ul>
+	<li>2) Normalization Form D (NFD)<br />  - Characters are decomposed by canonical equivalence, and multiple combining characters are arranged in a specific order.<br />  - Mac OS X uses NFD per default and supports the three other ones. Implementations for their default encoding exists, usually its called “utf8-mac” encoding (which is actually wrong, as it is no separate encoding but a different representation).<br />  - Provides higher potential for really fast sorting implementations, but costs higher resource usage.</li>
+	</ul>
+
+
+	<ul>
+	<li>3) Normalization Form C (NFC)<br />   - Characters are decomposed and then recomposed by canonical equivalence.<br />   - Microsoft Windows is using NFC per default and claims to support the three other ones too. Didn't dig deeper into that.<br />   - This is what I suspect to be the most widespread unicode-normalization. I bet due to Windows popularity. <br />   - Its the W3C's recommendation for HTML5 output (and a requirement for a HTML5 compatible parser).<br />   - Saves some bytes, but provides less potential for blazingly fast sorting implementations. :-)</li>
+	</ul>
+
+
+	<p>(*): Apologies for my simplifications - and no guarantee for technical correctness.</p>
+
+
+<hr />
+
+
+	<p>Can anyone confirm my observations ? Do you need failing unit tests ?<br />Does anyone have any suggestions, questions, critiques or objections ?</p>
+
+
+	<p>Cheerio,<br />Stephan Jorek</p>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-213290" class="journal has-notes">
+    <h4><a href="57695.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-17" title="2014-04-17 09:15">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-213290-notes"><p>Hi Stephan,</p>
+
+
+	<p>Tnx for your research on this. This is indeed a problem.  One I run into last week my self when a college uploaded some files through ftp.</p>
+
+
+	<p>Would be great if you could provide a patch for this to fix it and cover it with tests.</p>
+
+
+	<p>If you need some help with pushing a patch to our review system please let me know.</p>
+
+
+	<p>Gr. Frans</p></div>
+  </div>
+  
+
+  <div id="change-213922" class="journal has-notes">
+    <h4><a href="57695.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-23" title="2014-04-23 15:53">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-213922-notes"><p>My current solution is a dirty hack without any tests. I'm a bit busy with other stuff, so I can't offer you something really useful for now; but approximately end of may I could take a look at this. I think i'll need some advices then, as I'm not yet familiar with the Gerrit-Flow. And I didn't sign the CLA yet.</p>
+
+
+	<p>Maybe someone else starts or even solves this tasks before end of may or I'll do so then …</p>
+
+
+	<p>Cheers,<br />Stephan</p></div>
+  </div>
+  
+
+  <div id="change-214125" class="journal has-notes">
+    <h4><a href="57695.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2787">Frans Saris</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-25" title="2014-04-25 09:23">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-214125-notes"><p>Hi Stephan,</p>
+
+
+	<p>could you share your "dirty hack" with us? It could be a good starting point for someone to create a patch.</p>
+
+
+	<p>gr. Frans</p></div>
+  </div>
+  
+
+  <div id="change-214316" class="journal has-notes">
+    <h4><a href="57695.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-27" title="2014-04-27 14:03">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-214316-notes"><p>Well, I prepare my “dirty hack” to make it shareable. At least it try. Due to implementation specific issues, I'm not going to share it as it is, because I'm sure this hack raises more questions than it would solve. I'll describe some details as soon as I have something online, so please read my next posting if you are curious about this decision. And if someone really insists, because he/she needs to solve some (related) troubles right now or the like, you should contact me directly, and ask for the hack.</p>
+
+
+	<p>You can watch the implementation progress in our <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/tree/feature-57695-fal-unicode-normalization" class="external">TYPO3.CMS fork's branch “feature-57695-fal-unicode-normalization” at github</a> ( <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/compare/feature-57695-fal-unicode-normalization" class="external">use this link if you prefer an up-to-date diff/comparison</a> ). I strongly appreciate any feedback and will accept any helping pull-requests.</p>
+
+
+	<p>Btw.: Not a single line of code from the implementation above has ever been really tested or even run (as my original dirty hack is implemented in python and involves manipulating the “sys_file”-table from outside TYPO3). I'll mark the first working upcoming commit with “[ready for testing]”, as soon as it is “ready for testing” … :-)</p>
+
+
+	<p>Cheers,<br />Stephan</p>
+
+
+	<p>P.S.: I still expect (=hope) to be ready at the end of may 2014.</p></div>
+  </div>
+  
+
+  <div id="change-214342" class="journal has-notes">
+    <h4><a href="57695.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-27" title="2014-04-27 18:46">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-214342-notes"><p>So, for now I'm stuck at the decision which strategy to implement first. Here are my current candidates:</p>
+
+
+	<ol>
+	<li>Implement a converter for sys_file-entries and local filepaths respectively that forces all files to be in a certain unicode-normalization form<br />  - Pro: Avoids duplicate files or file-reindexing completely.<br />  - Con: Onetime overhead after moving TYPO3 installations between differently normalized filesystems.<br />  - Con: File-identifier based relations might break and must be reconstructed by some clever algorithm.<br />  - Con: Mixed environments (like caching-proxys or external CDNs in front of Mac OS X-based TYPO3-Servers) might cause new troubles ?<br />  - Hint: This is what my dirty hack currently partially solves - with python's excellent unicode support.<br />  - Hint: This strategy may result in a scheduler-task or an extbase-command.<br />  - My conclusion: I don't like this strategy, as I'm (we are ?) not able to predict all consequences, especially for the changing file-identifier.</li>
+		<li>Leave all filepaths as they are and force a particular unicode-normalization form just for the calculation or validation of the file-identifier.<br />  - Pro: Clever, smart and sounds simple. We just need to identify the best place(s) for this strategy to implement.<br />  - Pro: Should allow the mixed environments I mentioned above.<br />  - Con: If we fail to implement this strategy right, we (still) have the chance of duplicate files or file-reindexing, due to identical files which are just distinguishable by their file path's unicode-normalization. Especially Linux-based environments which usually don't care about unicode-normalization in file paths, might 'cause troubles.<br />  - My conclusion: This is what I'd like to go for - but not without any constructive feedback. I expect this path to consume some more time to implement, compared to the other strategy. At least writing proper initial unit tests cause headaches. :-)</li>
+	</ol>
+
+
+Common thoughts of inspiration and open questions:
+	<ul>
+	<li>Python and ruby both have excellent unicode-support for a while now (at least longer than any PHP-based solution I know - sorry for this dumb assumption). Do they solve this issue and if yes, then how ?</li>
+		<li>All Java-based frameworks and projects (Alfresco, Solr, Eclipse, Spring, Play) I evaluated suffer from this bug or don't tackle this problem - although java has <a href="../../external.html?link=http://docs.oracle.com/javase/tutorial/i18n/text/normalizerapi.html" class="external">the same unicode-normalization support as PHP has</a> the programmers seem not to be aware of unicode-normalization. (Write once and run everywhere has always been a lie, though … ;-)</li>
+		<li>I remember that samba once suffered from a (possibly similar) unicode-normalization bug, which turned out to be a missing unicode-normalization feature. Maybe we can learn from their solution ? (more research needed)</li>
+		<li>We should <em>not</em> implement a solution that assumes that the whole filesystem has unicode-normalization-awareness. We should deal with the unicode-normalization like the FAL does it with case-sensitivity for filepaths. FAL checks each file-storage for being case-sensitive or not.<br />  - If we would check each filepath or at least its underlying folder for being unicode-normalization-aware, we could finally compose a (local) filesystem from (real) file mounts (not those from FAL) with different normalizations. This differs from the case-sensitivity-check, I mentioned above …<br />  - If we would check each <em>file-storage</em> for being unicode-normalization-aware, we could finally compose a filesystem from FAL's file mounts with different normalizations. This is quite similar to the case-sensitivity-check, I mentioned above …<br />  - The current setting <code>$GLOBALS['TYPO3_CONF_VARS']['SYS']['UTF8filesystem']</code> is not enough to reflect/configure this kind of algorithm.</li>
+	</ul>
+
+
+	<p>Does anybody have something to add to my thoughts ? Any strategy I overlooked ? Any obvious mistake I made ?</p></div>
+  </div>
+  
+
+  <div id="change-214359" class="journal has-notes">
+    <h4><a href="57695.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-27" title="2014-04-27 20:41">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-214359-notes"><p>Hint: my two previous comments have been updated several times. So just for the case you're reading the emails only, it is advisable to read the online versions as well.</p></div>
+  </div>
+  
+
+  <div id="change-216305" class="journal has-notes has-details">
+    <h4><a href="57695.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-10" title="2014-05-10 23:34">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>70</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-216305-notes"><p><a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/compare/TYPO3:master...feature-57695-fal-unicode-normalization" class="external">I'd did some major progress in implementing this proposal</a> … I added <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/commit/71a4f2189df639aaca5c35a98f424dddcb2038d4" class="external">configurable unicode-normalization</a> to <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/commit/b70577a37aeffa26c3715a7659997ea1ef2ee527" class="external">FAL's <code>LocalDriver</code></a> , the <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/commit/b2a001675f2f4dfa258827425c7e0fe3455fa511" class="external">TYPO3 Core's <code>BasicFileUtility</code></a> and the <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/commit/a433337be5d2b86ca408e40cfc8a30a88b8f40dc" class="external">TYPO3 Frontend's <code>TypoScriptFrontendController</code></a> . Additionally I marked several places which still might lack unicode-normalization-awareness with proper <code>TODO</code>-tags or <code>@todo</code>-annotations.</p>
+
+
+	<p>Don't get irritated about the amount of changed files - most of them reside in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/tree/feature-57695-fal-unicode-normalization/typo3/contrib/Patchwork-UTF8" class="external"><code>typo3/contrib/Patchwork-UTF8</code></a> and belong to <a href="../../external.html?link=https://github.com/nicolas-grekas/Patchwork-UTF8" class="external">a pure PHP fallback-implemention</a> I included with the help of a composer-reciept.</p>
+
+
+	<p>The current implementation still lacks the tests, proving that FAL's file-identifier-hashing fails for some TYPO3-setup-transitions when unicode-normalization is missing and does not fail anymore with the new unicode-normalization activated. The reason why I didn't implement it yet is simple: I didn't find any existing file-identifier-hashing related tests I could extend or enhance, and I was too lazy to invent a new one. (Hint: I only found file-content-hashing related tests, but that's another topic, I guess.) But I promise to implement the missing tests, as soon as I get some constructive feedback. That does not mean that there are no tests at all - there are, <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Tests/Unit/Charset/UnicodeNormalizerTest.php" class="external">but none of them directly related to FAL</a>.</p>
+
+
+	<p>So, please study the code-comments, -annotations and especially the <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/commit/71a4f2189df639aaca5c35a98f424dddcb2038d4" class="external">descriptions of the additions to TYPO3's default configuration</a> . I think/hope they contain most of my intentions. You can read them by checking out the <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/tree/feature-57695-fal-unicode-normalization" class="external">feature-57695… branch from our repository</a> , or what I think is easier, use the link I provided at the very beginning of this comment.</p>
+
+
+	<p>Anybody who is brave enough to crash it's TYPO3 installation is invited to give us feedback, critiques, objections or the like. Especially feedback out of the Windows-World is welcome, as I struggle with it a lot. Debian GNU/Linux, FreeBSD and OS X should to be covered quite well. But: <strong>I still didn't test or even run anything yet</strong>. Everything is based upon my experience or on what I have read related to this topic so far. But I'm confident that this comes close to the point where I'm officially announcing that “it's ready for testing” and of course ready for merging.</p>
+
+
+	<p>In the hope to get any feedback,<br />Sincerely yours,<br />Stephan</p></div>
+  </div>
+  
+
+  <div id="change-216982" class="journal has-notes">
+    <h4><a href="57695.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-05-15" title="2014-05-15 20:50">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-216982-notes"><p>Stephan, thanks for your work on this - I'm keen on having a look into your Github changes. I guess others will do this as well. So let's collect the feedback here in this issue before creating a change set for the upstream repository.</p></div>
+  </div>
+  
+
+  <div id="change-218900" class="journal has-notes has-details">
+    <h4><a href="57695.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-01" title="2014-06-01 23:48">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>% Done</strong> changed from <i>70</i> to <i>80</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-218900-notes"><p>Hi Oliver,</p>
+
+
+	<p>I acknowledge your feedback-collection wish. So, I'll lead any related discussions raising at github back to this ticket here - but currently there are none. :-(</p>
+
+
+	<p>Since my last update there have been a lot of changes committed in the related <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/compare/TYPO3:master...feature-57695-fal-unicode-normalization" class="external">feature-branch</a> , hence I raised done state from 70% to 80%. This leaves 5% for a last personal review and 15% for any upcoming merging, pulling, pushing and reviewing. I won't add any new features to the written code from now on.</p>
+
+
+	<p>So I hope we're getting really close to point where I can shout “ready for testing”, but we're not yet there. I still didn't run any line of the code being written so far. Nevertheless, critiques, especially conception-related, are still very welcome.</p>
+
+
+	<p>Cheerio,<br />Stephan</p>
+
+
+	<p>P.S.: Hint - some of the previously posted hyperlinks to github-commits are outdated, so please try to translate them to the current development state by yourself.</p></div>
+  </div>
+  
+
+  <div id="change-219152" class="journal has-notes">
+    <h4><a href="57695.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4388">Stephan Jorek</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-06-04" title="2014-06-04 00:38">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-219152-notes"><p>Just for the record - here a (generated) list of open TODOs I'd still like to check. It might help someone to given suggestions or the like:</p>
+
+
+	<ol>
+	<li>Figure out if we need/want unicode-normalization as well … in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/backend/Classes/Controller/BackendController.php#L233" class="external">/TYPO3.CMS/typo3/sysext/backend/Classes/Controller/BackendController.php#L233</a></li>
+		<li>Figure out if we need/want unicode-normalization as well … in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/backend/Classes/View/ThumbnailView.php#L373" class="external">/TYPO3.CMS/typo3/sysext/backend/Classes/View/ThumbnailView.php#L373</a></li>
+		<li>Figure out if we need/want unicode-normalization as well … in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Charset/CharsetConverter.php#L698" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Charset/CharsetConverter.php#L698</a></li>
+		<li>Figure out if we need/want unicode-normalization as well … in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Charset/CharsetConverter.php#L748" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Charset/CharsetConverter.php#L748</a></li>
+		<li>Keep UnicodeNormalizer::filter method in sync with \Patchwork\Utf8\Bootup::filterString() in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L219" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L219</a></li>
+		<li>Really use workaround for <a class="external" href="../../external.html?link=https://bugs.php.net/65732">https://bugs.php.net/65732</a>, means to enforce unix-linebreaks, everytime and everywhere ! in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L222" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L222</a></li>
+		<li>Patchwork-UTF8 implementation handles cp1252 as a fallback too, but we don't do so. Is it ok for to fallback to plain utf8_encode ?!? in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L236" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L236</a></li>
+		<li>Use UnicodeNormalizer::filterInputArrays method during core-bootstrap ? If yes, then avoid double-encoding by TSFE->convPOSTCharset ! in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L275" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L275</a></li>
+		<li>keep method in sync with \Patchwork\Utf8\Bootup::filterRequestUri() in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L466" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Charset/UnicodeNormalizer.php#L466</a></li>
+		<li>Figure out if we need/want unicode-normalization as well … in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Http/AjaxRequestHandler.php#L77" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Http/AjaxRequestHandler.php#L77</a></li>
+		<li>Figure out if we need/want unicode-normalization as well … in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Imaging/GraphicalFunctions.php#L2662" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Imaging/GraphicalFunctions.php#L2662</a></li>
+		<li><del>Figure out if we need/want unicode-normalization as well …</del> DONE Not really needed ! in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Localization/Parser/LocallangArrayParser.php#L148" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Localization/Parser/LocallangArrayParser.php#L148</a></li>
+		<li><del>Figure out if we need/want unicode-normalization as well …</del> DONE Not really needed ! in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Localization/Parser/LocallangArrayParser.php#L155" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Localization/Parser/LocallangArrayParser.php#L155</a></li>
+		<li>Figure out if we need/want unicode-normalization as well … in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Classes/Resource/Processing/LocalImageProcessor.php#L127" class="external">/TYPO3.CMS/typo3/sysext/core/Classes/Resource/Processing/LocalImageProcessor.php#127</a></li>
+		<li>Test all unicode-normalization forms, this seems to cover NFC only, see <a class="external" href="57695.html">http://forge.typo3.org/issues/57695</a> in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/core/Tests/Unit/Resource/Driver/LocalDriverTest.php#L1284" class="external">/TYPO3.CMS/typo3/sysext/core/Tests/Unit/Resource/Driver/LocalDriverTest.php#L1284</a></li>
+		<li>check if “list(…) = $parts;” is really not need below in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4709" class="external">/TYPO3.CMS/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4709</a></li>
+		<li>Using SYS[unicodeNormalization] as fallback in FE would make sence, or not ? in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4862" class="external">/TYPO3.CMS/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4862</a></li>
+		<li>Different normalizations for SYS (inkl. CLI+BE) and FE could introduce new troubles ?!? in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4863" class="external">/TYPO3.CMS/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4863</a></li>
+		<li>Using SYS[unicodeNormalizeInputs] as fallback in FE would make sence, or not ? in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4875" class="external">/TYPO3.CMS/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4875</a></li>
+		<li>Different lists of input-array normalization for SYS (inkl. CLI+BE) and FE could introduce new troubles ?!? in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4876" class="external">/TYPO3.CMS/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4876</a></li>
+		<li>Implement SYS[unicodeNormalizeInputs] in TYPO3 bootstrap in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4877" class="external">/TYPO3.CMS/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4877</a></li>
+		<li>Is Unicode::normalizeInputArrays too weak … and the better approach below ? in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4945" class="external">/TYPO3.CMS/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4945</a></li>
+		<li>Why do we only convert $_POST charset ?!? Why not $_FILES, $_ENV, $_GET, $_POST, $_COOKIE, $_SERVER &#38; $_REQUEST ? in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4956" class="external">/TYPO3.CMS/typo3/sysext/frontend/Classes/Controller/TypoScriptFrontendController.php#L4956</a></li>
+		<li><del>Figure out if we need/want unicode-normalization as well …</del> DONE implemented in $basicFileFunctions above in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/frontend/Classes/Imaging/GifBuilder.php#L705" class="external">/TYPO3.CMS/typo3/sysext/frontend/Classes/Imaging/GifBuilder.php#L705</a></li>
+		<li>Figure out if we need/want unicode-normalization as well … in <a href="../../external.html?link=https://github.com/artplan21/TYPO3.CMS/blob/feature-57695-fal-unicode-normalization/typo3/sysext/scheduler/Classes/Scheduler.php#L432" class="external">/TYPO3.CMS/typo3/sysext/scheduler/Classes/Scheduler.php#L432</a></li>
+	</ol>
+
+
+	<p>Good Night,<br />Stephan</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-57695-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/57695.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="57695.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/57695 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:34:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

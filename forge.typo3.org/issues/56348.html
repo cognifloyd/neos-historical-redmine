@@ -1,0 +1,697 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/56348 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:35:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #56348: Session randomly lost in eID - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/56348.atom" rel="alternate" title="Core - Bug #56348: Session randomly lost in eID" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (2)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-56348-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #56348</h2>
+
+<div class="issue status-9 priority-1 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Session randomly lost in eID</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/2819">Grégory Duchesnes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-26" title="2014-02-26 16:43">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-18" title="2015-07-18 18:00">16 days</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-02-26</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Frontend</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.1</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>hard</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>Hi all,</p>
+
+
+	<p>I have a piece of eID code that checks if a user is loggued in to the website and then takes action or send him back to an error page.<br />Once in a while $GLOBALS["TSFE"]->fe_user->user is false for no reason (i can see in the logs that the user logged-in few only a few seconds before).</p>
+
+
+	<p>Bug occurs in any browser, the website runs in https, has a P3P policy (for IE) and is not behind a proxy.</p>
+
+
+	<a name="Here-is-my-code-simplified-"></a>
+<h2 >Here is my code (simplified) :<a href="#Here-is-my-code-simplified-" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><code>$GLOBALS["TSFE"] = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController', $TYPO3_CONF_VARS, 0, 0);<br />$GLOBALS["TSFE"]->initFEuser();<br />if(!$GLOBALS["TSFE"]->fe_user->user) {<br />    header('Location: /?logintype=logout&#38;session=expired');<br />    die();<br />}</code></p>
+
+
+	<a name="My-session-config-"></a>
+<h2 >My session config :<a href="#My-session-config-" class="wiki-anchor">&para;</a></h2>
+
+
+	<p><code>    'FE' => array(<br />        'lifetime' => '1800',<br />        'loginSecurityLevel' => 'normal',<br />        'permalogin' => '2',<br />        'sessionDataLifetime' => '1800',<br />    ),<br /></code></p>
+
+
+	<a name="And-here-is-what-i-see-in-my-apache-log-file-"></a>
+<h2 >And here is what i see in my apache log file :<a href="#And-here-is-what-i-see-in-my-apache-log-file-" class="wiki-anchor">&para;</a></h2>
+
+
+<pre>
+# the guy connects to the site : ok
+xxx.51.48.xx - - [26/Feb/2014:10:40:01 +0100] "POST / HTTP/1.1" 200 17025
+# downloads some resources : ok
+xxx.51.48.xx - - [26/Feb/2014:10:40:03 +0100] "GET /typo3temp/vhs-assets-1f45c81006146c4e25a69b3c56b0fc5c-4e0ef181f23cb080794861bbc21114e0.css?1393407602 HTTP/1.1" 200 9520
+# browses to another page : ok
+xxx.51.48.xx - - [26/Feb/2014:10:40:52 +0100] "GET /attestations/ HTTP/1.1" 200 17037
+# tries to call the eID : KO
+xxx.51.48.xx - - [26/Feb/2014:10:41:02 +0100] "GET /attestations/?eID=espacesante_downloadAttestationSecu&#38;annee=2013&#38;fe_user=xxxxx&#38;cHash=544421d45e7e2c1f2d9cc4d8896f4670 HTTP/1.1" 302 -
+xxx.51.48.xx - - [26/Feb/2014:10:41:02 +0100] "GET /?logintype=logout&#38;session=expired HTTP/1.1" 200 14851
+</pre>
+
+	<a name="And-in-my-MySQL-logs-"></a>
+<h2 >And in my MySQL logs :<a href="#And-in-my-MySQL-logs-" class="wiki-anchor">&para;</a></h2>
+
+
+	<a name="when-everything-works-fine-goes-to-another-page-"></a>
+<h3 >when everything works fine (goes to another page) :<a href="#when-everything-works-fine-goes-to-another-page-" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+140226 10:40:52   117 Connect    xxx@localhost on 
+          117 Query    SET NAMES utf8
+          117 Query    SELECT @@SESSION.sql_mode
+          117 Init DB    xxx
+          117 Query    SELECT COUNT(*) FROM fe_sessions WHERE ses_id = 'e5d1676ea7103abfcae1789cbc7dde18'
+          117 Query    SELECT * FROM fe_sessions,fe_users WHERE fe_sessions.ses_id = 'e5d1676ea7103abfcae1789cbc7dde18'
+                    AND fe_sessions.ses_name = 'fe_typo_user'
+                    AND fe_sessions.ses_userid = fe_users.uid
+                    AND (
+                fe_sessions.ses_iplock = 'xxx.51'
+                OR fe_sessions.ses_iplock='[DISABLED]'
+                )
+                    AND fe_sessions.ses_hashlock=59869828
+                     AND fe_users.disable=0 AND fe_users.deleted=0 AND (fe_users.starttime&lt;=1393407652) AND (fe_users.endtime=0 OR fe_users.endtime&gt;1393407652)
+          117 Query    UPDATE fe_sessions SET ses_tstamp='1393407652' WHERE ses_id='e5d1676ea7103abfcae1789cbc7dde18'
+                                                AND ses_name='fe_typo_user'
+          117 Query    SELECT * FROM fe_sessions,fe_users WHERE fe_sessions.ses_id = 'e5d1676ea7103abfcae1789cbc7dde18'
+                    AND fe_sessions.ses_name = 'fe_typo_user'
+                    AND fe_sessions.ses_userid = fe_users.uid
+                    AND (
+                fe_sessions.ses_iplock = 'xxx.51'
+                OR fe_sessions.ses_iplock='[DISABLED]'
+                )
+                    AND fe_sessions.ses_hashlock=59869828
+                     AND fe_users.disable=0 AND fe_users.deleted=0 AND (fe_users.starttime&lt;=1393407652) AND (fe_users.endtime=0 OR fe_users.endtime&gt;1393407652)
+          117 Query    UPDATE fe_sessions SET ses_tstamp='1393407652' WHERE ses_id='e5d1676ea7103abfcae1789cbc7dde18'
+                                                AND ses_name='fe_typo_user'
+          117 Query    SELECT * FROM fe_session_data WHERE hash = 'e5d1676ea7103abfcae1789cbc7dde18'
+</pre>
+
+	<a name="And-when-it-fails-eID-"></a>
+<h3 >And when it fails (eID) :<a href="#And-when-it-fails-eID-" class="wiki-anchor">&para;</a></h3>
+
+
+<pre>
+140226 10:41:02      132 Connect    xxx@localhost on 
+          132 Query    SET NAMES utf8
+          132 Query    SELECT @@SESSION.sql_mode
+          132 Init DB    xxx
+          132 Query    SELECT COUNT(*) FROM fe_sessions WHERE ses_id = 'e5d1676ea7103abfcae1789cbc7dde18'
+          132 Query    SELECT content,tstamp FROM fe_session_data WHERE hash = 'e5d1676ea7103abfcae1789cbc7dde18'
+          132 Query    SELECT * FROM fe_sessions,fe_users WHERE fe_sessions.ses_id = 'e5d1676ea7103abfcae1789cbc7dde18'
+                    AND fe_sessions.ses_name = 'fe_typo_user'
+                    AND fe_sessions.ses_userid = fe_users.uid
+
+                    AND fe_sessions.ses_hashlock=59869828
+                     AND fe_users.disable=0 AND fe_users.deleted=0 AND (fe_users.starttime&lt;=1393407662) AND (fe_users.endtime=0 OR fe_users.endtime&gt;1393407662)
+          131 Query    SELECT content FROM cf_extbase_object WHERE identifier = 'f4161c7b5ff989cc5937476177f76d76' AND cf_extbase_object.expires &gt;= 1393407661 LIMIT 1
+          132 Query    SELECT /*! SQL_NO_CACHE */ ses_userid FROM fe_sessions WHERE ses_id=0
+          132 Query    DELETE FROM fe_session_data WHERE hash='e5d1676ea7103abfcae1789cbc7dde18'
+          132 Query    DELETE FROM fe_sessions WHERE ses_id = 'e5d1676ea7103abfcae1789cbc7dde18'
+                        AND ses_name = 'fe_typo_user'
+          132 Query    SELECT * FROM fe_sessions,fe_users WHERE fe_sessions.ses_id = 'e5d1676ea7103abfcae1789cbc7dde18'
+                    AND fe_sessions.ses_name = 'fe_typo_user'
+                    AND fe_sessions.ses_userid = fe_users.uid
+
+                    AND fe_sessions.ses_hashlock=59869828
+                     AND fe_users.disable=0 AND fe_users.deleted=0 AND (fe_users.starttime&lt;=1393407662) AND (fe_users.endtime=0 OR fe_users.endtime&gt;1393407662)
+          132 Query    SELECT /*! SQL_NO_CACHE */ ses_userid FROM fe_sessions WHERE ses_id=0
+          132 Query    DELETE FROM fe_session_data WHERE hash='e5d1676ea7103abfcae1789cbc7dde18'
+          132 Query    DELETE FROM fe_sessions WHERE ses_id = 'e5d1676ea7103abfcae1789cbc7dde18'
+                        AND ses_name = 'fe_typo_user'
+          132 Quit
+</pre>
+
+	<a name="Any-clue"></a>
+<h2 >Any clue?<a href="#Any-clue" class="wiki-anchor">&para;</a></h2>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10546">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="53598" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="53598.html" class="issue status-7 priority-2 closed child">Bug #53598</a>: Select/Delete fe_sessions twice per request
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-11-13</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/56348/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/56348/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=56348&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-205514" class="journal has-notes">
+    <h4><a href="56348.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2819">Grégory Duchesnes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-26" title="2014-02-26 16:54">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205514-notes"><p>NB : bug is not garbage collector related since session garbage collection occured at 10:39:22 (before the initial login) and at 10:42:21 (after error)</p></div>
+  </div>
+  
+
+  <div id="change-205591" class="journal has-notes">
+    <h4><a href="56348.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-27" title="2014-02-27 01:05">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205591-notes"><p>Where does the line<br /><code class="sql syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="integer">132</span>   <span class="class">SELECT</span> <span class="directive">/*! SQL_NO_CACHE */</span> ses_userid <span class="keyword">FROM</span> fe_sessions <span class="keyword">WHERE</span> ses_id=<span class="integer">0</span></span></code><br />come from?</p>
+
+
+	<p>(The whole 6.1 Core does contain the string "SQL_NO_CACHE" only once. And that is in a unit test for DBAL extension)</p>
+
+
+	<p>Furthermore I can recommend a look into \TYPO3\CMS\Frontend\Utility\EidUtility which provides some nice helper functions here.<br />Your example would reduce to:<br /><pre><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="local-variable">$feuser</span> = \<span class="constant">TYPO3</span>\<span class="constant">CMS</span>\<span class="constant">Frontend</span>\<span class="constant">Utility</span>\<span class="constant">EidUtility</span>:initFeUser();
+<span class="line-numbers">2</span><span class="keyword">if</span> (<span class="predefined">empty</span>(<span class="local-variable">$feuser</span>-&gt;user)) {
+<span class="line-numbers">3</span>   <span class="predefined">header</span>(<span class="string"><span class="delimiter">'</span><span class="content">Location: /?logintype=logout&#38;session=expired</span><span class="delimiter">'</span></span>);
+<span class="line-numbers">4</span>   <span class="predefined">die</span>();
+<span class="line-numbers">5</span>}
+</span></code></pre></p></div>
+  </div>
+  
+
+  <div id="change-205599" class="journal has-notes">
+    <h4><a href="56348.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2819">Grégory Duchesnes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-27" title="2014-02-27 08:56">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205599-notes"><p>Hi Markus and thanks for your answer.</p>
+
+
+	<p>The SQL_NO_CACHE line comes from a hook in logoff_pre_processing. I use it to make sure that sessionData is cleared on logout (might be useless in 6.1 but 4.5 used to leave some crap behind). Here follows the code, as you can see, since the user session has not been found by TYPO3 (ses_id=0) it can not do any harm.</p>
+
+
+<pre>
+class Tx_Espacesante_Hooks_T3libUserauth {
+    public function logoff_pre_processing($params, $obj) {
+        if($obj-&gt;user_table != 'be_users') {
+            $res = $GLOBALS['TYPO3_DB']-&gt;exec_SELECTquery(
+                '/*! SQL_NO_CACHE */ ses_userid',
+                'fe_sessions',
+                'ses_id='.intval($obj-&gt;id)
+            );
+
+            if($GLOBALS['TYPO3_DB']-&gt;sql_num_rows($res)) {
+                $row = $GLOBALS['TYPO3_DB']-&gt;sql_fetch_assoc($res);
+            }
+
+            if ($row) {
+                $GLOBALS['TYPO3_DB']-&gt;exec_DELETEquery(
+                    'fe_sessions',
+                    'ses_id='.intval($obj-&gt;id)
+                );
+
+                $GLOBALS['TYPO3_DB']-&gt;exec_UPDATEquery(
+                    'fe_users',
+                    'uid=' . $row['ses_userid'],
+                    array('uc' =&gt; '')
+                );
+            }
+            if(method_exists($GLOBALS['TSFE']-&gt;fe_user, removeSessionData)) $GLOBALS['TSFE']-&gt;fe_user-&gt;removeSessionData();
+        }
+    }
+}
+</pre>
+
+	<p>Thanks for the tip about EidUtility, i'm aware of this class but i need a proper $GLOBALS['TSFE'] for further treatment.</p></div>
+  </div>
+  
+
+  <div id="change-205675" class="journal has-notes">
+    <h4><a href="56348.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-02-27" title="2014-02-27 15:03">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205675-notes"><p>Regarding the Eid. Just use the getTSFE() function and assign it to the global variable. It is much better to use API here, since if we need to change stuff somehow in the creation process of TSFE, you ext does not break. ;-)</p>
+
+
+<pre><code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers">1</span><span class="local-variable">$GLOBAL</span>[<span class="string"><span class="delimiter">'</span><span class="content">TSFE</span><span class="delimiter">'</span></span>] = \<span class="constant">TYPO3</span>\<span class="constant">CMS</span>\<span class="constant">Frontend</span>\<span class="constant">Utility</span>\<span class="constant">EidUtility</span>::getTSFE();
+<span class="line-numbers">2</span>feuser = \<span class="constant">TYPO3</span>\<span class="constant">CMS</span>\<span class="constant">Frontend</span>\<span class="constant">Utility</span>\<span class="constant">EidUtility</span>::initFeUser();
+<span class="line-numbers">3</span><span class="keyword">if</span> (<span class="predefined">empty</span>(<span class="local-variable">$feuser</span>-&gt;user)) {
+<span class="line-numbers">4</span>   <span class="predefined">header</span>(<span class="string"><span class="delimiter">'</span><span class="content">Location: /?logintype=logout&#38;session=expired</span><span class="delimiter">'</span></span>);
+<span class="line-numbers">5</span>   <span class="predefined">die</span>();
+<span class="line-numbers">6</span>}
+</span></code></pre>
+
+	<p>I'm not sure if the problem is then database related. You've to check the code for initalizing the fe_user why no user data is fetched.<br />Can you maybe also check if $feuser is an object at all?</p></div>
+  </div>
+  
+
+  <div id="change-206232" class="journal has-notes">
+    <h4><a href="56348.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2819">Grégory Duchesnes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-04" title="2014-03-04 09:47">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206232-notes"><p>I made some new tests and using APC as a cache backend, therefore lowering the load on the database, significally reduced the problem.<br />Furhtermore i did not have rootpageid set in my realurl config which triggered some more useless queries, i fixed that.</p>
+
+
+	<p>I still have a few disconnects but their number has been reduced by a factor of 5 or so.</p>
+
+
+	<p>that's weird...</p></div>
+  </div>
+  
+
+  <div id="change-206285" class="journal has-notes">
+    <h4><a href="56348.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2819">Grégory Duchesnes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-04" title="2014-03-04 14:28">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206285-notes"><p>Looking at my stats it is now clear that the remaining disconnections are due to internet explorer 11.<br />I'll try to set [FE][lockHashKeyWords] = '' to see if it is related to the fact that the useragent changes during connection (a bug that used to occur with IE8)</p>
+
+
+	<p>I've seen bug <a href="53818.html" class="issue status-7 priority-1 closed" title="Internet Explorer 11 BE Cookies problem (Resolved)">#53818</a> but it concerns only BE and is Ext.Direct related (which i don't use).</p>
+
+
+	<p>For the records i already have a P3P policy and my Servername does not contain any "_" character</p></div>
+  </div>
+  
+
+  <div id="change-246987" class="journal has-notes has-details">
+    <h4><a href="56348.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-26" title="2015-01-26 21:36">6 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Mathias Schreiber</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-246987-notes"><p>Hi  Grégory,</p>
+
+
+	<p>any news here?</p></div>
+  </div>
+  
+
+  <div id="change-247042" class="journal has-notes">
+    <h4><a href="56348.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2819">Grégory Duchesnes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-01-27" title="2015-01-27 09:19">6 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-247042-notes"><p>Hi Mathias,</p>
+
+
+	<p>I forgot to send a feedback, i'm really sorry.</p>
+
+
+	<p>I couldn't find a definitive solution to my problem but i managed to reduce its impact thanks to a deep analysis of the application.</p>
+
+
+	<p>To make it short i managed to reduce it by a factor of 4 by activating APC cache, which proves that part of the problem was database related.</p>
+
+
+	<p>Then i found that most of the remaining lost connections were on Internet Explorer 11 and i found the explaination on this feedback : <a class="external" href="../../external.html?link=https://connect.microsoft.com/IE/feedback/details/810700/subject-ie11-is-losing-cookie-information-and-thus-becoming-detached-from-a-web-application-session">https://connect.microsoft.com/IE/feedback/details/810700/subject-ie11-is-losing-cookie-information-and-thus-becoming-detached-from-a-web-application-session</a></p>
+
+
+	<p>For this second problem, i had no other choice than displaying a specific message for IE11 users when they got disconnected.</p>
+
+
+	<p>Hope this helps</p></div>
+  </div>
+  
+
+  <div id="change-262315" class="journal has-notes">
+    <h4><a href="56348.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-06-17" title="2015-06-17 08:58">about 1 month</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-262315-notes"><p>So we can close this issue or is something todo for us?</p></div>
+  </div>
+  
+
+  <div id="change-267288" class="journal has-notes has-details">
+    <h4><a href="56348.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36415">Wouter Wolters</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-18" title="2015-07-18 18:00">16 days</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Closed</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-267288-notes"><p>Closed as solved.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-56348-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/56348.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="56348.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/56348 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:35:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

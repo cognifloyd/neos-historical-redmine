@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/55065 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:25:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Epic #55065: WP: Overall System Performance (Backend and Frontend) - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/55065.atom" rel="alternate" title="Core - Epic #55065: WP: Overall System Performance (Backend and Frontend)" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (8)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/397">Rupert Germann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3251">Dirk Klimpel</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/2779">Felix Kopp</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/414">Oliver Klee</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/4951">Daniel Siepmann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/129">Jose Antonio Guerra</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-55065-watcher"></span>
+
+
+</div>
+
+
+<h2>Epic #55065</h2>
+
+<div class="issue status-1 priority-3 overdue child parent details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="55070.html" class="issue status-2 priority-3 overdue parent">Epic #55070</a>: Workpackages</p><div><h3>WP: Overall System Performance (Backend and Frontend)</h3></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-16" title="2014-01-16 16:13">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-07-22" title="2015-07-22 17:24">12 days</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">New</td>
+    <th class="start-date">Start date:</th><td class="start-date">2010-07-02</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Could have</td>
+    <th class="due-date">Due date:</th><td class="due-date">2014-07-09</td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 81%;"></td><td class="todo" style="width: 19%;"></td></tr></table><p class="pourcent">81%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Performance</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time"><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/55065/time_entries">138.40 hours</a></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2261">6.2.0</a></td>
+    
+    <th class="estimated-hours">Estimated time:</th><td class="estimated-hours">38.00 hours</td>
+    
+</tr>
+<tr>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>TYPO3 6.2 LTS will be used in enterprise environments as well as on budget hosting-environments. These systems will have a lot of content or many requests or even both.<br />In order to provide the necessary technical basis for those use cases, the overall performance of TYPO3 CMS must be in- creased. Also, the main performance of TYPO3 will be reviewed and optimized to get a faster system.</p>
+  </div>
+
+
+
+
+
+
+<hr />
+<div id="issue_tree">
+<div class="contextual">
+  
+</div>
+<p><strong>Subtasks</strong></p>
+<form><table class="list issues"><tr class="issue issue-55071 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55071" /></td><td class="subject"><a href="55071.html" class="issue status-9 priority-2 closed child">Story #55071</a>: review current caching types and differentiate these types</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55072 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55072" /></td><td class="subject"><a href="55072.html" class="issue status-9 priority-2 closed child">Story #55072</a>: implement compile time cache</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55073 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55073" /></td><td class="subject"><a href="55073.html" class="issue status-9 priority-2 closed child parent">Story #55073</a>: review autoloader and language cache</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54990 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54990" /></td><td class="subject"><a href="54990.html" class="issue status-7 priority-2 closed child">Task #54990</a>: ClassLoader cache ist too slow, no matter which CF Backen...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54984 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54984" /></td><td class="subject"><a href="54984.html" class="issue status-9 priority-2 closed child">Task #54984</a>: &quot;Clear all caches&quot; makes the site unavailable for several...</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55074 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55074" /></td><td class="subject"><a href="55074.html" class="issue status-9 priority-2 closed child">Story #55074</a>: implement configuration cache</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55075 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55075" /></td><td class="subject"><a href="55075.html" class="issue status-9 priority-2 closed child">Story #55075</a>: review TCA cache and increase performance and scalability</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55076 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55076" /></td><td class="subject"><a href="55076.html" class="issue status-9 priority-1 closed child parent">Story #55076</a>: review frontend rendering cache and rootline cache</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-39295 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="39295" /></td><td class="subject"><a href="39295.html" class="issue status-7 priority-1 closed child">Task #39295</a>: Wrong expires date in cf_cache_pagesection</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55077 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55077" /></td><td class="subject"><a href="55077.html" class="issue status-7 priority-2 closed child">Story #55077</a>: review bootstrap for ajax-calls and streamline process</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55078 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55078" /></td><td class="subject"><a href="55078.html" class="issue status-9 priority-2 closed child parent">Story #55078</a>: Optimize PHP code performance in TYPO3 methods</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54777 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54777" /></td><td class="subject"><a href="54777.html" class="issue status-7 priority-2 closed child">Task #54777</a>: Use PHP native htmlspecialchars_decode()</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54085 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54085" /></td><td class="subject"><a href="54085.html" class="issue status-7 priority-2 closed child">Task #54085</a>: Replace all strcmp() calls with ===</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54091 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54091" /></td><td class="subject"><a href="54091.html" class="issue status-7 priority-2 closed child">Task #54091</a>: Use === operator instead of strlen() to check for zero le...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54265 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54265" /></td><td class="subject"><a href="54265.html" class="issue status-7 priority-2 closed child">Task #54265</a>: Use (int) instead of intval() or (integer)</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54560 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54560" /></td><td class="subject"><a href="54560.html" class="issue status-7 priority-2 closed child">Task #54560</a>: Replace JavaScriptEncoder with json_encode()</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55198 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55198" /></td><td class="subject"><a href="55198.html" class="issue status-7 priority-1 closed child">Task #55198</a>: Replace trimExplode + foreach with explode + trim within ...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/102">Jo Hasenau</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54525 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54525" /></td><td class="subject"><a href="54525.html" class="issue status-7 priority-2 closed child">Task #54525</a>: Optimize file- and path functions in GeneralUtility</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55122 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55122" /></td><td class="subject"><a href="55122.html" class="issue status-7 priority-2 closed child">Task #55122</a>: Cleanup and optimize methods in ExtensionManagementUtility</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/324">Michiel Roos</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54734 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54734" /></td><td class="subject"><a href="54734.html" class="issue status-9 priority-1 closed child">Task #54734</a>: Optimize ext_tables and ext_localconf cache files</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-52949 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="52949" /></td><td class="subject"><a href="52949.html" class="issue status-7 priority-3 closed child parent">Bug #52949</a>: Speed decrease since 4.5</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 84%;"></td><td class="todo" style="width: 16%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53029 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53029" /></td><td class="subject"><a href="53029.html" class="issue status-7 priority-2 closed child">Task #53029</a>: Improve performance of the class loader </td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53744 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53744" /></td><td class="subject"><a href="53744.html" class="issue status-7 priority-2 closed child">Task #53744</a>: Change ClassLoader cache from proxy require files to stan...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53747 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53747" /></td><td class="subject"><a href="53747.html" class="issue status-7 priority-2 closed child">Task #53747</a>: Change TCA cache from php code to serialized array</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-52642 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="52642" /></td><td class="subject"><a href="52642.html" class="issue status-2 priority-2 child">Feature #52642</a>: CF: Implement Simple db, apc &amp; memcached backend</td><td>Accepted</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53467 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53467" /></td><td class="subject"><a href="53467.html" class="issue status-6 priority-2 child">Task #53467</a>: Improve flush by tag performance for the file cache backend</td><td>Under Review</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2938">Tymoteusz Motylewski</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53556 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53556" /></td><td class="subject"><a href="53556.html" class="issue status-9 priority-2 closed child">Bug #53556</a>: classLoader-&gt;loadClass calls requireOnce twice per class</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53918 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53918" /></td><td class="subject"><a href="53918.html" class="issue status-7 priority-2 closed child">Bug #53918</a>: t3skin calls addIconSprite for each language</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53962 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53962" /></td><td class="subject"><a href="53962.html" class="issue status-7 priority-2 closed child">Bug #53962</a>: Class loader does not cache non existing classes</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53702 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53702" /></td><td class="subject"><a href="53702.html" class="issue status-7 priority-2 closed child">Bug #53702</a>: FAL fetches storages twice on every BE request</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54251 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54251" /></td><td class="subject"><a href="54251.html" class="issue status-7 priority-2 closed child">Task #54251</a>: GeneralUtility::array_merge_recursive_overrule has bad pe...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53862 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53862" /></td><td class="subject"><a href="53862.html" class="issue status-7 priority-2 closed child">Bug #53862</a>: isValidUrl idna converts whole URI instead of domain only</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-52125 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="52125" /></td><td class="subject"><a href="52125.html" class="issue status-7 priority-2 closed child">Bug #52125</a>: Saving records takes ages to complete</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-52235 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="52235" /></td><td class="subject"><a href="52235.html" class="issue status-7 priority-1 closed child">Bug #52235</a>: Timeout when copying pages recursively due to cache-clear...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-52374 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="52374" /></td><td class="subject"><a href="52374.html" class="issue status-1 priority-2 child">Bug #52374</a>: Editing a sys_filemount is very slow</td><td>New</td><td><a href="../../external.html?link=https://forge.typo3.org/users/33">Mathias Schreiber</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53598 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="53598" /></td><td class="subject"><a href="53598.html" class="issue status-7 priority-2 closed child">Bug #53598</a>: Select/Delete fe_sessions twice per request</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54982 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54982" /></td><td class="subject"><a href="54982.html" class="issue status-7 priority-2 closed child">Bug #54982</a>: Performance of eID-scripts in TYPO3 6.2</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55022 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55022" /></td><td class="subject"><a href="55022.html" class="issue status-7 priority-2 closed child">Bug #55022</a>: PackageManager Cache is invalid if typo3 dir has symlinks</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56307 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="56307" /></td><td class="subject"><a href="56307.html" class="issue status-2 priority-3 child parent">Bug #56307</a>: Findings from Bootstrap/PackageManager/ClassLoader analyses</td><td>Accepted</td><td><a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 83%;"></td><td class="todo" style="width: 17%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56308 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56308" /></td><td class="subject"><a href="56308.html" class="issue status-9 priority-2 closed child">Bug #56308</a>: ClassLoaderCache superflouous</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56310 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56310" /></td><td class="subject"><a href="56310.html" class="issue status-7 priority-2 closed child">Bug #56310</a>: The PackageManager checks every boot if all required pack...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56311 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56311" /></td><td class="subject"><a href="56311.html" class="issue status-7 priority-2 closed child">Bug #56311</a>: PackageFactory does not need to be initialized on regular...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56312 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56312" /></td><td class="subject"><a href="56312.html" class="issue status-2 priority-2 child">Bug #56312</a>: Dependency Resolver does not need to be initialized</td><td>Accepted</td><td><a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56313 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56313" /></td><td class="subject"><a href="56313.html" class="issue status-7 priority-2 closed child">Bug #56313</a>: Cache Identifiers shorten the MD5 hash</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56314 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56314" /></td><td class="subject"><a href="56314.html" class="issue status-1 priority-2 child">Bug #56314</a>: setCacheHashOptions from Bootstrap not relevant for EID</td><td>New</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56315 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56315" /></td><td class="subject"><a href="56315.html" class="issue status-10 priority-2 closed child">Bug #56315</a>: Optimize TimeTracking init in eID Case</td><td>Rejected</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56316 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56316" /></td><td class="subject"><a href="56316.html" class="issue status-7 priority-2 closed child">Bug #56316</a>: inline BEUserAuth::getCookieName</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56317 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56317" /></td><td class="subject"><a href="56317.html" class="issue status-1 priority-2 child">Bug #56317</a>: Cache Local and Default Configuration to prevent duplicat...</td><td>New</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56318 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56318" /></td><td class="subject"><a href="56318.html" class="issue status-9 priority-2 closed child">Bug #56318</a>: Check wether the ConfigurationManager can be omitted/redu...</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56319 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56319" /></td><td class="subject"><a href="56319.html" class="issue status-7 priority-2 closed child">Bug #56319</a>: Merge Cache/Cache and CacheFactory into CacheManager</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56320 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56320" /></td><td class="subject"><a href="56320.html" class="issue status-10 priority-2 closed child">Bug #56320</a>: Check emptying the Flow Classes as far as possible</td><td>Rejected</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56322 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56322" /></td><td class="subject"><a href="56322.html" class="issue status-9 priority-2 closed child">Bug #56322</a>: GetAliasesForClass not used</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56323 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56323" /></td><td class="subject"><a href="56323.html" class="issue status-9 priority-2 closed child">Bug #56323</a>: cache_classes should cluster by Package instead of Class</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56324 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56324" /></td><td class="subject"><a href="56324.html" class="issue status-9 priority-2 closed child">Bug #56324</a>: Class Loader should not try to runtime resolve class-pathes</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56325 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56325" /></td><td class="subject"><a href="56325.html" class="issue status-7 priority-2 closed child">Bug #56325</a>: Move &quot;finalClassNameCache&quot; from GeneralUtility to ClassLo...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56326 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56326" /></td><td class="subject"><a href="56326.html" class="issue status-10 priority-2 closed child">Bug #56326</a>: Evaluate and Merge ClassAliasMap into Classloader class</td><td>Rejected</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56328 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56328" /></td><td class="subject"><a href="56328.html" class="issue status-9 priority-2 closed child">Bug #56328</a>: Extract complex &quot;class loader cache building&quot; code into C...</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56330 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56330" /></td><td class="subject"><a href="56330.html" class="issue status-10 priority-2 closed child">Bug #56330</a>: Add all classes which are needed anyhow within the minima...</td><td>Rejected</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56331 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56331" /></td><td class="subject"><a href="56331.html" class="issue status-7 priority-2 closed child">Bug #56331</a>: Evaluate if we can profit from concatenate all baseRequir...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56333 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56333" /></td><td class="subject"><a href="56333.html" class="issue status-9 priority-2 closed child">Bug #56333</a>: MicroOptimize ClassLoader</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56334 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56334" /></td><td class="subject"><a href="56334.html" class="issue status-1 priority-3 child">Bug #56334</a>: Prevent inclusion of LogLevel due to ConfigDefault referral</td><td>New</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56335 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56335" /></td><td class="subject"><a href="56335.html" class="issue status-7 priority-2 closed child">Bug #56335</a>: Prevent Inclusion of ResourceStorage from Bootstrap</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56336 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56336" /></td><td class="subject"><a href="56336.html" class="issue status-7 priority-2 closed child">Bug #56336</a>: Prevent Inclusion of MediaWizardProvider* in Base Bootstrap</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56337 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56337" /></td><td class="subject"><a href="56337.html" class="issue status-4 priority-2 child">Bug #56337</a>: Remove manual array calculation in Locales and put the ar...</td><td>Needs Feedback</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56340 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56340" /></td><td class="subject"><a href="56340.html" class="issue status-9 priority-2 closed child">Bug #56340</a>: Remove the VariableFrontend from requiredBaseClasses</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56341 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56341" /></td><td class="subject"><a href="56341.html" class="issue status-9 priority-2 closed child">Task #56341</a>: Evaluate if it is really reasonable to have TYPO3\CMS\Cor...</td><td>Closed</td><td><a href="../../external.html?link=https://forge.typo3.org/users/446">Steffen Ritter</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56538 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56538" /></td><td class="subject"><a href="56538.html" class="issue status-7 priority-2 closed child">Task #56538</a>: Cache the $GLOBALS[&#39;TYPO3_LOADED_EXT&#39;] as an array</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56933 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56933" /></td><td class="subject"><a href="56933.html" class="issue status-7 priority-2 closed child">Bug #56933</a>: Cached class loader misses are not considered on retrieval</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56934 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56934" /></td><td class="subject"><a href="56934.html" class="issue status-7 priority-2 closed child">Task #56934</a>: Move information in Package classes into composer files</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3154">Thomas Maroschik</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57862 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="57862" /></td><td class="subject"><a href="57862.html" class="issue status-7 priority-2 closed child parent">Story #57862</a>: Add possibility to make all TCA additions cached</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57863 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="57863" /></td><td class="subject"><a href="57863.html" class="issue status-7 priority-2 closed child">Task #57863</a>: Introduce a signal in ExtensionManagementUtility::loadBas...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57881 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="57881" /></td><td class="subject"><a href="57881.html" class="issue status-7 priority-2 closed child">Task #57881</a>: Make category TCA changes cacheable</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57942 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="57942" /></td><td class="subject"><a href="57942.html" class="issue status-7 priority-2 closed child">Task #57942</a>: Provide API to add cached TCA changes</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-23069 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="23069" /></td><td class="subject"><a href="23069.html" class="issue status-7 priority-2 closed child">Bug #23069</a>: Bottleneck in t3lib_tcemain</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55179 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55179" /></td><td class="subject"><a href="55179.html" class="issue status-9 priority-2 closed child parent">Task #55179</a>: Optimize SQL Performance</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55180 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55180" /></td><td class="subject"><a href="55180.html" class="issue status-7 priority-2 closed child">Bug #55180</a>: Increase Determination of siteroot page</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55181 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55181" /></td><td class="subject"><a href="55181.html" class="issue status-7 priority-2 closed child">Bug #55181</a>: Speedup domain redirection lookup</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55182 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55182" /></td><td class="subject"><a href="55182.html" class="issue status-9 priority-2 closed child">Bug #55182</a>: Speedup selection of storage</td><td>Closed</td><td><a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55184 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55184" /></td><td class="subject"><a href="55184.html" class="issue status-9 priority-2 closed child">Bug #55184</a>: Filling the entries from sys_registry does not use an index</td><td>Closed</td><td><a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-27372 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="27372" /></td><td class="subject"><a href="27372.html" class="issue status-7 priority-2 closed child">Feature #27372</a>: Execute native prepared queries in t3lib_DB</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-24960 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="24960" /></td><td class="subject"><a href="24960.html" class="issue status-10 priority-2 closed child">Bug #24960</a>: Rewrite t3lib_loadModules::getRelativePath()</td><td>Rejected</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55578 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55578" /></td><td class="subject"><a href="55578.html" class="issue status-9 priority-2 closed child">Task #55578</a>: Documentation</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55656 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="55656" /></td><td class="subject"><a href="55656.html" class="issue status-2 priority-3 overdue child parent">Epic #55656</a>: Optimize overall Extbase performance</td><td>Accepted</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 58%;"></td><td class="todo" style="width: 42%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55654 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55654" /></td><td class="subject"><a href="55654.html" class="issue status-2 priority-2 child">Task #55654</a>: Extbase: Optimize ClassInfoFactory with the ClassInfoCache</td><td>Accepted</td><td><a href="../../external.html?link=https://forge.typo3.org/users/1322">Marc Bastian Heinrichs</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55168 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55168" /></td><td class="subject"><a href="55168.html" class="issue status-2 priority-3 overdue child parent">Story #55168</a>: Optimize Extbase generic persistence</td><td>Accepted</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 68%;"></td><td class="todo" style="width: 32%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55167 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="55167" /></td><td class="subject"><a href="55167.html" class="issue status-7 priority-2 closed child parent">Task #55167</a>: Extbase: avoid parseQuery() / buildQuery() to be called m...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55661 hascontextmenu idnt idnt-3"><td class="checkbox"><input name="ids[]" type="checkbox" value="55661" /></td><td class="subject"><a href="55661.html" class="issue status-7 priority-1 closed child">Task #55661</a>: Add functional tests for extbase persistence</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57173 hascontextmenu idnt idnt-3"><td class="checkbox"><input name="ids[]" type="checkbox" value="57173" /></td><td class="subject"><a href="57173.html" class="issue status-7 priority-1 closed child">Task #57173</a>: Use of cf_extbase_typo3dbbackend_queries results in fatal</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/326">Xavier Perseguers</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57130 hascontextmenu idnt idnt-3"><td class="checkbox"><input name="ids[]" type="checkbox" value="57130" /></td><td class="subject"><a href="57130.html" class="issue status-7 priority-1 closed child">Task #57130</a>: Extbase Queries with NULL comparison don&#39;t work anymore</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57104 hascontextmenu idnt idnt-3"><td class="checkbox"><input name="ids[]" type="checkbox" value="57104" /></td><td class="subject"><a href="57104.html" class="issue status-7 priority-1 closed child">Task #57104</a>: Regression: Query building fails for LazyObjectStorage</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57263 hascontextmenu idnt idnt-3"><td class="checkbox"><input name="ids[]" type="checkbox" value="57263" /></td><td class="subject"><a href="57263.html" class="issue status-7 priority-1 closed child">Task #57263</a>: Typo3DbQueryParser does not handle LowerCaseInterface cor...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57338 hascontextmenu idnt idnt-3"><td class="checkbox"><input name="ids[]" type="checkbox" value="57338" /></td><td class="subject"><a href="57338.html" class="issue status-7 priority-2 closed child">Task #57338</a>: Make Typo3DbQueryParser Singleton</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55169 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="55169" /></td><td class="subject"><a href="55169.html" class="issue status-6 priority-3 child parent">Task #55169</a>: Extbase: fetch child objects in one query</td><td>Under Review</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-60460 hascontextmenu idnt idnt-3"><td class="checkbox"><input name="ids[]" type="checkbox" value="60460" /></td><td class="subject"><a href="60460.html" class="issue status-2 priority-3 child">Feature #60460</a>: Refactor lazyLoading handling in extbase</td><td>Accepted</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-53514 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="53514" /></td><td class="subject"><a href="53514.html" class="issue status-7 priority-1 closed child">Task #53514</a>: Extbase: DataMapper causes redundant queries</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/656">Nico de Haen</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55360 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="55360" /></td><td class="subject"><a href="55360.html" class="issue status-7 priority-2 closed child parent">Task #55360</a>: Extbase: use preparedStatement in generic persistence</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 50%;"></td><td class="todo" style="width: 50%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57067 hascontextmenu idnt idnt-3"><td class="checkbox"><input name="ids[]" type="checkbox" value="57067" /></td><td class="subject"><a href="57067.html" class="issue status-2 priority-1 child">Task #57067</a>: Follow-Up re-use preparedStatement object</td><td>Accepted</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57254 hascontextmenu idnt idnt-3"><td class="checkbox"><input name="ids[]" type="checkbox" value="57254" /></td><td class="subject"><a href="57254.html" class="issue status-7 priority-2 closed child">Task #57254</a>: Fix usage of own prepared statement object in $query-&gt;sta...</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56979 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="56979" /></td><td class="subject"><a href="56979.html" class="issue status-1 priority-3 child">Task #56979</a>: Add setting for DataMapper to enable preparedStatements</td><td>New</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-59917 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="59917" /></td><td class="subject"><a href="59917.html" class="issue status-6 priority-3 overdue child">Task #59917</a>: User Repositories in internal persistence logic</td><td>Under Review</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 20%;"></td><td class="todo" style="width: 80%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54567 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54567" /></td><td class="subject"><a href="54567.html" class="issue status-9 priority-2 closed child parent">Story #54567</a>: Extbase: overall performance of backend modules</td><td>Closed</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54571 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="54571" /></td><td class="subject"><a href="54571.html" class="issue status-9 priority-1 closed child">Task #54571</a>: Extbase: Avoid TS parsing in BE if not necessary</td><td>Closed</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55653 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="55653" /></td><td class="subject"><a href="55653.html" class="issue status-7 priority-2 closed child">Task #55653</a>: belog: cache the beusers username</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-48960 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="48960" /></td><td class="subject"><a href="48960.html" class="issue status-1 priority-2 child">Feature #48960</a>: Extbase: Backport lazy dependency injection</td><td>New</td><td><a href="../../external.html?link=https://forge.typo3.org/users/1322">Marc Bastian Heinrichs</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55079 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="55079" /></td><td class="subject"><a href="55079.html" class="issue status-1 priority-2 child parent">Story #55079</a>: review Extbase caching for frontend and backend</td><td>New</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 33%;"></td><td class="todo" style="width: 67%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-55044 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="55044" /></td><td class="subject"><a href="55044.html" class="issue status-7 priority-2 closed child">Task #55044</a>: Make Extbase use cache group &quot;pages&quot;</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54701 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="54701" /></td><td class="subject"><a href="54701.html" class="issue status-1 priority-2 child">Task #54701</a>: Cache global TypoScript template in backend</td><td>New</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54813 hascontextmenu idnt idnt-2"><td class="checkbox"><input name="ids[]" type="checkbox" value="54813" /></td><td class="subject"><a href="54813.html" class="issue status-1 priority-1 child">Task #54813</a>: BackendConfigurationManager figures out wrong pid</td><td>New</td><td><a href="../../external.html?link=https://forge.typo3.org/users/2632">Felix Oertel</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-57594 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="57594" /></td><td class="subject"><a href="57594.html" class="issue status-2 priority-2 child">Task #57594</a>: Optimize ReflectionService Cache handling</td><td>Accepted</td><td><a href="../../external.html?link=https://forge.typo3.org/users/1322">Marc Bastian Heinrichs</a></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-54605 hascontextmenu idnt idnt-1"><td class="checkbox"><input name="ids[]" type="checkbox" value="54605" /></td><td class="subject"><a href="54605.html" class="issue status-6 priority-2 child">Task #54605</a>: Inject annotations should not be used by core (~5% perfor...</td><td>Under Review</td><td><a href="../../external.html?link=https://forge.typo3.org/users/1322">Marc Bastian Heinrichs</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56108 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="56108" /></td><td class="subject"><a href="56108.html" class="issue status-9 priority-2 closed child">Task #56108</a>: Cleanup \TYPO3\CMS\Recordlist\RecordList\DatabaseRecordLi...</td><td>Closed</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56109 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="56109" /></td><td class="subject"><a href="56109.html" class="issue status-7 priority-2 closed child">Task #56109</a>: Cleanup \TYPO3\CMS\Lang\LanguageService</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-56110 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="56110" /></td><td class="subject"><a href="56110.html" class="issue status-7 priority-2 closed child">Task #56110</a>: IconUtility::getSpriteIcon() needs a cache</td><td>Resolved</td><td></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-58357 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="58357" /></td><td class="subject"><a href="58357.html" class="issue status-7 priority-1 closed child">Bug #58357</a>: Superfluous SQL queries on copying records</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/35">Oliver Hader</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr><tr class="issue issue-59587 hascontextmenu "><td class="checkbox"><input name="ids[]" type="checkbox" value="59587" /></td><td class="subject"><a href="59587.html" class="issue status-7 priority-1 closed child">Bug #59587</a>: Performance killer: APC cache backend, wrong assignment o...</td><td>Resolved</td><td><a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a></td><td><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent"></p></td></tr></table></form>
+</div>
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10227">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="17085" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="17085.html" class="issue status-6 priority-2 child">Feature #17085</a>: HTTP GET &#39;If-Modified-Since&#39; ignored
+</td>
+<td class="status">Under Review</td>
+<td class="start_date">2007-03-06</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10554">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="56354" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="56354.html" class="issue status-7 priority-2 closed">Bug #56354</a>: Speed up updating the extension list
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-02-26</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/55065/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/55065/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=55065&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-199496" class="journal has-details">
+    <h4><a href="55065.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/702">Ingo Schmitt</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-01-16" title="2014-01-16 16:19">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Estimated time</strong> set to <i>400.00</i></li>
+      
+       <li><strong>Parent task</strong> set to <i>#55070</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-55065-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/55065.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="55065.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/55065 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:25:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

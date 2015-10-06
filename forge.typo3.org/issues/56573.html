@@ -1,0 +1,819 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/56573 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:17:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #56573: Converting by Flow\Identity - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/56573.atom" rel="alternate" title="TYPO3.Flow - Bug #56573: Converting by Flow\Identity" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-56573-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #56573</h2>
+
+<div class="issue status-1 priority-2 child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="56602.html" class="issue status-1 priority-2 parent">Major Feature #56602</a>: Handling Of Multi Identity Entities</p><div><h3>Converting by Flow\Identity</h3></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3171">Carsten Bleicker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 14:08">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-04-09" title="2014-04-09 13:10">over 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">New</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-03-05</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="todo" style="width: 100%;"></td></tr></table><p class="pourcent">0%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Persistence</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+	<th>Affected Flow version:</th><td>Git 2.0</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>i am receiving records from a third party by json rest api.<br />my entities getting a property $foreignIdentity wich is the id of third party.<br />i would expect that the converter finds these entities and converts them by any given identity.<br />maybe throw exception if its not unique. but it could be prevented by a unique constraint.</p>
+
+
+	<p>i would expect that 2.) works:</p>
+
+
+	<p>1.) <a class="external" href="../../external.html?link=http://acme.local/foo/fc700953-8911-9432-542e-968b7bff43e3">http://acme.local/foo/fc700953-8911-9432-542e-968b7bff43e3</a><br />Status 200 and flow persistence identifier is converted to concrete object</p>
+
+
+	<p>2.) <a class="external" href="../../external.html?link=http://acme.local/foo/5317133a3e1bb">http://acme.local/foo/5317133a3e1bb</a> <-- foreignIdentity wich is also a @Flow\Identity<br />Status 500<br />#1297933823: Object with identity "5317133a3e1bb" not found.</p>
+
+
+	<p>class looks like this:</p>
+
+
+	<p>// @Flow\Entity<br />class Foo{</p>
+
+
+/**
+	<ul>
+	<li>@var string</li>
+		<li>@Flow\Identity<br />    */<br />    protected $foreignIdentity;</li>
+	</ul>
+
+
+	<p>}</p>
+
+
+	<p>my routing:<br />-<br />    name: 'Read Action by property "foreignIdentity" or "flow_persistence_identifier" as {foo}'<br />    uriPattern: 'foo/{foo}'<br />    httpMethods: ['GET']<br />    defaults:<br />        '@package':    'Acme.Foo'<br />        '@controller': 'Foo'<br />        '@action':     'show'<br />        '@format':     'json'</p>
+
+
+	<p>i dont want to bind the rest api to the flow persistence identifier because third party users should use their own identity in combination with their workspace as unique constraint over the fields foreignIdentity_workspace.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-206487" class="journal has-notes has-details">
+    <h4><a href="56573.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 15:00">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Persistence</i></li>
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Bastian Waidelich</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-206487-notes"><p>Hi Carsten,</p>
+
+
+	<p>please mind the difference between <strong>identity</strong> and <strong>identifier</strong>!<br />The following should work (untested):<br /><pre>
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="keyword">use</span> <span class="constant">Doctrine</span>\<span class="constant">ORM</span>\<span class="constant">Mapping</span> <span class="keyword">as</span> <span class="constant">ORM</span>;
+<span class="line-numbers"> 2</span>
+<span class="line-numbers"> 3</span><span class="comment">/**</span>
+<span class="line-numbers"> 4</span><span class="comment"> * @Flow\Entity</span>
+<span class="line-numbers"> 5</span><span class="comment"> */</span>
+<span class="line-numbers"> 6</span><span class="keyword">class</span> <span class="class">Foo</span> {
+<span class="line-numbers"> 7</span>
+<span class="line-numbers"> 8</span>    <span class="comment">/**</span>
+<span class="line-numbers"> 9</span><span class="comment">     * @var string</span>
+<span class="line-numbers"><strong>10</strong></span><span class="comment">     * @ORM\Id</span>
+<span class="line-numbers">11</span><span class="comment">     */</span>
+<span class="line-numbers">12</span>    <span class="keyword">protected</span> <span class="local-variable">$foreignIdentity</span>;
+<span class="line-numbers">13</span>
+<span class="line-numbers">14</span>}
+</span></code><br /></pre></p>
+
+
+	<p>Please report back so we can close/fix the issue</p></div>
+  </div>
+  
+
+  <div id="change-206490" class="journal has-notes">
+    <h4><a href="56573.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3171">Carsten Bleicker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 15:17">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206490-notes"><p>Bastian Waidelich wrote:</p>
+
+
+<blockquote>
+
+	<p>Hi Carsten,</p>
+
+
+	<p>please mind the difference between <strong>identity</strong> and <strong>identifier</strong>!<br />The following should work (untested):<br />[...]</p>
+
+
+	<p>Please report back so we can close/fix the issue</p>
+
+
+</blockquote>
+
+	<p>Doesnt @ORM\Id results in a unique identity?<br />But my domain needs: @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="workspace_id",columns={"workspace", "id"})})<br />And as far i can see there is already an converting of multimple @Flow\Identity usage and converting them.<br />But seems only to work with array containing identities but not with identity as string?<br />@see \TYPO3\Flow\Property\TypeConverter\PersistentObjectConverter::findObjectByIdentityProperties</p>
+
+
+	<p>Thanks for help!</p></div>
+  </div>
+  
+
+  <div id="change-206494" class="journal has-notes">
+    <h4><a href="56573.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 15:27">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206494-notes"><p>(copy of my maillist answer):</p>
+
+
+	<p>I had to take some deep looks in the Flow code to understand, but I think I know what the problem is.</p>
+
+
+	<p>First of all, there is a difference between the persistence identifier (Persistence_Object_Identifier magic attribute or class attribute annotated with @ORM\Id) and an @Flow\Identity annotated attribute.<br />The latter is not connected to the database primary key, but is supposedly used to identify entities by alternative unique attributes.</p>
+
+
+	<p>Now what happens in 2.) is this:</p>
+
+
+	<p>Since you don't use the identity route part handler in your route configuration, the external identity string is just forwarded directly to the property mapping/type converter.</p>
+
+
+	<p>However, the PersistentObjectTypeConverter expects a string type identifier to be the persistence identifier and tries to retrieve the object by that.<br />This will obviously not match, as the primary key is the Persistence_Object_Identifer.</p>
+
+
+	<p>The PersistentObjectTypeConvert only falls back to retrieving the object by the additional identity when the value is an array.<br />This may be arguable behaviour, but so far is supposed to work if you use the IdentityRoutePart configuration, to tell the Routing that you expect an entity that is given by its identifier, which would in turn be converted to array('__identity' => $value), so the TypeConverter would work as expected.</p>
+
+
+	<p>Now, there is another problem with the IdentityRoutePartHandler::getObjectIdentifierFromPathSegment:<br />If you don't set an Uri pattern, it in turn will also try to check the given identity against the persistence identity (which again fails).<br />If you do set an Uri pattern (or have your entity annotated with @Flow\Identity attributes), it only works if the route part is cached, e.g. you created an URI to that entity beforehand.</p>
+
+
+	<p>I guess that's something that has to be discussed with the core developers, as the behaviour is not quite consequent, but too deep to give a quick solution.</p></div>
+  </div>
+  
+
+  <div id="change-206495" class="journal has-notes">
+    <h4><a href="56573.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 15:33">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206495-notes"><p>@Bastian I think this distinction is not well documented, but apart from that, the behaviour is also inconsequent as explained above. I think Carstens use case, though rare, is valid and it should be possible to use a single <strong>identifier</strong> (as to my understanding it would also work if he used a combined <strong>identifier</strong>) to route an entity, while it still has a different <strong>identity</strong> (e.g. magic persistence identifier).</p></div>
+  </div>
+  
+
+  <div id="change-206499" class="journal has-notes">
+    <h4><a href="56573.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3171">Carsten Bleicker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 15:38">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206499-notes"><p>This is so complicated :/<br />I have currently no idea how there could be a rest api wich acts for different "warenwirtschaftssysteme" (sorry, dont know the word in english) using the same id "123" wich should be converted automaticaly. access is done by query rewrite f.e. by entity acl:<br />OutsideOfWorkspace: 'this.workspace != current.restApiContext.workspace'</p></div>
+  </div>
+  
+
+  <div id="change-206525" class="journal has-notes">
+    <h4><a href="56573.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 17:49">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206525-notes"><p>I agree that the distinction between identity and identifiers could made clearer (feel free to open an issue in the documentation tracker). But I don't think the behavior is inconsequent:<br />Flow adds the magic <strong>Persistence_Object_Identifer</strong> only if you don't specify an identifier yourself (using the <strong>ORM\Id</strong> annotation).<br />If the property mapper would look at identifier <strong>and</strong> identity properties to convert an object, the result would not be deterministic.</p>
+
+
+	<p>@Carsten if you don't want to make the <strong>foreignIdentity</strong> the <strong>Id</strong> of your domain model for some reason, what you're looking for is the so called "object route parts" (see <a class="external" href="../../external.html?link=http://docs.typo3.org/flow/TYPO3FlowDocumentation/stable/TheDefinitiveGuide/PartIII/Routing.html#object-route-parts">http://docs.typo3.org/flow/TYPO3FlowDocumentation/stable/TheDefinitiveGuide/PartIII/Routing.html#object-route-parts</a>).<br />Try<br /><pre>
+<code class="yaml syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span>-
+<span class="line-numbers"> 2</span>  <span class="key">name</span>: <span class="string"><span class="content">'Read Action by property &quot;foreignIdentity&quot; or &quot;flow_persistence_identifier&quot; as {foo}'</span></span>
+<span class="line-numbers"> 3</span>  <span class="key">uriPattern</span>: <span class="string"><span class="content">'foo/{foo}'</span></span>
+<span class="line-numbers"> 4</span>  <span class="key">defaults</span>:
+<span class="line-numbers"> 5</span>    <span class="key"><span class="delimiter">'</span><span class="content">@package</span><span class="delimiter">'</span></span>: <span class="string"><span class="content">'Acme.Foo'</span></span>
+<span class="line-numbers"> 6</span>    <span class="key"><span class="delimiter">'</span><span class="content">@controller</span><span class="delimiter">'</span></span>: <span class="string"><span class="content">'Foo'</span></span>
+<span class="line-numbers"> 7</span>    <span class="key"><span class="delimiter">'</span><span class="content">@action</span><span class="delimiter">'</span></span>: <span class="string"><span class="content">'show'</span></span>
+<span class="line-numbers"> 8</span>    <span class="key"><span class="delimiter">'</span><span class="content">@format</span><span class="delimiter">'</span></span>: <span class="string"><span class="content">'json'</span></span>
+<span class="line-numbers"> 9</span>  <span class="key">routeParts</span>:
+<span class="line-numbers"><strong>10</strong></span>    <span class="key"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>:
+<span class="line-numbers">11</span>      <span class="key">objectType</span>: <span class="string"><span class="content">'Your\Package\Domain\Model\Foo'</span></span>
+<span class="line-numbers">12</span>      <span class="key">uriPattern</span>: <span class="string"><span class="content">'{foreignIdentity}'</span></span>
+<span class="line-numbers">13</span>  <span class="key">httpMethods</span>: <span class="string"><span class="content">['GET']</span></span>
+</span></code><br /></pre></p>
+
+
+	<p>You can have this route <strong>in addition</strong> to your existing one. But I wouldn't recommend to use "foo/&lt;UUID&gt;" and "foo/&lt;Foreign_Identifier&gt;" side by side as it contradicts the addressability constraint of REST</p></div>
+  </div>
+  
+
+  <div id="change-206526" class="journal has-notes">
+    <h4><a href="56573.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-05" title="2014-03-05 17:50">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206526-notes"><p>BTW: Given the difference between "identifier" and "identity" the property "foreignIdentity" should probably be called "foreignIdentifier"</p></div>
+  </div>
+  
+
+  <div id="change-206723" class="journal has-notes">
+    <h4><a href="56573.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-06" title="2014-03-06 12:44">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206723-notes"><p>Bastian Waidelich wrote:</p>
+
+
+<blockquote>
+
+	<p>I agree that the distinction between identity and identifiers could made clearer (feel free to open an issue in the documentation tracker). But I don't think the behavior is inconsequent:<br />Flow adds the magic <strong>Persistence_Object_Identifer</strong> only if you don't specify an identifier yourself (using the <strong>ORM\Id</strong> annotation).</p>
+
+
+</blockquote>
+
+	<p>So far that's all correct and valid.</p>
+
+
+<blockquote>
+
+	<p>If the property mapper would look at identifier <strong>and</strong> identity properties to convert an object, the result would not be deterministic.</p>
+
+
+</blockquote>
+
+	<p>But that's kind of what it already does, if I'm not mistaken:<br /><pre>
+    protected function fetchObjectFromPersistence($identity, $targetType) {
+        if (is_string($identity)) {
+            $object = $this-&gt;persistenceManager-&gt;getObjectByIdentifier($identity, $targetType);
+        } elseif (is_array($identity)) {
+            $object = $this-&gt;findObjectByIdentityProperties($identity, $targetType);
+        }
+        ...
+</pre><br />if the given <strong>identity</strong> is a simple string, it uses the persistence <strong>identifier</strong> (ie. the magic one or the field(s?) annotated as <strong>@ORM\Id</strong>). If however, the <strong>identity</strong> is an array, it uses the "identity properties" of the object, i.e. the fields that are annotated as <strong>@Flow\Identity</strong>.</p>
+
+
+<blockquote>
+
+	<p>@Carsten if you don't want to make the <strong>foreignIdentity</strong> the <strong>Id</strong> of your domain model for some reason, what you're looking for is the so called "object route parts" (see <a class="external" href="../../external.html?link=http://docs.typo3.org/flow/TYPO3FlowDocumentation/stable/TheDefinitiveGuide/PartIII/Routing.html#object-route-parts">http://docs.typo3.org/flow/TYPO3FlowDocumentation/stable/TheDefinitiveGuide/PartIII/Routing.html#object-route-parts</a>).<br />Try<br />[...]</p>
+
+
+</blockquote>
+
+	<p>If I follow the code correctly, the uriPattern is not needed to be set, as it automatically falls back to the @Flow\Identity properties if it is NULL. In either case, the IdentityRoutePartHandler will only use the objectPathMappingRepository to find the actual identifier of the object to use.<br />This is latest where the real problem sits IMO: For a REST-API it will not work, unless you also create URIs for all entities beforehand.</p></div>
+  </div>
+  
+
+  <div id="change-206726" class="journal has-details">
+    <h4><a href="56573.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/2208">Christian Müller</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-06" title="2014-03-06 13:26">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#56602</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-206738" class="journal has-notes">
+    <h4><a href="56573.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-06" title="2014-03-06 14:36">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206738-notes"><p>Alexander Berl wrote:</p>
+
+
+	<p>Thanks for the update.</p>
+
+
+<blockquote>
+
+	<p>if the given <strong>identity</strong> is a simple string, it uses the persistence <strong>identifier</strong> (ie. the magic one or the field(s?) annotated as <strong>@ORM\Id</strong>). If however, the <strong>identity</strong> is an array, it uses the "identity properties" of the object, i.e. the fields that are annotated as <strong>@Flow\Identity</strong>.</p>
+
+
+</blockquote>
+
+	<p>You're right - that's misleading if not wrong. We should look into it.</p>
+
+
+<blockquote>
+
+	<p>If I follow the code correctly, the uriPattern is not needed to be set, as it automatically falls back to the @Flow\Identity properties if it is NULL.</p>
+
+
+</blockquote>
+
+	<p>True, that has only been fixed recently</p>
+
+
+<blockquote>
+
+	<p>In either case, the IdentityRoutePartHandler will only use the objectPathMappingRepository to find the actual identifier of the object to use.</p>
+
+
+</blockquote>
+
+	<p>Yes - this is still a bug / missing feature of the IdentityRoutePart. I created an issue for that and take care of it asap: <a href="56608.html" class="issue status-9 priority-2 closed" title="Don't use object path mapping for object routes without custom uriPattern (Closed)">#56608</a><br />But...</p>
+
+
+<blockquote>
+
+	<p>This is latest where the real problem sits IMO: For a REST-API it will not work, unless you also create URIs for all entities beforehand.</p>
+
+
+</blockquote>
+
+	<p>Allow me to split hairs: A fully RESTflui client must never construct URIs by itself but the server should, so this should not be a problem. But that's no reason to fix the bug mentioned above of course.</p>
+
+
+	<p>Anyways, using the "object routing" is just one approach. You could also just create a <strong>FooRoutePartHandler</strong> that can convert an incoming "foreignIdentifier" to an instance of foo vice versa.<br />It's very easy:<br /><pre>
+<code class="php syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span><span class="inline-delimiter">&lt;?php</span>
+<span class="line-numbers"> 2</span><span class="keyword">namespace</span> <span class="constant">Your</span>\<span class="constant">Package</span>\<span class="constant">Routing</span>;
+<span class="line-numbers"> 3</span>
+<span class="line-numbers"> 4</span><span class="keyword">use</span> <span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Annotations</span> <span class="keyword">as</span> <span class="constant">Flow</span>;
+<span class="line-numbers"> 5</span><span class="keyword">use</span> <span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Mvc</span>\<span class="predefined-constant">Exception</span>\<span class="constant">InvalidRoutePartValueException</span>;
+<span class="line-numbers"> 6</span><span class="keyword">use</span> <span class="constant">TYPO3</span>\<span class="constant">Flow</span>\<span class="constant">Mvc</span>\<span class="constant">Routing</span>\<span class="constant">DynamicRoutePart</span>;
+<span class="line-numbers"> 7</span><span class="keyword">use</span> <span class="constant">Your</span>\<span class="constant">Package</span>\<span class="constant">Domain</span>\<span class="constant">Model</span>\<span class="constant">Foo</span>;
+<span class="line-numbers"> 8</span><span class="keyword">use</span> <span class="constant">Your</span>\<span class="constant">Package</span>\<span class="constant">Domain</span>\<span class="constant">Repository</span>\<span class="constant">FooRepository</span>;
+<span class="line-numbers"> 9</span>
+<span class="line-numbers"><strong>10</strong></span><span class="keyword">class</span> <span class="class">FooRoutePartHandler</span> <span class="keyword">extends</span> <span class="constant">DynamicRoutePart</span> {
+<span class="line-numbers">11</span>
+<span class="line-numbers">12</span>    <span class="comment">/**</span>
+<span class="line-numbers">13</span><span class="comment">     * @Flow\Inject</span>
+<span class="line-numbers">14</span><span class="comment">     * @var FooRepository</span>
+<span class="line-numbers">15</span><span class="comment">     */</span>
+<span class="line-numbers">16</span>    <span class="keyword">protected</span> <span class="local-variable">$fooRepository</span>;
+<span class="line-numbers">17</span>
+<span class="line-numbers">18</span>    <span class="comment">/**</span>
+<span class="line-numbers">19</span><span class="comment">     * @param string $value</span>
+<span class="line-numbers"><strong>20</strong></span><span class="comment">     * @return boolean</span>
+<span class="line-numbers">21</span><span class="comment">     */</span>
+<span class="line-numbers">22</span>    <span class="keyword">protected</span> <span class="keyword">function</span> <span class="function">matchValue</span>(<span class="local-variable">$value</span>) {
+<span class="line-numbers">23</span>        <span class="local-variable">$foo</span> = <span class="local-variable">$this</span>-&gt;fooRepository-&gt;findOneByForeignIdentifier(<span class="local-variable">$value</span>);
+<span class="line-numbers">24</span>        <span class="keyword">if</span> (<span class="local-variable">$foo</span> === <span class="predefined-constant">NULL</span>) {
+<span class="line-numbers">25</span>            <span class="keyword">return</span> <span class="predefined-constant">FALSE</span>;
+<span class="line-numbers">26</span>        }
+<span class="line-numbers">27</span>        <span class="local-variable">$this</span>-&gt;value = <span class="predefined">array</span>(<span class="string"><span class="delimiter">'</span><span class="content">__identity</span><span class="delimiter">'</span></span> =&gt; <span class="local-variable">$this</span>-&gt;persistenceManager-&gt;getIdentifierByObject(<span class="local-variable">$foo</span>));
+<span class="line-numbers">28</span>        <span class="keyword">return</span> <span class="predefined-constant">TRUE</span>;
+<span class="line-numbers">29</span>    }
+<span class="line-numbers"><strong>30</strong></span>
+<span class="line-numbers">31</span>    <span class="comment">/**</span>
+<span class="line-numbers">32</span><span class="comment">     * @param mixed $value</span>
+<span class="line-numbers">33</span><span class="comment">     * @return boolean</span>
+<span class="line-numbers">34</span><span class="comment">     */</span>
+<span class="line-numbers">35</span>    <span class="keyword">protected</span> <span class="keyword">function</span> <span class="function">resolveValue</span>(<span class="local-variable">$value</span>) {
+<span class="line-numbers">36</span>        <span class="keyword">if</span> (!<span class="local-variable">$value</span> <span class="keyword">instanceof</span> <span class="constant">Foo</span>) {
+<span class="line-numbers">37</span>            <span class="keyword">return</span> <span class="predefined-constant">FALSE</span>;
+<span class="line-numbers">38</span>        }
+<span class="line-numbers">39</span>        <span class="local-variable">$this</span>-&gt;value = <span class="local-variable">$value</span>-&gt;getForeignIdentifier();
+<span class="line-numbers"><strong>40</strong></span>        <span class="keyword">return</span> <span class="predefined-constant">TRUE</span>;
+<span class="line-numbers">41</span>    }
+<span class="line-numbers">42</span>}
+</span></code><br /></pre></p>
+
+
+	<p>The corresponding route would look like:<br /><pre>
+<code class="yaml syntaxhl"><span class="CodeRay"><span class="line-numbers"> 1</span>-
+<span class="line-numbers"> 2</span>  <span class="key">name</span>: <span class="string"><span class="content">'Read Action by property &quot;foreignIdentity&quot; or &quot;flow_persistence_identifier&quot; as {foo}'</span></span>
+<span class="line-numbers"> 3</span>  <span class="key">uriPattern</span>: <span class="string"><span class="content">'foo/{foo}'</span></span>
+<span class="line-numbers"> 4</span>  <span class="key">defaults</span>:
+<span class="line-numbers"> 5</span>    <span class="key"><span class="delimiter">'</span><span class="content">@package</span><span class="delimiter">'</span></span>: <span class="string"><span class="content">'Acme.Foo'</span></span>
+<span class="line-numbers"> 6</span>    <span class="key"><span class="delimiter">'</span><span class="content">@controller</span><span class="delimiter">'</span></span>: <span class="string"><span class="content">'Foo'</span></span>
+<span class="line-numbers"> 7</span>    <span class="key"><span class="delimiter">'</span><span class="content">@action</span><span class="delimiter">'</span></span>: <span class="string"><span class="content">'show'</span></span>
+<span class="line-numbers"> 8</span>    <span class="key"><span class="delimiter">'</span><span class="content">@format</span><span class="delimiter">'</span></span>: <span class="string"><span class="content">'json'</span></span>
+<span class="line-numbers"> 9</span>  <span class="key">routeParts</span>:
+<span class="line-numbers"><strong>10</strong></span>    <span class="key"><span class="delimiter">'</span><span class="content">foo</span><span class="delimiter">'</span></span>:
+<span class="line-numbers">11</span>      <span class="key">handler</span>: <span class="string"><span class="content">'Your\Package\Routing\FooRoutePartHandler'</span></span>
+<span class="line-numbers">12</span>  <span class="key">httpMethods</span>: <span class="string"><span class="content">['GET']</span></span>
+</span></code><br /></pre></p>
+
+
+	<p>(untested)</p></div>
+  </div>
+  
+
+  <div id="change-206750" class="journal has-notes">
+    <h4><a href="56573.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/4764">Alexander Berl</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-06" title="2014-03-06 15:20">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206750-notes"><p>Thanks for creating the issue for the objectPathMapping!</p>
+
+
+	<p>Bastian Waidelich wrote:</p>
+
+
+<blockquote><blockquote>
+
+	<p>This is latest where the real problem sits IMO: For a REST-API it will not work, unless you also create URIs for all entities beforehand.</p>
+
+
+</blockquote>
+
+	<p>Allow me to split hairs: A fully RESTflui client must never construct URIs by itself but the server should, so this should not be a problem. But that's no reason to fix the bug mentioned above of course.</p>
+
+
+</blockquote>
+
+	<p>Ah yes, very good point indeed, though probably more theoretical than practical.</p></div>
+  </div>
+  
+
+  <div id="change-207095" class="journal has-notes">
+    <h4><a href="56573.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3171">Carsten Bleicker</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-09" title="2014-03-09 12:59">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-207095-notes"><p>I dont understand how this routing matching stuff works.<br />Is that Rocket Science?<br />@Bastian:<br />resolveValue is used to build up the value in link generation?<br />matchValue is used for the opposite (uri comes in?)</p>
+
+
+	<p>i need this:<br />incoming uri: rest/show/acme.foo/123</p>
+
+
+	<p>i need to get the __identity by acme.foo/123.<br />so in think this is a routePart, right?</p>
+
+
+	<p>you shows an example but thats only a single value, in yours the "foreignIdentity".<br />i need to route a combination of workspace/foreignIdentity.</p>
+
+
+	<p>why isnt this example from documentation working for me?<br />-<br />  name: 'Single post actions'<br />  uriPattern:     'posts/{post}/{@action}'<br />  defaults:<br />    '@controller':  'Post'<br />  routeParts:<br />    post:<br />      objectType: 'TYPO3\Blog\Domain\Model\Post'<br />      uriPattern: '{date:Y}/{date:m}/{date:d}/{title}'</p>
+
+
+	<p>in my case:<br />-<br />  name: 'Single post actions'<br />  uriPattern:     '{@action}/{artist}'<br />  defaults:<br />    '@package':    'Foo.Bar'<br />    '@controller': 'Artist'<br />    '@format':     'json'<br />  routeParts:<br />    artist:<br />      objectType: 'Foo\Bar\Domain\Model\Artist'<br />      uriPattern: '{workspace}/{foreignIdentity}'</p></div>
+  </div>
+  
+
+  <div id="change-212452" class="journal has-notes has-details">
+    <h4><a href="56573.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-04-09" title="2014-04-09 13:10">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>New</i></li>
+      
+       <li><strong>Assigned To</strong> deleted (<strike><i>Bastian Waidelich</i></strike>)</li>
+      
+       <li><strong>Priority</strong> changed from <i>Must have</i> to <i>Should have</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-212452-notes"><p>Carsten Bleicker wrote:</p>
+
+
+<blockquote>
+
+	<p>I dont understand how this routing matching stuff works.<br />Is that Rocket Science?</p>
+
+
+</blockquote>
+
+	<p>I agree that it's not easy to grasp because of the inherent complexity of routing. But it's not rocket science once you got the hang of it.</p>
+
+
+<blockquote>
+
+	<p>resolveValue is used to build up the value in link generation?<br />matchValue is used for the opposite (uri comes in?)</p>
+
+
+</blockquote>
+
+	<p>Exactly, maybe the doc comments on the RoutePartInterface<sup><a href="#fn1">1</a></sup> also help a bit.</p>
+
+
+<blockquote>
+
+	<p>i need this:<br />incoming uri: rest/show/acme.foo/123</p>
+
+
+</blockquote>
+
+<blockquote>
+
+	<p>i need to get the __identity by acme.foo/123.<br />so in think this is a routePart, right?</p>
+
+
+</blockquote>
+
+	<p>"acme.foo/" is part of the __identity?<br />When the route is created it splits up the <strong>uriPattern</strong> into <strong>static</strong> and <strong>dynamic</strong> route parts.<br />The uriPattern "posts/{post}/{@action}" consists of 3 route parts:</p>
+
+
+	<ul>
+	<li>"posts/" a static route part that only matches the request path substring "posts/" </li>
+		<li>"{post}" a dynamic route part that (by default) matches everything until a <strong>splitString</strong> which is a slash ("/") in this case</li>
+		<li>"{@action}" the same</li>
+	</ul>
+
+
+<blockquote>
+
+	<p>why isnt this example from documentation working for me?<br />-<br />name: 'Single post actions'<br />uriPattern:     'posts/{post}/{@action}'<br />defaults:<br />'@controller':  'Post'<br />routeParts:<br />post:<br />objectType: 'TYPO3\Blog\Domain\Model\Post'<br />uriPattern: '{date:Y}/{date:m}/{date:d}/{title}'</p>
+
+
+	<p>in my case:<br />-<br />name: 'Single post actions'<br />uriPattern:     '{@action}/{artist}'<br />defaults:<br />'@package':    'Foo.Bar'<br />'@controller': 'Artist'<br />'@format':     'json'<br />routeParts:<br />artist:<br />objectType: 'Foo\Bar\Domain\Model\Artist'<br />uriPattern: '{workspace}/{foreignIdentity}'</p>
+
+
+</blockquote>
+
+	<p>Not sure, it looks right, but you should provide more context. But maybe the mailing list is a better place to discuss this.</p>
+
+
+	<p>I unassign myself for now because I can't judge the actual issue, maybe Karsten knows more?</p>
+
+
+	<p>[1] <a class="external" href="../../external.html?link=https://git.typo3.org/Packages/TYPO3.Flow.git/blob/HEAD:/Classes/TYPO3/Flow/Mvc/Routing/RoutePartInterface.php">https://git.typo3.org/Packages/TYPO3.Flow.git/blob/HEAD:/Classes/TYPO3/Flow/Mvc/Routing/RoutePartInterface.php</a></p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-56573-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/56573.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="56573.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/56573 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:17:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,921 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/51570 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:13:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Feature #51570: Unpersisted changes in Safe Requests should throw an Exception - TYPO3.Flow - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+#header #right-area, #header #right-area h1, #header #right-area a {
+  color:transparent;
+}
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/51570.atom" rel="alternate" title="TYPO3.Flow - Feature #51570: Unpersisted changes in Safe Requests should throw an Exception" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 current sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="background-image:url(../headerimages/16.jpg);">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/search" accesskey="4" style="color:transparent">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>TYPO3.Flow</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/flow3-distribution-base" class="level-1 current sorting-0">TYPO3 Flow Base Distribution</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-eel" class="level-2 sorting-0">TYPO3.Eel</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow" class="level-2 current sorting-0">TYPO3.Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-fluid" class="level-2 sorting-0">TYPO3.Fluid</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-kickstart" class="level-2 sorting-0">TYPO3.Kickstart</a><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-welcome" class="level-2 sorting-0">TYPO3.Welcome</a><a href="../../external.html?link=https://forge.typo3.org/projects/packages" class="level-1 sorting-10">Packages</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3-apps" class="level-1 sorting-30">Applications</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=375" class="query">Open documentation issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/issues?query_id=204" class="query">Recently modified</a>
+
+
+
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-51570-watcher"></span>
+
+
+</div>
+
+
+<h2>Feature #51570</h2>
+
+<div class="issue status-7 priority-2 closed details">
+  
+
+  
+
+<div class="subject">
+<div><h3>Unpersisted changes in Safe Requests should throw an Exception</h3></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-30" title="2013-08-30 12:03">almost 2 years</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-04-10" title="2014-04-10 10:18">over 1 year</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2013-08-30</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">-</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version">-</td>
+    
+</tr>
+<tr>
+	<th>PHP Version:</th><td></td>
+	<th>Complexity:</th><td></td>
+</tr>
+<tr>
+	<th>Has patch:</th><td>No</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>With the recent change to not trigger persistAll in safe request methods (GET/HEAD) some users<br />stumble over not getting their entities saved because of this. Altough it's written to the log<br />and mentioned in the docs i think we should also throw an exception telling the developer about this<br />if the following conditions are met:</p>
+
+
+	<ul>
+	<li>the current request method is a safe request method (GET/HEAD)</li>
+		<li>the current context is the development context</li>
+		<li>the user added/updated/removed an entity using a Repository or PeristenceManager</li>
+		<li>the user <strong>did not</strong> trigger persistAll using the PersistenceManager on it's own</li>
+	</ul>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-9355">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="47951" /></td>
+<td class="subject">related to 
+    TYPO3.Flow - 
+    <a href="47951.html" class="issue status-1 priority-2">Feature #47951</a>: Warn if persistence stack is not empty at the end of a ge...
+</td>
+<td class="status">New</td>
+<td class="start_date">2013-05-05</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/51570/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/51570/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=51570&amp;project_id=package-typo3-flow')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/e9b5de3f8708ce136c2a08d07e173f953013ecce" title="Revision e9b5de3f">Revision e9b5de3f</a><br />
+        <span class="author">Added by Marc Neuhaus  <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-06" title="2014-03-06 21:34">over 1 year</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][FEATURE] Throw exception for unpersisted changes in Safe Requests</p>
+
+
+	<p>This changeset keeps track if the PersistenceManager has unpersisted changes<br />and notifies the Developer with a helpful exception if this happens in a<br />safe request (GET/HEAD). This exception is only thrown in development context</p>
+
+
+	<p>In case you implemented your own Persistence Manager, you must add the new<br />hasUnpersistedChanges() method, unless you extend the AbstractPersistenceManager.</p>
+
+
+	<p>Releases: master<br />Resolves: <a href="51570.html" class="issue status-7 priority-2 closed" title="Unpersisted changes in Safe Requests should throw an Exception (Resolved)">#51570</a><br />Change-Id: I52cd0b5d650327daa4507eb197f36da50a75daa7</p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/ad0c7178d98e5aa94da5eaf246f928f3040cea91" title="Revision ad0c7178">Revision ad0c7178</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/2039">Alexander Stehlik</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-11-17" title="2014-11-17 10:57">9 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][BUGFIX] Skip automatic persistence for updated entities</p>
+
+
+	<p>When trying to persist changes in a "safe request" (e.g. ``GET``) Flow<br />throws an exception::</p>
+
+
+	<pre><code>Detected modified or new objects [...] to be persisted which is not<br />  allowed for "safe requests"</code></pre>
+
+
+	<p>including details on how to work around this.</p>
+
+
+	<p>This currently only works if entities have been <strong>added</strong> or <strong>removed</strong>.</p>
+
+
+	<p>With this change also <strong>updates</strong> to entities are tracked correctly so<br />that automatic persistence is skipped for modified objects for safe<br />requests.</p>
+
+
+	<p>This is a breaking change when code relied on the incorrect behavior of<br />automatically persisting changes even for safe requests.<br />In this case make sure to trigger updates only via unsafe requests (e.g.<br />``POST`` or ``PUT``).<br />If that's not an option, the issue can be worked around with a manual<br />call to ``PersistenceManager::persistAll()``.</p>
+
+
+	<p>Change-Id: I9eb781c54c608c867a45206f64b6baf98c3d07f2<br />Releases: master, 2.2, 2.1<br />Fixes: FLOW-84<br />Related: <a href="47252.html" class="issue status-7 priority-1 closed" title="Skip CSRF protection and persistence for &quot;safe&quot; request methods (Resolved)">#47252</a><br />Related: <a href="51570.html" class="issue status-7 priority-2 closed" title="Unpersisted changes in Safe Requests should throw an Exception (Resolved)">#51570</a></p>
+    </div>
+    </div>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/bfffa3c501bfd5362e454ccaeaf351a4f404b6d3" title="Revision bfffa3c5">Revision bfffa3c5</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/2039">Alexander Stehlik</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2015-04-08" title="2015-04-08 12:38">4 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][BUGFIX] Skip automatic persistence for updated entities</p>
+
+
+	<p>When trying to persist changes in a "safe request" (e.g. ``GET``) Flow<br />throws an exception::</p>
+
+
+	<pre><code>Detected modified or new objects [...] to be persisted which is not<br />  allowed for "safe requests"</code></pre>
+
+
+	<p>including details on how to work around this.</p>
+
+
+	<p>This currently only works if entities have been <strong>added</strong> or <strong>removed</strong>.</p>
+
+
+	<p>With this change also <strong>updates</strong> to entities are tracked correctly so<br />that automatic persistence is skipped for modified objects for safe<br />requests.</p>
+
+
+	<p>This is a breaking change when code relied on the incorrect behavior of<br />automatically persisting changes even for safe requests.<br />In this case make sure to trigger updates only via unsafe requests (e.g.<br />``POST`` or ``PUT``).<br />If that's not an option, the issue can be worked around with a manual<br />call to ``PersistenceManager::persistAll()``.</p>
+
+
+	<p>Change-Id: I9eb781c54c608c867a45206f64b6baf98c3d07f2<br />Releases: master, 2.3, 2.2<br />Fixes: FLOW-84<br />Related: <a href="47252.html" class="issue status-7 priority-1 closed" title="Skip CSRF protection and persistence for &quot;safe&quot; request methods (Resolved)">#47252</a><br />Related: <a href="51570.html" class="issue status-7 priority-2 closed" title="Unpersisted changes in Safe Requests should throw an Exception (Resolved)">#51570</a></p>
+    </div>
+    </div>
+
+    <div class="changeset even">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/a0b36f97d8d0b57fa6851206968a6492dec7707c" title="Revision a0b36f97">Revision a0b36f97</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/2039">Alexander Stehlik</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2015-04-26" title="2015-04-26 19:01">3 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[!!!][BUGFIX] Skip automatic persistence for updated entities</p>
+
+
+	<p>When trying to persist changes in a "safe request" (e.g. ``GET``) Flow<br />throws an exception::</p>
+
+
+	<pre><code>Detected modified or new objects [...] to be persisted which is not<br />  allowed for "safe requests"</code></pre>
+
+
+	<p>including details on how to work around this.</p>
+
+
+	<p>This currently only works if entities have been <strong>added</strong> or <strong>removed</strong>.</p>
+
+
+	<p>With this change also <strong>updates</strong> to entities are tracked correctly so<br />that automatic persistence is skipped for modified objects for safe<br />requests.</p>
+
+
+	<p>This is a breaking change when code relied on the incorrect behavior of<br />automatically persisting changes even for safe requests.<br />In this case make sure to trigger updates only via unsafe requests (e.g.<br />``POST`` or ``PUT``).<br />If that's not an option, the issue can be worked around with a manual<br />call to ``PersistenceManager::persistAll()``.</p>
+
+
+	<p>Change-Id: I9eb781c54c608c867a45206f64b6baf98c3d07f2<br />Releases: master, 2.3, 2.2<br />Fixes: FLOW-84<br />Related: <a href="47252.html" class="issue status-7 priority-1 closed" title="Skip CSRF protection and persistence for &quot;safe&quot; request methods (Resolved)">#47252</a><br />Related: <a href="51570.html" class="issue status-7 priority-2 closed" title="Unpersisted changes in Safe Requests should throw an Exception (Resolved)">#51570</a></p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-179900" class="journal has-notes has-details">
+    <h4><a href="51570.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-30" title="2013-08-30 12:04">almost 2 years</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-179900-notes"><p>Patch set 2 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-179901" class="journal has-notes">
+    <h4><a href="51570.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-30" title="2013-08-30 12:15">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-179901-notes"><p>Patch set 3 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-179927" class="journal has-notes">
+    <h4><a href="51570.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-08-30" title="2013-08-30 14:10">almost 2 years</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-179927-notes"><p>Patch set 4 for branch <strong>master</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-189077" class="journal has-notes">
+    <h4><a href="51570.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-11-06" title="2013-11-06 21:56">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-189077-notes"><p>Patch set 5 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-189105" class="journal has-notes">
+    <h4><a href="51570.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-11-07" title="2013-11-07 10:53">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-189105-notes"><p>Patch set 6 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-189309" class="journal has-notes">
+    <h4><a href="51570.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-11-10" title="2013-11-10 00:17">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-189309-notes"><p>Patch set 7 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-189311" class="journal has-notes">
+    <h4><a href="51570.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-11-10" title="2013-11-10 00:34">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-189311-notes"><p>Patch set 8 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-189312" class="journal has-notes">
+    <h4><a href="51570.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2013-11-10" title="2013-11-10 01:05">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-189312-notes"><p>Patch set 9 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-204761" class="journal has-notes">
+    <h4><a href="51570.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-02-21" title="2014-02-21 01:16">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-204761-notes"><p>Patch set 10 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-205832" class="journal has-notes">
+    <h4><a href="51570.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-02-28" title="2014-02-28 11:25">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-205832-notes"><p>Patch set 11 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-206744" class="journal has-notes">
+    <h4><a href="51570.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-06" title="2014-03-06 15:12">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206744-notes"><p>Patch set 12 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-206806" class="journal has-notes">
+    <h4><a href="51570.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-06" title="2014-03-06 21:29">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206806-notes"><p>Patch set 13 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-206810" class="journal has-notes">
+    <h4><a href="51570.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-06" title="2014-03-06 21:42">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-206810-notes"><p>Patch set 14 for branch <strong>master</strong> of project <strong>Packages/TYPO3.Flow</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=https://review.typo3.org/23484">https://review.typo3.org/23484</a></p></div>
+  </div>
+  
+
+  <div id="change-206827" class="journal has-notes has-details">
+    <h4><a href="51570.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by Anonymous <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-06" title="2014-03-06 22:36">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-206827-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/repository/revisions/e9b5de3f8708ce136c2a08d07e173f953013ecce" class="changeset" title="[!!!][FEATURE] Throw exception for unpersisted changes in Safe Requests This changeset keeps tra...">e9b5de3f8708ce136c2a08d07e173f953013ecce</a>.</p></div>
+  </div>
+  
+
+  <div id="change-207978" class="journal has-notes">
+    <h4><a href="51570.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37356">Marco Falkenberg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-13" title="2014-03-13 11:20">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-207978-notes"><p>Could you please NOT throw an exception and just log it?! Isn't it a little bit overdone accepting a breaking change just for a developer message?</p>
+
+
+	<p>What about if you wan't to persist the missing entities manually after the controller invocation? In my case I persist user messages entities, which I want to show sometimes also for safe requests.</p></div>
+  </div>
+  
+
+  <div id="change-207995" class="journal has-notes">
+    <h4><a href="51570.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-13" title="2014-03-13 11:54">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-207995-notes"><p>Hey Marco :)</p>
+
+
+	<p>The Exception is only thrown if all these conditions are met:</p>
+
+
+	<p>- you are running inside the Development Context<br />- you added Entities to the PersistenceManger<br />- the request is a safe request which, by default does not persist anything that's added to the PersistenceManager<br />- you did <strong>not</strong> trigger persistenceManager->persistAll manually after adding the entities</p>
+
+
+	<p>We had several people quite confused because there changes weren't persisted in safe requests. The only case where<br />this could be considered "breaking" is where you might have a bug because the changes weren't persisted because of the<br />safe request.</p>
+
+
+	<p>We choose against a log entry because this would have destroyed the whole point of making novices aware of the <br />safe request behavior.</p>
+
+
+	<p>If i understand you correctly you have a safe request method, were you change/add entities and persist manually?<br />then this exception should not be thrown. do you use some kind of customer peristenceManager?</p>
+
+
+	<p>Cheers<br />Marc</p></div>
+  </div>
+  
+
+  <div id="change-210951" class="journal has-notes">
+    <h4><a href="51570.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37356">Marco Falkenberg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-28" title="2014-03-28 16:42">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-210951-notes"><p>Hey Marc. Thanks for your answer. No I don't have a custom persitence manager. The only thing i did was to persist particular entities (Notifications) after every controller invocation. To realize this behaviour I hooked into the slot AfterControllerInvocation which fits very well.</p>
+
+
+	<p><code>$dispatcher->connect('TYPO3\Flow\Mvc\Dispatcher', 'afterControllerInvocation', function($request) use($bootstrap) {<br />  $myRepo->persistEntities();<br />});</code></p>
+
+
+	<p>But Flow now also uses this slot to throw the discussed exception.</p></div>
+  </div>
+  
+
+  <div id="change-210958" class="journal has-notes">
+    <h4><a href="51570.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3273">Marc Neuhaus</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-28" title="2014-03-28 17:34">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-210958-notes"><p>ah, i see. yes that could fail then of course. usually the manual persisting is done right were you did the change<br />in cases like that.</p>
+
+
+	<p>But Robert introduced another thing quite recently: "Whitelisted objects"</p>
+
+
+	<p><a class="external" href="../../external.html?link=https://review.typo3.org/#/c/28792/">https://review.typo3.org/#/c/28792/</a></p>
+
+
+	<p><a class="external" href="../../external.html?link=http://docs.typo3.org/flow/TYPO3FlowDocumentation/latest/TheDefinitiveGuide/PartIII/Persistence.html#whitelisted-objects">http://docs.typo3.org/flow/TYPO3FlowDocumentation/latest/TheDefinitiveGuide/PartIII/Persistence.html#whitelisted-objects</a></p>
+
+
+	<p>Maybe that could help you?</p></div>
+  </div>
+  
+
+  <div id="change-211099" class="journal has-notes">
+    <h4><a href="51570.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-03-31" title="2014-03-31 11:52">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-211099-notes"><p>Marco Falkenberg wrote:</p>
+
+
+	<p>Hi Marco ;)</p>
+
+
+	<p>Just a little comment regarding:</p>
+
+
+<blockquote>
+
+	<p><code>$dispatcher->connect('TYPO3\Flow\Mvc\Dispatcher', 'afterControllerInvocation', function($request) use($bootstrap) {<br />$myRepo->persistEntities();<br />});</code></p>
+
+
+</blockquote>
+
+	<p>I guess you're aware of this, but for anyone else who might just copy that:<br />With this you circumvent our CSRF-protection. That means: You could change the server state (update, add, delete data) just by clicking a link (in an email for example) if you have the required privileges (e.g. you are logged in to the flow app).<br />That's because the CSRF token is only checked for "unsafe" requests.</p>
+
+
+	<p>While this might be perfectly fine in your case it's worth mentioning that there are ways around this:</p>
+
+
+	<p>For example you could check the CSRF-token explicitly for the affected actions (and make sure any link contains the token..).<br />Or you could encapsulate the functionality (in this case: notifications) in some service that persists changes immediately.<br />Or create those entities asynchronously via AJAX.</p>
+
+
+	<p>It depends on the use case but I usually prefer the last solution because it follows the HTTP spec and it allows for caching(!)  - for example if you want to increase a view-counter on each view of a certain article</p></div>
+  </div>
+  
+
+  <div id="change-212552" class="journal has-notes">
+    <h4><a href="51570.html#note-20" class="journal-link">#20</a>
+    
+    <a name="note-20"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37356">Marco Falkenberg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-04-10" title="2014-04-10 09:49">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-212552-notes"><p>Marc Neuhaus wrote:</p>
+
+
+<blockquote>
+
+	<p>ah, i see. yes that could fail then of course. usually the manual persisting is done right were you did the change<br />in cases like that.</p>
+
+
+	<p>But Robert introduced another thing quite recently: "Whitelisted objects"</p>
+
+
+	<p><a class="external" href="../../external.html?link=https://review.typo3.org/#/c/28792/">https://review.typo3.org/#/c/28792/</a></p>
+
+
+	<p><a class="external" href="../../external.html?link=http://docs.typo3.org/flow/TYPO3FlowDocumentation/latest/TheDefinitiveGuide/PartIII/Persistence.html#whitelisted-objects">http://docs.typo3.org/flow/TYPO3FlowDocumentation/latest/TheDefinitiveGuide/PartIII/Persistence.html#whitelisted-objects</a></p>
+
+
+	<p>Maybe that could help you?</p>
+
+
+</blockquote>
+
+	<p>That's a clean (white) solution and fits perfect to me needs. Thanks Robert!</p></div>
+  </div>
+  
+
+  <div id="change-212557" class="journal has-notes">
+    <h4><a href="51570.html#note-21" class="journal-link">#21</a>
+    
+    <a name="note-21"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37356">Marco Falkenberg</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-04-10" title="2014-04-10 10:11">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-212557-notes"><p>Bastian Waidelich wrote:</p>
+
+
+<blockquote>
+
+	<p>Marco Falkenberg wrote:</p>
+
+
+	<p>Hi Marco ;)</p>
+
+
+	<p>Just a little comment regarding:</p>
+
+
+	<p>$dispatcher->connect('TYPO3\Flow\Mvc\Dispatcher', 'afterControllerInvocation', function($request) use($bootstrap) {<br />$myRepo->persistEntities();<br />});</p>
+
+
+	<p>I guess you're aware of this, but for anyone else who might just copy that:<br />With this you circumvent our CSRF-protection. That means: You could change the server state (update, add, delete data) just by clicking a link (in an email for example) if you have the required privileges (e.g. you are logged in to the flow app).<br />That's because the CSRF token is only checked for "unsafe" requests.</p>
+
+
+	<p>While this might be perfectly fine in your case it's worth mentioning that there are ways around this:</p>
+
+
+	<p>For example you could check the CSRF-token explicitly for the affected actions (and make sure any link contains the token..).<br />Or you could encapsulate the functionality (in this case: notifications) in some service that persists changes immediately.<br />Or create those entities asynchronously via AJAX.</p>
+
+
+	<p>It depends on the use case but I usually prefer the last solution because it follows the HTTP spec and it allows for caching(!)  - for example if you want to increase a view-counter on each view of a certain article</p>
+
+
+</blockquote>
+
+	<p>Hi Bastian,</p>
+
+
+	<p>many thanks for this hints and enforcing me to think about more often to follow the HTTP specs :)</p>
+
+
+	<p>Of course I thought about not persisting just everything. While ago I found something like this:</p>
+
+
+<pre>
+class NotificationRepository {
+  ...
+
+  public function persistEntities() {
+    foreach ($this-&gt;entityManager-&gt;getUnitOfWork()-&gt;getIdentityMap() as $className =&gt; $entities) {
+      if ($className === $this-&gt;entityClassName) {
+        foreach ($entities as $entityToPersist) {
+          $this-&gt;entityManager-&gt;flush($entityToPersist);
+        }
+        return;
+      }
+    }
+  }
+}
+</pre>
+
+	<p>Please correct if I'm wrong. If I call NotificationRepository::persistEntities only entities of this certain type will be persisted? That's what I tried in code above. But you're right: at least for this entities the CSRF-protection is circumvented.</p>
+
+
+	<p>FYI: I tried the second solution (persisting immediately) with the mentioned special repository function. But then some changes for other objects get lost. After some debugging I could see why. Look at the last lines of \Doctrine\ORM\UnitOfWork::commit.</p>
+
+
+	<p>In the end I used the new introduced whitelist :)</p>
+
+
+	<p>Thanks anyway!</p></div>
+  </div>
+  
+
+  <div id="change-212563" class="journal has-notes">
+    <h4><a href="51570.html#note-22" class="journal-link">#22</a>
+    
+    <a name="note-22"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/61">Bastian Waidelich</a> <a href="../../external.html?link=https://forge.typo3.org/projects/package-typo3-flow/activity?from=2014-04-10" title="2014-04-10 10:18">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-212563-notes"><p>Marco Falkenberg wrote:</p>
+
+
+<blockquote>
+
+	<p>many thanks for this hints and enforcing me to think about more often to follow the HTTP specs :)</p>
+
+
+</blockquote>
+
+	<p>You're welcome ;)</p>
+
+
+<blockquote>
+
+	<p>If I call NotificationRepository::persistEntities only entities of this certain type will be persisted?</p>
+
+
+</blockquote>
+
+	<p>Correct, probably including the dependencies (for example product.category).</p>
+
+
+<blockquote>
+
+	<p>FYI: I tried the second solution (persisting immediately) with the mentioned special repository function. But then some changes for other objects get lost.<br />After some debugging I could see why. Look at the last lines of \Doctrine\ORM\UnitOfWork::commit.</p>
+
+
+</blockquote>
+
+	<p>Uh.. ok..</p>
+
+
+<blockquote>
+
+	<p>In the end I used the new introduced whitelist :)</p>
+
+
+</blockquote>
+
+	<p>Good choice ;)</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-51570-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/51570.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="51570.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/51570 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 22:13:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

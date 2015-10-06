@@ -1,0 +1,711 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/57393 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:14:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Bug #57393: Endless Loop in TceformsUpdateWizard - Core - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/57393.atom" rel="alternate" title="Core - Bug #57393: Endless Loop in TceformsUpdateWizard" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 current sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Core</h1>
+        <div id="quicklinks"><p>Development of TYPO3 CMS</p></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/wiki" class="wiki">Wiki</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core" class="level-1 current sorting-10">Core</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-search" class="level-2 sorting-0">Indexed Search</a><a href="../../external.html?link=https://forge.typo3.org/projects/extension-linkvalidator" class="level-2 sorting-0">Linkvalidator</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-releasecycles" class="level-2 sorting-0">Release Cycles</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-team" class="level-2 sorting-0">Team Resources</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-workspaces" class="level-2 sorting-0">Workspaces & Versioning</a><a href="../../external.html?link=https://forge.typo3.org/projects/usability" class="level-2 sorting-10">TYPO3 CMS Usability Team</a><a href="../../external.html?link=https://forge.typo3.org/projects/extensions" class="level-1 sorting-20">Community Extensions</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3v4-distribution" class="level-1 sorting-44">Distributions</a><a href="../../external.html?link=https://forge.typo3.org/projects/cms-feature-requests" class="level-1 sorting-50">Feature-Requests</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-v62" class="level-1 sorting-620">TYPO3 6.2 Projects (+)</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-archived" class="level-1 sorting-1000">(Archived Projects)</a>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=219" class="query">Easy tasks</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=391" class="query">FAL Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=523" class="query">Regressions</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/issues?query_id=459" class="query">Roadmap v7</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (8)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/320">Benjamin Mack</a></li>
+<li>TYPO3 Release Team</li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/40184">Benjamin Pucher</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/40209">Steffen Krüchten</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/37817">Tobias Braumann</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/38710">Sebastian Helzle</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/832">Stefan Neufeind</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/users/3447">shanmugarajan  k</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-57393-watcher"></span>
+
+
+</div>
+
+
+<h2>Bug #57393</h2>
+
+<div class="issue status-7 priority-1 closed child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="57578.html" class="issue status-2 priority-2 parent">Task #57578</a>: TceformsUpdateWizard improvements (Migrate all file relations from tt_content.image and pages.media)</p><div><h3>Endless Loop in TceformsUpdateWizard</h3></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/40184">Benjamin Pucher</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-03-27" title="2014-03-27 15:49">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-02" title="2015-03-02 21:30">5 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Resolved</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-03-27</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Must have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to">-</td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Install Tool</td>
+    
+    <th class="spent-time">Spent time:</th>
+    <td class="spent-time">-</td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2354">next-patchlevel</a></td>
+    
+    <th class="estimated-hours">Estimated time:</th><td class="estimated-hours">0.25 hour</td>
+    
+</tr>
+<tr>
+	<th>TYPO3 Version:</th><td>6.2</td>
+	<th>Is Regression:</th><td>No</td>
+</tr>
+<tr>
+	<th>PHP Version:</th><td>5.3</td>
+	<th>Sprint Focus:</th><td></td>
+</tr>
+<tr>
+	<th>Complexity:</th><td>medium</td>
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>I'm currently updating a large TYPO3 Website from 4.5 to 6.2 and have found a bug in the Upgrade Wizard.<br />The migration with title 'Migrate all file relations from tt_content.image and pages.media' (typo3/sysext/install/Classes/Updates/TceformsUpdateWizard.php) ends up in an endless loop. <br />The problem exists in the do/while loop starting at line 188 respectively in the getRecordsFromTable method in typo3/sysext/install/Classes/Updates/TceformsUpdateWizard.php.</p>
+
+
+<pre>
+188 do {
+189     $records = $this-&gt;getRecordsFromTable($table, $fieldToMigrate, $fieldsToGet, self::RECORDS_PER_QUERY);
+190     foreach ($records as $record) {
+191         $this-&gt;migrateField($table, $record, $fieldToMigrate, $fieldConfiguration, $customMessages);
+192     }
+193 } while (count($records) === self::RECORDS_PER_QUERY);
+</pre>
+
+	<p>self::RECORDS_PER_QUERY is set to 1000. Every time a query like 'select ... LIMIT 1000' is created. Because there's no starting point defined after the LIMIT statement (which should be 0 on first loop and then += self::RECORDS_PER_QUERY) the query will always fetch the first self::RECORDS_PER_QUERY entries. Thus the while condition is always true.<br />To fix this the LIMIT statement should have the starting point included like LIMIT &lt;entries_fetched_so_far&gt;, self::RECORDS_PER_QUERY.</p>
+
+
+	<p>Please fix this asap since many people will update their TYPO3 LTS Websites shortly.</p>
+  </div>
+
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10848">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="43725" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="43725.html" class="issue status-2 priority-1 child">Bug #43725</a>: TceformsUpdateWizard exceeds memory_limit/max_execution_time
+</td>
+<td class="status">Accepted</td>
+<td class="start_date">2012-12-07</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+<tr class="issue hascontextmenu" id="relation-10896">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="57572" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="57572.html" class="issue status-7 priority-1 closed child">Task #57572</a>: TceformsUpdateWizard has to handle SQL errors
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2014-04-02</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/57393/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/57393/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=57393&amp;project_id=typo3cms-core')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+<div id="issue-changesets">
+<h3>Associated revisions</h3>
+
+    <div class="changeset odd">
+    <p><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/57f749d1fec1fa4964f37627ec9868cfdfbd4382" title="Revision 57f749d1">Revision 57f749d1</a><br />
+        <span class="author">Added by <a href="../../external.html?link=https://forge.typo3.org/users/37363">Nicole Cordes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-02" title="2015-03-02 21:22">5 months</a> ago</span></p>
+    <div class="wiki">
+        <p>[BUGFIX] Prevent infinite loop in TceformsUpdateWizard</p>
+
+
+	<p>If you have more than 1000 missing files within file relations in<br />tt_content.image and pages.media an infinite loop pops up, because<br />always the same records are fetched from database. This patch stores<br />the uids of failed records for each table to prevent the infinite loop<br />and restart processing after timeout.</p>
+
+
+	<p>Releases: 6.2<br />Resolves: <a href="57393.html" class="issue status-7 priority-1 closed child" title="Endless Loop in TceformsUpdateWizard (Resolved)">#57393</a><br />Change-Id: I559be13efe88ae3111321dafb8d6a79886f903ae<br />Reviewed-on: <a class="external" href="../../external.html?link=http://review.typo3.org/37032">http://review.typo3.org/37032</a><br />Reviewed-by: Stefan Neufeind &lt;<a class="email" href="mailto:typo3.neufeind@speedpartner.de">typo3.neufeind@speedpartner.de</a>&gt;<br />Reviewed-by: Wouter Wolters &lt;<a class="email" href="mailto:typo3@wouterwolters.nl">typo3@wouterwolters.nl</a>&gt;<br />Reviewed-by: Göran Bodenschatz &lt;<a class="email" href="mailto:coding@46halbe.de">coding@46halbe.de</a>&gt;<br />Reviewed-by: Christian Kuhn &lt;<a class="email" href="mailto:lolli@schwarzbu.ch">lolli@schwarzbu.ch</a>&gt;<br />Tested-by: Christian Kuhn &lt;<a class="email" href="mailto:lolli@schwarzbu.ch">lolli@schwarzbu.ch</a>&gt;<br />Reviewed-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;<br />Tested-by: Markus Klein &lt;<a class="email" href="mailto:klein.t3@reelworx.at">klein.t3@reelworx.at</a>&gt;</p>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-211276" class="journal has-notes">
+    <h4><a href="57393.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/40209">Steffen Krüchten</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-01" title="2014-04-01 13:44">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-211276-notes"><p>I can confirm this Bug, also trying to update a small Installation to 6.2.0 from 4.5.32 with PHP 5.3.27. Everything else went smooth, Frontend is up and running but no Content images at all.</p>
+
+
+	<p>Upgrade Wizard throws a "Uncaught TYPO3 Exception" in Debug-Mode when trying to execute "Migrate all file relations from tt_content.image and pages.media": <br />PHP Warning: Invalid argument supplied for foreach() in typo3/sysext/install/Classes/Updates/TceformsUpdateWizard.php line 190.</p></div>
+  </div>
+  
+
+  <div id="change-211556" class="journal has-notes has-details">
+    <h4><a href="57393.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-02" title="2014-04-02 17:36">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>next-patchlevel</i></strike>)</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-211556-notes"><p>These are two different issues.</p>
+
+
+	<p>The issue reported here is IMO not an issue. The limit is ok, you can always start from 0, because the select query only looks at records not yet migrated!</p>
+
+
+	<p>Regarding the foreach() thing. There seems to be a DB issue, the select seems to fail.<br />I'll create a new ticket for this, which introduces a better check and issues an exception with the SQL error.</p></div>
+  </div>
+  
+
+  <div id="change-211565" class="journal has-notes">
+    <h4><a href="57393.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-02" title="2014-04-02 19:06">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-211565-notes"><p>The new ticket for the foreach() issue is <a href="57572.html" class="issue status-7 priority-1 closed child" title="TceformsUpdateWizard has to handle SQL errors (Resolved)">#57572</a></p></div>
+  </div>
+  
+
+  <div id="change-211575" class="journal has-details">
+    <h4><a href="57393.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-02" title="2014-04-02 19:36">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#57578</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-214166" class="journal has-notes">
+    <h4><a href="57393.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37817">Tobias Braumann</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-04-25" title="2014-04-25 15:28">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-214166-notes"><p>I can confirm this Bug, too. In our case the Problem was that we have a lot of pictures in tt_content, <br />which no longer exist and the script don't set the image field to 1 or delete the entries. <br />So in the foreach() there are still the same 1000 entries (infinityloop).</p>
+
+
+	<p>We fix that problem by increasing the value self::RECORDS_PER_QUERY to the number of entries from tt_content.</p></div>
+  </div>
+  
+
+  <div id="change-228148" class="journal has-details">
+    <h4><a href="57393.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3767">Alexander Opitz</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-08-27" title="2014-08-27 15:18">11 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>New</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-236716" class="journal has-notes">
+    <h4><a href="57393.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/38710">Sebastian Helzle</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2014-11-18" title="2014-11-18 09:44">9 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-236716-notes"><p>We also had this issue today with a big site (~15000 pages) and more than 1000 missing media files in the page properties because we tried the upgrade on a lightweight copy without the assets.</p></div>
+  </div>
+  
+
+  <div id="change-250297" class="journal has-notes has-details">
+    <h4><a href="57393.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-20" title="2015-02-20 01:56">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-250297-notes"><p>Patch set 1 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37032">http://review.typo3.org/37032</a></p></div>
+  </div>
+  
+
+  <div id="change-250298" class="journal has-notes">
+    <h4><a href="57393.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-20" title="2015-02-20 01:57">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250298-notes"><p>Patch set 2 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37032">http://review.typo3.org/37032</a></p></div>
+  </div>
+  
+
+  <div id="change-250345" class="journal has-notes">
+    <h4><a href="57393.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-20" title="2015-02-20 12:57">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250345-notes"><p>Patch set 3 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37032">http://review.typo3.org/37032</a></p></div>
+  </div>
+  
+
+  <div id="change-250347" class="journal has-notes">
+    <h4><a href="57393.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-20" title="2015-02-20 13:25">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250347-notes"><p>We kindly ask you to please test the patch linked above with your databases.<br />If it works for you, please vote accordingly.</p>
+
+
+	<p>Thanks a lot!</p></div>
+  </div>
+  
+
+  <div id="change-250348" class="journal has-details">
+    <h4><a href="57393.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-20" title="2015-02-20 13:25">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>next-patchlevel</i></li>
+      
+       <li><strong>Complexity</strong> changed from <i>easy</i> to <i>medium</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-250349" class="journal has-notes">
+    <h4><a href="57393.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-20" title="2015-02-20 13:30">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250349-notes"><p>Patch set 4 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37032">http://review.typo3.org/37032</a></p></div>
+  </div>
+  
+
+  <div id="change-250350" class="journal has-notes">
+    <h4><a href="57393.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/36798">Gerrit Code Review</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-20" title="2015-02-20 13:35">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250350-notes"><p>Patch set 5 for branch <strong>TYPO3_6-2</strong> of project <strong>Packages/TYPO3.CMS</strong> has been pushed to the review server.<br />It is available at <a class="external" href="../../external.html?link=http://review.typo3.org/37032">http://review.typo3.org/37032</a></p></div>
+  </div>
+  
+
+  <div id="change-250855" class="journal has-notes">
+    <h4><a href="57393.html#note-15" class="journal-link">#15</a>
+    
+    <a name="note-15"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3447">shanmugarajan  k</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-26" title="2015-02-26 14:14">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-250855-notes"><p>It seems,once click Execute, i never see this "Migrate all file relations from tt_content.image and pages.media" upgrade wizard.</p>
+
+
+	<p>I have around 10000+ records.</p>
+
+
+	<p>I re-imported the db, but still i could not see the wizard again. can you please let me know if i doing something wrong?</p></div>
+  </div>
+  
+
+  <div id="change-251057" class="journal has-notes">
+    <h4><a href="57393.html#note-16" class="journal-link">#16</a>
+    
+    <a name="note-16"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3447">shanmugarajan  k</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-27" title="2015-02-27 16:07">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251057-notes"><p>i just saw in the LocalConfiguration.php</p>
+
+
+	<p>'INSTALL' => array() having the  'wizardDone'  wizard is entered. Hence its not visible again.</p>
+
+
+	<p>so it seems, this is added as soon as first run completed.</p></div>
+  </div>
+  
+
+  <div id="change-251080" class="journal has-notes">
+    <h4><a href="57393.html#note-17" class="journal-link">#17</a>
+    
+    <a name="note-17"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3351">Markus Klein</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-27" title="2015-02-27 19:25">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251080-notes"><p>@shanmugarajan</p>
+
+
+	<p>Which TYPO3 version are you upgrading from?<br />Are you sure you actually need this patch?</p>
+
+
+	<p>It can well be that the wizard manages to complete the migration in one go, so it won't show up again.</p></div>
+  </div>
+  
+
+  <div id="change-251088" class="journal has-notes">
+    <h4><a href="57393.html#note-18" class="journal-link">#18</a>
+    
+    <a name="note-18"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3447">shanmugarajan  k</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-02-27" title="2015-02-27 23:27">5 months</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-251088-notes"><p>Hello Markus,</p>
+
+
+	<p>Yes. i upgrading from 4.5 to 6.2.</p>
+
+
+	<p>Yes. needed. thanks.</p></div>
+  </div>
+  
+
+  <div id="change-251475" class="journal has-notes has-details">
+    <h4><a href="57393.html#note-19" class="journal-link">#19</a>
+    
+    <a name="note-19"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/37363">Nicole Cordes</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/activity?from=2015-03-02" title="2015-03-02 21:30">5 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Resolved</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-251475-notes"><p>Applied in changeset <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-core/repository/revisions/57f749d1fec1fa4964f37627ec9868cfdfbd4382" class="changeset" title="[BUGFIX] Prevent infinite loop in TceformsUpdateWizard If you have more than 1000 missing files ...">57f749d1fec1fa4964f37627ec9868cfdfbd4382</a>.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-57393-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/57393.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="57393.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/57393 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:14:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

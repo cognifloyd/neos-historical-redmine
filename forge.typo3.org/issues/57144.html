@@ -1,0 +1,746 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<!-- Mirrored from forge.typo3.org/issues/57144 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:29:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Task #57144: Configuration to add HTTP Headers to backend responses - Security Guide - TYPO3 Forge</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<link href="../themes/TYPO3/stylesheets/applicationfaba.css?1437165176" media="all" rel="stylesheet" type="text/css" />
+<script src="../javascripts/prototypefaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/effectsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/dragdropfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/controlsfaba.js?1437165176" type="text/javascript"></script>
+<script src="../javascripts/applicationfaba.js?1437165176" type="text/javascript"></script>
+<script src="../plugin_assets/flow_design_helpers/javascripts/custom-scriptsf881.js?1437165331" type="text/javascript"></script>
+
+<!--[if IE]>
+    <style type="text/css">
+      * html body{ width: expression( document.documentElement.clientWidth < 900 ? '900px' : '100%' ); }
+      body {behavior: url(/stylesheets/csshover.htc?1437165176);}
+    </style>
+<![endif]-->
+ <link href="../plugin_assets/redmine_backlogs/stylesheets/jquery/jquery.jqplot.minb674.css?1437165332" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-1.6.2.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery-ui-1.8.16.custom.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jeditable.minib674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.scrollfollowb674.js?1437165332" type="text/javascript"></script>
+
+<!--[if IE]>
+<script src="/plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/excanvas.js?1437165332" type="text/javascript"></script>
+<![endif]-->
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/jquery.jqplotb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.highlighterb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasTextRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.canvasAxisTickRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.jqplot/plugins/jqplot.enhancedLegendRenderer.minb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/jquery/jquery.cookieb674.js?1437165332" type="text/javascript"></script>
+
+<script type="text/javascript"
+        src="../rb/server_variables.js">
+</script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/commonb674.js?1437165332" type="text/javascript"></script>
+<script src="../plugin_assets/redmine_backlogs/javascripts/burndownb674.js?1437165332" type="text/javascript"></script>
+
+
+<style type="text/css">
+
+</style>
+
+<!-- page specific tags -->
+
+    <link href="../../external.html?link=https://forge.typo3.org/issues/57144.atom" rel="alternate" title="Security Guide - Task #57144: Configuration to add HTTP Headers to backend responses" type="application/atom+xml" />
+    <link href="../themes/TYPO3/stylesheets/scmfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" />
+<script src="../javascripts/context_menufaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/context_menufaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /><script src="../javascripts/jstoolbar/jstoolbarfaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/textilefaba.js?1437165176" type="text/javascript"></script><script src="../javascripts/jstoolbar/lang/jstoolbar-enfaba.js?1437165176" type="text/javascript"></script><link href="../stylesheets/jstoolbarfaba.css?1437165176" media="screen" rel="stylesheet" type="text/css" /></head>
+<body>
+<div id="wrapper">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/login" class="login">Sign in</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/account/register" class="register">Register</a></li></ul>    </div>
+    
+    <ul><li><a href="../../external.html?link=https://forge.typo3.org/" class="home">Home</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects" class="projects">Projects</a></li>
+<li><a href="../../external.html?link=http://www.redmine.org/guide" class="help">Help</a></li></ul></div>
+      
+<div id="header">
+    <div id="header-left">
+        <div id="header-menu">
+            <a href="../../external.html?link=https://forge.typo3.org/" class="start">Start</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms" class="level-0 sorting-10">TYPO3 CMS</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3neos" class="level-0 sorting-20">TYPO3 Neos</a><a href="../../external.html?link=https://forge.typo3.org/projects/flow3" class="level-0 sorting-20">TYPO3 Flow</a><a href="../../external.html?link=https://forge.typo3.org/projects/team-docteam" class="level-0 current sorting-26">Documentation</a><a href="../../external.html?link=https://forge.typo3.org/projects/other" class="level-0 sorting-30">other</a>
+        </div>
+    </div>
+    
+    <div id="right-area"  style="">
+        <div id="quick-search">
+            <form action="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/search" method="get">
+            <input name="issues" type="hidden" value="1" />
+            <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/search" accesskey="4" style="">Search</a>:
+            <input accesskey="f" class="small" id="q" name="q" size="20" type="text" />
+            </form>
+        </div>
+
+        <h1>Security Guide</h1>
+        <div id="quicklinks"></div>
+    </div>
+    
+    <div id="main-menu">
+        <input class="projectsearch placeholder" id="projectname_project" name="projectname[project]" onfocus="this.value = &quot;&quot;; $(this).removeClassName(&quot;placeholder&quot;);" size="30" type="text" value="Project title search" /><div class="auto_complete" id="projectname_project_auto_complete"></div><script type="text/javascript">
+//<![CDATA[
+var projectname_project_auto_completer = new Ajax.Autocompleter('projectname_project', 'projectname_project_auto_complete', '/projects/auto_complete', {afterUpdateElement:function(element, value) { var identNode = $(value).select(".identifier"); window.location.href="/projects/"+identNode[0].innerHTML }})
+//]]>
+</script>
+        <ul><li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security" class="overview">Overview</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity" class="activity">Activity</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/roadmap" class="roadmap">Roadmap</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues" class="issues selected">Issues</a></li>
+<li><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/repository" class="repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div class="" id="main">
+    <div id="leftmenu">
+        <a href="../../external.html?link=https://forge.typo3.org/projects/team-doc-infrastructure" class="level-1 sorting-0">ReStructured Text Infrastructure</a><a href="../../external.html?link=https://forge.typo3.org/projects/documentation-whatsnew" class="level-1 sorting-0">TYPO3 CMS - What's New</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3org-wiki" class="level-1 sorting-0">wiki.typo3.org</a><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-documentation" class="level-1 current sorting-15">TYPO3 CMS Documentation</a><select onchange="window.location.href='/projects/'+this.value"><option value="extensions">- Select Subproject-</option><option  value="extension-examples">Core Documentation Examples</option><option  value="book_extbase_fluid">Extbase Book Translation</option><option  value="typo3cms-doc-extbase">Extbase Guide</option><option  value="typo3cms-doc-file-abstraction-layer">FAL Documentation</option><option  value="typo3cms-doc-getting-started">Getting Started</option><option  value="typo3cms-doc-installation">Installation and Upgrade Guide</option><option  value="typo3cms-doc-frontend-localization">Localization Guide</option><option  value="typo3cms-doc-maintenance">Maintenance Guide</option><option  value="typo3cms-doc-official-extension-template">Official Doc Extension Template</option><option  value="typo3cms-doc-official-template">Official Doc Templates</option><option selected="selected" value="typo3cms-doc-security">Security Guide</option><option  value="typo3cms-doc-tca">TCA Reference</option><option  value="typo3cms-doc-templating">Templating Tutorial</option><option  value="doc_tut_templating">Templating Tutorial (Files)</option><option  value="typo3cms-doc-skinning">TYPO3 Skinning Reference</option><option  value="typo3cms-doc-editors">TYPO3 Tutorial for Editors</option><option  value="typo3cms-doc-typoscript-45-minutes">TypoScript in 45 Minutes</option><option  value="typo3cms-doc-core-api">Core APIs</option><option  value="typo3cms-doc-coding-guidelines">Coding Guidelines</option><option  value="typo3cms-doc-inside-typo3">Inside TYPO3</option><option  value="typo3cms-doc-typo3-services">TYPO3 Services</option><option  value="typo3cms-doc-typoscript-syntax">TypoScript Syntax</option><option  value="typo3cms-doc-tsconfig">TSconfig</option><option  value="typo3cms-doc-typoscript">TypoScript Reference (TSref)</option></select>
+    </div>
+    <div id="sidebar">        
+        
+  <h3>Issues</h3>
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues?set_filter=1">View all issues</a><br />
+
+<a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues/report">Summary</a><br />
+
+
+
+
+
+
+
+<h3>Custom queries</h3><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues?query_id=133" class="query">Hierarchical Issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues?query_id=322" class="query">Most wanted Bugfixes</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues?query_id=321" class="query">Most wanted Features</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues?query_id=167" class="query">My open issues</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues?query_id=203" class="query">New &amp; Unassigned</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues?query_id=90" class="query">Open Bugs</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues?query_id=204" class="query">Recently modified</a><br /><a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/issues?query_id=550" class="query">Tasks for 1.0.7 release</a>
+
+
+
+  
+    <div id="watchers">
+      
+
+<h3>Watchers (1)</h3>
+
+<ul><li><a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a></li></ul>
+
+    </div>
+  
+
+        
+    </div>
+    
+    <div id="content">
+				
+        <div class="contextual">
+
+
+<span class="issue-57144-watcher"></span>
+
+
+</div>
+
+
+<h2>Task #57144</h2>
+
+<div class="issue status-9 priority-2 closed child details">
+  
+
+  
+
+<div class="subject">
+<div><p><a href="60744.html" class="issue status-9 priority-2 closed parent">Task #60744</a>: Raise version of TYPO3 Security Guide to 1.0.6</p><div><h3>Configuration to add HTTP Headers to backend responses</h3></div></div>
+</div>
+        <p class="author">
+        Added by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-03-21" title="2014-03-21 12:46">over 1 year</a> ago.
+        
+        Updated <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-08-04" title="2014-08-04 13:59">12 months</a> ago.
+        
+        </p>
+
+<table class="attributes">
+<tr>
+    <th class="status">Status:</th><td class="status">Closed</td>
+    <th class="start-date">Start date:</th><td class="start-date">2014-03-21</td>
+</tr>
+<tr>
+    <th class="priority">Priority:</th><td class="priority">Should have</td>
+    <th class="due-date">Due date:</th><td class="due-date"></td>
+</tr>
+<tr>
+    <th class="assigned-to">Assigned To:</th><td class="assigned-to"><a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a></td>
+    <th class="progress">% Done:</th><td class="progress"><table class="progress" style="width: 80px;"><tr><td class="closed" style="width: 100%;"></td></tr></table><p class="pourcent">100%</p></td>
+</tr>
+<tr>
+    <th class="category">Category:</th><td class="category">Guidelines for Administrators</td>
+    
+    <th></th>
+    <td></td>
+    
+</tr>
+<tr>
+    <th class="fixed-version">Target version:</th><td class="fixed-version"><a href="../../external.html?link=https://forge.typo3.org/versions/2800">1.0.6</a></td>
+    
+    <th class="estimated-hours">Estimated time:</th><td class="estimated-hours">1.00 hour</td>
+    
+</tr>
+
+
+</table>
+
+<hr />
+
+  <div class="contextual">
+  
+  </div>
+
+  <p><strong>Description</strong></p>
+  <div class="wiki">
+  <p>It has been made possible to configure additional HTTP headers<br />to be sent in every backend request.</p>
+
+
+	<p>This mainly has been done to add a X-Frame-Options: SAMEORIGIN header for click jacking protection,<br />but it can also be used to let TYPO3 send additional headers in every backend request:</p>
+
+
+	<p>This code can be placed in ext_localconf.php or AdditionalConfiguration.php</p>
+
+
+<code>
+$TYPO3_CONF_VARS['BE']['HTTP']['Response']['Headers'][] = 'X-Custom-Header: Value';
+</code>
+  </div>
+
+<div class="attachments">
+
+<p><a href="../../external.html?link=https://forge.typo3.org/attachments/download/27288/task57144-1.patch" class="icon icon-attachment">task57144-1.patch</a>  
+    <a href="../../external.html?link=https://forge.typo3.org/attachments/27288/task57144-1.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a>
+  
+  
+  <span class="size">(4.4 kB)</span>
+  
+  
+    <span class="author">Michael Schams, 2014-08-02 14:10</span>
+  
+  </p>
+
+</div>
+
+
+
+
+
+
+
+<hr />
+<div id="relations">
+<div class="contextual">
+
+</div>
+
+<p><strong>Related issues</strong></p>
+
+
+<form>
+<table class="list issues">
+
+<tr class="issue hascontextmenu" id="relation-10792">
+<td class="checkbox"><input name="ids[]" type="checkbox" value="54201" /></td>
+<td class="subject">related to 
+    Core - 
+    <a href="54201.html" class="issue status-7 priority-3 closed child">Bug #54201</a>: Implement Clickjacking Protection
+</td>
+<td class="status">Resolved</td>
+<td class="start_date">2013-12-04</td>
+<td class="due_date"></td>
+<td class="buttons"></td>
+</tr>
+
+</table>
+</form>
+
+
+<form action="../../external.html?link=https://forge.typo3.org/issues/57144/relations" id="new-relation-form" method="post" onsubmit="new Ajax.Request('/issues/57144/relations', {asynchronous:true, evalScripts:true, method:'post', onComplete:function(request){Form.Element.focus('relation_issue_to_id');}, parameters:Form.serialize(this)}); return false;" style="display: none;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="IjgAk+sryuS7AAkPn7/ITUV652f6cwFBHN6GNTvW7o8=" /></div>
+
+
+<p><select id="relation_relation_type" name="relation[relation_type]" onchange="setPredecessorFieldsVisibility();"><option value="relates">related to</option>
+<option value="duplicates">duplicates</option>
+<option value="duplicated">duplicated by</option>
+<option value="blocks">blocks</option>
+<option value="blocked">blocked by</option>
+<option value="precedes">precedes</option>
+<option value="follows">follows</option></select>
+Issue #<input id="relation_issue_to_id" name="relation[issue_to_id]" size="10" type="text" />
+<span id="predecessor_fields" style="display:none;">
+Delay: <input id="relation_delay" name="relation[delay]" size="3" type="text" /> days
+</span>
+<input name="commit" type="submit" value="Add" />
+<a href="#" onclick="Element.toggle('new-relation-form'); this.blur(); return false;">Cancel</a>
+</p>
+
+<div id="related_issue_candidates" class="autocomplete"></div>
+<script type="text/javascript">
+//<![CDATA[
+observeRelatedIssueField('/issues/auto_complete?id=57144&amp;project_id=typo3cms-doc-security')
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+setPredecessorFieldsVisibility();
+//]]>
+</script>
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="history">
+<h3>History</h3>
+
+  <div id="change-209478" class="journal has-notes">
+    <h4><a href="57144.html#note-1" class="journal-link">#1</a>
+    
+    <a name="note-1"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-03-21" title="2014-03-21 12:49">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-209478-notes"><p>Disabling the clickjacking protection is not recommended but might be needed e.g. if you need to embed backend pages in iframes on a foreign domain.</p>
+
+
+	<p>Then the header can be reset by adding the following code:</p>
+
+
+<code>
+unset($TYPO3_CONF_VARS['BE']['HTTP']['Response']['Headers']['clickJackingProtection']);
+</code></div>
+  </div>
+  
+
+  <div id="change-209579" class="journal has-notes">
+    <h4><a href="57144.html#note-2" class="journal-link">#2</a>
+    
+    <a name="note-2"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/317">Ernesto Baschny</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-03-21" title="2014-03-21 19:15">over 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-209579-notes"><p>Note that this setting was introduced in TYPO3 CMS 6.2, in case you are wondering. :)</p></div>
+  </div>
+  
+
+  <div id="change-209709" class="journal has-notes has-details">
+    <h4><a href="57144.html#note-3" class="journal-link">#3</a>
+    
+    <a name="note-3"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/329">Francois Suter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-03-22" title="2014-03-22 13:04">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Project</strong> changed from <i>Documentation</i> to <i>Security Guide</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-209709-notes"><p>We don't have any manual describing all the TYPO3_CONF_VARS options, but I think this one fits very nicely into the Security Guide.</p></div>
+  </div>
+  
+
+  <div id="change-209710" class="journal has-details">
+    <h4><a href="57144.html#note-4" class="journal-link">#4</a>
+    
+    <a name="note-4"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/329">Francois Suter</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-03-22" title="2014-03-22 13:05">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>1.0.5</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-209712" class="journal has-notes has-details">
+    <h4><a href="57144.html#note-5" class="journal-link">#5</a>
+    
+    <a name="note-5"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-03-22" title="2014-03-22 13:31">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>New</i> to <i>Needs Feedback</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Helmut Hummel</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-209712-notes"><p>This is indeed a security-related option and the Security Guide is the right place for it.<br />I wonder which chapter of the Guide would be appropriate for this?</p>
+
+
+	<p>If you can add this in file <code>ext_localconf.php</code>, it is developer-related, but the Security Guide does not cover developer topics (yet). You can also put this configuration in <code>AdditionalConfiguration.php</code>, which means, it is not an integrator’s business, because integrators do not have access to PHP files necessarily - only administrator have - which results in chapter "Guidelines for Administrators".</p>
+
+
+	<p>Sounds a little bit weird to me, to be honest. Do you think, this is an administrator's topic? In this case, I am happy to come up with something that describes the custom HTTP headers in the BE.</p>
+
+
+	<p>By the way: I would not explain how to disable the clickjacking protection, because this <ins>decreases</ins> the level of security, which is against the idea of the Security Guide from my perspective.</p></div>
+  </div>
+  
+
+  <div id="change-209724" class="journal has-notes has-details">
+    <h4><a href="57144.html#note-6" class="journal-link">#6</a>
+    
+    <a name="note-6"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-03-22" title="2014-03-22 14:45">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Needs Feedback</i> to <i>Accepted</i></li>
+      
+       <li><strong>Assigned To</strong> deleted (<strike><i>Helmut Hummel</i></strike>)</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-209724-notes"><p>Michael Schams wrote:</p>
+
+
+<blockquote>
+
+	<p>This is indeed a security-related option and the Security Guide is the right place for it.<br />I wonder which chapter of the Guide would be appropriate for this?</p>
+
+
+</blockquote>
+
+	<p>Hm, good question, I don't know either.<br />This protection is like CSRF protection (which cannot really be disabled).</p>
+
+
+<blockquote>
+
+	<p>If you can add this in file <code>ext_localconf.php</code>, it is developer-related, but the Security Guide does not cover developer topics (yet). You can also put this configuration in <code>AdditionalConfiguration.php</code>, which means, it is not an integrator’s business, because integrators do not have access to PHP files necessarily - only administrator have - which results in chapter "Guidelines for Administrators".<br />Sounds a little bit weird to me, to be honest. Do you think, this is an administrator's topic? In this case, I am happy to come up with something that describes the custom HTTP headers in the BE.</p>
+
+
+</blockquote>
+
+	<p>Hm, when thinking about it, neither administrators nor integrators should change this option.</p>
+
+
+<blockquote>
+
+	<p>By the way: I would not explain how to disable the clickjacking protection, because this <ins>decreases</ins> the level of security, which is against the idea of the Security Guide from my perspective.</p>
+
+
+</blockquote>
+
+	<p>Indeed. Maybe we do not need to cover this at all, since disabling this was only built in for backwards compatibility in the (rare) case when people do need to embed backend modules in iframes from different domains.<br />We could discuss, if we should send this header in any case in future versions, or at least add a warning in the reports module if this header is not among the header sent in the backend.</p>
+
+
+	<p>But what would fit very nicely into the Security Guide is how to protect the frontend from this attack vector.<br />This can either be an integrators task by setting TypoScript:</p>
+
+
+<pre>
+config.additionalHeaders = X-Frame-Options: SAMEORIGIN
+</pre>
+
+	<p>or an server admin task, by letting the webserver send this as additional HTTP header (don't have examples for that at hand currently).</p>
+
+
+	<p>Maybe the description of this frontend related task can include a small paragraph mentioning that this header is sent in the backend by default.</p></div>
+  </div>
+  
+
+  <div id="change-209838" class="journal has-notes has-details">
+    <h4><a href="57144.html#note-7" class="journal-link">#7</a>
+    
+    <a name="note-7"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-03-23" title="2014-03-23 12:26">over 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Tracker</strong> changed from <i>Bug</i> to <i>Task</i></li>
+      
+       <li><strong>Assigned To</strong> set to <i>Michael Schams</i></li>
+      
+       <li><strong>Target version</strong> deleted (<strike><i>1.0.5</i></strike>)</li>
+      
+       <li><strong>Estimated time</strong> set to <i>1.00</i></li>
+      
+       <li><strong>Remaining (hours)</strong> set to <i>1.0</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-209838-notes"><p>This sounds good to me. I will write an appropriate explanation in chapters Guidelines for <strong>Administrators</strong> and Guidelines for <strong>Integrators</strong>. Integrators may want to expand their TypoScript (Helmut's example, see comment number 6):</p>
+
+
+<pre>config.additionalHeaders = X-Frame-Options: SAMEORIGIN</pre>
+
+	<p>Administrators may want to update the webserver config. Under Apache, it should be something like (note to myself: double check):</p>
+
+
+<pre>
+&lt;IfModule mod_headers.c&gt;
+  Header set X-Frame-Options: SAMEORIGIN
+&lt;/IfModule&gt;
+</pre></div>
+  </div>
+  
+
+  <div id="change-221527" class="journal has-details">
+    <h4><a href="57144.html#note-8" class="journal-link">#8</a>
+    
+    <a name="note-8"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-06-23" title="2014-06-23 14:07">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Target version</strong> set to <i>1.0.6</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-221532" class="journal has-details">
+    <h4><a href="57144.html#note-9" class="journal-link">#9</a>
+    
+    <a name="note-9"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-06-23" title="2014-06-23 14:13">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Category</strong> set to <i>Guidelines for Administrators</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-226276" class="journal has-notes has-details">
+    <h4><a href="57144.html#note-10" class="journal-link">#10</a>
+    
+    <a name="note-10"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-08-02" title="2014-08-02 14:10">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/27288/task57144-1.patch">task57144-1.patch</a><a href="../../external.html?link=https://forge.typo3.org/attachments/27288/task57144-1.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+       <li><strong>% Done</strong> changed from <i>0</i> to <i>80</i></li>
+      
+       <li><strong>File</strong> <a href="../../external.html?link=https://forge.typo3.org/attachments/download/27288/task57144-1.patch">task57144-1.patch</a><a href="../../external.html?link=https://forge.typo3.org/attachments/27288/task57144-1.patch"><img alt="Magnifier" src="../images/magnifierfaba.png?1437165176" /></a> added</li>
+      
+       <li><strong>Remaining (hours)</strong> deleted (<strike><i>1.0</i></strike>)</li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-226276-notes"><p>My suggestion:</p>
+
+
+	<p><strong>System Administrators</strong></p>
+
+
+<pre>
+Clickjacking, also knows as *user interface (UI) redress attack* or
+*UI redressing*, is an attack scenario where an attacker tricks a web
+user into clicking on a button or following a link different from what
+the user believes he/she is clicking on. This attack can be typically
+achieved by a combination of stylesheets and iframes, where multiple
+transparent or opaque layers manipulate the visual appearance of a HTML
+page.
+
+To protect the backend of TYPO3 CMS against this attack vector, a HTTP
+header *X-Frame-Options* is sent, which prevents embedding backend pages
+in an iframe on domains different than the one used to access the
+backend. The X-Frame-Options header has been officially standardized as
+`RFC 7034 &lt;http://tools.ietf.org/html/rfc7034&gt;`_.
+
+System administrators should consider enabling this feature at the
+frontend of the TYPO3 website, too. A configuration of the Apache
+web server would typically look like the following::
+
+   &lt;IfModule mod_headers.c&gt;
+     Header always append X-Frame-Options SAMEORIGIN
+   &lt;/IfModule&gt;
+
+The option *SAMEORIGIN* means, that the page can only be displayed in
+a frame on the same origin as the page itself. Other options are *DENY*
+(page cannot be displayed in a frame, regardless of the site attempting
+to do so) and *ALLOW-FROM [uri]* (page can only be displayed in a frame
+on the specified origin).
+</pre>
+
+	<p><strong>Integrators</strong></p>
+
+
+<pre>
+Clickjacking is an attack scenario where an attacker tricks a web
+user into clicking on a button or following a link different from what
+the user believes he/she is clicking on. Please see
+:ref:`administrators-furtheractions-clickjacking` for further details.
+It may be beneficial to include a HTTP header *X-Frame-Options* on
+frontend pages to protect the TYPO3 website against this attack vector.
+Please consult with your system administrator about pros and cons of
+this configuration.
+
+The following TypoScript adds the appropriate line to the HTTP header::
+
+   config.additionalHeaders = X-Frame-Options: SAMEORIGIN
+</pre>
+
+	<p>Requires review from Security Team (Helmut?).</p></div>
+  </div>
+  
+
+  <div id="change-226277" class="journal has-details">
+    <h4><a href="57144.html#note-11" class="journal-link">#11</a>
+    
+    <a name="note-11"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-08-02" title="2014-08-02 14:11">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Accepted</i> to <i>Under Review</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-226280" class="journal has-details">
+    <h4><a href="57144.html#note-12" class="journal-link">#12</a>
+    
+    <a name="note-12"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-08-02" title="2014-08-02 14:41">about 1 year</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Parent task</strong> set to <i>#60744</i></li>
+      
+    </ul>
+    
+    
+  </div>
+  
+
+  <div id="change-226284" class="journal has-notes">
+    <h4><a href="57144.html#note-13" class="journal-link">#13</a>
+    
+    <a name="note-13"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/50">Helmut Hummel</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-08-02" title="2014-08-02 15:04">about 1 year</a> ago</h4>
+
+    
+    <div class="wiki" id="journal-226284-notes"><p>perfect, thanks!</p></div>
+  </div>
+  
+
+  <div id="change-226403" class="journal has-notes has-details">
+    <h4><a href="57144.html#note-14" class="journal-link">#14</a>
+    
+    <a name="note-14"></a>
+    Updated by <a href="../../external.html?link=https://forge.typo3.org/users/3950">Michael Schams</a> <a href="../../external.html?link=https://forge.typo3.org/projects/typo3cms-doc-security/activity?from=2014-08-04" title="2014-08-04 13:59">12 months</a> ago</h4>
+
+    
+    <ul class="details">
+      
+       <li><strong>Status</strong> changed from <i>Under Review</i> to <i>Closed</i></li>
+      
+       <li><strong>% Done</strong> changed from <i>80</i> to <i>100</i></li>
+      
+    </ul>
+    
+    <div class="wiki" id="journal-226403-notes"><p>TYPO3 Security Guide v1.0.6 published - closing ticket as resolved.</p></div>
+  </div>
+  
+
+
+
+
+</div>
+
+
+
+<div style="clear: both;"></div>
+<div class="contextual">
+
+
+<span class="issue-57144-watcher"></span>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
+
+
+<p class="other-formats">Also available in:
+  <span><a href="../../external.html?link=https://forge.typo3.org/issues/57144.atom" class="atom" rel="nofollow">Atom</a></span>
+  <span><a href="57144.pdf" class="pdf" rel="nofollow">PDF</a></span>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+new ContextMenu('/issues/context_menu')
+//]]>
+</script>
+
+        
+				<div style="clear:both;"></div>
+    </div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+	
+<div id="footer">
+ Powered by <a href="../../external.html?link=http://www.redmine.org/">Redmine</a> &copy; 2006-2012 Jean-Philippe Lang<br /><br />
+ Hosting sponsor:<br /><br />
+ <script type="text/javascript">var buttonStyle = "footer-grey-31";</script>
+ <script src="../../typo3.org/fileadmin/t3org/images/FM-content/team-pages/server-team/sponsor-banners/sponsors.js"></script>
+</div>
+</div>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.typo3.org/" : "http://piwik.typo3.org/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><span style="visibility: hidden";><img src="../../external.html?link=http://piwik.typo3.org/piwik.php?idsite=14" style="border:0" alt=""/></span></noscript>
+</body>
+
+<!-- Mirrored from forge.typo3.org/issues/57144 by HTTrack Website Copier/3.x [XR&CO'2008], Mon, 03 Aug 2015 23:29:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
