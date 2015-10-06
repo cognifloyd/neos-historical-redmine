@@ -1,0 +1,1057 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Has patch,Affected Flow version,Description
+44376,TYPO3.Fluid,Bug,"",Resolved,Must have,Paginate widget throws exception,Bastian Waidelich,Bastian Waidelich,2013-01-08 09:36,Widgets,2.0,2013-01-08,"","",100,2013-01-08 07:39,"","",972400,"",No,Flow 2.0.0 beta 1,"With #43589 the action argument of link/URI ViewHelpers is not optional any longer (except for AJAX widget links/URIs where the argument falls back to the current action).
+The template of the provided pagination widget has not been adjusted to that breaking change yet."
+44572,TYPO3.Fluid,Feature,"",Resolved,Could have,Format.Case ViewHelper in order to change the case of string values,Adrian Föder,Adrian Föder,2014-05-08 03:48,ViewHelpers,"",2013-01-16,"","",100,2013-01-16 09:48,"","",982200,"",No,"","Have an @f:format.case@ ViewHelper with the options ""lower"", ""upper"" and ""capital"" which results into @strtolower@, @strtoupper@, and @ucfirst@."
+44702,TYPO3.Fluid,Bug,"",Resolved,Should have,"[CGL] ""public static"" instead of ""static public""",Tymoteusz Motylewski,"",2013-01-31 04:36,"","",2013-01-21,"","",100,2013-01-21 16:32,"","",988700,"",No,Git master,"In the TemplateParser class scope should be ""static public"" not ""public static"""
+44706,TYPO3.Fluid,Task,"",Resolved,Should have,[CGL] small cgl issues in AbstractViewHelper,Tymoteusz Motylewski,"",2013-01-31 04:36,"","",2013-01-21,"","",100,2013-01-21 17:26,"","",988900,"",No,"",""
+44710,TYPO3.Fluid,Bug,"",Resolved,Should have,[CGL] Fix some cgl issues spotted during backporting,Tymoteusz Motylewski,"",2013-02-18 15:37,"","",2013-01-22,"","",100,2013-01-21 18:20,"","",989050,"",No,Git master,Container issue for cgl problems spotted while syncing Flow Fluid and CMS Fluid
+44826,TYPO3.Fluid,Bug,"",Resolved,Should have,groupedFor cannot group by DateTime-Objects,Wouter Wolters,"",2013-03-26 12:36,"","",2013-01-26,"","",100,2013-01-26 11:46,"","",994850,"",No,(any),The Fluid-ViewHelper groupedFor cannot group by as DateTime-Object defined properties.
+44889,TYPO3.Fluid,Bug,"",Resolved,Should have,Format urlencode viewhelper should work with objects that implement __toString,Christian Müller,"",2013-03-21 11:37,"","",2013-01-28,"","",100,2013-01-28 10:11,"","",998000,"",No,(any),currently a check for is_string prevents format.urlencode to work with objects that implements __toString
+45071,TYPO3.Fluid,Bug,"",Closed,Won't have this time,Fluid tries to parse inside an in-HTML Javascript code,Thiago Colares,"",2013-08-14 09:39,View,1.1.1,2013-02-01,"","",0,2013-02-01 08:08,"","",1005800,"",No,FLOW3 1.1.0,"Example. When I try this:
+<pre>
+<script type=""text/javascript"">
+	$(function(){
+		var id = '#{id}';
+		$(id).datepicker({
+			dateFormat: ""dd/mm/yy"",
+			changeMonth: true,
+			changeYear: true
+		});
+
+
+	});
+</script>
+</pre>
+
+I got this HTML as result:
+
+<pre>
+<script type=""text/javascript"">
+	$(function(){
+		var id = '#dummy-id-01';
+		$(id).datepicker(Array);
+</script>
+</pre>
+
+
+To overcome this issue, we inserted a dummy comment. :)
+<pre>
+<script type=""text/javascript"">
+	$(function(){
+		var id = '#{id}';
+		$(id).datepicker({
+			dateFormat: ""dd/mm/yy"", // DO NOT EVER REMOVE THIS COMMENT!
+			changeMonth: true,
+			changeYear: true
+		});
+
+
+	});
+</script>
+</pre>
+
+So, The HTML results is as expected:
+<pre>
+<script type=""text/javascript"">
+	$(function(){
+		var id = '#dummy-id-01';
+		$(id).datepicker({
+			dateFormat: ""dd/mm/yy"", // DO NOT EVER REMOVE THIS COMMENT!
+			changeMonth: true,
+			changeYear: true
+		});
+</script>
+</pre>
+"
+45153,TYPO3.Fluid,Feature,"",New,Should have,f:be.menus.actionMenuItem - Detection of the current select option is insufficient,Stefan Galinski,"",2013-02-04 17:17,"","",2013-02-04,"","",0,2013-02-04 17:17,"","",1009800,"",No,"",Currently the action menu preselects an option if the current controller/action pair matches the arguments from the menu item. Unfortunatly you have no option to force another menu item to be preselected that would make sense if you execute other action/controller pairs inside your backend module that are not shown in the menu. For example this could be a preview dialog after a form submission.
+45184,TYPO3.Fluid,Bug,"",Closed,Should have,"Additional identity filed are not rendered, after validation error",Dominique Feyer,Bastian Waidelich,2013-03-26 12:29,ViewHelpers,"",2013-02-05,"","",0,2013-02-05 13:43,"","",1011350,"",No,Git master,"Found a strange bug this afternoon. I have a form with children object, when the form is rendered I have 3 hidden fields with the different __identity value, but after a validation error I only see on hidden field with the identity of the main object.
+
+I my case, this cause a big trouble, has Flow build a new object, and doctrine is configured to cascade persist on a one to one relation. This cause the child object data to be ""replaced"" by the new object data, and I loose all the property of the object that are not in the form.
+
+Patch if coming"
+45345,TYPO3.Fluid,Feature,"",Needs Feedback,Should have,Easy to use comments for fluid that won't show in output,Stefan Neufeind,"",2013-03-26 15:40,"","",2013-02-10,"","",0,2013-02-10 17:49,"","",1019300,"","","","Proposal from Michael Knoll:
+Use <!--- ... ---> (three minus instead of the usual two).
+
+http://mimi.kaktusteam.de/blog-posts/2012/02/fluid-comments/"
+45384,TYPO3.Fluid,Bug,"",New,Must have,Persisted entity object in widget-configuration cannot be deserialized (after reload),Benno Weinzierl,"",2013-08-14 09:35,Widgets,2.0.1,2013-02-11,"","",0,2013-02-11 12:36,"","",1021250,"",No,Git master,"I have a widget with a persisted entity object (e.g. MyNamespace\SpecialProduct derived from MyNamespace\Product) in its widget-configuration.
+
+The object gets serialized in the session and is accessable in a ajax-request (everything works).
+
+BUT:
+When i reload the page with the widget, the ajax calls fail with the following error:
+
+*Fatal error*: ... The script tried to execute a method or access a property of an incomplete object. Please ensure that the class definition ""MyEntity"" of the object you are trying to operate on was loaded _before_ unserialize() gets called or provide a __autoload() function to load the class definition  in ""my widget ajax action controller"" on line 65
+
+I noticed that in Data/Temporary/Development/SubContextMyContext/Cache/Data/Flow_Session_Storage the entity is serialized. After reload the file contains the serialized entity two times. That seemes strange."
+45394,TYPO3.Fluid,Task,"",New,Should have,Forwardport Unit test for standalone view,Tymoteusz Motylewski,"",2013-02-11 16:39,View,"",2013-02-11,"","",0,2013-02-11 16:39,"","",1021750,"",No,"","In TYPO3 CMS Fluid there is a StandaloneView unit test, which is missing in Flow Fluid.
+see 
+http://git.typo3.org/TYPO3v4/CoreProjects/MVC/fluid.git/tree/HEAD:/Tests/Unit/View
+ and 
+http://git.typo3.org/FLOW3/Packages/TYPO3.Fluid.git/tree/HEAD:/Tests/Unit/View"
+45735,TYPO3.Fluid,Bug,"",Resolved,Must have,Error when using If-Condition in Layout-Tag,Alex no-lastname-given,Bastian Waidelich,2015-06-30 05:39,Core,"",2013-02-22,"","",100,2013-02-21 19:06,"","",1038450,"",No,Flow 2.0.0 beta 1,"I use a condition for evaluating which layout to load:
+<pre>
+<f:layout name=""{f:if(condition: checkCondition, then: 'Layout1', else: 'Layout2')}""/>
+</pre>
+
+On the first request (template is not cached) it works fine, but on the second requets (template is loaded from cache) following error is thrown:
+
+<pre>
+#1: Notice: Undefined variable: self in /Data/Temporary/Development/Cache/Code/Fluid_TemplateCache/PACKAGE_CONTROLLER_action_ACTION_20bd4ce9d92ee470c3edcf16e49b6ebec6252766.php line 16 
+</pre>
+
+This error can be fixed by adding a single line in store() of class TemplateCompiler (TYPO3.Fluid\Classes\TYPO3\Fluid\Core\Compiler\TemplateCompiler.php). The template code ($templateCode) have to be enhanced in the first line of getLayoutName() by
+<pre>
+\$self = \$this;
+</pre>
+
+To clarify, the final template code:
+<pre>
+$templateCode = <<<EOD
+%s {
+
+public function getVariableContainer() {
+	// TODO
+	return new \TYPO3\Fluid\Core\ViewHelper\TemplateVariableContainer();
+}
+public function getLayoutName(\TYPO3\Fluid\Core\Rendering\RenderingContextInterface \$renderingContext) {
+\$self = \$this;
+%s
+return %s;
+}
+public function hasLayout() {
+return %s;
+}
+
+%s
+
+}
+EOD;
+</pre>"
+45923,TYPO3.Fluid,Feature,"",Rejected,Won't have this time,adjustable number of decimal points for f:format.currency,Josef Florian Glatz,"",2013-09-05 03:34,ViewHelpers,"",2013-02-28,"","",0,2013-02-28 14:33,"","",1047600,"",No,"","From time to time it's useful to have an extra attribute to set the number of decimal points. Because of the fact that especially for large amounts of money (e.g. realty objects, luxury) no decimals are required, this should be configurable."
+45987,TYPO3.Fluid,Task,"",Resolved,Should have,filemtime is namespaced in TemplateView.php,Wouter Wolters,Wouter Wolters,2013-04-05 06:37,View,"",2013-03-03,"","",100,2013-03-03 11:26,"","",1050750,"",No,"","filemtime is namespaced in TemplateView.php
+
+$templateModifiedTimestamp = \filemtime($pathAndFilename);"
+46038,TYPO3.Fluid,Bug,"",Closed,Should have,Subproperty with Radio fields doesn't render hidden identity property,Christian Müller,Bastian Waidelich,2013-03-26 12:29,ViewHelpers,"",2013-03-05,"","",0,2013-03-05 07:55,"","",1053300,"",No,(any),If you render a form and access a property in a subpobject in your forms bound object via radio input field there are no hidden identity fields rendered as the radio input expects a value to be set in addition to the property which in turn prevents the addAdditionalIdentityPropertiesIfNeeded() to be called ever.
+46081,TYPO3.Fluid,Feature,"",Closed,Should have,Suggested addition to SelectViewHelper - allowing prepend of child content to rendered option tag list,Christoph Gross,"",2013-03-07 02:31,ViewHelpers,2.0,2013-03-07,"","",0,2013-03-06 18:59,"","",1055450,"",Yes,"","This Feature is already commited to Typo3v4, see here [[http://forge.typo3.org/issues/26595]].
+
+I think it's a valuable feature and ""adapted"" it to TYPO3.Fluid."
+46091,TYPO3.Fluid,Task,"",Needs Feedback,Should have,Show source file name and position on exceptions during parsing,Christopher Hlubek,"",2013-03-07 05:26,"","",2013-03-07,"","",0,2013-03-07 05:14,"","",1055950,"",No,"",It would be really helpful to spot errors if the Fluid TemplateParser would show the current source file and line number on errors. Right now there's absolutely no clue in the exception handler where to look for the error.
+46092,TYPO3.Fluid,Bug,"",Resolved,Should have,The f:translate ViewHelper does nothing if a integer is provided as argument,Benno Weinzierl,"",2014-02-24 06:36,ViewHelpers,2.0.1,2013-03-07,"","",0,2013-03-07 05:15,"","",1056000,"",No,Git master,"Here is an Example...
+
+in Translation:
+<pre>
+<trans-unit id=""mylabel"">
+	<source>A test list with {0} results</source>
+</trans-unit>
+</pre>
+
+In Template:
+<pre>
+{f:translate(id: 'mylabel', arguments: {0: ""{dynamic.integer}""} )}
+</pre>
+
+This returns ""mylabel"" in the template because an integer is provided as argument.
+This works:
+<pre>
+{f:translate(id: 'mylabel', arguments: {0: ""{dynamic.integer} ""} )}
+</pre>
+(Notice the blank an the end of the dynamic argument... the argument is a string and the translation works as expected)"
+46135,TYPO3.Fluid,Bug,"",Closed,Must have,Undefined index: useParentRequest in AbstractViewHelper,Karsten Dambekalns,Karsten Dambekalns,2013-08-02 05:24,ViewHelpers,2.1,2013-03-08,"","",0,2013-03-08 10:05,"","",1058150,"",No,Git master,#1: Notice: Undefined index: useParentRequest in /?/Fluid/Core/ViewHelper/AbstractViewHelper.php line 255
+46257,TYPO3.Fluid,Feature,"",Under Review,Should have,Add escape sequence support for Fluid,Rafael Kähm,"",2015-01-26 03:00,Core,"",2013-03-14,"","",0,2013-03-14 04:01,"","",1064050,"",No,"","In some cases you need to print some characters to rendered view, which Fluid uses.
+f.e.:
+{{object}} should output {value} but Fluid renders this to {{object}}
+
+i have patch for this, which make it possible following possible:
+\{{object}\} renders to {value}
+\\\{{object}\\\} renders to \{value\}
+
+please make gerrit from following gist:
+https://gist.github.com/RafaelKa/5159642
+
+there are 54,55,56 , 119-123 and 455,456 lines interesting "
+46289,TYPO3.Fluid,Bug,"",Needs Feedback,Should have,Enable Escaping Interceptor in XML request format,Tim Kandel,"",2013-08-14 09:35,View,2.0.1,2013-03-14,"","",0,2013-03-14 12:20,"","",1065650,"",No,Git master,The Escaping Interceptor should be enabled if the request format is XML. As of now this is only done in HTML.
+46545,TYPO3.Fluid,Feature,"",New,Should have,Better support for arrays in options of SelectViewHelper,Marco Falkenberg,"",2013-03-22 08:35,"","",2013-03-22,"","",0,2013-03-22 08:35,"","",1078350,"",No,"","The arguments 'optionValueField' and 'optionLabelField' will be (unnecessary?!) ignored, if you pass an array to the 'options'-argument of a SelectViewHelper."
+46872,TYPO3.Fluid,Task,"",Resolved,Should have,Drop incomplete tests,Anja Leichsenring,Bastian Waidelich,2013-08-23 04:58,"","",2013-04-02,"","",100,2013-04-02 15:59,"","",1094250,"",No,"",After some discussion with Sebastian Kurfuerst we decided to drop the incomplete marked tests in both CMS and Flow Fluid.
+47006,TYPO3.Fluid,Bug,"",New,Should have,widget identifier are not unique,Christoph Bauer,"",2014-11-25 07:18,"","",2013-04-06,"","",0,2013-04-06 17:58,"","",1100950,"",No,(any),"currently widget identifiers are unique only within the scope of a single plugin, but not the whole called page. 
+I tried using multiple instances of the same plugin - all using the paginate widget - on the same page, but since all paginate widgets get the same identifier, this has some unwanted side-effects (switching the shown page of one paginate widget affects all other widgets too etc.)
+"
+47078,TYPO3.Fluid,Bug,"",Closed,Must have,widget.uri/linkViewHelpers fail with CSRF protection,Adrian Föder,"",2013-04-10 06:07,Widgets,"",2013-04-09,"","",0,2013-04-09 10:43,"","",1104550,"",No,Git master,"the ViewHelper's getAjaxUri() method lacks the addition of a Csrf protection token, which results into an Access Denied exception when calling the linked action.
+
+To me, the question is if the CsrfToken should be added in that case to the Ajax URI; or rather regard that in the \TYPO3\Flow\Security\RequestPattern\CsrfProtection."
+47188,TYPO3.Fluid,Bug,"",Resolved,Should have,Fluid tries to render folders as templates partials and layouts,Marc Bastian Heinrichs,Bastian Waidelich,2014-12-16 04:55,View,"",2013-04-13,"","",100,2013-04-13 09:18,"","",1110050,"",No,FLOW3 1.0.0,"The file_exists check in TemplateView is true also for folders. This leads to unrendered partials with resorted paths.
+
+Solution: add additional is_dir check
+"
+47363,TYPO3.Fluid,Bug,"",Closed,Should have,Error Classes are only set for form fields in object context,Sebastian Michaelsen,"",2015-02-25 04:29,"","",2013-04-18,"","",0,2013-04-18 17:05,"","",1118600,"",No,(any),"Fluid won't set error classes for form fields when they are not in object context (""property"" attribute is not set).
+I experienced the issue in v4 and have no FLOW running to verify it, but from looking at the code I'm pretty sure this is not v4 specific.
+
+Here's the workaround I did for my v4 project: https://gist.github.com/smichaelsen/5416046"
+47669,TYPO3.Fluid,Task,"",New,Should have,FormViewHelper does not define the default request method,Alexander Berl,"",2013-04-28 10:39,"","",2013-04-28,"","",0,2013-04-28 10:39,"","",1133700,"",No,"","Currently, the default value for the FormViewHelper attribute _""method""_ is *NULL*, resulting in the output form attribute value _""post""_. This could possibly lead to strange behaviour in the code when checking for the method attribute value (*NULL* will actually evaluate to *TRUE* for both checking if _method_ !== 'get' and _method_ !== 'post') and also contradicts the HTML specification for forms, which sets the *default method* to *""get""*:
+
+see http://www.w3.org/TR/html401/interact/forms.html#h-17.3 and http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#attr-fs-method
+
+This is a concern especially since the *CSRF* change, which only appends the token on non-GET method and validating the output in the Viewhelpertest package.
+
+I hence suggest setting the *default value* for the method attribute to *'get'* - *or* if a breaking change is to be avoided at least set it do *'post'*."
+47674,TYPO3.Fluid,Bug,"",Resolved,Should have,HtmlentitiesViewHelper is scope singleton,Alexander Berl,Alexander Berl,2014-08-26 11:03,ViewHelpers,2.0.1,2013-04-28,"","",100,2013-04-28 14:43,"","",1133950,"",No,Git master,"The HtmlentitiesViewHelper currently is scoped singleton, why all other format ViewHelpers are of scope prototype. This leads to weird behaviour when using the ViewHelper multiple times within one template and a partial. See the related bug for more information."
+47968,TYPO3.Fluid,Bug,"",Resolved,Could have,Resource Interceptor should declare objectManager that it is using,Christian Müller,Christian Müller,2013-06-24 05:37,"",2.0,2013-05-06,"","",100,2013-05-06 03:05,"","",1148550,"",No,(any),The Resource Interceptor uses an injected objectManager that it doesn't declare as property.
+48121,TYPO3.Fluid,Bug,"",Resolved,Should have,TextareaViewHelper is missing valid html5 argument placeholder ...,Helmut Hummel,"",2013-06-05 06:06,ViewHelpers,2.0,2013-05-12,"","",100,2013-05-12 17:00,"","",1156100,"",Yes,Flow 2.0.0 beta 2,"TextareaViewHelper is missing valid html5 argument placeholder ...
+
+Using 
+
+<pre>
+			<f:form.textfield id=""powermail_field_{field.marker}"" placeholder=""{field.title -> vh:string.RawAndRemoveXss()}"" name=""field[{field.uid}]"" value=""{vh:Misc.PrefillField(field: '{field}')}"" class=""powermail_field powermail_input {vh:Misc.ValidationClass(field: '{field}')} {vh:Misc.ErrorClass(field: '{field}', class: 'powermail_field_error')}"" required=""{field.mandatory}"" />
+
+</pre>
+
+with the attribute placeholder causes the exception http://typo3.org/go/exception/v4/1237823695 , what means, that the argument placeholder is not allowed."
+48218,TYPO3.Fluid,Feature,"",Resolved,Should have,Make NumberViewHelper regard locale like CurrencyViewHelper does.,Alexander Berl,Alexander Berl,2014-07-11 14:39,ViewHelpers,"",2013-05-15,"","",100,2013-05-15 08:24,"","",1160900,"",No,"","Currently the NumberViewHelper doesn't regard the locale, but the CurrencyViewHelper (and DateViewHelper) does.
+Those ViewHelpers should be put in line with each other regarding Locale awareness."
+48355,TYPO3.Fluid,Feature,"",New,Could have,Assign output of viewhelper to template variable for further processing.,Dave no-lastname-given,"",2013-07-06 12:05,"","",2013-05-17,"","",0,2013-05-17 11:28,"","",1167600,"","","","It would be nice if it was possible to ""assign"" the output of a viewhelper to a template variable with an assign attribute for usage elsewhere in the template. When assign is set the output of the viewhelper is suppressed.
+
+For example the template:
+<pre>
+
+<f:format.date format=""d.m.Y - H:i:s"" assign=""myDate"">\@{your_timestamp}</f:format.date>
+<p>Here is my date: {myDate}</p>
+<p>Here is again my date: {myDate}</p>
+
+</pre>
+
+Would output:
+<pre>
+
+Here is my date: 1.1.2013 - 12:00:00
+Here is again my date: 1.1.2013 - 12:00:00
+
+</pre>
+
+I know <f:alias> exists but the kind of assignment I am suggesting would by faster to parse by not having to call the viewhelper multiple times to output the same value.
+
+The ""assign"" should be a universal attribute to all Viewhelpers. 
+
+Then you can do things also like this:
+<pre>
+
+<f:for each=""{myCollection}"" as=""collectionItem"" assign=""myList"">
+  <f:render partial=""Some/Item""  />
+</f:for>
+
+<div class=""top list"">{myList}</div>
+<div class=""content"">{myOtherContent}</div>
+<div class=""bottom list"">{myList}</div>
+
+</pre>
+
+The advantages I think is clear when applied to looped elements. You don't have to process the same content twice or more.
+
+"
+48856,TYPO3.Fluid,Bug,"",Resolved,Should have,Case ViewHelper usage not correct in example,Wouter Wolters,"",2013-06-05 05:36,"","",2013-06-04,"","",100,2013-06-04 16:19,"","",1192600,"",No,Git master,Case ViewHelper usage not correct in example
+48870,TYPO3.Fluid,Task,"",Rejected,Won't have this time,`required` attribute not supported in Textarea- and PasswordViewHelpers,Adrian Föder,Adrian Föder,2013-06-05 06:40,ViewHelpers,2.1,2013-06-05,"","",80,2013-06-05 06:18,"","",1193300,"",Yes,"",HTML5's @required@ attribute is not immediately supported in the TextareaViewHelper and PasswordViewHelper (see http://www.w3.org/TR/html-markup/textarea.html#textarea.attrs.required and http://www.w3.org/TR/html-markup/input.password.html#input.password.attrs.required)
+48977,TYPO3.Fluid,Bug,"",Closed,Must have,f:link.action ignores controller with backslashes,Simon Schaufelberger,Bastian Waidelich,2013-06-10 09:41,ViewHelpers,"",2013-06-10,"","",0,2013-06-09 20:06,"","",1198500,"",No,(any),"I have a neos backend module and want to link to another controller. The controller is not straight under the controller folder but under Controller/Module/MyModule/.
+
+I tried linking to MyController like that:
+
+<pre>
+<f:link.action action=""index"" controller=""Module\Module\MyController"" class=""btn neos-button"">
+</pre>
+
+but it just doesnt work.
+
+I found an existing ""example"" for this:
+
+<pre>
+<f:link.action package=""TYPO3.Neos"" controller=""Backend\Backend"" action=""index"">Content</f:link.action>
+</pre>
+
+under \Packages\Application\TYPO3.Neos\Resources\Private\Templates\Backend\Content\Container.html
+
+but that is also not working.
+
+I don't know if this has ever worked or not so i don't know if its possible to trace it back to a working state."
+49038,TYPO3.Fluid,Bug,"",New,Must have,form.select does not select the first item if prependOptionValue is used,Axel Brand,"",2013-06-11 16:11,"","",2013-06-11,"","",0,2013-06-11 16:11,"","",1201550,"",No,FLOW3 1.1.0,"I habe a strange behaviour.
+
+I use the f:form.select viewhelper like this:
+<pre><f:form.select property=""myadata"" options=""{mydatas}"" optionLabelField=""name"" optionValueField=""uid"" sortByOptionLabel=""TRUE"" prependOptionLabel="""" /></pre>
+Here the action:
+
+# select first item
+# save object => everything is fine
+# edit object
+# first item is NOT selected
+
+If i try this with the second one or if i delete the _prependOptionLabel_ attribute, everything is running fine.
+
+I hacked the view-helper-class @SelectViewHelper.php@ like this:
+
+<pre>
+protected function isSelected($value) {
+ 		$this->getSelectedValue();
+		$selectedValue = $this->getSelectedValue();
+		if ($value === $selectedValue || (string) $value === $selectedValue) {
+			return TRUE;
+		}
+		if ($this->hasArgument('multiple')) {
+			if (is_null($selectedValue) && $this->arguments['selectAllByDefault'] === TRUE) {
+				return TRUE;
+			} elseif (is_array($selectedValue) && in_array($value, $selectedValue)) {
+				return TRUE;
+			}
+		}
+		return FALSE;
+	}
+</pre>
+
+The line 
+<pre>$this->getSelectedValue();</pre>
+is the trick.
+
+"
+49128,TYPO3.Fluid,Feature,"",Resolved,Should have,ViewHelper to display file sizes,Bastian Waidelich,Bastian Waidelich,2013-06-14 09:35,ViewHelpers,"",2013-06-14,"","",100,2013-06-14 07:37,"","",1206050,"",No,"",A ViewHelper that converts the size of a file to a human readable string
+49143,TYPO3.Fluid,Bug,"",Resolved,Must have,Petabytes missing in VH f:format.bytes(),Stefan Neufeind,Stefan Neufeind,2013-06-21 09:36,ViewHelpers,"",2013-06-15,"","",100,2013-06-14 19:43,"","",1206800,"",No,Git master,"Peta (PB) is missing newly merged feature.
+
+1000 	k 	kilo
+1000^2 	M 	mega
+1000^3 	G 	giga
+1000^4 	T 	tera
+1000^5 	P 	peta
+1000^6 	E 	exa
+1000^7 	Z 	zetta
+1000^8 	Y 	yotta
+
+(thanks go to Philipp Gampe for discovering this)"
+49305,TYPO3.Fluid,Feature,"",Closed,Should have,Support for Data Attributes in tag-based ViewHelpers ,Marco Falkenberg,Bastian Waidelich,2013-06-21 05:27,ViewHelpers,"",2013-06-21,"","",0,2013-06-21 05:21,"","",1214850,"",No,"","Adding Data Attributes to tag-based ViewHelpers via ""additionalAttributes"" is an exhausting task, because of the escaping and nesting stuff and so on.
+
+<pre>
+<f:link action=""doSomething"" data-role-tooltip=""{f:translate(id:'doSomething')}"">Do something!</f:link>
+</pre>
+
+vs.
+
+<pre>
+<f:link action=""doSomething"" additionlAttributes=""{data-role-tooltip: '{f:translate(id:\'doSomething\')}'}"">Do something!</f:link>
+</pre>"
+49344,TYPO3.Fluid,Feature,"",Closed,Should have, Allow template paths to use overlays,Anja Leichsenring,Bastian Waidelich,2013-10-14 04:30,View,"",2013-06-22,"","",0,2013-06-22 14:21,"","",1216800,"",No,"","CMS Fluid is about to merge this feature from ext:view, could come in handy for Flow Fluid as well?
+
+Find the patch at https://review.typo3.org/#/c/21580"
+49600,TYPO3.Fluid,Bug,"",New,Should have,f:form tag shown as a HTML on frontend,Jignesh Prajapati,"",2013-12-04 07:04,ViewHelpers,"",2013-07-02,"","",0,2013-07-02 11:09,"","",1229500,"",No,(any),"Hello guys,
+
+I have one problem using the f:form tag
+I integrated the template using the FLUIDTEMPLATE in Typo3 version 6.1
+Now i created one extension that simply show the the form with two input elements. I used the f:form and f:form.textfield to display the form. Now problem is that whole form shown as HTML tags instead of real form. Please see the attached screenshot.
+
+However, when i used the same extension using the templavoila in Typo3 version 6.1 then everything is working fine.
+
+I am using below typoscript for FLUIDTEMPLATE integration.
+
+# Create a Fluid Template
+page.10 = FLUIDTEMPLATE
+page.10.template = FILE
+page.10.template.file = fileadmin/templates/index.html
+[globalVar=TSFE:page|layout=1] 
+page.10.template.file = fileadmin/templates/home-products.html
+[global]
+[globalVar=TSFE:page|layout=2] 
+page.10.template.file = fileadmin/templates/products.html
+[global]
+[globalVar=TSFE:page|layout=3] 
+page.10.template.file = fileadmin/templates/product-details.html
+[global]
+[globalVar=TSFE:page|layout=4] 
+page.10.template.file = fileadmin/templates/products-img.html
+[global]
+[globalVar=TSFE:page|layout=5] 
+page.10.template.file = fileadmin/templates/settings.html
+[global]
+
+page.10 {
+  # Set the Template Pathes
+  partialRootPath = fileadmin/templates/partials/
+  layoutRootPath = fileadmin/templates/layouts/
+  variables {
+     # Assign the main column with our {content}-destination
+    content_main < styles.content.get
+    # Assign the left column with our {content_left}-destination
+    content_left < styles.content.get
+    content_left.select.where = colPos = 1
+    # Assign the right column with our {content_right}-destination
+    content_right < styles.content.get
+    content_right.select.where = colPos = 2
+    left < styles.content.get
+    left.select.where = colPos=1
+  }
+}
+
+
+
+Not getting what happens with FLUIDTEMPLATE. Please help me as it is very urgent for me. Any help will be appriciated.
+
+
+
+Thanks,
+Jignesh"
+49726,TYPO3.Fluid,Feature,"",Resolved,Should have,f:form autofocus attribute is missing in f:form.textfield and f:form.textarea,Tim Spiekerkötter,"",2014-07-11 14:39,"","",2013-07-06,"","",100,2013-07-06 07:11,"","",1235700,"",No,"","As in f:form.button there should be an attribute ""autofocus"" as well for f:form.textfield and f:form.textarea to be consistent in autofocus behaviour.
+
+This is a copy from the issue #48689 from TYPO3 CMS."
+49756,TYPO3.Fluid,Feature,"",Under Review,Should have,Select values by array key in checkbox viewhelper,Simon Schaufelberger,"",2014-03-24 21:40,"","",2013-07-07,"","",0,2013-07-06 19:52,"","",1237200,"",No,"","my model:
+
+<pre>
+class Model {
+	protected $groups;
+
+	public function getGroups() {
+		$groups = array();
+		foreach ($this->groups as $group) {
+			$groups[\TYPO3\Flow\Reflection\ObjectAccess::getProperty($group, 'Persistence_Object_Identifier', TRUE)] = $group;
+		}
+		return $groups;
+	}
+}
+</pre>
+
+my controller:
+
+<pre>
+public function viewAction(\My\Package\Domain\Model\Member $member) {
+	$groups = $this->groupRepository->findAll();
+	$this->view->assign('member', $member);
+	$this->view->assign('groupList', $groups);
+}
+</pre>
+
+my view:
+
+<pre>
+<f:form action=""editGroups"" name=""member"" object=""{member}"">
+	<f:for each=""{groupList}"" as=""groupItem"">
+		<label class=""checkbox inline"">
+			<f:form.checkbox property=""groups"" value=""{groupItem -> f:format.identifier()}""/> {groupItem.name}
+		</label>
+	</f:for>
+</f:form>
+</pre>
+
+now what's not possible is to just assign the groups (a m:n-relation) to the checkbox because in the checkbox viewhelper the *value* is compared instead of the *array key* with in_array.
+
+This patch also compares the array keys."
+50555,TYPO3.Fluid,Bug,"",Closed,Should have,Can't get an empty array in if condition,Thomas Christiansen,Bastian Waidelich,2013-07-31 09:21,"","",2013-07-30,"","",0,2013-07-30 06:32,"","",1276300,"",No,(any),"Hi all,
+i am having trouble to get an empty array in a shorthand if condition.
+
+The situation is the following:
+I have an Input field which can be required or optional, depending on a checkbox in Backend.
+
+In my Template i tried this;
+
+@additionalAttributes=""{f:if(condition: '{field.mandatory}', then: '{required: 1}', else: '{}')}""@
+
+The ""then""-case works fine, i am getting the attribute required=""1"" as expected.
+
+The problem is, that the '{}' in the else-case returns an empty string, not an empty array. Then i get an exception, because additionalAttributes expects an array.
+I tried a couple of things to get this to work like {0: null}, {\'\'} or {null} but i always get either an empty string or an non-empty array like array(0 => null).
+The last one is not an option because it would result in an attribute ""0"" in the html tag.
+
+Me and my colleagues came up with a view workarrounds:
+
+1) Assign an empty array to a variable in the controller and use this variable in the template.
+ - This is in my case not an option because i am extending an TER extension and dont want to override its controller.
+
+2) Add an ""Empty-Array-Getter"" to the Model like getEmptyArray which returns an empty array.
+ - This is a possibility, because i am extending the model as well, but... urghs ;)
+
+3) Write a viewhelper that adds an empty array to the templateVariableContainer.
+ - This is probably the best workaround and i am using this for now.
+
+The viewhelper looks simply like this:
+
+@class EmptyArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+  public function render() {
+    $this->templateVariableContainer->add('emptyArray', array());
+    return NULL;
+  }
+}@
+
+So i use can {emptyArray} in my template now after calling the viewhelper:
+@<fx:EmptyArray />
+...
+additionalAttributes=""{f:if(condition: '{field.mandatory}', then: '{required: 1}', else: '{emptyArray}')}""@
+
+Did we miss anything here or is there no other way to solve this scenario?
+
+Thanks and regards,
+Thomas"
+50801,TYPO3.Fluid,Feature,"",Closed,Could have,"Arguments ""path"" and ""package"" for f:layout View Helper",Rafael Kähm,Bastian Waidelich,2013-08-08 07:20,View,"",2013-08-05,"","",0,2013-08-05 15:03,"","",1288400,"",No,"","This is usefull if you use multiple packages for the same application.
+
+Make sure you use ""package"" argument for each VH that needs this argument inside used layout, because Fluid does not know ""origin"" (also where layout come from) and tries to fetch controller and action from package, which uses this layout. 
+
+Also next step is to implement Node-""origin"" functionality and after that Arguments ""path"" and ""package"" for f:render View Helper (for Partials).
+
+gerrit review comes tomorrow."
+50826,TYPO3.Fluid,Feature,"",Closed,Could have,"add resource as parameter for <f:render partial=""resource://MyVendor.Package/Private/Partials/SomePartial"" /> ",Rafael Kähm,Bastian Waidelich,2013-08-08 07:21,"","",2013-08-06,"","",0,2013-08-06 08:57,"","",1289650,"",No,"",This is usefull if you use multiple packages for the same application.
+50888,TYPO3.Fluid,Bug,"",Under Review,Should have,WSOD by changing name of section and if Fluid caches are generated,Rafael Kähm,"",2014-08-26 09:52,"","",2013-08-07,"","",0,2013-08-07 12:45,"","",1292750,"",No,Git master,"If you change the name of some section in your Layout and caches were generated before this change, then you get WSOD with following message in php log file:
+
+PHP Fatal error:  Call to undefined method FluidCache_Vendor_PackageName_Standard_action_index_bb47a7064d2c509f0bd5f35af56ae64023f35f04::section_3065c96e28893f22b707315d76eb3c0794993450() in ...../Packages/Framework/TYPO3.Fluid/Classes/TYPO3/Fluid/View/AbstractTemplateView.php on line 247
+
+as you can see Fluid tries to call section_3065c96e28893f22b707315d76eb3c0794993450() [also 'section_' . sha1($sectionName)]
+
+Fluid makes no checking if layout file was changed and no check if method exists.
+
+Fluid should throw an exception on this place instead of WSOD."
+51100,TYPO3.Fluid,Feature,"",New,Must have,Links with absolute URI should have the option of URI Scheme,Patrick Kroog,"",2013-08-16 06:06,ViewHelpers,"",2013-08-16,"","",0,2013-08-16 05:14,"","",1303200,"",No,"","At the moment it's not possible to build absolute URIs with https scheme.
+
+Only the ExternalViewHelper allows configuring the URI scheme.
+
+
+Describing example of the problem:
+
+<f:uri.action pageUid=""1"" arguments=""{client:client}"" absolute=""1"" />
+
+builds a full link like:
+- http://example.com/index.php?id=1&tx_myplugin[client]=10
+
+
+But there's no option to set the URI scheme to https, alghough the 
+
+uriBuilder would allow setting the URI scheme:
+$uriBuilder->setAbsoluteUriScheme(""https"");
+
+(Referring to: fluid/Classes/ViewHelpers/Uri/ActionViewHelper.php)
+
+
+--
+
+So there should be another option for this in the render method in the  Action/Page Viewhelpers!"
+51239,TYPO3.Fluid,Bug,"",Under Review,Must have,"AbstractViewHelper use incorrect method signature for ""$this->systemLogger->log()""",Timo Dödtmann,Adrian Föder,2014-04-11 05:17,Core,"",2013-08-21,"","",0,2013-08-21 11:20,"","",1310050,"",Yes,Flow 2.0.0,"Within the `AbstractViewHelper::callRenderMethod()` a log entry will be created if en exception is thrown.
+But the method signature of the systemLogger (\TYPO3\Flow\Log\LoggerInterface) looks slightly different to the method call.
+
+TYPO3\Flow\Log\LoggerInterface
+<pre>
+public function log($message, $severity = LOG_INFO, $additionalData = NULL, $packageKey = NULL, $className = NULL, $methodName = NULL);
+</pre>
+
+vs.
+
+TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper
+<pre>
+$this->systemLogger->log('An Exception was captured: '. $exception->getMessage() . '(' . $exception->getCode() . ')', LOG_ERR, 'TYPO3.Fluid', get_class($this));
+</pre>
+
+The `$additionalData` is missing."
+51277,TYPO3.Fluid,Feature,"",New,Should have,ViewHelper context should be aware of actual file occurrence,Adrian Föder,"",2013-08-23 02:43,"","",2013-08-23,"","",0,2013-08-23 02:43,"","",1311950,"",No,"","Especially when it comes to errors, or the need of determining a package, ViewHelpers need to know in what file they are noted.
+
+Currently I know of the following cases:
+
+* Every kind of error like ""argument foo needs to be supplied"", or exceptions thrown in ViewHelpers
+* ViewHelpers that need to find out a package name, like f:translate and the .action VHs
+
+The last case currently attempts to get this information (the current controller, hence package) from the Request, but there are cases where the Request is not available (starting with StandaloneView). So when using a ViewHelper and skipping any ""package"" argument, I as the integrator would expect the package where the current file resides as the default.
+
+I don't know that much about the parsing internals, but I think it would get really tough since Fluid works on strings rather soon, right?
+Maybe Layouts, Templates and Partials can be Objects with a ""sourceFile"", a ""sourceCode"" and a __toString method, and ViewHelpers have access to these objects... just an idea... No clue if that's possible in any way."
+52182,TYPO3.Fluid,Bug,"",Rejected,Should have,& vs. &amp;,mario chiari,Bastian Waidelich,2013-09-24 09:16,ViewHelpers,"",2013-09-23,"","",0,2013-09-23 05:38,"","",1356900,"",No,Flow 2.0.0,"see http://www.htmlhelp.com/tools/validator/problems.html#amp
+It seems that Fluid renders 
+<pre>
+<f:uri.action ... arguments=""{obj1:value1, obj2:value2}""></f:uri.action>
+</pre>
+as 
+<pre>
+obj1=value1&obj2=value2
+</pre>
+instead of 
+<pre>
+obj1=value1&amp;obj2=value2
+</pre>
+"
+52419,TYPO3.Fluid,Bug,"",New,Should have,Wrong PHPDocs notation for default value inline f:translate viewhelper,Frans Saris,"",2013-10-01 03:10,"",2.0,2013-10-01,"","",0,2013-10-01 03:03,"","",1368550,"",No,Git master,"The inline documentation in TYPO3\Fluid\ViewHelpers\TranslateViewHelper states:
+<pre>
+<code title=""Inline notation"">
+{f:translate(id: 'some.label.id', default: 'fallback result')}
+</code>
+</pre>
+
+But this has to be:
+
+<pre>
+<code title=""Inline notation"">
+{f:translate(id: 'some.label.id', value: 'fallback result')}
+</code>
+</pre>"
+52536,TYPO3.Fluid,Bug,"",Under Review,Should have,Errorclass not set if no property-attribute set,Stefan Froemken,"",2015-07-16 05:26,"","",2013-10-04,"","",0,2013-10-04 09:17,"","",1374300,"","","","Hello Extbase-Team,
+
+in some special cases we can't use attribute ""property"" but ""name"" and ""value"". But in that case the errorclass (red background) was never displayed.
+
+Stefan"
+52591,TYPO3.Fluid,Bug,"",New,Should have,The Pagination Widget broken for joined objects,Philipp Maier,"",2013-10-07 15:59,"","",2013-10-07,"","",0,2013-10-07 11:50,"","",1377050,"",No,Git master,"In cases where objects are reconstructed through joins, setting the LIMIT leads to an incomplete result set.
+
+Doctrine provides an Paginator for these purposes. The widget should use this paginator as soon as it is available in Flow (see: http://forge.typo3.org/issues/52590)."
+52640,TYPO3.Fluid,Feature,"",Under Review,Should have,Create an UnlessViewHelper as opposite to the IfViewHelper,Marc Neuhaus,Marc Neuhaus,2014-08-01 03:02,"","",2013-10-09,"","",0,2013-10-09 09:55,"","",1379500,"",No,"","Sometimes the IfViewHelper syntax is quite verbose if you only want to do something on ""else"":
+
+<pre>
+<f:if condition=""..."">
+    <f:else>...</f:else>
+</f:if>
+</pre>
+
+As an alternative we discussed a new ""UnlessViewHelper"" in IRC to shorten this:
+
+<pre>
+<f:unless condition=""..."">...</f:unless>
+</pre>
+
+The only difference to the IfViewHelper is the negation of the condition.
+
+This helps for example shortening the syntax for a ForLoop with condition for no objects from:
+
+<pre>
+<f:if condition=""{objects}"">
+    <f:then>
+        <f:for each=""{objects}"" as=""object"">
+            ...
+        </f:for>
+    </f:then>
+    <f:else>No objects found</f:else>
+</f:if>
+</pre>
+
+to:
+
+
+<pre>
+<f:for each=""{objects}"" as=""object"">
+    ...
+</f:for>
+<f:unless condition=""{objects}"">No objects found</f:unless>
+</pre>"
+53059,TYPO3.Fluid,Feature,"",Closed,Should have,Throw exception for unresolved namespaces,Bastian Waidelich,Bastian Waidelich,2014-12-08 13:24,Core,"",2013-10-23,"","",0,2013-10-23 05:30,"","",1400400,"",No,"","One major source of errors when working with Fluid is the missing error handling when referring to a ViewHelper namespace that hasn't been declared.
+Especially when one extracts parts of the template to a partial the namespace declaration is easily forgotten.
+
+The issue with this is that namespace prefixes are allowed in xml so Fluid can't determine whether @<unknown-namespace:foo />@ is a mistyped ViewHelper or a (possibly valid) XML/XHTML tag that has been registered otherwise.
+Given the importance of this we should solve this even though it would be a breaking change. We came up with following solution:
+
+<pre>
+<code class=""html"">
+{namespace x=Some\Package\ViewHelpers}
+{namespace xs}
+
+<f:foo />  <!-- as before: this would be a valid fluid tag as ""f"" is always registered (even though it would throw an exception because there is no VH ""FooViewHelper"" in the Fluid package -->
+
+<x:some.viewHelper />    <!-- as before: would resolve to \Some\Package\ViewHelpers\Some\ViewHelperViewHelper -->
+
+<xs:element />     <!-- as before but explicit: would be ignored, because the namespace is registered but does not point to a PHP namespace -->
+
+<unknown:foo />     <!-- new: would throw an exception in Dev context, ignore the tag in Production context because the namespace ""unknown"" is not defined -->
+
+</code>
+</pre>
+
+When working with complex XML based files with a lot of namespaces (like XML Schema or LaTeX) it would be tedious to register all the namespaces so we should also support some kind of placeholder syntax like:
+<pre>
+<code class=""html"">
+{namespace *} <!-- ignores all unknown namespaces (old behavior) -->
+{namespace xs*} <!-- ignores all unknown namespaces that start with ""xs"" -->
+</code>
+</pre>
+
+Note: a different approach to this would be to configure namespaces not in the Fluid template but in the configuration. See #35766 and the related issues for reasons why we *shouldn't* do this"
+53800,TYPO3.Fluid,Task,"",Resolved,Must have,Regard handling of AuthenticatedUser system role in IfHasRole VH,Adrian Föder,Adrian Föder,2013-11-20 10:37,ViewHelpers,"",2013-11-20,"","",100,2013-11-20 10:01,"","",1437100,"",Yes,"","With Ia00bea27e81b2e4a172ad4f998dfa30581dd71dd, a new system role AuthenticatedUser was introduced, however, that is not backed in the mentioned VH."
+53805,TYPO3.Fluid,Task,"",Resolved,Should have,Optimization in AbstractViewHelper,Wouter Wolters,"",2014-11-26 10:13,"","",2013-11-20,"","",100,2013-11-20 12:56,"","",1437350,"",No,"",Optimization in AbstractViewHelper
+53806,TYPO3.Fluid,Bug,"",Under Review,Should have,Paginate widget maximumNumberOfLinks rendering wrong number of links,Wouter Wolters,Bastian Waidelich,2014-06-18 06:13,Widgets,"",2013-11-20,"","",0,2013-11-20 13:11,"","",1437400,"",No,(any),"When setting maximumNumberOfLinks configuration option to 8, 10 links will be rendered."
+54135,TYPO3.Fluid,Bug,"",Resolved,Should have,Cached templates are not flushed when ViewHelpers are changed,Christopher Hlubek,Christopher Hlubek,2014-02-19 05:36,"","",2013-12-02,"","",100,2013-12-02 09:15,"","",1453700,"",No,Git master,"ViewHelper updates can lead to exceptions in cached templates, since changes of the @render@ method signature are not reflected correctly. The template cache should be flushed whenever ViewHelper classes are changed."
+54155,TYPO3.Fluid,Feature,"",Rejected,Could have,"f:render partial="""" package=""""",Kay Strobach,Bastian Waidelich,2013-12-06 07:57,ViewHelpers,"",2013-12-03,"","",0,2013-12-03 02:11,"","",1454700,"",No,"","Hi guys,
+
+especially when developing Applications, which rely on an AbstractController, which sets the layout it would be nice to have a way to use the centralized defined partials and the one from each package.
+Therefore it would be nice to have a package attribute for finding the related partial.
+"
+54195,TYPO3.Fluid,Task,"",New,Should have,"Rename and move FormViewHelper's errorClass value, currently 'f3-form-error'",Adrian Föder,Adrian Föder,2014-02-15 06:19,ViewHelpers,"",2013-12-04,"","",0,2013-12-04 07:08,"","",1456700,"",No,"","This should be renamed to @flow-form-error@ IMO, and the 
+<pre>
+$this->registerArgument('errorClass', 'string', 'CSS class to set if there are errors for this view helper', FALSE, 'f3-form-error');
+</pre>
+is currently spread manually in every concrete ViewHelper's @initializeArguments@ method, better place would be \TYPO3\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper IMO"
+54196,TYPO3.Fluid,Feature,"",Resolved,Could have,IfHasValidationError ViewHelper,Adrian Föder,Adrian Föder,2013-12-07 06:36,ViewHelpers,"",2013-12-04,"","",100,2013-12-04 07:30,"","",1456750,"",No,"","to cope with the practice done by common CSS frameworks where a specific form field's parent element must/should have a particular error CSS class, I suggest introducing a ViewHelper which then will be used like 
+
+<pre><code class=""html"">
+<div class=""row {f:form.ifHasValidationError(property: 'some.emailAddress', then: 'has-error')}""><input...></div>
+</code></pre>
+
+"
+54284,TYPO3.Fluid,Bug,"",New,Should have,Default Option for Switch/Case VH,Anja Leichsenring,"",2013-12-08 08:28,ViewHelpers,"",2013-12-08,"","",0,2013-12-08 08:28,"","",1460750,"",No,Flow 2.0.0,"In CMS Fluid the Switch/Case VH gets a default option. Wanna port?
+
+http://forge.typo3.org/issues/49371"
+55008,TYPO3.Fluid,Bug,"",Under Review,Should have,Interceptors should be used in Partials,Christian Müller,Christian Müller,2014-01-15 02:44,"","",2014-01-15,"","",0,2014-01-15 02:43,"","",1496400,"",No,(any),Currently Interceptors don't work on Partials because they are not initialized there. Can easily be tested by creating a Template that uses the Resource Interceptor (so using a relative path like ../../Public/Images/Foo.jpg) and then (after checking that the Interceptor converts that into a full resource path) moving that into a partial. There the Interceptor is no longer executed and you get the relative path that is then wrong.
+55142,TYPO3.Fluid,Bug,"",Resolved,Should have,Use getPropertyPath in autocomplete widget,Alexander Stehlik,"",2014-01-21 07:36,Widgets,"",2014-01-19,"","",100,2014-01-19 10:30,"","",1502600,"",No,Git master,"
+
+Currently the AutocompleteController uses @ObjectAccess::getProperty()@ for retrieving the property that was searched for in the query.
+
+The query is currently flexible enough to support sub-properties to be searched. An example: if you have a User object you could configure an autocomplete widget that searches for @name.fullName@. The query will execute that search without problems and find the users.
+
+But as soon as the results are build the widget crashes because it can not access the property.
+
+A simple fix that should not cause any side effects would be to use @ObjectAccess::getPropertyPath()@ instead."
+55723,TYPO3.Fluid,Feature,"",Closed,Should have,Support of schema.org attributes,Carsten Bleicker,Bastian Waidelich,2014-02-06 06:42,"","",2014-02-06,"","",0,2014-02-06 06:17,"","",1530850,"",No,"","\TYPO3\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper::registerUniversalTagAttributes should support schema.org microformat properties as much as possible.
+
+f.e. itemprop=""image"""
+55836,TYPO3.Fluid,Bug,"",Closed,Should have,Wrong class names in fluid documentation,Christian Weiske,"",2014-03-05 04:51,"","",2014-02-10,"","",0,2014-02-10 07:23,"","",1536250,"",No,Git master,"The documentation on
+http://docs.typo3.org/flow/TYPO3FlowDocumentation/stable/TheDefinitiveGuide/PartIII/Templating.html
+uses class names like
+> @extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper@
+
+Those classes don't exist anymore. They are in @\TYPO3\CMS\...@."
+56237,TYPO3.Fluid,Task,"",New,Should have,in-line (Condition)ViewHelpers should not evaluate on parsing,Adrian Föder,"",2014-02-24 07:47,"","",2014-02-24,"","",0,2014-02-24 07:47,"","",1556100,"",No,"","constructions like these,
+
+<pre><code class=""html"">
+{f:if(condition: anEntity, then: '{anEntity -> f:format.identifier()}')}
+</code></pre>
+
+make the then-branch be evaluated, i.e. invoked, even if the condition evals to false. In most cases this is the exact thing which is intended to be cirumvented when wrapping a ViewHelper invocation in a f:if condition."
+57885,TYPO3.Fluid,Bug,"",New,Must have,Inputs are cleared from a second form if the first form produced a vallidation error,Nicholas Gray,"",2014-04-13 18:00,"","",2014-04-13,"","",0,2014-04-13 18:00,"","",1638050,"",No,Git master,"Hi,
+
+we ran in to the following Bug:
+
+What is needed:
+-A fluid template containing 2 forms (form A and B).
+-Both forms are containing values from a stored object
+
+How to reproduce the error:
+- Update one form (form A) so that it will produce a validation error
+
+Result/Reason:
+- The other form (form B) will no longer contain the filled in values from the stored object as the formfield viewhelpers search for these in last submitted input array. This array only contains the inputs of the form (form A) which produced the error and thus form B is filled in with empty values
+
+Fix:
+Quickly hacked together (please refer to the attached 3 files)...
+Each form is now extended with an unique ID which is checked in the hasValidationErrors method. Thus only the fields of the form producing the error will return true and the fields of other forms are filled in as usual. The ID simply generated by counting how often the form tag was called. There is certainly a better way to handle it but that was the best I could come up with. I hope it helps
+
+Best regards "
+57998,TYPO3.Fluid,Feature,"",Resolved,Should have,f:form.select support to sort by translated label,Carsten Bleicker,Karsten Dambekalns,2014-08-11 05:32,ViewHelpers,"",2014-04-16,"","",100,2014-04-16 15:55,"","",1643700,"",No,"","request for feature:
+
+<pre>
+<f:form.select ...
+	optionValueField=""iso2""
+	optionLabelField=""name""
+	translate=""{by:'label'}""
+	sortBy=""{propertyName:'optionLabelField'}""
+/>
+</pre>
+
+This should sort options after translating by ""optionLabelField""
+"
+58557,TYPO3.Fluid,Feature,"",Rejected,Won't have this time,Define Namespaces in Configuration File,Aimo Künkel,Bastian Waidelich,2014-05-15 09:34,Core,2.x,2014-05-06,"","",0,2014-05-06 05:08,"","",1671500,"",No,"","It would be nice if one could define the namespaces via configuration file, additionally to the existing way inside the fluid file.
+This way you could move the f: namespace definition out of TYPO3\Fluid\Core\Parser\TemplateParser::$namespaces into the yaml file.
+
+Advantages would be:
+* cleaner fluid templates
+* simple (re-)configuration across a package
+* convention over configuration (e.g. when multiple frontend developers create multiple fluid templates)
+* reconfiguration of the f: namespace"
+58829,TYPO3.Fluid,Feature,"",Closed,Should have,Register package namespaces automatically,Bastian Waidelich,Marc Neuhaus,2014-12-08 14:32,Core,"",2014-05-15,"","",0,2014-05-15 09:33,"","",1684900,"",No,"","Currently when using ViewHelpers from 3rd party packages the package namespace has to be registered:
+<pre>
+<code class=""html"">
+{namespace xyz=Acme\SomePackage\ViewHelpers}
+<xyz:someViewHelper />
+</code>
+</pre>
+
+It would be useful if the namespace of all 3rd party packages *containing at least one ViewHelper* would be registered automatically (in addition to the explicitly registered namespaces) .
+For the above example that would mean:
+<pre>
+<code class=""html"">
+<acme.somepackage:someViewHelper />
+</code>
+</pre>
+
+Would be sufficient, if SomeViewHelper resides in a sub-namespace ""ViewHelpers"" as suggested."
+58862,TYPO3.Fluid,Bug,"",Needs Feedback,Should have,FormViewHelper doesn't accept NULL as value for $arguments,Kevin Fischer,Bastian Waidelich,2014-06-04 06:49,ViewHelpers,"",2014-05-16,"","",0,2014-05-16 05:47,"","",1686550,"",Yes,Flow 2.0.0 beta 2,"Unlike other ViewHelpers like the ActionViewHelpers, the FormViewHelper doesn't accept NULL as value for the $arguments argument, because it's type-hinted as ""array"" in the render() method. This leads to PHP throwing a Catchable Fatal Error when passing NULL to it.
+
+A patch file is attached."
+58921,TYPO3.Fluid,Bug,"",New,Should have,f:form.* VHs crash if NOT inside f:form but followed by f:form,Aimo Künkel,"",2014-05-19 09:29,"","",2014-05-19,"","",0,2014-05-19 08:28,"","",1689500,"",No,Git master,"The f:form.* ViewHelpers work inside of forms and standalone, but they crash if used standalone and they are followed by any fluid form.
+
+This works fine and results in a perfect html select:
+<pre>
+<f:form.select name=""select"" options=""{1: 'One', 2: 'Two', 3: 'Three'}"" />
+</pre>
+
+This also works fine and results in a submittable form:
+<pre>
+<f:form action=""some"" name=""form"">
+	<f:form.button type=""submit"">Go!</f:form.button>
+</f:form>
+</pre>
+
+This instead (both concatenated) ...
+<pre>
+<f:form.select name=""select"" options=""{1: 'One', 2: 'Two', 3: 'Three'}"" />
+
+<f:form action=""some"" name=""form"">
+	<f:form.button type=""submit"">Go!</f:form.button>
+</f:form>
+</pre>
+... will throw the following error:
+h3. #1243352010: The key ""TYPO3\Fluid\ViewHelpers\FormViewHelper->formFieldNames"" was already stored and you cannot override it.
+
+I regard this as a bug and propose to let them produce the html select, followed by the submittable form.
+
+
+I explain it this detailed because i had a discussion in IRC on what a developer would expect the output to be, but i definitely would like to have multiple forms on a page AND multiple independent inputs NOT inside of forms (for UI reasons, for JS handling, ...)"
+58972,TYPO3.Fluid,Bug,"",Closed,Should have,"DateViewHelper property ""forceLocale"" not passed as boolean",Carsten Bleicker,Bastian Waidelich,2014-05-21 09:43,ViewHelpers,"",2014-05-20,"","",0,2014-05-20 16:19,"","",1692050,"",No,Git master,"As far as i understand this should check localisationService.
+<f:format.date forceLocale=""true"">{document.dateTime}</f:format.date>
+
+But boolean is not realy passed to \TYPO3\Fluid\Core\ViewHelper\AbstractLocaleAwareViewHelper::getLocale?"
+58983,TYPO3.Fluid,Bug,"",New,Should have,format.date does not respect linebreaks and throws exception,Carsten Bleicker,"",2014-05-21 04:00,"","",2014-05-21,"","",0,2014-05-21 04:00,"","",1692600,"",No,Git master,"This one works:
+<pre>
+<f:format.date>{dateTime}</f:format.date>
+</pre>
+
+This throws exception:
+<pre>
+<f:format.date>{dateTime}
+</f:format.date>
+</pre>
+
+<pre>
+Uncaught exception #1 in line 374 of /Users/pumatertion/Sites/neos.pipeu/Data/Temporary/Development/Cache/Code/Fluid_TemplateCache/Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4.php: Catchable Fatal Error: Object of class DateTime could not be converted to string in /Users/pumatertion/Sites/neos.pipeu/Data/Temporary/Development/Cache/Code/Fluid_TemplateCache/Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4.php line 374
+
+85 TYPO3\Flow\Error\ErrorHandler::handleError(4096, ""Object of class DateTime could not be converted to string"", ""/Users/pumatertion/Sites/neos.pipeu/Data/Temporary/Development/Cache/Code/Fluid_TemplateCache/Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4.php"", 374, array|3|)
+84 FluidCache_Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4::{closure}()
+83 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()
+82 TYPO3\Fluid\ViewHelpers\Format\DateViewHelper_Original::render(NULL, ""d.m.Y"", NULL, NULL)
+81 call_user_func_array(array|2|, array|4|)
+80 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+79 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+78 FluidCache_Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4::render(TYPO3\Fluid\Core\Rendering\RenderingContext)
+77 TYPO3\Fluid\View\AbstractTemplateView::render()
+76 PIPEU\Site\Service\Converter\DocumentToPdfConverter_Original::convert(PIPEU\Factura\Domain\Model\Documents\Order)
+75 PIPEU\Factura\NodeTypes\Controller\BasketController_Original::indexAction()
+74 PIPEU\Factura\NodeTypes\Controller\BasketController::indexAction()
+73 call_user_func_array(array|2|, array|0|)
+72 PIPEU\Factura\NodeTypes\Controller\BasketController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+71 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+70 TYPO3\Flow\Security\Aspect\PolicyEnforcementAspect_Original::enforcePolicy(TYPO3\Flow\Aop\JoinPoint)
+69 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+68 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+67 PIPEU\Factura\NodeTypes\Controller\BasketController::indexAction()
+66 call_user_func_array(array|2|, array|0|)
+65 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+64 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+63 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+62 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+61 TYPO3\Neos\TypoScript\PluginImplementation_Original::evaluate()
+60 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer<TYPO3.Neos:ContentCase>/default<TYPO3.TypoScript:Matcher>/element<PIPEU.Factura.NodeTypes:Basket>"", ""Exception"")
+59 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer<TYPO3.Neos:ContentCase>/default<TYPO3.TypoScript:Matcher>/element<PIPEU.Factura.NodeTypes:Basket>"")
+58 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+57 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer<TYPO3.Neos:ContentCase>/default<TYPO3.TypoScript:Matcher>"", ""Exception"")
+56 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer<TYPO3.Neos:ContentCase>/default<TYPO3.TypoScript:Matcher>"")
+55 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::renderMatcher(""default"")
+54 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+53 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer"", ""Exception"")
+52 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer"")
+51 TYPO3\TypoScript\TypoScriptObjects\AbstractCollectionImplementation::evaluate()
+50 TYPO3\Neos\TypoScript\ContentCollectionImplementation_Original::evaluate()
+49 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>"", ""Exception"")
+48 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>"")
+47 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+46 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>"", ""Exception"")
+45 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>"")
+44 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::renderMatcher(""default"")
+43 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+42 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main"", ""NULL"", NULL)
+41 TYPO3\TypoScript\Core\Runtime_Original::evaluate(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main"")
+40 TYPO3\TypoScript\TypoScriptObjects\Helpers\TypoScriptPathProxy_Original::objectAccess()
+39 TYPO3\Fluid\Core\Parser\SyntaxTree\ObjectAccessorNode_Original::getPropertyPath(TYPO3\Fluid\Core\ViewHelper\TemplateVariableContainer, ""content.main"", TYPO3\Fluid\Core\Rendering\RenderingContext)
+38 FluidCache_Standalone_template_file_Default_e52a2bc8e4188d8f367a0c0fdfb536c5271802ac::{closure}()
+37 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()
+36 TYPO3\Fluid\ViewHelpers\Format\RawViewHelper_Original::render(NULL)
+35 call_user_func_array(array|2|, array|1|)
+34 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+33 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+32 FluidCache_Standalone_template_file_Default_e52a2bc8e4188d8f367a0c0fdfb536c5271802ac::section_02083f4579e08a612425c0c1a17ee47add783b94(TYPO3\Fluid\Core\Rendering\RenderingContext)
+31 TYPO3\Fluid\View\AbstractTemplateView::renderSection(""body"", NULL, FALSE)
+30 TYPO3\Fluid\View\AbstractTemplateView::renderStandaloneSection(""body"", NULL, FALSE)
+29 TYPO3\Fluid\View\AbstractTemplateView::renderSection(""body"")
+28 TYPO3\TypoScript\TypoScriptObjects\TemplateImplementation_Original::evaluate()
+27 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body"", ""NULL"", TYPO3\TypoScript\TypoScriptObjects\ArrayImplementation)
+26 TYPO3\TypoScript\Core\Runtime_Original::evaluate(""page<TYPO3.Neos:Page>/body"", TYPO3\TypoScript\TypoScriptObjects\ArrayImplementation)
+25 TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject::tsValue(""body"")
+24 TYPO3\TypoScript\TypoScriptObjects\ArrayImplementation_Original::evaluate()
+23 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page"", ""Exception"")
+22 TYPO3\TypoScript\Core\Runtime_Original::render(""page"")
+21 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+20 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""root<TYPO3.TypoScript:Case>/default<TYPO3.TypoScript:Matcher>"", ""Exception"")
+19 TYPO3\TypoScript\Core\Runtime_Original::render(""root<TYPO3.TypoScript:Case>/default<TYPO3.TypoScript:Matcher>"")
+18 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::renderMatcher(""default"")
+17 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+16 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""root"", ""Exception"")
+15 TYPO3\TypoScript\Core\Runtime_Original::render(""root"")
+14 TYPO3\Neos\View\TypoScriptView_Original::render()
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+9 call_user_func_array(array|2|, array|2|)
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+1 TYPO3\Flow\Core\Bootstrap::run()
+</pre>"
+59057,TYPO3.Fluid,Bug,"",Under Review,Must have,Hidden empty value fields shoud be disabled when related field is disabled,Alexander Berl,Bastian Waidelich,2014-06-18 11:23,ViewHelpers,"",2014-05-22,"","",0,2014-05-23 07:14,"","",1696300,"",No,Git master,"*Use case:* A form which is used to redisplay a stored entity with some fields (checkbox) being disabled for further edit, where the current value is *checked*.
+Submit the edit form without changes.
+
+*Expected:* The value for the disabled checkbox fields stays unchanged
+
+*Actual:* The empty default value for the fields is submitted, hence the state of the disabled checkbox field changed to *unchecked*
+
+*Solution:* AbstractFormFieldViewHelper::renderHiddenFieldForEmptyValue() needs to check if the current field is disabled, and if so, add this flag to the hidden field"
+60003,TYPO3.Fluid,Feature,"",New,Should have,Add required-Attribute to f:form.password,David Sporer,"",2014-06-30 10:53,ViewHelpers,"",2014-06-30,"","",0,2014-06-30 10:33,"","",1743450,"",No,"","Currently the ViewHelper f:form.password doesn't support the required-Attribute.
+According to W3C the required attribute is valid for input-elements of type ""password"": http://www.w3.org/TR/html-markup/input.password.html
+Therefore I think TYPO3 Flow should allow the usage of the required Attribute.
+Adding required as optional parameter like it's done for the TextfieldViewHelper should be appropriate, shouldn't it?
+
+Current:
+<pre>
+/**
+	 * Renders the password input field.
+	 *
+	 * @return string
+	 * @api
+	 */
+	public function render() {
+		$name = $this->getName();
+		$this->registerFieldNameForFormTokenGeneration($name);
+
+		$this->tag->addAttribute('type', 'password');
+		$this->tag->addAttribute('name', $name);
+		$this->tag->addAttribute('value', $this->getValue());
+
+		$this->setErrorClassAttribute();
+
+		return $this->tag->render();
+	}
+</pre>
+
+Should be:
+<pre>
+/**
+	 * Renders the password input field.
+	 *
+	 * @param boolean $required If the field is required or not
+	 * @return string
+	 * @api
+	 */
+	public function render($required = FALSE) {
+		$name = $this->getName();
+		$this->registerFieldNameForFormTokenGeneration($name);
+
+		$this->tag->addAttribute('type', 'password');
+		$this->tag->addAttribute('name', $name);
+		$this->tag->addAttribute('value', $this->getValue());
+
+		if ($required === TRUE) {
+			$this->tag->addAttribute('required', 'required');
+		}
+		
+		$this->setErrorClassAttribute();
+
+		return $this->tag->render();
+	}
+</pre>
+
+I know that I can solve it by using the Textfield ViewHelper and specifying type=""password"" but it would be better if the password view helper also supports the required-Attribute."
+60069,TYPO3.Fluid,Bug,"",Resolved,Must have,Objects cast to string are not escaped,Philipp Maier,Bastian Waidelich,2014-08-26 02:33,ViewHelpers,"",2014-07-03,"","",100,2014-07-03 03:02,"","",1746700,"",No,Git master,"Basically if you have a class like this:
+
+class HelloWorld {
+public function __toString() { return '<script>alert(""hello world"");</script>' }
+}
+
+and you assign it as a fluid variable like this:
+
+$this->view->assign('helloworld', new HelloWorld());
+
+and have a template like this:
+
+{helloworld}
+
+you're going to have a bad time."
+60181,TYPO3.Fluid,Feature,"",New,Could have,Caching mechanism for Fluid Views/Templates,Kevin Fischer,"",2014-07-08 07:18,View,"",2014-07-08,"","",0,2014-07-08 07:18,"","",1752300,"",No,"","It would be nice to have have a way to tell Fluid to cache the result of a getter or ViewHelper. This could be done e.g. by prefixing the expression with a @$@, a similiar special character or otherwise indicating that Fluid should cache this expression:
+
+<pre>
+Won't cache: {object.myComplexGetter}
+Will cache: {$ object.myComplexGetter}
+Uncached: {object.myComplexGetter}
+Cached: {$ object.myComplexGetter}
+</pre>
+
+<pre>
+Won't cache: {acme:time.consuming()}
+Will cache: {$ acme:time.consuming()}
+Uncached: {acme:time.consuming()}
+Cached: {$ acme:time.consuming()}
+</pre>
+
+The cache would operate on a per-file basis, as caching across multiple (independent) template and partial files could raise unforeseen issues and hard-to-debug errors.
+
+The cache would only care about the first part of an expression chain. All subsquent parts of a chain would be executed normally. To avoid running a long or time consuming expression more than once, you could still use the @<f:alias>@ ViewHelper.
+
+<pre>
+Will cache: {$ object.myComplexGetter}
+Uses cached result: {$ object.myComplexGetter -> f:count()}
+
+Uses cached result, with the time consuming VH being executed every time:
+{$ object.myComplexGetter -> acme:time.consuming()}
+</pre>
+
+I'd love to hear ideas and comments about this. Currently I'm using lots @<f:alias>@ in my code to accomplish this and I'd love to avoid it where possible.
+
+A related feature request for ViewHelpers from someone else: http://forge.typo3.org/issues/3291"
+60271,TYPO3.Fluid,Feature,"",New,Should have,"Paginate viewhelper, should also support arrays",Sebastian Strasser,"",2014-07-11 07:19,"","",2014-07-11,"","",0,2014-07-11 07:19,"","",1756800,"",No,"","Hello,
+
+i want to use this viewhelper for a search result page,
+
+<pre>
+<f:widget.paginate objects=""{contacts}"" as=""paginatedContacts"" configuration=""{itemsPerPage:8, insertAbove:0, insertBelow:1, maximumNumberOfLinks:10, addQueryStringMethod: '{method}'}"">
+<div class=""container map_search_results"">
+
+    <f:for each=""{paginatedContacts}"" as=""contact"">
+
+        <f:render partial=""List/Contact"" arguments=""{contact: contact, lang: lang}"" />
+
+    </f:for>
+    <div class=""clear-fix""></div>
+
+</div>
+</f:widget.paginate>
+</pre>
+
+but i got a php error:
+@PHP Fatal error:  Call to a member function getQuery() on a non-object in ...\cms\typo3\sysext\fluid\Classes\ViewHelpers\Widget\Controller\PaginateController.php on line 76@
+"
+60430,TYPO3.Fluid,Feature,"",Closed,Should have,Add a negate-option to the IfViewHelper,Stefan Neufeind,"",2014-08-01 03:59,ViewHelpers,"",2014-07-21,"","",0,2014-07-21 07:14,"","",-7700,"",No,"",Allows to simply turn conditions into the opposite.
+60856,TYPO3.Fluid,Bug,"",New,Must have,Target attribute not supported by the form viewhelper,Mathias Brodala,"",2014-08-08 07:14,ViewHelpers,"",2014-08-08,"","",0,2014-08-08 07:14,"","",-28950,"",Yes,(any),The @target@ attribute is valid in pretty much every (X)HTML doctype (except XHTML 1.0 Strict) and should be supported by the @FormViewHelper@ out of the box. Currently one has to work around this issue with  @additionalAttributes@.
+62346,TYPO3.Fluid,Feature,"",New,Could have,f:comment should have high precende,martin no-lastname-given,"",2014-10-20 05:33,Core,3.x,2014-10-20,"","",0,2014-10-20 05:33,"","",-103200,"",No,"",Although it's only a viewhelper i think f:comment should be interpreted at highest priority. sections cannot be put inside a comment as they are interpreted before the comment is in effect.
+65424,TYPO3.Fluid,Bug,"",Under Review,Should have,SelectViewHelper must respect  option(Value|Label)Field for arrays,Stefan Neufeind,"",2015-02-28 16:23,ViewHelpers,"",2015-02-28,"","",0,2015-02-28 16:21,"","",-256950,"",No,FLOW3 1.1.0,"
+<f:form.select options=""{array}"" optionValueField=""uid"" optionLabelField=""title"" />
+
+
+should work with the given array:
+
+array(
+    array(
+        'uid' => 1,
+        'title' => 'Foo'
+    ),
+    array(
+        'uid' => -1,
+        'title' => 'Bar'
+    ),
+    array(
+        'title' => 'Baz'
+    ),
+    array(
+        'uid' => '2'
+    ),
+)
+
+Currently fluid tries to use the keys as values and the arrays as label which results in an error.
+
+(Port to upstream from TYPO3 CMS, #65073)"

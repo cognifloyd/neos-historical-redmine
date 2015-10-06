@@ -1,0 +1,595 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+59314,TYPO3.TypoScript,Task,"",Closed,Should have,Configuring @exceptionHandler should have an effect also for nested TypoScript objects,Christian Müller,Christian Müller,2014-08-19 03:40,"","",2014-06-03,"","",0,2014-06-03 10:54,"","",1709150,"",""
+57465,TYPO3.TypoScript,Bug,"",Resolved,Must have,Fatal Error in ContentCache on PHP 5.3,Benno Weinzierl,Benno Weinzierl,2014-04-03 03:59,"","",2014-03-31,"","",100,2014-03-31 12:19,"","",1617150,"","In Ubuntu Presice with PHP 5.3 the following Error occures (after some requests in backend).
+
+<pre>
+Fatal error: Cannot access self:: when no class scope is active in /project/Data/Temporary/Development/SubContextVagrantBox/Cache/Code/Flow_Object_Classes/TYPO3_TypoScript_Core_Cache_ContentCache.php on line 218 
+</pre>
+
+Patch will follow..."
+57411,TYPO3.TypoScript,Task,"",New,Should have,Endless loop in TypoScript 2,Markus Hölzle,"",2014-03-29 06:46,"","",2014-03-28,"","",0,2014-03-28 09:19,"","",1614450,"","Something like this causes an endless loop and should throw an exception:
+<pre>
+prototype(TYPO3.Neos.NodeTypes:Page) < prototype(TYPO3.Neos.NodeTypes:Page) {
+}
+</pre>"
+56891,TYPO3.TypoScript,Bug,"",Resolved,Should have,UriBuilder calls undefined method $this->getTsRuntime(),Rens Admiraal,"",2014-04-01 09:44,"",1.1,2014-03-13,"","",100,2014-03-13 17:56,"","",1588700,"",UriBuilder calls undefined method $this->getTsRuntime(). This seems to be a leftover from the time it still extended the TemplateImeplementation (1.0)
+54378,TYPO3.TypoScript,Bug,"",New,Must have,Processors are not cleared when clearing an object path,Christopher Hlubek,"",2013-12-13 05:15,"",1.0,2013-12-13,"","",0,2013-12-13 05:15,"","",1465450,"","When clearing a property path, I expect all registered processors to be cleared as well:
+
+<pre>
+attributes.class.@process.nodeType = ${...}
+attributes.class >
+</pre>
+
+Does not reset @@process.nodeType@.
+"
+54363,TYPO3.TypoScript,Bug,"",Resolved,Should have,Prototype definitions should use FQN,Rens Admiraal,Rens Admiraal,2013-12-13 11:36,"","",2013-12-12,"","",100,2013-12-12 11:56,"","",1464700,"",""
+54274,TYPO3.TypoScript,Feature,"",Resolved,Should have,ResourceUri TypoScript object,Bastian Waidelich,Bastian Waidelich,2013-12-08 15:36,"",1.0,2013-12-07,"","",100,2013-12-07 14:21,"","",1460250,"",Provide a TypoScript object that can render resource URIs - similar to what the uri.resource ViewHelper does in Fluid.
+54194,TYPO3.TypoScript,Bug,"",Resolved,Should have,Setting a property on a TS object resets its processors,Bastian Waidelich,Sebastian Kurfuerst,2013-12-04 14:36,"","",2013-12-04,"","",100,2013-12-04 06:22,"","",1456650,"","Setting the property on a TypoScript object seems to reset its processor:
+
+Setup:
+<pre>
+page = TYPO3.Neos.NodeTypes:Text {
+	text.@process.1 = ${String.toUpperCase(value)}
+	text = 'foo bar'
+}
+</pre>
+
+Expected:
+<pre>
+FOO BAR
+</pre>
+
+Actual:
+<pre>
+foo bar
+</pre>
+
+When using Eel syntax:
+<pre>
+text = ${'foo bar'}
+</pre>
+the processor is *not* reset!
+
+Also if the process line appears after the text assignment, obviously"
+52923,TYPO3.TypoScript,Bug,"",Resolved,Should have,The CaseImplementation does not support TypoScript debug mode correctly,Dominique Feyer,Dominique Feyer,2013-10-30 07:35,"","",2013-10-17,"","",100,2013-10-17 10:21,"","",1393600,"","$renderedMatcher !== self::MATCH_NORESULT is always FALSE when using TypoScript debug mode something like if (strpos($renderedMatcher, self::MATCH_NORESULT) === FALSE) should work"
+50380,TYPO3.TypoScript,Feature,"",Resolved,Should have,TypoScript string keys,Aske Ertmann,"",2013-10-03 02:35,"",1.0 alpha 6,2013-07-24,"","",100,2013-07-24 08:38,"","",1267600,"","Currently trying to create keys with hyphens results in syntax error, however we need this functionality in order to have keys like data-nodename e.g.
+
+The syntax could the equal to Yaml where you have 'Key-name': 'value', so 'Key-name' = 'value'"
+49921,TYPO3.TypoScript,Bug,"",Resolved,Should have,TS Runtime don't require a Controller Context,Dominique Feyer,Dominique Feyer,2013-09-30 11:12,"",1.0 beta 1,2013-07-11,"","",0,2013-07-11 12:09,"","",1245100,"","For some use case, like rendering TS object in service class, the requirement of the ControllerContext in TS Runtime cause some design problem. Currently the Standalone fluid view, can create a ControllerContext if needed, this patch propose the same thing for the TS Runtime."
+48414,TYPO3.TypoScript,Task,"",Resolved,Should have,TS paths should use . instead of / where this is currently not the case,Karsten Dambekalns,Karsten Dambekalns,2013-05-24 09:36,"",1.0 beta 1,2013-05-21,"","",100,2013-05-21 11:58,"","",1170550,"","In TS ""object paths"" are using a dot as seperator, but e.g. the render VH expects paths using / - which is inconsistent"
+48413,TYPO3.TypoScript,Task,"",Resolved,Should have,"Rename renderTypoScript VH to just ""render""",Karsten Dambekalns,Karsten Dambekalns,2013-05-24 09:36,"",1.0 beta 1,2013-05-21,"","",100,2013-05-21 11:56,"","",1170500,"",""
+48362,TYPO3.TypoScript,Task,Work Package #48275: TypoScript consistency,New,Should have,"(maybe) rename ""matcher"" to ""if""",Sebastian Kurfuerst,"",2013-05-23 13:06,"","",2013-05-17,"","",0,2013-05-17 11:55,"","",1167950,"","... so that is maybe could also be used standalone:
+
+<pre>
+foo = If
+foo.condition = ...
+foo.then = ...
+foo.else = ...
+</pre>
+
+... is nicely in sync with #48359"
+48361,TYPO3.TypoScript,Task,Work Package #48275: TypoScript consistency,Resolved,Should have,Kill processor classes; change processor syntax,Sebastian Kurfuerst,Sebastian Kurfuerst,2013-10-11 15:36,"",1.0 beta 1,2013-05-17,"","",100,2013-05-17 11:53,"","",1167900,"","the whole team feels that processors are somewhat not fitting into the TS concept; especially because many things can be done as well using Eel; and we want to provide one consistent way of doing things.
+
+This means:
+
+* we want to *remove processor classes*; instead the functionality should be made available in the Eel standard library
+* we want the following syntax for processors:
+
+<pre>
+page.title = ""foo""
+
+// short syntax
+page.title.@process.wrapInTitle = ${ ""before"" + value + ""after"" }
+
+// long position syntax
+page.title.@process.wrapInTitle {
+  expression = ${ ""before"" + value + ""after"" }
+  @position = ""end 50""
+}
+</pre>
+
+* positional arguments as known from TypoScript should just work here.
+* we are not yet sure if the ""current value"" variable should be called ""value"" or differently. Same, it is not yet clear whether the long form should be called ""expression"".
+
+Together with #48359 this means one could also write custom TypoScript objects and use them as ""processors"".
+
+We all think this is more powerful and consistent than the old processor implementation."
+48359,TYPO3.TypoScript,Task,Work Package #48275: TypoScript consistency,Resolved,Should have,Simple Value / Eel Expression / TypoScript Object Interoperability,Sebastian Kurfuerst,Sebastian Kurfuerst,2013-09-23 16:35,"",1.0 beta 1,2013-05-17,"","",100,2013-05-17 11:47,"","",1167800,"","currently, there is a big distinction between *simple values and eel expressions*, and sub-TypoScript objects; despite them sharing the same namespace.
+
+However, basically, all of the above mentioned three TS data types produce a *value* which they return to their *parent*.
+
+That's why the following should be made possible:
+
+<pre>
+
+page.template = ""adf"" // works today
+page.template = ${...} // works today
+page.template = Case { // does NOT work today; but we want to make this possible.
+   foo.condition = ${...}
+   foo.then = ""myTemplate""
+   ...
+}
+</pre>
+
+Same for the other way around:
+<pre>
+page.body.sections.main = Template // works today
+page.body.sections.main = ""my static string"" // does NOT work today, but we want to make this possible.
+</pre>"
+47970,TYPO3.TypoScript,Task,"",Resolved,Should have,Fix handling of request package inside TemplateImplementation,Christian Müller,Christian Müller,2013-05-07 06:39,"","",2013-05-06,"","",100,2013-05-06 03:31,"","",1148650,"",""
+44948,TYPO3.TypoScript,Task,Story #44950: As a Integrator I want to add RSS rendering in TypoScript,Resolved,Should have,Extend Matcher to accept TypoScript paths additionally to types,Christian Müller,Christian Müller,2013-01-31 05:44,"",Sprint February 2013,2013-01-30,"","",0,2013-01-30 03:16,"","",1000500,"",""
+44903,TYPO3.TypoScript,Bug,"",New,Should have,Unsetting paths only sets the Path to NULL instead of unsetting,Marc Neuhaus,"",2013-01-29 05:45,"","",2013-01-29,"","",0,2013-01-29 05:45,"","",998700,"","When you unset a path with "">"" the Parser only sets the Path to NULL.
+This can result in broken rending because some TypoScriptObjects don't check if the
+path is NULL or renderable, like for example the ArrayImplementation."
+44902,TYPO3.TypoScript,Bug,"",Resolved,Should have,ArrayImplementation uses unsetted(nulled) paths,Marc Neuhaus,Marc Neuhaus,2013-01-30 16:32,"","",2013-01-29,"","",0,2013-01-29 05:43,"","",998650,"","The ArrayImplementation tries to render non existing paths when an path is unset with "">"".
+The Reason is, that the TypoScript Parser doesn't remove the path, instead it sets it to NULL.
+
+As a quick fix i changed the ArrayImplementation to check if the path is null to skip it.
+
+But in general this should be properly handled by the Parser."
+44417,TYPO3.TypoScript,Feature,"",Resolved,Should have,Enable multiple TypoScriptPaths in the TypoScriptView,Marc Neuhaus,Marc Neuhaus,2013-10-04 08:35,"","",2013-01-09,"","",100,2013-01-09 17:59,"","",974450,"","To use TypoScripts from multiple packages in a TypoScriptView it needs to support multiple TypoScriptPaths.
+
+This comes in especially handy in combination with the Feature to configurat Views through Views.yaml
+that's being developed at: http://forge.typo3.org/issues/42176"
+43752,TYPO3.TypoScript,Feature,"",Resolved,Should have,Add support to unset paths and processors,Marc Neuhaus,Marc Neuhaus,2013-10-11 15:36,"","",2012-12-08,"","",100,2012-12-08 06:58,"","",941450,"","Currently it's not possible to unset Paths or Processors.
+
+To unset paths i'd suggest to reuse the pattern that's known from
+typoscript1:
+<pre>
+prototype(TYPO3.Expose:RecordList) {
+    controllerLinks >
+}
+</pre>
+
+
+To unset processors we should do something similar to this:
+<pre>
+prototype(TYPO3.Expose:RecordList) 100 >>
+</pre>"
+43628,TYPO3.TypoScript,Feature,"",Resolved,Should have,Standalone TypoScript ViewHelper,Christian Müller,Christian Müller,2013-06-08 07:36,"","",2012-12-05,"","",100,2012-12-05 07:49,"","",935300,"",Provide a Fluid ViewHelper to render TypoScript from within a Fluid template that is not rendered in TypoScript context.
+42971,TYPO3.TypoScript,Bug,"",Resolved,Must have,static plugin import with typoScript,Marcus Biesel,"",2013-12-12 02:57,"","",2012-11-14,"","",0,2012-11-14 09:43,"","",902600,"","I have created a plugin in a new package, at the backend it works i can insert it.
+
+but if i want insert it static at the default.html with <typoScript:renderTypoScript path=""parts/test"" /> and at the Root.ts2 i define it with
+
+include: resource://Sponsor.LinkBox/Private/TypoScript/Root.ts2
+
+page.body {
+           parts {
+              test < prototype(Sponsor.LinkBox:Plugin)
+          }
+}
+
+
+at the Sponsor.LinkBox package i define my Root.ts2 with
+
+prototype(Sponsor.LinkBox:Plugin) < prototype(TYPO3.Neos.ContentTypes:Plugin)
+prototype(Sponsor.LinkBox:Plugin) {
+     package = 'Sponsor.LinkBox'
+     controller = 'Standard'
+     action = 'index'
+}
+
+i get this mistake
+
+#1332493990: No ""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/parts/test"" TypoScript object found. Please make sure to define one in your TypoScript configuration. 
+
+
+i use the new git version from 14.11.12
+
+"
+42797,TYPO3.TypoScript,Bug,"",New,Should have,Support '\' in prototype names,Marc Neuhaus,Sebastian Kurfuerst,2012-11-12 07:15,"","",2012-11-08,"","",0,2012-11-08 11:40,"","",894000,"","Currently it's not possible to use backslashes in prototype names, 
+but it would be helpful to enable this for the Schema Configuration
+for TYPO3.Expose:
+
+prototype(TYPO3.Expose:Schema:Famelo\Demo\Admin\Domain\Model\Configurations)"
+42710,TYPO3.TypoScript,Bug,"",New,Should have,catchRuntimeException shouldn't catch StopActionException and ForwardException,Marc Neuhaus,"",2012-11-05 20:04,"","",2012-11-06,"","",0,2012-11-05 20:04,"","",889750,"","currently the TYPO3.TypoScript.catchRuntimeException setting catches all exceptions and prevents redirects.
+"
+41030,TYPO3.TypoScript,Task,"Story #41098: As a developer, I want a clean TypoScript package",New,Should have,"TypoScript namespaces should have file scope, not global scope",Robert Lemke,"",2012-09-20 06:00,"","","","","",0,2012-09-18 03:46,"","",809550,"",""
+41027,TYPO3.TypoScript,Task,"Story #41098: As a developer, I want a clean TypoScript package",Accepted,Should have,remove all code parts which are commented with deprecated,Robert Lemke,Karsten Dambekalns,2013-05-21 11:56,"","","","","",0,2012-09-18 03:05,"","",809400,"",""
+41026,TYPO3.TypoScript,Task,"Story #41098: As a developer, I want a clean TypoScript package",Closed,Should have,Create a basic manual for the TypoScript package,Robert Lemke,Sebastian Kurfuerst,2013-05-18 06:51,"","","","","",0,2012-09-18 02:55,"","",809350,"",""
+40936,TYPO3.TypoScript,Task,"Story #40934: As a Site Integrator, I want an easy way to get started with TypoScript",Closed,Should have,Fix merge algorithm of TypoScript files inclusion,Robert Lemke,Robert Lemke,2012-10-04 05:40,"",Sprint 10 (1.0 TP1),"","","",0,2012-09-14 11:53,"","",804950,"",""
+40933,TYPO3.TypoScript,Bug,"",Resolved,Should have,Fix path name for TypoScript files according CGLs,Robert Lemke,Robert Lemke,2012-09-18 02:52,"",Sprint 10 (1.0 TP1),2012-09-14,"","",0,2012-09-14 11:21,"","",804850,"","The TypoScript files corresponding to the current node must reside in a directory with the name of the node. Because node names are all lowercase, the directory name also starts with a lowercase character.
+
+It would be nice if also these directories would be consistent with the remaining resources."
+40931,TYPO3.TypoScript,Task,"",Resolved,Should have,General clean up,Robert Lemke,Robert Lemke,2012-09-17 08:35,"",Sprint 10 (1.0 TP1),2012-09-14,"","",100,2012-09-14 11:05,"","",804750,"","Several doc comments are not up to date and the default path to leading to TypoScripts of a package is wrong.
+
+Also, the TypoScript parser should be Singleton."
+39865,TYPO3.TypoScript,Bug,Work Package #48275: TypoScript consistency,Resolved,Must have,create proper prototype inheritance,Sebastian Kurfuerst,Sebastian Kurfuerst,2013-05-24 10:36,"","",2012-08-16,"","",100,2012-08-16 10:10,"","",754750,"","Imagine:
+
+<pre>
+
+prototype(Matcher)
+prototype(SpecializedMatcher) < prototype(Matcher)
+
+
+prototype(SomeCaseStatement) < prototype(Case) {
+    # Question: What to do if ""matcher.x"" is an extension of Matcher? how do we change the prototype for ALL matchers then?
+    # - Idea: remember ""inherited"" types
+    prototype(Matcher).@override {
+        identifier = ${identifierPrefix + '.' + name}
+    }
+    
+    foo = SpecializedMatcher
+    # now, as foo is a subtype of Matcher, the @override from above should also apply for here :-)
+    # however, this does not happen right now, and implementing it would probably be difficult...
+
+</pre>"
+39658,TYPO3.TypoScript,Feature,"",Resolved,Should have,"TypoScript Array and Case should support ""Registry"" idea for defining the order",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-08-21 01:36,"","",2012-08-09,"","",100,2012-08-09 11:27,"","",744600,"","Currently, we have two TypoScript objects which work with some kind of ""array"": the ""Case"" TypoScript object and the ""TypoScriptArray"" TS object which renders a list of something.
+
+For both of them, it would be good if we could get rid of the numeric arrays as much as possible, instead using the old ""Registry"" concept, so one could say: ""Let's add that after XY"" or ""Before  Z"" or ""at the end"" or ""at the beginning"".
+
+Old JS Registry class: 
+
+http://git.typo3.org/FLOW3/Packages/TYPO3.TYPO3.git?a=blob;f=Resources/Public/JavaScript/Core/Registry.js;h=7a9eb8b398c998672e639231befd15d1930fb245;hb=34b7bec14db9ddabf8a2e8a1e880895ab2607112
+
+
+Old JS Test Class:
+
+http://git.typo3.org/FLOW3/Packages/TYPO3.TYPO3.git?a=blob;f=Tests/JavaScript/Tests/Core/RegistryTest.js;h=749b2e8105ad31aed0b76b0e4336441435f0a3bc;hb=34b7bec14db9ddabf8a2e8a1e880895ab2607112
+
+The exact concept still needs to be defined."
+39657,TYPO3.TypoScript,Task,"Story #40934: As a Site Integrator, I want an easy way to get started with TypoScript",Closed,Should have,TypoScript objects should be renamed,Sebastian Kurfuerst,Robert Lemke,2012-10-04 05:39,"",Sprint 10 (1.0 TP1),2012-08-09,"",0.00,0,2012-08-09 11:21,"","",744550,0.00,"the current TypoScript object names are much too cumbersome to work with; and are not intuitive at all.
+
+We should rename them to something short and easy to use.
+
+Example:
+
+FluidRenderer -> Fluid (or FluidTemplate)
+TypoScriptArrayRenderer -> Array
+CollectionRenderer -> Collection
+Case -> Case
+
+
+
+"
+39656,TYPO3.TypoScript,Feature,"",New,Should have,Implement a way to inline-document planned TypoScript extension points,Sebastian Kurfuerst,"",2012-08-09 11:06,"","",2012-08-09,"","",0,2012-08-09 11:06,"","",744500,"","through TypoScript, basically everything can be extended, which is *unplanned extensibility*.
+However, we have defined extension points where we as core team are responsible for that they also
+work in the future, f.e. are not renamed for a certain amount of time (*planned extensibility*)
+
+We need some lightweight inline-documentation format for that, maybe even using Inline-ReST."
+39655,TYPO3.TypoScript,Feature,"",Resolved,Must have,Implement contextOverrides for all TypoScript objects,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-08-21 01:35,"","",2012-08-09,"","",100,2012-08-09 10:58,"","",744450,"","most TypoScript objects operate on the TypoScript context, which is multivalued by now.
+Still, it would be very helpful to manipulate this context before a TypoScript object is rendered.
+
+For this, we should add a new property ""contextOverrides"" in the abstract TypoScript object;
+which is then applied before evaluate() is called."
+39500,TYPO3.TypoScript,Bug,"",Resolved,Should have,Processors should be applicable on full TypoScript object prototypes as well,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-08-07 06:35,"",Sprint 10 (1.0 TP1),2012-08-03,"","",100,2012-08-03 01:56,"","",736750,"","**WORKS:**
+<pre>
+foo = FluidRenderer
+foo << 1.wrap(....)
+</pre>
+
+**DOES NOT WORK:**
+<pre>
+prototype(FluidRenderer) << 1.wrap(....)
+</pre>
+"
+39498,TYPO3.TypoScript,Feature,"",Resolved,Should have,"Support ""condensed confinements"" to reduce typing overhead",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-08-07 06:35,"",Sprint 10 (1.0 TP1),2012-08-03,"","",100,2012-08-03 01:39,"","",736650,"","In TypoScript, very often lines like the following are used:
+
+<pre>
+foo = Text
+foo {
+  ...
+}
+
+foo < bar
+foo {
+  ...
+}
+</pre>
+
+We propose a ""Condensed Confinements"" syntax, so one can write instead:
+
+<pre>
+foo = Text {
+  ...
+}
+
+foo < bar {
+  ...
+}
+</pre>
+"
+39133,TYPO3.TypoScript,Feature,"",Needs Feedback,Should have,Add Option to to CaseTsObject to skip matches for which the type doesn't exist,Marc Neuhaus,Marc Neuhaus,2013-05-11 12:24,"","",2012-07-20,"","",0,2012-07-20 10:36,"","",718500,"","The CaseTsObject should have an option to skip matchers for which the type doesn't exist like this:
+
+<pre>
+Foo:Bar = Case
+Foo:Bar {
+    skipNonExistingTypes = true
+
+    matchers.900000.condition = ${true}
+    matchers.900000.type = 'Foo:DoesntExist'
+
+    matchers.1000000.condition = ${true}
+    matchers.1000000.type = 'Foo:DefaultBar'
+}
+</pre>"
+39131,TYPO3.TypoScript,Bug,"",Closed,Should have,More Helpful Exceptions for wrong TypoScript,Marc Neuhaus,Marc Neuhaus,2014-10-03 07:03,"","",2012-07-20,"","",0,2012-07-20 10:17,"","",718400,"","TypoScript Exceptions should be more helpful, because they are currently often extremly cryptic"
+38696,TYPO3.TypoScript,Feature,"",Resolved,Should have,Extend TypoScript syntax,Sebastian Kurfuerst,Sebastian Kurfuerst,2013-12-12 02:46,"","",2012-07-05,"","",0,2012-07-05 15:32,"","",697150,"","**DOES NOT WORK (probably)**
+
+<pre>1.wrap(before: ${""foo"" + blah.blubb})</pre>
+
+---
+
+We should support un-named arguments in processors, so one can write:
+<pre>1.wrap(""foo|bar"")</pre>
+
+see http://groovy.codehaus.org/Extended+Guide+to+Method+Signatures - chapter Named Arguments for inspiration"
+38692,TYPO3.TypoScript,Bug,"Feature #38629: Make TypoScript usable outside the context of TYPO3 / Nodes, but also for building extensible FLOW3 applications",Resolved,Should have,FluidTemplate: Make Layout and PartialPath settable,Sebastian Kurfuerst,"",2012-08-11 10:35,"","",2012-07-05,"","",100,2012-07-05 12:57,"","",696950,"",""
+38638,TYPO3.TypoScript,Feature,"Feature #38629: Make TypoScript usable outside the context of TYPO3 / Nodes, but also for building extensible FLOW3 applications",On Hold,Should have,Introduce PresentationModel Wrapper in eel expressions in order to apply processors,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-11-28 09:33,"","",2012-07-04,"","",0,2012-07-04 06:26,"","",694300,"","Imagine you want to render two objects (like a @blog@ and @post@) inside a FluidTemplate TypoScript object. Currently, you need to do the following:
+
+<pre>
+foo = FluidTemplate
+foo {
+  blogTitle = ${context.property('blog.title')}
+  blogDescription = ${context.property('blog.description')}
+  ...
+  postTitle = ${context.property('post.title')}
+  ...
+}
+</pre>
+
+The above is quite cumbersome to write, and also does not feel nice because the Fluid templates differ then very much if using Fluid in combination with TypoScript and without.
+
+More nice would be to use the following:
+
+<pre>
+foo.blog = ${context.property('blog')}
+</pre>
+
+However, often, we still want to run processors on properties of these objects, like specifying:
+
+<pre>
+foo.blog.title << 1.wrap(before: '<h1>', after: '</h1>')
+</pre>
+
+Now, in order to make this possible, I'd suggest to implement a new function @presentationModel@ which takes an object like the @post@ above and wraps it such that it can be used with processors and all the other TypoScript features. As an example:
+
+<pre>
+foo.blog = ${presentationModel(context.property('blog'))}
+foo.blog.title << 1.wrap(before: '<h1>', after: '</h1>')
+# the following line would suppress the author
+foo.blog.author >
+# the following line would override the ""description"" with some fixed string (not in the model, but in the presentation layer)
+foo.blog.description = ""Hello""
+</pre>
+
+It seems we cannot do the conversion into a @presentationModel@ automatically as we would run into problems with object equality etc; and we cannot decide if the user needs the object itself in the view, or just wants to output its values. Basically we don't even know what a TypoScript object does with such an object -- so we cannot wrap anything automatically.
+
+Note: This also plays nicely together e.g. with #38631.
+
+**What do you think about this feature?**"
+38636,TYPO3.TypoScript,Feature,"Feature #38629: Make TypoScript usable outside the context of TYPO3 / Nodes, but also for building extensible FLOW3 applications",Rejected,Should have,Implement get() function to retrieve arbitrary objects via ObjectManager,Sebastian Kurfuerst,"",2012-08-09 11:01,"","",2012-07-04,"","",0,2012-07-04 05:57,"","",694200,"","At some points during rendering of standalone FLOW3 applications, it would be very helpful to access global state, by accessing singleton objects.
+
+For instance, for the Blog example it would be helpful if the current blog could be fetched using TypoScript.
+
+One way to do this would be @${get('TYPO3\Blog\Domain\Repository\BlogRepository').getActive()}@, or possibly also @${blogRepository.active}
+
+**Note that this feature still needs to be discussed thoroughly; I am not sure if w really want that**"
+38634,TYPO3.TypoScript,Task,"Feature #38629: Make TypoScript usable outside the context of TYPO3 / Nodes, but also for building extensible FLOW3 applications",Closed,Should have,Move TypoScript Processors from TYPO3 to TypoScript Package,Sebastian Kurfuerst,Robert Lemke,2012-10-04 10:03,"",Sprint 10 (1.0 TP1),2012-07-04,"","",100,2012-07-04 05:53,"","",694100,"","see above, they are generic anyways :)"
+38633,TYPO3.TypoScript,Feature,"Feature #38629: Make TypoScript usable outside the context of TYPO3 / Nodes, but also for building extensible FLOW3 applications",Resolved,Should have,Make TypoScript Context multi-valued,Sebastian Kurfuerst,"",2012-08-11 09:35,"","",2012-07-04,"","",100,2012-07-04 05:41,"","",694050,"","Currently, the TypoScript context only contains a single value at a time, f.e. the current node being rendered.
+
+It it always exposed as the ""context"" variable in Eel expressions inside TypoScript code.
+
+However, when dealing with TYPO3CR nodes, it would be much nicer to rather have that variable called @node@ or @currentNode@ instead of @context@. Together with #38631 this makes it more clear to the user what's actually happening, as he would then write @q(node)@ or even @q(currentNode)@.
+
+When working with arbitrary objects inside TypoScript, having only one object as the context seems to be a little too restrictive: Often, we need multiple objects on the stack, like the current @blog@ or @post@. These should be made accessible then using @${post}@ and @${blog}@, respectively.
+
+This would also need a change inside the Collection TypoScript Object (as this is the only one changing the context): There, we need a variable specifying how the ""inner context variable"" should look like.
+
+Furthermore, we might need to add a ""context"" array to all TypoScript Objects which can be used to manipulate the context objects"
+38631,TYPO3.TypoScript,Bug,"Feature #38629: Make TypoScript usable outside the context of TYPO3 / Nodes, but also for building extensible FLOW3 applications",Resolved,Should have,"Make use of FlowQuery explicit by introducing a wrapper function ""q"" (for ""query"")",Sebastian Kurfuerst,"",2012-08-11 09:35,"","",2012-07-04,"","",100,2012-07-04 05:36,"","",693950,"","While FlowQuery expressions such as @${context.children('foo > bar[title^=Hi]')}@ are very concise and have a high expressional power when it comes to TYPO3 Phoenix and TYPO3CR Nodes, it becomes cumbersome to work with objects this way. For objects, normally, you only want to traverse the objects by calling getters and setters, or call some functions on them.
+
+So, I propose a *breaking change*: FlowQuery should be used explicitely, i.e. by introducing a function @q@ similar to the @jQuery@ function. Thus, the above text should be written as: @${q(context).children('foo > bar[title^=Hi]')}@"
+38630,TYPO3.TypoScript,Feature,"Feature #38629: Make TypoScript usable outside the context of TYPO3 / Nodes, but also for building extensible FLOW3 applications",Resolved,Should have,Implement TypoScriptView which can be used as replacement of Fluid TemplateView in standard FLOW3 applications,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-08-07 08:35,"","",2012-07-04,"","",100,2012-07-04 05:31,"","",693900,"","TypoScript should deliver a standard TypoScriptView which can be used outside of the TYPO3 Context, i.e. for normal FLOW3 applications.
+
+I envision it works as follows:
+
+* The user activates it by setting @$defaultViewObjectName@ to the @TypoScriptView@
+* The TypoScriptView loads all TypoScript defined in @Resources/Private/TypoScript@ of the currently-requested package, plus additional extension templates as configured f.e. through Settings.yaml
+* Then it checks for the class path of the Controller in TypoScript, i.e. if the Controller @TYPO3\Blog\Controller\PostController@ with action @show@ is triggered, the path @TYPO3.Blog.PostController.show@ needs to contain a TypoScript object which is the base for rendering
+* If such a TypoScript object is found, it is used for rendering
+* If not, we fall back to a @fallbackView@ which is, by default, the standard Fluid TemplateView"
+38629,TYPO3.TypoScript,Feature,"",Resolved,Should have,"Make TypoScript usable outside the context of TYPO3 / Nodes, but also for building extensible FLOW3 applications",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-09-18 03:35,"","",2012-07-04,"","",86,2012-07-04 05:26,"","",693850,0.00,"For the management view in the Phoenix backend, we want to use TypoScript for the generic and extensible rendering mechanism.
+
+Thus, we want to investigate the changes to be done in TypoScript to make it usable in the context of generic objects. We planned the new TypoScript in a way that this is possible; though we still have to connect some loose ends for good usability.
+
+See the subtasks for some detailed TODOs."
+38091,TYPO3.TypoScript,Feature,"",Resolved,Should have,Introduce debugMode setting,Rens Admiraal,"",2012-06-16 02:37,"","",2012-06-15,"","",100,2012-06-15 10:41,"","",667150,"",By default all output of TypoScript Runtime rendering is wrapped by HTML comments. This triggers quirks mode in Internet Explorer basically breaking the layout of current conference and demo sites.
+36303,TYPO3.TypoScript,Bug,"",Closed,Could have,Templates are only loaded from rootlevel,Christian Jul Jensen,Karsten Dambekalns,2012-07-13 10:21,_old,"",2012-04-18,"","",0,2012-04-18 14:45,"","",578900,"","Not sure if this is a bug, just wanted to be sure that you know that the behaviour has changed.
+
+After updating a site to new TypoScript, the root template was not loaded. It was located in TypoScripts/homepage/Root.ts2, moving it to TypoScripts/Root.ts2 solved the problem. It seems that ""extension templates"" are still loaded from folders with the rootname, but the main template did not."
+36136,TYPO3.TypoScript,Bug,"",Resolved,Must have,Comment before doctype makes IE fall into Quirks mode,Adrian Föder,"",2012-07-04 05:23,"","",2012-04-16,"","",0,2012-04-16 04:41,"","",571200,"","at the current state, the source code reads
+
+<pre><code class=""html"">
+
+<!-- Beginning to render TS path ""page"" (Context: Node /sites/flow3org/home[TYPO3.TYPO3:Page]) -->
+
+<!DOCTYPE html>
+<html version=""HTML+RDFa 1.1"" xmlns:typo3=""http://www.typo3.org/ns/2011/FLOW3/Packages/TYPO3/Content/"" class=""page-home"">
+
+</code></pre>
+
+Due to that very first comment, that is before the doctype declaration, IE9 falls into quirks mode and the page is rendered very wrong.
+
+Fix: Remove that comment somehow."
+30097,TYPO3.TypoScript,Bug,"",Closed,Should have,Content must be renderable using a nodePath and a TypoScript object path,Sebastian Kurfuerst,"",2011-11-07 04:23,"","",2011-09-20,"","",0,2011-09-20 12:22,"","",275400,"","When rendering a nodePath, it would be cool if we could render it completely out-of-context. I.e. render just a single content element being part of a bigger page.
+
+However, the current TypoScript does not yet support rendering a single content element depending on the current object path; so it could look like:
+
+/.../somePage/someSection/text?typoscriptObjectPath=page.sections.someSection.text
+
+Greets, Sebastian"
+28217,TYPO3.TypoScript,Bug,"",Resolved,Should have,ContentObjects should not render if corresponding node is not accessible,Bastian Waidelich,Bastian Waidelich,2011-07-15 12:07,"","",2011-07-14,"","",100,2011-07-14 17:41,"","",183650,"","Currently only the accessRole of TYPO3.TYPO3:Page nodes are enforced. But it should be possible to restrict rendering of a node more ""fine-grained"".
+E.g. following should be possible:
+<pre>
+<code class=""xml"">
+<node type=""TYPO3.TYPO3:Page"">
+	<properties>
+		<title>Some Page</title>
+	</properties>
+	<node identifier="""" type=""TYPO3.TYPO3:Section"">
+		<node identifier="""" type=""TYPO3.TYPO3:Text"">
+			<properties>
+				<headline>Public text</headline>
+				<text><![CDATA[Should visible to everyone]]></text>
+			</properties>
+		</node>
+		<node identifier="""" type=""TYPO3.TYPO3:Text"">
+			<accessRoles>
+				<role>SomeRole</role>
+			</accessRoles>
+			<properties>
+				<headline>Protected text</headline>
+				<text><![CDATA[Should only be visible to logged in users of role ""SomeRole""]]></text>
+			</properties>
+		</node>
+	</node>
+</node>
+</code>
+</pre>"
+27672,TYPO3.TypoScript,Feature,"",Closed,Should have,Make response format configurable in TypoScript,Stefan Neufeind,Karsten Dambekalns,2012-07-13 10:21,_old,"",2011-06-24,"","",0,2011-06-23 21:07,"","",158300,"","(based on #9216 from extbase; needs some kind of ""forward-port"" to FLOW3 as suggested by Bastian on gerrit)
+
+The response format can only be set using GET/POST parameters.
+
+But it would be helpful to set it in TypoScript. For example if you create a new PAGE that outputs ics. You would have to use an url like
+http://example.org/index.php?id=123&type=150&tx_czsimplecal_pi1[format]=ics
+
+what could be considered a repetition.
+
+Commit from #9216 adds such a functionality for extbase."
+9925,TYPO3.TypoScript,Feature,"",Resolved,Won't have this time,"Support for ""Allman style""",Christian Eßl,"",2012-07-04 05:23,"","",2010-09-27,"","",0,2010-09-27 04:52,"","",1814250,"","I don't know how others feel about it, but as for me I can't really concentrate on the enforced ""K & R style"" in Typoscript 1.0, which often gives me a headache.
+
+So I would really appreciate it, if there were a possibility to use the ""Allman brace style"" in Typoscript 2.0. "
+8647,TYPO3.TypoScript,Task,"",Closed,Should have,CropProcessor should correctly crop HTML content,Bastian Waidelich,Karsten Dambekalns,2012-07-13 10:21,_old,"",2010-07-04,"","",0,2010-07-04 07:13,"","",42850,"",Since a while the v4 crop function is able to handle strings without breaking HTML tags. We should add that functionality too.
+8646,TYPO3.TypoScript,Bug,"",Closed,Must have,CropProcessor should respect pre/suffix string in calculation of maximum characters,Bastian Waidelich,Karsten Dambekalns,2012-07-13 10:21,_old,"",2010-07-04,"","",0,2010-07-04 07:10,"","",1817400,"",Right now the Crop TypoScript processor adds the configured pre/suffix string to the cropped string resulting in a string that exceeds the maximumCharacter setting. Instead it should subtract the length of the pre/suffix string from maximumCharacters as it happens in the v4 crop function
+8575,TYPO3.TypoScript,Task,"",Closed,Should have,Exception on wrong processing instruction misleading,Karsten Dambekalns,Karsten Dambekalns,2012-07-04 09:38,_old,"","","","",0,2010-06-30 12:08,"","",42050,"","When defining a processing instruction incorrectly like
+<pre>
+foo << wrap('foo', 'bar')
+</pre>
+you get the exception
+<pre>
+#1182705997: Invalid processing instruction ""wrap('foo', 'bar')""
+</pre>
+
+This is misleading, because it makes you think the wrap is wrong, but it's the index missing in this case.
+"
+8440,TYPO3.TypoScript,Feature,"",Resolved,Should have,Add support for named parameters for TS processors,Bastian Waidelich,"",2010-10-20 05:40,"","",2010-06-22,"","",100,2010-06-22 06:22,"","",1814300,"","Currently the processor notation is
+<pre>
+foo << 1.wrap('prefix', 'suffix')
+</pre>
+We decided to change this to
+<pre>
+foo << 1.wrap(prefix: 'prefix', suffix: 'suffix')
+</pre>
+
+You'll have to specify the parameter names. That might seem cumbersome, but it's more flexible - especially if you have a lot of parameters. Additionally it's in sync with the Fluid ViewHelper syntax.
+
+@Note: I'm already working on this, but can't assign myself as I'm not yet member of this package. Please add me ;)"
+8439,TYPO3.TypoScript,Bug,"",Resolved,Must have,Fix Namespace support in processor notation,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:40,"","",2010-06-22,"","",100,2010-06-22 06:18,"","",1814350,"","Processor methods can either be within the default namespace or must be specified with the full component name. Since PHP supports propper namespaces, specifying the full object name does not work anymore.
+The reason is, that the regular expression (SPLIT_PATTERN_INDEXANDMETHODCALL) does not allow backslashes.
+An option would be to change the regular expression from
+<pre>
+/(?P<Index>\d+)\.(?P<ObjectAndMethodName>\w+)\s*\((?P<Arguments>.*?)\)\s*$/
+</pre>
+to
+<pre>
+/(?P<Index>\d+)\.(?P<ObjectAndMethodName>[^\(]+)\s*\((?P<Arguments>.*?)\)\s*$/
+</pre>"
+7559,TYPO3.TypoScript,Bug,"",Resolved,Should have,Double slashes are interpreted as comments even within literals,Robert Lemke,Robert Lemke,2010-10-20 05:40,"","",2010-04-30,"","",100,2010-04-30 08:43,"","",1814400,"","Any occurrence of ""//"" within a literal will be interpreted as a comment - and it shouldn't"
+7555,TYPO3.TypoScript,Bug,"",Resolved,Should have,Curly braces within literals are interpreted as confinements,Robert Lemke,Robert Lemke,2010-10-20 05:40,"","",2010-04-30,"","",100,2010-04-30 08:01,"","",1814450,"","Curly braces within literals must be ignored by the parser, however, the following TS line results in ""#1181575973: Unexpected closing confinement without matching opening confinement. Check the number of your curly braces."":
+
+<pre>
+theTemplate.source = ""<html><head><title>{model.title}</title></head><body>Sample Template</body></html>""
+</pre>
+"
+7552,TYPO3.TypoScript,Feature,"",Resolved,Should have,Implement multiline string support,Robert Lemke,Tobias Liebig,2010-10-20 05:40,"","",2010-04-30,"","",100,2010-04-30 07:11,"","",1814500,"","This should be possible:
+
+<pre>
+foo = Text
+foo.value = "" The text starts at this line
+   ...
+   and ends a few lines later. ""
+
+</pre>
+"
+5243,TYPO3.TypoScript,Bug,"",Resolved,Must have,It is not possible to assign an object to a property,Robert Lemke,Robert Lemke,2010-10-20 05:40,"","",2009-11-05,"","",100,2009-11-05 06:33,"","",1814550,"","The following code results in a parse error:
+
+<pre>
+   page = Page
+   page.template = Template
+</pre>
+"
+5241,TYPO3.TypoScript,Bug,"",Resolved,Must have,Overriding properties doesn't work,Robert Lemke,Robert Lemke,2010-10-20 05:40,"","",2009-11-05,"","",100,2009-11-05 06:31,"","",1814600,"","Consider a Page object with a title property:
+
+<pre>
+   page = Page
+</pre>
+
+Rendering this object would fetch the <pre>page.title</pre> from the domain model and display it. However, it is not possible to override this property:
+
+<pre>
+   page = Page
+   page.title = ""My own title""
+</pre>
+
+The string ""My own title"" won't be used and the domain model's title will still be used instead."
+1705,TYPO3.TypoScript,Bug,"",Rejected,Must have,TypoScript.value processor doesn't excape $,Peter Niederlag,Robert Lemke,2012-07-04 05:24,"","",2008-10-13,"","",0,2008-10-13 10:54,"","",1817700,"","page.10.1.vlue = ""A test to get a DOLLAr sign \$variable""
+
+doesn't work and still display the value of $variable"
+481,TYPO3.TypoScript,Bug,"",Closed,Should have,confinements for arrays don't work.,Robert Lemke,Karsten Dambekalns,2012-07-13 10:21,_old,"",2008-04-24,"","",0,2008-04-24 10:25,"","",1814650,"","backend.10 = GUI:Window
+backend.10 {
+  title = ""abc""
+}
+
+Throws exception #1180548488: Invalid object definition ""backend.10 {"" 
+
+however, this works:
+
+backend.10 = GUI:Window
+backend.10.title = ""abc""
+
+"
+455,TYPO3.TypoScript,Bug,"",Closed,Should have,processor_crop fails cropping strings with HTML-tags or -entities properly,Jochen Rau,Karsten Dambekalns,2012-07-13 10:21,_old,"",2008-04-06,"","",0,2008-04-05 20:22,"","",1817750,"","processor_crop should close cropped tags like
+<pre><strong><a href=""mailto:kasper@typo3.org"">Kasper Skår...</a></strong></pre>
+and should not crop entities like
+<pre>Kasper Sk&aring;rh&oslash;j</pre>
+to avoid unvalid and faulty FE-output. You find appropriate test cases attached.
+
+-Jochen"
+454,TYPO3.TypoScript,Feature,"",Closed,Should have,processor_crop should provide at least all TYPO3v4 options,Jochen Rau,Karsten Dambekalns,2012-07-13 10:21,_old,"",2008-04-06,"","",0,2008-04-05 19:51,"","",1814700,"","In TYPO3v4 there is an option to crop from right:
+""Syntax: +/- (chars) = from left / from right | [string] | [boolean: keep whole words]"" (TSRef)
+
+In the actual implementation of the processor_crop cropping is possible from left and right but chars are only counted from left. IMO there should be three parameters:
+
+CROP_AT: Char|Word|Sentence
+CROP_FROM: right|left
+COUNT_CHARS_FROM: left|right
+
+The first option should be default.
+
+- Jochen"
+62,TYPO3.TypoScript,Feature,"",Closed,Should have,Decide on and implement TypoScript Array access,Robert Lemke,Robert Lemke,2010-10-20 05:40,"","","","","",0,2007-08-09 02:55,"","",1814750,"","(see mailing list discussion)
+
+page = Page
+pager10 = Text 
+page.10 = Text
+"
+57,TYPO3.TypoScript,Bug,"",Closed,Should have,Unsetting elements of content arrays does not work,Robert Lemke,Karsten Dambekalns,2012-07-13 10:21,_old,"","","","",0,2007-06-29 15:05,"","",1814800,"","The following code throws an exception:
+
+<pre>
+page = Page
+page.10 = Text
+page.10 >
+</pre>
+
+Tried to assign a value to the non-existing property ""10"" to an object of type ""T3P_CMS_TypoScript_Page"""
+55,TYPO3.TypoScript,Feature,"",Closed,Should have,Namespaces are not available for the definition of processor methods,Robert Lemke,Karsten Dambekalns,2012-07-13 10:21,_old,"","","","",0,2007-06-28 06:35,"","",1814850,"","Currently a processor method can either be within the default namespace or must be specified with the full component name:
+
+  ...value << 1.wrap('x', 'y')
+  ...value << 1.T3P_CMS_TypoScript_Processors->wrap('x', 'y')
+
+However, it should be possible referring to a namespace:
+
+  ...value << 1.mynamespace:myFunction()
+"
+54,TYPO3.TypoScript,Feature,"",Closed,Should have,Optimize speed of regular expressions in TypoScript parser,Robert Lemke,Karsten Dambekalns,2012-07-13 10:21,_old,"","","","",0,2007-06-05 09:45,"","",1814900,"",The regular expressions which are used in the TypoScript parser are worth a review in order to find faster alternatives.

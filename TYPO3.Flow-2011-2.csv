@@ -1,0 +1,356 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Affected Flow version,Description
+32285,TYPO3.Flow,Bug,"",Resolved,Must have,Logout doesn't work anymore in FLOW3 1.0.1,Peter Beernink,Bastian Waidelich,2011-12-21 10:36,Security,1.0.2,2011-12-04,"","",100,2011-12-04 09:16,"","",382950,"",FLOW3 1.0.1,"After updating from FLOW3 1.0.0 to 1.0.1 it is not possible anymore to logout from an authenticated session.
+
+
+The issue to be introduced by commit:970c615. When I revert those changes I am able to logout again.
+
+I've also tested it on the Blog package. There the same behavior is shown.
+It displays the flash message, but in the footer the administration link is still displayed and accessible.
+
+
+"
+32291,TYPO3.Flow,Bug,"",Closed,Should have,Current package version missmatch,Bernhard Fischer,Karsten Dambekalns,2011-12-14 09:45,Package,1.0.2,2011-12-05,"","",0,2011-12-05 03:19,"","",383250,"",FLOW3 1.0.1,"package:list shows the wrong version for the TYPO3.FLOW3 package
+it is still 1.0.0 and should be 1.0.1"
+32294,TYPO3.Flow,Feature,"",New,Should have,Lazy initialization of loggers,Christopher Hlubek,"",2011-12-05 04:29,"","",2011-12-05,"","",0,2011-12-05 04:29,"","",383400,"","",Log backends could be lazily initialized on first access to append(). Right now each backend is opened on creation of the logger which is not optimal.
+32329,TYPO3.Flow,Feature,"",Resolved,Should have,Make target in XLIFF optional if source language equals target language,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 06:38,I18n,1.1 beta 1,2011-12-06,"","",100,2011-12-06 07:00,"","",385150,"","","When an XLIFF file does not contain target elements, the source should be used if the source-language of the file equals the target language of translation."
+32333,TYPO3.Flow,Feature,"",Resolved,Must have,Modular and configurable bootstrap,Robert Lemke,Robert Lemke,2011-12-21 06:38,Core,1.1 beta 1,2011-12-06,"","",100,2011-12-06 07:52,"","",385350,"","","The bootstrap contains a big amount of specific initialization methods. The order of execution and selection of initialization methods is hardwired in the Bootstrap class. This makes it impossible for package developers to provide alternative boot sequences for specific tasks (such as for a very optimized caching mechanism) and in general results in a rather function-based, sequential code than being object-oriented. 
+
+It thus should be possible to register Request Handlers for specific purposes and those should be in charge of the actual boot sequence which is executed."
+32339,TYPO3.Fluid,Feature,"",Resolved,Should have,ResourceViewHelper should support I18n,Karsten Dambekalns,Karsten Dambekalns,2012-12-10 07:16,ViewHelpers,2.0 beta 1,2011-12-06,"","",100,2011-12-06 11:02,"","",385650,"","","The default behavior for the ResourceViewHelper should be to use a localized version if a resource, if available."
+32346,TYPO3.Flow,Bug,"",Resolved,Must have,allObjectsPersisted is not triggered after each test,Robert Lemke,Robert Lemke,2011-12-21 06:38,- Testing -,1.1 beta 1,2011-12-06,"","",100,2011-12-06 13:20,"","",386000,"",Git master,"The tearDown() method of the base functional test case clears the persistence manager's state so it is ready for the next test, avoiding side effects.
+
+However, certain repositories (such as the TYPO3CR NodeRepository) rely on the signal ""allObjectsPersisted"" which triggers their internal cleanup function. If this signal is not, sent, the next test will still see added objects stored directly in the repository.
+
+The solution is to call persistAll() in the tearDown() method, even if the just executed test doesn't require it."
+32370,TYPO3.Flow,Bug,"",Resolved,Must have,Function getObjectByIdentifier of Generic PersistenceManager not complete ,Benjamin Heek,Karsten Dambekalns,2011-12-21 06:38,Persistence,1.1 beta 1,2011-12-07,"","",100,2011-12-07 07:46,"","",387150,"",FLOW3 1.0.1,"class: TYPO3\FLOW3\Persistence\Generic\PersistenceManager
+method:getObjectByIdentifier
+line: 207
+
+code:
+<pre>
+$objectData = $this->backend->getObjectDataByIdentifier($identifier);
+</pre>
+
+the method call to `getObjectDataByIdentifier` must also send the $objecttype
+
+<pre>
+$objectData = $this->backend->getObjectDataByIdentifier($identifier,$objectType);
+</pre>
+
+NOTE:
+why is the $objectType default set as `NULL` and not just a required argument?
+
+"
+32398,TYPO3.Flow,Feature,"",Resolved,Should have,Freezable Cache Backend,Robert Lemke,Robert Lemke,2011-12-21 06:38,Cache,1.1 beta 1,2011-12-08,"","",100,2011-12-08 09:56,"","",388550,"","","Certain caches are static once they've been filled with data. One example is the classes cache in FLOW3 ? after all proxy classes have been compiled, the cache must never be touched again *in Production context*.
+
+Especially in the mentioned case, a cache backend could work with greatly improved performance if it knew that no changes are to be expected. It could create an index of existing cache entries which is loaded upfront. Existing cache entries could then be loaded right away without the need to check for expiry times or existence."
+32415,TYPO3.Flow,Bug,"",Resolved,Must have,Authentication + Doctrine event listeners = apache segfault,Fernando Arconada,Karsten Dambekalns,2012-01-13 11:01,"",1.1,2011-12-09,"","",100,2011-12-09 08:02,"","",389400,"",Git master,"here it is the proof of concept
+https://github.com/farconada/F2.PoC
+
+If yout try to login whith a valid username password the apache segfaults
+If you disable
+$this->persistenceManager->injectEntityManager($entityManager);
+the all works
+
+
+ideas?"
+32420,TYPO3.Flow,Bug,"",Resolved,Must have,classesFromSubMatchingPackagesAreLoaded() fails with PHPUnit 3.6,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 06:38,- Testing -,1.1 beta 1,2011-12-09,"","",100,2011-12-09 08:51,"","",389650,"",Git master,"The test creates two directories in vfs that are already created in setUp(). That raises a warning, the resulting output triggers a test failure with PHPUnit 3.6."
+32421,TYPO3.Flow,Task,"",Resolved,Should have,The functional testcase prints useless output,Karsten Dambekalns,Christopher Hlubek,2011-12-21 06:38,- Testing -,1.1 beta 1,2011-12-09,"","",100,2011-12-09 09:08,"","",389700,"","","@echo (""FLOW3 functional test run\n\n"");@
+
+'nuff said"
+32424,TYPO3.Flow,Bug,"",Resolved,Should have,The functional test requesthandler should be used for web requests,Christopher Hlubek,Christian Jul Jensen,2011-12-12 03:06,"","",2011-12-09,"","",100,2011-12-09 10:29,"","",389850,"",Git master,The FunctionalTestCase still has a reference to the @MockWebRequestHandler@ that's not used anymore. The FunctionalTestRequestHandler should be available to all tests as a property and be used in simulated web requests to provide the correct context with the current mock request.
+32425,TYPO3.Flow,Bug,"",Accepted,Must have,IpAddressRange methods not completly implemented,Marco Huber,Karsten Dambekalns,2012-06-28 04:23,Security,"",2011-12-09,"","",0,2011-12-09 10:30,"","",389900,"",(any),"The method matchRequest in \TYPO3\FLOW3\Security\RequestPattern\IpAddressRange returns always false and doesn't check the IP-Address.
+
+In the attachet file I used the methods from the good old t3lib_div...
+
+Should I push the patch to gerrit?"
+32451,TYPO3.Fluid,Bug,"",Resolved,Should have,Adjust Ajax Widgets to new Bootstrap,Sebastian Kurfuerst,Sebastian Kurfuerst,2011-12-19 09:36,Widgets,1.1 beta 1,2011-12-12,"","",100,2011-12-12 01:51,"","",391200,"",Git master,"The new FLOW3 Bootstrap (#32333) implements new request handlers.
+Now, Fluid needs to be adjusted to the new request handlers. however, there is one problem:
+The Fluid request handler determines if it can be used depending on whether a certain GET variable is set. For that, it uses the @TYPO3\FLOW3\Utility\Environment@; which is however not yet initialized when canHandleRequest is called.
+
+A workaround would be to use $_GET directly; but can we find a clean solution to this?"
+32466,TYPO3.Flow,Bug,"",Resolved,Must have,Strange exception: Invalid annotation,Daniel Ostmann,Karsten Dambekalns,2011-12-15 11:27,Reflection,1.0.2,2011-12-12,"","",100,2011-12-12 04:09,"","",391850,"",FLOW3 1.0.0,"On my localhost everything was fine. When i upload the framework to my server, i got this exception:
+<pre>
+Uncaught Exception
+  The @var annotation for
+  ""Pixelbrand\MemberManager\Domain\Model\Contribution::$created"" seems to
+  be invalid.
+
+More Information
+  Exception code      #1284132314
+  File                /var/www/doms/cm.pixelbrand.biz/public_html/Packages/Framework/TYPO3.FLOW3/Classes/Reflection/ReflectionService.php line 1121
+  Exception reference #201112120946518ea6d6
+</pre>
+
+I tried different upload types (ASCII, binary, auto - i use FileZilla as FTP client), and i tried different linebreaks (NL,CR,both). Nothing works at all...
+
+The lines that throw the exception are:
+
+<pre>
+	/**
+	 * The created date
+	 * @var \DateTime
+	 */
+	protected $created;
+</pre>
+
+I got the same exception when i changed the annotation from DateTime to string or bool.
+
+I think, if i remove this property, then the next one would throw another exception like above. I think so, because it is the first file in model directory and the first property in this model class.
+
+This seems to be similar to #31087.
+
+I'm using PHP5.3.8 with FLOW1.0.1 but this happened to 1.0.0 as well."
+32470,TYPO3.Flow,Task,"",Resolved,Should have,Add a cli-command to show and explore the current configuration,Martin Ficzel,Martin Ficzel,2011-12-23 12:29,Configuration,1.1,2011-12-12,"","",0,2011-12-12 05:52,"","",392050,"","","Since the configuration of FLOW3 is complex and comes from many different files it should be possible to show the currently active framework-configuration for better understanding an debugging.
+
+I suggest to implement a ""configuration"" cli-command for that purpose. At first the command-controller will only have a showCommand method but later on it can be extended to evaluate and to write the configuration."
+32499,TYPO3.Flow,Bug,"",Resolved,Must have,setfilepermissions doesn't work with ACL correctly,Karsten Dambekalns,Karsten Dambekalns,2011-12-16 14:36,Core,1.0.2,2011-12-13,"","",100,2011-12-13 06:05,"","",393500,"",FLOW3 1.0.1,"After setting up fresh, the set file permissions didn't work correctly."
+32503,TYPO3.Flow,Task,"",Resolved,Should have,Clean up emptyDirectoryRecursively() and hex2bin(),Karsten Dambekalns,Karsten Dambekalns,2011-12-21 06:38,Utility,1.1 beta 1,2011-12-13,"","",100,2011-12-13 07:30,"","",393700,"","","The @hex2bin()@ method is violating CGL as if the was no tomorrow and @emptyDirectoryRecursively()@ works but the removal of a symlink is, well, awkward."
+32507,TYPO3.Flow,Task,"",Resolved,Should have,Some PHP source files have the execute bit set,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 06:38,"",1.1 beta 1,2011-12-13,"","",100,2011-12-13 09:50,"","",393900,"","","Classes/Session/Aspect/LazyLoadingAspect.php
+Classes/Session/Aspect/LazyLoadingProxyInterface.php
+Classes/Utility/Files.php
+Classes/Utility/TypeHandling.php
+"
+32519,TYPO3.Flow,Bug,"",Resolved,Must have,(Unit test) failures with new class loader,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 06:38,Core,1.1 beta 1,2011-12-13,"","",100,2011-12-13 16:02,"","",394500,"",Git master,Two test cases fail with the new class loader. At least in one case that could also break in real life use (package creation).
+32530,TYPO3.Flow,Bug,"",Resolved,Must have,forgetClass() cannot forget classes that have left the building,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 06:38,Reflection,1.1 beta 1,2011-12-14,"","",100,2011-12-14 04:42,"","",395050,"",Git master,"If a class has been removed, it cannot be forgotten by the new ReflectionService. This is caused by the a @class_implements()@ call on the class name to be forgotten."
+32531,TYPO3.Flow,Feature,"",Resolved,Must have,Optimize ReflectionService,Karsten Dambekalns,Robert Lemke,2011-12-21 06:38,Reflection,1.1 beta 1,2011-12-14,"","",100,2011-12-14 04:49,"","",395100,"","",The ReflectionService is slow and uses a whole lot of memory. That needs to be enhanced.
+32550,TYPO3.Flow,Bug,"",Resolved,Must have,Files::emptyDirectoryRecursively affects targets of symlinks,Bastian Waidelich,Bastian Waidelich,2011-12-21 16:06,Utility,1.0.2,2011-12-14,"","",100,2011-12-14 10:51,"","",396050,"",FLOW3 1.0.0,@\TYPO3\FLOW3\Utility\Files::removeDirectoryRecursively()@ fails to properly unlink directory symlinks on Windows. Thus @\TYPO3\FLOW3\Utility\Files::emptyDirectoryRecursively()@ iterates through the *target* files of a symlinked folder and removes them!
+32552,TYPO3.Flow,Bug,"",Resolved,Must have,PackageStates are saved on each request,Bastian Waidelich,Robert Lemke,2011-12-19 17:07,Package,"",2011-12-14,"","",100,2011-12-14 11:36,"","",396150,"",Git master,"@\TYPO3\FLOW3\Package\PackageManager::initialize()@ always invokes @loadPackageStates()@ which contains the lines
+<pre>
+if ($this->packageStatesConfiguration === array() && $this->bootstrap->getContext() !== 'Production') {
+	$this->scanAvailablePackages();
+	[...]
+</pre>
+@scanAvailablePackages()@ in turn calls @savePackageStates()@ which deletes all shortcut paths and recreates them.
+
+If I get it right this means, that all shortcut paths are recreated for each request. Is this intended?"
+32574,TYPO3.Flow,Bug,"",Accepted,Should have,FLOW3 enters fork bombs when using cgi-fcgi vs cli,Jacob Floyd,Karsten Dambekalns,2012-03-07 11:21,Core,"",2011-12-14,"","",0,2011-12-14 17:23,"","",396950,"",Git master,"h3. How I discovered the bug.
+
+I installed FLOW3 (and Typo3 Phoenix) via git yesterday on my shared host. Everything worked fine on CLI including flow3:core:compile. But when I would hit the site via my browser, FLOW3 entered an endless loop of forking new processes (fork bomb) until the ulimit max number of processes (100) is reached, when it gave this error:
+
+@#1: Warning: system() [<a href='function.system'>function.system</a>]: Unable to fork [XDEBUG_CONFIG=&quot;idekey=FLOW3_SUBREQUEST&quot; FLOW3_ROOTPATH='/home/cognifir/public_domains/TYPO3v5/' FLOW3_CONTEXT='Development' &quot;/usr/bin/php&quot; -c '/home/cognifir/.php/php.ini' '/home/cognifir/public_domains/TYPO3v5/Packages/Framework/TYPO3.FLOW3/Classes/Core/../../Scripts/flow3.php' 'typo3.flow3:core:compile'] in /home/cognifir/public_domains/TYPO3v5/Packages/Framework/TYPO3.FLOW3/Classes/Core/Booting/Scripts.php line 423@
+
+Occassionally I'd also get this error in the php5 error log:
+
+@[14-Dec-2011 13:14:22] PHP Fatal error:  Out of memory (allocated 54263808) (tried to allocate 7680 bytes) in /home/cognifir/public_domains/TYPO3v5/Data/Temporary/Development/Cache/Code/Fluid_TemplateCache/typo3_template_fb28020226817cc1696e7cec37ba5786d3434e0e.php on line 65@
+
+However neither of these error messages are particularly helpful, they only point at two symptoms (1) running out of available processes (2) running out of available memory.
+
+By running the command FLOW3 was trying to run I get the following Result:
+<pre>
+$ XDEBUG_CONFIG=""idekey=FLOW3_SUBREQUEST"" FLOW3_ROOTPATH='/home/cognifir/public_domains/TYPO3v5/' FLOW3_CONTEXT='Development' 
+""/usr/bin/php"" -c '/home/cognifir/.php/php.ini' '/home/cognifir/public_domains/TYPO3v5/Packages/Framework/TYPO3.FLOW3/Classes/Core/../../Scripts/flow3.php' 
+'typo3.flow3:core:compile'
+
+X-Powered-By: PHP/5.3.8
+Content-type: text/html
+
+The FLOW3 command line script or sub process was executed with a 'cgi-fcgi' PHP binary. Make sure that you specified a CLI capable PHP binary in your PATH or FLOW3's Settings.yaml.
+</pre>
+
+h3. Resolution
+
+To resolve this, I uncommented (as I wasn't using it before) and set @phpBinaryPathAndFilename: '/user/local/bin/php'@ in Settings.yaml.
+
+h3. Next steps
+
+* I think it would be great to catch this error and exit with a useful exception/error message instead of entering the endless loop of spawning new flow3 processes over and over.
+* Also, a note in the manual about using phpBinaryPathAndFilename to point to the CLI php would be helpful. Also, this suggests that it is not just for Windows like the example Settings.yaml indicates."
+32587,TYPO3.Flow,Feature,"",Resolved,Could have,Make property mapping exception more verbose,Adrian Föder,Adrian Föder,2011-12-15 09:06,Property,1.0.2,2011-12-15,"","",100,2011-12-15 05:17,"","",397600,"","","Currently an exception while property mapping reads as following:
+
+<pre>
+Property ""bazbar"" could not be set in target object of type ""Foo\Bar\Baz\Xyz"".
+</pre>
+
+For debugging purposes it would be helpful if it gets
+
+<pre>
+Property ""bazbar"" with value type ""Doctrine\Common\Collections\ArrayCollection"" could not be set in target object of type ""Foo\Bar\Baz\Xyz"".
+</pre>"
+32591,TYPO3.Flow,Task,"",Resolved,Should have,"Remove configuration-types ""Package"" and ""PackageStates"" from configurationManager",Martin Ficzel,Martin Ficzel,2011-12-21 06:38,Configuration,1.1 beta 1,2011-12-15,"","",100,2011-12-15 06:36,"","",397800,"","","The configuration-types ""Package"" and ""PackageStates"" seem to be leftovers from some refactorings. Since they are currently not used any more the code should be removed. "
+32599,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Essential packages are not protected,Karsten Dambekalns,Karsten Dambekalns,2011-12-19 15:08,"",1.0.2,2011-12-15,"","",100,2011-12-15 09:30,"","",398200,"",FLOW3 1.0.1,"Some of the packages in the base distribution should be protected (again):
+
+* FLOW3
+* Yaml
+* Doctrine (all three in master)
+* Party
+* Fluid"
+32606,TYPO3.Flow,Task,"",Resolved,Should have,Provide conventions for ids in XLIFF files,Karsten Dambekalns,Karsten Dambekalns,2012-06-25 11:53,I18n,1.1 RC1,2011-12-15,"","",100,2011-12-15 11:38,"","",398550,"","",.
+32607,TYPO3.Flow,Feature,"",Needs Feedback,Should have,Export localized strings for JS consumption,Karsten Dambekalns,Karsten Dambekalns,2013-05-21 07:28,I18n,"",2011-12-15,"","",0,2011-12-15 11:42,"","",398600,"","",We need a way to export all messages of a locale for use in JS on the client side.
+32619,TYPO3.Flow,Feature,"",Resolved,Could have,DateTimeRangeValidator,Adrian Föder,Adrian Föder,2012-01-05 01:47,Validation,1.1,2011-12-16,"","",100,2011-12-16 05:03,"","",399200,"","","Provide an additional Validator that checks for Date and Time ranges, i.e. boundaries.
+
+Feel free to add your thoughts regarding naming and option-features here or @Gerrit."
+32629,TYPO3.Flow,Bug,"",Closed,Should have,globalObjects are not available in the security (current.securityContext.party),Matthias Habegger,Karsten Dambekalns,2012-02-27 11:35,Security,"",2011-12-16,"","",0,2011-12-16 10:23,"","",399700,"",Git master,"In the file Packages\Framework\TYPO3.FLOW3\Classes\Security\Aspect\PersistenceQueryRewritingAspect.php line 374 is 
+<pre>
+eval('$globalObject = ' . $this->globalObjects[$objectAccess[1]]);
+</pre>
+but should be something like
+<pre>
+$className = '\\' . $this->globalObjects[$objectAccess[1]];
+$globalObject = new $className;
+</pre>
+or in the policy.xml the securityContext is not available, for example
+<pre>
+resources:
+  entities:
+    Habex_Library_Domain_Model_Book:
+      Habex_Library_OwnBooks: this.owner == current.securityContext.party
+</pre>
+
+Even then the current.securityContext seems not to be available."
+32631,TYPO3.Flow,Feature,"",Resolved,Should have,Provide command to mark all migrations as executed,Karsten Dambekalns,Karsten Dambekalns,2012-01-17 21:26,Persistence,1.1,2011-12-16,"","",100,2011-12-16 11:14,"","",399800,"","","When setting up a fresh instance of FLOW3 it is not really needed to migrate the DB through all steps. A simple create is a lot faster. To easily mark the DB as fully migrated a new command is needed:
+
+<pre>
+./flow3 doctrine:migrationversion all --add
+</pre>
+
+The ""all"" will then actas on all available migrations."
+32656,TYPO3.Kickstart,Bug,"",Resolved,Should have,"Generated Entities should contain ""use Doctrine\ORM\Mapping as ORM;"" statement",Sebastian Kurfuerst,Sebastian Kurfuerst,2011-12-21 06:38,"",1.1 beta 1,2011-12-18,"","",100,2011-12-18 04:03,"","",401050,"",FLOW3 1.0.1,"Generated Entities should contain ""use Doctrine\ORM\Mapping as ORM;"" statement, as the user most probably needs this later when adjusting the kickstarter output."
+32657,TYPO3.Kickstart,Bug,"",Resolved,Should have,Kickstarter should not generate scope prototype in models,Sebastian Kurfuerst,Sebastian Kurfuerst,2011-12-21 06:38,"",1.1 beta 1,2011-12-18,"","",100,2011-12-18 04:20,"","",401100,"",FLOW3 1.0.1,"Kickstarter should not generate scope prototype in models, as prototype is the default scope."
+32660,TYPO3.Kickstart,Feature,"",Resolved,Should have,Create empty test case when creating a domain model,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-01-29 20:45,"",1.1,2011-12-18,"","",100,2011-12-18 05:54,"","",401250,"","","In order to encourage TDD, we should create an empty base test case when creating a domain model."
+32663,TYPO3.Flow,Bug,"",Resolved,Should have,flow3:doctrine:migrationgenerate should return better explanations,Sebastian Kurfuerst,Sebastian Kurfuerst,2011-12-21 06:38,Command,1.1 beta 1,2011-12-18,"","",100,2011-12-18 08:08,"","",401400,"",FLOW3 1.0.1,"Instead of:
+<pre>Generated new migration class to ...</pre>
+
+the command output should read something like:
+<pre>
+Generated new migration class!
+
+Next Steps:
+- Move ... to YourPackage/Migrations/Mysql/
+- Review and adjust the generated migration.
+- (optional) execute the generated migration using ./flow3 doctrine:migrate
+</pre>
+
+As this is much more understandable, and less error-prone, especially to new users."
+32665,TYPO3.Flow,Bug,"",Closed,Must have,CLI Requests must still work even if firewall rejectAll is set,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-04-18 16:48,Security,1.0.4,2011-12-18,"","",0,2011-12-18 08:52,"","",401500,"",FLOW3 1.0.1,"h2. How to reproduce
+
+just set:
+
+<pre>
+TYPO3:
+  FLOW3:
+    security:
+      firewall:
+        rejectAll: true
+</pre>
+
+and then run ""./flow3 help"" or any other command. You get:
+
+<pre>
+Uncaught Exception
+  The requst was blocked, because no request filter explicitly allowed it.
+
+More Information
+  Exception code      #1216923741
+  File                /Volumes/data/htdocs/FLOW3Base/Data/Temporary/Development/Cache/Code/FLOW3_Object_Classes/TYPO3_FLOW3_Security_Authorization_FilterFirewall_Original.php line 90
+  Exception reference #20111218144757968c54
+</pre>
+
+This obviously needs to be fixed."
+32691,TYPO3.Flow,Bug,"",Resolved,Should have,Arguments code of introduced methods is not generated in the proxy classes,Andreas Förthner,Andreas Förthner,2011-12-21 06:38,AOP,1.1 beta 1,2011-12-19,"","",100,2011-12-19 09:11,"","",402800,"",FLOW3 1.0.0,"This ends in a fatal error, as the proxy method does not match the signature of the one in the interface."
+32697,TYPO3.Flow,Bug,"",Resolved,Should have,Files::is_link() returns TRUE for vfs paths on Windows,Bastian Waidelich,Bastian Waidelich,2011-12-21 06:38,Utility,1.1 beta 1,2011-12-19,"","",100,2011-12-19 10:02,"","",403100,"",Git master,"@\TYPO3\FLOW3\Utility\Files::is_link()@ was introduced to circumvent PHPs buggy behavior with Symlinks on Windows (see http://bugs.php.net/bug.php?id=51766).
+
+This work around does not work for stream wrappers. That breaks some unit tests making use of vfs paths."
+32700,TYPO3.Flow,Bug,"",Resolved,Should have,Validation does not work for collections,Andreas Förthner,Andreas Förthner,2012-01-29 08:47,Validation,1.1,2011-12-19,"","",100,2011-12-19 11:17,"","",403250,"",Git master,"Model validation stops as soons as a property is of type collection. What one would expect here is, that all objects inside this colleciton get validated as well."
+32707,TYPO3.Flow,Bug,"",Accepted,Must have,Bad Bad FileBackend,Daniel Poetzinger,Karsten Dambekalns,2013-05-21 07:33,Cache,2.0.1,2011-12-19,"",2.00,0,2011-12-19 15:25,"","",403600,"",Git 1.0,"http://git.typo3.org/FLOW3/Packages/TYPO3.FLOW3.git?a=blob;f=Classes/Cache/Backend/FileBackend.php;h=ab724f855e1d6a3007056d0010c6ba00138a01e9;hb=8daf64af85dbcd3030cc3d259e262d70d50daf92
+
+The FileBackend is not working under middle to high load and also not working relyable on shared filesystems
+
+The main reason is the set function:
+- All fileoperations need to be atomic - so why is ->remove() called and after this the file is written to some temp file and then renamed.
+=> It should work by just removing the ->remove call, the rename method will replace the existing entry.
+
+Also the while (!rename($temporaryCacheEntryPathAndFilename, $cacheEntryPathAndFilename) && $i < 5) seems to be unnecessary - why is this done?
+
+
+Other improvements might be to get rid of the extra cache meta data for expire time - maybe using filemtime is faster at the end (it avoids expensive file_get_contents two times)"
+32719,TYPO3.Flow,Bug,"",Resolved,Must have,Entity changes do not update the Doctrine proxies,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 06:38,Persistence,1.1 beta 1,2011-12-20,"","",100,2011-12-20 05:06,"","",404200,"",Git master,"The file monitor does not notify about changes to entities any more, it seems."
+32723,TYPO3.Flow,Bug,"",Resolved,Must have,Files unit tests create but don't remove a lot of temporary files,Robert Lemke,"",2011-12-21 16:06,- Testing -,1.1 beta 1,2011-12-20,"","",100,2011-12-20 06:07,"","",404400,"",Git master,"The tests in TYPO3\FLOW3\Tests\Unit\Utility\Files generate various temporary files through PHP's tempnam() function.
+
+However, these files are never removed again, which led to our CI server having > 400,000 files in /tmp
+
+The test case should use a subdirectory in $TMP and have a teardown method which removes that subdirectory recursively."
+32724,TYPO3.Flow,Bug,"",Resolved,Must have,Functional tests die with fatal error,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 06:38,I18n,1.1 beta 1,2011-12-20,"","",100,2011-12-20 06:35,"","",404450,"",Git master,"<pre>PHP Fatal error:  Call to a member function get() on a non-object in /Volumes/HDD/Users/karsten/Sites/flow3/Packages/Framework/TYPO3.FLOW3/Tests/Functional/I18n/FormatResolverTest.php on line 29
+</pre>"
+32725,TYPO3.Flow,Bug,"",Resolved,Must have,Folder removal sometimes fail in tests,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 06:38,Utility,1.1 beta 1,2011-12-20,"","",100,2011-12-20 08:19,"","",404500,"",Git master,"On the CI server we see errors like
+
+<pre>1) TYPO3\FLOW3\Tests\Unit\Resource\Publishing\FileSystemPublishingTargetTest::publishStaticResourcesLinksTheSpecifiedDirectoryIfMirrorModeIsLink
+TYPO3\FLOW3\Utility\Exception: Could not unlink file ""/tmp/FLOW3FileSystemPublishingTargetTestTarget/_Resources/Static/.."".</pre>
+
+Note the double dot at the end."
+32726,TYPO3.Flow,Bug,"",Closed,Must have,Cryptography Strategies don't have Singleton annotation,Adrian Föder,Adrian Föder,2012-01-04 07:35,Security,1.0.3,2011-12-20,"","",100,2011-12-20 09:50,"","",404550,"",FLOW3 1.0.1,"e.g. \TYPO3\FLOW3\Security\Cryptography\Pbkdf2HashingStrategy doesn't have @FLOW3\Scope(""singleton"")  annotation which leads to
+
+<pre>
+#1265370540: Cannot set instance of object ""TYPO3\FLOW3\Security\Cryptography\PasswordHashingStrategyInterface"" because it is of scope prototype. Only session and singleton instances can be set. 
+</pre>
+
+Adding that annotation fixes the issue.
+
+Due to the fact that Pbkdf2 isn't default anymore it's likely that it hasn't been discovered earlier, but I wonder BCrypt also hasn't that annotation set and it seems to work?"
+32729,TYPO3.Flow,Task,"",Resolved,Should have,Enhance help texts and parameter names for Doctrine commands,Karsten Dambekalns,Karsten Dambekalns,2012-01-17 21:26,Command,1.1,2011-12-20,"","",100,2011-12-20 10:21,"","",404700,"","",The help texts and parameter names for (some of) the commands in DoctrineCommandController could be enhanced.
+32733,TYPO3.Flow,Task,"",Resolved,Should have,Rename i18n setting from locale to i18n,Karsten Dambekalns,Karsten Dambekalns,2012-01-30 20:41,I18n,1.1,2011-12-20,"","",100,2011-12-20 11:38,"","",404900,"","",In the FLOW3 settings the i18n section is still named locale (artifact from ancient times).
+32735,TYPO3.Flow,Task,"",Resolved,Should have,Move Translations folder up one level,Karsten Dambekalns,Karsten Dambekalns,2012-01-28 09:17,I18n,1.1,2011-12-20,"","",100,2011-12-20 12:05,"","",405000,"","",The folder for translations (XLIFF files) in a package is currently @Resources/Private/Locale/Translations@. Make it @Resources/Private/Translations@ instead.
+32736,TYPO3.Flow,Task,"",Resolved,Should have,Remove defaultLocale from i18n settings,Karsten Dambekalns,Karsten Dambekalns,2012-01-30 20:41,I18n,1.1,2011-12-20,"","",100,2011-12-20 12:12,"","",405050,"","",The defaultLocale should be removed from the i18n settings and made a protected member of the i18n Service class. Then the defaultLocaleIdentifier setting could be renamed to defaultLocale instead.
+32738,TYPO3.Flow,Bug,"",Resolved,Should have,Unit tests fail with PHPUnit 3.6.5,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 10:06,- Testing -,1.0.2,2011-12-20,"","",100,2011-12-20 16:48,"","",405150,"",FLOW3 1.0.1,"The very latest PHPUnit breaks our workaround for tests producing output. They output things because some warning is produced and we so far did not use the shut-up operator.
+
+It seems there is no way around this anymore, since the trick of using @outputBuffering seem to no longer work."
+32762,TYPO3.Flow,Bug,"",Resolved,Must have,Folder removal fails in tests,Karsten Dambekalns,Karsten Dambekalns,2011-12-21 16:36,Utility,1.0.2,"","","",100,2011-12-21 16:15,"","",406350,"",Git 1.0,"The same error as we already had it for master now appears on the FLOW3-1.0 branch.
+
+On the CI server we see errors like
+
+<pre>1) TYPO3\FLOW3\Tests\Unit\Resource\Publishing\FileSystemPublishingTargetTest::publishStaticResourcesLinksTheSpecifiedDirectoryIfMirrorModeIsLink
+TYPO3\FLOW3\Utility\Exception: Could not unlink file ""/tmp/FLOW3FileSystemPublishingTargetTestTarget/_Resources/Static/.."".</pre>
+
+Note the double dot at the end."
+32823,TYPO3.Flow,Bug,"",Resolved,Must have,Make combination of Account identifier and authentication provider name globally unique,Sebastian Kurfuerst,Rens Admiraal,2012-05-07 16:58,Security,1.1,2011-12-23,"","",100,2011-12-23 10:10,"","",408400,"",FLOW3 1.0.0,... this should be enforced through a DB constraint.
+32826,TYPO3.Flow,Bug,"",Resolved,Must have,Resource PublishingConfiguration is not persisted (missing Doctrine annotation),Thomas Heilmann,Karsten Dambekalns,2012-07-18 05:21,Security,1.1 RC2,2011-12-23,"","",100,2011-12-23 16:05,"","",408550,"",FLOW3 1.0.1,The publishingConfiguration property of the Resource does not get persisted. An abstract publishing configuration class should be used instead of the interface that is used at the moment; and the proper @ORM annotation has to added.
+32827,TYPO3.Flow,Bug,"",Closed,Must have,TYPO3\FLOW3\Exception thrown in file Bootstrap.php,Frederik Krogh,Karsten Dambekalns,2012-03-07 11:10,Core,"",2011-12-24,"","",0,2011-12-23 19:37,"","",408600,"",FLOW3 1.0.0,"It seems like the PHP binary ""C:/Program Files (x86)/EasyPHP-5.3.8.1/php/php.exe"" cannot be executed by FLOW3. Set the correct path to the PHP executable in Configuration/Settings.yaml, setting FLOW3.core.phpBinaryPathAndFilename.
+3 TYPO3\FLOW3\Core\Bootstrap::initializeForRuntime()
+
+2 TYPO3\FLOW3\Core\Bootstrap::handleWebRequest()
+
+1 TYPO3\FLOW3\Core\Bootstrap::run()
+
+I have tryed running it on both xampp, wampp, easyphp and manual apache and php, and NOTHING works ..."
+32829,TYPO3.Flow,Bug,"",Resolved,Should have,Mapping to a subclass by __type property fails if subclass adds fields,Andreas Wolf,Andreas Wolf,2013-08-14 09:39,Property,1.1.1,2011-12-24,"","",100,2011-12-24 07:22,"","",408700,"",FLOW3 1.0.0,"I have a hierarchy of classes for which an object should be created from a form. For that, I use the feature added with #30300. This all works well until I have a new field in my subclass that is not present in the base class. Then I get the following message on submitting my form:
+
+<pre>
+#1297759968: Exception while property mapping at property path """": Property ""text"" was not found in target object of type ""MyCompany\MyPackage\Domain\Model\BaseClass"".
+</pre>
+
+This is caused by the subtype resolving done after the subproperties to map are found. The whole magic is done in @PropertyMapper::doMapping()@: First the type converter is created, then all subproperties (of the base class, as annotated in my controller action) are fetched in @getSourceChildPropertiesToBeConverted()@. After this, the object should be created, but the mapping fails first because the property does not exist.
+
+The solution is to do the final type resolution directly after creating the type converter, before the call to @getSourceChildPropertiesToBeConverted()@."
+32830,TYPO3.Flow,Bug,"",Resolved,Should have,Validation on persist breaks with Doctrine Lazy Loading Proxies ,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-01-17 21:26,Persistence,1.0.3,2011-12-24,"","",100,2011-12-24 08:34,"","",408750,"",FLOW3 1.0.2,"Hey everybody,
+
+I am currently experiencing an error with the Validate-On-Persist:
+
+<pre>
+Fatal error: Call to a member function getClassName() on a non-object in /.../Data/Temporary/Development/Cache/Code/FLOW3_Object_Classes/TYPO3_FLOW3_Persistence_Doctrine_PersistenceManager_Original.php on line 112
+</pre>
+
+The stack trace is attached.
+
+After debugging a little deeper, it appears that this happens when a lazily-loaded entity is updated. In this case, the get_class($object) in ReflectionService returns something like ""Doctrine\....Proxies\FooBarDomainModelBar"" --> and obviously our Reflection Service cannot deal with this.
+
+"
+32832,TYPO3.Flow,Feature,"",Resolved,Should have,Implement context-specific validation through Validation Groups,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-04-27 08:38,Validation,1.1,2011-12-24,"","",100,2011-12-24 15:13,"","",408850,"","","Sometimes, validation should only be executed on persist, sometimes on the controller invocation. Especially when building multi-step forms, one needs to be able to partially validate an object and store the invalid object in the database.
+
+I'd suggest the concept of ""Validation Groups"" from Symfony: http://symfony.com/doc/current/book/validation.html#validation-groups
+
+Each Validate annotation can get one or multiple validationGroups assigned; the ""Default"" validation group is used if none is specified.
+
+When validating in the persistence layer, we use ""Default"" and ""Persistence"" as validation group; i.e. only validators which have either Default or Persistence assigned as validationGroup get executed.
+
+When being inside a controller invocation, the used validation groups should be configurable; using ""Default"", ""Controller"" if none is specified.
+
+"
+32869,TYPO3.Flow,Bug,"",New,Must have,Security config tokenClass doesnt throw exception if not found the class,Fernando Arconada,"",2012-03-19 05:53,Security,"",2011-12-29,"","",0,2011-12-29 06:05,"","",410700,"",Git master,"You have to configure a FQCN for tokeClass config. This is not consistent with providerClass that doesnt need to use a FQCN for FLOW3 classes.
+Also if FLOW3 cant find the tokenClass it doesnt trigger any exception but the provider class isnt called"
+32873,TYPO3.Flow,Bug,"",Accepted,Must have,Value changes for logged in account are not persisted due to session serialization,Aske Ertmann,Karsten Dambekalns,2012-02-01 06:43,"","",2011-12-29,"","",0,2011-12-29 09:06,"","",410900,"",Git master,"Scenario: Change accountIdentifier or credentialsSource on an account (\TYPO3\FLOW3\Security\Account), while being logged in with that account. No values are persisted to the database, because the account is fetched from the serialized session and not loaded from the database. This happened using a fluid form with the account being send to an update action, and then using the accountRepository->update method.
+
+It doesn't matter if the account is fetched originally through the accountRepository or the securityContext, which makes sense since it's just being passed as form data with an identifier..
+
+I've looked in the session files (Temporary/Development/Sessions), where I can se the serialized account (TYPO3\FLOW3\Security\Account)
+
+Quote from Andi: I think this was introduced with the 1.1 stuff and the new bootstrap?"

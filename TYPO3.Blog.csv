@@ -1,0 +1,130 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+7092,TYPO3.Blog,Bug,"",Closed,Should have,Problems at login,Nikolas Berger,Bastian Waidelich,2011-06-30 12:59,"","",2010-03-31,"","",0,2010-03-31 08:40,"","",2410750,"","If i try to login and the username or password is wrong then there is no redirection to the login form. That is in the log file:
+
+<pre>
+10-03-31 12:27:23 DEBUG     FLOW3                --- Launching FLOW3 in Development context. ---
+
+10-03-31 12:27:24 DEBUG     FLOW3                Router route(): Route ""FLOW3 :: default"" matched the path ""blog/login"".
+
+10-03-31 12:27:25 DEBUG     FLOW3                Dispatching signal F3\FLOW3\Core\Bootstrap::emitFinishedNormalRun ...
+
+10-03-31 12:27:25 DEBUG     FLOW3                  to slot F3\FLOW3\Core\LockManager::unlockSite.
+
+10-03-31 12:27:25 DEBUG     FLOW3                Shutting down ...
+
+10-03-31 12:27:27 DEBUG     FLOW3                --- Launching FLOW3 in Development context. ---
+
+10-03-31 12:27:27 DEBUG     FLOW3                Router route(): Route ""FLOW3 :: Authentication"" matched the path ""flow3/authentication"".
+
+10-03-31 12:27:27 WARNING   FLOW3                Authentication failed: ""Could not authenticate any token. Might be missing or wrong credentials or no authentication provider matched."" #1222204027
+
+10-03-31 12:27:27 DEBUG     FLOW3                Dispatching signal F3\FLOW3\Core\Bootstrap::emitFinishedNormalRun ...
+
+10-03-31 12:27:27 DEBUG     FLOW3                  to slot F3\FLOW3\Core\LockManager::unlockSite.
+
+10-03-31 12:27:27 DEBUG     FLOW3                Shutting down ...
+
+10-03-31 12:27:27 DEBUG     FLOW3                --- Launching FLOW3 in Development context. ---
+
+10-03-31 12:27:32 DEBUG     FLOW3                Router route(): Route ""Blog :: Authentication"" matched the path ""admin/authentication/authenticate"".
+
+10-03-31 12:27:32 WARNING   FLOW3                No credentials given or no account found with username """".
+
+10-03-31 12:27:32 WARNING   FLOW3                Authentication failed: ""Could not authenticate any token. Might be missing or wrong credentials or no authentication provider matched."" #1222204027
+
+10-03-31 12:27:32 DEBUG     FLOW3                Dispatching signal F3\FLOW3\Core\Bootstrap::emitFinishedNormalRun ...
+
+10-03-31 12:27:32 DEBUG     FLOW3                  to slot F3\FLOW3\Core\LockManager::unlockSite.
+
+10-03-31 12:27:32 DEBUG     FLOW3                Shutting down ...
+
+10-03-31 12:27:33 DEBUG     FLOW3                Router route(): Route ""FLOW3 :: Authentication"" matched the path ""flow3/authentication"".
+
+10-03-31 12:27:33 WARNING   FLOW3                Authentication failed: ""Could not authenticate any token. Might be missing or wrong credentials or no authentication provider matched."" #1222204027
+
+10-03-31 12:27:33 DEBUG     FLOW3                Dispatching signal F3\FLOW3\Core\Bootstrap::emitFinishedNormalRun ...
+
+10-03-31 12:27:33 DEBUG     FLOW3                  to slot F3\FLOW3\Core\LockManager::unlockSite.
+
+10-03-31 12:27:33 DEBUG     FLOW3                Shutting down ...
+
+10-03-31 12:27:33 DEBUG     FLOW3                --- Launching FLOW3 in Development context. ---
+
+10-03-31 12:27:38 DEBUG     FLOW3                Router route(): Route ""FLOW3 :: Authentication"" matched the path ""flow3/authentication"".
+
+10-03-31 12:27:38 WARNING   FLOW3                Authentication failed: ""Could not authenticate any token. Might be missing or wrong credentials or no authentication provider matched."" #1222204027
+
+10-03-31 12:27:38 DEBUG     FLOW3                Dispatching signal F3\FLOW3\Core\Bootstrap::emitFinishedNormalRun ...
+
+10-03-31 12:27:38 DEBUG     FLOW3                  to slot F3\FLOW3\Core\LockManager::unlockSite.
+
+10-03-31 12:27:38 DEBUG     FLOW3                Shutting down ...
+
+10-03-31 12:27:38 DEBUG     FLOW3                --- Launching FLOW3 in Development context. ---
+
+10-03-31 12:27:43 DEBUG     FLOW3                Router route(): Route ""FLOW3 :: Authentication"" matched the path ""flow3/authentication"".
+
+10-03-31 12:27:43 WARNING   FLOW3                Authentication failed: ""Could not authenticate any token. Might be missing or wrong credentials or no authentication provider matched."" #1222204027
+
+10-03-31 12:27:43 DEBUG     FLOW3                Dispatching signal F3\FLOW3\Core\Bootstrap::emitFinishedNormalRun ...
+
+10-03-31 12:27:43 DEBUG     FLOW3                  to slot F3\FLOW3\Core\LockManager::unlockSite.
+
+10-03-31 12:27:43 DEBUG     FLOW3                Shutting down ...
+
+10-03-31 12:27:43 DEBUG     FLOW3                --- Launching FLOW3 in Development context. ---
+
+10-03-31 12:27:47 DEBUG     FLOW3                Router route(): Route ""FLOW3 :: Authentication"" matched the path ""flow3/authentication"".
+
+10-03-31 12:27:47 WARNING   FLOW3                Authentication failed: ""Could not authenticate any token. Might be missing or wrong credentials or no authentication provider matched."" #1222204027
+
+10-03-31 12:27:47 DEBUG     FLOW3                Dispatching signal F3\FLOW3\Core\Bootstrap::emitFinishedNormalRun ...
+
+10-03-31 12:27:47 DEBUG     FLOW3                  to slot F3\FLOW3\Core\LockManager::unlockSite.
+
+10-03-31 12:27:47 DEBUG     FLOW3                Shutting down ...
+
+10-03-31 12:27:47 DEBUG     FLOW3                --- Launching FLOW3 in Development context. ---
+</pre>
+
+My operating system is Windows XP Home Edition. The message of Firefox is: ""The page isn't redirecting properly."" If i am not logged in and i try to create a post he same happens."
+27788,TYPO3.Blog,Feature,"",Resolved,Should have,Make templates HTML5 compatible,Bastian Waidelich,Bastian Waidelich,2011-07-06 05:30,"","",2011-06-30,"","",100,2011-06-30 13:00,"","",164100,"",Currently the Blog example produces some invalid HTML tags/attributes
+27789,TYPO3.Blog,Bug,"",New,Should have,Escape Post content,Bastian Waidelich,"",2011-06-30 13:07,"","",2011-06-30,"","",0,2011-06-30 13:07,"","",164150,"","Currently the post content is outputted with the raw view helper disabling the EscapeInterceptor that applies htmlspecialchars() on the content.
+This should be avoided in order to prevent XSS attacks!
+
+Probably this was added to be able to create ""rich text"" posts.
+I'd suggest to add a simple *format.mediaWiki* view helper (either with the Blog package or even with Fluid) that transforms wiki syntax to (X)HTML.
+
+Comments?"
+28142,TYPO3.Blog,Task,"",Resolved,Should have,Rework the complete GettingStarted branch to work with the current master,Thomas Layh,"",2011-10-25 04:30,"","",2011-07-12,"","",100,2011-07-12 16:42,"","",180000,"",The current GettingStarted branch does not work with the current master. The branch is about 10 months old.
+28380,TYPO3.Blog,Task,"",Resolved,Must have,GettingStarted Branch: Migration to Vendor Namespaces,Thomas Layh,Thomas Layh,2011-10-28 06:34,"","",2011-07-22,"","",0,2011-07-22 02:51,"","",191750,"",Migration of the GettingStarted branch to vendor namespaces.
+29384,TYPO3.Blog,Bug,"",Resolved,Should have,Login form does not work with FLOW3 1.0 beta 1,Robert Lemke,Robert Lemke,2011-08-31 08:30,"","",2011-08-31,"","",100,2011-08-31 07:56,"","",240650,"",The login form for administration login does not work anymore.
+30196,TYPO3.Blog,Bug,"",Resolved,Must have,Left over curly brace in XML feed in blog app,Fabian Erni,Karsten Dambekalns,2012-01-04 15:05,"","",2011-09-22,"","",100,2011-09-22 05:22,"","",280350,"","See screenshot
+
+Feed is from TYPO3.Blog app"
+31342,TYPO3.Blog,Bug,"",Resolved,Should have,blog example throws compile exception,rottenrice no-lastname-given,"",2011-10-28 06:31,"","",2011-10-27,"","",0,2011-10-27 07:51,"","",336350,"","i hope this is the correct place to report this bug. 
+
+i am using the two git repositories without changes. by accessing http://localhost/TYPO3.Blog the following exception occurs
+
+exception:
+#1297263663: The compile run failed. Please check the error output or system log for more information
+
+output before exception:
+Uncaught Exception
+  The @var annotation for ""TYPO3\Blog\Domain\Model\Blog::$title"" seems to
+  be invalid.
+
+repositories used:
+git://git.typo3.org/FLOW3/Distributions/Base.git
+git://git.typo3.org/FLOW3/Packages/TYPO3.Blog.git
+"
+31394,TYPO3.Blog,Bug,"",New,Should have,Settings.yaml.example files do not work,rottenrice no-lastname-given,"",2011-10-29 07:18,"","",2011-10-29,"","",0,2011-10-29 07:18,"","",338950,"","In the included example files the TYPO3 namespace is missing.
+
+TYPO3: #missing
+FLOW3:
+  persistence:
+    backendOptions:
+      ...
+
+links:
+git://git.typo3.org/FLOW3/Applications/Blog.git"

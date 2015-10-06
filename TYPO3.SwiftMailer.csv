@@ -1,0 +1,113 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+6974,TYPO3.SwiftMailer,Task,"",Resolved,Should have,Add Swift Mailer license to the Meta directory,Robert Lemke,Karsten Dambekalns,2011-03-30 07:30,"","","","","",100,2010-03-24 06:59,"","",31650,"",We need to add Swift Mailer's original license to the Meta directory
+10306,TYPO3.SwiftMailer,Bug,"",Resolved,Should have,Passing by reference deprecated in PHP 5.3,Ernesto Baschny,Karsten Dambekalns,2011-05-06 05:25,"","",2010-11-22,"","",100,2010-10-17 09:02,"","",2870150,"","We now integrated SwiftMailer API in the v4 core trunk (yea!). To do this, I backported the functions which you have created here (the send() helper in the message class). 
+
+This uncovered a little bug in getFailedRecipients().
+
+See attached patch which solves it in v4."
+12372,TYPO3.SwiftMailer,Bug,"",Resolved,Should have,Wrong property declaration in message API,Steffen Müller,Karsten Dambekalns,2011-03-30 07:30,"","",2011-01-19,"","",100,2011-01-19 08:56,"","",2870100,"","The visibility declaration in the Message class is ""var"", but should be ""protected"":
+
+<pre>
+class t3lib_mail_Message extends Swift_Message {
+  var $mailer;
+  var $sent = FALSE;
+  var $failedRecipients = array();
+</pre>
+
+"
+25477,TYPO3.SwiftMailer,Task,"",Resolved,Should have,What scope to use for Mailer and Transport?,Karsten Dambekalns,Karsten Dambekalns,2012-07-30 01:42,"","",2011-03-30,"","",100,2011-03-30 15:56,"","",91050,"","> I also don't quite get why the mailer and transport need to be of scope prototype.
+> Most commonly one would re-use the mailer and transport in the system.
+
+Most commonly, yes. But...
+
+Mailer and Transport are prototype (also in the original SwiftMailer code, despite the useless @newInstance()@ method they have) because you might want to send mails using different transport mechanisms during one request. Since the transport is given to the mailer as constructor argument, the mailer must also be prototype for this to work.
+
+Granted, currently there is only configuration for one default possible through SwiftMailer's @Settings.yaml@, but it is indeed possible to create another transport and mailer manually to send a message. If we switched to singleton scope, that would be confusing to say the least, and impossible in the worst case."
+27006,TYPO3.SwiftMailer,Bug,"",New,Should have,Timeout and/or memory owerflow,Joachim P. Süß,Joachim P. Süß,2011-05-24 07:02,"","",2011-05-24,"","",0,2011-05-24 06:54,"","",125800,"","Using TYPO3 4.5.2 and tt_products 2.6.2 the orders (~35k) could not be sent because of these (or timeout) message:
+
+Fatal error: Allowed memory size of 268435456 bytes exhausted (tried to allocate 4548863 bytes) in /srv/www/htdocs/web56/html/t3/typo3/contrib/swiftmailer/classes/Swift/Encoder/QpEncoder.php on line 192
+
+In Accordance with Franz Holzinger it seems to be an error in swiftmailer. Several other EXT (e.g. mm_forum, directmail, sr_feuser_register, powermail) seems to have problems to, but mostly it could be resolved by setting [MAIL][substituteOldMailAPI] = 0
+
+This also helps me in my case."
+29465,TYPO3.SwiftMailer,Task,"",Resolved,Should have,Upgrade swiftmailer library to 4.1.5,Fernando Arconada,Karsten Dambekalns,2012-02-16 20:30,"","",2011-09-04,"","",100,2011-09-04 07:45,"","",244150,"","Upgrade swiftmailer library to 4.1.5
+"
+32228,TYPO3.SwiftMailer,Bug,"",New,Should have,Cyrillic letters in mail aliases cause silent process fail,Myroslav Holyak,"",2011-11-30 17:50,"","",2011-11-30,"","",0,2011-11-30 17:50,"","",380100,"","Simple to reproduce:
+
+<pre>
+$mail = t3lib_div::makeInstance('t3lib_mail_Message');
+/* @var $mail t3lib_mail_Message */
+
+$mail->setFrom(array($fromEmail => 'Cyrillic name like ????? - not OK'));
+$mail->setTo(array($mail => 'Cyrillic name like ???? - not OK'));
+$mail->setBcc(array('support@ruhomi.com', 'booking@hotelsbooking.com.ua'));
+$mail->setSubject('Cyrillic subject - OK');
+$mail->setBody('Plain cyrillic text - OK', 'text/plain');
+$mail->send();
+</pre>
+
+It nicely ""delivers"" into local file, but silently fails delivering via mail(). Not sure, but can be buggy for whole Unicode charset not only cyrillic area."
+32275,TYPO3.SwiftMailer,Feature,"",New,Could have,New email sending mode,Myroslav Holyak,"",2012-09-27 03:28,"","",2011-12-02,"","",0,2011-12-02 11:49,"","",382450,"","In addition to smtp, php-mail and local file delivering method it might be helpful to add ""database"" method with corresponding task for scheduller extension. The point is simple - put into database whole letter for next background (async) sending with another method (can be smtp, php-mail or local file) and status reporting. 
+
+Why to do so? Answer is - insurance. It's very reliable. SMTP and plain mail func() can fail due to very various issues (server config, network timeout, ...), and realtime direct mail sending is slow. On the other hand - having system queue of letter and cron worker - any letter will be lost and we can control send-result of each.
+
+Would that be interesting for community?"
+33756,TYPO3.SwiftMailer,Feature,"",Resolved,Should have,Port mbox file transport from TYPO3 v4,Karsten Dambekalns,Karsten Dambekalns,2012-03-05 08:30,"","",2012-02-07,"","",100,2012-02-07 16:57,"","",454200,"",'nuff said
+38915,TYPO3.SwiftMailer,Bug,"",New,Should have,Error messages are not verbose,Philipp Metzler,"",2012-07-12 13:17,"","",2012-07-12,"","",0,2012-07-12 13:17,"","",707800,"","If swiftmailer can't read a file in the function _getReadHandle in typo3/contrib/swiftmailer/classes/Swift/ByteStream/FileByteStream.php it will present this error message to the user:
+
+""Unable to open file for reading [FILENAME]""
+
+If you have turned allow_url_fopen OFF PHP returns such errors:
+
+Warning: fopen() [function.fopen]: URL file-access is disabled in the server configuration in XYZ on line 3
+
+so the PHP error message is more verbose and tells the user exactely where he should look. TYPO3 could generally check the environment and warn the user that certain features won't work without the necessary PHP.INI settings.
+
+see also postings: 
+
+http://forge.typo3.org/issues/38907
+
+and
+
+http://bugs.typo3.org/view.php?id=12199"
+39337,TYPO3.SwiftMailer,Bug,"",Resolved,Must have,TransportFactory does not set all options,Bastian Waidelich,Bastian Waidelich,2012-07-30 02:30,"","",2012-07-27,"","",100,2012-07-27 11:12,"","",728650,"","The @TransportFactory@ currently uses @method_exists()@ to find out whether an option is settable on the factory.
+Unfortunately this does not work because SwiftMailer uses magic methods to set some of those.
+It's currently not possible to set *username* and *password* for the SmtpTransport!"
+41410,TYPO3.SwiftMailer,Task,"",Under Review,Should have,Remove SwiftMailer sources and require upstream package,Karsten Dambekalns,Karsten Dambekalns,2014-01-27 05:08,"","",2012-09-27,"","",0,2012-09-27 03:25,"","",827800,"",The package should require swiftmailer/swiftmailer (see http://packagist.org/packages/swiftmailer/swiftmailer) and drop that from the resources.
+52352,TYPO3.SwiftMailer,Bug,"",New,Must have,[NOBRAINER] Set correct type in composer json,Kay Strobach,"",2013-09-28 07:01,"","",2013-09-28,"","",0,2013-09-28 06:57,"","",1365200,"","IS:
+<pre>
+{
+    ""name"": ""typo3/swiftmailer"",
+    ""type"": ""typo3-flow-package"",
+    ""description"": ""A TYPO3 Flow package of SwiftMailer"",
+    ""license"": ""LGPL-3.0"",
+    ""require"": {
+        ""typo3/flow"": ""*""
+    },
+    ""provide"": {
+        ""swiftmailer/swiftmailer"": ""4.1.5""
+    },
+    ""autoload"": {
+        ""psr-0"": {
+            ""TYPO3\\SwiftMailer"": ""Classes""
+        }
+    }
+}
+</pre>
+
+Should be
+
+<pre>
+<pre>
+{
+    ""name"": ""typo3/swiftmailer"",
+    ""type"": ""library"",
+
+</pre>"
+55364,TYPO3.SwiftMailer,Bug,"",New,Should have,SwiftMailer does not work with PHP 5.5,Sebastian Düvel,"",2014-01-27 10:24,"","",2014-01-27,"","",0,2014-01-27 10:23,"","",1513500,"","Because of an ancient included SwiftMailer version, the whole package does not work with PHP 5.5.
+
+Probably fixed when http://forge.typo3.org/issues/41410 is applied."
+64877,TYPO3.SwiftMailer,Bug,"",New,Must have,SwiftMailer not autoloaded,Christian Wellinghorst,"",2015-02-05 10:00,"","",2015-02-05,"","",0,2015-02-05 10:00,"","",-229600,"","It appears that Swiftmailer is no longer autoloaded since the externaler swiftmailer/swiftmailer package is used.
+Swiftmailer requires lib/swift_required.php to be executed - composer is able of doing this, according to the documentation Flow only supports PSR-0 autoloading.
+
+Simply requiring swift_required.php when loading the package appears to be sufficient to fix this issue."

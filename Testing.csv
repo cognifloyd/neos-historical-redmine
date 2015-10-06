@@ -1,0 +1,207 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+6,Testing,Feature,"",Closed,Should have,Tests have different results with different file systems,Robert Lemke,Robert Lemke,2010-10-20 05:40,"","","","","",0,2007-02-19 06:59,"","",1816200,"","On most systems (my Mac at least ;-) all tests are executed in an alphabetical order as the SPL DirectoryIterator returns the package directories and testcase filenames sorted. However, on some systems this is not the case and although that shouldn't happen, the test lead to different results because some undetected dependencies between single tests exist.
+
+As that is a bad thing generally, we should always run the single tests in a random order to detect dependency as early as possible."
+7,Testing,Bug,"",Closed,Should have,Some core tests fail when executed in certain order,Robert Lemke,Robert Lemke,2010-10-20 05:40,"","","","","",0,2007-02-19 07:18,"","",1816150,"","Some Core tests fail when they are executed in a certain order. The problem is a double-initialization of the AOP framework.
+
+Sample of test order which fails:
+
+* TYPO3Test
+* T3P_Core_PAckageConfFileComponentsConfigurationSourceTest
+* T3P_Core_AOPPointcutClassFilterTest
+* T3P_Core_AOPPointcutExpressionParserTest
+* T3P_Core_ComponentTransientObjectCacheTest
+* T3P_Core_PackageTest
+** Error in test_getPackageMeta:
+    _Core/Classes/PackageManager/T3P_Core_PackageConfFileComponentsConfigurationSource.php:112
+    Cannot add components to the proxy blacklist after the AOP framework has been initialized!_"
+15,Testing,Feature,"",Closed,Should have,Test selector should contain the last selected test after run,Robert Lemke,Sebastian Kurfuerst,2010-10-20 05:40,"","","","","",0,2007-02-20 10:07,"","",1816100,"",The selectorbox for choosing a package to run the tests for should contain the selected value after the test run so they can be executed again.
+16,Testing,Feature,"",Closed,Must have,Add feature for running single tests,Robert Lemke,"",2010-10-20 05:40,"","","","","",0,2007-02-20 10:08,"","",1816050,"","Instead of running whole testcases, it should be possible to run only a single test, eg. while working on the implementation of the feature checked by the test."
+18,Testing,Bug,"",Closed,Should have,Test of package Log is not executed although it exists,Robert Lemke,Sebastian Kurfuerst,2010-10-20 05:40,"","","","","",0,2007-02-20 12:47,"","",1816000,"","For some reason the test runner does not run the test of the Log package.
+Happens at least in revision 130."
+25,Testing,Bug,"",Closed,Should have,Sometimes tests fail but the fail message is not displayed,Robert Lemke,Karsten Dambekalns,2010-10-20 05:40,"","","","","",0,2007-02-21 07:27,"","",1815950,"","Somehow depending on the order tests are run, some fail messages are not shown. The number of errors is increased correctly, but the details of the test can't be displayed."
+34,Testing,Feature,"",Closed,Should have,Make dependency injection for unit tests possible,Karsten Dambekalns,Robert Lemke,2010-10-20 05:40,"","","","","",0,2007-03-01 07:26,"","",1815900,"",Dependency injection should also be possible for unit tests.
+53,Testing,Bug,"",Closed,Should have,TestRunner throws ReflectionException (PHP6),Robert Lemke,Robert Lemke,2010-10-20 05:40,"","","","","",0,2007-05-24 02:58,"","",1815850,"","The TestRunner throws a ReflectionException, no matter what testcase I try to run. It tries to create a new ReflectionClass for a non existing class name - however it gets that class name (with the asian characters) from the get_declared_classes() function.
+
+Fatal error: Uncaught exception 'ReflectionException' with message 'Class ??????? does not exist' in /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/Packages/Testing/Classes/T3P_Testing_TestRunner.php:68 Stack trace: #0 /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/Packages/Testing/Classes/T3P_Testing_TestRunner.php(68): ReflectionClass->+construct('??????????????') #1 /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/Packages/Framework/Classes/TYPO3.php(109): T3P_Testing_TestRunner->run() #2 /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/index.php(32): TYPO3->run() #3 {main} thrown in /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/Packages/Testing/Classes/T3P_Testing_TestRunner.php on line 68"
+59,Testing,Feature,"",New,Should have,Implement MVC pattern for TestRunner,Robert Lemke,Robert Lemke,2010-10-20 05:40,"",1.0.0,"","","",0,2007-07-04 05:11,"","",1816250,"",The TestRunner needs a proper MVC implementation.
+81,Testing,Feature,"",Resolved,Must have,Improve component manager separation in Base Test Case,Robert Lemke,Karsten Dambekalns,2011-05-06 05:25,"","","","","",100,2007-12-19 04:49,"","",1816500,"","Currently all tests get a complete copy (including subobjects) of the component manager injected. This happens in source:Packages/Testing/Classes/T3_Testing_BaseTestCase.php#398 . However, the serialize / unserialize method will surely cause problems as soon as we have persistence in place, so we need a finer grained solution here.
+
+The problem is that some unit tests do change component configuration or even package configuration. This needs to be isolated from other tests."
+85,Testing,Bug,"",Closed,Should have,"Package ""Testing"" should not manage abstract tests/class",Malte Jansen,Karsten Dambekalns,2010-10-20 05:40,"","","","","",0,2007-12-27 18:42,"","",1815800,"","Abstracts test-classes are treated like normal ones, so they cannot be instanciated.
+-> An error occures while testing."
+86,Testing,Feature,"",Closed,Must have,Constant 'TYPO3_PATH_PACKAGES' consists of mixed slashes on windows,Malte Jansen,Karsten Dambekalns,2010-10-20 05:40,"","","","","",0,2007-12-29 06:55,"","",1815750,"","The Constant is still working, but it looks is very strange:
+
+'D:\\workspace-typo3\\htdocs\\t3_v50/Packages/'
+
+So, there properbly something wrong with the definition:
+T3_Framework.php
+
+<pre>
+define('TYPO3_PATH_PRIVATEFILECACHE', TYPO3_PATH_ROOT . 'FileCache/Private/');
+define('TYPO3_PATH_PACKAGES', TYPO3_PATH_ROOT . 'Packages/');
+define('TYPO3_PATH_FRAMEWORK', TYPO3_PATH_PACKAGES . 'Framework/Classes/' );
+</pre>
+
+
+Solution:
+
+
+Use the Constant: 'DIRECTORY_SEPARATOR' instead of '/';
+
+"
+264,Testing,Bug,"",Resolved,Must have,MainLayout.html not XHTML conform,Malte Jansen,"",2010-10-20 05:40,"","",2008-02-13,"","",100,2008-02-13 06:24,"","",1815700,"","
+<pre>
+<form action=""testing/new/run"" id=""packageselectorbox"" method=""POST"">
+</pre>
+
+method=""POST"" must be lower case: method=""post"""
+308,Testing,Feature,"",New,Should have,Improved Test Search,Malte Jansen,"",2011-05-26 12:51,"","",2008-02-14,"","",50,2008-02-14 08:04,"","",1815650,"","Normally you just need to check the whole project only once.
+Sometimes one file is to less.
+So it would be cool to test a subcompoment/subpackage.
+
+e.g.:
+'T3_FLOW3CGL_Model_'
+
+The search must end with an underline. 
+
+Perhaps not final solution, but a quick powerful solution."
+344,Testing,Bug,"",Closed,Should have,T3_Testing_BaseTestCase should be abstract,Malte Jansen,Karsten Dambekalns,2010-10-20 05:40,"","",2008-02-20,"",0.00,0,2008-02-20 07:49,"","",1815600,"","This file just extends one file, so it should be registered in the Component Manager."
+365,Testing,Feature,"",Resolved,Should have,XML Output from tests on Command Line,Sebastian Kurfuerst,Karsten Dambekalns,2010-10-20 05:40,"","",2008-02-24,"",0.00,100,2008-02-24 15:54,"","",1815550,"","We need the XML Output from the tests on the command line to make it work with Continuous Integration.
+
+Greets,
+Sebastian"
+371,Testing,Feature,"",Resolved,Should have,Improve speed and memory usage of unit test,Robert Lemke,Karsten Dambekalns,2010-10-20 05:40,"","",2008-02-27,"",0.00,100,2008-02-27 07:51,"","",1815500,"","Currently I need way more than 300 MB of memory for PHP in order to run all unit tests - and it could be faster.
+
+"
+471,Testing,Bug,"",Resolved,Could have,Crash of Apache on Windows,Malte Jansen,Robert Lemke,2010-10-20 05:40,"","",2008-04-16,"",0.00,100,2008-04-16 14:44,"","",1815450,"","If I run the TestRunner on any package, the apache shuts down (or sometimes restarts).
+
+Following Error is logged:
+<pre>
+[Wed Apr 16 20:15:23 2008] [notice] Parent: child process exited with status 3221225477 -- Restarting.
+</pre>
+
+Via google I found this hint for the php.ini:
+<pre>
+output_buffering = On
+</pre>
+The result is, that the first lines are shown, but the apache still shuts down...
+"
+479,Testing,Bug,"",Resolved,Should have,Unnecessary slash added to path in F3_Testing_Model_TestCaseRepository.php,Jochen Rau,Karsten Dambekalns,2010-10-20 05:40,"","",2008-04-24,"",0.00,0,2008-04-24 04:34,"","",1815400,"","The line
+
+$testsPath = $package->getPackagePath() . '/Tests/';
+
+in the method ""getTestcaseFilenames"" of class ""3_Testing_Model_TestCaseRepository.php"" should be
+
+$testsPath = $package->getPackagePath() . 'Tests/';
+
+as the leading slash was already added in the line
+
+$availablePackagesArr[$filename] = new F3_FLOW3_Package_Package($filename, ($packagesDirectoryIterator->getPathName() . '/'));
+
+in the method ""scanAvailablePackages()"" of class ""F3_FLOW3_Package_Manager.php"".
+
+-- Jochen"
+838,Testing,Bug,"",Resolved,Could have,Images not working when Packages directory is not available from Web,Christoph Blömer,Karsten Dambekalns,2010-10-20 05:40,"","",2008-06-20,"",0.00,100,2008-06-20 12:06,"","",1815350,"","Info(Hint) for Revision 957:
+
+The images from testing are not available if the Packages directory is not available from web.
+I made a virtualhost ""flow3"" pointing on the Public directory and run the testing.
+
+http://flow3/testing
+
+The Image Path is:
+http://flow3/../Packages/Testing/Resources/Media/f3_logo.gif
+
+Resolution is to put the Icons into the /Resources/Public/ directory.
+
+And set the image path to:
+/Resources/Testing/Public/f3_logo.gif
+
+In the Packages Documentation it is also mentioned that you could place the files into the directory /Resources/Media/Public/ but it is not copied by the Resource Manager.
+
+Greetings
+Christoph
+
+
+
+"
+1637,Testing,Bug,"",Resolved,Should have,Incorrect constructor F3_Testing_AbstractTestRunner,Malte Jansen,Karsten Dambekalns,2010-10-20 05:40,"","",2008-10-02,"",0.10,100,2008-10-02 12:14,"","",1815300,"","File: http://forge.typo3.org/repositories/entry/package-testing/trunk/Classes/F3_Testing_AbstractTestRunner.php
+Line: 82 is not correct
+
+<pre>
+$this->componentFactory = $componentFactory;
+</pre>
+
+The declaration of the member variable for the member var is missing or is the var automatically declared by FLOW3?"
+1638,Testing,Bug,"",Resolved,Should have,Static is not suppose to work in the way it's used in F3_Testing_Model_TestRunner.php,Malte Jansen,Karsten Dambekalns,2010-10-20 05:40,"","",2008-10-02,"","",0,2008-10-02 12:23,"","",1815250,"","File:
+http://forge.typo3.org/repositories/entry/package-testing/trunk/Classes/Model/F3_Testing_Model_TestRunner.php
+
+The following variable is defined as static, so you cannot change the content afterwards in the constructor. Especially not with an other object. (See http://de.php.net/manual/en/language.oop5.static.php#85277)
+<pre>
+public static $componentManager;
+
+	public function __construct(F3::Testing::Model::TestCaseRepository $testCaseRepository, F3::Testing::Model::TestListener $testListener) {
+		...
+		self::$componentManager = $FLOW3->getComponentManager();
+
+		self::$componentManager->unregisterComponent('F3::FLOW3::Session::SessionInterface');
+		self::$componentManager->registerComponent('F3::FLOW3::Session::SessionInterface', 'F3::FLOW3::Session::Transient');
+		...
+	}
+</pre>
+
+So the apache might cause crash on some plattforms with the Testing. I have located the crashing on windows with php5.3alpha2 to this constructor. If it's not called, the Testing does not crash.
+"
+1649,Testing,Feature,"",Closed,Should have,Allow old Class-Name-Style (with underscore) for testing-filter,Malte Jansen,Karsten Dambekalns,2010-10-20 05:40,"","",2008-10-05,"",0.10,50,2008-10-05 16:28,"","",1815200,"","If you are testing a certain class, you have to enter the class name.
+But since namespaces you cannot copy&past the class name anymore. So you have to enter it by your own or you could copy&paste the file name.
+You just have to replace the ""_"" through ""::""
+"
+2442,Testing,Feature,"",Rejected,Must have,Ignore Tests with *Fixture* in Path,Malte Jansen,Karsten Dambekalns,2011-05-06 05:25,"","",2009-01-10,"","",0,2009-01-10 11:44,"","",1816450,"","FLOW3CGL is checking the PackageStructur/NamingConventions for php-files. So we have to have a dummy-testcase.
+
+When the path to a testcase contains ""Fixture"" it should be ignored."
+2757,Testing,Bug,"",Resolved,Must have,ClassFilter is not working on windows,Malte Jansen,Bastian Waidelich,2010-10-20 05:40,"","",2009-03-04,"","",100,2009-03-04 04:36,"","",1815150,"","Comparing the ClassName with the FileName does not work, because of non UnixStyledPaths in the 
+
+Class: *AbstractTestRunner*
+Function: *readDirectories($testcaseFilenames, $testsDirectoryIterator)*
+Just transform the Path to UnixStyled before the check.
+@$fileNameWithPath = \F3\FLOW3\Utility\Files::getUnixStylePath($testsDirectoryIterator->getPathname());
+if (preg_match('/\/' . str_replace('\\', '\\/', $this->testcaseClassName) . '\.php/', $fileNameWithPath) === 1) {@"
+3110,Testing,Task,"",Resolved,Should have,"Don't hide ""code coverage"" checkbox",Bastian Waidelich,Bastian Waidelich,2010-10-20 05:40,"",1.0.0,2009-04-17,"","",100,2009-04-17 03:56,"","",14900,"","The checkbox is hidden when xdebug is not installed. It should rather be disabled in this case, and have a meaningful tooltip like ""to enable code coverage you need to install xdebug"""
+3118,Testing,Task,"",Resolved,Should have,Don't run all tests in indexAction,Bastian Waidelich,Sebastian Kurfuerst,2010-10-20 05:40,"","",2009-04-17,"","",100,2009-04-17 08:24,"","",15050,"","When I open ""http://flow3/testing"", testrunner immediately starts running all tests of all packages.
+IMO it would be better to have a runAction as in the CLIController so you can first select the packages/tests or enable code coverage before the testrunner starts..
+Or is it like this for a particular reason?"
+3734,Testing,Bug,"",Resolved,Must have,Tests are no longer run in random order,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:40,"","",2009-06-23,"","",100,2009-06-23 10:10,"","",1815100,"","Issue #6 was fixed with r114, now the tests are run in alphabetical order again..."
+3822,Testing,Bug,"",Resolved,Should have,Testrunner  executes tests of inactive packages,Bastian Waidelich,Karsten Dambekalns,2010-10-20 05:40,"","",2009-07-02,"","",100,2009-07-02 11:31,"","",1815050,"","The package selector in FLOW3s testrunner displays inactive packages. And when ""run all tests"" is selected, tests from inactive packages are executed.
+This is a feature not a bug I'd say. The problem: The autoloader does not work for classes of inactive packages."
+6386,Testing,Feature,"",New,Should have,Story Based TestCases for BDD,Alexandre Martinez,"",2010-10-20 05:40,"","",2010-02-06,"","",0,2010-02-06 14:50,"","",1815000,"","It would be nice to provide support for writing Story based tests to allow users to do Behaviour Driven Design.
+PHPUnit extensions provide a base test case and implementation consists in integrating FLOW3 specific initializations.
+
+See file attached for a suggestion of implementation (well mostly copy/paste from existing BaseTestCase, but it works for me)."
+10467,Testing,Bug,"",Resolved,Must have,CodeCoverage: should data/temporary be ignored?,Martin Eisengardt,Karsten Dambekalns,2011-05-06 05:25,"","",2010-10-26,"","",100,2010-10-26 08:12,"","",1816350,"","Currently the testing web controller has a flag to enable code coverage.
+However the code coverage is correctly limited to the package we are testing (working as intended). But: The code coverage seems to consume the data/temporary folder too. The manual says that unit testing should be done by calling constructors directly and not using any aop proxies but using mock objects and injecting them into the tested classes. That's rather fine.
+
+Due to a bug within phpunit itself currently the code coverage feature will report notices as soon as it sees the data/temporary package. PHPUnit was fixed.
+See http://lists.typo3.org/pipermail/flow3-general/2010-October/000603.html
+See PHPUnit issue at http://github.com/sebastianbergmann/phpunit/issues/closed#issue/54
+
+I suggest updating Flow3's PHPUnit package. And maybe the data directory should be blacklisted so that PHPUnit does not try code coverage on the temporary data."
+10700,Testing,Bug,"",Resolved,Should have,Classname filter does not work in web interface,Christian Kuhn,"",2011-05-06 05:25,"","",2010-11-10,"","",100,2010-11-09 18:56,"","",1816300,"","Choosing a class or a subpath to run specific tests of a package in the web interface does not work.
+
+This is due to a naming mismatch of all links in the webinterface
+""testCaseClassName"" (given)
+""testcaseClassName"" (should be)
+    ^^^ (lower / uppercase C)
+
+How to test:
+- Call http://yourdistribution.foo/testing/
+- Choose a specific test"
+10881,Testing,Bug,"",Closed,Must have,SeleniumTestCase does not run,Christian Lerrahn,Karsten Dambekalns,2011-05-06 05:25,"","",2010-11-17,"","",0,2010-11-16 23:30,"","",1816400,"","When installing PHPUnit as described in http://www.phpunit.de/manual/current/en/installation.html the SeleniumTestCase will not run
+even when there is a Selenium RC server running as suggested in http://www.phpunit.de/manual/current/en/selenium.html 
+
+Execution stops with the error
+
+@PHP Fatal error:  Class 'PHPUnit_Extensions_SeleniumTestCase' not found in /home/umr_test/FLOW3-1.0.0-alpha13-build43/Packages/Framework/Testing/Classes/SeleniumTestCase.php on line 33@
+
+This relates to http://forge.typo3.org/issues/10747 . However, the links provided there do not address this problem."
+13007,Testing,Bug,"",New,Should have,Dotfiles are parsed too.,Andreas Lappe,"",2011-02-13 16:26,"","",2011-02-13,"","",0,2011-02-13 16:26,"","",1814950,"","Using vim as ${EDITOR} I have .file.php.swp files while editing them. If I have them for a testcase, the testrunner tries to parse them and fails.
+The attached patch fixes this, so only PHP files are parsed."

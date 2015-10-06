@@ -1,0 +1,23 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+3111,FluidBackporter,Task,"",New,Should have,Unit tests should be backported too!,Bastian Waidelich,"",2010-10-20 05:46,"","",2009-04-17,"","",0,2009-04-17 04:00,"","",14950,"","To ensure, backporting did not introduce bugs, unit tests should be backported too (where possible)"
+3250,FluidBackporter,Bug,"",New,Should have,Translation of form.submit,Sebastian Fischer,"",2010-10-20 05:46,"","",2009-05-08,"","",0,2009-05-08 13:03,"","",2699200,"","Currently its impossible to translate form.submit
+
+<f:form.submit><f:translate key=""lang_submit""/></f:form.submit>
+
+This construct doesn't work. And in viewhelpertest is no matching example given. And no $this->renderChildren(); is given in SubmitViewHelper.php"
+39154,FluidBackporter,Bug,"",Resolved,Should have,use interface for RenderingContext instead of concrete class,Tymoteusz Motylewski,"",2013-02-19 08:30,"","",2012-07-21,"","",100,2012-07-21 07:26,"","",719550,"","right now backporter adds
+<pre>
+$this->setRenderingContext($this->objectManager->create(\'Tx_Fluid_Core_Rendering_RenderingContext\'));
+</pre>
+to TemplateView.php file.
+But should use 'Tx_Fluid_Core_Rendering_RenderingContextInterface'
+
+"
+39163,FluidBackporter,Bug,"",New,Should have,resolveDefaultEncoding with wrong fallback,Tymoteusz Motylewski,"",2012-07-21 10:31,"","",2012-07-21,"","",0,2012-07-21 10:31,"","",720000,"","Since TYPO3 4.7 the forceCharset configuration is deprecated. The class Tx_Fluid_Core_Compiler_AbstractCompiledTemplate
+still uses the value of the localconf.php ($GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset']).
+This patch removes this handling and always set UTF-8 if no default charset is set.
+
+Related to Extbase fluid issue: #37929"
+43073,FluidBackporter,Task,"",New,Should have,Remove TOKENS replacement  for templates fallbacks,Marc Bastian Heinrichs,"",2012-11-18 08:21,"","",2012-11-18,"","",0,2012-11-18 08:21,"","",907700,"",""
+44676,FluidBackporter,Bug,"",Resolved,Should have,Synch fluid backporter with TYPO3 CMS 6.0 and Flow 1.1,Tymoteusz Motylewski,Tymoteusz Motylewski,2013-02-19 08:30,"","",2013-01-20,"","",100,2013-01-20 16:47,"","",987400,"",Fluid backported needs to be updated to reflect changes in CMS and Flow (e.g. namespaces)
+51843,FluidBackporter,Feature,"",Resolved,Should have,Add Fluid V2 compatibility layer,Tymoteusz Motylewski,Tymoteusz Motylewski,2013-09-10 04:30,"","",2013-09-09,"","",100,2013-09-09 04:01,"","",1340050,"",Fluid backporter should be v1 and v2 compatible (based on the version switch).

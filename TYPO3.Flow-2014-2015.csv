@@ -1,0 +1,2252 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Affected Flow version,Description
+54744,TYPO3.Flow,Bug,"",New,Should have,"System.log contains many NOTICE Flow The argument ""workspace"" declared in pointcut does not exist in method TYPO3...",Chr is,"",2014-02-12 03:07,Log,"",2014-01-05,"","",0,2014-01-04 21:57,"","",1483500,"",(any),"Flow version = 2.1.0  (composer show -i)
+Neos version = 1.0.1  (composer show -i)
+
+
+
+*System.log contains a lot of these NOTICES (after flushing cache):*
+
+<pre>
+14-01-05 03:43:48 25269      NOTICE    Flow                 Locking site. Lock file: /path/to/example.org/TYPO3-Neos/Data/Temporary/Production/Flow.lock
+14-01-05 03:43:49 25269      INFO      Flow                 Aspect classes have been modified, flushing the whole proxy classes cache.
+14-01-05 03:43:49 25269      INFO      Flow                 Domain model changes have been detected, triggering Doctrine 2 proxy rebuilding.
+14-01-05 03:43:49 25269      INFO      Flow                 File Monitor ""Flow_ClassFiles"" detected 2120 changed files and 33 changed directories.
+14-01-05 03:43:49 25269      INFO      Flow                 A configuration file matching the pattern ""/Policy\.yaml/"" has been changed, flushing related cache ""Flow_Security_Policy""
+14-01-05 03:43:49 25269      INFO      Flow                 A configuration file matching the pattern ""/Routes([^\/]*)\.yaml/"" has been changed, flushing related cache ""Flow_Mvc_Routing_FindMatchResults""
+14-01-05 03:43:49 25269      INFO      Flow                 A configuration file matching the pattern ""/Routes([^\/]*)\.yaml/"" has been changed, flushing related cache ""Flow_Mvc_Routing_Resolve""
+14-01-05 03:43:49 25269      INFO      Flow                 A configuration file matching the pattern ""/Views\.yaml/"" has been changed, flushing related cache ""Flow_Mvc_ViewConfigurations""
+14-01-05 03:43:49 25269      INFO      Flow                 The configuration has changed, triggering an AOP proxy class rebuild.
+14-01-05 03:43:49 25269      INFO      Flow                 File Monitor ""Flow_ConfigurationFiles"" detected 66 changed files and 16 changed directories.
+14-01-05 03:43:49 25269      INFO      Flow                 The localization files have changed, thus flushing the I18n XML model cache.
+14-01-05 03:43:49 25269      INFO      Flow                 File Monitor ""Flow_TranslationFiles"" detected 10 changed files and 3 changed directories.
+14-01-05 03:44:00 25269      INFO      Flow                 Reflected 979 emerged classes.
+14-01-05 03:44:02 25269      INFO      Flow                 Aspects have been modified, therefore rebuilding all target classes.
+14-01-05 03:44:02 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Flow\Mvc\Controller\StandardController->indexAction
+14-01-05 03:44:02 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Flow\Mvc\Controller\StandardController->indexAction
+14-01-05 03:44:02 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Fluid\ViewHelpers\Widget\Controller\AutocompleteController->indexAction
+14-01-05 03:44:02 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Fluid\ViewHelpers\Widget\Controller\AutocompleteController->indexAction
+14-01-05 03:44:02 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Fluid\ViewHelpers\Widget\Controller\PaginateController->indexAction
+14-01-05 03:44:02 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Fluid\ViewHelpers\Widget\Controller\PaginateController->indexAction
+14-01-05 03:44:02 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Media\Controller\AssetController->indexAction
+14-01-05 03:44:02 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Media\Controller\AssetController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\NeosDemoTypo3Org\Controller\RegistrationController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\NeosDemoTypo3Org\Controller\RegistrationController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Backend\BackendController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Backend\BackendController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Backend\MenuController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Backend\MenuController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Backend\ModuleController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\LoginController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\LoginController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\AbstractModuleController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\AbstractModuleController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\AdministrationController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\AdministrationController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\Administration\PackagesController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\Administration\PackagesController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\Administration\SitesController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\Administration\SitesController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\Administration\UsersController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\Administration\UsersController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\ManagementController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\ManagementController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\UserController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\UserController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\User\UserSettingsController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Module\User\UserSettingsController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Service\NodeController->indexAction
+14-01-05 03:44:03 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Neos\Controller\Service\NodeController->indexAction
+14-01-05 03:44:04 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Setup\Controller\SetupController->indexAction
+14-01-05 03:44:04 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Setup\Controller\SetupController->indexAction
+14-01-05 03:44:04 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Setup\ViewHelpers\Widget\Controller\DatabaseSelectorController->indexAction
+14-01-05 03:44:04 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\Setup\ViewHelpers\Widget\Controller\DatabaseSelectorController->indexAction
+14-01-05 03:44:04 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\TYPO3CR\ViewHelpers\Widget\Controller\PaginateController->indexAction
+14-01-05 03:44:04 25269      NOTICE    Flow                 The argument ""workspace"" declared in pointcut does not exist in method TYPO3\TYPO3CR\ViewHelpers\Widget\Controller\PaginateController->indexAction
+</pre>"
+54973,TYPO3.Flow,Bug,"",Resolved,Must have,mod_rewrite doesnt allow uppercase characters for the session id,Julian Kleinhans,Julian Kleinhans,2014-01-14 06:36,Core,"",2014-01-14,"","",100,2014-01-14 02:59,"","",1494700,"",Git master,"The usage of the SecurityPublishingConfiguration in combination with the fluid resource viewhelper generates a link which includes the users sessions id. This session id includes uppercase characters. The mod_rewrite rule for this private resources doesnt allow uppercase characters for the session id, so the user gets a 404.
+
+Example: 
+<pre>
+$myNewResource->getOriginalResource()->setPublishingConfiguration($this->resourceService->getSecurityPublishingConfiguration());
+</pre>
+
+And now use the fluid resource viewhelper.
+The output looks like this
+
+<pre>
+http://domain.com/_Resources/Persistent/5I69ZCdxva2uQvHUPYaq00whI1XyD8UQ/Kj187.Core:Editor/c37d1ae0234ad14be3cc05d2657784944eed492e/test.png
+</pre>"
+55008,TYPO3.Fluid,Bug,"",Under Review,Should have,Interceptors should be used in Partials,Christian Müller,Christian Müller,2014-01-15 02:44,"","",2014-01-15,"","",0,2014-01-15 02:43,"","",1496400,"",(any),Currently Interceptors don't work on Partials because they are not initialized there. Can easily be tested by creating a Template that uses the Resource Interceptor (so using a relative path like ../../Public/Images/Foo.jpg) and then (after checking that the Interceptor converts that into a full resource path) moving that into a partial. There the Interceptor is no longer executed and you get the relative path that is then wrong.
+55142,TYPO3.Fluid,Bug,"",Resolved,Should have,Use getPropertyPath in autocomplete widget,Alexander Stehlik,"",2014-01-21 07:36,Widgets,"",2014-01-19,"","",100,2014-01-19 10:30,"","",1502600,"",Git master,"
+
+Currently the AutocompleteController uses @ObjectAccess::getProperty()@ for retrieving the property that was searched for in the query.
+
+The query is currently flexible enough to support sub-properties to be searched. An example: if you have a User object you could configure an autocomplete widget that searches for @name.fullName@. The query will execute that search without problems and find the users.
+
+But as soon as the results are build the widget crashes because it can not access the property.
+
+A simple fix that should not cause any side effects would be to use @ObjectAccess::getPropertyPath()@ instead."
+55189,TYPO3 Flow Base Distribution,Task,"",Closed,Should have,Extract forward handling from errorAction,Oliver Hader,Bastian Waidelich,2014-12-20 07:20,"","",2014-01-20,"","",0,2014-01-20 14:12,"","",1504900,0.00,"","_basically taken from Extbase tracker, see #55178 and please let me know whether this might be considered for TYPO3 Flow_
+
+The default ActionController::errorAction uses the forward method to get back to the referring request.
+If a custom and different redirect shall happen here, one has to clone the whole errorAction method.
+Extracting the handling simplifies customization at this state."
+55199,TYPO3.Flow,Feature,"",New,Should have,Avoid Buffering of Shell output,Kay Strobach,"",2014-03-31 06:34,Cli,"",2014-01-21,"","",0,2014-01-21 00:51,"","",1505300,"","","Currently Shell output is buffered in TYPO3\Flow\Cli\Response->appendContent(), this does not make sense IMHO, especially for long lasting operations.
+* this can be misinterpreted as a hanging / slow program
+* this can cause exceeding memory limits
+* users don't understand it.
+
+Therefore i suggest to output the CLI output directly!
+
+I made it working with AOP, afterwards you may need some additional cleaning in the other CLI\Response methods, which are useless after the patch ;)"
+55212,TYPO3.Flow,Bug,"",Resolved,Should have,TOC is broken on docs.typo3.org,Xavier Perseguers,Xavier Perseguers,2014-02-07 11:35,- Documentation -,"",2014-01-21,"","",100,2014-01-21 06:51,"","",1505950,"",(any),The table of contents is not rendered correctly on docs.typo3.org. This is related to the use of 3 different TOCs in the main Index.rst file.
+55215,TYPO3.Flow,Task,"",Resolved,Should have,Remove ChangeLog from PDF,Xavier Perseguers,Xavier Perseguers,2014-02-07 11:35,- Documentation -,"",2014-01-21,"","",100,2014-01-21 07:17,"","",1506100,"","","When generating PDF, chapter listing the whole changelog does not make (much) sense, it should better be excluded."
+55244,TYPO3 Flow Base Distribution,Bug,"",Closed,Won't have this time,Can't use Flow with PHP > 5.4,Samuel Mehrbrodt,Samuel Mehrbrodt,2014-01-22 08:05,"","",2014-01-22,"","",0,2014-01-22 07:12,"","",1507550,"",(any),"I have PHP 5.5.3 here and can't run Flow, get the following message:
+
+Fatal error: Directive 'allow_call_time_pass_reference' is no longer available in PHP in Unknown on line 0
+TYPO3\Flow\Core\Booting\Exception\SubProcessException thrown in file Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Core/Booting/Scripts.php in line 531.
+
+The directive 'allow_call_time_pass_reference' was deprecated since PHP 5.0 and removed in 5.4: http://www.php.net/manual/de/ini.core.php#ini.allow-call-time-pass-reference
+
+I'm running FLOW 2.1 (included in NEOS)."
+55306,TYPO3.Flow,Bug,"",Under Review,Should have,Filenames should not exceed 255 characters,Christian Müller,Christian Müller,2015-06-02 12:30,"","",2014-01-24,"","",0,2014-01-24 08:11,"","",1510650,"",Git master,Currently the SimpleFileBackend generates temporary files that could exceed 255 characters in length which will fail for many filesystems.
+55309,TYPO3.Flow,Bug,"",Resolved,Should have,PackageManager::getPackageOfObject() does not work for proxy objects,Bastian Waidelich,Bastian Waidelich,2014-07-11 14:19,Package,"",2014-01-24,"","",100,2014-01-24 09:03,"","",1510800,"",Flow 2.0.0,"The method @PackageManager::getPackageOfObject()@ fails to resolve the package of a given object if it's a proxy.
+
+The Flow/Doctrine proxy classes usually reside in a folder underneath @Data/Temporary@. Comparing those paths with the package root paths leads to invalid results."
+55369,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,Cookies not created if cookie lifetime is set,Stephen Bungert,Sebastian Heuer,2014-02-25 09:36,"","",2014-01-27,"","",100,2014-01-27 13:46,"","",1513750,"",Flow 2.0.0,"I have a flow based website and have increased the session timeout to 1 day. Cookies were still session only so I changed the cookie duration to one day too (I want users to be logged in even after closing the tab/browser). Whenever I do this, no cookie is created, and uses can't login.
+
+I tried changing the value directly in typo3/flow/configuration settings, in flow/congiguration and my packages configuration. Everytime the cookie is not made. If I remove the lifetime, the cookie is created. I also tried copying the whole cookie ""array"" to the settings in case you have to oevrwrite all cookie values in settings. This also didn't work.
+
+I think this is a bug. No error is shown, nothing in the server error log or the flow's system development log.
+
+In the security log I see:
+
+<pre>
+14-01-27 19:43:15 3329       127.0.0.1      NOTICE    TYPO3.Flow           Successfully authenticated token: Username: ""admin""
+14-01-27 19:43:16 3329       127.0.0.1      INFO      Flow                 No account authenticated
+</pre>"
+55618,TYPO3.Flow,Bug,"",Resolved,Should have,Wrong HTTP status code for missing entities,Bastian Waidelich,Bastian Waidelich,2014-07-11 14:19,Error,"",2014-02-03,"","",100,2014-02-03 06:05,"","",1525600,"",(any),"When an exception is thrown in @PropertyMapper::convert()@ it is always wrapped in a @\TYPO3\Flow\Property\Exception@ leading to the default exception handling which sets the status code of the HTTP response to 500.
+At least in the case of a @TargetNotFoundException@ this should be a 404 status instead"
+55703,TYPO3.Flow,Bug,"",Resolved,Should have,CSRF Protection with X-Flow-CsrfToken Header doesn't work,Stefan Aebischer,"",2014-06-18 16:37,"",2.0.1,2014-02-05,"","",100,2014-02-05 11:44,"","",1529850,"",Flow 2.0.0,"If the CSRF Token is submited as X-Flow-CsrfToken Request Header, the token validation fails, even if the correct token is submited. 
+The CsrfProtection RequestPattern tries to get the X-Flow-CsrfToken Header in order to validate the request (around line 108 in TYPO3\Flow\Security\RequestPattern\CsrfProtection).
+
+The header is transformed from X-Flow-CsrfToken to HTTP-X-FLOW-CSRFTOKEN through PHP and afterwards in TYPO3\Flow\Http around line 72 to X-Flow-Csrftoken (lower t in Token).
+
+A solution could be to name the header X-Flow-Csrf-Token.
+
+Affected Version is 2.1.0 (not available to choose)"
+55719,TYPO3.Flow,Feature,"",New,Could have,Support additional Resource Folders,Carsten Bleicker,"",2014-02-06 05:38,"","",2014-02-06,"","",0,2014-02-06 05:38,"","",1530650,"","",f.e. using a dependency to twitter package twbs/bootstrap. It has several files (f.e. fonts) wich arent in a structure of Resources/Public and will not be published. Would be nice to have an option for ResourcePublisher to define additional Folders. Right now i have to symlink them in my own package or copy them to my package.
+55723,TYPO3.Fluid,Feature,"",Closed,Should have,Support of schema.org attributes,Carsten Bleicker,Bastian Waidelich,2014-02-06 06:42,"","",2014-02-06,"","",0,2014-02-06 06:17,"","",1530850,"","","\TYPO3\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper::registerUniversalTagAttributes should support schema.org microformat properties as much as possible.
+
+f.e. itemprop=""image"""
+55793,TYPO3.Flow,Feature,"",Under Review,Could have,Add Support for groupBy,Kerstin Huppenbauer,Kerstin Huppenbauer,2014-09-02 03:38,Persistence,"",2014-02-08,"","",0,2014-02-08 09:25,"","",1534350,"","","groupBy is supported by Doctrine, but at the moment not by Flow.
+This Patch add's groupBy Support to Flow and can be used this way:
+
+<pre>
+$query = $this->createQuery();
+return $query->matching()
+->setGroupBy(array('propertyName'))
+->execute();
+</pre>"
+55831,TYPO3.Flow,Feature,"",New,Should have,Different scenarios for session settings,Aimo Künkel,"",2014-02-10 05:21,"","",2014-02-10,"","",0,2014-02-10 05:20,"","",1536000,"","","What i'd really love is something like this to easily offer some
+[ ] keep me logged in
+login form functionality
+
+<pre>
+TYPO3:
+  Flow:
+    session:
+      # this is the default - doesn't break backwards compatibility
+      inactivityTimeout: foo
+      scenarios:
+        myScenario1: # the user wants to be remembered
+          # set timeout to one year
+          inactivityTimeout: 31536000
+        myScenario2: # the user logged in from an internet café
+          # set timeout to 30 minutes
+          inactivityTimeout: 1800
+</pre>
+
+and in the controller
+
+<pre>
+public function authenticateAction() {
+	...
+	if ($keepMeLoggedIn) {
+		$someObjectWhereYouWouldSetThis->setScenario('myScenario1');
+	}
+	...
+}
+</pre>
+
+If the scenarios would then inherit from the default, you have everything you need to build your own configuration sets."
+55836,TYPO3.Fluid,Bug,"",Closed,Should have,Wrong class names in fluid documentation,Christian Weiske,"",2014-03-05 04:51,"","",2014-02-10,"","",0,2014-02-10 07:23,"","",1536250,"",Git master,"The documentation on
+http://docs.typo3.org/flow/TYPO3FlowDocumentation/stable/TheDefinitiveGuide/PartIII/Templating.html
+uses class names like
+> @extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper@
+
+Those classes don't exist anymore. They are in @\TYPO3\CMS\...@."
+55869,TYPO3.Flow,Feature,"",Closed,Should have,Allow custom handling of propertyMapping errors,Georg Ringer,Bastian Waidelich,2015-02-11 09:47,MVC,"",2014-02-11,"","",0,2014-02-11 04:16,"","",1537900,"","","This is the forward port of the bug #55861 in TYPO3 CMS.
+
+A typical controller call in TYPO3 CMS looks like this
+
+<pre><code class=""php"">
+	/**
+	 * Single view of a news record
+	 *
+	 * @param Tx_News_Domain_Model_News $news news item
+	 * @param integer $currentPage current page for optional pagination
+	 * @return void
+	 */
+	public function detailAction(Tx_News_Domain_Model_News $news = NULL, $currentPage = 1) {
+}
+</code></pre>
+
+As long as no news property or a correct uid is given everything is ok but if the record can't be found, the exception 
+<pre>Exception while property mapping at property path """":Object with identity ""3"" not found.</pre> is thrown.
+
+There is currently no way for an extension, to handle this error in the own code! It is very normal, that records get deleted, set to hidden or what so ever. Therefore it must be up to the extension if a default value is set (like @NULL@) to return NULL by the property mapper!
+
+"
+55870,TYPO3.Flow,Feature,"",New,Must have,Enhance f:form.textfield or add a f:form.datefield VH with enhanced validation and propertymapping,Kay Strobach,Christian Müller,2014-04-15 06:32,"","",2014-02-11,"","",0,2014-02-11 05:02,"","",1537950,"","","currently datetime field handling is a bit of a mess.
+
+The idea is to have a viewHelper, which is used like this:
+
+<pre>
+  <f:form.datefield property=""datetimeAttribute"" format=""d.m.Y"" />
+</pre>
+
+Jobs of the VH:
+
+# DateTime object is formated as d.m.Y
+# Property mapping knows the format of the field it's d.m.Y and can automagically cast the passed string to a DateTime object
+
+The VH can create a hidden field with the datetime format and a visible date field, then the DateTimeConverter can use this information to successfully cast the object to a "
+55936,TYPO3.Flow,Bug,"",Resolved,Must have,sessionManager->getActiveSessions() returns empty,Thomas Lorenzen,"",2014-08-27 04:00,Session,"",2014-02-12,"","",100,2014-02-12 10:59,"","",1541150,"",Flow 2.0.0,"I inject the sessionManager and try to get all active sessions but getActiveSessions() always returns empty array.
+
+Have tried in different contexts and yes I DO have active sessions ;)
+
+I'm running Flow 2.0.1
+
+Code:
+
+    /**
+     * @Flow\Inject
+     * @var \TYPO3\Flow\Session\SessionManagerInterface
+     */
+    protected $sessionManager;
+
+    $sessions = $this->sessionManager->getActiveSessions();"
+55937,TYPO3.Flow,Bug,"",New,Must have,FlashMessage queue is lost,Thomas Lorenzen,"",2014-02-12 11:03,Session,"",2014-02-12,"","",0,2014-02-12 11:03,"","",1541200,"",Flow 2.0.0,"I add a FlashMessage and the redirect.
+
+If (condition==A) redirect to A or else redirect to B.
+
+The error is that flashMessage queue i empty in A but shows my message in B.
+
+I do output flashmessages, but queue is simply truncated.
+
+
+$this->addFlashMessage($this->translator->translateById('cliologin.userpassnotfound',array(),null,null,'Main','ClioOnline.ABO2'),'',Message::SEVERITY_ERROR);
+if($this->logindata->getLoginprovider() == 'DefaultProvider') {
+   $this->redirect('login','Standard');
+}
+else {
+   $this->redirect('clioLogin');
+}
+
+Queue empty at Standard->login but not at Authentication->clioLogin.
+I run Flow 2.0.1"
+55953,TYPO3.Flow,Task,"",New,Could have,Repair and streamline ValueObject support,Adrian Föder,"",2015-02-15 18:30,Persistence,"",2012-05-21,"","",50,2014-02-13 05:16,"","",1542000,"","",This is intended to be a wrapper task for various bugs and conspicuousnesses regarding Flow's ValueObject support
+55954,TYPO3.Flow,Bug,Task #55953: Repair and streamline ValueObject support,New,Should have,Associations to ValueObjects should not be cascade all'd,Adrian Föder,"",2015-02-05 05:00,"","",2014-02-13,"","",0,2014-02-13 05:22,"","",1542050,"",(any),"As it's the case for associations to entities being an aggregate root, Associations to ValueObjects must not be delete-cascaded carelessly because they are likely to and may be associated to other entities.
+This means, as far as I understand it, occurrences like 
+
+<pre>
+Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Persistence\Doctrine\Mapping\Driver\FlowAnnotationDriver.php:507
+<code class=""php"">
+elseif ($this->isAggregateRoot($mapping['targetEntity'], $className) === FALSE) {
+	$mapping['cascade'] = array('all');
+}
+</code>
+etc.
+</pre>
+
+must also check for the target entity being a ValueObject."
+55957,TYPO3.Flow,Task,"",New,Should have,RFC: Optimize AOP proxies,Christopher Hlubek,"",2014-02-28 08:44,AOP,"",2014-02-13,"","",0,2014-02-13 08:10,"","",1542200,"","","Our current approach of applying AOP in generated proxies has some downsides:
+
+* It's hard to follow the dynamic calls during debugging (Flow_Aop_Proxy_invokeJoinPoint, call_user_func_array, $adviceObject->$methodName($joinPoint))
+* Profiling information contains a lot of these dynamic calls where it's again hard to follow parent / child call relations
+* The creation of all advices for all methods in the constructor has some overhead
+* The *Advice objects that are used to evaluate the advices dynamically add an additional overhead and nesting
+* The proxy code is hard to understand, it's not obvious what a proxy method will execute
+
+*Idea:*
+
+* Unroll the advices in the proxied method, this is simple for everything but @Around@
+* Use a direct call to the aspect method for easier to debug code
+* Use a direct call to the original method by using a closure instead of the dynamic invocation with @Flow_Aop_Proxy_invokeJoinPoint@
+
+*Sketch:*
+
+<pre><code>
+<?php
+
+class TargetClass01 extends TargetClass01_Original implements \TYPO3\Flow\Object\Proxy\ProxyInterface {
+
+	/**
+	 * Autogenerated Proxy Method
+	 */
+	public function __construct() {
+
+		if (isset($this->Flow_Aop_Proxy_methodIsInAdviceMode['__construct'])) {
+			parent::__construct();
+		} else {
+			$this->Flow_Aop_Proxy_methodIsInAdviceMode['__construct'] = TRUE;
+			try {
+				$methodArguments = array();
+
+				// The advice chain is only needed for an Around advice, before advices could be directly placed here
+				// The advice chain is composed of a list of closures that actually call the method / advices to have an explicit call instead of call_user_func_array
+				// (we could cache the advice chain instances per method if we can measure a performance improvement)
+				$adviceChain = new LightweightAdviceChain(function($joinPoint) {
+					// Needs PHP 5.4
+					return parent::__construct();
+				});
+
+				$joinPoint = new \TYPO3\Flow\Aop\JoinPoint($this, 'TYPO3\Flow\Tests\Unit\Aop\Fixtures\TargetClass01', '__construct', $methodArguments, $adviceChain);
+
+				$aspect = \TYPO3\Flow\Core\Bootstrap::$staticObjectManager->get('TYPO3\Flow\Tests\Functional\Aop\Fixtures\BaseFunctionalityTestingAspect');
+
+				// The advices are invoked explicitly for easier debugging and profiling
+				$result = $aspect->lousyConstructorAdvice($joinPoint);
+
+			} catch (\Exception $e) {
+				unset($this->Flow_Aop_Proxy_methodIsInAdviceMode['__construct']);
+				throw $e;
+			}
+			unset($this->Flow_Aop_Proxy_methodIsInAdviceMode['__construct']);
+			return;
+		}
+
+		if (get_class($this) === 'TYPO3\Flow\Tests\Unit\Aop\Fixtures\TargetClass01') {
+			$this->initializeObject(1);
+		}
+	}
+}
+</code></pre>"
+55958,TYPO3.Flow,Task,"",New,Should have,RFC: Use PHP 5.4 closure features for direct ObjectAccess,Christopher Hlubek,"",2014-02-13 08:30,"","",2014-02-13,"","",0,2014-02-13 08:30,"","",1542250,"","","We can get rid of @PropertyReflection@ in @ObjectAccess@ with a PHP 5.4 feature of binding closures to object instances. 
+
+See this article: http://ocramius.github.io/blog/accessing-private-php-class-members-without-reflection/
+
+A general decision would be needed if we drop support of PHP 5.3 with the next Flow release."
+56036,TYPO3.Flow,Feature,"",New,Should have,Optimize autoloading,Benjamin Heek,"",2014-03-03 05:15,"","",2014-02-17,"","",0,2014-02-17 04:18,"","",1546100,"","","The TYPO3\Flow\Core\Autoloader is checking where to find a class every request.
+
+It's much faster to store the founded path for a class in something like a `class path cache` variable.
+
+It made my time per request go from 140ms to 70ms.
+
+
+For Example:
+<pre>
+  /**
+       * @var \TYPO3\Flow\Cache\Frontend\PhpFrontend
+       */
+       protected $classesCache;
+       
+           
+       public function __construct() {
+       		$this->classesPaths = apc_exists('classespaths') ? apc_fetch('classespaths') : array();
+       }
+        
+       public function __destruct() {
+       		apc_store('classespaths', $this->classesPaths);
+       }
+
+       /**
+       * Loads php files containing classes or interfaces found in the classes directory of
+       * a package and specifically registered classes.
+       *
+       * @param string $className Name of the class/interface to load
+       * @return boolean
+       */
+       public function loadClass($className) {
+              if ($className[0] === '\\') {
+                     $className = substr($className, 1);
+              }
+              if (isset($this->classesPaths[$className])) {
+                     require($this->classesPaths[$className]);
+                     return TRUE;
+              }
+       
+              // Loads any known proxied class:
+              if ($this->classesCache !== NULL && $this->classesCache->requireOnce(str_replace('\\', '_', $className)) !== FALSE) {
+                     $this->classesPaths[$className] = $this->classesCache->getBackend()->getCacheDirectory() . str_replace('\\', '_', $className) . '.php';
+                     return TRUE;
+              }
+</pre>"
+56074,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Parse errors cause meaningless Flow exception messages.,Momchil Van,Adrian Föder,2014-02-18 08:14,"",2.x,2014-02-18,"","",0,2014-02-18 05:49,"","",1547950,"",(any),"Parse errors cause meaningless Flow exception messages.
+
+For example, if we add a code in some controller action
+    $test = array()
+lacking the semicolon, it will produce meaningless flow error tracing messages:
+
+    Uncaught exception #1355480641 in line 226 of /home/mmm/www/html/ddd/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Core/Booting/Scripts.php: Execution of subprocess failed with exit code 255 without any further output.
+     
+    17 TYPO3\Flow\Core\Booting\Scripts::executeCommand(""typo3.flow:core:compile"", array|16|)
+    16 TYPO3\Flow\Core\Booting\Scripts::initializeProxyClasses(TYPO3\Flow\Core\Bootstrap)
+    15 TYPO3\Flow\Core\Booting\Scripts::recompileClasses(TYPO3\Flow\Core\Bootstrap)
+    14 call_user_func(array|2|, TYPO3\Flow\Core\Bootstrap)
+    13 TYPO3\Flow\Core\Booting\Step::__invoke(TYPO3\Flow\Core\Bootstrap)
+    12 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    11 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    10 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    9 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    8 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    7 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    6 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    5 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    4 TYPO3\Flow\Core\Booting\Sequence::invoke(TYPO3\Flow\Core\Bootstrap)
+    3 TYPO3\Flow\Http\RequestHandler::boot()
+    2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+    1 TYPO3\Flow\Core\Bootstrap::run()"
+56107,TYPO3.Flow,Bug,"",New,Should have,Property mapping configuration only supports one wildcard at a time,Bastian Waidelich,"",2014-02-19 04:33,Property,"",2014-02-19,"","",0,2014-02-19 04:33,"","",1549600,"",Git master,"The PropertyMapper supports wildcards (introduced with #37436) in the form:
+<pre>
+<code class=""php"">
+$propertyMappingConfiguration->forProperty('items.*')->allowAllProperties();
+</code>
+</pre>
+
+Unfortunately this only works for *one* placeholder at a time. The following will never apply:
+<pre>
+<code class=""php"">
+$propertyMappingConfiguration->forProperty('items.*.addons.*')->allowAllProperties();
+</code>
+</pre>
+
+The only work-around I can think of is:
+<pre>
+<code class=""php"">
+$someArgument = $this->request->getArgument('object');
+$numberOfItems = isset($someArgument['items']) ? count($someArgument['items']) : 0;
+for ($itemIndex = 0; $itemIndex < $numberOfItems; $itemIndex ++) {
+  $propertyMappingConfiguration->forProperty('items.' . $itemIndex . '.addons.*')->allowAllProperties();
+}
+</code>
+</pre>"
+56237,TYPO3.Fluid,Task,"",New,Should have,in-line (Condition)ViewHelpers should not evaluate on parsing,Adrian Föder,"",2014-02-24 07:47,"","",2014-02-24,"","",0,2014-02-24 07:47,"","",1556100,"","","constructions like these,
+
+<pre><code class=""html"">
+{f:if(condition: anEntity, then: '{anEntity -> f:format.identifier()}')}
+</code></pre>
+
+make the then-branch be evaluated, i.e. invoked, even if the condition evals to false. In most cases this is the exact thing which is intended to be cirumvented when wrapping a ViewHelper invocation in a f:if condition."
+56409,TYPO3.Flow,Bug,"",Resolved,Should have,Interface incompatibility - PackageManager,Tymoteusz Motylewski,"",2014-03-06 06:36,"","",2014-02-28,"","",100,2014-02-28 02:00,"","",1564650,"",Git master,"PackageManagerInterface contains following method declaration:
+public function initialize(\TYPO3\Flow\Core\Bootstrap $bootstrap);
+
+however in the PackageManager (which implements \TYPO3\Flow\Package\PackageManagerInterface)
+it is implemented like this:
+public function initialize(\TYPO3\Flow\Core\Bootstrap $bootstrap, $packagesBasePath = FLOW_PATH_PACKAGES, $packageStatesPathAndFilename = '') {
+
+this is wrong and will fatal on some versions of php, see http://php.net/manual/en/language.oop5.interfaces.php 
+""The class implementing the interface must use the exact same method signatures as are defined in the interface. Not doing so will result in a fatal error.""
+
+It also fatals when running unit tests on hhvm (of CMS)"
+56486,TYPO3.Flow,Feature,"",New,Should have,Optimize the ObjectManager for performance,Kobbe van Daatselaar,"",2014-03-04 11:33,"","",2014-03-03,"","",0,2014-03-03 05:21,"","",1568450,"","","The getCaseSensitiveObjectName operation in the ObjectManager can be optimized for better performance. The loop trough the objects variable is a CPU / time intensive loop.
+
+2 fixes:
+
+1) Cache the cachedLowerCasedObjectNames variable (between requests).
+2) If the function returns false, this should also be saved in the cachedLowerCasedObjectNames variable.
+Add this line before the return FALSE:
+$this->cachedLowerCasedObjectNames[$lowerCasedObjectName] = false;
+
+In my case a 5 - 10 ms performance improvement on a 100ms request."
+56544,TYPO3.Flow,Bug,"",New,Must have,FLOW Exception on tar package inclusion via composer,Kay Strobach,"",2014-03-20 09:38,Core,"",2014-03-04,"","",0,2014-03-04 11:26,"","",1571350,"",Git master,"<pre>
+
+
+Fatal error: Uncaught exception 'TYPO3\Flow\Package\Exception\InvalidPackageStateException' with message 'Could not find package with composer name ""robrichards/xmlseclibs"" in PackageStates configuration.' in /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php on line 388
+
+TYPO3\Flow\Package\Exception\InvalidPackageStateException: Could not find package with composer name ""robrichards/xmlseclibs"" in PackageStates configuration. in /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php on line 388
+
+Call Stack:
+    0.0001     124452   1. {main}() /project/Web/index.php:0
+    0.0011     179168   2. TYPO3\Flow\Core\Bootstrap->run() /project/Web/index.php:27
+    0.0032     646832   3. TYPO3\Flow\Core\Booting\Scripts::initializePackageManagement() /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Core/Bootstrap.php:105
+    0.0032     647192   4. TYPO3\Flow\Package\PackageManager->initialize() /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Core/Booting/Scripts.php:126
+    0.0034     654584   5. TYPO3\Flow\Package\PackageManager->loadPackageStates() /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php:136
+    0.0035     678612   6. TYPO3\Flow\Package\PackageManager->scanAvailablePackages() /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php:734
+    0.1160     944296   7. TYPO3\Flow\Package\PackageManager->sortAndSavePackageStates() /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php:801
+    0.1160     944360   8. TYPO3\Flow\Package\PackageManager->sortAvailablePackagesByDependencies() /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php:933
+    0.1183     992628   9. TYPO3\Flow\Package\PackageManager->sortPackagesByDependencies() /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php:962
+    0.1183     992628  10. TYPO3\Flow\Package\Package->getPackageMetaData() /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php:987
+    0.1183     992808  11. TYPO3\Flow\Package\PackageManager->getPackageKeyFromComposerName() /project/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/Package.php:155
+
+</pre>
+
+composer.json code in root directory:
+<pre>
+...
+
+	""repositories"": [
+		{
+			""type"": ""package"",
+			""package"": {
+				""name"": ""robrichards/xmlseclibs"",
+				""version"": ""1.3.1"",
+				""dist"": {
+					""url"": ""https://xmlseclibs.googlecode.com/files/xmlseclibs-1.3.1.tar.gz"",
+					""type"": ""tar""
+				},
+				""autoload"": {
+					""files"": [""xmlseclibs.php""]
+				}
+			}
+		}
+	],
+</pre>
+
+As you can see it's possible to load the package without composer.json.
+Adding it manually results in a working installation ;)
+
+FLOW should not rely on a composer.json in each package directory"
+56555,TYPO3.Kickstart,Bug,"",New,Should have,Kickstart creates wrong labels in New.html,Rik Willems,"",2014-03-04 15:33,"","",2014-03-04,"","",0,2014-03-04 15:31,"","",1571900,"",Git master,"
+Kickstart produces New.html templates, all field labels are equal with have the model name. The Edit.html templates are fine. 
+
+The NewTemplate.html file has a wrong reference. See attached diff."
+56556,TYPO3.Flow,Feature,"",New,Should have,support hasProperty and isProperty,Simon Schaufelberger,"",2014-04-07 18:34,"","",2014-03-04,"","",0,2014-03-04 16:15,"","",1571950,"","","The way how you currently check for existence of a value in fluid is not nice.
+
+<pre>
+<f:if condition=""{object.hasChildren}"">
+[...]
+</f:if>
+</pre>
+
+results in a method in the Model:
+
+<pre>
+public function getHasChildren()
+</pre>
+
+Instead it should be possible to just write:
+
+<pre>
+public funtion hasChildren()
+</pre>
+
+Same for ""is"".
+
+Inspired by: https://github.com/czenker/cz_simple_cal/blob/master/Classes/Domain/Model/Base.php"
+56573,TYPO3.Flow,Bug,Major Feature #56602: Handling Of Multi Identity Entities,New,Should have,Converting by Flow\Identity,Carsten Bleicker,"",2014-04-09 07:10,Persistence,"",2014-03-05,"","",0,2014-03-05 08:08,"","",1572800,"",Git 2.0,"i am receiving records from a third party by json rest api.
+my entities getting a property $foreignIdentity wich is the id of third party.
+i would expect that the converter finds these entities and converts them by any given identity.
+maybe throw exception if its not unique. but it could be prevented by a unique constraint.
+
+i would expect that 2.) works:
+
+1.) http://acme.local/foo/fc700953-8911-9432-542e-968b7bff43e3
+Status 200 and flow persistence identifier is converted to concrete object
+
+2.) http://acme.local/foo/5317133a3e1bb <-- foreignIdentity wich is also a @Flow\Identity
+Status 500
+#1297933823: Object with identity ""5317133a3e1bb"" not found.
+
+class looks like this:
+
+// @Flow\Entity
+class Foo{
+	
+	/**
+	* @var string
+	* @Flow\Identity
+	*/
+	protected $foreignIdentity;
+	
+}
+
+
+my routing:
+-
+	name: 'Read Action by property ""foreignIdentity"" or ""flow_persistence_identifier"" as {foo}'
+	uriPattern: 'foo/{foo}'
+	httpMethods: ['GET']
+	defaults:
+		'@package':    'Acme.Foo'
+		'@controller': 'Foo'
+		'@action':     'show'
+		'@format':     'json'
+
+
+
+i dont want to bind the rest api to the flow persistence identifier because third party users should use their own identity in combination with their workspace as unique constraint over the fields foreignIdentity_workspace.
+
+"
+56598,TYPO3.Flow,Bug,"",Resolved,Should have,Absolute URI for WebEntry,Frederik Vosberg,Bastian Waidelich,2014-06-18 16:37,Security,"",2014-03-06,"","",100,2014-03-06 06:59,"","",1574050,"",Git master,"Hi,
+
+I tried to configure an absolute URL for my entry point of a security provider. But it can't handle the absolute uri.
+
+provider: MyProvider
+entryPoint: 'WebRedirect'
+entryPointOptions:
+  uri: http://www.absolute-url.de/
+
+I have created a patch.
+
+Flow version: 2.1.1"
+56601,TYPO3.Flow,Bug,Major Feature #56602: Handling Of Multi Identity Entities,Under Review,Must have,PersistenceManager wrong handling of ORM\Id,Carsten Bleicker,"",2015-02-16 11:56,"","",2014-03-06,"","",0,2014-03-06 07:22,"","",1574200,"",Git 2.0,"Having this to make id unique in combination with workspace to have client entities (in german it calls ""mandantenfähig""):
+https://gist.github.com/pumatertion/9388169#file-cliententity-php-L22
+https://gist.github.com/pumatertion/9388169#file-cliententity-php-L29
+
+Doctrine allows composite keys: http://docs.doctrine-project.org/en/2.0.x/tutorials/composite-primary-keys.html
+Wich is the sample above.
+
+The PerstistenceManager having getIdentifierByObject() but this result is not usable by getObjectByIdentifier()
+for entities having composite primary keys.
+
+See comments:
+https://gist.github.com/pumatertion/9388169#file-persistencemanager-php-L184
+https://gist.github.com/pumatertion/9388169#file-persistencemanager-php-L222
+
+
+Imho there is no need to manipulate the results of doctrine in the persistence. This is ""just persistence""
+if identifier is an array wich x or y items has to be handled somewhere else as in the persistence. this should be realy get
+removed from the persistence layer.
+
+To use Flow ""fearless"" its essential for me that doctrine persistence delivers expected results as doctrine documented it and does not any manupalation of datatypes, like the current() did it in https://gist.github.com/pumatertion/9388169#file-persistencemanager-php-L200.
+Currently features of Doctrine are reduces by Flows PersistenceManager.
+
+To receive third party data wich needs to be stored with client AND id information, f.e. to handle a multiclient rest api deals with the clientside identity flow makes realy problems doing this because you expect that doctrine persistence acts like doctrine, but it doesnt. But thats exactly what is Flow build for, i think.
+
+Do you aggree?
+
+Kind Regards
+carsten bleicker"
+56602,TYPO3.Flow,Major Feature,"",New,Should have,Handling Of Multi Identity Entities,Christian Müller,"",2014-04-09 07:10,Persistence,"",2014-03-05,"","",0,2014-03-06 07:26,"","",1574250,0.00,"","Currently Flows behavior with entities that have a ""multi"" identity is not usable. Some changes need to be done to Persistence and Property Mapping to enable that."
+56607,TYPO3.Flow,Bug,"",Closed,Should have,Don't use object path mapping for object routes without custom uriPattern,Bastian Waidelich,Bastian Waidelich,2014-05-14 12:10,MVC - Routing,"",2014-03-06,"","",0,2014-03-06 08:28,"","",1574500,"",(any),"Currently if you use the ""object route part"":http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/PartIII/Routing.html#object-route-parts handler, Flow adds an ""ObjectPathMapping"" record when the URL is created the first time.
+This is done because the association might not be deterministic:
+<pre>
+<code class=""yaml"">
+-
+  name: 'Single product route'
+  uriPattern: 'products/{product}'
+  defaults:
+    '@package':     'My.Demo'
+    '@controller':  'Product'
+    '@action':      'show'
+  routeParts:
+    product:
+      objectType: 'My\Demo\Domain\Model\Product'
+      uriPattern: '{product.name}'
+</code>
+</pre>
+
+In this case, if multiple products have the *same name* flow would create separate ObjectPathMappings with a unique suffix (""<product.name>-<n>"" where n is a number starting with 1).
+
+However this is *not* required if the mapping is deterministic, e.g. if the ""uriPattern"" is not specified. In that case Flow falls back to using the Identity properties and we don't need to persist ObjectPathMappings."
+56608,TYPO3.Flow,Bug,"",Closed,Should have,Don't use object path mapping for object routes without custom uriPattern,Bastian Waidelich,Bastian Waidelich,2014-03-10 10:29,MVC - Routing,"",2014-03-06,"","",0,2014-03-06 08:28,"","",1574550,"",(any),"Currently if you use the ""object route part"":http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/PartIII/Routing.html#object-route-parts handler, Flow adds an ""ObjectPathMapping"" record when the URL is created the first time.
+This is done because the association might not be deterministic:
+<pre>
+<code class=""yaml"">
+-
+  name: 'Single product route'
+  uriPattern: 'products/{product}'
+  defaults:
+    '@package':     'My.Demo'
+    '@controller':  'Product'
+    '@action':      'show'
+  routeParts:
+    product:
+      objectType: 'My\Demo\Domain\Model\Product'
+      uriPattern: '{product.name}'
+</code>
+</pre>
+
+In this case, if multiple products have the *same name* flow would create separate ObjectPathMappings with a unique suffix (""<product.name>-<n>"" where n is a number starting with 1).
+
+However this is *not* required if the mapping is deterministic, e.g. if the ""uriPattern"" is not specified. In that case Flow falls back to using the Identity properties and we don't need to persist ObjectPathMappings."
+56639,TYPO3.Flow,Feature,"",New,Must have,"Implement ""getPrivateStorageUriByResource()"" for recieving (image-) file URIs",Jan Greth,Robert Lemke,2014-03-07 04:06,"",2.x,2014-03-07,"","",0,2014-03-07 04:02,"","",1576100,"","","As talked about on Flow Mailing List (Thread: [Flow] Extract image EXIF data for resource objects and resize image on upload ""See here"":http://forum.typo3.org/index.php?t=msg&th=198203&goto=691685&#msg_691685) 
+on August 5th 2013 it would be really handy to have a @$resourceManager->getPrivateStorageUriByResource($resource)@ method.
+
+This is needed for processing imagefiles which are stored by TYPO3.Media Package by libraries/functions like exif_read_data() or with several imagemagick functions.
+
+For getting the Exif information now the best way I found is like: 
+
+<pre>
+$exif_array = exif_read_data($this->resourceManager->getPersistentResourcesStorageBaseUri().$image->getResource()->getResourcePointer()->getHash(),'EXIF');
+</pre>
+
+I think this is quite a bit overload and would be much nicer when we could use the API method Robert anounced in the thread mentioned above."
+56724,TYPO3.Flow,Feature,"",Closed,Should have,Get the roles after the authentication,Frederik Vosberg,Bastian Waidelich,2014-03-14 11:59,"","",2014-03-10,"","",0,2014-03-10 09:14,"","",1580350,"","","I cant believe that this is a bug, but I don't understand what I am doing wrong.
+
+I am doing some database manipulation in my authentication provider. This invokes the security context to get the roles of the user, due to ACLs. But the roles dont get loaded again and are set to 'Everybody' and 'anonymous' for the whole request. 
+
+So there is no possibility to query against the database in the provider. (I have to import some data and have to ensure, that there are accounts for my single sign on, where should I do it?)
+
+Is it possible to 'null' the roles in the security context after authentication?
+<pre>
+       /**
+	 * Invokes the security interception
+	 *
+	 * @return boolean TRUE if the security checks was passed
+	 * @throws \TYPO3\Flow\Security\Exception\AccessDeniedException
+	 * @throws \TYPO3\Flow\Security\Exception\AuthenticationRequiredException if an entity could not be found (assuming it is bound to the current session), causing a redirect to the authentication entrypoint
+	 * @throws \TYPO3\Flow\Security\Exception\NoTokensAuthenticatedException if no tokens could be found and the accessDecisionManager denied access to the resource, causing a redirect to the authentication entrypoint
+	 */
+	public function invoke() {
+		try {
+			$this->authenticationManager->authenticate();
+                        // NULL IT
+                        $this->authenticationManager->getSecurityContext()->setRoles(NULL);
+                        // OR EXTRACT THE INITIALIZATION OF THE ROLES
+                        $this->authenticationManager->getSecurityContext()->initRoles();
+
+		} catch (\Doctrine\ORM\EntityNotFoundException $exception) {
+			throw new \TYPO3\Flow\Security\Exception\AuthenticationRequiredException('Could not authenticate. Looks like a broken session.', 1358971444, $exception);
+		} catch (\TYPO3\Flow\Security\Exception\NoTokensAuthenticatedException $noTokensAuthenticatedException) {
+			// We still need to check if the resource is available to ""Everybody"".
+			try {
+				$this->accessDecisionManager->decideOnJoinPoint($this->joinPoint);
+				return;
+			} catch (\TYPO3\Flow\Security\Exception\AccessDeniedException $accessDeniedException) {
+				throw $noTokensAuthenticatedException;
+			}
+		}
+		$this->accessDecisionManager->decideOnJoinPoint($this->joinPoint);
+	}
+</pre>
+
+Thanks"
+56744,TYPO3.Flow,Feature,"",New,Must have,stay logged in,Simon Schaufelberger,"",2014-03-27 07:17,"","",2014-03-11,"","",0,2014-03-10 21:59,"","",1581350,"","","Currently the Flow Developer has to set a session timeout globally for all sessions. What i need is that the user can decide if he wants to stay logged in just for this session (session will be over after browser closing) or stay logged in for a configured time like 1 month or so.
+
+Needed:
+1. A checkbox to activate the stay logged in feature (__authentication[TYPO3][Flow][Security]...)
+2. A secure way to store a local cookie that identifies the user
+
+see ""showPermaLogin"" in TYPO3 CMS felogin"
+56856,TYPO3.Flow,Bug,"",Under Review,Must have,Fix StandardView Template,Simon Schaufelberger,"",2015-02-25 05:25,"","",2014-03-13,"","",0,2014-03-12 21:39,"","",1586950,"",Git master,"Image Mvc/StandardView_Package.png is missing and Text is outside of box.
+
+Image was removed with this commit:
+
+https://git.typo3.org/Packages/TYPO3.Flow.git/commit/331a78e8ba19923951a83d50e5f30cc09068db61
+
+Image looked like:
+
+https://git.typo3.org/Packages/TYPO3.Flow.git/blob/331a78e8ba19923951a83d50e5f30cc09068db61:/Resources/Public/Mvc/StandardView_Package.png"
+56859,TYPO3 Flow Base Distribution,Bug,"",New,Should have,PHP Warning: TYPO3_Flow_Error_Exception.php not present in Data/Temporary,Michiel Roos,"",2014-03-13 05:30,"","",2014-03-13,"","",0,2014-03-13 05:30,"","",1587100,"",(any),"On a virgin FLOW install 2.0.0 and 2.2.0-beta1, the TYPO3_Flow_Error_Exception.php is not found when calling './flow help' for the first time. 
+
+Warning: include_once(): Failed opening '/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Error_Exception.php' for inclusion (include_path='/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/php-text-template:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/phpunit-mock-objects:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/php-timer:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/php-token-stream:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/php-file-iterator:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/L in /Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Cache/Backend/SimpleFileBackend.php on line 277"
+56916,TYPO3.Flow,Feature,"",New,Should have,Support PATCH request method as of RFC5789,Alexander Berl,"",2014-03-14 11:50,Http,"",2014-03-14,"","",0,2014-03-14 11:50,"","",1589950,"","","https://tools.ietf.org/html/rfc5789
+
+""Several applications extending the Hypertext Transfer Protocol (HTTP)
+   require a feature to do partial resource modification.  The existing
+   HTTP PUT method only allows a complete replacement of a document.
+   This proposal adds a new HTTP method, PATCH, to modify an existing
+   HTTP resource.""
+
+Currently Flow always handles POST/PUT requests as partial updates, as all action arguments are merged with the persisted entity (at least if the identifier is provided).
+It should be possible to define through the request method, wheter a full replace (PUT) or a partial update (PATCH) is expected.
+
+A first step would be to at least handle the PATCH request method in Http\Request (create/buildUnifiedArguments).
+"
+57034,TYPO3.Flow,Bug,"",Resolved,Must have,Dependency injection for imported namespaces fails for collection classes,Bastian Waidelich,Bastian Waidelich,2014-03-20 06:48,Reflection,"",2014-03-18,"","",100,2014-03-18 08:04,"","",1595750,"",Flow 2.0.0,"In our ""Coding Guidelines"":http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/PartV/CodingGuideLines/PHP.html#importing-namespaces we encourage developers to import namespaces in order to increase readability.
+With #46008 the ReflectionService is able to resolve relative and imported namespace (with #50909 this also works for abstract classes).
+
+But this does not work for our custom notation of Collection types.
+So while this works:
+<pre>
+<code class=""php"">
+class SomeClass {
+
+	/**
+	 * @var \Doctrine\Common\Collections\Collection<\Some\Package\Domain\Model\SubEntity>
+	 */
+	protected $subEntities;
+
+	/**
+	 * @param \Doctrine\Common\Collections\Collection<\Some\Package\Domain\Model\SubEntity>$subEntities
+	 */
+	public function setSubEntities(\Doctrine\Common\Collections\Collection $subEntities) {
+		$this->subEntities = $subEntities;
+	}
+
+}
+</code>
+</pre>
+
+This will currently throw an exception:
+
+<pre>
+<code class=""php"">
+use Doctrine\Common\Collections\Collection;
+use Some\Package\Domain\Model\SubEntity as ImportedSubEntity;
+
+class SomeClass {
+
+	/**
+	 * @var Collection<ImportedSubEntity>
+	 */
+	protected $subEntities;
+
+	/**
+	 * @param Collection<ImportedSubEntity>$subEntities
+	 */
+	public function setSubEntities(Collection $subEntities) {
+		$this->subEntities = $subEntities;
+	}
+
+}
+</code>
+</pre>"
+57052,TYPO3.Flow,Bug,"",Closed,Should have,#1355480641: Execution of subprocess failed with exit code 1 without any further output.,Rachitha Senevirathne,Bastian Waidelich,2014-03-31 09:11,- Error Handler Report -,2.0.1,2014-03-18,"","",0,2014-03-18 15:40,"","",1596650,"",Flow 2.0.0 beta 1,"<pre>
+Execution of subprocess failed with exit code 1 without any further output. (Please check your PHP error log for possible Fatal errors)
+12 TYPO3\Flow\Core\Booting\Scripts::executeCommand(""typo3.flow:core:compile"", array|18|)
+
+11 TYPO3\Flow\Core\Booting\Scripts::initializeProxyClasses(TYPO3\Flow\Core\Bootstrap)
+
+10 call_user_func(array|2|, TYPO3\Flow\Core\Bootstrap)
+
+9 TYPO3\Flow\Core\Booting\Step::__invoke(TYPO3\Flow\Core\Bootstrap)
+
+8 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+7 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+6 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+5 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+4 TYPO3\Flow\Core\Booting\Sequence::invoke(TYPO3\Flow\Core\Bootstrap)
+
+3 TYPO3\Flow\Http\RequestHandler::boot()
+
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+
+Please include more helpful information!
+</pre>"
+57160,TYPO3.Flow,Task,"",Resolved,Should have,Quickstart Guide references QueryResultProxy,Alexander Berl,"",2014-04-06 07:43,- Documentation -,"",2014-03-21,"","",100,2014-03-21 12:23,"","",1602000,"","","http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/PartII/ModelAndRepository.html#blog-repository
+
+It should be QueryResultInterface instead of QueryResultProxy in the sample code."
+57374,TYPO3.Flow,Bug,"",New,Should have,Persisted entities saved in session are not resolved,Aimo Künkel,"",2014-04-03 03:43,Session,2.x,2014-03-27,"",1.00,0,2014-03-27 07:35,"","",1612650,"",(any),"If you save a persisted entity in the session via
+
+<pre>
+$this->session->putData(""myEntity"", $myEntity);
+</pre>
+
+it is saved like some normal entity.
+
+So later on if you do
+
+<pre>
+$sessionEntity = $this->session->getData(""myEntity"");
+$persistedEntity = $this->entityRepository->findByIdentifier( $sessionEntity->getIdentifier() );
+\TYPO3\Flow\var_dump($sessionEntity);
+\TYPO3\Flow\var_dump($persistedEntity);
+\TYPO3\Flow\var_dump($sessionEntity === $persistedEntity);
+die();
+</pre>
+
+it show you twice the same object, but it's not the same.
+
+It should instead just save the id in the background and fetch it again from the repo in case of a persisted entity.
+Otherwise it's impossible to work with, because you e.g. can't pass it to the repo for updating and so on.
+
+
+I'll provide a patch if wished, just comment please."
+57404,TYPO3.Flow,Task,"",Resolved,Must have,Validation translation sample is wrong in documentation,Alexander Berl,"",2014-04-06 07:43,"","",2014-03-28,"","",100,2014-03-28 06:36,"","",1614100,"","","The Validation documentation in The Definitive Guide Part II show following example code:
+<pre>
+{error -> f:translate(key: error.code, arguments: error.arguments, package: 'TYPO3.Flow', source: 'ValidationErrors')}
+</pre>
+This is wrong, as the translate viewhelper argument for the ""key"" is actually named ""id"".
+"
+57410,TYPO3.Flow,Bug,"",Resolved,Should have,initializeAction() can be called as controller action from request,Thomas Pilgaard Carlsen,Bastian Waidelich,2014-04-02 10:42,MVC,"",2014-03-28,"","",100,2014-03-28 08:44,"","",1614400,"",Flow 2.0.0,"The following request can be called and without restriction:
+
+vendor.mypackage/standard/initialize
+
+Results in ""Template Initialize.html could not be loaded""
+
+It seems to me that initializeAction should only be used internally in controller and should not be callable from request. "
+57437,TYPO3.Flow,Bug,"",New,Should have,Composer package replacement is not supported,Andreas Wolf,"",2014-03-30 17:12,Package,"",2014-03-30,"","",0,2014-03-30 17:12,"","",1615750,"",Git master,"Composer offers a way to replace another package with your package (see https://getcomposer.org/doc/04-schema.md#replace). This mechanism is however currently not supported by the Flow package management.
+
+A way to introduce this would be to allow package aliasing as a more generic approach."
+57450,TYPO3.Flow,Bug,"",New,Should have,"International E-Mail addresses (umlauts, etc.) are not validated correctly",Alexander Berl,"",2014-04-30 08:58,Validation,"",2014-03-31,"","",0,2014-03-31 06:50,"","",1616400,"",Git master,"Currently, Flow does not validate mail addresses that contain international special characters (non-ascii), such as german umlauts.
+
+This is due to the PHP filter_var method not taking care of that possibility, referring to RFC 5322:
+https://bugs.php.net/bug.php?id=65630&edit=3
+This only deals with special chars in the domain part of an Email address, which should be handled with the IDN encoding (@idn_to_ascii()@ on the domain part).
+
+However, there is the more recent RFC 6531, which allows international addresses explicitly
+http://tools.ietf.org/html/rfc6531#section-3.3
+
+In detail, it allows the local part and the domain part of a mailbox address according to this definition:
+
+The local part may be made up also of ""UTF8-non-ascii"" characters, i.e. all multibyte UTF8 characters (UTF8-2 / UTF8-3 / UTF8-4 according to http://tools.ietf.org/html/rfc3629#section-4) and extending from http://tools.ietf.org/html/rfc5321#section-4.1.2
+
+The domain part may also be made up of U-Labels, where
+> A ""U-label"" is an IDNA-valid string of Unicode characters, in
+> Normalization Form C (NFC) and including at least one non-ASCII
+> character, expressed in a standard Unicode Encoding Form (such as
+> UTF-8).
+
+I'm not completely sure about the consequences of this subtle difference in definition.
+
+I see two possible solutions to deal with that within Flow:
+* fall back to regular expressions when filter_var fails OR non-ascii chars are detected in the address (Ugly, but actual support of RFC6531)
+* use idn_to_ascii on the whole address before giving it to filter_var (though I'm not sure it is formally correct to idn encode the local part, not RFC6531 conform)
+
+Please provide your input on how to proceed, I will then take care of providing a changeset.
+"
+57541,TYPO3.Flow,Bug,"",Under Review,Must have,Content Security: operands work intrinsically differently in Rewrite and Manual check,Adrian Föder,"",2014-04-03 03:06,Security,"",2014-04-02,"","",0,2014-04-02 05:29,"","",1620950,"",(any),"when having defined an Entity resource like
+
+<pre>'current.securityContext.party != this.owner'</pre>
+
+the `owner` field refers to, in one case, to the actual `owner` field of the database table (i.e. in \TYPO3\Flow\Security\Aspect\PersistenceQueryRewritingAspect::rewriteQomQuery
+
+and in the other case to the (hydrated) Entity property `owner` (i.e. in \TYPO3\Flow\Security\Aspect\PersistenceQueryRewritingAspect::checkAccessAfterFetchingAnObjectByIdentifier)
+
+This leads to unpredicted results when the entity for example does not have a getter on this property, as it was in my case. I just considered it not necessary.
+
+IMO urgently an exception is necessary if, in \TYPO3\Flow\Security\Aspect\PersistenceQueryRewritingAspect::checkSingleConstraintDefinitionOnResultObject, the following lines:
+
+<pre><code class=""php"">
+if (!is_array($constraintDefinition['leftValue']) && strpos($constraintDefinition['leftValue'], 'this.') === 0) {
+	$referenceToThisFound = TRUE;
+	$propertyPath = substr($constraintDefinition['leftValue'], 5);
+	$leftOperand = $this->getObjectValueByPath($result, $propertyPath);
+}
+</code></pre>
+
+need to throw an exception if @getObjectValueByPath@, leading to @ObjectAccess::getPropertyPath@, tries to access something that cannot be retrieved."
+57583,TYPO3.Flow,Task,"",Resolved,Must have,No schema for cacheAllQueryResults in TYPO3.Flow.persistence.schema.yaml,Rafael Kähm,"",2014-06-12 02:37,Configuration,2.x,2014-04-03,"","",100,2014-04-02 19:18,"","",1623050,"","","<pre>./flow configuration:validate --type Settings</pre>
+
+shows following:
+ 
+1 errors were found:
+- Settings.TYPO3.Flow.persistence.cacheAllQueryResults -> This property is not allowed here, check the spelling if you think it belongs here.
+
+Is ""additionalProperties: FALSE"" in Settings/TYPO3.Flow.persistence.schema.yaml ok?"
+57683,TYPO3.Flow,Task,"",Resolved,Must have,Constants are not Doc commented ,Rafael Kähm,Robert Lemke,2014-08-26 11:00,- Documentation -,"",2014-04-06,"","",100,2014-04-06 05:38,"","",1628000,"","","Hello,
+
+large part of constants, which must be used by developers, are not doc commented but line commented.
+
+Please follow guidelines as here defined http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/PartV/CodingGuideLines/PHP.html#documenting-variables-constants-includes "
+57763,TYPO3.Flow,Feature,"",New,Should have,Allow controller / package / action as params in \TYPO3\Fluid\ViewHelpers\Form\ButtonViewHelper ,Kay Strobach,"",2014-04-09 06:43,"","",2014-04-09,"","",0,2014-04-09 05:51,"","",1632000,"","","formaction is already there in flow button viewHelper, but you can?t easily use package + controller + action to send the form.
+So we need to add a way to calculate the formaction, formenctype formmethod and these things automatically."
+57796,TYPO3.Flow,Bug,"",New,Should have,XLIFF Fails if id === nodedata,Carsten Bleicker,"",2014-04-09 15:43,"","",2014-04-09,"","",0,2014-04-09 15:43,"","",1633650,"",Git 2.0,"Fails:
+<trans-unit id=""net"" xml:space=""preserve""><source><![CDATA[net]]></source></trans-unit>
+<trans-unit id=""net"" xml:space=""preserve""><source>net</source></trans-unit>
+
+Works:
+<trans-unit id=""net.label"" xml:space=""preserve""><source><![CDATA[net]]></source></trans-unit>
+<trans-unit id=""net.label"" xml:space=""preserve""><source>net</source></trans-unit>
+"
+57815,TYPO3.Flow,Bug,"",New,Should have,Invalid resources are saved in the persistent resources folder,Stephen Bungert,"",2014-04-10 16:02,Resource,"",2014-04-10,"","",0,2014-04-10 16:02,"","",1634600,"",Flow 2.0.0,"I have a file type validator for a property of type \TYPO3\Flow\Resource\Resource.
+
+The error message is shown in the front end, for example, that a zip file was uploaded when the file should be jpg or png.
+
+But flow has also moved the file to the resources folder.
+
+Should flow do this if the validator added an error in validation? Am I to remove this myself? Or is this a bug?"
+57817,TYPO3.Flow,Bug,"",Rejected,Should have,"StringLengthValidator accept empty value, although the ""minimum"" option is greater than ""0""",Timo Dödtmann,Bastian Waidelich,2014-04-11 04:54,Validation,"",2014-04-10,"","",0,2014-04-11 01:40,"","",1634700,"",Flow 2.0.0,"For the StringLengthValidator the property ""acceptsEmptyValues"" is set to ""TRUE"", even if the ""minimum"" option is greater than ""0"".
+So, if a empty string is valitated, where the minimum option is set set to e.g. ""1"", the StringLengthValidator doesn't generate a error."
+57885,TYPO3.Fluid,Bug,"",New,Must have,Inputs are cleared from a second form if the first form produced a vallidation error,Nicholas Gray,"",2014-04-13 18:00,"","",2014-04-13,"","",0,2014-04-13 18:00,"","",1638050,"",Git master,"Hi,
+
+we ran in to the following Bug:
+
+What is needed:
+-A fluid template containing 2 forms (form A and B).
+-Both forms are containing values from a stored object
+
+How to reproduce the error:
+- Update one form (form A) so that it will produce a validation error
+
+Result/Reason:
+- The other form (form B) will no longer contain the filled in values from the stored object as the formfield viewhelpers search for these in last submitted input array. This array only contains the inputs of the form (form A) which produced the error and thus form B is filled in with empty values
+
+Fix:
+Quickly hacked together (please refer to the attached 3 files)...
+Each form is now extended with an unique ID which is checked in the hasValidationErrors method. Thus only the fields of the form producing the error will return true and the fields of other forms are filled in as usual. The ID simply generated by counting how often the form tag was called. There is certainly a better way to handle it but that was the best I could come up with. I hope it helps
+
+Best regards "
+57972,TYPO3.Flow,Bug,"",New,Should have,Missing @ManyToOne in example for resource,Kay Strobach,"",2014-04-16 00:32,- Documentation -,"",2014-04-16,"","",0,2014-04-16 00:32,"","",1642400,"",Git master,"<pre>
+  /**
+    * @var \TYPO3\Flow\Resource\Resource
+    */
+   protected $originalResource;
+  /**
+    * @param \TYPO3\Flow\Resource\Resource $originalResource
+    * @return void
+    */
+   public function setOriginalResource(\TYPO3\Flow\Resource\Resource $originalResource) {
+      $this->originalResource = $originalResource;
+   }
+
+   /**
+    * @return \TYPO3\Flow\Resource\Resource
+    */
+   public function getOriginalResource() {
+      return $this->originalResource;
+   }
+</pre>
+
+http://docs.typo3.org/flow/TYPO3FlowDocumentation/TheDefinitiveGuide/PartIII/ResourceManagement.html
+
+<pre>
+add to line2
+	 * @ORM\ManyToOne
+</pre>
+
+like for example here:
+https://git.typo3.org/Packages/TYPO3.Blog.git/blob/HEAD:/Classes/TYPO3/Blog/Domain/Model/Image.php"
+57992,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Make package HHVM compatible - failing getPackageReturnsTheSpecifiedPackage test,Tymoteusz Motylewski,"",2014-07-11 14:19,"","",2014-04-16,"","",100,2014-04-16 10:47,"","",1643400,0.00,"","the PackageManagerTest::getPackageReturnsTheSpecifiedPackage is failing on hhvm, because it HHVM doesn't support calling key() on objects.
+So it is failing now with ""Fatal error: Cannot access empty property in...""
+Responsible code is in Package->getNamespace()
+
+<pre>
+$namespaces = $manifest->autoload->{'psr-0'};
+if (count($namespaces) === 1) {
+	$namespace = key($namespaces);
+}
+</pre>
+
+it can be solved by first cast object to an array
+<pre>
+$namespaces = (array)$manifest->autoload->{'psr-0'};
+if (count($namespaces) === 1) {
+	$namespace = key($namespaces);
+}
+</pre>
+
+
+quote from
+https://github.com/facebook/hhvm/blob/master/hphp/doc/inconsistencies#L90-95
+about this inconsistency:
+
+(5) Object internal cursors
+
+Under Zend PHP, objects have an internal cursor (similar to the array internal
+cursor) that can be used to iterate over the object's properties. Under HipHop
+VM, objects do not have internal cursors, and the next(), prev(), current(),
+key(), reset(), end(), and each() builtin functions do not support objects.
+
+"
+57998,TYPO3.Fluid,Feature,"",Resolved,Should have,f:form.select support to sort by translated label,Carsten Bleicker,Karsten Dambekalns,2014-08-11 05:32,ViewHelpers,"",2014-04-16,"","",100,2014-04-16 15:55,"","",1643700,"","","request for feature:
+
+<pre>
+<f:form.select ...
+	optionValueField=""iso2""
+	optionLabelField=""name""
+	translate=""{by:'label'}""
+	sortBy=""{propertyName:'optionLabelField'}""
+/>
+</pre>
+
+This should sort options after translating by ""optionLabelField""
+"
+58153,TYPO3.Flow,Bug,"",New,Should have,"Session - Scope, Property with interface annotation fails at wakeup",Ferdinand Kuhl,"",2014-04-24 06:46,AOP,2.1,2014-04-24,"","",0,2014-04-24 06:37,"","",1651450,"",Flow 2.0.0,"Assume I have an Object called Vendor\Package\Service\PackageSession which has Session scope. This object has a property, which is annotated with an interface, which some of my domain objects may implement.
+
+If this object is reconstituted the AOP Proxy crashes during wakeup with the following trace:
+<pre>
+Uncaught exception in line 40 of Packages/Libraries/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php: Class 'Vendor\Package\Domain\Model\EntityInterface' does not exist
+
+40 Doctrine\Common\Persistence\Mapping\MappingException::nonExistingClass(""Vendor\Package\Domain\Model\EntityInterface"")
+39 Doctrine\Common\Persistence\Mapping\RuntimeReflectionService::getParentClasses(""Vendor\Package\Domain\Model\EntityInterface"")
+38 Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory::getParentClasses(""Vendor\Package\Domain\Model\EntityInterface"")
+37 Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory::loadMetadata(""Vendor\Package\Domain\Model\EntityInterface"")
+36 Doctrine\Common\Persistence\Mapping\AbstractClassMetadataFactory::getMetadataFor(""Vendor\Package\Domain\Model\EntityInterface"")
+35 Doctrine\ORM\EntityManager::getReference(""Vendor\Package\Domain\Model\EntityInterface"", ""072e6c49-6a9a-a791-bbc3-91a502d73e83"")
+34 TYPO3\Flow\Persistence\Doctrine\PersistenceManager_Original::getObjectByIdentifier(""072e6c49-6a9a-a791-bbc3-91a502d73e83"", ""Vendor\Package\Domain\Model\EntityInterface"", TRUE)
+33 TYPO3\Flow\Persistence\Doctrine\PersistenceManager::getObjectByIdentifier(""072e6c49-6a9a-a791-bbc3-91a502d73e83"", ""Vendor\Package\Domain\Model\EntityInterface"", TRUE)
+32 call_user_func_array(array|2|, array|3|)
+31 TYPO3\Flow\Persistence\Doctrine\PersistenceManager::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+30 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+29 TYPO3\Flow\Security\Aspect\PersistenceQueryRewritingAspect_Original::checkAccessAfterFetchingAnObjectByIdentifier(TYPO3\Flow\Aop\JoinPoint)
+28 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+27 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+26 TYPO3\Flow\Persistence\Doctrine\PersistenceManager::getObjectByIdentifier(""072e6c49-6a9a-a791-bbc3-91a502d73e83"", ""Vendor\Package\Domain\Model\EntityInterface"", TRUE)
+25 Vendor\Package\Service\PackageSession::__wakeup()
+[...]
+
+</pre>
+
+The Problem is that the proxy-class builder generates the following code:
+<pre><?php
+if ($this->$propertyName instanceof \TYPO3\Flow\Persistence\Aspect\PersistenceMagicInterface && !\TYPO3\Flow\Core\Bootstrap::$staticObjectManager->get('TYPO3\Flow\Persistence\PersistenceManagerInterface')->isNewObject($this->$propertyName) || $this->$propertyName instanceof \Doctrine\ORM\Proxy\Proxy) {
+	if (!property_exists($this, 'Flow_Persistence_RelatedEntities') || !is_array($this->Flow_Persistence_RelatedEntities)) {
+		$this->Flow_Persistence_RelatedEntities = array();
+		$this->Flow_Object_PropertiesToSerialize[] = 'Flow_Persistence_RelatedEntities';
+	}
+	$identifier = \TYPO3\Flow\Core\Bootstrap::$staticObjectManager->get('TYPO3\Flow\Persistence\PersistenceManagerInterface')->getIdentifierByObject($this->$propertyName);
+	if (!$identifier && $this->$propertyName instanceof \Doctrine\ORM\Proxy\Proxy) {
+		$identifier = current(\TYPO3\Flow\Reflection\ObjectAccess::getProperty($this->$propertyName, '_identifier', TRUE));
+	}
+	$this->Flow_Persistence_RelatedEntities[$propertyName] = array(
+		'propertyName' => $propertyName,
+		'entityType' => $className,
+		'identifier' => $identifier
+	);
+	continue;
+}
+?>
+</pre>
+
+Of course the interface is known to the ObjectManager, so the interface name stays in class name. Correct behaviour would be to ask the object for its class name. Interesting is, that if a doctrine-proxy is set this way, everything works as expected"
+58184,TYPO3.Flow,Major Feature,"",New,Should have,HTTP request argument building for different use cases,Carsten Bleicker,"",2014-04-25 05:30,Http,"",2014-04-25,"","",0,2014-04-25 05:30,"","",1653000,"","","HTTP Request
+
+The concept of http request handling is imho currently not realy http compatible.
+First of all, there is no body possible for PATCH request types. Its simply skipped.
+Body is currently only avalable for POST and PUT.
+
+But there are additional issues.
+Lets say f.e. you want to update the sourcecode of you logo.gif.
+So an http request arrives with $_GET[filename]=logo.gif
+and a Post with the sourcecode. request type will be image/gif.
+request method will be PUT.
+
+The body will be handled with: parse_str($body, $arguments);
+@see Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Http/Request.php:560
+wich will fail.
+
+Another example wich will be not possible:
+Rename the logo.gif to logo_old.gif.
+What will arrive is a request type PATCH (if above patch support enabled)
+you run in other problems. $_GET[filename]=logo.gif will be an identifier in this case.
+body arguments of this PATCH request containing also ?&filename=logo_old.gif?.
+So we end up in a request just holding request->getArgument('filename') === logo_old.gif.
+The get information is lost :(
+
+Maybe you say now ?thats not a patch case?.
+So lets take a look at it in case of a COPY request type:
+get: filename=logo.gif
+post: filename=logo_copy.gif
+requestmethod: COPY
+what you want to copy (the resource logo.gif) is lost also in this case because of the merging of
+get and post. @see Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Http/Request.php:513
+
+I want to discuss to make a difference like this:
+$this->request->getBody()->getArguments('filename');
+$this->request->getResource()->getArguments()->getArgument('filename');
+
+Example 3:
+Receiving http request with multipart body.
+This could end up in:
+$this->request->getBody()->getArguments('part1');
+$this->request->getBody()->getArguments('part2');
+$this->request->getBody()->getArguments('part3');
+
+
+Validation:
+Different kinds of requests types should invoke different kind of validations:
+1. POST/PUT validates the whole entity (resource)
+2. PATCH validates only those properties wich realy should be patched (present in the body arguments)
+3. COPY does not invoke validation because an existing resource is valid
+4. DELETE should also not invoke validation because an existing resoure is valid.
+
+kind regards
+carsten"
+58193,TYPO3.Flow,Bug,"",Under Review,Should have,Forward-port changelogs to master branch,Bastian Waidelich,Karsten Dambekalns,2014-05-23 12:11,"","",2014-04-25,"","",0,2014-04-25 10:12,"","",1653450,"",Git master,"Currently most of the change-log-links on http://flow.typo3.org/download are broken because the change-logs are missing in the latest documentation.
+Reason is that change-logs are currently only pushed to the branch they belong to.
+IMO we should adjust the release scripts so that logs are (also) pushed to master, so that master (and docs.typo3.org) contain the full change-log of all branches.
+
+@Karsten I had a quick look into the shell scripts, but I'm lost and it's probably really easy for you so I took the liberty to assign this to you ;)"
+58408,TYPO3.Flow,Task,"",New,Should have,Disable manualy persisting,Carsten Bleicker,"",2014-05-02 04:58,"","",2014-05-02,"","",0,2014-05-02 04:58,"","",1664100,"","","HTTP says, no writing if GET.
+But in Neos f.e. there are several places using hard/manualy persisting somewhere inside the job stack.
+You can send f.e. a GET request to a NodeController wich moves an entity. The persistence is invoked manualy.
+
+I dont want to worry about sending GET Requests to the server. I want to be sure ""Okay, if you send GET, definitly NOTHING will happen to the system"".
+
+So imho $this-persistenceManager->persistAll() f.e. should not be possible in safe requests.
+Strictly throw Exception.
+
+"
+58494,TYPO3.Flow,Bug,"",Needs Feedback,Must have,Inifinite redirects if index.php presents in URI,Rafael Kähm,Bastian Waidelich,2014-05-25 05:29,MVC - Routing,"",2014-05-04,"","",0,2014-05-04 07:49,"","",1668400,"",Git master,"TYPO3.Welcome package can show this issue.
+
+If you have fresh TYPO3 Flow Setup and call http://...../index.php/flow/welcome(or http://...../index.php to) you'll be redirected to:
+
+<pre>
+[04/May/2014:11:21:26 +0200] ""GET /index.php HTTP/1.1"" 303 115
+[04/May/2014:11:21:26 +0200] ""GET /index.php/flow/welcome HTTP/1.1"" 303 130
+[04/May/2014:11:21:27 +0200] ""GET /index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 145
+[04/May/2014:11:21:27 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 160
+[04/May/2014:11:21:28 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 175
+[04/May/2014:11:21:28 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 190
+[04/May/2014:11:21:28 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 205
+[04/May/2014:11:21:29 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 220
+[04/May/2014:11:21:29 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 235
+[04/May/2014:11:21:29 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 250
+[04/May/2014:11:21:30 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 265
+[04/May/2014:11:21:30 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 280
+[04/May/2014:11:21:30 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 295
+[04/May/2014:11:21:30 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 310
+[04/May/2014:11:21:31 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 325
+[04/May/2014:11:21:31 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 340
+[04/May/2014:11:21:31 +0200] ""GET /index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/index.php/flow/welcome HTTP/1.1"" 303 355</pre>
+recursively.
+
+NOTE: This infinite redirects makes not apache but TYPO3 Flow.
+You can see that, if you add following line in TYPO3\Welcome\Controller\StandardController::redirectAction(): 
+<pre>$this->systemLogger->log(sprintf('I\'m currently on ""%s"".', $_SERVER['REQUEST_URI']));</pre>
+
+I use Apache 2.4 with mod_proxy_fcgi like http://wiki.apache.org/httpd/PHP-FPM shown."
+58517,TYPO3.Flow,Bug,"",Resolved,Should have,Integer arent allowed as object identifier in routes,Frederik Vosberg,Bastian Waidelich,2015-04-26 13:30,MVC - Routing,"",2014-05-05,"","",100,2014-05-05 07:40,"","",1669550,"",Git master,"I want to have an integer as persistence object identifier, so I implemented it this way:
+
+<pre>
+    /**
+     * @var int
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @Flow\Identity
+     */
+    protected $id;
+</pre>
+
+But flow raised an exception while it tries to resolve the route for the show action for my object. I think the following part of the core is the problem, isnt it?
+
+I attached my patch.
+"
+58557,TYPO3.Fluid,Feature,"",Rejected,Won't have this time,Define Namespaces in Configuration File,Aimo Künkel,Bastian Waidelich,2014-05-15 09:34,Core,2.x,2014-05-06,"","",0,2014-05-06 05:08,"","",1671500,"","","It would be nice if one could define the namespaces via configuration file, additionally to the existing way inside the fluid file.
+This way you could move the f: namespace definition out of TYPO3\Fluid\Core\Parser\TemplateParser::$namespaces into the yaml file.
+
+Advantages would be:
+* cleaner fluid templates
+* simple (re-)configuration across a package
+* convention over configuration (e.g. when multiple frontend developers create multiple fluid templates)
+* reconfiguration of the f: namespace"
+58579,TYPO3.Flow,Feature,"",New,Should have,Adding own environment constants to Flow,Peter Russ,"",2014-05-06 16:14,"",2.x,2014-05-06,"",2.00,50,2014-05-06 15:16,"","",1672600,"","","It would be pretty helpful if we could define allowed environment constants to be included into Flow.
+This way it could be used in configuration
+
+e.g.
+FLOW_ADDITIONAL_CONSTANTS=MY_CONSTANTS_1,APPLICATION_VALUE_2,..
+
+Patch will follow and be commited to Master"
+58622,TYPO3.Flow,Feature,"",New,Must have,Clearer Exception: Array to string conversion,Kay Strobach,"",2014-05-08 04:23,Core,"",2014-05-08,"","",0,2014-05-08 04:23,"","",1674750,"","","If an array to string conversion happens in a FLUID Template, the Exception should state, where it happend in the FLUID context ...
+
+<pre>
+Uncaught Exception in Flow
+#1: Notice: Array to string conversion in /project/Packages/Framework/TYPO3.Fluid/Classes/TYPO3/Fluid/Core/Parser/SyntaxTree/AbstractNode.php line 49
+More information
+
+TYPO3\Flow\Error\Exception thrown in file
+Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Error/ErrorHandler.php in line 77.
+Reference code: 20140508101915c5df73
+
+Go to the FORGE issue tracker and report the issue - if you think it is a bug!
+
+71 TYPO3\Flow\Error\ErrorHandler::handleError(8, ""Array to string conversion"", ""/project/Packages/Framework/TYPO3.Fluid/Classes/TYPO3/Fluid/Core/Parser/SyntaxTree/AbstractNode.php"", 49, array|3|)
+
+Packages/Framework/TYPO3.Fluid/Classes/TYPO3/Fluid/Core/Parser/SyntaxTree/AbstractNode.php:
+00047:      $output = $output->__toString();
+00048:     } else {
+00049:      $output = (string) $output;
+00050:     }
+00051:     $subNodeOutput = $subNode->evaluate($renderingContext);
+
+70 TYPO3\Fluid\Core\Parser\SyntaxTree\AbstractNode::evaluateChildNodes(TYPO3\Fluid\Core\Rendering\RenderingContext)
+</pre>
+
+"
+58696,TYPO3.Flow,Feature,"",Resolved,Should have,TypedArrayConverter,Bastian Waidelich,Bastian Waidelich,2014-06-12 06:36,Property,"",2014-05-11,"","",100,2014-05-11 07:57,"","",1678450,"","","Flow is missing a TypeConverter that can turn simple arrays into an ""object array"" (aka generics).
+For this to work the PropertyMapper needs to be adjusted because currently it cuts off possible element type notations (""<Some\Element\Type>"") from the targetType before calling *canConvertFrom()*."
+58744,TYPO3.Flow,Bug,"",New,Should have,Can not split configuration in settings.yaml,DANIEL Rémy,"",2014-05-14 06:06,"","",2014-05-13,"","",0,2014-05-13 03:57,"","",1680800,"",Git master,"Hi
+
+I don't know if this is a bug. If not, please close this ticket.
+
+I tried to organize a little my settings.yaml by grouping some parts of the configuration into main entries.
+But, then I noticed that ""excludeClasses"" were not anymore taken into account by the reflection service.
+TYPO3.Flow's sub-entries were totaly empty.
+
+<pre>
+TYPO3:
+  Flow:
+    object:
+      excludeClasses:
+       'gedmo.doctrineextensions': ['.*']
+
+TYPO3:
+  Flow:
+    persistence:
+      doctrine:
+        filters:
+          soft-deletable: 'Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter'
+        eventListeners:
+          -
+            events: ['onFlush', 'loadClassMetadata']
+            listener: 'Gedmo\SoftDeleteable\SoftDeleteableListener'
+</pre>
+
+I think we cannot have, in the same yaml file, multiple occurrences of the same key, isn't it?"
+58773,TYPO3.Flow,Bug,"",Accepted,Should have,Improve NoMatchingRouteException,Bastian Waidelich,Bastian Waidelich,2014-05-13 09:59,MVC - Routing,"",2014-05-13,"","",0,2014-05-13 09:56,"","",1682250,"",Git master,"Currently, when trying to create an URI but no matching route could be found, one only gets a very generic ""Could not resolve a route and its corresponding URI for the given parameters."" exception.
+Because this exception is *very* common it should be improved so that the developer knows what to do about it."
+58829,TYPO3.Fluid,Feature,"",Closed,Should have,Register package namespaces automatically,Bastian Waidelich,Marc Neuhaus,2014-12-08 14:32,Core,"",2014-05-15,"","",0,2014-05-15 09:33,"","",1684900,"","","Currently when using ViewHelpers from 3rd party packages the package namespace has to be registered:
+<pre>
+<code class=""html"">
+{namespace xyz=Acme\SomePackage\ViewHelpers}
+<xyz:someViewHelper />
+</code>
+</pre>
+
+It would be useful if the namespace of all 3rd party packages *containing at least one ViewHelper* would be registered automatically (in addition to the explicitly registered namespaces) .
+For the above example that would mean:
+<pre>
+<code class=""html"">
+<acme.somepackage:someViewHelper />
+</code>
+</pre>
+
+Would be sufficient, if SomeViewHelper resides in a sub-namespace ""ViewHelpers"" as suggested."
+58852,TYPO3.Flow,Bug,"",New,Should have,TYPO3\Flow\Security\Exception\AccessDeniedException should clarify which action fails to execute,Kay Strobach,"",2014-05-16 03:36,Security,"",2014-05-16,"","",0,2014-05-16 03:36,"","",1686050,"",Git master,"
+The exception should definitly state, which actions failed to execute ..."
+58853,TYPO3.Flow,Bug,"",Resolved,Must have,configuration:validate -> Problems in FLOW,Kay Strobach,"",2014-06-12 02:37,Configuration,"",2014-05-16,"","",0,2014-05-16 04:12,"","",1686100,"",Git master,"Packages/Framework/TYPO3.Flow/Configuration/Settings.yaml:195
+<pre>
+./flow configuration:validate --type Settings
+Validating Settings configuration
+
+1 errors were found:
+ - Settings.TYPO3.Flow.persistence.cacheAllQueryResults -> This property is not allowed here, check the spelling if you think it belongs here.
+</pre>
+
+Packages/Framework/TYPO3.Flow/Resources/Private/Schema/Views.schema.yaml
+<pre>
+./flow configuration:validate --type Views   
+Validating Views configuration
+
+Error:
+    The schema file
+    "".../Packages/Framework/TYPO3.Flow/Resources/Private/Schema/Views.schema.yaml"" is empty.
+</pre>
+
+IMHO FLOW should not throw any warning within the base packages ..."
+58862,TYPO3.Fluid,Bug,"",Needs Feedback,Should have,FormViewHelper doesn't accept NULL as value for $arguments,Kevin Fischer,Bastian Waidelich,2014-06-04 06:49,ViewHelpers,"",2014-05-16,"","",0,2014-05-16 05:47,"","",1686550,"",Flow 2.0.0 beta 2,"Unlike other ViewHelpers like the ActionViewHelpers, the FormViewHelper doesn't accept NULL as value for the $arguments argument, because it's type-hinted as ""array"" in the render() method. This leads to PHP throwing a Catchable Fatal Error when passing NULL to it.
+
+A patch file is attached."
+58894,TYPO3.Flow,Bug,"",New,Must have,MySQL max key length exceeded during Neos setup,Andreas Kastl,"",2014-05-17 16:37,- Error Handler Report -,2.x,2014-05-17,"","",0,2014-05-17 16:34,"","",1688150,"",Flow 2.0.0,"I tried to install Typo3 Neos 1.1 Beta 2 including Flow 2.2 and recieved the exception listed below during setup process. 
+Database version is 5.5.31-1~dotdeb.0-log (MyISAM engine), PHP version is 5.3.28.
+I also tried Typo3 Neos 1.0.2 with same result. Database is UTF-8 as required by Neos.
+
+It seems that the primary key is too long for MySQL running on MyISAM engine and UTF-8 encoding. 3 columns x 255 chars x UTF-8 encoding (3 bytes) > 1000 bytes allowed by MySQL with MyISAM engine. Please provide a fix that works under MyISAM with UTF-8. 
+
+-------------------
+
+TYPO3\Flow\Core\Booting\Exception\SubProcessException thrown in file Scripts.php
+
+Uncaught Exception
+  An exception occurred while executing 'CREATE TABLE
+  typo3_flow3_mvc_web_routing_objectpathmapping (objecttype VARCHAR(255)
+  NOT NULL, uripattern VARCHAR(255) NOT NULL, pathsegment VARCHAR(255) NOT
+  NULL, identifier VARCHAR(255) DEFAULT NULL, PRIMARY KEY(objecttype,
+  uripattern, pathsegment)) ENGINE = InnoDB':
+
+  SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was
+  too long; max key length is 1000 bytes
+
+More Information
+  Exception code      #0
+  File                <path>/Neos-1.1.0-beta2/Packages/Libraries/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php line 47
+
+31 TYPO3\Flow\Core\Booting\Scripts::executeCommand(""typo3.flow:doctrine:migrate"", array|16|, FALSE)
+
+30 TYPO3\Setup\Step\DatabaseStep_Original::postProcessFormValues(array|8|)
+
+29 TYPO3\Setup\Controller\SetupController_Original::postProcessStep(array|8|, TYPO3\Setup\Step\DatabaseStep)
+
+28 TYPO3\Setup\Controller\{closure}(TYPO3\Form\Core\Model\FinisherContext)
+
+27 TYPO3\Form\Finishers\ClosureFinisher_Original::executeInternal()
+
+26 TYPO3\Form\Core\Model\AbstractFinisher::execute(TYPO3\Form\Core\Model\FinisherContext)
+
+25 TYPO3\Form\Core\Runtime\FormRuntime_Original::invokeFinishers()
+
+24 TYPO3\Form\Core\Runtime\FormRuntime_Original::render()
+
+23 TYPO3\Setup\Controller\SetupController_Original::indexAction(0)
+
+22 TYPO3\Setup\Controller\SetupController::indexAction(0)
+
+21 call_user_func_array(array|2|, array|1|)
+
+20 TYPO3\Setup\Controller\SetupController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+19 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+18 TYPO3\Flow\Security\Aspect\PolicyEnforcementAspect_Original::enforcePolicy(TYPO3\Flow\Aop\JoinPoint)
+
+17 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+16 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+15 TYPO3\Setup\Controller\SetupController::indexAction(0)
+
+14 call_user_func_array(array|2|, array|1|)
+
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+9 call_user_func_array(array|2|, array|2|)
+
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+2 TYPO3\Setup\Core\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()"
+58921,TYPO3.Fluid,Bug,"",New,Should have,f:form.* VHs crash if NOT inside f:form but followed by f:form,Aimo Künkel,"",2014-05-19 09:29,"","",2014-05-19,"","",0,2014-05-19 08:28,"","",1689500,"",Git master,"The f:form.* ViewHelpers work inside of forms and standalone, but they crash if used standalone and they are followed by any fluid form.
+
+This works fine and results in a perfect html select:
+<pre>
+<f:form.select name=""select"" options=""{1: 'One', 2: 'Two', 3: 'Three'}"" />
+</pre>
+
+This also works fine and results in a submittable form:
+<pre>
+<f:form action=""some"" name=""form"">
+	<f:form.button type=""submit"">Go!</f:form.button>
+</f:form>
+</pre>
+
+This instead (both concatenated) ...
+<pre>
+<f:form.select name=""select"" options=""{1: 'One', 2: 'Two', 3: 'Three'}"" />
+
+<f:form action=""some"" name=""form"">
+	<f:form.button type=""submit"">Go!</f:form.button>
+</f:form>
+</pre>
+... will throw the following error:
+h3. #1243352010: The key ""TYPO3\Fluid\ViewHelpers\FormViewHelper->formFieldNames"" was already stored and you cannot override it.
+
+I regard this as a bug and propose to let them produce the html select, followed by the submittable form.
+
+
+I explain it this detailed because i had a discussion in IRC on what a developer would expect the output to be, but i definitely would like to have multiple forms on a page AND multiple independent inputs NOT inside of forms (for UI reasons, for JS handling, ...)"
+58927,TYPO3.Flow,Bug,"",New,Should have,Overlapping ressouce definitions in Policy.yaml resolved incorrectly,Sven Radetzky,"",2014-05-19 09:19,Security,2.1,2014-05-19,"","",0,2014-05-19 09:19,"","",1689800,"",Git master,"Just encountered this particular bug while updating a Policy.yaml file.
+
+If you have two ressource definitions that overlap:
+
+<pre>
+ressources:
+  methods:
+    allMethods: 'method(Vendor\Ext\Controller\SomeController->.*Action())'
+    specificMethod: 'method(Vendor\Ext\Controller\SomeController->specificAction())'
+</pre>
+
+And acls similar to this:
+
+<pre>
+acls:
+  OneRole:
+    methods:
+      allMethods: GRANT
+  SecondRole:
+    methods:
+      specificMethod: GRANT
+</pre>
+
+Then the second role can not access the specific method. By votes (0 denied, 0 granted, 1 abstained). The interesting part is when you execute
+<pre>
+./flow security:showeffectivepolicy Vendor.Ext:SecondRole
+</pre>
+The output says that specificMethod is allowed for SecondRole.
+
+So even if this behavior is intended there is a bug in the SecurityCommandController at the very least.
+
+PS:
+
+Affected Flow Version: 2.1.2
+
+Although this version or any version beyond 2.0.0 does not actually exist here in forge."
+58953,TYPO3.Flow,Bug,"",Closed,Could have,"When an import is missing, no error is shown",Aimo Künkel,Bastian Waidelich,2014-05-20 06:10,"","",2014-05-20,"","",0,2014-05-20 05:22,"","",1691100,"",Git master,"When you use a type hint in an action without namespace and you forgot to import that class, the response will be a blank page witout error message, log or exception.
+This can be hard to debug and it would be really nice if something is shown here.
+
+Example class to test with:
+
+<pre>
+<?php
+namespace Vendor\Package\Backend\Controller;
+
+use TYPO3\Flow\Annotations as Flow;
+
+class TestController ... {
+
+	/**
+	 * results in blank page
+	 * 
+	 * @param  Vendor\Package\Domain\Model\Object $object the object to show
+	 * @return void
+	 */
+	public function testAction(Object $object) {
+		$this->view->assign('object', $object);
+	}
+
+}
+</pre>
+
+The ""Object"" here used as parameter is never imported, that's why it breaks."
+58959,TYPO3.Flow,Bug,"",Resolved,Should have,FunctionalTestCase->registerRoute() does not support the httpMethods configuration,Rens Admiraal,Rens Admiraal,2014-07-17 11:00,"","",2014-05-20,"","",100,2014-05-20 07:50,"","",1691400,"",Git master,Currently it is not possible to register routes in the FunctionalTestCase that limit possible httpMethods
+58972,TYPO3.Fluid,Bug,"",Closed,Should have,"DateViewHelper property ""forceLocale"" not passed as boolean",Carsten Bleicker,Bastian Waidelich,2014-05-21 09:43,ViewHelpers,"",2014-05-20,"","",0,2014-05-20 16:19,"","",1692050,"",Git master,"As far as i understand this should check localisationService.
+<f:format.date forceLocale=""true"">{document.dateTime}</f:format.date>
+
+But boolean is not realy passed to \TYPO3\Fluid\Core\ViewHelper\AbstractLocaleAwareViewHelper::getLocale?"
+58975,TYPO3.Flow,Bug,"",New,Must have,Fix command for Linux in Qucikstart documentation,Michael Kohler,"",2014-05-21 13:47,- Documentation -,"",2014-05-20,"","",100,2014-05-20 17:50,"","",1692200,"",(any),"Since almost all Linux based installations will use www_data as group, we should use it everywhere. Above the fixed line it's always ""www_data"" for Linux.
+
+Patch is attached."
+58976,TYPO3 Flow Base Distribution,Bug,"",New,Should have,debug_backtrace,Carsten Bleicker,"",2014-05-20 19:07,"","",2014-05-21,"","",0,2014-05-20 19:07,"","",1692250,"",Git master,"using php debug_backtrace results in a debug recursion?
+can anybody reproduce this?"
+58983,TYPO3.Fluid,Bug,"",New,Should have,format.date does not respect linebreaks and throws exception,Carsten Bleicker,"",2014-05-21 04:00,"","",2014-05-21,"","",0,2014-05-21 04:00,"","",1692600,"",Git master,"This one works:
+<pre>
+<f:format.date>{dateTime}</f:format.date>
+</pre>
+
+This throws exception:
+<pre>
+<f:format.date>{dateTime}
+</f:format.date>
+</pre>
+
+<pre>
+Uncaught exception #1 in line 374 of /Users/pumatertion/Sites/neos.pipeu/Data/Temporary/Development/Cache/Code/Fluid_TemplateCache/Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4.php: Catchable Fatal Error: Object of class DateTime could not be converted to string in /Users/pumatertion/Sites/neos.pipeu/Data/Temporary/Development/Cache/Code/Fluid_TemplateCache/Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4.php line 374
+
+85 TYPO3\Flow\Error\ErrorHandler::handleError(4096, ""Object of class DateTime could not be converted to string"", ""/Users/pumatertion/Sites/neos.pipeu/Data/Temporary/Development/Cache/Code/Fluid_TemplateCache/Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4.php"", 374, array|3|)
+84 FluidCache_Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4::{closure}()
+83 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()
+82 TYPO3\Fluid\ViewHelpers\Format\DateViewHelper_Original::render(NULL, ""d.m.Y"", NULL, NULL)
+81 call_user_func_array(array|2|, array|4|)
+80 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+79 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+78 FluidCache_Standalone_template_source_ed2243736f0374ec6c98237138f5894df31295e4::render(TYPO3\Fluid\Core\Rendering\RenderingContext)
+77 TYPO3\Fluid\View\AbstractTemplateView::render()
+76 PIPEU\Site\Service\Converter\DocumentToPdfConverter_Original::convert(PIPEU\Factura\Domain\Model\Documents\Order)
+75 PIPEU\Factura\NodeTypes\Controller\BasketController_Original::indexAction()
+74 PIPEU\Factura\NodeTypes\Controller\BasketController::indexAction()
+73 call_user_func_array(array|2|, array|0|)
+72 PIPEU\Factura\NodeTypes\Controller\BasketController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+71 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+70 TYPO3\Flow\Security\Aspect\PolicyEnforcementAspect_Original::enforcePolicy(TYPO3\Flow\Aop\JoinPoint)
+69 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+68 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+67 PIPEU\Factura\NodeTypes\Controller\BasketController::indexAction()
+66 call_user_func_array(array|2|, array|0|)
+65 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+64 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+63 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+62 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+61 TYPO3\Neos\TypoScript\PluginImplementation_Original::evaluate()
+60 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer<TYPO3.Neos:ContentCase>/default<TYPO3.TypoScript:Matcher>/element<PIPEU.Factura.NodeTypes:Basket>"", ""Exception"")
+59 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer<TYPO3.Neos:ContentCase>/default<TYPO3.TypoScript:Matcher>/element<PIPEU.Factura.NodeTypes:Basket>"")
+58 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+57 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer<TYPO3.Neos:ContentCase>/default<TYPO3.TypoScript:Matcher>"", ""Exception"")
+56 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer<TYPO3.Neos:ContentCase>/default<TYPO3.TypoScript:Matcher>"")
+55 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::renderMatcher(""default"")
+54 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+53 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer"", ""Exception"")
+52 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>/itemRenderer"")
+51 TYPO3\TypoScript\TypoScriptObjects\AbstractCollectionImplementation::evaluate()
+50 TYPO3\Neos\TypoScript\ContentCollectionImplementation_Original::evaluate()
+49 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>"", ""Exception"")
+48 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>/element<TYPO3.Neos:ContentCollection>"")
+47 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+46 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>"", ""Exception"")
+45 TYPO3\TypoScript\Core\Runtime_Original::render(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main<TYPO3.Neos:PrimaryContent>/default<TYPO3.TypoScript:Matcher>"")
+44 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::renderMatcher(""default"")
+43 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+42 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main"", ""NULL"", NULL)
+41 TYPO3\TypoScript\Core\Runtime_Original::evaluate(""page<TYPO3.Neos:Page>/body<TYPO3.TypoScript:Template>/content/main"")
+40 TYPO3\TypoScript\TypoScriptObjects\Helpers\TypoScriptPathProxy_Original::objectAccess()
+39 TYPO3\Fluid\Core\Parser\SyntaxTree\ObjectAccessorNode_Original::getPropertyPath(TYPO3\Fluid\Core\ViewHelper\TemplateVariableContainer, ""content.main"", TYPO3\Fluid\Core\Rendering\RenderingContext)
+38 FluidCache_Standalone_template_file_Default_e52a2bc8e4188d8f367a0c0fdfb536c5271802ac::{closure}()
+37 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::renderChildren()
+36 TYPO3\Fluid\ViewHelpers\Format\RawViewHelper_Original::render(NULL)
+35 call_user_func_array(array|2|, array|1|)
+34 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::callRenderMethod()
+33 TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArgumentsAndRender()
+32 FluidCache_Standalone_template_file_Default_e52a2bc8e4188d8f367a0c0fdfb536c5271802ac::section_02083f4579e08a612425c0c1a17ee47add783b94(TYPO3\Fluid\Core\Rendering\RenderingContext)
+31 TYPO3\Fluid\View\AbstractTemplateView::renderSection(""body"", NULL, FALSE)
+30 TYPO3\Fluid\View\AbstractTemplateView::renderStandaloneSection(""body"", NULL, FALSE)
+29 TYPO3\Fluid\View\AbstractTemplateView::renderSection(""body"")
+28 TYPO3\TypoScript\TypoScriptObjects\TemplateImplementation_Original::evaluate()
+27 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page<TYPO3.Neos:Page>/body"", ""NULL"", TYPO3\TypoScript\TypoScriptObjects\ArrayImplementation)
+26 TYPO3\TypoScript\Core\Runtime_Original::evaluate(""page<TYPO3.Neos:Page>/body"", TYPO3\TypoScript\TypoScriptObjects\ArrayImplementation)
+25 TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject::tsValue(""body"")
+24 TYPO3\TypoScript\TypoScriptObjects\ArrayImplementation_Original::evaluate()
+23 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""page"", ""Exception"")
+22 TYPO3\TypoScript\Core\Runtime_Original::render(""page"")
+21 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+20 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""root<TYPO3.TypoScript:Case>/default<TYPO3.TypoScript:Matcher>"", ""Exception"")
+19 TYPO3\TypoScript\Core\Runtime_Original::render(""root<TYPO3.TypoScript:Case>/default<TYPO3.TypoScript:Matcher>"")
+18 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::renderMatcher(""default"")
+17 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+16 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""root"", ""Exception"")
+15 TYPO3\TypoScript\Core\Runtime_Original::render(""root"")
+14 TYPO3\Neos\View\TypoScriptView_Original::render()
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+9 call_user_func_array(array|2|, array|2|)
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+1 TYPO3\Flow\Core\Bootstrap::run()
+</pre>"
+58996,TYPO3.Flow,Bug,"",New,Should have,ResourceManager adding to persistence,Carsten Bleicker,"",2014-06-25 08:38,"","",2014-05-21,"","",0,2014-05-21 09:23,"","",1693250,"",Git master,"If youre using the resourceManager to create a resource from content f.e.
+it creates the resourcepointer and adding it to persistence:
+Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Resource/ResourceManager.php:276
+
+i want to ask, why the resourcemanager is adding a resourcepointer directly to the persistence.
+shouldnt this be done by annotations on the owning site wich receives this pointer?
+
+imho just creating object should not lead to magic automaticly adding to the persistence.
+i would simply expect, that this is done by cascading the object structure and its annotations for orm.
+
+i was confused about the exception thrown that there is something new registered for the persistence
+wich i definitly does not add by myself. it was thrown because of the $whitelist check of saferequests.
+
+sure, it makes not realy a sense to create a resource if you dont want to persist.
+but it also makes no sense to get an exception for new objects wich i never added by mysqlf into the persistence.
+my expactation is: ""do whatever you want. create objects, destroy them, etc. the persistence is only involved if you explicit want it to. be sure, anything is save until you add it.""
+
+
+
+"
+59013,TYPO3.Flow,Bug,"",Closed,Should have,SystemLogger does not log additional arguments,Carsten Bleicker,Bastian Waidelich,2014-05-22 08:38,Log,"",2014-05-21,"","",0,2014-05-21 15:08,"","",1694100,"",Git master,"The SystemLogger Interface supports additional arguemtns on exception logging.
+But the dont appear in the logfile."
+59019,TYPO3 Flow Base Distribution,Suggestion,"",New,Should have,Add marker for lazyloaded properties to \TYPO3\Flow\var_dump,Christian Loock,"",2014-05-22 04:15,"","",2014-05-22,"","",0,2014-05-22 04:15,"","",1694400,"","","Hi,
+
+it would be good, if you could see a lazy loaded property when you use \TYPO3\Flow\var_dump. It would be even better, if it would just automatically load those properties. See Carsten Bleicker's Email from today in the mailing list. It can cause some confusion."
+59023,TYPO3.Flow,Bug,"",New,Should have,BooleanConverter should not convert empty values to boolean,Alexander Berl,"",2014-06-10 08:04,Property,"",2014-05-22,"","",0,2014-05-22 05:53,"","",1694600,"",Git master,"Currently, it is not possible to validate boolean fields for @NotEmpty, because even empty values are converted to boolean value before validation takes place.
+This should be changed to work in line with other type converters like e.g. IntegerConverter"
+59031,TYPO3.Flow,Bug,"",Closed,Must have,Broken Reflection behavior on class-/filename mismatch,Bastian Waidelich,Bastian Waidelich,2014-11-27 04:36,Reflection,"",2014-05-22,"","",0,2014-05-22 08:45,"","",1695000,"",(any),"When a PHP class is not named exactly like the corresponding file, weird things happen:
+* If only the case doesn't match (e.g. ""someclass"" vs ""SomeClass"") the class is reflected but weird side effects happen during ""runtime""
+* If the class name is different (e.g. ""SomeClass"" vs ""SomeRenamedClass"") the ReflectionService currently ""silently"" skips the class
+
+Depending on what class is affected this can lead to a ""Cannot redeclare class"" error:
+<pre>
+#1355480641:
+Fatal error: Cannot redeclare class Some\Package\Domain\Model\SomeEntity in Packages/Application/Some.Package/Classes/Some/Package/Domain/Model/RenamedEntity.php on line xx
+</pre>"
+59049,TYPO3.Flow,Bug,"",New,Should have,TYPO3\Flow\Error\Exception thrown in file ErrorHandler.php,Daniel Schlageter,"",2014-05-22 17:34,- Error Handler Report -,"",2014-05-22,"","",0,2014-05-22 17:34,"","",1695900,"",Flow 2.0.0,"Notice: Undefined variable: exception in /var/www/html/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Persistence_Doctrine_Query.php line 166
+27 TYPO3\Flow\Error\ErrorHandler::handleError(8, ""Undefined variable: exception"", ""/var/www/html/Data/Temporary/Development/Cache/Cod?_Classes/TYPO3_Flow_Persistence_Doctrine_Query.php"", 166, array|2|)
+
+26 TYPO3\Flow\Persistence\Doctrine\Query_Original::getResult()
+
+25 TYPO3\Flow\Persistence\Doctrine\QueryResult_Original::initialize()
+
+24 TYPO3\Flow\Persistence\Doctrine\QueryResult_Original::toArray()
+
+23 TYPO3\Neos\Domain\Repository\DomainRepository_Original::findOneByHost(""localhost"")
+
+22 TYPO3\Neos\Domain\Repository\DomainRepository_Original::findOneByActiveRequest()
+
+21 call_user_func_array(array|2|, array|0|)
+
+20 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call(""findOneByActiveRequest"", array|0|)
+
+19 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::findOneByActiveRequest()
+
+18 TYPO3\Neos\Routing\FrontendNodeRoutePartHandler_Original::buildContextFromWorkspaceName(""live"")
+
+17 TYPO3\Neos\Routing\FrontendNodeRoutePartHandler_Original::buildContextFromNodeContextPath("""")
+
+16 TYPO3\Neos\Routing\FrontendNodeRoutePartHandler_Original::convertNodeContextPathToNode("""")
+
+15 TYPO3\Neos\Routing\FrontendNodeRoutePartHandler_Original::matchValue("""")
+
+14 TYPO3\Flow\Mvc\Routing\DynamicRoutePart_Original::match("""")
+
+13 TYPO3\Flow\Mvc\Routing\Route_Original::matches(TYPO3\Flow\Http\Request)
+
+12 TYPO3\Flow\Mvc\Routing\Router_Original::findMatchResults(TYPO3\Flow\Http\Request)
+
+11 TYPO3\Flow\Mvc\Routing\Router_Original::route(TYPO3\Flow\Http\Request)
+
+10 TYPO3\Flow\Mvc\Routing\Router::route(TYPO3\Flow\Http\Request)
+
+9 call_user_func_array(array|2|, array|1|)
+
+8 TYPO3\Flow\Mvc\Routing\Router::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+6 TYPO3\Fluid\Core\Widget\AjaxWidgetRoutingAspect_Original::routeAjaxWidgetRequestAdvice(TYPO3\Flow\Aop\JoinPoint)
+
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+3 TYPO3\Flow\Mvc\Routing\Router::route(TYPO3\Flow\Http\Request)
+
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+
+Please include more helpful information!"
+59057,TYPO3.Fluid,Bug,"",Under Review,Must have,Hidden empty value fields shoud be disabled when related field is disabled,Alexander Berl,Bastian Waidelich,2014-06-18 11:23,ViewHelpers,"",2014-05-22,"","",0,2014-05-23 07:14,"","",1696300,"",Git master,"*Use case:* A form which is used to redisplay a stored entity with some fields (checkbox) being disabled for further edit, where the current value is *checked*.
+Submit the edit form without changes.
+
+*Expected:* The value for the disabled checkbox fields stays unchanged
+
+*Actual:* The empty default value for the fields is submitted, hence the state of the disabled checkbox field changed to *unchecked*
+
+*Solution:* AbstractFormFieldViewHelper::renderHiddenFieldForEmptyValue() needs to check if the current field is disabled, and if so, add this flag to the hidden field"
+59084,TYPO3.Flow,Bug,"",New,Should have,if 403 Exception show reason,Kay Strobach,"",2014-05-24 12:20,"","",2014-05-24,"","",0,2014-05-24 12:20,"","",1697650,"",Git master,"hi,
+
+if access to a resource is blocked, there should be a clear message why:
+- either by firewall
+- or by policy"
+59140,TYPO3.Flow,Bug,"",New,-- undefined --,TYPO3\Flow\Error\Exception thrown in file ErrorHandler.php,David McNaughtan,"",2014-05-27 09:51,- Error Handler Report -,"",2014-05-27,"","",0,2014-05-27 09:51,"","",1700450,"",(any),"Notice: Undefined variable: exception in /Applications/MAMP/htdocs/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Persistence_Doctrine_Query.php line 166
+27 TYPO3\Flow\Error\ErrorHandler::handleError(8, ""Undefined variable: exception"", ""/Applications/MAMP/htdocs/Data/Temporary/Developme?_Classes/TYPO3_Flow_Persistence_Doctrine_Query.php"", 166, array|2|)
+
+26 TYPO3\Flow\Persistence\Doctrine\Query_Original::getResult()
+
+25 TYPO3\Flow\Persistence\Doctrine\QueryResult_Original::initialize()
+
+24 TYPO3\Flow\Persistence\Doctrine\QueryResult_Original::toArray()
+
+23 TYPO3\Neos\Domain\Repository\DomainRepository_Original::findOneByHost(""localhost"")
+
+22 TYPO3\Neos\Domain\Repository\DomainRepository_Original::findOneByActiveRequest()
+
+21 call_user_func_array(array|2|, array|0|)
+
+20 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call(""findOneByActiveRequest"", array|0|)
+
+19 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::findOneByActiveRequest()
+
+18 TYPO3\Neos\Routing\FrontendNodeRoutePartHandler_Original::buildContextFromWorkspaceName(""live"")
+
+17 TYPO3\Neos\Routing\FrontendNodeRoutePartHandler_Original::buildContextFromNodeContextPath("""")
+
+16 TYPO3\Neos\Routing\FrontendNodeRoutePartHandler_Original::convertNodeContextPathToNode("""")
+
+15 TYPO3\Neos\Routing\FrontendNodeRoutePartHandler_Original::matchValue("""")
+
+14 TYPO3\Flow\Mvc\Routing\DynamicRoutePart_Original::match("""")
+
+13 TYPO3\Flow\Mvc\Routing\Route_Original::matches(TYPO3\Flow\Http\Request)
+
+12 TYPO3\Flow\Mvc\Routing\Router_Original::findMatchResults(TYPO3\Flow\Http\Request)
+
+11 TYPO3\Flow\Mvc\Routing\Router_Original::route(TYPO3\Flow\Http\Request)
+
+10 TYPO3\Flow\Mvc\Routing\Router::route(TYPO3\Flow\Http\Request)
+
+9 call_user_func_array(array|2|, array|1|)
+
+8 TYPO3\Flow\Mvc\Routing\Router::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+6 TYPO3\Fluid\Core\Widget\AjaxWidgetRoutingAspect_Original::routeAjaxWidgetRequestAdvice(TYPO3\Flow\Aop\JoinPoint)
+
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+3 TYPO3\Flow\Mvc\Routing\Router::route(TYPO3\Flow\Http\Request)
+
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+
+Exception occurred at the first startup attempt, Setup = iMac/Mavericks 10.9.3/MAMP Pro current version/Safari 7.0.4
+Please include more helpful information!"
+59244,TYPO3.Flow,Feature,"",New,Should have,Message or Container needs context,Carsten Bleicker,"",2014-05-31 05:47,"","",2014-05-31,"","",0,2014-05-31 05:47,"","",1705650,"","","In order to be able to publish f.e. page and plugin messages and show them at different places
+it could be usefull to set their context and also flush them by context.
+
+This could be done f.e. using an additional argument in the ActionController->addFlashMessage().
+
+Example:
+<pre>
+public function addFlashMessage(.., .., .., $container = NULL){
+   if($container === NULL) $container = $this->flashMessageContainers->getDefaultContainer();
+   ....
+}
+</pre>
+
+"
+59322,TYPO3.Flow,Bug,"",New,Should have,Mssing field exception should show missing migrations as well,Kay Strobach,"",2014-06-04 00:47,Persistence,"",2014-06-04,"","",0,2014-06-04 00:47,"","",1709550,"",Git master,"If there is a database exception because of a missing field, the not migrated migrations / suggested updates should be shown to hint to the missing DB Layout adjustment."
+59357,TYPO3.Flow,Bug,"",New,Should have,Using the PackageManager directly instead of the Interface results in unexpected behavior,Marc Neuhaus,"",2014-06-05 08:34,"","",2014-06-05,"","",0,2014-06-05 05:25,"","",1711300,"",Git master,"If you try to inject the PackageManager into your class using the Inject Annotation
+the ""getAvailablePackages"" returns no Packages because the PackageManager doesn't
+seem to be initialized. Using the alternative injection method through an injectPackageManager
+method works without a Problem."
+59358,TYPO3 Flow Base Distribution,Bug,"",Closed,Should have,PackageManager does not work when being injected via Annotation,Christian Loock,"",2014-06-05 07:40,"","",2014-06-05,"","",0,2014-06-05 05:26,"","",1711350,"",Flow 2.0.0,"Hi,
+
+when I try to use the PackageManager, i discovered the following odd behaviour.
+
+When I try to inject it via @Flow\Inject, any method called on it, will return no result.
+
+When I use a injectPackageManager method, it works normally."
+59366,TYPO3.Flow,Bug,"",Under Review,Should have,fix* lifecycle callbacks should not be registered for unproxied entities,Alexander Berl,"",2014-11-27 03:41,Persistence,"",2014-06-05,"","",0,2014-06-05 08:52,"","",1711750,"",Git master,"When entities are annotated @Flow\Proxy(false), lifecycle methods for fix* are still registered in the AnnotationDriver, leading to an exception being thrown by doctrine that the lifecycle callback method does not exist.
+
+Since unproxied classes are not supposed to work with AOP/DI and those fix* methods only deal with that, the registration of those fixes is unneeded in that case.
+
+Example code:
+https://gist.github.com/albe/77937e10cd2a86c12d09
+
+Note: Obviously, unproxied entities need to handle primary key/identifier themself."
+59404,TYPO3.Flow,Bug,"",Resolved,Must have,Sub-Requests losing arguments,Carsten Bleicker,Carsten Bleicker,2014-10-25 21:00,MVC,2.x,2014-06-07,"","",100,2014-06-07 10:06,"","",1713650,"",Git master,A sub-request losing its arguments it a route is defined with defaults.
+59442,TYPO3.Flow,Bug,"",Under Review,Should have,Composite primary keys including foreign entity don't work,Alexander Berl,"",2014-11-27 03:34,Persistence,"",2014-06-10,"","",0,2014-06-10 07:47,"","",1715550,"",Git master,"Currently, the implementation of the FlowAnnotationDriver prevents composite primary keys including an foreign entity reference do not work, as in the example of doctrine:
+http://docs.doctrine-project.org/en/2.0.x/tutorials/composite-primary-keys.html#identity-through-foreign-entities
+
+This is due to OneToOne and ManyToOne relations missing the following statement:
+<pre>
+if ($this->reader->getPropertyAnnotation($property, 'Doctrine\ORM\Mapping\Id') !== NULL) {
+	$mapping['id'] = TRUE;
+}
+</pre>"
+59672,TYPO3.Flow,Feature,Task #55953: Repair and streamline ValueObject support,Under Review,Should have,Add support for Doctrine 2.5 embeddables,Alexander Berl,Alexander Berl,2015-04-08 11:42,Persistence,"",2014-06-19,"","",0,2014-06-19 17:08,"","",1726950,"","","Doctrine 2.5 will finally support ValueObjects in the form of @Embedded/@Embeddable:
+https://github.com/doctrine/doctrine2/pull/835
+https://github.com/schmittjoh/doctrine2/commit/9ad376c0064fae0c8ae6f6c3e15406936323727c
+
+Flow should add support for this feature and extend ValueObjects to be embedded through an annotation setting."
+59747,TYPO3.Flow,Bug,"",New,Should have,TYPO3\Flow\Error\Exception thrown in file ErrorHandler.php,Harald Atteneder,"",2014-06-20 15:28,"","",2014-06-20,"","",0,2014-06-20 15:23,"","",1730700,"",FLOW3 1.1.0,"After update from 1.1.0-beta1 to 1.1.0 stable images in nodes aren't working any more. This message appears when visiting a site in the frontend and also when trying to open the media browser to insert an image.
+
+
+<pre>
+#1: Warning: symlink(): No such file or directory in /var/www/domain/public/TYPO3-Neos-1.1/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Resource_Publishing_FileSystemPublishingTarget.php line 252
+More information
+
+TYPO3\Flow\Error\Exception thrown in file
+Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Error/ErrorHandler.php in line 77.
+Reference code: 2014062021122072abab
+
+99 TYPO3\Flow\Error\ErrorHandler::handleError(2, ""symlink(): No such file or directory"", ""/var/www/domain/public/TYPO3-Neos-1.1/Data/T?Resource_Publishing_FileSystemPublishingTarget.php"", 252, array|3|)
+
+</pre>"
+59858,TYPO3.Kickstart,Bug,"",New,Must have,Property <Path>\CoffeeBean::$Persistence_Object_Identifier does not exist,Leandro Anthonioz,"",2015-01-13 06:20,"",2.x,2014-06-25,"","",0,2014-06-24 23:11,"","",1736250,"",Flow 2.0.0,"Hi, I'm a Yii developer trying to migrate to a DDD oriented PHP framework like Typo3 Flow :)
+
+I downloaded Typo3 Flow 2.2 this week and followed the QuickStart guide step by step (http://docs.typo3.org/flow/TYPO3FlowDocumentation/Quickstart/Index.html).
+
+However, after execute this command: 
+
+./flow kickstart:actioncontroller --generate-actions --generate-related Acme.Demo CoffeeBean
+
+I executed the following command:
+
+./flow doctrine:update
+
+And I received the following error:
+
+""Property Acme\Demo\Domain\Model\CoffeeBean::$Persistence_Object_Identifier does not exist""
+
+I manually added that property to the CoffeeBean model and that has solved this issue (I was able to do CRUD operations with that model) but I'm not sure if this is an expected manual change before execute ""doctrine:update"". Even if that property should be added manually, I guess will be useful include that step in the QuickStart steps for newbies like me.
+
+By the way, I like a lot the design of this framework, good job!
+
+Thank you!
+Leandro
+
+
+
+"
+59878,TYPO3.Flow,Bug,"",New,Must have,TYPO3\Flow\Core\Booting\Exception\SubProcessException thrown in file Scripts.php,Andrew Isaak,"",2014-06-25 09:29,- Error Handler Report -,1.1.1,2014-06-25,"",1.00,0,2014-06-25 08:52,"","",1737250,"",FLOW3 1.1.0,"When trying to run Neos 1.1.0 (extracted directly from the zip archive) on Windows (7 or 8 - tried both) using Xamp (or similar package), the following fatal error occurs. This is a *critical* bug.
+
+Execution of subprocess failed with exit code 1 without any further output. (Please check your PHP error log for possible Fatal errors)
+12 TYPO3\Flow\Core\Booting\Scripts::executeCommand(""typo3.flow:core:compile"", array|16|)
+
+11 TYPO3\Flow\Core\Booting\Scripts::initializeProxyClasses(TYPO3\Flow\Core\Bootstrap)
+
+10 call_user_func(array|2|, TYPO3\Flow\Core\Bootstrap)
+
+9 TYPO3\Flow\Core\Booting\Step::__invoke(TYPO3\Flow\Core\Bootstrap)
+
+8 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+7 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+6 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+5 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+4 TYPO3\Flow\Core\Booting\Sequence::invoke(TYPO3\Flow\Core\Bootstrap)
+
+3 TYPO3\Flow\Http\RequestHandler::boot()
+
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+
+Please include more helpful information!"
+59882,TYPO3.Flow,Bug,"",Closed,Should have,TYPO3\Flow\Core\Booting\Exception\SubProcessException thrown in file Scripts.php,Andrew Isaak,"",2014-06-25 09:41,- Error Handler Report -,1.1.1,2014-06-25,"",1.00,0,2014-06-25 09:34,"","",1737450,"",FLOW3 1.1.0,"Uncaught Exception
+  Warning: symlink(): Cannot create symlink, error code(1314) in
+  C:\xampp\htdocs\neos\Data\Temporary\Development\Cache\Code\Flow_Object_Classes\TYPO3_Flow_Resource_Publishing_FileSystemPublishingTarget.php
+  line 116
+
+More Information
+  Exception code      #1
+  File                C:\xampp\htdocs\neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Error\ErrorHandler.php line 77
+  Exception reference #20140625153238cc4e45
+
+13 TYPO3\Flow\Core\Booting\Scripts::executeCommand(""typo3.flow:doctrine:compileproxies"", array|16|)
+
+12 TYPO3\Flow\Core\Booting\Scripts::compileDoctrineProxies(TYPO3\Flow\Core\Bootstrap)
+
+11 TYPO3\Flow\Core\Booting\Scripts::initializeProxyClasses(TYPO3\Flow\Core\Bootstrap)
+
+10 call_user_func(array|2|, TYPO3\Flow\Core\Bootstrap)
+
+9 TYPO3\Flow\Core\Booting\Step::__invoke(TYPO3\Flow\Core\Bootstrap)
+
+8 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+7 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+6 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+5 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+
+4 TYPO3\Flow\Core\Booting\Sequence::invoke(TYPO3\Flow\Core\Bootstrap)
+
+3 TYPO3\Flow\Http\RequestHandler::boot()
+
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+
+Please include more helpful information!"
+60003,TYPO3.Fluid,Feature,"",New,Should have,Add required-Attribute to f:form.password,David Sporer,"",2014-06-30 10:53,ViewHelpers,"",2014-06-30,"","",0,2014-06-30 10:33,"","",1743450,"","","Currently the ViewHelper f:form.password doesn't support the required-Attribute.
+According to W3C the required attribute is valid for input-elements of type ""password"": http://www.w3.org/TR/html-markup/input.password.html
+Therefore I think TYPO3 Flow should allow the usage of the required Attribute.
+Adding required as optional parameter like it's done for the TextfieldViewHelper should be appropriate, shouldn't it?
+
+Current:
+<pre>
+/**
+	 * Renders the password input field.
+	 *
+	 * @return string
+	 * @api
+	 */
+	public function render() {
+		$name = $this->getName();
+		$this->registerFieldNameForFormTokenGeneration($name);
+
+		$this->tag->addAttribute('type', 'password');
+		$this->tag->addAttribute('name', $name);
+		$this->tag->addAttribute('value', $this->getValue());
+
+		$this->setErrorClassAttribute();
+
+		return $this->tag->render();
+	}
+</pre>
+
+Should be:
+<pre>
+/**
+	 * Renders the password input field.
+	 *
+	 * @param boolean $required If the field is required or not
+	 * @return string
+	 * @api
+	 */
+	public function render($required = FALSE) {
+		$name = $this->getName();
+		$this->registerFieldNameForFormTokenGeneration($name);
+
+		$this->tag->addAttribute('type', 'password');
+		$this->tag->addAttribute('name', $name);
+		$this->tag->addAttribute('value', $this->getValue());
+
+		if ($required === TRUE) {
+			$this->tag->addAttribute('required', 'required');
+		}
+		
+		$this->setErrorClassAttribute();
+
+		return $this->tag->render();
+	}
+</pre>
+
+I know that I can solve it by using the Textfield ViewHelper and specifying type=""password"" but it would be better if the password view helper also supports the required-Attribute."
+60069,TYPO3.Fluid,Bug,"",Resolved,Must have,Objects cast to string are not escaped,Philipp Maier,Bastian Waidelich,2014-08-26 02:33,ViewHelpers,"",2014-07-03,"","",100,2014-07-03 03:02,"","",1746700,"",Git master,"Basically if you have a class like this:
+
+class HelloWorld {
+public function __toString() { return '<script>alert(""hello world"");</script>' }
+}
+
+and you assign it as a fluid variable like this:
+
+$this->view->assign('helloworld', new HelloWorld());
+
+and have a template like this:
+
+{helloworld}
+
+you're going to have a bad time."
+60095,TYPO3.Flow,Feature,"",Under Review,Should have,LockManager's LockHoldingStackPage should be configurable,Kevin Fischer,"",2014-07-07 05:15,Configuration,"",2014-07-04,"","",0,2014-07-04 04:52,"","",1748000,"","","In the LockManager's current implementation, the file to be displayed when Flow is locked sadly is hard-coded on line 101:
+<pre>
+readfile(FLOW_PATH_FLOW . 'Resources/Private/Core/LockHoldingStackPage.html');
+</pre>
+
+This should be configurable and could be implemented like so in TYPO3.Flow's Settings.yaml:
+<pre>
+TYPO3:
+  Flow:
+    core:
+      lockHoldingStackPage: 'resource://TYPO3.Flow/Private/Core/LockHoldingStackPage.html'
+</pre>"
+60181,TYPO3.Fluid,Feature,"",New,Could have,Caching mechanism for Fluid Views/Templates,Kevin Fischer,"",2014-07-08 07:18,View,"",2014-07-08,"","",0,2014-07-08 07:18,"","",1752300,"","","It would be nice to have have a way to tell Fluid to cache the result of a getter or ViewHelper. This could be done e.g. by prefixing the expression with a @$@, a similiar special character or otherwise indicating that Fluid should cache this expression:
+
+<pre>
+Won't cache: {object.myComplexGetter}
+Will cache: {$ object.myComplexGetter}
+Uncached: {object.myComplexGetter}
+Cached: {$ object.myComplexGetter}
+</pre>
+
+<pre>
+Won't cache: {acme:time.consuming()}
+Will cache: {$ acme:time.consuming()}
+Uncached: {acme:time.consuming()}
+Cached: {$ acme:time.consuming()}
+</pre>
+
+The cache would operate on a per-file basis, as caching across multiple (independent) template and partial files could raise unforeseen issues and hard-to-debug errors.
+
+The cache would only care about the first part of an expression chain. All subsquent parts of a chain would be executed normally. To avoid running a long or time consuming expression more than once, you could still use the @<f:alias>@ ViewHelper.
+
+<pre>
+Will cache: {$ object.myComplexGetter}
+Uses cached result: {$ object.myComplexGetter -> f:count()}
+
+Uses cached result, with the time consuming VH being executed every time:
+{$ object.myComplexGetter -> acme:time.consuming()}
+</pre>
+
+I'd love to hear ideas and comments about this. Currently I'm using lots @<f:alias>@ in my code to accomplish this and I'd love to avoid it where possible.
+
+A related feature request for ViewHelpers from someone else: http://forge.typo3.org/issues/3291"
+60271,TYPO3.Fluid,Feature,"",New,Should have,"Paginate viewhelper, should also support arrays",Sebastian Strasser,"",2014-07-11 07:19,"","",2014-07-11,"","",0,2014-07-11 07:19,"","",1756800,"","","Hello,
+
+i want to use this viewhelper for a search result page,
+
+<pre>
+<f:widget.paginate objects=""{contacts}"" as=""paginatedContacts"" configuration=""{itemsPerPage:8, insertAbove:0, insertBelow:1, maximumNumberOfLinks:10, addQueryStringMethod: '{method}'}"">
+<div class=""container map_search_results"">
+
+    <f:for each=""{paginatedContacts}"" as=""contact"">
+
+        <f:render partial=""List/Contact"" arguments=""{contact: contact, lang: lang}"" />
+
+    </f:for>
+    <div class=""clear-fix""></div>
+
+</div>
+</f:widget.paginate>
+</pre>
+
+but i got a php error:
+@PHP Fatal error:  Call to a member function getQuery() on a non-object in ...\cms\typo3\sysext\fluid\Classes\ViewHelpers\Widget\Controller\PaginateController.php on line 76@
+"
+60430,TYPO3.Fluid,Feature,"",Closed,Should have,Add a negate-option to the IfViewHelper,Stefan Neufeind,"",2014-08-01 03:59,ViewHelpers,"",2014-07-21,"","",0,2014-07-21 07:14,"","",-7700,"","",Allows to simply turn conditions into the opposite.
+60556,TYPO3.Flow,Bug,"",Closed,Should have,"Form VewiHelpers inside a Widget that is inside a f:form, are unaware of the surrounding form",Christian Loock,Bastian Waidelich,2015-02-25 11:27,"","",2014-07-25,"","",0,2014-07-25 06:09,"","",-14000,"",(any),"When I use a custom widget ViewHelper inside a f:form, I cannot use f:form.* ViewHelpers inside the widget, like I could inside the form itself:
+
+Example. (Assume that foo is an object that has a property bar)
+
+The for:
+<f:form action=""update""  objectName=""foo"" object=""{bar}"">
+<vendor:widget.baz/>
+
+</f:form>
+
+And inside the widget:
+
+<f:form.textfield propery=""bar""/>
+
+Will result in a text field:
+
+<input type=""text"" name=""bar"">
+
+instead of 
+
+<input type=""text"" name=""foo[bar]"">
+
+
+There should at least be an option to make this possible in widget, to be able to build more complex form controlls, that write into object properties."
+60856,TYPO3.Fluid,Bug,"",New,Must have,Target attribute not supported by the form viewhelper,Mathias Brodala,"",2014-08-08 07:14,ViewHelpers,"",2014-08-08,"","",0,2014-08-08 07:14,"","",-28950,"",(any),The @target@ attribute is valid in pretty much every (X)HTML doctype (except XHTML 1.0 Strict) and should be supported by the @FormViewHelper@ out of the box. Currently one has to work around this issue with  @additionalAttributes@.
+61043,TYPO3.Flow,Task,"",New,Should have,Rename ClassSchema to ModelSchema,Andreas Wolf,"",2014-08-18 17:20,Reflection,"",2014-08-18,"","",0,2014-08-18 15:22,"","",-38300,"","","I think the new name would fit a lot better, as this is what the class in fact contains. The old name is not wrong, but leaves room for interpretation."
+62009,TYPO3.Flow,Bug,"",New,Should have,Rewrite URI Filename could be empty,Bernhard Esders,"",2014-10-07 05:03,"","",2014-10-02,"","",0,2014-10-02 10:08,"","",-86350,"",Flow 2.0.0,"Due to an error in the following method, it may happen that an empty file name is generated. 
+This happens whenever the file name does not consist of at least one ASCII character.
+
+_TYPO3\Flow\Resource\Publishing\AbstractResourcePublishingTarget->rewriteFilenameForUri_
+@
+protected function rewriteFilenameForUri($filename) {
+     return preg_replace(array('/ /', '/_/', '/[^-a-z0-9.]/i'), array('-', '-', ''), $filename);
+}
+@
+
+Thus, it is not possible to load the file."
+62292,TYPO3.Flow,Major Feature,"",New,Should have,Support for entity translation,Artus Kolanowski,"",2014-10-16 21:18,I18n,2.x,2014-10-17,"","",0,2014-10-16 20:31,"","",-100500,"","","It seems TYPO3 Flow doesn't support the translation of entities currently in a generic way. So either you choose some non generic approach like the following and do it again and again for all your entities which needs to be _translatable_:
+
+<pre>
+/**
+ * @Flow\Entity
+ */
+class Product {
+ 
+  /**
+   * @var Product
+   * @ORM\ManyToOne(inversedBy=""translations"")
+   */
+  protected $translationOriginal;
+ 
+  /**
+   * @var Collection<Product>
+   * @ORM\OneToMany(mappedBy=""translationOriginal"")
+   */
+  protected $translations;
+ 
+  /**
+   * @var string
+   */
+  protected $locale;
+ 
+  ...
+ 
+}
+</pre>
+
+
+Or you try to implement it in a aspect oriented way like this, which of course might be a lot of work to realize:
+
+<pre>
+/**
+ * @Flow\Entity
+ */
+class Product {
+ 
+  /**
+   * @var string
+   * @Flow\Translatable
+   */
+   protected $name;
+ 
+   ...
+ 
+}
+</pre>
+
+Currently we have some multi-language projects in the pipe for which we could use TYPO3 Flow but without the aspect @Translatable@ it makes our decision not so easy.
+
+Please excuse if this is a stupid feature request. The examples are from Akii and his article _My thoughts on Entity Translation in TYPO3 Flow_. So are there any plans about it or is this a pretty rare aspect?"
+62346,TYPO3.Fluid,Feature,"",New,Could have,f:comment should have high precende,martin no-lastname-given,"",2014-10-20 05:33,Core,3.x,2014-10-20,"","",0,2014-10-20 05:33,"","",-103200,"","",Although it's only a viewhelper i think f:comment should be interpreted at highest priority. sections cannot be put inside a comment as they are interpreted before the comment is in effect.
+62740,TYPO3.Flow,Bug,"",New,Should have,Add check on literal in TypeHandlingUtility::isCollectionType,Arjen Hoekema,"",2014-11-06 14:06,Utility,"",2014-11-06,"","",0,2014-11-06 07:26,"","",-122900,"",(any),"Add a check to 'isLiteral' before doing expensive 'class_exists' operations trying to resolve objects for literals like: string, int, etc.
+
+Maybe the ValidatorResolver could also do a check on a 'literal' before doing a 'class_exists' in 'buildBaseValidatorConjunction'."
+64342,TYPO3 Flow Base Distribution,Bug,"",New,Should have,ResourceManager->deleteResource() leaves database entry,Christoph Lehmann,"",2015-02-12 15:51,"","",2015-01-18,"","",0,2015-01-18 11:03,"","",-202900,"",Git 2.0,"I use typo3/flow 2.3.1 (c6f77fef8b8af9bf17db7f97f6ecd14ecf3331b9)
+
+It removes the resource from filesystem, but leaves a database entry in typo3_flow_resource_resource and in typo3_flow_resource_resourcepointer."
+64842,TYPO3.Flow,Feature,"",New,Could have,Validation of Property should also happen before Property Mapping.,Hardik Satasiya,"",2015-02-04 04:35,"","",2015-02-04,"","",0,2015-02-04 04:35,"","",-227850,"","","Problem :
+
+I have relation from my model to user many to one so when i try to insert record and if i choose staff it works like charm but if i put it blank it throws me error during property mapping.
+
+it seems its mapping argument before validating it.
+
+As in post arguments :
+
+momentForm[staff] = <blank> <-- throws error NULL given insted of ExtendedUser
+If i remove ""momentForm[staff]"" then it validates the property properly.
+
+But i can not remove ""momentForm[staff]"" from post if some one is not selecting anything from select box.
+
+
+validation after :
+initialize*Action - for manual property mapping
+validation before :
+and before automatic property mapping
+
+
+*Scenario :*
+
+*template :*
+@<f:form action=""addMoment"" method=""post"" objectName=""momentForm"" >
+...
+	<f:form.select property=""staff"" prependOptionLabel=""- select staff -"" options=""{staff}""  optionLabelField=""name"" />@
+...
+
+*model :*
+
+@/**
+ * @var <package-name>\Domain\Model\ExtendedUser
+ * @Flow\Validate(type=""NotEmpty"")
+ * @ORM\ManyToOne
+ * @ORM\Column(options={""comment""= ""Referance to User Account""})
+ */
+protected $staff;@
+
+*controller :*
+@
+/**
+ * add moment Action
+ *
+ * @param <package-name>\Domain\Model\<model-name> $momentForm
+ * @return void 
+ */
+public function addMomentAction($momentForm) {@"
+64970,TYPO3.Flow,Bug,"",Rejected,Must have,empty email address should return false in EmailAddressValidator,Tobias Braumann,Bastian Waidelich,2015-02-10 08:58,Validation,2.x,2015-02-10,"","",0,2015-02-10 07:56,"","",-234250,"",Flow 2.0.0,"I expected that an empty email adress in EmailAddressValidator, would return false, but that will not be checked until now. "
+65424,TYPO3.Fluid,Bug,"",Under Review,Should have,SelectViewHelper must respect  option(Value|Label)Field for arrays,Stefan Neufeind,"",2015-02-28 16:23,ViewHelpers,"",2015-02-28,"","",0,2015-02-28 16:21,"","",-256950,"",FLOW3 1.1.0,"
+<f:form.select options=""{array}"" optionValueField=""uid"" optionLabelField=""title"" />
+
+
+should work with the given array:
+
+array(
+    array(
+        'uid' => 1,
+        'title' => 'Foo'
+    ),
+    array(
+        'uid' => -1,
+        'title' => 'Bar'
+    ),
+    array(
+        'title' => 'Baz'
+    ),
+    array(
+        'uid' => '2'
+    ),
+)
+
+Currently fluid tries to use the keys as values and the arrays as label which results in an error.
+
+(Port to upstream from TYPO3 CMS, #65073)"
+65684,TYPO3.Flow,Bug,"",New,Should have,Could not acquire lock for ClassLoader cache creation,Sandeep Ranjan,Sebastian Heuer,2015-03-12 10:07,"","",2015-03-12,"","",0,2015-03-12 04:26,"","",-269950,"",Flow 2.0.0,"Hello,
+
+I have following questions regarding Lock Mechanism.
+
+1)How can we unlink expired lock files?
+2)Why empty files created in Lock?
+
+Best regards
+Sandeep"
+65758,TYPO3.Flow,Bug,"",Rejected,Must have,Error in AccessDecisionVoterManager,Thomas Lorenzen,Bastian Waidelich,2015-03-16 12:38,"",2.x,2015-03-16,"","",0,2015-03-16 06:53,"","",-273650,"",(any),"<toleranzen> Hi guys, I'm (still) having problems with access and routing in Flow 2.3.2
+<toleranzen> When trying to access my updateAction() I get the following in my log file:
+<toleranzen> Router route(): A cached Route with the cache identifier ""418a3a01f20eb0132d5e895135e7b203"" matched the path ""clioonline.abo2/product/update""
+<toleranzen> No CSRF required, safe request
+<toleranzen> Uncaught exception #1222268609 in line 341 of /hostroot/ABO2/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Security_Authorization_AccessDecisionVoterManager.php: Access denied (0 denied, 0 granted, 1 abstained)
+<toleranzen> Somehow my list/edit/new/create actions work fine, but my updateAction is rejected
+<toleranzen> Any ideas ?
+<toleranzen> Things seem to work fine with Flow 2.2.2 by the way"

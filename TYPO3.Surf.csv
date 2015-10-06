@@ -1,0 +1,556 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+35801,TYPO3.Surf,Bug,"",Resolved,Must have,Hardcoded Production context,Julian Kleinhans,Christopher Hlubek,2013-03-19 13:05,"","",2012-04-09,"","",100,2012-04-09 16:47,"","",554800,"",Use surf with other context is not possible bcause there are several hardcoded lines with the Production context. See attached screen
+37074,TYPO3.Surf,Bug,"",Resolved,Must have,CopyConfigurationTask should respect a configured port,Thomas Allmer,"",2013-01-23 04:30,"","",2012-05-10,"","",100,2012-05-10 13:12,"","",616800,"","A different configured port for your ssh connection should also be respected by the CopyConfigurationTask.
+<pre>
+$node->setOption('port', '1234');
+</pre>"
+37077,TYPO3.Surf,Feature,"",Needs Feedback,Should have,Surf should also support local checkout and rsync to server,Thomas Allmer,Thomas Allmer,2013-08-01 10:50,"","",2012-05-10,"","",90,2012-05-10 14:23,"","",616900,"","For that to work the following steps should be done:
+1) a possibility to checkout locally
+2) a Rsync Task
+3) move the ""copy from cache to release"" into a separate Task (CopyCacheToReleaseTask)
+
+h1. Details:
+h2. 1) checkout locally
+I currently have an option ""$application->hasOption('localPath')"", if present it well checkout on localhost to this path instead of the remote host and deployPath. Opinions?
+I would probably also want to change the path ""cache/localgitclone"" to "".localclone""? As the folder for the ""remote"" should be the same regarding of usage as git or rsync. Or more meaningfull name? sugguestions?
+
+h2. 2) Rsync Task
+pretty straight forward rsync from local folder "".localclone""? to remote folder "".localclone""
+
+h2. 3) CopyCacheToReleaseTask
+As we now need to copy from a ""cache or clone"" in two separate task it would be better to create a task for it.
+Furthermore it would give the possibility to add Task after this one instead of the gitcheckout.
+
+h2. Resume:
+I currently have a working solution but I'm not sure about the naming and stuff so I ask here for opinions before creating a patch for gerrit. Furthermore I also have a completely separate Application ""FLOW3rsynch"" as it wasn't possible to use FLOW3 or BaseApplication. So I'm again not sure howto do this ""more"" properly... 
+
+Looking forward to your input :)"
+37201,TYPO3.Surf,Bug,"",New,Should have,setfilepermissions task should use sudo,Karsten Dambekalns,"",2012-05-15 15:01,"","",2012-05-15,"","",0,2012-05-15 15:01,"","",622850,"",.
+37778,TYPO3.Surf,Feature,"",New,Should have,Surf should have a CopyCacheToReleaseTask instead of copying in the git checkout,Thomas Allmer,"",2012-06-05 19:26,"","",2012-06-06,"","",100,2012-06-05 19:02,"","",651550,"",If Surf wants to support multiple transfer methods there has to be a generic Task which copies the tranfered files to the release.
+40225,TYPO3.Surf,Bug,"",New,Should have,encrypt:setup fails if Build/Surf/Keys/ does not exist,Andreas Wolf,"",2012-08-26 07:38,"","",2012-08-26,"","",0,2012-08-26 07:38,"","",772700,"",The directory should be created if it does not exist.
+40287,TYPO3.Surf,Feature,"",New,Should have,SetFilePermissionsTask should care about the shared data directory,Marco Falkenberg,"",2013-07-05 05:50,"","",2012-08-28,"","",0,2012-08-28 04:46,"","",775800,"",The shared data directory usually created by the CreateDirectoriesTask should be writeable by the web server process.  
+40292,TYPO3.Surf,Task,"",New,Should have,CopyConfigurationTask should not use scp when doing local copies,Marco Falkenberg,"",2012-09-25 14:59,"","",2012-08-28,"","",0,2012-08-28 05:33,"","",776050,"","When doing a local deployment (e.g. with a standalone ""updater"") the CopyConfigurationTask should use @cp@ instead of @scp@ to avoid errors when ssh'ing to local is not possible. "
+41513,TYPO3.Surf,Feature,"",Resolved,Should have,Composer support,Rens Admiraal,"",2012-10-02 04:30,"","",2012-10-02,"","",100,2012-10-02 03:01,"","",832850,"","How to change Surf to work with Composer
+
+we add a new task ""composer:install"", which will just run ""composer install"" in the workspace directory
+this re-downloads the dependencies all the time currently, but we hope composer will solve that for us soon (see https://github.com/composer/composer/pull/915 )
+check if --prefer-source improves this
+The FLOW3 Application Surf wll be adjusted to run the composer:install task by default
+The composer:install will check at first the following things:
+if composer.json is not found, skip the step -> so it's backwards-compatible
+if composer command not found (the task should use a option ""composerCommandPath"" for that), throw error
+then run ""composer install --no-ansi --no-interaction""
+"
+41830,TYPO3.Surf,Bug,"",New,Should have,Workflow-simulation fails on new nodes during cleanup task,Martin Ficzel,"",2012-10-10 06:08,"","",2012-10-10,"","",0,2012-10-10 06:08,"","",846950,"","The simulation of a deployment fails if the /releases path on the target-node does'nt exist yet and keepReleases is not 0. Since that path would be created by surf during deploy that error should be avoided.
+
+You can workaround that by setting keepReleases to zero during first simulate/deploy but that ist no permanent solution. Another solution is to simply ignore the fail during surf:simulate since surf:deploy works as expected."
+41893,TYPO3.Surf,Bug,"",Needs Feedback,Must have,Could not retrieve sha1 of git branch master,Martin Lauer,Martin Lauer,2013-08-01 10:54,"","",2012-10-11,"","",0,2012-10-11 10:52,"","",849850,"","Got exception ""Could not retrieve sha1 of git branch ""master"""" but rollback disabled. Stopping.
+
+The task typo3.surf:gitcheckout fails, but
+<pre>
+git ls-remote ssh://git@hostname/project refs/heads/master | awk '{print $1 }' 
+</pre>
+delivers a sha1.
+
+Access to the Repo is done via ssh pubkey auth."
+42055,TYPO3.Surf,Feature,"",Resolved,Should have,Support git submodules inside git submodules,Dennis Ahrens,"",2012-11-30 10:30,"","",2012-10-16,"","",100,2012-10-16 12:03,"","",857700,"","I've set up an distribution using the v6.0 core and included the core as a submodule. When deploying with Surf the submodules of the core were not initialized and updated.
+
+It's possible to work around with the 'gitPostCheckoutCommands', but it would be nice if this will be supported by Surf directly."
+43125,TYPO3.Surf,Bug,"",New,Should have,Adjust typo3.surf:typo3:flow:unittest Task to use build,Cedric Ziel,"",2012-11-19 19:12,"","",2012-11-20,"","",0,2012-11-19 19:11,"","",910300,"","For now, UnitTestTask looks like:
+<pre>
+$this->shell->executeOrSimulate('cd ' . $targetPath . ' && phpunit -c Build/Common/PhpUnit/UnitTests.xml', $node, $deployment);
+</pre>
+
+According to the changes in buildessentials, this should be:
+<pre>
+$this->shell->executeOrSimulate('cd ' . $targetPath . ' && phpunit -c Build/buildessentials/PhpUnit/UnitTests.xml', $node, $deployment);
+</pre>
+
+Right?"
+43366,TYPO3.Surf,Bug,"",New,Should have,"Misleading error message if ""expect"" is not available",Mario Rimann,"",2013-07-09 02:07,"","",2012-11-28,"","",0,2012-11-27 18:09,"","",922300,"","I tried to deploy an application to a remote server and the process always failed with a bold red error message (the last line from the Shell output below) which is misleading.
+
+Instead of the shown error message, I'd have expected something like ""Command line tool expect is not available on your system, please install it first.""
+
+<pre>
+./flow surf:deploy --verbose MyApp-staging
+Deploying MyApp-staging (20121127235530)
+Using workflow ""Simple workflow""
+Stage initialize
+Node my-crazy-host
+Application MyApp
+Executing stage ""initialize"" on ""my-crazy-host"" for application MyApp
+my-crazy-host (MyApp) typo3.surf:createdirectories
+$roosta: ""test -d /var/www/myapp.ch/staging""
+    > sh: 1: expect: not found
+Got exception ""Deployment directory ""/var/www/myapp.ch/staging"" does not exist on node my-crazy-host"" but rollback disabled. Stopping.
+</pre>"
+45072,TYPO3.Surf,Bug,"",Closed,-- undefined --,Possible error with git submodules,Sven Radetzky,"",2013-08-01 11:00,"","",2013-02-01,"","",0,2013-02-01 08:38,"","",1005850,"","The first thing i wanna say is that i am not 100 percent sure that this is a Surf Bug. But i get this rather interesting error while running Surf with my current project.
+
+<pre>
+Deploying demo.seite.de (20130201132902)
+Using workflow ""Simple workflow""
+Stage initialize
+Node demo.seite
+Application projekt
+Executing stage ""initialize"" on ""demo.seite"" for application projekt
+demo.seite (projekt) typo3.surf:createdirectories
+$demo.seite: ""test -d www/demo.seite.de""
+$demo.seite: ""mkdir -p www/demo.seite.de/releases;mkdir -p www/demo.seite.de/shared;mkdir -p www/demo.seite.de/releases/20130201132902;cd www/demo.seite.de/releases;ln -snf ./20130201132902 next""
+Task ""typo3.surf:generic:createDirectories"" after ""typo3.surf:createdirectories"" for application projekt
+demo.seite (projekt) typo3.surf:generic:createDirectories
+demo.seite (projekt) typo3.surf:typo3:flow:createdirectories
+$demo.seite: ""mkdir -p www/demo.seite.de/shared/Data/Logs;mkdir -p www/demo.seite.de/shared/Data/Persistent;mkdir -p www/demo.seite.de/shared/Configuration""
+Stage update
+Node demo.seite
+Application projekt
+Executing stage ""update"" on ""demo.seite"" for application projekt
+demo.seite (projekt) typo3.surf:gitcheckout
+$demo.seite: ""git ls-remote ssh://git@bitbucket.org/firma/projekt/ refs/heads/master | awk '{print $1 }'""
+    > 4ff99ac790d3275bceb0c4b645b8038e49459b4c
+$demo.seite: ""if [ -d www/demo.seite.de/cache/localgitclone ];     then      cd www/demo.seite.de/cache/localgitclone      && git fetch -q origin      && git reset -q --hard 4ff99ac790d3275bceb0c4b645b8038e49459b4c      && git submodule -q init      && for mod in `git submodule status | awk '{ print $2 }'`; do git config -f .git/config submodule.${mod}.url `git config -f .gitmodules --get submodule.${mod}.url` && echo synced $mod; done      && git submodule -q sync      && git submodule -q update --init --recursive      && git clean -q -d -x -ff;     else      git clone -q ssh://git@bitbucket.org/firma/projekt/ www/demo.seite.de/cache/localgitclone      && cd www/demo.seite.de/cache/localgitclone      && git checkout -q -b deploy 4ff99ac790d3275bceb0c4b645b8038e49459b4c      && git submodule -q init      && git submodule -q sync      && git submodule -q update --init --recursive;    fi""
+    > No submodule mapping found in .gitmodules for path 'Packages/Application/TYPO3.Form'
+No submodule mapping found in .gitmodules for path 'Packages/Application/TYPO3.Form'
+Got exception ""Command returned non-zero return code: 1"" rolling back.
+Rolling back TYPO3\Surf\Task\TYPO3\Flow\CreateDirectoriesTask
+Rolling back TYPO3\Surf\Task\Generic\CreateDirectoriesTask
+Rolling back TYPO3\Surf\Task\CreateDirectoriesTask
+$demo.seite: ""rm www/demo.seite.de/releases/next;rm -rf www/demo.seite.de/releases/20130201132902""
+</pre>
+
+So either it's an error in TYPO3.Surf or in TYPO3.Form, really not sure which though."
+46052,TYPO3.Surf,Bug,"",Resolved,Should have,Must support subcontext,Dominique Feyer,Dominique Feyer,2013-05-07 05:24,"","",2013-03-05,"","",100,2013-03-05 16:18,"","",1054000,"","If we use ""Production/Staging"" context per ex. we have a subdirectory in the configuration directory, and this directory break the SymlinkConfigurationTask because we use ""rm -f Production/*"", but should be ""rm -Rf Production/*""
+
+Patch is coming"
+47727,TYPO3.Surf,Bug,"",New,Must have,Array merge in Workflow works not as expected,Joachim Mathes,"",2013-07-05 05:48,"","",2013-04-30,"","",0,2013-04-30 05:44,"","",1136550,"","The method @setTaskOptions()@ uses @array_merge_recursive()@ to merge previously set options with current ones. The PHP documentation says: _If the input arrays have the same string keys, then the values for these keys are merged together into an array._ Thus, if you have more than one Application to deploy, options like @typo3.surf:gitcheckout@ will be set like this:
+
+<pre>
+array(3) {
+  [""sha1""]=>
+  array(2) {
+    [0]=>
+    NULL
+    [1]=>
+    NULL
+  }
+  [""tag""]=>
+  array(2) {
+    [0]=>
+    NULL
+    [1]=>
+    NULL
+  }
+  [""branch""]=>
+  array(2) {
+    [0]=>
+    NULL
+    [1]=>
+    NULL
+  }
+}
+</pre>
+
+This will lead to an error in the @gitcheckout@ task, eventually.
+
+In my opinion @setTaskOptions()@ should use PHP function @array_replace_recursive()@.
+
+"
+48135,TYPO3.Surf,Bug,"",Resolved,Must have,funtion prepareCommand() in class ShellCommandService,Dietrich Heise,Dietrich Heise,2013-08-22 09:30,"","",2013-05-13,"","",100,2013-05-13 07:56,"","",1156800,"","If the command-array is imploded by a semicolon
+only the return code of the last command is used for the exit code.
+
+Example: a TYPO3.Surf TASK - execute function:
+
+$commands = array(
+  ""/bin/false"",
+  ""ls -la""
+);
+$this->shell->executeOrSimulate($commands, $node, $deployment);
+
+This example will have an exit code of zero!
+
+For this example it is better to implode the commands by ""&&"", so if one command fail, no other command will be executed and the exit code ist right.
+
+
+--- a/Classes/TYPO3/Surf/Domain/Service/ShellCommandService.php
++++ b/Classes/TYPO3/Surf/Domain/Service/ShellCommandService.php
+@@ -188,7 +188,7 @@ class ShellCommandService {
+                if (is_string($command)) {
+                        return trim($command);
+                } elseif (is_array($command)) {
+-                       return implode(';', $command);
++                       return implode('&&', $command);
+                } else {
+                        throw new \TYPO3\Surf\Exception\TaskExecutionException('Command must be string or array, ' . gettype($command) . ' given.', 1312454
+                }
+"
+48652,TYPO3.Surf,Bug,"",Resolved,Should have,Copying configuration fails for files in subdirectories,Andreas Wolf,"",2015-01-25 17:42,"","",2013-05-29,"","",100,2013-05-29 12:51,"","",1182400,"","When a file should be copied to a subdirectory of @Configuration/*/@, e.g. for a subcontext, the scp operation fails.
+
+The (misleading) error message is @scp: /var/www/.../Configuration/Production/Subcontext/: Is a directory@ ? the real cause is that the directory does not exist and thus scp would rather copy the file to the folder path, which is pointless as the path points to a directory.
+
+Solution would be to execute a @mkdir -p ...$configurationPath@ before copying the file."
+49362,TYPO3.Surf,Feature,"",New,Should have,pipe stdout to another process in ShellCommandService,Felix Oertel,"",2013-06-23 12:26,"","",2013-06-23,"","",0,2013-06-23 11:59,"","",1217700,"","Hey,
+
+I'd love to pipe the stdout of my process run via ShellCommandService to another process. In my case, I'd like to pipe the output of remote mysqldump into a file ... "
+49388,TYPO3.Surf,Feature,"",New,Should have,Remove temporary data when archiving releases,Karsten Dambekalns,"",2013-06-24 10:54,"","",2013-06-24,"","",0,2013-06-24 10:54,"","",1219000,"",Old releases kept after a switch should have their temporary files removed to save disk space and inodes.
+49489,TYPO3.Surf,Feature,"",Resolved,Should have,Add noRecursiveSubmodules option to GitCheckoutTask,Patrick Pussar,"",2013-08-22 10:30,"","",2013-06-28,"","",100,2013-06-28 07:40,"","",1224050,"","In some cases it is necessary to prevent git from checking out
+submodules recursively during a Surf deployment in which composer is not
+used. If the option ""noRecursiveSubmodules"" is set to true, only the
+submodules directly referenced in the base repository are fetched and
+checked out.
+
+If the option is not set, or set to false, all submodules are fetched
+and checked out recursively. Therefore, the default behaviour does not
+change."
+49701,TYPO3.Surf,Feature,"",New,Should have,Add tasks to deal with mysql dumps,Felix Oertel,"",2013-07-05 09:39,"","",2013-07-05,"","",0,2013-07-05 09:35,"","",1234450,"","Hey,
+
+this allows you to 
+* dump database into a file
+* play dumped file into database
+
+Of course working in a two-node-constellation, so you can simply pipe sql from your live-server to your preview-server for example. I will add documentation, as soon as it is given, you want to integrate that feature.
+
+The target of an operation is the node you are currently deploying to (backup would be one exception, as you would backup the current node to a target place.). For now we want to stick to dump database -> write database, so you have to set up a second node, acting as the source. You do this just like a normal node:
+
+@$sqlSourceNode = new \TYPO3\Surf\Domain\Model\Node('sqlSource');
+$sqlSourceNode->setHostname('www.foertel.com');
+$sqlSourceNode->setOption('username', 'foertel');@
+
+You can add pathes to the mysqldump or gzip binary, if you have to.
+
+@$sqlSourceNode->setOption('mysqldumpBinary', '/usr/bin/mysqldump');
+$sqlSourceNode->setOption('gzipBinary', '/bin/gzip');@
+
+Next up you have to configure the task itself:
+
+@$node->setOption('typo3.surf:mysql:dump', array(
+	'node' => $sqlSourceNode,
+	'database' => 'foertelcom',
+	'username' => 'admin',
+	'password' => '',
+	'ignoreTables' => array('tx_extbase_cache_object', 'tx_extbase_cache_object_tags', 'tx_extbase_cache_reflection', 'tx_extbase_cache_reflection_tags'),
+	'hostname' => 'localhost,
+	'additionalParameters' => '--single-transaction --quick --lock-tables=false',
+));@
+
+As you can see, you could just use your node for the 'node'-directive, if that's what you want. ;)
+
+Just add typo3.surf:mysql:dump as a task to your deployment and it will dump your database to a file in /tmp/surf_$releaseIdentifier.sql.gz
+
+Now you could move that file to a backup folder (there is no task for that right now, I have one and will publish it soon, node-based rsync included ;) )
+
+All you can do right now is putting that dump back into a(nother) database. The typo3.surf:mysql:integrate will always use the current node to put the dump in ... makes sense. So just add the task configuration:
+
+@$node->setOption('typo3.surf:mysql:integrate', array(
+	'database' => 'foertelcom',
+	'username' => 'admin',
+	'password' => '',
+));@
+
+and add the task to your deployment.
+
+To clean up the dump after you, just add typo3.surf:mysql:removeTempFile task and you are good to go!"
+49702,TYPO3.Surf,Feature,"",New,Should have,Make all options overrideable,Felix Oertel,"",2013-07-05 10:03,"","",2013-07-05,"","",0,2013-07-05 09:50,"","",1234500,"","It's really necessary to overwrite internal options with cli arguments, like @--git-checkout-tag:v1.0.3@."
+49703,TYPO3.Surf,Feature,"",Resolved,Should have,Make release/ path configurable,Felix Oertel,"",2014-07-28 06:41,"","",2013-07-05,"","",100,2013-07-05 10:01,"","",1234550,"",Make release/ path configurable - like deployment path is - by setting @$application->setReleasesDirectory('deployments');@
+49798,TYPO3.Surf,Feature,"",New,Should have,Make PHP binary and PHP ini configurable,Martin Lipp,"",2013-07-08 14:14,"","",2013-07-08,"","",0,2013-07-08 14:14,"","",1239250,"","Use the settings core.phpBinaryPathAndFilename and core.subRequestPhpIniPathAndFilename when executing Flow commands, to be able do use custom PHP binary paths and configuration files in Surf as well, as it's already possible in Flow."
+49799,TYPO3.Surf,Feature,"",New,Should have,Persist the SSH connection per deployment,Martin Lipp,"",2014-07-28 05:50,"","",2013-07-08,"","",0,2013-07-08 15:30,"","",1239300,"",In the current version Surf opens a new SSH connection for every shell command. Since some (mostly managed) hosting servers disallow multiple connections opened in short succession the deployment fails. Because of that (and because it seems to be a better practice too) it would be nice to open only one SSH connection per deployment and reuse it for all commands.
+49973,TYPO3.Surf,Bug,"",Resolved,Must have,add version to composer.json,Felix Oertel,"",2013-08-07 05:30,"","",2013-07-12,"","",100,2013-07-12 07:28,"","",1247650,"",Current composer.phar expects version to be set.
+50151,TYPO3.Surf,Feature,"",Resolved,Should have,Add fetchAllTags option to GitCheckoutTask,Patrick Pussar,"",2013-09-03 09:30,"","",2013-07-18,"","",100,2013-07-18 07:22,"","",1256300,"","Without further options, ""git fetch"" only fetches tags that point at objects reachable from the branch heads (man 1 git-fetch). If a tag is not fetched, the following step (git reset) will not proceed. Therefore, it is necesary to force git to download all tags in some circumstances.
+This can be done by setting the option ""fetchAllTags"" to true."
+50554,TYPO3.Surf,Bug,"",New,Should have,"CopyConfigurationTask does not use the node-option ""password""",Martin Ficzel,Martin Ficzel,2013-08-05 04:01,"","",2013-07-30,"","",0,2013-07-30 06:09,"","",1276250,"",The CopyConfigurationTask uses the configured username but not the password for copying the files to the node via scp. Since other tasks use the password-option this should be supported here aswell. 
+50557,TYPO3.Surf,Bug,"",Resolved,Must have,workflow->removeTask does not work any more and is destroying the array structure,Martin Ficzel,"",2013-09-02 09:30,"","",2013-07-30,"","",100,2013-07-30 07:14,"","",1276400,"","Since commit 2b7d957eaf77acddef4028cd965822545b2853b0 the removeTask methods does destroy the structure of its internal taks-array. The reason is a misordering in the task-array addressing in the mentioned commit. 
+
+The line 61 should be altered like this:
+<pre>
++ $this->tasks['stage'][$applicationName][$stageName][$step] = array_filter($tasks, function($task) use ($removeTask) { return $task !== $removeTask; });
+- $this->tasks['stage'][$applicationName][$step][$stageName] = array_filter($tasks, function($task) use ($removeTask) { return $task !== $removeTask; });
+</pre>"
+50639,TYPO3.Surf,Feature,"",New,Should have,support SVN,Tobias Liebig,"",2013-08-01 09:32,"","",2013-08-01,"","",0,2013-08-01 09:32,"","",1280400,"","Like Surf supports Git for as VCS, Surf should support SVN too.
+
+Thus we need a SVNCheckoutTask like the current GitCheckoutTask and a Package\SVNTask (like Package\GitTask)"
+50640,TYPO3.Surf,Feature,"",New,Should have,refactor DeploymentService > DeploymentRepository,Tobias Liebig,"",2013-08-01 09:43,"","",2013-08-01,"","",0,2013-08-01 09:43,"","",1280450,"","To support other configuration formats, the DeploymentService should be refactored.
+
+Other formats (instead of the default 'PHP') might be JSON, XML or a implementation fetching the informations from a database or custom webservice.
+
+Instead of the current DeploymentService implementation we need a ""DeploymentRepositoryInterface"", which can be implemented by a custom DeploymentRepository. Surf should provide then a repository implementation for the current php-file-based configurations.
+"
+50641,TYPO3.Surf,Feature,"",New,Should have,Make simple deployment description as slim as possible,Tobias Liebig,"",2013-08-01 09:48,"","",2013-08-01,"","",0,2013-08-01 09:48,"","",1280500,"","A simple deployment description should by as slim as possible.
+
+* Check level of option assignment (deployment, node or application)
+* Check default option values
+* provide a slim and simple example"
+50642,TYPO3.Surf,Feature,"",New,Should have,Create new ComposerApplication,Tobias Liebig,"",2013-08-01 09:54,"","",2013-08-01,"","",0,2013-08-01 09:54,"","",1280550,"","FlowApplications are deployed using composer and all composer related stuff is implemented in the FlowApplication. Other Applications might based on Composer too, so it makes sense to extract the composer stuff from the FlowApplication and create a ComposerApplication as common base."
+50644,TYPO3.Surf,Feature,"",New,Should have,helper setter for common options,Tobias Liebig,"",2013-08-01 09:55,"","",2013-08-01,"","",0,2013-08-01 09:55,"","",1280650,"","Currently some options need to be set using the generic setOption setter. For the API it would be nice to have explicit helper setter for common options ($application->setUpdateMethod(...), ?)"
+50646,TYPO3.Surf,Task,"",New,Should have,adding tasks: make use of afterStage instead of afterTask,Tobias Liebig,"",2013-08-01 09:58,"","",2013-08-01,"","",0,2013-08-01 09:58,"","",1280750,"","Instead of creating unnecessary dependencies between tasks in one stage, we should internally make use of the new ->afterTask mehtod instead of the ->afterTask method whereever possible.
+"
+50647,TYPO3.Surf,Task,"",New,Should have,refactor addTask method argument order,Tobias Liebig,"",2013-08-01 10:22,"","",2013-08-01,"","",0,2013-08-01 10:22,"","",1280800,"","To streamline the API, the order of the method arguments in ->addTask should be changed.
+First argument should be the stage.
+
+Maybe we still can make it backwards compatible by checking, if the first argument is a valid stage name in the given workflow. If not the first and second argument should be swapped (and a deprecation warning should be logged)"
+50648,TYPO3.Surf,Task,"",New,Should have,enforce usage of ?->forStage? instead of ?->addTask?,Tobias Liebig,"",2013-08-01 10:22,"","",2013-08-01,"","",0,2013-08-01 10:22,"","",1280850,"","Make sure, we are using ""->forStage"" instead of the older ""->addTask"" method"
+50649,TYPO3.Surf,Feature,"",New,Should have,command to kickstart a new configuration,Tobias Liebig,"",2013-08-01 10:27,"","",2013-08-01,"","",0,2013-08-01 10:27,"","",1280900,"","Kickstart command for new deployment (keep it simple for 1.0)
+* ask some Questions
+  * Hostname of the target node:
+  * SSH username on the target node [current_user]:
+  * Is your application in a Git repository? (Y/n):
+  * Is the application managed by Composer? (Y/n):
+  * Transfer method of the application to the target node (remote git, scp, rsync) [git]:
+  * How many releases should be kept? [3]:
+* Do sanity check after creating the deployment (e.g. run simulate)
+"
+50650,TYPO3.Surf,Task,"",New,Should have,Provide better error messages,Tobias Liebig,"",2013-08-01 10:28,"","",2013-08-01,"","",0,2013-08-01 10:28,"","",1280950,"",Provide better error messages for common problems and add some tasks for testing the setup (e.g. SSH connection test)
+50651,TYPO3.Surf,Task,"",New,Should have,Add @api annotations,Tobias Liebig,"",2013-08-01 10:28,"","",2013-08-01,"","",0,2013-08-01 10:28,"","",1281000,"",check the code for missing @api annotations
+50652,TYPO3.Surf,Feature,"",New,Should have,ShellCommandService: method to expand paths in commands,Tobias Liebig,"",2013-08-01 10:30,"","",2013-08-01,"","",0,2013-08-01 10:30,"","",1281050,"","add a method in ShellCommandService to replace paths in command
+
+something like:
+
+    $command = $this->shell->expand($command)"
+50653,TYPO3.Surf,Bug,"",New,Should have,rsync transfer method writes empty *REVISION on remote node,Tobias Liebig,"",2013-08-01 10:31,"","",2013-08-01,"","",0,2013-08-01 10:31,"","",1281100,"",write correct *REVISION files on remote when using the rsync transfer method
+50654,TYPO3.Surf,Task,"",New,Should have,remove setDeprecatedTaskOptions from BaseApplication,Tobias Liebig,"",2013-08-01 10:31,"","",2013-08-01,"","",0,2013-08-01 10:31,"","",1281150,"",remove setDeprecatedTaskOptions from BaseApplication
+50655,TYPO3.Surf,Task,"",New,Should have,check all shell->excute for correctly escaped arguments,Tobias Liebig,"",2013-08-01 10:32,"","",2013-08-01,"","",0,2013-08-01 10:32,"","",1281200,"",check all shell->excute for correctly escaped arguments
+50656,TYPO3.Surf,Task,"",New,Should have,cleanup task names,Tobias Liebig,"",2013-08-01 10:32,"","",2013-08-01,"","",0,2013-08-01 10:32,"","",1281250,"","refactor names of the tasks (move them into meaningful folders).
+define an alias for the ?old? names and deprecate the usage of those"
+50657,TYPO3.Surf,Feature,"",Under Review,Should have,rsync transfer method: add option the --exclude argument,Tobias Liebig,"",2014-06-10 04:42,"","",2013-08-01,"","",0,2013-08-01 10:34,"","",1281300,"",add an exclude option for rsync task (--exclude arguments)
+50658,TYPO3.Surf,Feature,"",Accepted,Should have,refactor ShellCommandService to have separated access to StdIn StdErr and StdOut,Tobias Liebig,"",2013-08-01 10:38,"","",2013-08-01,"","",0,2013-08-01 10:35,"","",1281350,"",make use of the symfony/process component to separate the stdErr and stdOut streams in the ShellCommandService
+50659,TYPO3.Surf,Task,"",New,Should have,Unit tests,Tobias Liebig,"",2013-08-01 10:36,"","",2013-08-01,"","",0,2013-08-01 10:36,"","",1281400,"",check for and implement a bunch of meaningful unit tests
+50660,TYPO3.Surf,Task,"",New,Should have,concept for product website,Tobias Liebig,Christopher Hlubek,2013-08-01 10:41,"","",2013-08-01,"","",0,2013-08-01 10:41,"","",1281450,"","Create a concept for a TYPO3 Surf product website and plan/coordinate the implementation.
+
+* Target groups
+   * technical decision makers
+   * developers
+   * IT operation
+* Create product page on typo3.org together with design / marketing team
+* Use GitHub Pages for website recipes
+* create a new github organisation --> already done: https://github.com/organizations/TYPO3-Surf
+* -Use typo3.org templates (optionally redo in Bootstrap)-
+
+* Graphics
+* Surf Logo
+* Hero image?
+* Animated diagram of Surf automated deployment process (Development, CI, Deployment)
+* Show simple example / deployment configuration below diagram
+* TODO Scribble mockup of frontpage
+"
+50661,TYPO3.Surf,Bug,"",New,Should have,documentation,Tobias Liebig,"",2014-04-09 02:36,"","",2013-08-01,"","",0,2013-08-01 10:41,"","",1281500,"","* Create documentation in reST
+* Render documentation via readthedocs.org
+* Publish on docs.typo3.org if possible
+* The official documentation should be a reference for using Surf
+"
+50662,TYPO3.Surf,Feature,"",New,Should have,support ftp transfer ,Tobias Liebig,"",2013-08-01 10:45,"","",2013-08-01,"","",0,2013-08-01 10:44,"","",1281550,"","* Implement a Transfer\FTPTask (like the RsyncTask)
+* enable it in BaseApplication::registerTasksForTransferMethod"
+50663,TYPO3.Surf,Feature,"",New,Should have,support scp transfer,Tobias Liebig,"",2013-08-01 10:45,"","",2013-08-01,"","",0,2013-08-01 10:45,"","",1281600,"","* Implement a Transfer\ScpTask (like the RsyncTask)
+* enable it in BaseApplication::registerTasksForTransferMethod"
+50664,TYPO3.Surf,Task,"",New,Should have,check for unresolved TODOs in the code,Tobias Liebig,"",2013-08-01 10:46,"","",2013-08-01,"","",0,2013-08-01 10:46,"","",1281650,"",""
+50779,TYPO3.Surf,Bug,"",Resolved,Must have,Handling of branch option in GitCheckout Task does not work as expected.,Martin Ficzel,Tobias Liebig,2013-08-06 06:30,"","",2013-08-05,"","",100,2013-08-05 03:55,"","",1287300,"","Since the last updates the prevoiusly used option ""git-checkout-branch"" is replaced by ""typo3.surf:gitcheckout[branch]"" and the option is remapped internally to the new key.
+
+The code in the AbstractCheckoutTask->resolveSha1 is using the key ""branch"" in the option array that is handed over by the taskManager. 
+
+The deployment is running but since the option is not read as expected the deployment will always fallback to the master branch unless the global ""branch"" option is set. Since this is not what surf itself says can cause serious trouble."
+50847,TYPO3.Surf,Task,"",Needs Feedback,Could have,get rid of before and after stage step foo,Felix Oertel,Felix Oertel,2013-08-07 17:00,"","",2013-08-06,"","",0,2013-08-06 17:12,"","",1290700,"","hey,
+
+after the recent changes, introducing packaged deployment (which i love!), we ended up with some new, kind of weird don't-know-really-what-they-are-kind-of-substages. 
+
+@foreach (array('before', 'tasks', 'after') as $stageStep) {@
+
+i don't really get that. i loved how the tasks are fully configurable in the workflow. now i have this three substages, which are pretty much hard-wired.
+
+if you want to run one task after another, why not just introduce an additional stage, instead of introducing much more if() and foreach()?
+
+please enlighten me ... ;)
+
+regards, foertel"
+50852,TYPO3.Surf,Task,"",Under Review,Should have,Make Logger available as soon as possible,Felix Oertel,"",2014-07-28 06:26,"","",2013-08-07,"","",0,2013-08-06 20:23,"","",1290950,"","We should make the logger available to the deployment, as soon as possible, espacially before @require($deploymentPathAndFilename);@ happens.
+
+The logger could still be replaced by an own implementation later on ... "
+50853,TYPO3.Surf,Task,"",Under Review,Should have,Move createDefaultLogger to factory,Felix Oertel,"",2014-11-06 12:50,"","",2013-08-07,"","",0,2013-08-06 20:49,"","",1291000,"","come on ;) @createDefaultLogger()@ does really not belong into the command controller ... 
+
+let's move it"
+50854,TYPO3.Surf,Task,"",Resolved,Should have,cleanup options in node,Felix Oertel,Felix Oertel,2014-03-21 13:30,"","",2013-08-07,"","",100,2013-08-06 21:14,"","",1291050,"","@$port@ and @$username@ are options, while @$hostname@ and @$name@ are properties ... why?
+
+let's get that straight ;)"
+51029,TYPO3.Surf,Task,"",New,Should have,Exit with failure status if deployment file does not exist.,Martin Ficzel,"",2013-09-03 06:43,"","",2013-08-12,"","",0,2013-08-12 06:30,"","",1299650,"",Currently surf will exit with status 0 (OK) even if the deploment-file was not found. That is a problem if it surf is used by jenkins or other ci-solutions.
+52033,TYPO3.Surf,Bug,"",Resolved,Must have,An after stage task for any application is executed before a task specific for an application,Christopher Hlubek,Christopher Hlubek,2013-09-16 06:33,"","",2013-09-16,"","",100,2013-09-16 06:03,"","",1349500,"",""
+52072,TYPO3.Surf,Bug,"",New,Should have,Make Port in Varnish Tasks configurable,Michael Knoll,"",2013-09-17 08:15,"","",2013-09-17,"","",0,2013-09-17 08:15,"","",1351400,"","The Varnish ban and purge tasks have the port for Varnish management hardcoded. Since there might be different ports than 6082 for that, this should be configurable see patch below.
+
+<pre>
+		$secretFile = (isset($options['secretFile']) ? $options['secretFile'] : '');
+		$purgeUrl = (isset($options['purgeUrl']) ? $options['purgeUrl'] : '""ban.url .""');
+		$varnishadm = (isset($options['varnishadm']) ? $options['varnishadm'] : '/usr/bin/varnishadm');
+		$varnishport = (isset($options['varnishport']) ? $options['varnishport'] : '6082');
+		$varnishport = '-T 127.0.0.1:' . $varnishport;
+		$varnishsecret = ($secretFile !== '' ? '-S ' . $secretFile . ' ' : ' ');
+		$this->shell->executeOrSimulate($varnishadm . $varnishsecret . $varnishport . ' ' . $purgeUrl, $node, $deployment);
+</pre>
+
+Btw: is there any possibility to do a pull request for the surf project, that would make fixes easier..."
+52273,TYPO3.Surf,Bug,"",New,Should have,Passwords containing a % should throw an Error,Thomas Allmer,"",2014-03-09 12:59,"","",2013-09-25,"","",0,2013-09-25 11:54,"","",1361400,"","If you password contains a ""%"" the expect command won't work as the passwords ""%"" will be used by the sprintf...
+
+pretty hard to catch so a password check would avoid frustrating moments... like the one I just had...
+
+if you point me to the correct place where to implement this I could certainly do this."
+52276,TYPO3.Surf,Bug,"",New,Should have,Task defined in an Application can't be removed for a deployment?,Thomas Allmer,"",2013-09-25 12:25,"","",2013-09-25,"","",0,2013-09-25 12:20,"","",1361550,"","<pre>
+<?php
+	$workflow = new \TYPO3\Surf\Domain\Model\SimpleWorkflow();
+	$deployment->setWorkflow($workflow);
+
+	$node = new \TYPO3\Surf\Domain\Model\Node('[...]');
+	$node->setHostname('[...]');
+	$node->setOption('username', '[...]');
+	$node->setOption('password', '[...]');
+
+	$application = new \TYPO3\Surf\Application\TYPO3\Neos();
+	
+	$application->setDeploymentPath('[...]');
+	$application->setOption('repositoryUrl', '[...]');
+	
+	$application->setOption('composerCommandPath', ''); //why is this needed?
+	
+	$application->setOption('packageMethod', 'git');
+	$application->setOption('transferMethod', 'rsync');
+	$application->setOption('updateMethod', NULL);	
+	
+	$application->setOption('keepReleases', 2);
+	$application->addNode($node);
+
+	$deployment->addApplication($application);
+	
+	// can't remove a task?
+	$deployment->getWorkflow()->removeTask('typo3.surf:typo3:neos:importsite');
+	
+?>
+</pre>"
+52468,TYPO3.Surf,Bug,"",Resolved,Must have,allow local ,Felix Oertel,"",2014-11-06 11:22,"","",2013-10-02,"","",100,2013-10-02 07:33,"","",1371000,"","the doc say
+
+@* @param \TYPO3\Surf\Domain\Model\Node $node Node to execute command against, NULL means localhost@
+
+but the definition actually is
+
+@public function execute($command, Node $node, ...@
+
+so it's not possible to execute local commands. This makes composer fail for me, because it tries to look up the composer.json (test -f) on the remote server instead of the local workspacePath."
+57161,TYPO3.Surf,Feature,"",New,Could have,Check for sealed config files before deploying,Andreas Wolf,"",2014-03-21 13:14,"","",2014-03-21,"","",0,2014-03-21 13:14,"","",1602050,"","When your config files are sealed, you get an error from the CopyConfiguration task, which is run very late in the deployment. This might ruin a complete deployment when you forgot to decrypt the config files, so it's probably better to check for it early in the deployment (probably in a pre-deployment check)"
+58213,TYPO3.Surf,Feature,"",New,Must have,add test for commandline tool expect,Kay Strobach,"",2014-07-28 07:19,"","",2014-04-26,"","",0,2014-04-26 07:57,"","",1654450,"","it would be nice, if there would be a warning, if expect is missing.
+Currently you get a simple:
+
+<pre>
+Got exception ""Deployment directory ""/export/home/project/builds/testing"" does not exist on node Staging"" but rollback disabled. Stopping.
+</pre>"
+58214,TYPO3.Surf,Bug,"",New,Should have,add php-curl als requirement to composer.json,Kay Strobach,"",2014-04-26 08:05,"","",2014-04-26,"","",0,2014-04-26 08:05,"","",1654500,"",add php-curl als requirement to composer.json
+58642,TYPO3.Surf,Feature,"",New,Should have,"Add task, which checks if there are still doctrine updates available, and if fail",Kay Strobach,"",2014-07-28 05:43,"","",2014-05-08,"","",0,2014-05-08 13:45,"","",1675750,"","Add task, which checks if there are still doctrine updates available, and if fail
+
+This task will help to detect missing or failed migrations.
+This ways it's easy to detect failed stuff within a deployment
+
+<pre>
+ ./flow doctrine:update --output  
+</pre>
+
+if filesize != 0 -> fail
+"
+59420,TYPO3.Surf,Bug,"",New,Should have,Make $localPackagePath configurable in RsyncTask,Andreas Dörler,"",2014-06-09 16:22,"","",2014-06-09,"","",0,2014-06-09 16:22,"","",1714450,"","Hi,
+
+currently *$localPackagePath* is hardcoded to
+<pre>
+$localPackagePath = $deployment->getWorkspacePath($application);
+</pre>
+and the *workspacePath* is not configurable as far as I've seen:
+<pre>
+  /**
+   * Get a local workspace directory for the application
+   */
+  public function getWorkspacePath(Application $application) {
+    return FLOW_PATH_DATA . 'Surf/' . $this->getName() . '/' . $application->getName();
+  }
+</pre>
+
+If one uses Jenkins for deployment, the source will be checked out from GIT by Jenkins itself, so there is no need to do it again in SURF.
+Currently we use the following workaround:
+<pre>
+  $application->setOption('transferMethod', NULL); // disable rsync
+  $application->setOption('packageMethod', NULL); // disable SURF git checkout - we use jenkins git checkout
+  $application->setOption('customrsync', array('customLocalPackagePath', '/var/lib/jenkins/workspace/'.$application->getName()));
+  $workflow->addTask('typo3.surf:transfer:customrsync', 'transfer', $application);
+</pre>
+In a copy of the default RsyncTask we use the given option if set:
+<pre>
+$localPackagePath = (isset($options['customrsync']['customLocalPackagePath'])) ? $options['customrsync']['customLocalPackagePath'] : $deployment->getWorkspacePath($application);
+</pre>
+
+It would be great to have this option included in TYPO3.Surf. 
+
+Kind regards
+Andreas"
+60270,TYPO3.Surf,Bug,"",Under Review,Should have,Task/Git/TagTask doesn't work with transfer method rsync,Marco Huber,"",2015-07-06 10:37,"","",2014-07-11,"","",0,2014-07-11 06:44,"","",1756750,"","The task want's to do the tagging on the remote node. But of course, if using the transfer method rsync, there is no git on the node. So the tagging should be done in the local cache/data directory."
+60355,TYPO3.Surf,Feature,"",Accepted,Must have,composer: Add option to configure the --no-dev parameter,Kay Strobach,"",2014-07-28 05:42,"","",2014-07-16,"","",0,2014-07-16 06:10,"","",-3950,"","sometimes, it would be nice to also install the dev stuff, to e.g. run tests in a special environment etc."
+60469,TYPO3.Surf,Feature,"",Resolved,Should have,Initialize releaseIdentifier earlier,Marco Huber,"",2015-01-19 07:09,"","",2014-07-22,"","",100,2014-07-22 10:17,"","",-9650,"",I think it would be useful to initialize the releaseIdentifier earlier. So I could use it in the deployment script.
+61503,TYPO3.Surf,Feature,"",New,Should have,Set deploymentPath on a per node-base,Johannes Steu,"",2015-01-22 10:12,"","",2014-09-10,"","",0,2014-09-10 05:42,"","",-61300,"","If you would like to deploy one application on two different nodes both nodes are using the same deployment path. But if your nodes run a different / setup the path does not fit on both nodes.  For example node1 runs their webs under /var/www and node2 under /srv/www you would have create 2 applications with two nodes.
+
+It would be cool to set a deploymentPath for each node that overrides the deploymentPath from application if it is set.
+"
+61505,TYPO3.Surf,Feature,"",New,Could have,Enhance CreateDirectoriesTask to create directories inside the new releasedirectory,Johannes Steu,"",2014-09-10 06:09,"","",2014-09-10,"","",0,2014-09-10 06:09,"","",-61400,"","Right now there is no chance to create new directories with TYPO3\Surf\Task\Generic\CreateDirectoriesTask from your build script since the tasks merges the deployment path and your folder path. In your build script there is no chance to get the current release identifier to extend your folder path. So it would be cool if there is an possibility to use that Core-Task to create new folders in your release path.
+
+"
+62319,TYPO3.Surf,Bug,"",Resolved,Should have,Enhance Task SymlinkConfigurationTask to use not only the Production context,Johannes Steu,"",2015-01-22 10:08,"","",2014-10-18,"","",0,2014-10-18 08:41,"","",-101850,"","For deployment i'd like to use the SymlinkConfigurationTask for all Contexts.
+If you deploy your Application on different Nodes and run an separate testing Builds the Configuration could be stored in shared/Configuration/Testing. Same for the Development Context for Develop-Builds.
+
+Therefore the SymlinkConfigurationTask could use $application->getContext().
+"
+63330,TYPO3.Surf,Feature,"",Needs Feedback,Could have,Allow node/application/deployment options as options of defined tasks,Joachim Mathes,"",2015-01-24 04:06,"","",2014-11-25,"","",0,2014-11-25 17:02,"","",-152350,"","Up to now it is possible to reuse a task like @typo3.surf:shell@ with @$workflow->defineTask('fooTask', 'typo3.surf:shell', array('command' => 'echo ""Hello""'))@ and dedicated parameters. But what if I want node options to overwrite the parameters of a defined task, e.g.:
+<pre>
+<?php
+
+$nodeConfigurations = array(
+	array(
+		'name' => 'one',
+		'run' => 'echo ""I am node one""'
+	),
+	array(
+		'name' => 'two',
+		'run' => 'echo ""I am node two""'
+	)
+);
+
+$application = new \TYPO3\Surf\Domain\Model\Application('DummyApplication');
+
+foreach ($nodeConfigurations as $configuration) {
+	$node = new \TYPO3\Surf\Domain\Model\Node($configuration['name']);
+	$node
+		->setOptions(array(
+			'hostname' => 'localhost',
+			'username' => 'jo',
+			'getNodeOptions[command]' => $configuration['run']
+		));
+
+	$application
+		->addNode($node);
+}
+
+$workflow = new \TYPO3\Surf\Domain\Model\SimpleWorkflow();
+$workflow
+    ->defineTask('getNodeOptions', 'typo3.surf:shell', array())
+	->addTask('getNodeOptions', 'transfer');
+
+$deployment
+    ->setWorkflow($workflow)
+    ->addApplication($application); 
+</pre> 
+
+This does not work for now. Maybe the provided patch is a solution. This is a quick idea, so please review carefully."
+64350,TYPO3.Surf,Bug,"",New,Should have,git error > remove cache retry once,Kay Strobach,"",2015-01-19 05:00,"","",2015-01-19,"","",0,2015-01-19 05:00,"","",-203300,"","During one of my projects i moved the git location, surf does not seem to recognize that, so that i had to remove the cache/transfer folder by hand.
+I would prefer that either Surf checks for a changed checkout uri, and if so remove the cache - or remove the cache on error automatically
+
+Error Output
+<pre>
+--- (--- staging) typo3.surf:gitCheckout
+fatal: Could not parse object '46dd2b800826ac3297703378eefea9683fbea048'.
+Got exception ""Command returned non-zero return code: 128"" but rollback disabled. Stopping.
+</pre>"
+64432,TYPO3.Surf,Bug,"",New,Should have,"Rollback should not be done if Exception is thrown ""after"" switch stage",Christopher Hlubek,"",2015-01-22 08:35,"","",2015-01-22,"","",0,2015-01-22 08:35,"","",-207350,"","If a task is registered to run after the @switch@ stage, an Exception in that task should not cause a rollback."
+65711,TYPO3.Surf,Bug,"",New,Should have,[HAS PATCH] Escape workspacePath in LocalShellTask,Kay Strobach,"",2015-03-13 04:06,"","",2015-03-13,"","",0,2015-03-13 04:06,"","",-271300,"",see attached patch
+66505,TYPO3.Surf,Feature,"",Under Review,Should have,Add option to specify SSH private key for nodes,Martin Helmich,"",2015-04-20 17:21,"","",2015-04-20,"","",0,2015-04-20 17:20,"","",-311000,"","Make the private key that should be used for SSH connections (both shell and rsync) configurable.
+
+Change request on Gerrit will follow shortly."
+67325,TYPO3.Surf,Bug,"",Resolved,Should have,Changing repository URL breaks Git-based deployments,Andreas Wolf,"",2015-06-16 07:19,"","",2015-06-06,"","",100,2015-06-06 02:49,"","",-351700,"","When changing the URL in the deployment, the new URL is not used if the deployment has run before (i.e. if there is a transfer cache directory on the target node already).
+
+To fix this, we need to do a ""git remote set-url"" for origin before fetching new commits."
+67692,TYPO3.Surf,Bug,"",New,Must have,wrong ssh port option,Christoph Lehmann,"",2015-06-23 07:22,"","",2015-06-23,"","",0,2015-06-23 06:50,"","",-370050,"","/Packages/Application/TYPO3.Surf/Classes/TYPO3/Surf/Task/TYPO3/Flow/CopyConfigurationTask.php:65
+
+ssh has -p and scp has the -P option for the port"

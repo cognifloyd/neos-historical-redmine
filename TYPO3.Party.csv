@@ -1,0 +1,156 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Affected Flow version,Description
+47882,TYPO3.Party,Bug,"",Resolved,Should have,MsnValidator throws exception when being used,Mattias Nilsson,Mattias Nilsson,2013-10-01 13:35,"","",2013-05-03,"","",100,2013-05-03 09:45,"","",1144300,"",Git master,"MsnValidator throws exception when being used, due to missing delimiter in preg_match."
+47881,TYPO3.Party,Bug,"",Resolved,Should have,IcqValidator throws exception when being used,Mattias Nilsson,Mattias Nilsson,2013-06-21 09:36,"","",2013-05-03,"","",100,2013-05-03 09:43,"","",1144250,"",Git master,"IcqValidator throws exception when being used, due to missing delimiter in preg_mtach."
+45459,TYPO3.Party,Bug,"",Resolved,Must have,Removing primary electronic address fails in persistence,Aske Ertmann,"",2015-03-16 12:33,"","",2013-02-13,"","",100,2013-02-13 10:09,"","",1024900,"",Git 1.1,"When removing an electronic address which is also the primary electronic address of a Person an exception is thrown in the persistence layer due to a property being unset and not set to NULL when validating the object before persisting.
+
+http://i.imgur.com/ufA5WZP.png"
+45276,TYPO3.Party,Task,"",Resolved,Should have,"Remove Gizmo as electronic address due to discontinued as of April 3, 2011.",Mattias Nilsson,Mattias Nilsson,2013-03-19 11:37,"","",2013-02-08,"","",100,2013-02-08 08:25,"","",1015900,"","","Remove Gizmo as electronic address due to discontinued as of April 3, 2011.
+
+Quote from: http://en.wikipedia.org/wiki/Gizmo5
+""Google announced that the service would be discontinued as of April 3, 2011""
+"
+45275,TYPO3.Party,Bug,"",Closed,Should have,"Remove Gizmo as electronic address due to discontinued as of April 3, 2011",Mattias Nilsson,Mattias Nilsson,2013-02-08 08:24,"","",2013-02-08,"","",0,2013-02-08 08:22,"","",1015850,"",Flow 2.0.0 beta 1,"Remove Gizmo as electronic address due to discontinued as of April 3, 2011.
+
+Quote from: http://en.wikipedia.org/wiki/Gizmo5
+""Google announced that the service would be discontinued as of April 3, 2011"""
+44196,TYPO3.Party,Bug,"",Resolved,Should have,Missing the possibility to get a list of all available electronic types and usage types.,Mattias Nilsson,Mattias Nilsson,2013-03-26 09:37,"","",2012-12-22,"","",100,2012-12-22 03:47,"","",963450,"",Flow 2.0.0 beta 1,"When trying to get all the electronic types and usage types, there is no method to get them as a list.
+
+My suggestion is to add two methods for getting the necessary data:
+
+public function getAllElectronicAddressTypes() {}
+
+public function getAllUsageTypes() {}
+
+both should be added to class ElectronicAddress {}"
+41482,TYPO3.Party,Bug,"",Resolved,Should have,Down migration for MySQL broken in Version20120429213446,Karsten Dambekalns,Karsten Dambekalns,2015-03-16 12:33,Migrations,"",2012-09-30,"","",100,2012-09-30 16:09,"","",831350,"",FLOW3 1.1.0,""
+39150,TYPO3.Party,Bug,"",Closed,Must have,Missing validators for all type values of ElectronicAddress,Steffen Wickham,"",2013-05-03 09:42,Validation,"",2012-07-20,"","",100,2012-07-20 18:35,"","",719350,"",FLOW3 1.1.0 rc 2,"The ElectronicAddress model of TYPO3.Party tries to validate all kind of address values during execution.
+Due to missing validators, there will be an error message (no exception!) on a blank white page.
+
+There are missing validators for electronic addresses as follows:
+- Skype
+- Aim
+- Gizmo
+- Icq
+- Jabber (could be derived from EmailAddressValidator)
+- Msn
+- Sip
+- Url
+and
+- Yahoo
+
+
+Using user defined validators in non framework packages would be ignored due to model validation restriction. For type attribute there are only alphanummeric value allowed so specifying vendor names and packeges (Vendor\Package:Validator, i.e. MyCompany\MyPackage:Skype) wouldn't be possible.
+
+But even when alphanumeric validator is removed from model, there will be an other error showing up: Object expected, string given. 
+As far as I know, it's thrown by \TYPO3\FLOW3\Validation\Validator\GenericObjectValidator->validate()."
+37628,TYPO3.Party,Bug,"",Resolved,Should have,Duplicate entries exception for electronicAddresses by adding through setPrimaryElectronicAddress,Carsten Bleicker,Christian Müller,2012-06-28 04:49,"","",2012-05-31,"","",0,2012-05-31 04:32,"","",644150,"",Git 1.1,"Having a form wich sets the primaryElectronicAddress.
+1. Submitting with invalid email address forces a validation error, okay
+2. Submitting again with valid email the result in the address collection is:
+http://pastebin.com/DE0zyDek
+
+this collection forces an exception for duplicate entries.
+maybe this ""contain"" check is the point to take a look at?:
+https://review.typo3.org/#/c/11078/1/Classes/Domain/Model/Person.php "
+37446,TYPO3.Party,Feature,"",Rejected,Could have,cascade persist on party to store accounts,Adrian Föder,Adrian Föder,2012-05-25 07:18,"","",2012-05-23,"","",0,2012-05-23 12:28,"","",635050,"","","currently,
+
+<pre><code class=""php"">
+abstract class AbstractParty {
+
+	/**
+	 * @var \Doctrine\Common\Collections\Collection<\TYPO3\FLOW3\Security\Account>
+	 * @ORM\OneToMany(mappedBy=""party"")
+	 */
+	protected $accounts;
+</code></pre>
+
+In very common use cases where a Party is created during a registration process, both the Party and the Account has to be persisted manually using the (injected) repository each.
+
+I suggest to add a cascade=persist to that property, like
+<pre><code class=""php"">
+abstract class AbstractParty {
+
+	/**
+	 * @var \Doctrine\Common\Collections\Collection<\TYPO3\FLOW3\Security\Account>
+	 * @ORM\OneToMany(mappedBy=""party"", cascade=""persist"")
+	 */
+	protected $accounts;
+</code></pre>
+
+This would make the following steps be sufficient for a person/party creation:
+<pre><code class=""php"">
+$person = new \TYPO3\Party\Domain\Model\Person();
+$person->setPersonName(new \TYPO3\Party\Domain\Model\PersonName('', $firstName, '', $lastName));
+
+$account = $this->accountFactory->createAccountWithPassword($email, $password);
+$person->addAccount($account);
+
+$this->partyRepository->add($person);
+</code></pre>
+
+...do you agree?"
+37266,TYPO3.Party,Bug,"",Resolved,Must have,Duplicate email address throws exception,Bastian Waidelich,"",2015-03-16 12:33,"","",2012-05-17,"","",100,2012-05-17 15:58,"","",626100,"",Git master,"Since #29547 is resolved trying to store an email address that already exists throws an exception:
+<pre>SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'xyz' for key 'flow3_identity_typo3_party_domain_model_electronicaddress'</pre>
+
+The problem is, that it is not possible to find out whether an email exists already except for iterating over all party records.
+
+One solution would be to remove the @@FLOW3\Identity@ annotation from @\ TYPO3\Party\Domain\Model\ ElectronicAddress::identifier@ or to enable property paths ('primaryElectronicAddress.identifier') in QOM somehow."
+33600,TYPO3.Party,Bug,"",Resolved,Must have,PartyRepository does not have Scope annotation to make it singleton,Karsten Dambekalns,Karsten Dambekalns,2015-03-16 12:33,"","",2012-02-01,"","",100,2012-02-01 11:55,"","",446500,"",FLOW3 1.0.2,.
+32813,TYPO3.Party,Bug,"",Closed,Should have,Fatal error in Persistance Manager ,Jonny ,Karsten Dambekalns,2015-03-16 12:33,"","",2011-12-22,"","",0,2011-12-22 12:02,"","",407900,"",FLOW3 1.0.2,"My Model has an OneToOne relation to a party Person Model of the Party Package.
+
+<pre>
+/**
+* The Person of this profile
+*
+* @var \TYPO3\Party\Domain\Model\Person
+* @ORM\OneToOne(cascade={""all""})
+*/
+protected $person;
+</pre>
+
+On altering the electronicAddress by setting the approved to TRUE, the persistance manager throws a Fatal Error:
+<pre>
+PHP Fatal error:  Call to a member function getClassName() on a non-object in [...]PersistenceManager_Original.php on line 106 
+-> 
+$validator = $this->validatorResolver->getBaseValidatorConjunction($classSchema->getClassName());
+</pre>
+
+I fixed this quick and dirty by inserting this line :
+<pre>
+if ($classSchema === NULL) return;		
+</pre>
+before the getClassName on $classSchema.
+
+btw: im working with version 1.0.2 (couldn't find it in the dropdown list)"
+29510,TYPO3.Party,Task,"",On Hold,Should have,"Extend Party-Network with classes for 'Organization', 'PostalAddress', 'PhoneNumber'",Regine Rosewich,"",2014-04-24 03:44,"","",2011-09-06,"","",0,2011-09-06 06:06,"","",246350,"","","Extend Party-Network with classes for 'Organization', 'PostalAddress', 'PhoneNumber' in Ordner to be able to fully qualifiy a Person and/or an Organization according to OASIS/ebXML Registry Information Model v2.0."
+29484,TYPO3.Party,Bug,"",Resolved,Must have,Adding a primaryElectronicAddress to a person throws an duplicate key error,Regine Rosewich,Christian Müller,2012-05-08 20:39,"","",2011-09-05,"","",100,2011-09-05 06:01,"","",245100,"",FLOW3 1.0.0,"When I add a electronicAddress to a person by setting the electronicAddress as primaryElectronic Address (setPrimaryElectronicAddress()), everything works fine if this is done for the first time.
+
+If I then change the PrimaryElectronicAddress to another ElectronicAddress I get a changed PrimaryElectronicAddress 
+and a second ElectronicAddress added to the already existing ElectronicAddresses.
+
+So far everything is o.k.
+
+If i then try to change the PrimaryElectronicAddress back to the one I initially had set as PrimaryElectronicAddress by selecting that ElectronicAddress from a list of ElectronicAddresses an Error 'duplicate Key in Table  typo3_domain_model_party_electronicaddresses_join' is thrown.
+
+If I change the method ""setPrimaryElectronicAddress"" as follows everything works fine.
+
+<pre>
+	/**
+	 * Sets (and adds if necessary) the primary electronic address of this person.
+	 *
+	 * @param \TYPO3\Party\Domain\Model\ElectronicAddress $electronicAddress The electronic address
+	 * @return void
+	 * @author Robert Lemke <robert@typo3.org>
+	 */
+	public function setPrimaryElectronicAddress(\TYPO3\Party\Domain\Model\ElectronicAddress $electronicAddress) {
+		$this->electronicAddresses->removeElement($this->getPrimaryElectronicAddress());
+		$this->primaryElectronicAddress = $electronicAddress;
+		$this->electronicAddresses->add($electronicAddress);
+	}
+
+</pre>"
+26764,TYPO3.Party,Bug,"",Resolved,Must have,ElectronicAddressValidator does not work,Heiko Kromm,Karsten Dambekalns,2015-03-16 12:33,"","",2011-05-11,"","",100,2011-05-11 11:13,"","",115100,"","","I think the ElectronicAddressValidator does not work with FLOW3 beta1.
+It expects the $addressValidator to return a value, but for example the EmailAddressValidator has no return value.
+Also it tries to call the undefined method getErrors on the addressValidator."
+11962,TYPO3.Party,Task,"",Closed,Should have,"Check ""usability"" of Party framework",Sebastian Kurfuerst,"",2014-04-24 03:27,"","","","","",0,2011-01-06 08:20,"","",70800,"","","We need to check the Party framework (again) against the Plat_Forms task, as with that we had quite some issues beginning of this year."
+8638,TYPO3.Party,Bug,"",Closed,Must have,ElectronicAddressValidator must not consider NULL as valid,Karsten Dambekalns,Karsten Dambekalns,2015-03-16 12:33,"","","","","",0,2010-07-03 16:10,"","",2782050,"","",In r4708 a change was done that skews the result of isValid(). The real solution would be to ignore the validator if a property of the type is not required.
+7287,TYPO3.Party,Feature,"",Closed,Must have,ElectronicAddress should be a value object,Adrian Grigore,"",2012-03-12 12:55,"","",2010-04-15,"","",0,2010-04-15 16:44,"","",2782100,"","",Shouldn't \F3\Party\Domain\Model\ElectronicAddress be a Value Object?

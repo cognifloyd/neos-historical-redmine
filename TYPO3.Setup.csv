@@ -1,0 +1,483 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+59091,TYPO3.Setup,Bug,"",New,Must have,provide functionality if RewriteBase is used.,Rafael Kähm,Aske Ertmann,2014-05-25 04:11,"","",2014-05-25,"","",0,2014-05-25 04:11,"","",1698000,"",If using RewriteBase on Apache or location on NginX TYPO3.Setup does not work.
+57078,TYPO3.Setup,Feature,"",Closed,Must have,Check if database collation is utf8_unicode_ci,Simon Schaufelberger,Steffen Frosch,2014-10-04 10:27,"","",2014-03-19,"","",0,2014-03-19 09:52,"","",1597950,"","Databases MUST have utf8_unicode_ci collation, otherwise you will have a lot of trouble with foreign keys. Set collation to utf8_unicode_ci when neos needs to create a new database via the web installer."
+55363,TYPO3.Setup,Bug,"",New,Should have,Error in RequestHandler.php,Patric Rudolph,"",2014-05-24 15:54,"",1.1,2014-01-27,"","",0,2014-01-27 09:35,"","",1513450,"","We have multiple php-versions on one server running as fastcgi. So the method detectPhpBinaryPathAndFilename does not detect the php-binary correct.
+I made a patch to solve this problem."
+54617,TYPO3.Setup,Bug,"",New,Could have,Problem with phpBinaryPathAndFilename,Marcin S?gol,"",2013-12-27 16:41,"",1.x,2013-12-27,"","",0,2013-12-27 16:41,"","",1477250,"","Hi,
+
+i had beta version installed and upgrade to 1.x failed so i decided to do fresh setup. Using composer all files were fetched and i decided to copy Settings.yaml file from previous installation (DB was emptied but the credentials stayed the same). 
+
+The problems begin when i wanted to run installer. Environment check always returned that my phpBinaryPathAndFilename is invalid in Settings.yaml. I tried various combination for php (cgi, fast-cgi, fpm) but nothing helped. 
+
+During small conversation on #typo3-neos radmiraal suggested to comment out line 133 in file Packages/Application/TYPO3.Setup/Classes/TYPO3/Setup/Core/RequestHandler.php but this also didn't help. Finally i have changed phpBinaryPathAndFilename to /usr/bin/php5 and inside Packages/Application/TYPO3.Setup/Classes/TYPO3/Setup/Core/RequestHandler.php set function checkAndSetPhpBinaryIfNeeded() to just return TRUE without any checks. This way i was able to finish setup proccess without any problems.
+
+I'm not sure where the problem was exactly and hope for some checks in this area.
+"
+54420,TYPO3.Setup,Bug,"",Closed,Must have,white font on dropdown options,Simon Schaufelberger,"",2014-11-02 12:29,"","",2013-12-14,"","",0,2013-12-14 15:03,"","",1467550,"","in the setup (/setup/index?step=0) while selecting the database, the options in the dropdown have white font which is unreadable because the options themselves have white background.
+
+browser: google chrome"
+54321,TYPO3.Setup,Bug,"",New,Should have,Imagine\Exception\InvalidArgumentException thrown in file Imagine.php,Jigal van Hemert,"",2013-12-11 03:14,"","",2013-12-11,"","",0,2013-12-11 03:14,"","",1462600,"","Installation of Neos 1.0 on Windows Vista (XAMPP for Windows 1.8.2; Apache/2.4.7 (Win32) OpenSSL/0.9.8y PHP/5.4.22 MySQL 5.5.34; PDO, GD, etc. loaded. GraphicsMagick and ImageMagick 6 both available on the system) worked until the step of importing the demo site. This step ends with an exception:
+
+File resource://346826c35278804cbdef2c8804d3e37067c6cd80 doesn't exist
+53 Imagine\Gd\Imagine::open(""resource://346826c35278804cbdef2c8804d3e37067c6cd80"")
+
+52 TYPO3\Media\Domain\Service\ImageService_Original::transformImage(TYPO3\Media\Domain\Model\Image, array|2|)
+
+51 call_user_func_array(array|2|, array|2|)
+
+50 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call(""transformImage"", array|2|)
+
+49 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::transformImage(TYPO3\Media\Domain\Model\Image, array|2|)
+
+48 TYPO3\Media\Domain\Model\ImageVariant_Original::initializeObject(2)
+
+47 TYPO3\Media\Domain\Model\ImageVariant_Original::__wakeup()
+
+46 TYPO3\Media\Domain\Model\ImageVariant::__wakeup()
+
+45 unserialize(""a:4:{s:4:&quot;text&quot;;s:132:&quot;?										&lt;p&gt;This is a tex?;i:199;s:6:&quot;height&quot;;i:71;}}}}}s:5:&quot;title&quot;;s:0:&quot;&quot;;}"")
+
+44 Doctrine\DBAL\Types\ArrayType::convertToPHPValue(""a:4:{s:4:&quot;text&quot;;s:132:&quot;?										&lt;p&gt;This is a tex?;i:199;s:6:&quot;height&quot;;i:71;}}}}}s:5:&quot;title&quot;;s:0:&quot;&quot;;}"", Doctrine\DBAL\Platforms\MySqlPlatform)
+
+43 TYPO3\Flow\Persistence\Doctrine\DataTypes\ObjectArray_Original::convertToPHPValue(""a:4:{s:4:&quot;text&quot;;s:132:&quot;?										&lt;p&gt;This is a tex?;i:199;s:6:&quot;height&quot;;i:71;}}}}}s:5:&quot;title&quot;;s:0:&quot;&quot;;}"", Doctrine\DBAL\Platforms\MySqlPlatform)
+
+42 Doctrine\ORM\Internal\Hydration\AbstractHydrator::gatherRowData(array|17|, array|17|, array|1|, array|1|)
+
+41 Doctrine\ORM\Internal\Hydration\ObjectHydrator::hydrateRowData(array|17|, array|17|, array|13|)
+
+40 Doctrine\ORM\Internal\Hydration\ObjectHydrator::hydrateAllData()
+
+39 Doctrine\ORM\Internal\Hydration\AbstractHydrator::hydrateAll(Doctrine\DBAL\Driver\PDOStatement, Doctrine\ORM\Query\ResultSetMapping, array|0|)
+
+38 Doctrine\ORM\AbstractQuery::execute(NULL, 1)
+
+37 Doctrine\ORM\AbstractQuery::getResult()
+
+36 TYPO3\Flow\Persistence\Doctrine\Query_Original::getResult()
+
+35 TYPO3\Flow\Persistence\Doctrine\QueryResult_Original::initialize()
+
+34 TYPO3\Flow\Persistence\Doctrine\QueryResult_Original::rewind()
+
+33 TYPO3\Flow\Persistence\Repository::removeAll()
+
+32 call_user_func_array(array|2|, array|0|)
+
+31 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call(""removeAll"", array|0|)
+
+30 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::removeAll()
+
+29 TYPO3\Neos\Setup\Step\SiteImportStep_Original::importSite(TYPO3\Form\Core\Model\FinisherContext)
+
+28 TYPO3\Neos\Setup\Step\SiteImportStep_Original::TYPO3\Neos\Setup\Step\{closure}(TYPO3\Form\Core\Model\FinisherContext)
+
+27 TYPO3\Form\Finishers\ClosureFinisher_Original::executeInternal()
+
+26 TYPO3\Form\Core\Model\AbstractFinisher::execute(TYPO3\Form\Core\Model\FinisherContext)
+
+25 TYPO3\Form\Core\Runtime\FormRuntime_Original::invokeFinishers()
+
+24 TYPO3\Form\Core\Runtime\FormRuntime_Original::render()
+
+23 TYPO3\Setup\Controller\SetupController_Original::indexAction(2)
+
+22 TYPO3\Setup\Controller\SetupController::indexAction(2)
+
+21 call_user_func_array(array|2|, array|1|)
+
+20 TYPO3\Setup\Controller\SetupController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+19 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+18 TYPO3\Flow\Security\Aspect\PolicyEnforcementAspect_Original::enforcePolicy(TYPO3\Flow\Aop\JoinPoint)
+
+17 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+16 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+15 TYPO3\Setup\Controller\SetupController::indexAction(2)
+
+14 call_user_func_array(array|2|, array|1|)
+
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+9 call_user_func_array(array|2|, array|2|)
+
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+2 TYPO3\Setup\Core\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+Used Git Bash (from Git for Windows) to execute the command line actions specified on http://neos.typo3.org/download.html"
+53329,TYPO3.Setup,Feature,"",New,Must have,Check environment,Philipp Wrann,"",2013-11-05 02:57,"","",2013-11-05,"","",0,2013-11-05 02:57,"","",1413750,"","If some dependencies are missing the installation throws an error. Then you have to reset your database and start over again. So do a better checking for dependencies, in my case gd was not available on the system."
+53328,TYPO3.Setup,Bug,"",New,-- undefined --,TYPO3\Flow\Security\Exception\NoSuchRoleException thrown in file TYPO3_Flow_Security_Policy_PolicyService.php,Philipp Wrann,"",2013-11-05 02:55,"","",2013-11-05,"","",0,2013-11-05 02:55,"","",1413700,"","Just happened in new installation when importing the demo package.
+
+environment:
+ubuntu 12.04 LTS LAMP, so pretty standard
+
+The role with identifier ""TYPO3.Neos:Administrator"" is unknown
+39 TYPO3\Flow\Security\Policy\PolicyService_Original::getRole(""TYPO3.Neos:Administrator"")
+
+38 TYPO3\Flow\Security\AccountFactory_Original::createAccountWithPassword(""philipp"", ""justatest"", array|1|, ""Typo3BackendProvider"")
+
+37 call_user_func_array(array|2|, array|4|)
+
+36 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call(""createAccountWithPassword"", array|4|)
+
+35 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::createAccountWithPassword(""philipp"", ""justatest"", array|1|, ""Typo3BackendProvider"")
+
+34 TYPO3\Neos\Domain\Factory\UserFactory_Original::create(""philipp"", ""justatest"", ""Philipp"", ""Wrann"", array|1|)
+
+33 call_user_func_array(array|2|, array|5|)
+
+32 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call(""create"", array|5|)
+
+31 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::create(""philipp"", ""justatest"", ""Philipp"", ""Wrann"", array|1|)
+
+30 TYPO3\Neos\Setup\Step\AdministratorStep_Original::postProcessFormValues(array|7|)
+
+29 TYPO3\Setup\Controller\SetupController_Original::postProcessStep(array|7|, TYPO3\Neos\Setup\Step\AdministratorStep)
+
+28 TYPO3\Setup\Controller\{closure}(TYPO3\Form\Core\Model\FinisherContext)
+
+27 TYPO3\Form\Finishers\ClosureFinisher_Original::executeInternal()
+
+26 TYPO3\Form\Core\Model\AbstractFinisher::execute(TYPO3\Form\Core\Model\FinisherContext)
+
+25 TYPO3\Form\Core\Runtime\FormRuntime_Original::invokeFinishers()
+
+24 TYPO3\Form\Core\Runtime\FormRuntime_Original::render()
+
+23 TYPO3\Setup\Controller\SetupController_Original::indexAction(1)
+
+22 TYPO3\Setup\Controller\SetupController::indexAction(1)
+
+21 call_user_func_array(array|2|, array|1|)
+
+20 TYPO3\Setup\Controller\SetupController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+19 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+18 TYPO3\Flow\Security\Aspect\PolicyEnforcementAspect_Original::enforcePolicy(TYPO3\Flow\Aop\JoinPoint)
+
+17 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+16 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+15 TYPO3\Setup\Controller\SetupController::indexAction(1)
+
+14 call_user_func_array(array|2|, array|1|)
+
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+9 call_user_func_array(array|2|, array|2|)
+
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+2 TYPO3\Setup\Core\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+
+Please include more helpful information!"
+52605,TYPO3.Setup,Bug,"",New,Should have,"""Setup password"" tries to authenticate with TYPO3 Flow Security Account",Soren Malling,"",2013-10-08 04:37,"","",2013-10-08,"","",0,2013-10-08 04:37,"","",1377750,"","Running latest composer release, trying to authenticate with the password written to  SetupPassword.txt I get the following error
+
+
+#2003: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '127.0.0.1' (111)
+
+From the screenshot [1] you can see that it tries to connect to the database and authenticate with the security account table and not the filebasedprovider
+
+https://www.evernote.com/shard/s58/sh/6af1576c-0ee2-468a-b66b-bdf9dcf598e5/d02f6102e04fe04a2c087ad308da6c7e"
+49666,TYPO3.Setup,Bug,"",New,Could have,Routes not detected,Georg Großberger,"",2014-05-13 03:51,"",1.0 beta 1,2013-07-04,"","",0,2013-07-04 11:39,"","",1232800,"","The /setup redirects to /setup/index, the next screen fails with the message no database connection error message.
+
+Adding this to ""Configuration/Routes.yaml"" helps
+
+<pre>
+-
+  name: 'TYPO3NeosSetup'
+  uriPattern: '<TYPO3NeosSetupSubroutes>'
+  subRoutes:
+    TYPO3NeosSetupSubroutes:
+      package: TYPO3.Setup
+</pre>
+
+Did not do any tracking on why, but apparently the setup routes are not detected properly."
+49664,TYPO3.Setup,Bug,"",Resolved,Must have,Setup detects wrong PHP binary when running via fpm,Georg Großberger,Robert Lemke,2013-12-12 21:54,"",1.0 beta 1,2013-07-04,"","",100,2013-07-04 11:32,"","",1232700,"","When the webserver pumps the request to a fcgi PHP set up via FPM, the PHP_BINARY constant contains "".../php-fpm"". This passes the ""version check"", but cannot run anything else, resulting in an error at the very first screen.
+
+The solution is in Core\RequestHandler, in the checkPhpBinary function. Adding this, right after the ""file_exists"" check and before the ""exec"" command, helps
+
+<pre>
+if (substr($phpBinaryPathAndFilename, -4) === '-fpm' && php_sapi_name() === 'php-fcgi') {
+	return $this->checkPhpBinary(substr($phpBinaryPathAndFilename, 0, -4));
+}
+</pre>
+
+Will provide a patch soon"
+48370,TYPO3.Setup,Bug,"",New,Should have,TYPO3.Setup does not trigger role synchronization,Sebastian Kurfuerst,"",2013-05-17 12:47,"",1.0 beta 1,2013-05-17,"","",0,2013-05-17 12:47,"","",1168350,"",""
+46268,TYPO3.Setup,Bug,"",New,Must have,TYPO3\Flow\Error\Exception thrown in setup wizard,Simon Sattes,"",2013-04-10 15:34,"","",2013-03-14,"","",0,2013-03-14 07:30,"","",1064600,"","I downloaded and installed Typo3 Flow Base (git://git.typo3.org/TYPO3v5/Distributions/Base.git), set the rights and ran '/setup'. After the admin user creation step I get the following error message when I proceed:
+
+<pre>
+Warning: class_implements() [<a href='function.class-implements'>function.class-implements</a>]: Class string does not exist and could not be loaded in /srv/htdocs/team/simon/sandbox/typo3-neos/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Utility/TypeHandling.php line 128
+29 TYPO3\Flow\Error\ErrorHandler::handleError(2, ""class_implements() [&lt;a href='function.class-implem?lass string does not exist and could not be loaded"", ""/srv/htdocs/team/simon/sandbox/typo3-neos/Packages?3.Flow/Classes/TYPO3/Flow/Utility/TypeHandling.php"", 128, array|2|)
+
+28 class_implements(""string"")
+
+27 TYPO3\Flow\Utility\TypeHandling::isCollectionType(""string"")
+
+26 TYPO3\Flow\Validation\ValidatorResolver_Original::buildBaseValidatorConjunction(""TYPO3\Party\Domain\Model\PersonName##Persistence##Default"", ""TYPO3\Party\Domain\Model\PersonName"", array|2|)
+
+25 TYPO3\Flow\Validation\ValidatorResolver_Original::getBaseValidatorConjunction(""TYPO3\Party\Domain\Model\PersonName"", array|2|)
+
+24 TYPO3\Flow\Validation\ValidatorResolver_Original::buildBaseValidatorConjunction(""TYPO3\Neos\Domain\Model\User##Persistence##Default"", ""TYPO3\Neos\Domain\Model\User"", array|2|)
+
+23 TYPO3\Flow\Validation\ValidatorResolver_Original::getBaseValidatorConjunction(""TYPO3\Neos\Domain\Model\User"", array|2|)
+
+22 TYPO3\Flow\Persistence\Doctrine\PersistenceManager_Original::validateObject(TYPO3\Neos\Domain\Model\User, SplObjectStorage)
+
+21 TYPO3\Flow\Persistence\Doctrine\PersistenceManager_Original::onFlush(Doctrine\ORM\Event\OnFlushEventArgs)
+
+20 Doctrine\Common\EventManager::dispatchEvent(""onFlush"", Doctrine\ORM\Event\OnFlushEventArgs)
+
+19 Doctrine\ORM\UnitOfWork::commit(NULL)
+
+18 Doctrine\ORM\EntityManager::flush()
+
+17 TYPO3\Flow\Persistence\Doctrine\PersistenceManager_Original::persistAll(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response, TYPO3\Setup\Controller\SetupController, ""TYPO3\Flow\Mvc\Dispatcher::afterControllerInvocation"")
+
+16 call_user_func_array(array|2|, array|4|)
+
+15 TYPO3\Flow\SignalSlot\Dispatcher::dispatch(""TYPO3\Flow\Mvc\Dispatcher"", ""afterControllerInvocation"", array|3|)
+
+14 TYPO3\Flow\SignalSlot\SignalAspect_Original::forwardSignalToDispatcher(TYPO3\Flow\Aop\JoinPoint)
+
+13 TYPO3\Flow\Aop\Advice\AbstractAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+12 TYPO3\Flow\Mvc\Dispatcher::emitAfterControllerInvocation(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response, TYPO3\Setup\Controller\SetupController)
+
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+9 call_user_func_array(array|2|, array|2|)
+
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+2 TYPO3\Setup\Core\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+</pre>
+"
+45036,TYPO3.Setup,Task,"",Closed,Should have,Better UX of last import/create-site step,Christian Jul Jensen,"",2014-11-02 12:31,"",1.0 beta 1,2013-01-31,"","",0,2013-01-31 11:06,"","",1004100,"",Going through the setup process I think the last step of creating/importing is very clear. I was confused whether I had to fill out both of it was 2 different  tasks. Should be clear that it either/or
+43567,TYPO3.Setup,Bug,"",Closed,Should have,Installation on Windows won't work,Felix Muster,Karsten Dambekalns,2014-06-25 09:25,"","",2012-12-04,"","",0,2012-12-04 03:13,"","",932250,"","Installing TYPO3 Neos on Windows-Machine with XAMPP 1.7.7 (PHP 5.3.8, APACHE 2.2) I get the following error when I open http://localhost/TYPO3_Neos/Web/
+
+<pre>
+Uncaught Exception in FlowExecution of subprocess failed with exitcode ""1"" and output: 
+
+TYPO3\Flow\Core\Booting\Exception\SubProcessException thrown in file
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Core\Booting\Scripts.php in line 518.
+Reference code: 201212040854478e241a
+
+Go to the FORGE issue tracker and report the issue - if you think it is a bug!
+
+
+11 TYPO3\Flow\Core\Booting\Scripts::executeCommand(""typo3.flow:core:compile"", array|15|)
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Core\Booting\Scripts.php:
+
+00208:    // code cache is completely empty:
+00209:   if (!$bootstrap->getContext()->isProduction() || $objectConfigurationCache->has('allCompiledCodeUpToDate') === FALSE) {
+00210:    self::executeCommand('typo3.flow:core:compile', $settings);
+00211:    if (isset($settings['persistence']['doctrine']['enable']) && $settings['persistence']['doctrine']['enable'] === TRUE) {
+00212:     self::compileDoctrineProxies($bootstrap);
+
+
+10 TYPO3\Flow\Core\Booting\Scripts::initializeProxyClasses(TYPO3\Flow\Core\Bootstrap)
+
+9 call_user_func(array|2|, TYPO3\Flow\Core\Bootstrap)
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Core\Booting\Step.php:
+
+00047:   */
+00048:  public function __invoke(\TYPO3\Flow\Core\Bootstrap $bootstrap) {
+00049:   call_user_func($this->callback, $bootstrap);
+00050:  }
+00051: 
+
+
+8 TYPO3\Flow\Core\Booting\Step::__invoke(TYPO3\Flow\Core\Bootstrap)
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Core\Booting\Sequence.php:
+
+00099:   $bootstrap->getSignalSlotDispatcher()->dispatch(__CLASS__, 'beforeInvokeStep', array($step, $this->identifier));
+00100:   $identifier = $step->getIdentifier();
+00101:   $step($bootstrap);
+00102:   $bootstrap->getSignalSlotDispatcher()->dispatch(__CLASS__, 'afterInvokeStep', array($step, $this->identifier));
+00103:   if (isset($this->steps[$identifier])) {
+
+
+7 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Core\Booting\Sequence.php:
+
+00103:   if (isset($this->steps[$identifier])) {
+00104:    foreach ($this->steps[$identifier] as $followingStep) {
+00105:     $this->invokeStep($followingStep, $bootstrap);
+00106:    }
+00107:   }
+
+
+6 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Core\Booting\Sequence.php:
+
+00103:   if (isset($this->steps[$identifier])) {
+00104:    foreach ($this->steps[$identifier] as $followingStep) {
+00105:     $this->invokeStep($followingStep, $bootstrap);
+00106:    }
+00107:   }
+
+
+5 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Core\Booting\Sequence.php:
+
+00083:   if (isset($this->steps['start'])) {
+00084:    foreach ($this->steps['start'] as $step) {
+00085:     $this->invokeStep($step, $bootstrap);
+00086:    }
+00087:   }
+
+
+4 TYPO3\Flow\Core\Booting\Sequence::invoke(TYPO3\Flow\Core\Bootstrap)
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Http\RequestHandler.php:
+
+00155:  protected function boot() {
+00156:   $sequence = $this->bootstrap->buildRuntimeSequence();
+00157:   $sequence->invoke($this->bootstrap);
+00158:  }
+00159: 
+
+
+3 TYPO3\Flow\Http\RequestHandler::boot()
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Http\RequestHandler.php:
+
+00111:   $this->response = new Response();
+00112: 
+00113:   $this->boot();
+00114:   $this->resolveDependencies();
+00115:   $this->request->injectSettings($this->settings);
+
+
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+C:\xampp\htdocs\TYPO3_Neos\Packages\Framework\TYPO3.Flow\Classes\TYPO3\Flow\Core\Bootstrap.php:
+
+00110: 
+00111:   $this->activeRequestHandler = $this->resolveRequestHandler();
+00112:   $this->activeRequestHandler->handleRequest();
+00113:  }
+00114: 
+
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+C:\xampp\htdocs\TYPO3_Neos\Web\index.php:
+
+00025: $context = getenv('FLOW_CONTEXT') ?: (getenv('REDIRECT_FLOW_CONTEXT') ?: 'Development');
+00026: $bootstrap = new \TYPO3\Flow\Core\Bootstrap($context);
+00027: $bootstrap->run();
+00028: 
+00029: ?>
+</pre>
+
+I tried to fix this following this post:
+http://t3n.de/news/typo3-neos-10-alpha1-erste-418679/#comment-88953
+
+But don't work...
+
+What's wrong?"
+42730,TYPO3.Setup,Task,Story #41853: As an integrator I want an optimized setup,Resolved,Must have,Importing Sitepackage or creating and creating admin is gone in the Setup,Markus Goldbeck,Karsten Dambekalns,2012-12-05 03:59,"","",2012-11-06,"","",100,2012-11-06 09:26,"","",890750,"","After the renaming changes
+
+https://review.typo3.org/#/q/status:open+project:FLOW3/Packages/TYPO3.TYPO3,n,z
+
+the step with importing or creating a site package and creating an admin user is gone"
+42303,TYPO3.Setup,Task,Story #41853: As an integrator I want an optimized setup,Closed,Should have,Enhance site import/creation step,Karsten Dambekalns,Berit Hlubek,2012-11-06 16:48,"","",2012-10-23,"","",0,2012-10-23 07:34,"","",869900,"","The site import / creation step is a bit confusing. See screenshot.
+
+It would be cool if the lower section would only become active if ""[New site|"" is selected in the selector. Of if the selector would become disabled as soon as something is entered in the form fields. That would make it clear what will happen (import? creation? both?) when clicking next."
+42301,TYPO3.Setup,Task,Story #41853: As an integrator I want an optimized setup,Resolved,Should have,Fetching list of databases fails on PostgreSQL,Karsten Dambekalns,Karsten Dambekalns,2012-11-06 07:35,"","",2012-10-23,"","",100,2012-10-23 06:43,"","",869800,"",Setup tries to establish a connection without a database name to fetch the list of databases. This is not possible on PostgreSQL.
+42202,TYPO3.Setup,Bug,"",Closed,Should have,Setup shows PHP warning if file permissions are not ok,Rens Admiraal,Karsten Dambekalns,2015-03-16 12:42,"","",2012-10-20,"","",0,2012-10-19 19:29,"","",864850,"","When the file permissions on for example the configuration folder are not correct a PHP warning is shown:
+Warning: file_put_contents(/Users/rens/Documents/__Sites/flow3/neos/Configuration/PackageStates.php) [function.file-put-contents]: failed to open stream: Permission denied in/Users/rens/Documents/__Sites/flow3/neos/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php on line 740
+
+This is shown on top of the friendly error message and should probably be hidden."
+41810,TYPO3.Setup,Bug,"",Closed,Should have,Symlinks don't work if open_basedir and suhosin is used,Tim Eilers,Henjo Hoeksma,2014-10-02 04:55,"","",2012-10-09,"","",0,2012-10-09 16:12,"","",845950,"","I know, that doesn't belong in a bug report, but i first wanted to say Neos looks and feels AWESOME. Can't wait until it is finished, it will really rock!
+
+Now to the bug: I tried Neos on my web server, which is secured in many ways, so i use open_basedir and suhosin. After enabling some PHP functions again and pointing to the correct PHP binary (all was told me by the setup dialog), i was able to install Neos, but all images and CSS were missing.
+
+After watching my logs i found this:
+
+<pre>
+suhosin[14166]: ALERT - symlink called during open_basedir (attacker 'REMOTE_ADDR not set', file '/var/www/xxxxxxxx/Data/Temporary/Production/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Resource_Publishing_FileSystemPublishingTarget_Original.php', line 116)
+</pre>
+
+This can be solved by setting
+<pre>
+suhosin.executor.allow_symlink = On
+</pre>
+in php.ini, then Neos runs just fine after a fresh install.
+
+May be it is not possible to run Neos / Flow without symlinks created by PHP, but at least *the setup should check that configuration option*.
+
+In general: Is it planned to enable Neos on more secure systems in the future? I am not really happy with allowing exec,system and the suhosin symlink option."
+40914,TYPO3.Setup,Bug,"",Resolved,Should have,Setup fails on deleting existing site,Robert Lemke,"",2012-10-23 09:36,"",Sprint 10 (1.0 TP1),2012-09-13,"","",100,2012-09-13 11:37,"","",804000,"","Steps to reproduce:
+
+- run setup tool and import Demo site
+- run setup tool again, check [x] delete existing sites
+
+See screenshot for actual error message and backtrace."
+40894,TYPO3.Setup,Task,Story #41853: As an integrator I want an optimized setup,Resolved,Should have,Setup doesn't validate / suceed to create databases with certain names,Robert Lemke,Karsten Dambekalns,2012-11-06 07:35,"","",2012-09-13,"","",100,2012-09-13 05:38,"","",803050,"","On trying to create a new database ""test-development"", the setup tool fails with the following message:
+
+<pre>
+Database ""test-development"" could not be created. Please check the permissions for user ""root"". PDO Exception: ""SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-development' at line 1""
+</pre>
+
+Also, using database names like ""@öaöæ«?|}{|?"" are not validated by the setup tool.
+"
+40598,TYPO3.Setup,Task,Story #40472: As a administrator I want to be warned if the selected database already contains data,Closed,Should have,Improve UX of setup process,Bastian Waidelich,Bastian Waidelich,2012-10-04 10:08,"",Sprint 10 (1.0 TP1),2012-09-04,"",0.00,100,2012-09-04 08:30,"","",788900,0.00,"* Link requirement error messages with wiki
+* Custom exception messages for setup steps"
+38857,TYPO3.Setup,Bug,"",Resolved,Should have,"""Box"" too small for content",Karsten Dambekalns,Bastian Waidelich,2012-07-11 03:04,"","",2012-07-10,"","",100,2012-07-10 09:20,"","",704950,"",.
+38856,TYPO3.Setup,Bug,"",Resolved,Should have,Button placement not intuitive,Karsten Dambekalns,Bastian Waidelich,2012-07-11 03:04,"","",2012-07-10,"","",100,2012-07-10 09:19,"","",704900,"",I'd expect the back button to be bottom left and skip left of the next button (see screenshot).

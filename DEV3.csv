@@ -1,0 +1,545 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+51614,DEV3,Task,"",New,Must have,Replace the Team's Logo on forge to adhere to current style guide,Roland Schenke,"",2013-08-31 05:13,"","",2013-08-31,"","",0,2013-08-31 05:13,"","",1328750,"","The current Logo still uses green.
+The updated Logo should use orange in this area."
+47987,DEV3,Bug,"",Rejected,Must have,Products not displayed in FE,aswin no-lastname-given,"",2013-06-10 04:04,"","",2013-05-06,2013-05-08,"",0,2013-05-06 09:11,"","",1149500,"","Hello,
+
+I am using TYPO# 6.1.
+
+I have created categories and also added some products on that categories.
+
+But I am unable to make visible that products on front end.
+
+Can any one help me to how to make visible products on front end."
+42991,DEV3,Bug,"",New,Must have,"*.ts file, ftp access can't be opened",Christian Tauscher,"",2012-11-15 02:54,"","",2012-11-15,"","",0,2012-11-15 02:54,"","",903600,"","TYPOscript files are named *.ts
+
+I am Accessing files via build in ftp-Connection, trying to open a *.ts file (correct TYPO3 Icon) end up with a simple ERROR Message.
+The file may be open correctly as TYPOscript as long as it is a local file.
+
+Workaround: open remote TS file in Text-Editor without syntax-checking :-(
+
+The issue is tested with:
+
+eclipse:  Juno/Indigo 
+Java: Oracle/openJDK
+Aptana: Plugin V2/V3
+Ubuntu 10/11/12
+
+
+Thank you for this plugin, it's a great help
+
+Christian."
+13226,DEV3,Major Feature,"",New,Should have,CodeAssist,Martin Eisengardt,"",2011-02-21 08:20,"","",2011-02-21,"","",0,2011-02-21 08:20,"","",2378250,"","Some hacks to support some Code Assist.
+
+1. Support objectManager->create and objectManager->get
+2. Support the following phpdoc syntax (those are non-standard meaning that they are not mentioned as valid datatypes in the phpdoc manual):
+    @param/@var/@return array(FooObject)
+    @param/@var/@return ArrayObject(FooObject)
+    @param/@var/@return SplObjectStorage(FooObject)
+    @param/@var/@return array[FooObject]
+    @param/@var/@return ArrayObject(FooObject)
+    @param/@var/@return SplObjectStorage(FooObject)
+    @param/@var/@return FooObject[]
+Maybe those syntax should become some kind of flow3 convetion to help others. Currently it seems that only some IDEs support array in PHPDoc.
+3. Support foreach (array syntax seen above)
+4. Support repository methods (findByUuid, fineAll, findOneBy..., findBy...)
+   This is realized in class Flow3RepositoryEvaluator. The method evaluateTypeFromRepos trys to read the field $objectType of the associated Repository class. Within my project I have a convention that every repository sets this field and that the interfaces of a repository is located in a DatabaseApi package and the realization in a DatabaseImpl package. The logic may be changed to fit the flow3 specificated (maybe reading the Objects.yaml or guess the entity class name if the field $objectType is not set).
+
+An example where code assist will work:
+<pre>
+foreach ($repository->findAll() as $object)
+{
+    $object->| // here the code assist will work without any additional @var
+}
+
+$result = $repository->findByMySpecialSecretAttribute($value);
+$array = $result->| // maps to query result methods
+foreach ($result as $object)
+{
+    $object->| // iterating over this query result works too
+}
+while ($result->valid()
+{
+    $result->current()->| // even accessing the current object will work
+    $result->next();
+}
+</pre>
+
+plugin.xml (relevant snippet):
+<pre>
+   <extension
+         point=""org.eclipse.php.core.goalEvaluatorFactories"">
+      <factory class=""com.netplayworld.xworlds.uml.goals.Flow3FactoryEvaluator"" priority=""100"" />
+      <factory
+            class=""com.netplayworld.xworlds.uml.goals.Flow3RepositoryEvaluator""
+            priority=""100"">
+      </factory>
+      <factory
+            class=""com.netplayworld.xworlds.uml.goals.ArrayEvaluator""
+            priority=""100"">
+      </factory>
+   </extension>
+</pre>
+
+see the attached classes. Feel free to use/copy them. Please keep the original author (net-playworld and mepeisen). thx."
+10608,DEV3,Major Feature,"",New,Should have,FLOW3 module development (FLOW3 module projects),Martin Eisengardt,"",2010-11-03 06:00,"","",2010-11-03,"","",0,2010-11-03 06:00,"","",2378300,"","** FLOW3 Project
+
+Currently DEV3 is focused on developing a whole web application. There is no clean support or guideline how to develop a single module or library. Developing applications should be devided into several stages and targets. The targets may be:
+A) An independent library module
+B) An extension containing it's own routings and a web interface
+C) A web application.
+All of the target may need their own directorty layout. While a web application may need a complete flow3 installation and directory layout the library module and the extension may only need a directorty layout during development time but will be released without so that they can be installed in another project.
+
+Supporting development should devide the following stages:
+1) Development of a module (let the module with local directory layout become part of the svn/git)
+2) Dependency lookup (lookup the framework and other modules, do not store them as symbolic links)
+3) Development installation and development needs
+4) releasing
+
+First of all flow3 should support the following directory layout:
+<pre>
+/wsroot/libproject1
+    Configuration....
+    Data....
+    Packages....
+        MyLib....
+    Web....
+/wsroot/libproject2
+    Configuration....
+    Data....
+    Packages....
+        MyLib....
+    Web....
+/wsroot/webproject
+    Configuration....
+    Data....
+    Packages....
+        MyWebApp....
+    Web....
+/wsroot/fwkproject
+    Packages/Framework....
+</pre>
+The needed patch to FLOW3 is described here: http://forge.typo3.org/issues/10524
+
+The benefit from this directory layout:
+- The IDE (f.e. eclipse PDT) does only have the framework classes once and indexing and type lookup would be faster while developing multiple modules.
+- Dependencies are not stored in the file system (symbolic links) or the versioning system (git submodules/svn:externals)
+- Development local configuration can be stored in the library project; the release will only contain the package directory.
+
+Extension to DEV3:
+- A create FLOW3 project wizard that prepares the directory structure
+
+** Support for a common repository system.
+
+The dependency lookup requires some kind of repository system. DEV3 wshould not re-invent the wheel at this point. IMHO maven should be a good starting point. Whenever a module requires dependencies they are not longer stored in the project itself. But they are only stored in the Package.xml file or for maven in the pom.xml file. This xml file describes the module and the dependencies. Maven should be flexible enough that it will support flow3 module and website projects (this point should be cleared out).
+
+Eclipse nicely integrates maven for java already. We will expect the following use cases:
+1) A developer starts with a clean workspace and creates a flow3 project
+2) A developer starts with a clean workspace and checkouts/clones an existing project
+3) A developer has an existing workspace and clones/checkouts an module that is a dependency of another already existing project. For example the framework will first be downloaded from a repository and later on the developer decides to clone the frameworks git repository.
+
+The java integration does the following. Whenever there is a new project the dependencies will be summed up. Foreach single dependency it will do the following lookup:
+A) Is the dependency already part of a project in the workspace?
+B) Is the dependency present in the local repository (stored somewhere near ~/.m2/repository)? If it is found maven will do a check if this is the newest version.
+C) Is the dependency present in configured remote repositories? If it is found the dependency will be downloaded and installed into the local repository.
+
+Having this behaviour would be really nice. There are more benefits later on: FLOW3 and TYPO3 have a clean repository system and know how and where to download the files. But what does it mean for our projects?
+
+Each project should represent a single module. There will be a pom.xml file that defines the module. Eclipse should know how to extract the relevant information from pom.xml and build the files: .htaccess/ Package.xml and others on the fly. The pom.xml will be the leading file. A nice editor will support developers to find the correct modules and versions to build their website.
+
+There must be a parent pom.xml that covers php and flow3 development. However php development is really different from java development...
+Each single process declared by maven should be covered by the parent pom.xml file. So that developers and even eclipse are able to support the development stages. Maven declares the following stages or command:
+1) Create project
+2) Install project
+3) Build (See below)
+4) Testing
+5) Release
+6) Install
+7) Run
+
+** Additional features
+
+I am currently developing small extensions that provide support for repository/ entity layouts. A small xml file will describe entites and repositories in the module. A generator will be able to generate the php files. Later on there may be an uml editor that is able to manipulate the xml files. Due to the fact I am currently experimenting with FLOW3 I do not use any uml format for the xml file. An eclipse integration should be able to work with open standards.
+
+Eclipse should be able to create the model as soon as the file changes. In other words: As soon as the build stage within maven is reached. The integration could be nicely done by simple providing an alternative pom.xml file that installs an entity/repository builder.
+"
+9694,DEV3,Bug,"",New,Should have,DEV³ and Zend Studio 7.2.0 Windows 7,Frank Mey,"",2011-05-13 03:44,"","",2010-09-12,"","",0,2010-09-12 07:29,"","",2378350,"","Hi,
+
+just wanted to give you guys feedback from my test running the DEV3 Plugin for Eclipse with Zend Studio 7.2.0 (based on Eclipse 3.5.1).
+
+The plugin is installed and the .ts files show a correct association, but the editor can't be run (I suppose due to changes in Class-Structure from 3.3. to 3.5 etc.). Attached you find the error message I get.
+
+I unfortunately dont have time and java skills to debug this thing seriously, just wanted to let you know of the issue. Hope to see an update for Eclipse 3.5/3.6 soon as I guess my issue isn't related to Zend Studio but to the Eclipse base...."
+4772,DEV3,Bug,"",New,Should have,TypoScript editor does not inform IDocumentListener promptly,Marc Rintsch,"",2010-10-20 05:40,"","",2009-09-25,"","",0,2009-09-25 11:30,"","",2378400,"","I'm working on an Eclipse plug-in which adds an _IDocumentListener_ to open documents to listen to text changes while they happen, i.e. in real time.
+
+Typing in the TypoScript editor does not result in a call of the _documentAboutToBeChanged()_ method on that listener for the text changes while they are being made, but only once before the document is saved to disk.  Then there is *one* _DocumentEvent_ fired with always the whole file content as new text."
+4291,DEV3,Bug,"",Resolved,Must have,Snippets View doe not work in Eclipse 3.5,Eike Starkmann,Andreas Wolf,2010-10-20 05:40,"","",2009-08-21,"","",100,2009-08-21 05:27,"","",2378450,"","eclipse.buildId=I20090611-1540
+java.version=1.6.0_14
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=de_DE
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+
+Error
+Fri Aug 21 11:18:26 CEST 2009
+Unable to create view ID com.crosscontent.typo34.snippets.views.SnippetsView: An unexpected exception was thrown.
+
+java.lang.NullPointerException
+at com.crosscontent.typo34.snippets.views.SnippetsView$ViewContentProvider.initialize(SnippetsView.java:275)
+at com.crosscontent.typo34.snippets.views.SnippetsView$ViewContentProvider.getElements(SnippetsView.java:230)
+at org.eclipse.jface.viewers.StructuredViewer.getRawChildren(StructuredViewer.java:959)
+at org.eclipse.jface.viewers.ColumnViewer.getRawChildren(ColumnViewer.java:703)
+at org.eclipse.jface.viewers.AbstractTreeViewer.getRawChildren(AbstractTreeViewer.java:1330)
+at org.eclipse.jface.viewers.TreeViewer.getRawChildren(TreeViewer.java:390)
+at org.eclipse.jface.viewers.AbstractTreeViewer.getFilteredChildren(AbstractTreeViewer.java:636)
+at org.eclipse.jface.viewers.AbstractTreeViewer.getSortedChildren(AbstractTreeViewer.java:602)
+at org.eclipse.jface.viewers.AbstractTreeViewer$1.run(AbstractTreeViewer.java:799)
+at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+at org.eclipse.jface.viewers.AbstractTreeViewer.createChildren(AbstractTreeViewer.java:776)
+at org.eclipse.jface.viewers.TreeViewer.createChildren(TreeViewer.java:639)
+at org.eclipse.jface.viewers.AbstractTreeViewer.internalInitializeTree(AbstractTreeViewer.java:1490)
+at org.eclipse.jface.viewers.TreeViewer.internalInitializeTree(TreeViewer.java:828)
+at org.eclipse.jface.viewers.AbstractTreeViewer$5.run(AbstractTreeViewer.java:1474)
+at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1392)
+at org.eclipse.jface.viewers.TreeViewer.preservingSelection(TreeViewer.java:402)
+at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1353)
+at org.eclipse.jface.viewers.AbstractTreeViewer.inputChanged(AbstractTreeViewer.java:1467)
+at org.eclipse.jface.viewers.ContentViewer.setInput(ContentViewer.java:274)
+at org.eclipse.jface.viewers.StructuredViewer.setInput(StructuredViewer.java:1634)
+at com.crosscontent.typo34.snippets.views.SnippetsView.createPartControl(SnippetsView.java:347)
+at org.eclipse.ui.internal.ViewReference.createPartHelper(ViewReference.java:367)
+at org.eclipse.ui.internal.ViewReference.createPart(ViewReference.java:226)
+at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:595)
+at org.eclipse.ui.internal.Perspective.showView(Perspective.java:2228)
+at org.eclipse.ui.internal.WorkbenchPage.busyShowView(WorkbenchPage.java:1067)
+at org.eclipse.ui.internal.WorkbenchPage$20.run(WorkbenchPage.java:3816)
+at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+at org.eclipse.ui.internal.WorkbenchPage.showView(WorkbenchPage.java:3813)
+at org.eclipse.ui.internal.WorkbenchPage.showView(WorkbenchPage.java:3789)
+at org.eclipse.ui.handlers.ShowViewHandler.openView(ShowViewHandler.java:165)
+at org.eclipse.ui.handlers.ShowViewHandler.openOther(ShowViewHandler.java:109)
+at org.eclipse.ui.handlers.ShowViewHandler.execute(ShowViewHandler.java:77)
+at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:294)
+at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:241)
+at org.eclipse.ui.internal.ShowViewMenu$3.run(ShowViewMenu.java:141)
+at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:584)
+at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:501)
+at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:411)
+at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3880)
+at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3473)
+at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2405)
+at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2369)
+at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2221)
+at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:500)
+at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:493)
+at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:194)
+at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:368)
+at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:559)
+at org.eclipse.equinox.launcher.Main.basicRun(Main.java:514)
+at org.eclipse.equinox.launcher.Main.run(Main.java:1311)
+
+"
+3501,DEV3,Bug,"",New,Must have,TYPO3 4.x part of DEV3 NOT being installed,Jose Antonio Guerra,"",2010-10-20 05:40,Installation Issues,"",2009-05-28,"","",0,2009-05-28 07:23,"","",2378500,"","Just installed DEV3 in a fresh Aptana Studio but the TYPO3 4.x part is missing.
+
+Environment:
+
+* Ubuntu Linux 9.04
+* Aptana Studio 1.2.7 (Eclipse 3.2.2)
+** Installed PHP and Subversion plugins
+* DEV3 1.1.0
+
+"
+3338,DEV3,Bug,"",New,Must have,cannot save *.ts files in eclipse aptana with dev3 on linux,d.ros no-lastname-given,"",2010-10-20 05:40,"","",2009-05-16,"","",0,2009-05-16 06:01,"","",2378550,"","Hello ,
+
+I cannot save files with the *.ts ending [ typo3 4 editor assigned ]. If I press the save button after altering a file the * for not saved files disappears in the filetab but if i reopen the file to previous changes are not stored. this happens in the file view dialog on ftp and local files. this happens since the last update of eclipse i think . . . but do not know really. all available software updates are installed. i also cleared the workbench and started from scratch . . . other editors like html save files without problems. the log seems to be clean. . . 
+
+here are the systems specifications:
+
+Eclipse Configuration Details --> ecd.txt
+
+
+@
+ rpm -qa *java*
+java-1_6_0-sun-1.6.0.u13-0.1.1
+java-1_6_0-sun-plugin-1.6.0.u13-0.1.1
+timezone-java-2009d-0.1.1
+java-1_6_0-sun-devel-1.6.0.u13-0.1.1
+java-1_6_0-openjdk-plugin-1.4_b14-24.5.2
+java-1_6_0-sun-src-1.6.0.u13-0.1.1
+java-1_6_0-openjdk-1.4_b14-24.5.2
+
+@
+
+@
+rpm -qa eclipse*
+eclipse-jdt-3.4-6.2
+eclipse-platform-3.4-6.2
+eclipse-archdep-platform-3.4-6.2
+eclipse-3.4-6.2
+eclipse-pde-3.4-6.2
+@
+
+@
+uname -a
+Linux linquad 2.6.27.21-0.1-default #1 SMP 2009-03-31 14:50:44 +0200 x86_64 x86_64 x86_64 GNU/Linux
+OpenSuSE 11.1 on Model: 6.15.11 ""Intel(R) Core(TM)2 Quad CPU    Q6600  @ 2.40GHz + 8GB RAM
+
+@
+
+"
+3264,DEV3,Feature,"",New,Could have,Snippets View not working in Standalone Aptana,Nico de Haen,"",2010-10-20 05:40,Installation Issues,"",2009-05-11,"","",0,2009-05-11 03:24,"","",2378600,"","Hi,
+
+I'm not sure, if the standalone version of Aptana is supported at all. I installed DEV3 and if I try to open the snippets view I get the error listed below.
+Maybe it works, if I install PDT?
+
+<pre>
+ava.lang.NullPointerException
+	at com.crosscontent.typo34.snippets.views.SnippetsView$ViewContentProvider.initialize(SnippetsView.java:275)
+	at com.crosscontent.typo34.snippets.views.SnippetsView$ViewContentProvider.getElements(SnippetsView.java:230)
+	at org.eclipse.jface.viewers.StructuredViewer.getRawChildren(StructuredViewer.java:927)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getRawChildren(AbstractTreeViewer.java:1144)
+	at org.eclipse.jface.viewers.TreeViewer.getRawChildren(TreeViewer.java:768)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getFilteredChildren(AbstractTreeViewer.java:574)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getSortedChildren(AbstractTreeViewer.java:543)
+	at org.eclipse.jface.viewers.AbstractTreeViewer$1.run(AbstractTreeViewer.java:728)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:67)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.createChildren(AbstractTreeViewer.java:705)
+	at org.eclipse.jface.viewers.TreeViewer.createChildren(TreeViewer.java:892)
+	at org.eclipse.jface.viewers.AbstractTreeViewer$5.run(AbstractTreeViewer.java:1288)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1323)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.inputChanged(AbstractTreeViewer.java:1277)
+	at org.eclipse.jface.viewers.ContentViewer.setInput(ContentViewer.java:250)
+	at org.eclipse.jface.viewers.StructuredViewer.setInput(StructuredViewer.java:1542)
+	at com.crosscontent.typo34.snippets.views.SnippetsView.createPartControl(SnippetsView.java:347)
+	at org.eclipse.ui.internal.ViewReference.createPartHelper(ViewReference.java:332)
+	at org.eclipse.ui.internal.ViewReference.createPart(ViewReference.java:197)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:566)
+	at org.eclipse.ui.internal.Perspective.showView(Perspective.java:1675)
+	at org.eclipse.ui.internal.WorkbenchPage.busyShowView(WorkbenchPage.java:987)
+	at org.eclipse.ui.internal.WorkbenchPage.access$13(WorkbenchPage.java:968)
+	at org.eclipse.ui.internal.WorkbenchPage$13.run(WorkbenchPage.java:3514)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:67)
+	at org.eclipse.ui.internal.WorkbenchPage.showView(WorkbenchPage.java:3511)
+	at org.eclipse.ui.internal.WorkbenchPage.showView(WorkbenchPage.java:3487)
+	at org.eclipse.ui.handlers.ShowViewHandler.openView(ShowViewHandler.java:148)
+	at org.eclipse.ui.handlers.ShowViewHandler.openOther(ShowViewHandler.java:104)
+	at org.eclipse.ui.handlers.ShowViewHandler.execute(ShowViewHandler.java:70)
+	at org.eclipse.ui.internal.ShowViewMenu$3.run(ShowViewMenu.java:114)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:499)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:539)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:488)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:400)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:66)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1085)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3180)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:2856)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:1930)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:1894)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:422)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at com.aptana.ide.rcp.AbstractIDEApplication.run(AbstractIDEApplication.java:122)
+	at com.aptana.ide.rcp.Application.run(Application.java:57)
+	at org.eclipse.core.internal.runtime.PlatformActivator$1.run(PlatformActivator.java:78)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:92)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:68)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:400)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.core.launcher.Main.invokeFramework(Main.java:336)
+	at org.eclipse.core.launcher.Main.basicRun(Main.java:280)
+	at org.eclipse.core.launcher.Main.run(Main.java:977)
+	at org.eclipse.core.launcher.Main.main(Main.java:952)
+</pre>"
+2999,DEV3,Feature,"",Accepted,Should have,Add License chooser,Christoph Blömer,David Bruehlmeier,2010-10-20 05:40,New Package Wizard (FLOW3),2.0,2009-03-30,"","",0,2009-03-29 19:52,"","",2379850,"","Currently a package is created with the GNU GPL 2 license.
+
+It would be nice to choose the license when creating a package or a new class.
+FLOW3 supports the LGPL 3 version."
+2998,DEV3,Bug,"",Resolved,Must have,Adjust Templates to new Namespace Syntax,Christoph Blömer,David Bruehlmeier,2010-10-20 05:40,New Package Wizard (FLOW3),2.0,2009-03-30,"","",100,2009-03-29 19:46,"","",2379900,"","DEV3 1.1.0 is running fine on Eclipse Galileo with PDT 2.1M6.
+This version supports now namespaces from PHP5.3.
+
+When creating a package the Default template shows
+
+F3_TestPackage_Controller_Default
+
+But it should be
+ namespace F3\TestPackage\Controller;
+and 
+ class DefaultController extends..."
+1347,DEV3,Bug,"",New,Must have,Adding Additional Parties Popup too small in New Package Wizard,Sebastian Kurfuerst,David Bruehlmeier,2010-10-20 05:40,New Package Wizard (FLOW3),"",2008-08-26,"","",0,2008-08-26 08:07,"","",2378650,"","The popup ""Maintain Party"" in the ""new flow3 package wizard"" does not display the ""Repository Username"" field. See attached picture for clarification.
+
+Greets,
+Sebastian"
+1245,DEV3,Bug,"",New,Must have,TypoScript Editor / Mac: Unsupported Class Version Error,Robert Lemke,Sebastian Böttger,2010-10-20 05:40,TYPO3 4.x TypoScript Editor,"",2008-08-07,"","",0,2008-08-07 09:31,"","",2378700,"","With DEV Version 1.0.2 I get the following error when trying to open a .ts file on my Mac:
+
+!ENTRY org.eclipse.ui 4 0 2008-08-07 15:28:10.114
+!MESSAGE Unable to create editor ID com.crosscontent.typo34.editor.Typo34Editor: The editor class could not be instantiated. This usually indicates that the editor's class name was mistyped in plugin.xml.
+!STACK 0
+java.lang.UnsupportedClassVersionError: Bad version number in .class file
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:675)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.defineClass(DefaultClassLoader.java:161)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.defineClass(ClasspathManager.java:501)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findClassImpl(ClasspathManager.java:471)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClassImpl(ClasspathManager.java:430)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:413)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:189)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findLocalClass(BundleLoader.java:340)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClassInternal(BundleLoader.java:408)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:369)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:357)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:83)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:251)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.loadClass(BundleLoader.java:289)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:227)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1269)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:160)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:788)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:51)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:252)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:67)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:248)
+	at org.eclipse.ui.internal.registry.EditorDescriptor.createEditor(EditorDescriptor.java:231)
+	at org.eclipse.ui.internal.EditorManager.createPart(EditorManager.java:841)
+	at org.eclipse.ui.internal.EditorReference.createPartHelper(EditorReference.java:606)
+	at org.eclipse.ui.internal.EditorReference.createPart(EditorReference.java:426)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:592)
+	at org.eclipse.ui.internal.EditorReference.getEditor(EditorReference.java:263)
+	at org.eclipse.ui.internal.WorkbenchPage.busyOpenEditorBatched(WorkbenchPage.java:2739)
+	at org.eclipse.ui.internal.WorkbenchPage.busyOpenEditor(WorkbenchPage.java:2651)
+	at org.eclipse.ui.internal.WorkbenchPage.access$13(WorkbenchPage.java:2643)
+	at org.eclipse.ui.internal.WorkbenchPage$10.run(WorkbenchPage.java:2595)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:67)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:2590)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:2574)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:2565)
+	at org.eclipse.ui.ide.IDE.openEditor(IDE.java:644)
+	at org.eclipse.ui.ide.IDE.openEditor(IDE.java:603)
+	at org.eclipse.ui.wizards.newresource.BasicNewFileResourceWizard.performFinish(BasicNewFileResourceWizard.java:101)
+	at org.eclipse.jface.wizard.WizardDialog.finishPressed(WizardDialog.java:742)
+	at org.eclipse.jface.wizard.WizardDialog.buttonPressed(WizardDialog.java:373)
+	at org.eclipse.jface.dialogs.Dialog$2.widgetSelected(Dialog.java:618)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:227)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:66)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1495)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1519)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1504)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1295)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3350)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:2950)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:820)
+	at org.eclipse.jface.window.Window.open(Window.java:796)
+	at org.eclipse.ui.actions.NewWizardAction.run(NewWizardAction.java:182)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:498)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:546)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:490)
+	at org.eclipse.jface.action.ActionContributionItem$5.handleEvent(ActionContributionItem.java:402)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:66)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1495)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1519)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1504)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1295)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3350)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:2950)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2389)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2353)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2219)
+	at org.eclipse.ui.internal.Workbench$4.run(Workbench.java:466)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:289)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:461)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:106)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:169)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:106)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:76)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:363)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:176)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:585)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:508)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:447)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1173)
+"
+1113,DEV3,Feature,"",Resolved,Should have,Online Documentation,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,Installation Issues,"",2008-07-23,"",0.00,100,2008-07-23 07:44,"","",2378750,"",DEV3 should offer a user guide through the built-in online documentation (Help > Help Contents)
+1112,DEV3,Feature,"",Resolved,Should have,Multi-Language Support,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,Installation Issues,"",2008-07-23,"",4.00,100,2008-07-23 07:40,"","",2378800,"","DEV3 should be multi-language enabled.
+
+Note: This does not necessarily mean that DEV3 will be translated to languages other than English. It only means that labels are not hard-coded but rather fetched by using the translateable Eclipse mechanism."
+1111,DEV3,Bug,"",Accepted,Should have,Hovering over folded region does not show correct information,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,TypoScript 2.0 Editor,"",2008-07-23,"",0.00,0,2008-07-23 06:38,"","",2378850,"","When hovering over a folded region (i.e. a confinement), the folded TypoScript should be displayed. This seems to work only for nested confinements."
+1100,DEV3,Bug,"",Resolved,Should have,Edit and Delete buttons must be disabled if no pointcut is selected,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,New Aspect Wizard (FLOW3),"",2008-07-21,"",0.00,100,2008-07-21 15:47,"","",2378900,"","In the ""New Aspect Wizard"", the buttons to edit and delete a pointcut must be disabled when no pointcut is selected in the table viewer. Currently, these buttons are always enabled."
+1062,DEV3,Bug,"",Resolved,Should have,Nested confinements are not folded properly,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,TypoScript 2.0 Editor,"",2008-07-15,"",0.00,100,2008-07-15 09:09,"","",2378950,"","Nested confinements are not folded properly in the TypoScript 2.0 editor.
+
+<pre>
+thirdObject {
+	subObject {
+		subSubObject {
+			someMessage = Text
+			someMessage.value = ""Fully or hard tail?""
+		}
+	}
+}
+</pre>
+
+In this example the nesting ends at the first ending curly bracket, right after ..tail?"""
+883,DEV3,Bug,"",Resolved,Could have,install error,Stefano Cecere,David Bruehlmeier,2010-10-20 05:40,Installation Issues,"",2008-06-27,2008-06-30,8.00,100,2008-06-26 23:49,"","",2379000,"","hallo
+i'm trying DEV3 for the first time with Eclipse (3.3.2 downloaded yesterday from http://downloads.zend.com/pdt/all-in-one/)
+and i'm having this error installing it:
+
+(i attach two screenshots)
+
+stefano"
+529,DEV3,Feature,"",Accepted,Should have,Syntax Feature Requests,Peter Kraume,Thomas Hartmann,2010-10-20 05:40,TYPO3 4.x TypoScript Editor,"",2008-05-13,"",0.00,0,2008-05-13 10:17,"","",2379050,"","    * pageTS/userTS Syntax Highlighting
+    * Syntax Check for Brackets
+
+collected from T3DD08"
+528,DEV3,Feature,"",Accepted,Should have,Library Collector,Peter Kraume,Sebastian Böttger,2010-10-20 05:40,TYPO3 4.x TypoScript Editor,"",2008-05-13,"",0.00,0,2008-05-13 10:15,"","",2379100,"",Automatically create a library from TS code. Idea of Jochen Stange from T3DD08.
+527,DEV3,Feature,"",Accepted,Should have,Serveral ideas for connectivity,Peter Kraume,Sebastian Böttger,2010-10-20 05:40,TYPO3 4.x TypoScript Editor,"",2008-05-13,"",0.00,20,2008-05-13 10:14,"","",2379150,"","    * connector to database
+    * webservice to make the template available to eclipse
+    * integrate filesystem ??
+    * webdav (meta_ftpd)
+    * maja_junction
+
+Feature Requests from T3DD08"
+526,DEV3,Feature,"",Accepted,Should have,Wizard for own Snippets,Peter Kraume,Sebastian Böttger,2010-10-20 05:40,TYPO3 4.x Snippets,"",2008-05-13,"",0.00,0,2008-05-13 10:13,"","",2379200,"",This is a feature request from T3DD08.
+524,DEV3,Bug,"",Resolved,Should have,Can't create FLOW3 Package without creating a project before,Peter Kraume,David Bruehlmeier,2010-10-20 05:40,New Package Wizard (FLOW3),0.2,2008-05-13,"",0.00,100,2008-05-13 05:32,"","",2379500,"","Not sure if this is a bug or intended, but you have to create a project first. Otherwise the folder property is empty.
+The error occured after a fresh PDT installation."
+489,DEV3,Task,"",Accepted,Should have,Refactor path handling,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,New Package Wizard (FLOW3),"",2008-04-29,"","",0,2008-04-29 10:03,"","",2250,"","Refactor the handling of paths in the ""New Package Wizard"". Currently, the paths used are scatterd over several classes. They should be centralized in a single class. The classes PackageFolders and StandardFolder should be revised.
+
+Furthermore, the additional folders shall be customizable in the preferences."
+488,DEV3,Bug,"",Resolved,Should have,No margins in FLOW3 preferences,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,FLOW3 Preferences,"",2008-04-29,"",0.50,100,2008-04-29 09:17,"","",2379250,"","In the menu ""Preferences -> DEV3 -> FLOW3"", there are no margins in the group, breaking with the visual guidelines."
+487,DEV3,Bug,"",Resolved,Should have,Icon of package template not displayed,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,New Package Wizard (FLOW3),"",2008-04-29,"","",0,2008-04-29 07:26,"","",2379300,"","The icon defined for a custom package template is not displayed in the ""New Package Wizard""."
+485,DEV3,Feature,"",Accepted,Should have,"Filtering for the ""Select Locales"" dialog",David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,New Package Wizard (FLOW3),"",2008-04-29,"","",0,2008-04-29 07:21,"","",2379350,"","The ""Select Locales"" dialog contains a lot of entries. The dialog should probably be changed to FilteredItemsSelectionDialog."
+484,DEV3,Bug,"",Accepted,Should have,Set focus on package key field,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,New Package Wizard (FLOW3),"",2008-04-29,"","",0,2008-04-29 07:11,"","",2379400,"","When opening the ""New Package Wizard"", the focus is set on the ""folder"" field, even if it has been filled with the value from the current selection. In this context, it would be nicer if the focus was directly set on the ""package key"" field."
+470,DEV3,Major Feature,"",Resolved,Should have,RQ022: Online Documentation,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,"",1.0,2008-04-16,"",0.00,100,2008-04-16 13:35,"","",2379800,"","The user documentation is provided as Eclipse Help, PDF and HTML."
+469,DEV3,Major Feature,"",Resolved,Should have,UC010: Delete Element,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,"",0.3,2008-04-16,"",0.00,100,2008-04-16 13:30,"","",2379650,"","Delete an element, such as a package, an aspect, a content element, etc."
+468,DEV3,Major Feature,"",Accepted,Should have,UC009: Maintain Content,David Bruehlmeier,"",2010-10-20 05:40,"",2.0,2008-04-16,"","",0,2008-04-16 13:29,"","",2379950,"",Edit content in a remote phpCR content repository.
+467,DEV3,Major Feature,"",Accepted,Should have,UC008: Create Content,David Bruehlmeier,"",2010-10-20 05:40,"",2.0,2008-04-16,"","",0,2008-04-16 13:29,"","",2380000,"",Create new content in a remote phpCR content repository.
+466,DEV3,Major Feature,"",Resolved,Should have,UC007: Edit TypoScript 2.0,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,"",0.3,2008-04-16,"",0.00,100,2008-04-16 13:28,"","",2379700,"","A specialized editor helps the developer write TypoScript 2.0. The editor includes syntax highlighting and
+content assist, based upon the FLOW3 packages available."
+465,DEV3,Major Feature,"",Resolved,Should have,UC006: Maintain Aspect,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,"",0.3,2008-04-16,"",0.00,100,2008-04-16 13:28,"","",2379750,"","Edit existing aspects, e.g. adding new advices or new pointcuts."
+464,DEV3,Major Feature,"",Resolved,Should have,UC005: Create Aspect,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,"",0.2,2008-04-16,"",0.00,100,2008-04-16 13:27,"","",2379550,"",A wizard creates scaffolding classes and configuration for a new FLOW3 aspect.
+463,DEV3,Major Feature,"",Accepted,Should have,UC004: Edit Content Repository,David Bruehlmeier,"",2010-10-20 05:40,"",2.0,2008-04-16,"","",0,2008-04-16 13:27,"","",2380050,"","A specialized editor helps editing the FLOW3 content repository (the structure, not the content)."
+462,DEV3,Major Feature,"",Accepted,Should have,UC003: Edit PHP Code,David Bruehlmeier,"",2010-10-20 05:40,"",2.0,2008-04-16,"",0.00,0,2008-04-16 13:26,"","",2380100,"",All PHP code is checked for compliance with the FLOW3 coding guidelines while-you-type.
+461,DEV3,Major Feature,"",Resolved,Should have,UC002: Edit Configuration,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,"",0.2,2008-04-16,"",0.00,100,2008-04-16 13:26,"","",2379600,"","A configuration editor (like PDE in Eclipse) makes it easy to change configuration settings for a FLOW3 package, such
+as the Package.xml or Components.ini file."
+460,DEV3,Major Feature,"",Resolved,Should have,UC001: Create FLOW3 Package,David Bruehlmeier,David Bruehlmeier,2010-10-20 05:40,"",0.1,2008-04-16,"","",100,2008-04-16 13:25,"","",2379450,"","A wizard creates all folders and configuration files required by FLOW3. The developer can also choose from
+different templates to get him started faster."

@@ -1,0 +1,194 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+35416,TYPO3.Eel,Bug,"",Resolved,Should have,Fix failing eel unit test // Eel Code Detection expression,Sebastian Kurfuerst,Karsten Dambekalns,2012-07-13 10:06,"","",2012-03-30,"","",100,2012-03-30 13:14,"","",535650,"",""
+35763,TYPO3.Eel,Task,"",Resolved,Should have,Move README docs to Documentation/,Rens Admiraal,Karsten Dambekalns,2013-10-01 04:29,"","",2012-04-07,"","",100,2012-04-07 03:50,"","",552900,"","With moving the code from github to git.typo3.org the need for a README.md is gone, we should move this to the normal documentation folder."
+36644,TYPO3.Eel,Bug,"",Resolved,Must have,Invalid variable type during PHP-peg parsing,Adrian Föder,Sebastian Kurfuerst,2012-06-21 10:37,"","",2012-04-27,"","",100,2012-04-27 02:46,"","",595450,"","during processing, in php-peg\Parser.php there' the following lines of code:
+<pre><code class=""php"">
+	function store(&$result, $subres, $storetag = NULL) {
+		$result['text'] .= $subres['text'];
+</code></pre>
+
+a var_dump of the $subres variable has the following ouput ending:
+<pre>
+(...many similar arrays)
+
+array(4) {
+  [""_matchrule""]=>
+  string(11) ""Disjunction""
+  [""name""]=>
+  string(11) ""Disjunction""
+  [""text""]=>
+  string(47) ""context.children(this.getNodePath()).children()""
+  [""code""]=>
+  string(164) ""$context->getAndWrap('context')->callAndWrap('children', array($context->getAndWrap('this')->callAndWrap('getNodePath', array())))->callAndWrap('children', array())""
+}
+array(3) {
+  [""_matchrule""]=>
+  string(10) ""Identifier""
+  [""name""]=>
+  string(10) ""Identifier""
+  [""text""]=>
+  string(6) ""teaser""
+}
+string(6) ""teaser""
+
+(end of processing)
+</pre>
+
+you see, the last occurence is a string; maybe due to a recursive call to the preceding Identifier/teaser thing.
+
+Due to the fact $subres is in the very last case a string, $subres['text'] finally results in 
+<pre><code class=""html"">
+<!-- Exception while rendering page&lt;TYPO3.TYPO3:Page&gt;/body&lt;TYPO3.TypoScript:FluidRenderer&gt;/sections/teaser : Warning: Illegal string offset 'text' in C:\Users\afoeder\FLOW3\Flow3Org\Packages\Application\TYPO3.Eel\Resources\Private\PHP\php-peg\Parser.php line 171 -->
+</code></pre>
+
+This kind of warning seems to be a PHP 5.4 issue only, but it's logically incorrect however."
+38379,TYPO3.Eel,Feature,"",New,Should have,Implement a Eel-ViewHelper,Tobias Liebig,"",2013-04-08 05:03,"","",2012-06-25,"","",0,2012-06-25 13:06,"","",681550,"","To make Eel available in Fluid-Templates, Eel (or Fluid) should provide an simple ViewHelper.
+It should accept an eel expression argument (string, might already be parsed/rendered by fluid), passes that to Eel and return the result. The Fluid TemplateVariableContainer should be passed as the Eel ""Context"" to access the Fluid variable values within Eel.
+"
+38459,TYPO3.Eel,Bug,"",New,Must have,Accessing a not present property/method should error verbosely,Adrian Föder,Sebastian Kurfuerst,2012-08-07 11:06,"","",2012-06-28,"","",0,2012-06-28 09:19,"","",685550,"","in my case, I erroneously wrote
+<pre>
+page.body.title = ${context.attr('title')}
+</pre>
+
+which resulted in 
+<pre><code class=""html"">
+<!-- Exception while rendering page&lt;TYPO3.TYPO3:Page&gt;/body :
+Catchable Fatal Error: Object of class TYPO3\Eel\FlowQuery\FlowQuery
+could not be converted to string in /var/www/Data/Temporary/Development?
+/Cache/Code/Fluid_TemplateCache/Standalone_template_file_Site_5d5f8dc75?
+b9c07fb770fba32529975b68fe55c41.php line 1193 -->
+</code>
+</pre>
+
+Christian perfectly summarized it to
+> yep, so the parser correctly detects the FlowQuery and creates the FlowQuery object but it seems it isn't evaluated
+
+He also provided the reason: there is no `attr`, it must be `property`.
+So please provide a better exception catch for such cases. I filed this as _Bug_ because I think it's pretty important for users."
+38582,TYPO3.Eel,Bug,"",Resolved,Must have,Eel Unit test fails on 32-bit system number is out of 32-bit range,Sebastiaan van Parijs,"",2012-07-03 15:35,"","",2012-07-03,"","",100,2012-07-03 07:43,"","",691550,"","Unittest failure message: 
+TYPO3\Eel\Tests\Unit\InterpretedEvaluatorTest::integerLiteralsCanBeParsed with data set #2 ('237498237473284', , 2.3749823747328E+14)
+Failed asserting that 2147483647 is identical to 2.3749823747328E+14.
+
+When change the number on line #35: to a number within the 32-bit range, the test does not fail.
+
+
+"
+39162,TYPO3.Eel,Feature,"",Resolved,Should have,Support for != comparison,Marc Neuhaus,Christopher Hlubek,2012-08-14 06:35,"","",2012-07-21,"","",100,2012-07-21 10:23,"","",719950,"","currenty you can't use an != comparison, although you can use !foo == bar, it think ""!="" should be supported as well"
+39564,TYPO3.Eel,Feature,"",Resolved,Should have,Eel Parser RegEx should support quoted strings containing curly brackets,Alexander Berl,Alexander Berl,2012-08-07 06:45,"","",2012-08-07,"","",0,2012-08-06 18:54,"","",739950,"","Currently, the eel parser regex doesn't recognize expressions like the following as valid:
+<code>""some {$context->unwrap()} string with 'quoted stuff'""</code>
+
+This is because the regex /^\${([^}]*)}$/ stops on the first occurence of a closing curly bracket ""}""."
+39596,TYPO3.Eel,Bug,"",Resolved,Must have,Context unwrap of nested array with Context does not work,Christopher Hlubek,Christopher Hlubek,2012-08-09 07:21,"","",2012-08-07,"","",100,2012-08-07 10:53,"","",741550,"","If a Context object is nested inside an array, the unwrapping of the pure value does not work as expected."
+40011,TYPO3.Eel,Bug,"",Resolved,Must have,Numeric offset access is not supported,Christopher Hlubek,Christopher Hlubek,2012-08-28 09:35,"","",2012-08-21,"","",100,2012-08-21 03:30,"","",762000,"",Passing an integer for array offset access (@${myarray[17].foo}@) causes problems with the Context evaluation which expects only string paths.
+41706,TYPO3.Eel,Feature,"",Resolved,Should have,Provide standard library with configurable usage,Christopher Hlubek,Christopher Hlubek,2013-11-15 15:35,"","",2012-10-08,"","",100,2012-10-08 05:54,"","",840750,"","Eel should include a *standard library* with the most basic functions for Date, String and Array.
+
+Suggestion:
+
+<pre><code>
+Date.now().format(""d.m.Y"")
+String.strftime(""%d.%m.%Y"", Date.now())
+Array.join(Array.reverse(items), ' - ')
+Array.count([1, 2, 3])
+</code></pre>
+
+Eel should still be usable with an empty Context for total flexibility."
+42240,TYPO3.Eel,Task,"",New,Should have,Make Eel usable outside of TYPO3 Flow,Christopher Hlubek,"",2012-10-21 06:32,"","",2012-10-21,"","",0,2012-10-21 06:32,"","",866750,"","There is not much coupling to the Flow framework in Eel. To make it usable for any PHP project we have to remove TYPO3 Flow base classes and provide interfaces for tightly coupled implementations.
+
+After a first analysis I figured out the following todos:
+
+* Implement standalone ObjectAccess for @Context@ and @PropertyOperation@ (getPropertyInternal and getPropertyPath)
+* Don't extend @TYPO3\Flow\Exception@ in exceptions
+* Remove @Package@ class and move Regexp to other type (e.g. @EelEvaluatorInterface@)
+* Provide an @OperationResolverInterface@ and provide a non-Flow implementation (e.g. simple array configuration of operations)
+* Don't use @UnitTestCase@ for unit test cases, think about way of removing @getAccessibleMock@
+
+This should be everything to make the whole package usable without Flow and remove the composer dependency."
+49671,TYPO3.Eel,Bug,"",Resolved,-- undefined --,Undefined property: TYPO3\Eel\CompilingEelParser::$tmpId,Alexander Schnitzler,"",2013-07-06 07:54,"","",2013-07-04,"","",100,2013-07-04 15:36,"","",1233050,"","I just checked out the current master of NEOS (da9d621) and I get this Exception.
+
+The setup went fine but when I tried to access frontend or backend afterwards this error is shown:
+
+<pre>
+Notice: Undefined property: TYPO3\Eel\CompilingEelParser::$tmpId in /vagrant/src/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Eel_CompilingEelParser.php line 164
+34 TYPO3\Flow\Error\ErrorHandler::handleError(8, ""Undefined property: TYPO3\Eel\CompilingEelParser::$tmpId"", ""/vagrant/src/Data/Temporary/Development/Cache/Code?ow_Object_Classes/TYPO3_Eel_CompilingEelParser.php"", 164, array|1|)
+
+33 TYPO3\Eel\CompilingEelParser_Original::unwrapExpression(""$context-&gt;getAndWrap('request')-&gt;getAndWrap('format')"")
+
+32 TYPO3\Eel\CompilingEelParser_Original::Comparison_rgt(array|5|, array|4|)
+
+31 call_user_func_array(array|2|, array|2|)
+
+30 PhpPeg\Parser::store(array|5|, array|4|, ""rgt"")
+
+29 TYPO3\Eel\EelParser_Original::match_Comparison(array|4|)
+
+28 TYPO3\Eel\EelParser_Original::match_Conjunction(array|3|)
+
+27 TYPO3\Eel\EelParser_Original::match_Disjunction(array|2|)
+
+26 TYPO3\Eel\EelParser_Original::match_ConditionalExpression(array|1|)
+
+25 TYPO3\Eel\EelParser_Original::match_Expression()
+
+24 TYPO3\Eel\CompilingEvaluator_Original::generateEvaluatorCode(""request.format != 'html'"")
+
+23 TYPO3\Eel\CompilingEvaluator_Original::evaluate(""request.format != 'html'"", TYPO3\Eel\Context)
+
+22 TYPO3\TypoScript\Core\Runtime_Original::evaluateProcessor(""condition"", TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation, array|1|)
+
+21 TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject::tsValue(""condition"")
+
+20 TYPO3\TypoScript\TypoScriptObjects\MatcherImplementation_Original::evaluate()
+
+19 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""root&lt;TYPO3.TypoScript:Case&gt;/format&lt;TYPO3.TypoScript:Matcher&gt;"", ""Exception"")
+
+18 TYPO3\TypoScript\Core\Runtime_Original::render(""root&lt;TYPO3.TypoScript:Case&gt;/format&lt;TYPO3.TypoScript:Matcher&gt;"")
+
+17 TYPO3\TypoScript\TypoScriptObjects\CaseImplementation_Original::evaluate()
+
+16 TYPO3\TypoScript\Core\Runtime_Original::evaluateInternal(""root"", ""Exception"")
+
+15 TYPO3\TypoScript\Core\Runtime_Original::render(""root"")
+
+14 TYPO3\Neos\View\TypoScriptView_Original::render()
+
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+9 call_user_func_array(array|2|, array|2|)
+
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+</pre>"
+49982,TYPO3.Eel,Feature,"",Resolved,Should have,Implement a protected context for public usage in TypoScript,Christopher Hlubek,Christopher Hlubek,2013-07-16 06:38,"","",2013-07-12,"","",100,2013-07-12 09:38,"","",1248100,"",""
+50150,TYPO3.Eel,Bug,"",Resolved,Should have,Hyphens are not allowed in Eel selectors,Pankaj Lele,Robert Lemke,2013-10-01 04:29,"","","","","",100,2013-07-18 07:06,"","",1256250,"","For example with Eel ${q(site).children('my-page')} following error is thrown ""The Selector ""my-page"" could not be parsed. Error at character 3."""
+52424,TYPO3.Eel,Feature,"",Resolved,Should have,Implement Cache for generated EEL Expression Code,Christian Müller,"",2013-10-01 05:36,"","",2013-10-01,"","",100,2013-10-01 04:48,"","",1368800,"",Cache the evaluated methods that represent EEL expressions into a file cache to save the parsing step.
+52450,TYPO3.Eel,Bug,"",Resolved,Should have,Children operation should work for properties that cotain collections,Christian Müller,Christian Müller,2015-02-02 10:51,"","",2013-10-02,"","",100,2013-10-02 03:53,"","",1370100,"",children operation works fine for regular properties but not at all for collection properties which are one of the main use cases for children operation.
+52879,TYPO3.Eel,Feature,"",Resolved,Should have,Implement Slice operation,Dominique Feyer,Dominique Feyer,2013-10-30 07:35,"","",2013-10-16,"","",100,2013-10-16 03:46,"","",1391400,"","As discussed on IRC with Christian EEL should support natively Slice opertation. A basic use case will be to display a list the the two last node type for a teaser.
+
+API should look like, and work like the JS slide method:
+
+<pre>
+${q(site).find('fr/blog').children('[instanceof Namespace.Plugin.Blog:Post]').slice()}
+${q(site).find('fr/blog').children('[instanceof Namespace.Plugin.Blog:Post]').slice(2)}
+${q(site).find('fr/blog').children('[instanceof Namespace.Plugin.Blog:Post]').slice(0, 2)}
+</pre>"
+54487,TYPO3.Eel,Bug,"",Resolved,Should have,Prevent race conditions in EEL Expression cache,Christian Müller,Christian Müller,2013-12-18 06:40,"","",2013-12-18,"","",100,2013-12-18 04:42,"","",1470800,"",Currently the cached code is loaded early which is unnecessary in case there are no new expressions to cache and can also lead to race conditions.

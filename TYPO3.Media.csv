@@ -1,0 +1,690 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+31334,TYPO3.Media,Feature,"",Resolved,Could have,Additional orientation-related functions for Image,Adrian Föder,Bastian Waidelich,2012-02-01 06:30,"","",2011-10-27,"","",100,2011-10-27 04:53,"","",335950,"","Hi guys,
+
+I would like to improve the image handling of the TYPO3.Media package; I like it very much so far.
+
+
+When working on it, I figured out some things that could be improved, I think or hope.
+
+
+At first I added a few functions to the Image class, could be backed also into the interface (see attached patches).
+
+
+In general, I would suggest a bit another approach of the ImageVariant: at first I say it should be extended from Image, because an image variant mostly has the properties of an Image (which is inherently correct :)
+
+This ImageVariant class then has only an additional property $originalImage which is set during construction. All other properties and methods are interited anyway, and that's correct.
+
+Then I say an Image Variant should not be ""created"" or ""transformed"" during creation (i.e. within the constructor), but be more a ""base"" for working on an image variant. So I would suggest something like this (pseudo-code):
+<pre>
+class ImageVariant extends Image {
+	/**
+	 * @var \TYPO3\Media\Domain\Model\Image
+	 */
+	protected $originalImage;
+
+	
+	/**
+	 * @param Image $baseImage The Image that image variant is based on
+	 */
+	public function __construct(\TYPO3\Media\Domain\Model\Image $baseImage) {
+		$this->originalImage = $baseImage;
+		$this->width = $baseImage->getWidth();
+		$this->height = $baseImage->getHeight();
+	}
+</pre>
+
+
+and than one could do the following:
+
+<pre>
+$myThumbnail = new ImageVariant();
+$myThumbnail->setWidth(180)->preserveAspectRatio(true)->cropToSquare()->getResource();
+</pre>
+
+each mentioned function is set in the ImageVariant and returns $this itself. Also each function just modyfies private properties; and with e.g. getResource() or any other 'build()' function (even __toString() is possible) the image is finally built.
+
+
+What do you think?
+
+
+"
+33181,TYPO3.Media,Feature,"",Resolved,Could have,"Validators for image size, type and orientation",Adrian Föder,Bastian Waidelich,2012-03-21 09:35,"","",2012-01-13,"","",100,2012-01-13 11:33,"","",425850,"","Create an ImageValidator that validates for images size (resolution), type (IMAGETYPE_*) & orientation (square, portrait, landscape)"
+33263,TYPO3.Media,Task,"",New,Should have,Use Imagine TransformInterface,Soren Malling,"",2012-09-14 04:30,"","",2012-01-18,2012-01-18,"",0,2012-01-17 09:47,"","",429950,"","Related to:
+http://forge.typo3.org/issues/33262
+
+TYPO3.Media should follow the interface provided by Imagine, when the ticket above is done"
+33413,TYPO3.Media,Feature,"",Resolved,Should have,Image ViewHelper,Adrian Föder,Adrian Föder,2012-05-10 08:02,"","",2012-01-24,"","",0,2012-01-24 09:35,"","",437250,"","Building a ViewHelper for rendering an <img> tag out of a TYPO3\Media\Image object.
+Please discuss here about the features and the code, I will gladly build it once agreed."
+33447,TYPO3.Media,Feature,"",Resolved,Should have,ImageConverter,Bastian Waidelich,Bastian Waidelich,2012-02-01 06:30,"","",2012-01-25,"","",100,2012-01-25 13:56,"","",438950,"",Provide Image Type Converter that can convert arrays to Image objects
+33564,TYPO3.Media,Bug,"",Resolved,Must have,Persisting image throws Exception,Karsten Dambekalns,Bastian Waidelich,2012-05-08 12:10,"","",2012-01-31,"","",100,2012-01-31 10:29,"","",444700,"","When trying to upload an image I get this result:
+
+http://dl.dropbox.com/u/1536167/Phoenix/stacktrace.html"
+33766,TYPO3.Media,Bug,"",Resolved,Must have,Functional tests break following tests,Karsten Dambekalns,Karsten Dambekalns,2012-07-09 08:44,"","",2012-02-08,"","",0,2012-02-08 07:20,"","",454700,"",In @tearDown()@ one must call @parent::tearDown()@ as well.
+34462,TYPO3.Media,Feature,"",New,Could have,"Provide base mechanism for direct streaming of ""media""",Adrian Föder,"",2012-03-02 08:56,"","",2012-03-02,"","",0,2012-03-02 08:56,"","",489000,"","It would be useful to have the option to allow requesting a media (for current implementations consider an Image) directly per URI request.
+I'd like to collect some ideas together how this could be achieved.
+
+For a first draft I thought about providing both an AbstractController and an AbstractView that fetches the appropriate image and the view basically echo's that view after setting a Content-Type:image/jpeg (e.g.) header.
+That Uri could be configured being for example
+
+<pre>
+http://cdn.example.org/image/bfc4d56e-ec2f-4ac6-8571-b60d97f37cac/300x.jpg
+</pre>
+
+would output the image scaled to 300px width. 
+
+While thinking through that; another approach would be to provide an own request handler.
+
+Additionally of course a caching mechanism should be used in order not to recalculate the same image every time.
+
+At a very later stage, a simple cache proxy could be used however in order to ""protect"" the FLOW3 engine for unnecessary subsequent requests."
+36115,TYPO3.Media,Bug,"",Closed,-- undefined --,TYPO3.Media: Properties cannot be mapped,Florian Carstens,Adrian Föder,2012-11-02 10:34,"","",2012-04-15,"","",0,2012-04-15 14:03,"","",570150,"","I tried to persist a \TYPO3\Media\Domain\Model\Image to database after submitting a fluid form and got the following Exception:
+
+<pre>
+Property ""name"" was not found in target object of type ""Acme\MyApp\Domain\Model\Participant"".
+
+20 TYPO3\FLOW3\Property\TypeConverter\PersistentObjectConverter_Original::getTypeOfChildProperty(""Acme\MyApp\Domain\Model\Participant"", ""name"", TYPO3\FLOW3\Mvc\Controller\MvcPropertyMappingConfiguration)
+
+19 TYPO3\FLOW3\Property\PropertyMapper_Original::doMapping(array, ""Acme\MyApp\Domain\Model\Participant"", TYPO3\FLOW3\Mvc\Controller\MvcPropertyMappingConfiguration, array)
+
+18 TYPO3\FLOW3\Property\PropertyMapper_Original::convert(array, ""Acme\MyApp\Domain\Model\Participant"", TYPO3\FLOW3\Mvc\Controller\MvcPropertyMappingConfiguration)
+
+17 TYPO3\FLOW3\Mvc\Controller\Argument_Original::setValue(array)
+
+16 TYPO3\FLOW3\Mvc\Controller\AbstractController::mapRequestArgumentsToControllerArguments()
+
+15 TYPO3\FLOW3\Mvc\Controller\ActionController_Original::processRequest(TYPO3\FLOW3\Mvc\ActionRequest, TYPO3\FLOW3\Http\Response)
+
+14 TYPO3\FLOW3\Mvc\Dispatcher_Original::dispatch(TYPO3\FLOW3\Mvc\ActionRequest, TYPO3\FLOW3\Http\Response)
+
+13 TYPO3\FLOW3\Mvc\Dispatcher::dispatch(TYPO3\FLOW3\Mvc\ActionRequest, TYPO3\FLOW3\Http\Response)
+
+12 call_user_func_array(array, array)
+
+11 TYPO3\FLOW3\Mvc\Dispatcher::FLOW3_Aop_Proxy_invokeJoinPoint(TYPO3\FLOW3\Aop\JoinPoint)
+
+10 TYPO3\FLOW3\Aop\Advice\AdviceChain::proceed(TYPO3\FLOW3\Aop\JoinPoint)
+
+9 TYPO3\FLOW3\Security\Aspect\RequestDispatchingAspect_Original::setAccessDeniedResponseHeader(TYPO3\FLOW3\Aop\JoinPoint)
+
+8 TYPO3\FLOW3\Aop\Advice\AroundAdvice::invoke(TYPO3\FLOW3\Aop\JoinPoint)
+
+7 TYPO3\FLOW3\Aop\Advice\AdviceChain::proceed(TYPO3\FLOW3\Aop\JoinPoint)
+
+6 TYPO3\FLOW3\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\FLOW3\Aop\JoinPoint)
+
+5 TYPO3\FLOW3\Aop\Advice\AroundAdvice::invoke(TYPO3\FLOW3\Aop\JoinPoint)
+
+4 TYPO3\FLOW3\Aop\Advice\AdviceChain::proceed(TYPO3\FLOW3\Aop\JoinPoint)
+
+3 TYPO3\FLOW3\Mvc\Dispatcher::dispatch(TYPO3\FLOW3\Mvc\ActionRequest, TYPO3\FLOW3\Http\Response)
+
+2 TYPO3\FLOW3\Http\RequestHandler::handleRequest()
+
+1 TYPO3\FLOW3\Core\Bootstrap::run()
+</pre>
+
+I var_dumped in the \TYPO3\FLOW3\Property\PropertyMapper::doMapping() function the var $typeConverter->getSourceChildPropertiesToBeConverted($source) and got this:
+
+<pre>
+array(12) {
+  [""firstname""]=>
+  string(4) ""Karl""
+  [""lastname""]=>
+  string(8) ""Schuster""
+  [""address""]=>
+  string(15) ""Musterstraße 1""
+  [""zip""]=>
+  string(5) ""12345""
+  [""city""]=>
+  string(11) ""Musterstadt""
+  [""email""]=>
+  string(16) ""karl@mydomain.com""
+  [""photo""]=>
+  array(1) {
+    [""resource""]=>
+    array(1) {
+      [""submittedFile""]=>
+      array(2) {
+        [""fileName""]=>
+        string(0) """"
+        [""resourcePointer""]=>
+        string(0) """"
+      }
+    }
+  }
+  [""name""]=>
+  array(1) {
+    [""photo""]=>
+    array(1) {
+      [""resource""]=>
+      string(5) ""1.jpg""
+    }
+  }
+  [""type""]=>
+  array(1) {
+    [""photo""]=>
+    array(1) {
+      [""resource""]=>
+      string(10) ""image/jpeg""
+    }
+  }
+  [""tmp_name""]=>
+  array(1) {
+    [""photo""]=>
+    array(1) {
+      [""resource""]=>
+      string(24) ""C:\xampp\tmp\php923B.tmp""
+    }
+  }
+  [""error""]=>
+  array(1) {
+    [""photo""]=>
+    array(1) {
+      [""resource""]=>
+      int(0)
+    }
+  }
+  [""size""]=>
+  array(1) {
+    [""photo""]=>
+    array(1) {
+      [""resource""]=>
+      int(1099718)
+    }
+  }
+}
+</pre>
+
+My fluid form contains:
+<pre><code class=""html"">
+<f:form action=""create"" object=""{newParticipant}"" name=""newParticipant"" enctype=""multipart/form-data"">
+[...]
+	<label for=""photo"">Foto</label><br />
+	<f:form.upload property=""photo.resource"" id=""photo"" /><br />
+[...]
+</f:form>
+</code></pre>"
+36958,TYPO3.Media,Bug,"",Resolved,Must have,Empty image title results in exception,Nikolas Hagelstein,Adrian Föder,2012-07-09 08:28,"","",2012-05-08,"","",0,2012-05-08 12:00,"","",611050,"","SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'title' cannot be null
+
+This has been introduced by:
+http://git.typo3.org/FLOW3/Packages/TYPO3.Media.git?a=commit;h=6e958f2f3b5113aefcd22d871f87a6f74ef8361a
+
+Possible solution:
+1. Set the default value of the title to ''
+
+or 
+
+2. Annotate with ""to be null""
+
+or
+
+3. Make the image title mandatory
+
+I would go for 1 for now.
+
+
+"
+36959,TYPO3.Media,Bug,"",Resolved,Must have,Image title should be settable via form field,Nikolas Hagelstein,Adrian Föder,2012-10-19 02:28,"","",2012-05-08,"","",0,2012-05-08 12:04,"","",611100,"","At them moment it is not possible to set the image title via form field,
+since the typeConverter handles nothing but the ressource property (not sure if that's the reason, just guessing)
+
+"
+36960,TYPO3.Media,Bug,"",Closed,Must have,Updating Record consisting of image property results in exception,Nikolas Hagelstein,"",2012-11-02 10:35,"","",2012-05-08,"","",0,2012-05-08 12:09,"","",611150,"","Trying to updae an existing record consisting of an image property without changing anything throws an exception.
+
+Demo package attached.
+
+Steps to reproduce:
+Create a new post record, with an image.
+Edit this post and hit save without changing the image.
+
+"
+37063,TYPO3.Media,Task,"",Resolved,Should have,"Re-Evaluate the best practice usage of the Image Validator ""network""",Adrian Föder,"",2012-09-14 04:29,"","",2012-05-10,"","",0,2012-05-10 08:33,"","",616250,"","consider the following use case
+<pre><code class=""php"">
+	/**
+	 * @param \TYPO3\Media\Domain\Model\Image $newImage
+	 * @FLOW3\Validate(""$newImage"", type=""\TYPO3\Media\Validator\ImageSizeValidator"", options={ ""minimumWidth""=150, ""minimumHeight""=150 })
+	 * @FLOW3\Validate(""$newImage"", type=""\TYPO3\Media\Validator\ImageTypeValidator"", options={ ""allowedTypes""={""jpeg"",""png"",""gif""} })
+	 * @return void
+	 */
+	public function createAction(\TYPO3\Media\Domain\Model\Image $newImage) {
+	}
+</code>
+---
+<code class=""html"">
+	<f:form action=""create"" name=""newImage"" enctype=""multipart/form-data"">
+		<f:form.upload property=""resource"" class=""upload"" />
+	</f:form>
+</code>
+</pre>
+
+Currently, providing a non-image file like a .txt file, results in three validation errors:
+
+* 1319801362: The actual image width of 0 is lower than the allowed minimum width of 150.
+* 1319801925: The actual image height of 0 is lower than the allowed minimum height of 150.
+* 1328030664: The uploaded file is no valid image.
+
+The first two messages are of course thrown in the SizeValidator, the last message is from the ImageTypeValidator.
+Interestingly, the getimagesize() method from the Image constructor does not result in a warning or similar when providing a text file.
+
+If providing no image at all (i.e. submitting an empty form), the following exception occurs:
+
+<pre>
+#1: Catchable Fatal Error: Argument 1 passed to Acme\Foo\Controller\ImageController_Original::createAction() must be an instance of TYPO3\Media\Domain\Model\Image, null given
+</pre>
+
+
+The latter occurence could be fetched with adding the NotEmptyValidator; but what to do in case of an invalid image? Generally the TypeValidator should be responsible for that; but due to the fact that an Image instance is generated however, the SizeValidator also comes to place.
+
+Having talked to Christian about that, we came to the idea that the Image (constructor) should throw an exception if it's not actually an image (per PHP doc it should however throw a Warning, but I'll check that).
+That exception could be caught by the ImageTypeConverter, returning NULL if that Exception occurs.
+So at the end, again the NotEmptyValidator would catch that case.
+
+I'll provide a patch for that; feel free to add comments here meanwhile."
+37230,TYPO3.Media,Bug,"",Resolved,Should have,Image TypeConverter does not allow to map Image by Identity,Carsten Bleicker,Adrian Föder,2012-11-07 05:10,"","",2012-05-16,"","",0,2012-05-16 10:55,"","",624300,"","I want to remove an Image Entity from another Entity by its Identity.
+So i used <f:link.action action=""remove"" arguments={section:section,image:image}> ...
+The resulting URI looks like this: &section[__identity]=29870197-33ca-43c7-9649-70c3c0f28004&image[__identity]=51e35272-e273-4aa3-8f3f-bdd0932edb23
+
+controller action just has these mapping infos:
+**
+* Remove Image from a given Section
+* @param \My\Name\Domain\Model\Section $section
+* @param \TYPO3\Media\Domain\Model\Image $image
+* @return void
+*/
+public function removeImageAction(\My\Name\Domain\Model\Section $section, \TYPO3\Media\Domain\Model\Image $image){
+	$section->removeImage($image);
+	$this->persistenceManager->update($section);
+	$this->redirect('show',NULL,NULL,array('section'=>$section));
+}
+
+
+But the mapping throws the following exception for this removeImageAction:
+#1297759968: Exception while property mapping for target type ""TYPO3\Media\Domain\Model\Image"", at property path """": It is not allowed to map property ""__identity"". You need to use $propertyMappingConfiguration->allowProperties('__identity') to enable mapping of this property. (More information)
+
+
+
+Just for testing i disabled the mathing of the ImageConverter from $targetType = 'TYPO3\Media\Domain\Model\Image';
+to $targetType = 'TYPO3\Media\Domain\Model\ImageFoo';
+
+And the mapping works again.
+Can somebody explain me the need of this ImageConverter?
+
+Kind regards
+Carsten
+
+"
+37677,TYPO3.Media,Bug,"",Closed,Must have,Bug on TYPO3\Media\TypeConverter\ImageConverter,Nicolas C,"",2012-11-02 10:50,"","",2012-06-01,"","",0,2012-06-01 06:46,"","",646600,"","Bug on TYPO3\Media\TypeConverter\ImageConverter from TYPO3.Form:ImageUpload.
+
+I have an exception when i use ""TYPO3.Form:ImageUpload"" in my form factory.
+Exception said :
+
+#1297759968: Exception while property mapping for target type ""TYPO3\Media\Domain\Model\Image"", at property path """": It is not allowed to map property ""resource"". You need to use $propertyMappingConfiguration->allowProperties('resource') to enable mapping of this property.
+
+
+I have modify ""TYPO3\Media\TypeConverter\ImageConverter"" :
+
+On line 46 :
+    return $source;
+Replaced by :
+    return array();
+
+"
+38782,TYPO3.Media,Feature,"",Resolved,Could have,Alias-support for image variants,Adrian Föder,Adrian Föder,2012-12-05 06:07,"","",2012-07-09,"","",0,2012-07-09 09:34,"","",701300,"","currently, the so-called ""image variants"" are not really meant to be reused because they are based on the hash of their ""processing instructions"".
+This means, if an image variant should be used, the processing instruction has to be provided anyways, which make the presence of a variant be useful for the framework, but not useful for the developer.
+
+Having talked with Bastian, we suggest introducing ""image aliases"" which can be introduced by the developer. Such an alias could be @small@, @micro@, @default@, @micro_watermarked@ or so.
+
+The method @createImageVariant@ would be extended to accept an alias, i.e.
+<pre><code class=""php"">
+	public function createImageVariant(array $processingInstructions) {
+		$uniqueHash = sha1($this->resource->getResourcePointer()->getHash() . '|' . serialize($processingInstructions));
+</code>
+will become
+<code class=""php"">
+	public function createImageVariant(array $processingInstructions, $alias = NULL) {
+		$uniqueHash = sha1($this->resource->getResourcePointer()->getHash() . '|' . $alias ?: serialize($processingInstructions));
+</code></pre>
+
+additionally, there will be methods
+<pre><code class=""php"">
+public function removeImageVariantByAlias($alias);
+
+public function getImageVariantByAlias($alias);
+
+</code></pre>
+
+
+As an optional enhancement, I could imagine an extension of the getImageVariantByAlias that, if that alias does not exist, attempts to create an ImageVariant with the _processingInstructions taken from the Settings.yaml_. So this settings.yaml could look like
+<pre><code class=""yaml"">
+TYPO3:
+  Media:
+    ImageVariants:
+      AliasPresetProcessingInstructions:
+        'micro':
+          command: thumbnail
+          options:
+            size:
+              width: 16
+              height: 16
+            mode: %TYPO3\Media\Domain\Model\ImageInterface::RATIOMODE_INSET% //if that const accessing works
+        
+
+</code></pre>"
+39857,TYPO3.Media,Task,"",On Hold,Should have,Implement _toString functions,Soren Malling,Robert Lemke,2012-09-14 03:11,"","",2012-08-16,"","",0,2012-08-16 07:49,"","",754350,"","To use TYPO3.Media element in ex. Workspace module, listing etc. a _toString function is to be implemented
+"
+41891,TYPO3.Media,Bug,Bug #41843: Composer and rename issues (umbrella issue),Resolved,Must have,"Image's serialized ImageVariants array still carries ""FLOW3_Persistence_Identifier""",Adrian Föder,Adrian Föder,2013-01-15 11:19,"","",2012-10-11,"","",0,2012-10-11 10:06,"","",849750,"",""
+42167,TYPO3.Media,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Under Review,Must have,Image processing instructions cannot be stored on PostgreSQL,Karsten Dambekalns,Karsten Dambekalns,2013-08-06 10:22,"","",2012-10-19,"","",0,2012-10-19 04:16,"","",863100,"","With PostgreSQL the storing of processing instructions fails. The serialized data contains NUL bytes and so data is truncated in the PDO layer when using PostgreSQL.
+
+Two possible ways:
+
+# escape the NUL byte
+# use a BLOB field"
+42650,TYPO3.Media,Bug,"",Resolved,Should have,Repository on forge.typo3.org is outdated svn repository,Benno Weinzierl,Karsten Dambekalns,2012-11-06 04:30,"","",2012-11-02,"","",100,2012-11-02 14:25,"","",886850,"","The linked repository on this project-page is outdated:
+http://forge.typo3.org/projects/package-typo3-media/repository
+
+Should be this:
+http://git.typo3.org/FLOW3/Packages/TYPO3.Media.git
+"
+42749,TYPO3.Media,Bug,"",Resolved,Should have,Broken ImageConverter for PHP 5.3,Karsten Dambekalns,Karsten Dambekalns,2012-11-07 05:35,"",Sprint February 2013,2012-11-07,"","",100,2012-11-07 05:10,"","",891700,"","The use of isset() on a string leads to wrong results:
+
+<pre>$source = 'someString';
+$set = isset($source['__identity'])
+// set is TRUE now, because of type juggling, in PHP 5.3</pre>
+
+See http://ci.typo3.robertlemke.net/job/TYPO3-Neos-Commit/6670/console for an example :)"
+44821,TYPO3.Media,Bug,"",Closed,Must have,Migration file is not able to apply with current Doctrine,Adrian Föder,"",2013-01-26 07:07,"","",2013-01-26,"","",0,2013-01-26 06:55,"","",994600,"","When attempting to execute the MySQL migration file ...40946, introduced in I782ae08c80ebd65214baac2e163729ef442023c6 (https://review.typo3.org/#/c/15515/), the following occurs:
+
+<pre>
+$ ./flow doctrine:migrationexecute 20121011140946
+Uncaught Exception
+  Unknown database type bit requested,
+  Doctrine\DBAL\Platforms\MySqlPlatform may not support it.
+
+More Information
+  Exception code      #0
+  File                ...\Packages\Libraries\doctrine\dbal\lib\Doctrine\DBAL\Platforms\AbstractPlatform.php line 321
+</pre>
+
+Probably that's of a new Doctrine ""feature""?
+
+---
+
+Addition: ok, obviously the error message should be rather >>Unkown database type ""bit"" requested<<; this is the exception trail:
+
+<pre>
+Uncaught exception in line 112 of ...\Packages\Libraries\doctrine\dbal\lib\Doctrine\DBAL\Schema\MySqlSchemaManager.php: Unknown database type bit requested, Doctrine\DBAL\Platforms\MySqlPlatform may not support it.
+
+25 Doctrine\DBAL\Platforms\AbstractPlatform::getDoctrineTypeMapping(""bit"")
+24 Doctrine\DBAL\Schema\MySqlSchemaManager::_getPortableTableColumnDefinition(array|9|)
+23 Doctrine\DBAL\Schema\AbstractSchemaManager::_getPortableTableColumnList(""bittest"", ""phx-edsh"", array|1|)
+22 Doctrine\DBAL\Schema\AbstractSchemaManager::listTableColumns(""bittest"")
+21 Doctrine\DBAL\Schema\AbstractSchemaManager::listTableDetails(""bittest"")
+20 Doctrine\DBAL\Schema\AbstractSchemaManager::listTables()
+19 Doctrine\DBAL\Schema\AbstractSchemaManager::createSchema()
+18 Doctrine\DBAL\Migrations\Version::execute(""up"", FALSE)
+17 TYPO3\Flow\Persistence\Doctrine\Service_Original::executeMigration(""20121011140946"", ""up"", NULL, FALSE)
+16 TYPO3\Flow\Command\DoctrineCommandController_Original::migrationExecuteCommand(""20121011140946"", ""up"", NULL, FALSE)
+15 call_user_func_array(array|2|, array|4|)
+14 TYPO3\Flow\Cli\CommandController_Original::callCommandMethod()
+13 TYPO3\Flow\Cli\CommandController_Original::processRequest(TYPO3\Flow\Cli\Request, TYPO3\Flow\Cli\Response)
+12 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Cli\Request, TYPO3\Flow\Cli\Response)
+11 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Cli\Request, TYPO3\Flow\Cli\Response)
+10 call_user_func_array(array|2|, array|2|)
+9 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+8 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+7 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+6 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+5 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+4 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Cli\Request, TYPO3\Flow\Cli\Response)
+3 TYPO3\Flow\Cli\CommandRequestHandler::handleRequest()
+2 TYPO3\Flow\Core\Bootstrap::run()
+1 require(""...\Packages\Framework\TYPO3.Flow\Scripts\flow.php"")
+/pre>"
+46659,TYPO3.Media,Feature,"",Resolved,Should have,ImageVariant should use original filename as filename instead of hash,Benno Weinzierl,Benno Weinzierl,2013-03-26 10:38,"","",2013-03-25,"","",100,2013-03-25 12:50,"","",1083950,"","For SEO purposes the imageVariant should not use a cryptic hash as filename but instead use the filename of the original resource.
+
+<pre>
+_Resources/Persistent/bf4ae4ef715ee8db89e721aca905e2109b3223b0/bf4ae4ef715ee8db89e721aca905e2109b3223b0.jpg
+should be:
+_Resources/Persistent/bf4ae4ef715ee8db89e721aca905e2109b3223b0/MyImageName.jpg
+</pre>
+
+This is essential for example for google image search."
+47262,TYPO3.Media,Feature,"",Resolved,Should have,Easily extending the Image Model,Christoph Lehmann,Karsten Dambekalns,2013-06-17 07:36,"","",2013-04-15,"","",100,2013-04-15 14:43,"","",1113750,"","Please make it possible to let this work:
+
+class Picture extends \TYPO3\Media\Domain\Model\Image {
+
+...
+
+}
+
+I was told there is something missing like
+
+@ORM\InheritanceType(""JOINED"")
+
+
+in \TYPO3\Media\Domain\Model\Image.php
+
+Thank you!"
+47394,TYPO3.Media,Bug,"",Resolved,Should have,Unnecessary requirement for \Image implementation in ImageService and ImageVariant,Thomas Hempel,Adrian Föder,2013-09-03 06:35,"","",2013-04-20,"","",100,2013-04-20 05:25,"","",1120150,"","Hi,
+
+when implementing the ImageInterface, you probably do that to use the viewhelpers from Media package. Due to a little oddity, this doesn't work right now. The constructor of the  ImageVariant requires a concrete implementation of 
+\TYPO3\Media\Domain\Model\Image and so does the transformImage method in the ImageService.
+
+This makes it pretty much impossible to have your own image model without duplicating almost the entire media package.
+
+As far as I can oversee it, this can be fixed pretty easily by setting the required type to the interface instead of the implementation. I've attached a patch that does that."
+47428,TYPO3.Media,Feature,"",Resolved,Should have,Provide Asset base class,Karsten Dambekalns,Karsten Dambekalns,2013-06-17 07:36,"","",2013-04-22,"","",100,2013-04-22 06:28,"","",1121850,"",""
+49137,TYPO3.Media,Feature,"",Under Review,Should have,Filesize and last modification date should be available for resources,Karsten Dambekalns,Karsten Dambekalns,2014-08-26 05:09,"","",2013-06-14,"","",50,2013-06-14 11:23,"","",1206500,"",""
+49844,TYPO3.Media,Bug,"",Accepted,Must have,Install of TYPO3.Media Package results in SQL-Error,Kay Schecker,Adrian Föder,2015-04-28 10:43,"","",2013-07-10,"","",0,2013-07-10 04:32,"","",1241500,"","If i try to install the TYPO3.Media package i run into the following error: 
+
+General error: 1005 Can't create table 'DATABASENAME.#sql-531_78c9e'
+
+My composer configuration look like this:
+
+{
+    ""name"": ""namespace/package"",
+    ""description"" : ""description"",
+    ""license"": ""LGPL-3.0+"",
+    ""minimum-stability"" : ""dev"",
+    ""config"": {
+        ""vendor-dir"": ""Packages/Libraries"",
+        ""bin-dir"": ""bin""
+    },
+    ""repositories"": [
+        {
+            ""type"": ""git"",
+            ""url"": ""myPrivateGitUrl""
+        }
+    ],
+    ""require"": {
+        ""typo3/flow"": ""dev-master"",
+        ""typo3/fluid"": ""@dev"",
+        ""typo3/party"": ""@dev"",
+        ""doctrine/migrations"": ""@dev"",
+	""typo3/media"": ""dev-master"",
+        ""myPrivateGitPackage"": ""dev-master""
+    },
+    ""require-dev"": {
+        ""typo3/kickstart"": ""dev-master"",
+        ""typo3/buildessentials"": ""dev-master"",
+        ""mikey179/vfsstream"": ""1.1.*""
+    },
+    ""scripts"": {
+        ""post-update-cmd"": [
+            ""Namespace\\Package\\App\\Composer\\InstallerScripts::postUpdateAndInstall"",
+            ""./flow flow:cache:flush"",
+            ""./flow doctrine:migrate"",
+            ""./flow doctrine:update""
+        ],
+        ""post-install-cmd"":  [
+            ""Namespace\\Package\\App\\Composer\\InstallerScripts::postUpdateAndInstall"",
+            ""./flow flow:cache:flush"",
+            ""./flow doctrine:migrate"",
+            ""./flow doctrine:update""
+        ]
+    }
+}
+"
+51975,TYPO3.Media,Bug,"",Resolved,Should have,Add parameter $ratioMode in ImageInterface::getThumbnail,Dominique Feyer,Karsten Dambekalns,2013-11-14 13:58,"",1.0 beta 1,2013-09-13,"","",100,2013-09-13 06:14,"","",1346600,"",Currently the ImageVariant::getThumbnail doesn't set the ratio mode when calling getThumbnail
+52307,TYPO3.Media,Feature,"",Resolved,Should have,Configurable image options,Bastian Waidelich,Bastian Waidelich,2013-10-02 07:36,"","",2013-09-26,"","",100,2013-09-26 10:31,"","",1363100,"",The ImageService currently uses the default options of the Imagine package when creating images. This should be configurable (e.g. in order to specify the default image quality)
+52729,TYPO3.Media,Bug,"",Closed,Must have,Image viewhelper not cropping if property maximumWidth is set ,Jan-Erik Revsbech,Adrian Föder,2014-09-01 11:51,"","",2013-10-12,"","",0,2013-10-12 15:26,"","",1383900,"","During working on a new Neos site I experience a problem with the builtin Media viewhelper. In a custom Element (nodetype) I specify an imagenode and render it with
+
+<media:image image=""{image}"" alt=""My image image""  maximumWidth=""200"" />
+
+But cropping given in the Neos image inspector is not respected when the maximumWidth attribute is set! This happens because the viewhelper is i handed a ""ImageVariant"" domain model, and if the maximumWidth is set (and is less than the images width and allowUpScale is FALSE) then the getThumbnail method og the ImageVariant is called.
+For ImageVarians, this method is correctly documented as ""Creates a thumbnail of the original image"" and thus is forgets all about the variants ProcessingInstructions which are needed for the cropping.
+
+I think this is a bug. The easyest way to reproduce it is setting the following TypoScript
+
+ prototype(TYPO3.Neos.NodeTypes:Image).maximumImage = 200
+
+(default is 2560)
+
+and then insert a Image content element, crop it with the very cool Image Inspector, and watch how the cropping is not in effect any longer.
+
+Can any other confirm this behaviour, and that is it undesired?
+
+If this is a bug, then I suggest either of these solutions:
+
+1: Change the viewhelper, to be aware of ImageVarians, and if an ImageVariant is given, then add the new transformations, instead of creating a new ImageVarians
+2: Change the viewhelper to not actually use Thumbnails, but do a scale transformations directly using a \TYPO3\Media\Domain\Service\ImageService
+3: Change the behaviour of the getThumbnail method on the ImageVariant (this will probably have sideeffects)
+4: Add a new method that generates a thumbnail that respects the exising transformations on the ImageVariant.
+
+In my opinoin, option 2 is the most clean.
+
+I will create the patchset if any other can confirm the problem and we can agree on the correct solution.
+
+I'm running alpha5 and, I'm aware that a lot happened the last week, but from what I can see in the Gitlog, this is not changed.
+"
+53139,TYPO3.Media,Bug,"",New,Should have,Missing tagMode relay in Asset/Index template,Bernhard Schmitt,"",2013-10-25 12:05,"","",2013-10-25,"","",0,2013-10-25 12:05,"","",1404400,"","* The AssetController defaults the tagMode variable to self::TAG_GIVEN in the index action
+* The respective template does not set the appropriate tagMode variables in the ""All assets"" and ""Untagged Assets"" links
+
+-> No possibility to reset the tag selection in Neos Inspector -> Media"
+54351,TYPO3.Media,Bug,"",Resolved,Should have,Selection of media in thumbnail view give an error 500,Thierry Brodard,"",2014-08-05 05:57,"","",2013-12-12,"","",100,2013-12-12 02:04,"","",1464100,"","In list view, everything is fine"
+54389,TYPO3.Media,Bug,"",New,Could have,Update tag count upon dropping asset,Arjen Hoekema,"",2013-12-13 06:02,"","",2013-12-13,"","",0,2013-12-13 06:02,"","",1466000,"","When adding/dropping a media asset to a tag the count is not updated.
+
+Maybe this could be added to the 'done' handler in 'tagging.js':
+
+$('.count', tag).text(parseInt($('.count', tag).text()) + 1);"
+54390,TYPO3.Media,Bug,"",New,Could have,Prevent adding duplicate tags to a media item,Arjen Hoekema,"",2013-12-13 06:10,"","",2013-12-13,"","",0,2013-12-13 06:10,"","",1466050,"",A media item/asset can be added to the same tag multiple times
+54399,TYPO3.Media,Bug,"",Resolved,Should have,Upload of non-image results in Catchable Fatal Error,Mathias Bolt Lesniak,"",2014-02-08 11:35,"","",2013-12-13,"","",100,2013-12-13 10:18,"","",1466500,"","Hi!
+
+I get a Catchable Fatal Error in Neos 1.0, when uploading a non-image file in the Media Manager (/neos/management/media). See attached file for full debug info.
+
+<pre>
+#1: Catchable Fatal Error: Argument 1 passed to TYPO3\Media\ViewHelpers\ImageViewHelper_Original::render() must implement interface TYPO3\Media\Domain\Model\ImageInterface, instance of TYPO3\Media\Domain\Model\Asset given in /Volumes/Data/Users/mathias/ApacheSites/oksval2.net.local/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Media_ViewHelpers_ImageViewHelper.php line 104
+</pre>
+
+I tested with a Word file called ""test.doc"". Uploading a JPEG file works fine.
+
+
+
+- Mathias"
+54578,TYPO3.Media,Feature,"",Resolved,Should have,Add link to the resource to the edit view,Rens Admiraal,"",2014-02-20 09:36,"","",2013-12-23,"","",100,2013-12-23 07:09,"","",1475300,"",In the edit view of an image you can right click the image in the preview to get the actual public link to the resource. If a thumbnail for an asset is generated (like for a word file for example) this is not possible. There should at least be a way to find the actual link to a resource from the media manager interface.
+54721,TYPO3.Media,Feature,"",New,Should have,Make Image inspector more configurable ,Nikos Poaros,"",2014-01-03 08:11,"","",2014-01-03,"","",0,2014-01-03 08:11,"","",1482450,"","Looks as if some of the image properties are hard coded i.e. width and height.
+
+it would be cool if these could be removed/included on custom content element bases.
+
+Just a thought
+
+Nick :)"
+54970,TYPO3.Media,Bug,"",New,Should have,Asset should show its references if it's used in a node,Thierry Brodard,"",2014-01-14 00:23,"","",2014-01-14,"","",0,2014-01-14 00:23,"","",1494550,"","Additionally, the user shouldn't delete the asset if it's used in a node, or be warned"
+55220,TYPO3.Media,Bug,"",Needs Feedback,Must have,unable to choose media in neos backend,Dominic Garms,"",2014-02-02 11:16,"",1.x,2014-01-21,"","",0,2014-01-21 11:38,"","",1506350,"","Hello,
+
+at Neos 1.0.1 with blank installation its impossible to choose any existing media with images. An upload of images is working as expected but choosing an existing throws following error:
+<pre>
+Uncaught exception #1297759968: Exception while property mapping for target type ""TYPO3\Media\Domain\Model\Image"", at property path """": Object with identity ""undefined"" not found.
+
+18 TYPO3\Flow\Property\PropertyMapper_Original::convert(""undefined"", ""TYPO3\Media\Domain\Model\Image"", TYPO3\Flow\Mvc\Controller\MvcPropertyMappingConfiguration)
+17 call_user_func_array(array|2|, array|3|)
+16 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::__call(""convert"", array|3|)
+15 TYPO3\Flow\Object\DependencyInjection\DependencyProxy::convert(""undefined"", ""TYPO3\Media\Domain\Model\Image"", TYPO3\Flow\Mvc\Controller\MvcPropertyMappingConfiguration)
+14 TYPO3\Flow\Mvc\Controller\Argument_Original::setValue(""undefined"")
+13 TYPO3\Flow\Mvc\Controller\AbstractController::mapRequestArgumentsToControllerArguments()
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+9 call_user_func_array(array|2|, array|2|)
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+1 TYPO3\Flow\Core\Bootstrap::run()
+</pre>"
+55772,TYPO3.Media,Bug,"",Resolved,Should have,Image are loading during ImageVariant initialization,Dominique Feyer,Dominique Feyer,2014-02-07 13:35,"","",2014-02-07,"","",100,2014-02-07 11:52,"","",1533300,"",This problem can have a big impact on the overall performance if many document node type has an image property
+55778,TYPO3.Media,Feature,"",Resolved,Should have,Add a cache around getimagesize,Dominique Feyer,Dominique Feyer,2014-04-10 12:43,"","",2014-02-07,"","",100,2014-02-07 16:31,"","",1533600,"","getimagesize need to read the full file from disk, so it impact performance a lots, a cache for those value can have a positive impact"
+56562,TYPO3.Media,Feature,"",Closed,Could have,Visual response while starting uploading,Thomas Deuling,Thomas Deuling,2014-12-10 12:30,"","",2014-03-05,"","",0,2014-03-05 02:53,"","",1572250,"","I miss a visual response while starting uploading a file in media-module. Firstly it wasn't clear that the upload has already started.
+Perfect would be a simple animated gif with a small text like: Waiting for transferring media, or something else like the already in plupload integrated filelist/progress.
+
+Or is there already something like that, but I can't see it?!
+When this visual response is still an open task, I could offer to try to integrate such a functionality."
+56887,TYPO3.Media,Bug,"",New,Should have,Tagging via Drag-Drop failed,Simon Edelmann,"",2014-03-13 15:46,"","",2014-03-13,"","",0,2014-03-13 15:15,"","",1588500,"","We have a clean installation of Typo3 Neos 1.0.2. We tried to tag some pictures but we got the error message
+> *Tagging the asset failed.*
+
+The problem seems to be that Neos don't get the Asset Identifier from JavaScript. So Neos doesn't know which image to tag.
+
+We've located the problem in this file:
+
+*Problem*: Line 23 in /Packages/Application/TYPO3.Media/Resources/Public/Scripts/tagging.js
+<pre>
+assetIdentifier = $(ui.draggable[0]).parent().data('asset-identifier');
+</pre>
+
+There it refers to this HTML code section:
+
+<pre>
+01 <li class=""asset"" data-asset-identifier=""08adf6aa-5c8d-a91f-8ef8-123d4d82f81b"">
+02 	<a class=""neos-thumbnail draggable-asset"" title=""Edit Image1.jpg"" href=""http://example.de/neos/management/media/edit?moduleArguments%5Basset%5D%5B__identity%5D=08adf6aa-5c8d-a91f-8ef8-123d4d82f81b"">
+03 		<div class=""neos-img-container"">
+04 			<img alt=""Image1.jpg"" width=""189"" height=""189"" src=""http://example.de/_Resources/Persistent/29ab2743368e636ae10bd27100fe6dfa87b5eb72/Image1.jpg"">
+05 		</div>
+06 		<span class=""neos-caption"">Image1.jpg</span>
+07 	</a>
+08	<a class=""neos-thumbnail draggable-asset ui-draggable-dragging"" title=""Edit Image1.jpg"" href=""http://example.de/neos/management/media/edit?moduleArguments%5Basset%5D%5B__identity%5D=08adf6aa-5c8d-a91f-8ef8-123d4d82f81b"" style=""position: absolute; opacity: 0.3; left: 135px; top: 350px;"">
+09 		<div class=""neos-img-container"">
+10 			<img alt=""Image1.jpg"" width=""189"" height=""189"" src=""http://example.de/_Resources/Persistent/29ab2743368e636ae10bd27100fe6dfa87b5eb72/Image1.jpg"">
+11 		</div>
+12 		<span class=""neos-caption"">Image1.jpg</span>
+13 	</a>
+14 </li>
+</pre>
+
+While debugging the JavaScript we realized that @$(ui.draggable[0])@ points to the <a>-Tag (Line 08), while @data('asset-identifier')@ is on the parent li-Tag (Line 01).
+The problem could be solved by adding a @.parent()@ in the JavaScript.
+
+*Solution*: Line 23 in /Packages/Application/TYPO3.Media/Resources/Public/Scripts/tagging.js
+<pre>
+assetIdentifier = $(ui.draggable[0]).parent().data('asset-identifier');
+</pre>"
+59732,TYPO3.Media,Bug,"",Resolved,Should have,"Selecting an image with the ""Media"" button in the ""Inspector"" ""Image"" section stopped working after update",Tim Spiekerkötter,"",2014-07-01 12:23,"","",2014-06-20,"","",0,2014-06-20 11:35,"","",1729950,"","Hi Guys,
+
+I just updated my Neos installation from 1.0.x to 1.1.x via the intructions on http://neos.typo3.org/download/upgrade-instructions.html.
+Now I can't select an image anymore. Neos just starts a spinner where the dummy image was and that's it. Looking into the request the server answers with an 404.
+
+The problem seems to be because of the ExtJS removal, here is the part of my log file:
+<pre>
+14-06-20 17:22:17 19096      NOTICE    Flow                 Router route(): No route matched the route path ""neos/content/imageWithMetadata/2c17a0b5-c121-6db6-1b5e-71ac7624c03a"".
+14-06-20 17:22:17 19096      DEBUG     Flow                 No CSRF required, safe request
+14-06-20 17:22:17 19096      CRITICAL  Flow                 Uncaught exception #1303209195 in line 74 of 
+/my/path/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Dispatcher.php: No controller could be resolved which would match your request. Package key: """", controller name: ""Standard"". (GET http://my.domain/neos/content/imageWithMetadata/2c17a0b5-c121-6db6-1b5e-71ac7624c03a) - See also: 2014062017221644a42f.txt
+</pre>
+
+Did I do something wrong, or is this a bug?"
+61065,TYPO3.Media,Bug,"",Closed,Could have,@TODO breaks,Bram Verhaegh,"",2014-10-01 06:32,"","",2014-08-19,"","",0,2014-08-19 08:59,"","",-39400,"","adding @TODO breaks in < TYPO3 Flow <2.0.0
+
+this occurs in 
+
+TYPO3.Media/Classes/TYPO3/Media/ViewHelpers/Uri/ImageViewHelper.php 97
+and
+TYPO3.Media/Classes/TYPO3/Media/ViewHelpers/ImageViewHelper.php
+
+
+Uncaught Exception
+    [Semantical Error] The annotation ""@TODO"" in method
+    TYPO3\Media\ViewHelpers\Uri\ImageViewHelper::getImageThumbnailImage()
+  was
+    never imported. Did you maybe forget to add a ""use"" statement for this
+    annotation?"

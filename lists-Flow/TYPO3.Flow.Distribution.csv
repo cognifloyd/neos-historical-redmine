@@ -1,0 +1,1251 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Affected Flow version,Description
+64342,TYPO3 Flow Base Distribution,Bug,"",New,Should have,ResourceManager->deleteResource() leaves database entry,Christoph Lehmann,"",2015-02-12 15:51,"","",2015-01-18,"","",0,2015-01-18 11:03,"","",-202900,"",Git 2.0,"I use typo3/flow 2.3.1 (c6f77fef8b8af9bf17db7f97f6ecd14ecf3331b9)
+
+It removes the resource from filesystem, but leaves a database entry in typo3_flow_resource_resource and in typo3_flow_resource_resourcepointer."
+59358,TYPO3 Flow Base Distribution,Bug,"",Closed,Should have,PackageManager does not work when being injected via Annotation,Christian Loock,"",2014-06-05 07:40,"","",2014-06-05,"","",0,2014-06-05 05:26,"","",1711350,"",Flow 2.0.0,"Hi,
+
+when I try to use the PackageManager, i discovered the following odd behaviour.
+
+When I try to inject it via @Flow\Inject, any method called on it, will return no result.
+
+When I use a injectPackageManager method, it works normally."
+59019,TYPO3 Flow Base Distribution,Suggestion,"",New,Should have,Add marker for lazyloaded properties to \TYPO3\Flow\var_dump,Christian Loock,"",2014-05-22 04:15,"","",2014-05-22,"","",0,2014-05-22 04:15,"","",1694400,"","","Hi,
+
+it would be good, if you could see a lazy loaded property when you use \TYPO3\Flow\var_dump. It would be even better, if it would just automatically load those properties. See Carsten Bleicker's Email from today in the mailing list. It can cause some confusion."
+58976,TYPO3 Flow Base Distribution,Bug,"",New,Should have,debug_backtrace,Carsten Bleicker,"",2014-05-20 19:07,"","",2014-05-21,"","",0,2014-05-20 19:07,"","",1692250,"",Git master,"using php debug_backtrace results in a debug recursion?
+can anybody reproduce this?"
+57992,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Make package HHVM compatible - failing getPackageReturnsTheSpecifiedPackage test,Tymoteusz Motylewski,"",2014-07-11 14:19,"","",2014-04-16,"","",100,2014-04-16 10:47,"","",1643400,0.00,"","the PackageManagerTest::getPackageReturnsTheSpecifiedPackage is failing on hhvm, because it HHVM doesn't support calling key() on objects.
+So it is failing now with ""Fatal error: Cannot access empty property in...""
+Responsible code is in Package->getNamespace()
+
+<pre>
+$namespaces = $manifest->autoload->{'psr-0'};
+if (count($namespaces) === 1) {
+	$namespace = key($namespaces);
+}
+</pre>
+
+it can be solved by first cast object to an array
+<pre>
+$namespaces = (array)$manifest->autoload->{'psr-0'};
+if (count($namespaces) === 1) {
+	$namespace = key($namespaces);
+}
+</pre>
+
+
+quote from
+https://github.com/facebook/hhvm/blob/master/hphp/doc/inconsistencies#L90-95
+about this inconsistency:
+
+(5) Object internal cursors
+
+Under Zend PHP, objects have an internal cursor (similar to the array internal
+cursor) that can be used to iterate over the object's properties. Under HipHop
+VM, objects do not have internal cursors, and the next(), prev(), current(),
+key(), reset(), end(), and each() builtin functions do not support objects.
+
+"
+56859,TYPO3 Flow Base Distribution,Bug,"",New,Should have,PHP Warning: TYPO3_Flow_Error_Exception.php not present in Data/Temporary,Michiel Roos,"",2014-03-13 05:30,"","",2014-03-13,"","",0,2014-03-13 05:30,"","",1587100,"",(any),"On a virgin FLOW install 2.0.0 and 2.2.0-beta1, the TYPO3_Flow_Error_Exception.php is not found when calling './flow help' for the first time. 
+
+Warning: include_once(): Failed opening '/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Error_Exception.php' for inclusion (include_path='/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/php-text-template:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/phpunit-mock-objects:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/php-timer:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/php-token-stream:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Libraries/phpunit/php-file-iterator:/Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/L in /Users/michiel/Projects/TYPO3/Typo3Workbench/Targets/WebRoot/typo3benchmark.workbench.local/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Cache/Backend/SimpleFileBackend.php on line 277"
+56074,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Parse errors cause meaningless Flow exception messages.,Momchil Van,Adrian Föder,2014-02-18 08:14,"",2.x,2014-02-18,"","",0,2014-02-18 05:49,"","",1547950,"",(any),"Parse errors cause meaningless Flow exception messages.
+
+For example, if we add a code in some controller action
+    $test = array()
+lacking the semicolon, it will produce meaningless flow error tracing messages:
+
+    Uncaught exception #1355480641 in line 226 of /home/mmm/www/html/ddd/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Core/Booting/Scripts.php: Execution of subprocess failed with exit code 255 without any further output.
+     
+    17 TYPO3\Flow\Core\Booting\Scripts::executeCommand(""typo3.flow:core:compile"", array|16|)
+    16 TYPO3\Flow\Core\Booting\Scripts::initializeProxyClasses(TYPO3\Flow\Core\Bootstrap)
+    15 TYPO3\Flow\Core\Booting\Scripts::recompileClasses(TYPO3\Flow\Core\Bootstrap)
+    14 call_user_func(array|2|, TYPO3\Flow\Core\Bootstrap)
+    13 TYPO3\Flow\Core\Booting\Step::__invoke(TYPO3\Flow\Core\Bootstrap)
+    12 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    11 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    10 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    9 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    8 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    7 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    6 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    5 TYPO3\Flow\Core\Booting\Sequence::invokeStep(TYPO3\Flow\Core\Booting\Step, TYPO3\Flow\Core\Bootstrap)
+    4 TYPO3\Flow\Core\Booting\Sequence::invoke(TYPO3\Flow\Core\Bootstrap)
+    3 TYPO3\Flow\Http\RequestHandler::boot()
+    2 TYPO3\Flow\Http\RequestHandler::handleRequest()
+    1 TYPO3\Flow\Core\Bootstrap::run()"
+55369,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,Cookies not created if cookie lifetime is set,Stephen Bungert,Sebastian Heuer,2014-02-25 09:36,"","",2014-01-27,"","",100,2014-01-27 13:46,"","",1513750,"",Flow 2.0.0,"I have a flow based website and have increased the session timeout to 1 day. Cookies were still session only so I changed the cookie duration to one day too (I want users to be logged in even after closing the tab/browser). Whenever I do this, no cookie is created, and uses can't login.
+
+I tried changing the value directly in typo3/flow/configuration settings, in flow/congiguration and my packages configuration. Everytime the cookie is not made. If I remove the lifetime, the cookie is created. I also tried copying the whole cookie ""array"" to the settings in case you have to oevrwrite all cookie values in settings. This also didn't work.
+
+I think this is a bug. No error is shown, nothing in the server error log or the flow's system development log.
+
+In the security log I see:
+
+<pre>
+14-01-27 19:43:15 3329       127.0.0.1      NOTICE    TYPO3.Flow           Successfully authenticated token: Username: ""admin""
+14-01-27 19:43:16 3329       127.0.0.1      INFO      Flow                 No account authenticated
+</pre>"
+55244,TYPO3 Flow Base Distribution,Bug,"",Closed,Won't have this time,Can't use Flow with PHP > 5.4,Samuel Mehrbrodt,Samuel Mehrbrodt,2014-01-22 08:05,"","",2014-01-22,"","",0,2014-01-22 07:12,"","",1507550,"",(any),"I have PHP 5.5.3 here and can't run Flow, get the following message:
+
+Fatal error: Directive 'allow_call_time_pass_reference' is no longer available in PHP in Unknown on line 0
+TYPO3\Flow\Core\Booting\Exception\SubProcessException thrown in file Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Core/Booting/Scripts.php in line 531.
+
+The directive 'allow_call_time_pass_reference' was deprecated since PHP 5.0 and removed in 5.4: http://www.php.net/manual/de/ini.core.php#ini.allow-call-time-pass-reference
+
+I'm running FLOW 2.1 (included in NEOS)."
+55189,TYPO3 Flow Base Distribution,Task,"",Closed,Should have,Extract forward handling from errorAction,Oliver Hader,Bastian Waidelich,2014-12-20 07:20,"","",2014-01-20,"","",0,2014-01-20 14:12,"","",1504900,0.00,"","_basically taken from Extbase tracker, see #55178 and please let me know whether this might be considered for TYPO3 Flow_
+
+The default ActionController::errorAction uses the forward method to get back to the referring request.
+If a custom and different redirect shall happen here, one has to clone the whole errorAction method.
+Extracting the handling simplifies customization at this state."
+54593,TYPO3 Flow Base Distribution,Bug,"",New,Must have,ini_get return value has changed for PHP >=5.3.0 -> changed check-implementation needed!,Chr is,"",2013-12-24 20:48,"","",2013-12-25,"","",0,2013-12-24 20:48,"","",1476050,"",(any),"There is a function ini_get(...) used in
+
+<pre>
+  TYPO3-Neos/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Core/Bootstrap.php
+</pre>
+
+
+The return value is checked to the presence of an empty string like this:
+
+<pre>
+  if (ini_get('date.timezone') === '') {
+  // payload
+  }
+</pre>
+
+
+*The return value has changed for PHP Versions >=5.3.0*
+
+
+See PHP Changelog[1] for function ini_get(...):
+
+> 5.3.0	Previously, the empty string was returned if the configuration option didn't exist. +*now, FALSE is returned instead*+.
+
+
+
+[1] http://www.php.net/manual/en/function.ini-get.php"
+54570,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Indentation in Settings.yaml.example is confusing,Rens Admiraal,"",2014-07-11 14:19,"","",2013-12-22,"","",100,2013-12-22 05:49,"","",1474900,"",Git master,"The following indentation was found to be confusing by people in #typo3-neos:
+
+<pre>
+  # You might need to uncomment the following lines and specify
+  # the location of the PHP binary manually.
+  #  core:
+  #    phpBinaryPathAndFilename: 'C:/path/to/php.exe'
+</pre>
+
+During the removal of the indentation the mistake was made to remove the full '  #' before the line which lead to having the settings on the wrong level. The following was found to be more clear:
+
+<pre>
+  # You might need to uncomment the following lines and specify
+  # the location of the PHP binary manually.
+#    core:
+#      phpBinaryPathAndFilename: 'C:/path/to/php.exe'
+</pre>"
+54403,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Resources remade when parent record updated,Stephen Bungert,"",2013-12-13 16:39,"","",2013-12-13,"","",0,2013-12-13 16:39,"","",1466700,"",Flow 2.0.0,"I have a book record, the book has an image record and this has a resource record.
+
+Everytime I update my book the image's resource is re-made, a new resource record is created.
+
+Here is the fluid template for the image fields
+
+https://gist.github.com/riscos/7949892
+
+
+in TYPO3\Flow\Resource\ResourceTypeConverter, a new Resource object is created using the submitted $source['submittedFile']['filename'] and $source['submittedFile']['resourcePointer']
+
+These properties are created by the fluid file VH. If the actual file upload field is empty but these properties are there, shouldn't the resource object be returned from the resource repository instead of just creating a new resource?
+
+The problem is gone if the resource file input is not in my form. I would like to keep the file input so that users can change the image. Surely if this file input is empty the resource should not be remade? The only alternative I see is, if there is a resource, don't show an upload input and make people delete the old file and save the book before letting them upload a new file."
+54373,TYPO3 Flow Base Distribution,Task,"",New,Should have,Rename Arrays::removeEmptyElementsRecursively to removeNullElementsRecursively,Lorenz Ulrich,"",2013-12-13 03:35,"","",2013-12-13,"","",0,2013-12-13 03:35,"","",1465200,"","","The method Arrays::removeEmptyElementsRecursively only checks for NULL values, but not for empty values. Therefore the naming needs to be changed to reflect the behaviour."
+53961,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Composer installer scripts create a .Packages folder,Rens Admiraal,"",2013-11-28 07:06,"","",2013-11-25,"","",0,2013-11-25 16:11,"","",1445150,"",Git master,"Since the last changes to the composer installer scripts a .Packages folder is created if for example TYPO3.Neos is installed. This happens because a folder is copied to folder '.' passed to Files::copyDirectoryRecursively() as target folder.
+
+copyDirectoryRecursively() then prepends this to the source folder, resulting in the .Packages.
+
+Question is if the copyDirectoryRecursively should append the / to prevent issues like this."
+53790,TYPO3 Flow Base Distribution,Bug,"",New,Must have,Translation handling in Flashmessages is inconsistent to Validation errors,Kay Strobach,"",2013-11-20 04:46,"","",2013-11-20,"","",0,2013-11-20 04:46,"","",1436600,"",Git master,"Example code:
+
+Current of generating a flashmessage with an argument:
+<pre>
+  $this->addFlashMessage('This id %1s is already present in the Translation file', '', Message::SEVERITY_NOTICE, array($translationLabel->getLabelId()));
+</pre>
+
+Problem is that the translation handler queried for e.g.:
+<pre>
+This id oierjgu9her9gheru is already present in the Translation file
+</pre>
+
+This makes translation of dynamic flashmessages impossible.
+
+The better way would be to translate flashmessages similar to Validation errors:
+
+<pre>
+  $this->addFlashMessage('This id {0} is already present in the Translation file', '', Message::SEVERITY_NOTICE, array($translationLabel->getLabelId()));
+</pre>
+
+Would result in querying the translation handler with
+<pre>
+This id {0} is already present in the Translation file
+</pre>
+
+This can be easily translated and i would be satisfied ;)"
+53180,TYPO3 Flow Base Distribution,Bug,"",New,Must have,InjectSettings doesnt work on inheritance (Level 2),Carsten no-lastname-given,"",2013-11-26 15:46,Build Process,"",2013-10-28,"","",0,2013-10-28 14:31,"","",1406450,"",Flow 2.0.0,"abstract foo{
+  public function injectSettings($settings)...
+}
+
+bar extends foo{}
+
+baz extends bar{}
+
+
+Creating a new Instance with ObjectManager:
+Result: baz::settings is NULL.
+
+This is caused by the Proxy Classes.
+InjectSettings is skipped on class inheritances over more then 2 levels
+
+
+
+"
+52938,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Resource stream wrapper doesn't work with foreign package,Lorenz Ulrich,"",2013-10-18 04:31,"","",2013-10-18,"","",0,2013-10-18 04:31,"","",1394350,"",Flow 2.0.0,"Using the resource stream wrapper (tested from Fluid) always generates links pointing to the origin package.
+
+Example: An inline CSS in the Fluid template of package *Acme.Test*:
+
+<pre>
+background-image: url(resource://Acme.Demo/Public/Images/pdf.png);
+</pre>
+
+This will generate the following output:
+
+<pre>
+background-image: url(http://mydomain.tld/_Resources/Static/Packages/Acme.Test/Images/pdf.png);
+</pre>
+
+instead of
+
+<pre>
+background-image: url(http://mydomain.tld/_Resources/Static/Packages/Acme.Demo/Images/pdf.png);
+</pre>"
+52846,TYPO3 Flow Base Distribution,Suggestion,"",Resolved,Could have,Add isConnected() to Persistence interface,Rens Admiraal,"",2014-07-11 14:19,"","",2013-10-15,"","",100,2013-10-15 08:46,"","",1389750,"","","Change https://review.typo3.org/#/c/24609 introduced and isConnected() method to the roleRepository to verify if the repository can actually be used for fetching and storing data. In the comments of the change it was suggested to move this method up in the class hierarchy and make it api. As this is still not fully decided and the bugfix has to be merged we will push this later on based on this ticket.
+
+Basically the following should be decided:
+* Should it be api
+* Should it be added to an interface
+* To which interface
+
+When this method is moved up it should of course be removed from the roleRepository"
+52526,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Unfinished programming of DateTime converter,Stefan Froemken,"",2013-10-04 04:36,"",2.0.1,2013-10-04,"","",0,2013-10-04 04:36,"","",1373800,"",Flow 2.0.0,"Hello Flow-Team,
+
+it seems that there is an unfinished programming in TYPO3 Flow and fluid form handling.
+
+My HTML for f:form:
+
+<pre>
+<div class=""extdiv"">
+    <label for=""eventBegin""><f:translate key=""tx_events2_domain_model_event.event_begin"" /></label>
+    <f:form.textfield id=""eventBegin"" property=""eventBegin.date"" />
+    <f:form.hidden property=""eventBegin.dateFormat"" value=""d.m.Y"" />
+    <f:form.hidden property=""eventBegin.hour"" value=""0"" />
+    <f:form.hidden property=""eventBegin.minute"" value=""0"" />
+    <f:form.hidden property=""eventBegin.second"" value=""0"" />
+</div>
+</pre>
+
+There is NO problem to create NEW entries with this form. This eventBegin-Array goes into DateTimeConverter and I get a valid DateTime-Object back.
+
+BUT: When I edit this record, in my eventBegin-field stands: 2013-01-17 00:00:00+2
+
+I don't have any possibility to format this date to d.m.Y
+
+In ObjectAccess->getPropertyPath it gets the path ""eventBegin.date"". It executes getEventDate() and will then try to execute getDate() which isn't there if I return a string in my getEventBegin()-Method. If I return the original DateTimeValue it will return an unformattable Datestring as described above.
+
+Stefan"
+52509,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Child-Object's Identifier get's lost on Form-Submission with Validation Error,Mario Rimann,"",2013-10-03 10:18,"","",2013-10-03,"","",0,2013-10-03 10:12,"","",1373000,"",Flow 2.0.0,"Given the situation with the following Domain Model:
+
+* Registration (the parent-object)
+** has property ""patientData"" to store an object of the type ""PatientData"" (the child-object)
+** has other properties of different types, some Strings, some other child-objects
+
+In the *first step* of the form
+# the Registration object is instantiated
+# the PatientData object is instantiated and attached with $registration->setPatientData($patientData)
+# the registration is added to the RegistrationRepository
+# everything is explicitely persisted with a call to persistAll()
+
+Then the *second step* of the form is displayed and contains some hidden fields with the Identity of the child-object. The UUID is the one I can also see directly in the database. So far everything is OK.
+
+Now the second step of the form is submitted while missing out one of the mandatory fields to trigger a validation error.
+
+The form of the second step is now shown again - but the hidden fields in the form header (generated by fluid) are not the same anymore -> *the identifier for the child-object is missing*! It looks like they get stripped off somehow.
+
+Tested on Flow 2.0.0 and Fluid 2.0.0"
+51187,TYPO3 Flow Base Distribution,Task,Task #51183: CLI improvements,Closed,Should have,Add generic help switch for all commands,Christopher Hlubek,"",2013-08-19 09:35,"","",2013-08-19,"","",0,2013-08-19 09:33,"","",1307500,"","","Right now the help for a command can be displayed with @./flow help routing:list@
+
+It would be convenient to get the help of a command also with a switch ""--help"" after specifying the command:
+
+<pre>
+./flow routing:list --help
+</pre>
+
+If the command declares a help argument the help should be handled by the command (this will be backwards compatible for most commands)."
+51183,TYPO3 Flow Base Distribution,Task,"",New,Should have,CLI improvements,Bastian Waidelich,"",2015-02-25 11:45,"","",2012-01-09,"",0.00,50,2013-08-19 08:30,"","",1307300,0.00,"",Master ticket for miscellaneous improvements to the command controller implementation
+50589,TYPO3 Flow Base Distribution,Bug,"",Closed,Should have,Settings.yaml.example is not useable as is,Matthias Kipshoven,Bastian Waidelich,2013-08-06 11:01,"","",2013-07-31,"","",0,2013-07-31 07:07,"","",1277950,"",Flow 2.0.0,"Setting.yaml causes unexepted Errors. The errors appear when ""Doctrine: "" isn't commented out. Also you get an error, when ""Doctrine:"" didn't appears in it.
+
+It's the same Problem like in the ""Bug #33410"""
+50255,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Different collations runnig migrate/update,Carsten Bleicker,"",2013-11-16 17:05,"","",2013-07-21,"","",0,2013-07-21 15:06,"","",1261450,"",Flow 2.0.0 beta 2,"Hi,
+i am runnig flow doctrine:migrate and this results in a collation on the abstractparty f.e. with utf8_general_ci.
+this was confusing me because my mysql settings has default utf8_unicode_ci.
+i deleted the whole db and runnig flow doctrine:update. now the collation of any field is utf8_unicode_ci.
+deleting it again, runnig migrate ... results in utf8_general_ci.
+i have no idea where these different collations comes from, any idea?
+
+what helps is setting some settins in mysql config ""my.cnf"":
+init-connect            = 'SET NAMES utf8'
+init-connect            = 'SET collation_connection = utf8_unicode_ci'
+
+after this change migrate and update results in utf8_unicode_ci.
+
+kind regards
+carsten bleicker
+"
+50130,TYPO3 Flow Base Distribution,Bug,"",Needs Feedback,Should have,Different fallback for php.exe on windows,Christian Müller,"",2013-07-21 15:43,"","",2013-07-17,"","",0,2013-07-17 14:03,"","",1255300,"",(any),It could make sense on windows (as a fallback) to try to find the php.exe in the same path as the php.ini file. Seems usual setups on windows are like that (binary download from php.net and XAMPP). Should be checked with Windows users. Could reduce entry hurdle for windows users.
+49007,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Flows doctrine implementation creates too long identifiers for databases with maxIdentifierLengeth < 31,Christian Müller,Christian Müller,2013-06-24 08:38,"","",2013-06-10,"","",100,2013-06-10 12:50,"","",1200000,"",(any),""
+48148,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Allow PropertyMapping of strings to arrays,Christian Müller,Christian Müller,2013-09-03 10:35,"","",2013-05-13,"","",100,2013-05-13 09:56,"","",1157450,"","","Primary usecase is empty string to empty array for ajax generated options where ""nothing"" is also possible, but comma delimited strings could also happen with certain UI elements."
+48083,TYPO3 Flow Base Distribution,Bug,"",Closed,Must have,AbstractCompositeValidator validatedInstancesContainer grows continuosly,Tarcisio Fedrizzi,"",2013-05-10 04:27,"","",2013-05-09,"","",0,2013-05-09 05:01,"","",1154200,"",(any),"Hi,
+there is a problem in the way AbstractCompositeValidators passes the validatedInstacesContainer to its children.
+
+The code of the addValidator method says:
+<pre>
+  98         public function addValidator(\TYPO3\Flow\Validation\Validator\ValidatorInterface $validator) {
+  99                 if ($validator instanceof ObjectValidatorInterface) {
+ 100                         $validator->setValidatedInstancesContainer = $this->validatedInstancesContainer;
+ 101                 }
+ 102                 $this->validators->attach($validator);
+ 103         }
+</pre>
+this is wrong because it overwrites the setValidatedInstancesContainer method of the attached validators. Moreover the code doesn't pass the validatedInstancesContainer down to the validators it contains. This causes the contained validators to create their personal instance of validatedInstancesContainer that keeps growing. This renders impossible to work on big collections of objects due to excessive memory consumption.
+
+In the attached patch I moved the correct version of this code to the validate methods of ConjuntionValidator and DisjunctionValidator. I think that it would be safe to pass the validatedInstancesContainer in the setValidatedInstancesContainer of AbstractCompositeValidators. However given that the resolution of validator could be made more dynamic I preferred calling the setValidatedInstancesContainer just before the validation of CompositeValidators children in the validate method.
+
+Regards,
+Tarcisio Fedrizzi."
+47808,TYPO3 Flow Base Distribution,Task,"",Resolved,Must have,Tweak package dependencies,Karsten Dambekalns,Karsten Dambekalns,2013-08-02 05:18,"",2.0,2013-05-02,"","",100,2013-05-02 04:10,"","",1140600,"","","The package dependencies need to be tweaked so that
+
+* tagged releases are used where possible
+* the beta does no longer need minimum-stability: dev
+* useless dependencies are removed"
+47638,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Delete a ValueObject by its identity,Carsten Bleicker,"",2013-04-27 07:14,"","",2013-04-27,"","",0,2013-04-27 07:14,"","",1132200,"",Git master,"having a controller action wich receives a valueobject by get arguments:
+&myValueObject['__identity']=abcdef
+this results in an exception: Creation not allowed?
+the arguments are generated by <f:link.action ... arguments=""{myValueObject:myValueObject}"">
+if it is an entity anything works as expected."
+47637,TYPO3 Flow Base Distribution,Bug,"",New,Should have,"Property with @ORM\Column(nullable=true,type=""decimal"",scale=2) results as type ""string"" in Collection Objects and not as expected as ""double""",Carsten Bleicker,"",2013-04-27 06:14,"","",2013-04-27,"","",0,2013-04-27 06:14,"","",1132150,"",Git master,"having a value object:
+/**
+ * A Price Value
+ *
+ * @Flow\ValueObject
+ */
+class Price{
+
+	/**
+	 * @var float
+	 * @FLOW\Validate(type=""NotEmpty"")
+	 * @ORM\Column(nullable=true,type=""decimal"",scale=2)
+	 */
+	protected $value;
+
+	/**
+	 * @param float $value
+	 */
+	public function __construct($value) {
+		$this->value = $value;
+	}
+
+	/**
+	 * @return float
+	 */
+	public function getValue() {
+		return $this->value;
+	}
+}
+
+
+anything works fine until this:
+in a doctrine collection wich contains prices, the type of property $value is ""string"" and not of type ""double"".
+so the following fails: if($this->prices->contains($newPriceWithSameValue)) because property $value of ""newPriceWithSameValue"" is type of ""double"".
+
+"
+47601,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Template Path of Submodules contains lowercase Namespace,Carsten Bleicker,"",2013-04-26 08:33,"","",2013-04-26,"","",0,2013-04-26 08:33,"","",1130350,"",Git master,"Having a Submodule My.Shop/Admin the path for templates results in:
+resource://My.Shop/Private/Templates/admin/Article/Index.html
+
+Shouldnt the /admin/ be /Admin/?"
+47423,TYPO3 Flow Base Distribution,Task,"",Under Review,Could have,Decouple TYPO3.Party from Flow,Christian Müller,Christian Müller,2013-04-22 03:34,"","",2013-04-22,"","",0,2013-04-22 03:21,"","",1121600,"","",In order to make leaner distributions possible TYPO3.Flow should ship with a Party signature Interface so that you can implement your own party based on that. This enables us to remove the requirement on Party in Flow.
+47419,TYPO3 Flow Base Distribution,Bug,"",New,Must have,Composer issues,Rens Admiraal,"",2013-08-14 09:34,"",2.0.1,2013-04-22,"","",0,2013-04-22 02:07,"","",1121400,"",Git master,"It seems like composer has some issues. I've heard multiple projects now where the following happens:
+
+composer --dev update: works ok
+composer install: installs framework packages in Packages/Libraries
+
+besides that the command in the quickstart docs (composer create-project --dev --keep-vcs typo3/flow-base-distribution Quickstart 2.0.0) doesn't seem to work anymore (can't find package with version..... )"
+47253,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,Flow Exception shouldn't be in use statement,Christian Müller,Christian Müller,2013-04-15 12:35,"","",2013-04-15,"","",100,2013-04-15 12:05,"","",1113300,"",Git master,"Change Ib0d208a0b7750a8a2d15cf5af98b8bd2d20d3c46 introduced a regression due to ""use TYPO3\Flow\Exception"" which clashes with PHPs Exception."
+47052,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Clear doctrine caches after migration applied,Christian Müller,"",2013-04-08 12:30,"","",2013-04-08,"","",0,2013-04-08 12:30,"","",1103250,"",Git master,After applying a migration we should delete doctrine caches to not run cached queries that are using no longer existing fields (or don't select new fields).
+46485,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,The exceptionhandler handles exceptions too strict,Rens Admiraal,Rens Admiraal,2013-03-27 08:37,"","",2013-03-21,"","",100,2013-03-21 04:16,"","",1075450,"",Git master,"The ExceptionHandler should check if error_reporting is enabled. This is because we set the execptionhandler in testing context (for example).
+In http://ca2.php.net/manual/en/language.operators.errorcontrol.php it's stated that even though the @ is used the exceptionhandler will be called if set_error_handler is used.
+
+For this reason we should check in the exception handler if errors are ignored by using error_reporting() === 0"
+46290,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Remove unnecessary checks for file_exists and is_dir in FileMonitor,Rens Admiraal,Rens Admiraal,2013-04-05 06:37,"","",2013-03-14,"","",100,2013-03-14 12:21,"","",1065700,"",Git master,"The FileMonitor is massively slow on Windows, this is just because file access on windows from PHP is slow. Therefor unnecessary calls to the filesystem should be prevented."
+46244,TYPO3 Flow Base Distribution,Bug,"",Under Review,Should have,Remove call to PHP_BINDIR in CoreCommandController,Rens Admiraal,"",2013-03-19 06:39,"","",2013-03-13,"","",0,2013-03-13 14:08,"","",1063400,"",Git master,The CoreCommandController still has a call to PHP_BINDIR. This should be removed
+45413,TYPO3 Flow Base Distribution,Bug,"",Under Review,Should have,Overriding boolean properties using Objects.yaml is broken,Rens Admiraal,Rens Admiraal,2013-12-10 07:26,"","",2013-02-12,"","",100,2013-02-12 10:58,"","",1022700,"",Git master,"When a boolean property is overriden like for example:
+
+<pre>
+TYPO3\Flow\Mvc\Routing\UriBuilder:
+  properties:
+    linkProtectionEnabled:
+      value: FALSE
+</pre>
+
+the generated code is incorrect. The TRUE value becomes a call like:
+
+<pre>
+$this->setLinkProtectionEnabled(1);
+</pre>
+
+and the FALSE value becomes:
+
+<pre>
+$this->setLinkProtectionEnabled();
+</pre>
+
+The 1 being used as TRUE will still work in PHP of course, the FALSE value will break if the argument is required."
+45164,TYPO3 Flow Base Distribution,Feature,"",Accepted,Should have,Define syntax for validation rules in YAML,Karsten Dambekalns,Karsten Dambekalns,2013-02-05 04:52,"","",2013-02-05,"","",0,2013-02-05 04:52,"","",1010350,"","","To be able to define validation rules in YAML will be helpful in a number of cases, like for node types, validation of free-form documents (think about NoSQL), ?
+
+Here is a suggestion for defining validation rules:
+
+<pre>validation:
+  -
+    type: 'NotEmpty'
+  -
+    type: 'RegularExpression'
+    options:
+      regularExpression: '(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}'
+  -
+    preset: 'MakeLifeEasierForBram'</pre>
+
+@validation@ can have any number of elements, @type@ follows the same rules as with the @Validate@ annotation and @options@ can hold any options that a validator accepts.
+
+One new thing is @preset@, which is pointing to a predefined set of rules. Such a preset can be defined like this:
+
+<pre>validationPreset:
+  'MakeLifeEasierForBram':
+    -
+      type: 'NotEmpty'
+    -
+      type: 'StringLength'
+      options:
+        maximum: 7
+    -
+      type: 'RegularExpression'
+      options:
+        regularExpression: '[a-f56-]+'</pre>
+"
+44885,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Make documentation fit for docs.typo3.org,Karsten Dambekalns,Karsten Dambekalns,2013-01-30 12:36,- Documentation -,2.0,2013-01-28,"","",100,2013-01-28 08:37,"","",997800,"","","* move images to @Images/@ next to source file(s)
+* add Settings.yml"
+44684,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Authorization header redirect in .htaccess strips the Basic-prefix,Peter Rauber,"",2014-09-16 17:41,"","",2013-01-21,"","",0,2013-01-21 05:38,"","",987800,"",(any),"The .htaccess file in the web folder contains this command:
+SetEnvIfNoCase Authorization ""Basic ([a-zA-Z0-9\+/=]+)"" REMOTE_AUTHORIZATION=$1
+
+This will strip the prefix ""Basic "" from the authorization header.
+
+Changing this to:
+SetEnvIfNoCase Authorization ""Basic ([a-zA-Z0-9\+/=]+)"" REMOTE_AUTHORIZATION=$0
+
+worked for me. Maybe this should be updated in the shipped .htaccess-File."
+44078,TYPO3 Flow Base Distribution,Task,"",New,Should have,Probably false behavior in symlinked environment,Thomas Hempel,"",2012-12-18 07:17,"","",2012-12-18,"","",0,2012-12-18 04:39,"","",957650,"","","Hi,
+
+I just tried to setup TYPO3 Flow where the sources where symlinked somewhere else. I my setup looked like this:
+
+<pre>
+- Flow_Base_Distribution_Clone (installed with composer)
+
+- DocumentRoot
+-- Flow_src -> Flow_Base_Distribution_Clone
+-- Build
+-- Configuration
+-- Data
+-- Packages
+--- Application
+---- MyPackage -> SYMLINK to somewhere else
+--- Framework -> Flow_src/Packages/Framework
+--- Libraries -> Flow_src/Packages/Libraries
+-- bin -> Flow_src/bin
+-- Web -> Flow_src/Web
+-- flow -> Flow_src/flow
+</pre>
+
+This basically works but it shows at least two weird behaviors
+
+* The ""Data"" folder of Flow_Base_Distribution_Clone is used instead of the local one. (Clearing this didn't solve the routing problem btw)
+* I removed the Welcome package (package:delete) but it still had some default route somewhere that catched any request
+
+Maybe this setup is weird but I think there might be valid use-cases for this. Someone might wanna look into this so Flow can throw a warning if unsupported symlinks are used. Moving anything to the document root solved all problems.
+
+If you have any questions, kust let me know.
+
+
+Greets,
+Thomas
+"
+44022,TYPO3 Flow Base Distribution,Task,"",Resolved,Must have,Remove Jenkins as composer repository from 2.0 branch,Karsten Dambekalns,Karsten Dambekalns,2013-01-15 04:37,"",2.0,2012-12-14,"","",100,2012-12-14 11:17,"","",954850,"","","The use of the Jenkins' Satis leads to misleading ""number of installs"" on packagist.org"
+43822,TYPO3 Flow Base Distribution,Task,"",Resolved,Must have,Remove versions from composer manifests,Karsten Dambekalns,Karsten Dambekalns,2012-12-11 04:29,"",2.0 beta 1,2012-12-10,"","",100,2012-12-10 06:00,"","",944900,"","","To allow for versions to be read from git tags, the version fields in manifests must be removed."
+43377,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Running functional tests with PEAR install of phpunit fails,Rens Admiraal,Rens Admiraal,2012-11-28 10:35,- Testing -,"",2012-11-28,"","",100,2012-11-28 04:14,"","",922850,"",Git 1.2 (master),"https://review.typo3.org/#/c/16659/1 introduced a regression when phpunit is installed using PEAR. This is because the autoload.php is found in composer managed installations, but this does not ensure that phpunit is actually installed using composer too."
+43236,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,"f:security.ifHasRole role =""..."" does not recognize the right role ",Jan Greth,"",2012-12-12 03:26,"","",2012-11-22,"","",100,2012-11-22 12:24,"","",915850,"",FLOW3 1.1.0,"Hey everyone!
+
+I think there is a difference between the <f:security.ifHasRole role=""..."">-ViewHelper in TYPO3 Flow v 1.0.6 and 1.1.0 .
+'Cause my problem is this: I tried to do the Registration and Login Guide on layh.com 
+([[http://www.layh.com/work/typo3-flow-typo3-fluid/tutorials/flow-registration-and-login.html]])
+
+Everything works fine - except one thing: Inside the Index Template, there should be a decision 
+between two possibilities: On the one hand beeing logged in (role = ""Visitor""), then show logout link or you
+are not logged in, then show log in form.
+This should be done by using:
+
+<pre>
+...
+<f:security.ifHasRole role=""Visitor"">
+  <f:then>
+    <!-- Logout Link -->
+  </f:then>
+  <f:else>
+	<!-- Log in form -->
+  </f:else>
+</f:security.ifHasRole>
+...
+</pre>
+
+But this does not work. The log in form is always showed.
+OK, i cheked the Database. Everything fine. User was created and has the right role.
+e.g.:
+
+<pre>
+#	flow3_persistence_identifier	party	accountidentifier	authenticationprovidername credentialssource	creationdate	expirationdate	roles
+1	'202b0f71-d36c-4900-b0b9-59569aff273d'	NULL	'jan'	'DefaultProvider' 'bcrypt=>$2a$14$gzVFpOIPsClcLqM4ZrJA1.cn1umi8JONXVZ2v41xLwsiUvzYEQfQK'	'2012-11-21 11:03:26'	NULL	'a:1:{i:0;s:7:""Visitor"";}'
+</pre>
+
+Then i tried replacing the f:security.ifHasRole by f:security.ifAuthenticated -> that works fine.
+
+So i added the following:
+LoginController - indexAction:
+<pre>
+	$account = $this->securityContext->getAccount()->getRoles();
+	if($this->securityContext->hasRole('Visitor')){
+			$isset = 'Is set!';
+	}else{
+			$isset = 'Is not set!';
+	}
+	$this->view->assign('roles', $account);
+	$this->view->assign('isset', $isset);
+</pre>
+
+Index.html:
+<pre>
+	<f:section name=""Title"">
+		<ul>
+			<f:for each=""{roles}"" as=""role"">
+				<li>Role: {role}</li>
+			</f:for>
+		</ul>
+		Is set? -> {isset}
+	</f:section>
+</pre>
+
+I got the following output:
+	Role: Visitor
+	Is set? -> Is not set!
+	
+But I know it is set in the DB and as I see using the f:security.ifAuthenticated ViewHelper, 
+Logging in works also. All this happens when running the code on Flow 1.1.0.
+When I copy the exact somae code onto a Flow 1.0.6 - it works! Both!
+The f:security.ifAuthenticated and the f:security.ifHasRole !
+
+But I want to use 1.1.0 - so what can there be wrong? 
+
+Here my complete code:	
+Settings.yaml: [[http://pastebin.com/b1H073fX]]
+LoginController.php: [[http://pastebin.com/2Avz9ib7]]
+Index.html: [[http://pastebin.com/MXF65WF7]]
+
+Greetings,
+Jan"
+42516,TYPO3 Flow Base Distribution,Task,Bug #41843: Composer and rename issues (umbrella issue),Resolved,Should have,Composer dependency with Guzzle leads to Package related exception,Rafael Kähm,"",2012-11-08 08:35,"","",2012-10-30,"","",100,2012-10-30 09:21,"","",880350,"","","Guzzle-Package, installed with composer, makes fatal errors:
+
+<pre>
+PHP Fatal error:  Uncaught exception 'TYPO3\Flow\Package\Exception\InvalidPackagePathException' with message 'Package path does not exist or is no directory.' in /var/www/TYPO3-Flow/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/Package.php:99
+Stack trace:
+#0 /var/www/TYPO3-Flow/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageFactory.php(48): TYPO3\Flow\Package\Package->__construct('Guzzle.Iterator', '/var/www/TYPO3-F...', 'Classes/', 'e/Iterator/')
+#1 /var/www/TYPO3-Flow/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php(699): TYPO3\Flow\Package\PackageFactory::create('/var/www/TYPO3-F...', 'Libraries/guzzl...', 'Guzzle.Iterator', 'Classes/', 'e/Iterator/')
+#2 /var/www/TYPO3-Flow/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/PackageManager.php(600): TYPO3\Flow\Package\PackageManager->registerPackagesFromConfiguration()
+#3 /var/www/TYPO3-Flow/Pa in /var/www/TYPO3-Flow/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Package/Package.php on line 99
+</pre> 
+
+
+Here is Repository for this issue. https://github.com/RafaelKa/TYPO3-Flow---Guzzle.git 
+You must only run
+<pre>composer install --dev</pre>and<pre>
+./flow help
+</pre>
+to get this error."
+42408,TYPO3 Flow Base Distribution,Story,"",New,Could have,Locale Detection / Selection,Robert Lemke,"",2013-06-11 07:31,"",2.1,2013-06-11,"","",0,2012-10-26 03:03,"","",2954400,0.00,"","* support for automatic locale detection
+* storing locale in a cookie
+* mechanism for overriding locales by user"
+42407,TYPO3 Flow Base Distribution,Story,"",New,Should have,Asset Management,Robert Lemke,"",2012-10-26 03:02,"",2.1,2012-10-26,"","",0,2012-10-26 03:02,"","",2954350,"","","* CDN support
+* centralized JS / CSS mgm
+* minifiers
+* SASS support
+* re-use as much concepts and code from Assetic etc. as possible
+* seamlessly integrate into existing Resource framework"
+42168,TYPO3 Flow Base Distribution,Task,"",Closed,Should have,Remove exception for throwing exceptions in oneliners,Rens Admiraal,Rens Admiraal,2012-10-19 05:30,- Documentation -,2.0 beta 1,2012-10-19,"","",0,2012-10-19 05:19,"","",863150,"","","We allowed using a throw statement in a oneline if statement like:
+
+<pre>
+if (TRUE) throw new \Exception();
+</pre>
+
+We don't allow this anymore, so the exception should be removed. Everything should now be wrapped in curly braces."
+42013,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Rename 'Vendor' to 'Libraries',Christian Jul Jensen,Christian Jul Jensen,2012-10-18 10:29,"",2.0 beta 1,2012-10-15,"","",0,2012-10-15 07:16,"","",855700,"","","In accordance with our 'naming should make sense' principle, it has been discussed to call the standard composer directory 'Vendor' something else.
+
+The reason is that even though 'Vendor' is kind of industry standard for the placement of 3rd party packages, The TYPO3-Flow (and related) packages are actually 3rd party in relation to the locally installed project, and the consistent thing would then be to put all those packages in the 'Vendor' dir as well.
+
+Using the word 'Libraries' is thus more meaningful in the context, and since we are not following standard Composer directory-structure anyway, it is not really breaking any conventions."
+41989,TYPO3 Flow Base Distribution,Feature,"",Resolved,Should have,Assume integer values to be timestamps in DateTime converter,Helmut Hummel,"",2012-11-08 11:35,"","",2012-10-14,"","",100,2012-10-14 10:21,"","",854500,"","","The DateTime TypeConverter cannot transform integer values to a DateTime object
+because of a strict check for string.
+
+Additionally accept integer values and also assume plain digits to be a timestamp
+and use ""U"" as date format if no additional configuration is given."
+41843,TYPO3 Flow Base Distribution,Bug,"",New,Should have,Composer and rename issues (umbrella issue),Karsten Dambekalns,"",2013-01-15 11:19,"","",2012-10-10,"","",60,2012-10-10 08:44,"","",847600,0.00,Git master,""
+41809,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,ConfigurationBuilder throws an error on classes without methods,Rens Admiraal,Rens Admiraal,2012-11-08 15:36,"",2.0 beta 1,2012-10-09,"","",100,2012-10-09 15:41,"","",845900,"",Git 1.2 (master),The ConfigurationBuilder does a foreach over the result of get_class_methods($class). This throws a fatal error if the class does not have methods.
+41525,TYPO3 Flow Base Distribution,Bug,"",Closed,Should have,"Fields Validated in Controller not highlightet, just Error shown",Martin Ebeling,Christian Müller,2012-12-17 07:26,"","",2012-10-02,"","",100,2012-10-02 06:41,"","",833450,"",FLOW3 1.1.0,"Fields are not highlighted if Validation is at ControllerAction like
+
+        /**
+	 * @param string $name
+	 * @FLOW3\Validate(argumentName=""name"", type=""NotEmpty"")
+	 * 
+	 * @param string $email
+	 * @FLOW3\Validate(argumentName=""email"", type=""NotEmpty"")
+	 * @FLOW3\Validate(argumentName=""email"", type=""EmailAddress"")
+	 * @return void
+	 */
+	public function createAction($name, $email) {
+
+Just these errors are shown
+
+[ERROR]
+name: 1221560718 : This property is required.
+email: 1221560718 : This property is required.
+Errors occurred
+
+Please check the highlighted fields below!
+[END]
+
+For getting these errors shown in View, I mainly copied the partials from the ConferencePackage
+
+Mainly I tried to have a form where I create an Person, extended to a student class. 
+The Errors validated in the StudentModel are shown in the form.
+
+Additional to that I need to have PersonName also Validatet, without putting all these fields in the extended personClass.
+
+
+"
+41508,TYPO3 Flow Base Distribution,Task,"",Under Review,Should have,Replace Jasmine by Buster.js,Rens Admiraal,Rens Admiraal,2012-10-01 14:58,"","",2012-10-01,"","",0,2012-10-01 14:57,"","",832600,"","","Before the interface switch to Emberjs we used Jasmine testrunner for running tests. This runner needed generated HTML files before running tests, and did not have support for attaching multiple browsers. Buster.js does have this support and allows running tests using phantomjs which has full webkit javascript support."
+41466,TYPO3 Flow Base Distribution,Story,"",Resolved,Should have,Rename things,Karsten Dambekalns,Karsten Dambekalns,2012-12-10 07:26,"",2.0 beta 1,2012-09-29,"","",100,2012-09-29 15:09,"","",2953950,"","",""
+41031,TYPO3 Flow Base Distribution,Story,"",Resolved,Must have,Composer support for packaging,Karsten Dambekalns,Christian Jul Jensen,2012-09-25 05:19,"",2.0 beta 1,2012-09-17,"","",100,2012-09-18 04:36,"","",2953900,0.00,"",""
+39432,TYPO3 Flow Base Distribution,Task,"",New,Should have,Clarify introducing properties,Rens Admiraal,"",2012-07-31 17:34,"","",2012-07-31,"","",0,2012-07-31 17:34,"","",733350,"","","When you have an aspect to introduce a property, it's not clear this is not possible without any other advice in the same aspect.
+
+The actual error:
+
+Uncaught Exception
+  The class ""Test\Aspect\ModelAspect"" is tagged to be an aspect but doesn't
+  contain advices nor pointcut or introduction declarations.
+
+Which seems incorrect for the developer as he introduced a property. Either this error should be clarified, or it should be possible to introduce just a property (last one doesn't sound really like a usecase as you would expect changed behavior if a new property is added, so in a common usecase you would have at least 1 advise).
+
+This part should also be clarified more in documentation"
+38875,TYPO3 Flow Base Distribution,Suggestion,"",New,Should have,Have a Translator object available in action controllers,Francois Suter,"",2012-07-11 09:00,"","",2012-07-11,"","",0,2012-07-11 09:00,"","",705850,"","","One could expect most action controllers to need to issue messages. As these should ideally be localizable, it might be convenient to provide a Translator instance by default to action controllers."
+37813,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Upgrade to vfsstream 1.0,Christian Jul Jensen,Karsten Dambekalns,2012-09-24 06:35,- Testing -,2.0 beta 1,2012-06-07,"","",100,2012-06-07 08:03,"","",653250,"","","starting with v1.0.0 vfsstream has changed namespace and Compsoser is recommended install method.
+
+We should upgrade tests to use the stable version.
+
+Relevant for TYPO3.FLOW3 project as well"
+37569,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Dead symlink in release archives,Karsten Dambekalns,Karsten Dambekalns,2012-05-30 07:08,Build Process,1.1 beta 2,2012-05-29,"","",100,2012-05-29 09:06,"","",641200,"",FLOW3 1.0.2,There is a dead symlink from @Configuration/Production@ to @../../../shared/Configuration/Production@ in the archives. That should rather be a folder.
+36301,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Supply PostgreSQL migrations,Karsten Dambekalns,Karsten Dambekalns,2012-04-30 04:42,"",1.1,2012-04-18,"","",100,2012-04-18 12:00,"","",578800,"","","The ""official"" packages should contain DB migrations for PostgreSQL as well."
+35835,TYPO3 Flow Base Distribution,Bug,"",Rejected,Should have,In WebContext Settings.yaml is read from root directory if present,Steffen Ritter,Christian Müller,2012-04-14 03:16,"","",2012-04-11,"","",0,2012-04-11 04:10,"","",556500,"",Git master,"I made a copy of of Settings.yaml from Configuration/ to /
+When accessing via WebBrowser the Settings.yaml from root directory is read and used."
+35524,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Split the Documentation package into DocTools and move the documentation to TYPO3.FLOW3 and TYPO3.TYPO3,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-04-02 07:17,"",1.1 beta 1,2012-04-02,"","",0,2012-04-02 05:06,"","",541000,"","",""
+35422,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,TYPO3 Security Framework should not take unexisting roles into account,Rens Admiraal,"",2012-04-26 08:38,"","",2012-03-31,"","",100,2012-03-30 18:49,"","",535950,"",Git master,"Now the Security Framework uses all roles available in the tokens. When a role is not configured in the Policy.yaml this should not have effect.
+
+For example if you now create a new Phoenix user with the role 'User' the backend gives an 'Access denied!' because the security framework does not know the role User.
+
+Expected behavior: just ignore the users role?"
+35420,TYPO3 Flow Base Distribution,Suggestion,"",New,Should have,Review use of try / catch in the Security Framework,Rens Admiraal,Andreas Förthner,2012-03-30 18:00,"","",2012-03-30,"","",0,2012-03-30 18:00,"","",535850,"","","Just to not forget about the comments in https://review.typo3.org/#/c/9558/
+
+Karsten Dambekalns		Mar 12
+Patch Set 1:
+If that is considered proper use of the security framework? would be nice to have something that doesn't use try/catch.
+Andreas Förthner		Mar 12
+Patch Set 1: Looks good to me, but someone else must approve
+Currently the security framework works like this. I agree that it is somehow strange to catch an exception here. On the other hand this makes it really explicit and really ensures that you are aware of coding the restricted case. For know I wouldn't change it, but we can discuss if we need some true/false method for access decisions."
+35324,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Remove vender namespace from Build/Common/PhpUnit/UnitTests.xml ,Soren Malling,Karsten Dambekalns,2013-01-10 08:32,- Testing -,2.0,2012-03-28,"","",100,2012-03-28 08:52,"","",531050,"","","Would't it make sense to remove the vendor namespace from Build/Common/PhpUnit/UnitTests.xml so you can use
+
+<pre>
+phpunit -c Build/Common/PhpUnit/UnitTests.xml
+</pre>
+
+and have all Tests run at once, using the same UnitTestBootstrap.php for all tests."
+35317,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Fix doc comments for authentication providers,Aske Ertmann,Aske Ertmann,2012-03-30 20:39,"",1.1,2012-03-28,"","",100,2012-03-28 07:42,"","",530750,"","",All the authentication providers have a incorrect return doc comment.
+34875,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Clean up code (style),Karsten Dambekalns,Karsten Dambekalns,2012-06-25 09:26,"",1.1 RC1,2012-03-15,"","",100,2012-03-15 06:25,"","",509200,"","","There are a number of glitches in coding style and cleanliness, like leading backslashes in @use@ statements, unused variables, wrong code documentation?"
+34614,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,Evil packed bz2 package,Jan Roth,Karsten Dambekalns,2012-05-30 15:55,Build Process,1.0.5,2012-03-06,"","",100,2012-03-06 16:50,"","",496250,"",FLOW3 1.0.3,"in the FLOW3-1.0.3.tar.bz2 file is a bad fileentry for ./ . if you untar this bz2 file as root, you change your directory owner and group for your current directory.
+That is very bad...... After i untar it, i can't not login via ssh and public key to my maschine, because openssh can't access my authorized_keys file.
+
+Please fix this issue, it was very time expensive..."
+33975,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Tweak existing XLIFF files according to translation team feedback,Karsten Dambekalns,Karsten Dambekalns,2012-02-16 20:47,"",1.1,2012-02-16,"","",100,2012-02-16 06:17,"","",465050,"","","The XLIFF file miss @xml:space=""preserve""@, a trans-unit must look like:
+<pre><trans-unit id=""mlang_labels_tablabel"" xml:space=""preserve"">
+  <source>Webpages and databasecontent</source>
+</trans-unit></pre>
+Each trans unit must have the @xml:space=""preserve""@ attribute, this is needed by Pootle to avoid some weird problem.
+
+An other point, please add @product-name=""package.name""@ to the file element, we use it for v4 core, and it's sometime useful to have this information in the XLIFF."
+33410,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Production Settings.yaml.example is not useable as is,Christian Müller,Christian Müller,2012-05-21 11:03,"",1.0.5,2012-01-24,"","",100,2012-01-24 05:54,"","",437100,"",Git master,"The Production context Settings.yaml.example contains the following lines:
+
+TYPO3:
+  FLOW3:
+    persistence:
+      backendOptions:
+        dbname: 'quickstart' # adjust to your database name
+        user: ''             # adjust to your database user
+        password: ''         # adjust to your database password
+      doctrine:
+        # If you have APC, you should consider using it for Production,
+        # also MemcacheCache and XcacheCache exist.
+        # cacheImplementation: 'Doctrine\Common\Cache\ApcCache'
+
+If used as is this will clean the doctrine settings as everything below doctrine is commented out, so an empty value is assigned. This leads to unsuspected errors that are difficult to track down to this.
+
+A safe example should have the doctrine key commented out too."
+33308,TYPO3 Flow Base Distribution,Task,"",New,Should have,General date and time handling rules,Adrian Föder,"",2012-03-06 10:05,"","",2012-01-19,"","",0,2012-01-19 02:35,"","",432150,"","","h1. Date and time handling discussion
+
+_This issue is considered as invitation for discussion, comment as you like._
+
+h2. Introduction
+
+When handling trivially said ""date and time"", running in technical difficulties is waiting to happen. The purpose of this document is to carry-together this difficulties and lastly, possibly, provide a best practice both in the Framwork API and in documentation, how to handle date and times in user's applications.
+
+h2. Professional considerations
+
+h3. Different meanings of ""point in time""
+
+Regarding a ""time"", ""event"" or generally saying ""point in time"" could result in two meanings. _(The author likes to have this terms ubiquitous, so feel free to improve them)_
+
+h4. Physical Point In Time
+
+The @Physical Point In Time@ means a time stamp that describes a ""physical"" time of an occurrence without doubt. That might be the creation or modification time of a record, the moment of a happening like the exact time of the birth of a person or the time where a football goal was achieved.
+It describes an event that occurs on a specific point of the global, physical timeline no matter where or under what conditions this was (like DST or such).
+
+h4. Logical Point In Time
+
+The @Logical Point In Time@ is a time the user is familiar or comfortable with without caring about localization and such. If a user invites to a party saying it begins at 19 o'clock he means the time all people know and are used to around the event. 19 o'clock than means 19 o'clock at the location where the party happens under the circumstances around that date, e.g. active DST etc. It's the time being seen when you look at your watch.
+
+h3. Date Only
+
+In some use cases, the date only may matter; mostly usual when describing a birth date. In such cases timezone and DST doesn't matter, only the day-date is important. It even would be contra-productive to even attempt to store a time besides that date, because it's intrinsically unimportant.
+
+
+h2. Technical considerations
+
+Basically the author came up to the following idea: MySQL's @DATETIME@ format stores a date and time as-is, so without any automatic timezone conversion (*unlike* @TIMESTAMP@ does). _TODO: find source of this statement_ 
+
+So it could be a general best practice to decide that every @Point In Time@ is to be stored and therefore assumed to be in UTC. That's what UTC is made for: to describe an event happening at a @Physical Point In Time@.
+
+If a @Date Only@ is required, it could be an idea to force UTC 0:00 as corresponging time (unfortunately DateTimes are always bound together in most implementations we know, therefore no *real* @Date Only@ is provided)
+
+Before storing and after retrieving is has to be decided what the intention of the date is: @Physical or Logical Point In Time@ or @Date Only@. Dependant of this, the adjustments could be made, i.e. deciding what Timezone the user intended to provide resp. what timezone he expects.
+
+If the user, for example, provides an invitation to a party in Stuttgart, taking place May 30, 19 o'clock, this is a @Logical Point In Time@. Disregarding locational aspects, we assume DST and therefore store May 30, 18 o'clock in the Database (which is implicitly UTC because per design)."
+33031,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,Readme.txt contains wrong tutorials URL,Felix Kopp,Karsten Dambekalns,2012-03-07 11:01,- Documentation -,1.0.4,2012-01-07,"","",100,2012-01-07 15:22,"","",418450,"",FLOW3 1.0.2,"First paragraph, http://flow3.typo3.org/documentation/tutorials can not be found.
+Rather put http://flow3.typo3.org/documentation/quickstart.html ?"
+32599,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Essential packages are not protected,Karsten Dambekalns,Karsten Dambekalns,2011-12-19 15:08,"",1.0.2,2011-12-15,"","",100,2011-12-15 09:30,"","",398200,"",FLOW3 1.0.1,"Some of the packages in the base distribution should be protected (again):
+
+* FLOW3
+* Yaml
+* Doctrine (all three in master)
+* Party
+* Fluid"
+32014,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,Some unit tests break when run with PHPUnit 3.6,Karsten Dambekalns,Karsten Dambekalns,2011-12-22 02:48,- Testing -,1.0.2,2011-11-23,"","",100,2011-11-23 04:23,"","",369550,0.00,FLOW3 1.0.1,"When using PHPUnit 3.6 to run the unit tests, some tests fail. Partly this is caused by new restrictions in PHPUnit (one must no longer expect the generic Exception class) partly the more strict behavior of PHPUnit uncovers real bugs in the tests. Affected are tests in FLOW3 and Fluid."
+31896,TYPO3 Flow Base Distribution,Feature,"",Resolved,Must have,Make Surf release job interact with release plugin on website,Karsten Dambekalns,Karsten Dambekalns,2011-11-22 11:14,Build Process,1.0.1,2011-11-17,"","",100,2011-11-17 16:45,"","",363650,"","",The Surf release job should register the created release and the corresponding downloads
+31215,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Configuration/README refers to unused files,Karsten Dambekalns,Karsten Dambekalns,2011-11-07 07:57,- Documentation -,1.0.1,2011-10-24,"","",100,2011-10-24 06:08,"","",330100,"",FLOW3 1.0.0,"The README mentions FLOW3.yaml and Package.yaml, both of which are no longer used."
+30861,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Remove declare(ENCODING) line ,Julian Wachholz,Karsten Dambekalns,2011-10-14 19:08,"",1.0.0,2011-10-12,"",0.50,100,2011-10-12 15:13,"","",312950,0.50,"","Since the declare() statement was dropped from FLOW3 sources, it should be removed everywhere.
+
+The following files still have the declare(ENCODING = 'utf-8'); line:
+
+./Packages/Framework/TYPO3.FLOW3/Tests/Unit/Security/Cryptography/Pbkdf2HashingStrategyTest.php
+./Packages/Framework/TYPO3.FLOW3/Tests/Unit/Security/Cryptography/AlgorithmsTest.php
+./Packages/Framework/TYPO3.FLOW3/Classes/Core/LockManager.php
+./Packages/Framework/TYPO3.FLOW3/Classes/Security/Cryptography/PasswordHashingStrategyInterface.php
+./Packages/Framework/TYPO3.FLOW3/Classes/Security/Cryptography/Pbkdf2HashingStrategy.php
+./Packages/Framework/TYPO3.FLOW3/Classes/Security/Cryptography/Algorithms.php
+./Packages/Framework/TYPO3.FLOW3/Classes/Security/Cryptography/SaltedMd5HashingStrategy.php
+"
+30857,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Set the RewriteBase configuration in the .htaccess by default,Rens Admiraal,Rens Admiraal,2011-10-21 07:39,"","",2011-10-12,"","",100,2011-10-12 13:58,"","",312750,"","","Apache server does not allow modules to reconfigure the DOCUMENT_ROOT, this can cause problems with mod_rewrite, and will cause problems with mod_vhost_alias.
+
+This is fixed in a recent commit of apache, but can still affect a lot of installations. AFAIK it does not hurt to set the RewriteBase directive by default, so it might be worth to set it.
+
+Apache commit which fixes this in apache: http://svn.apache.org/viewvc?view=revision&revision=1132494"
+30543,TYPO3 Flow Base Distribution,Bug,"",Closed,Should have,Classes disappearing cause havoc,Soren Malling,"",2011-10-19 19:42,"","",2011-10-04,"","",0,2011-10-04 07:32,"","",297400,"","","After ""pulling"" to commit a1c1304a26fd6e9173adccf58c6adb2b462d820f I got the following error in FLOW3 CLI
+
+<pre>
+aafie4300:typo3v5 sorenmalling$ ./flow3 
+
+Uncaught Exception in FLOW3 #1265213849: The object ""TYPO3\Media\Domain\Repository\ImageRepository"" which was specified as a property in the object configuration of object ""TYPO3\TYPO3\Controller\Backend\ContentController"" (automatically registered class) does not exist. Check for spelling mistakes and if that dependency is correctly configured.
+thrown in file Packages/Framework/TYPO3.FLOW3/Classes/Object/DependencyInjection/ProxyClassBuilder.php
+in line 423
+Reference code: 201110041021325e21dd
+
+#0 TYPO3\FLOW3\Error\DebugExceptionHandler::echoExceptionCli()
+   /opt/local/apache2/htdocs/typo3v5/Packages/Framework/TYPO3.FLOW3/Classes/Error/AbstractExceptionHandler.php:49
+
+#1 TYPO3\FLOW3\Error\AbstractExceptionHandler::handleException()
+
+PHP 5.3.3 (cli) (built: Nov 17 2010 14:44:01) 
+Copyright (c) 1997-2010 The PHP Group
+Zend Engine v2.3.0, Copyright (c) 1998-2010 Zend Technologies
+
+Uncaught Exception in FLOW3 #1297263663: The compile run failed. Please check the error output or system log for more information.
+thrown in file Packages/Framework/TYPO3.FLOW3/Classes/Core/Bootstrap.php
+in line 414
+Reference code: 201110041021322c68e5
+
+#0 TYPO3\FLOW3\Error\DebugExceptionHandler::echoExceptionCli()
+   /opt/local/apache2/htdocs/typo3v5/Packages/Framework/TYPO3.FLOW3/Classes/Error/AbstractExceptionHandler.php:49
+
+#1 TYPO3\FLOW3\Error\AbstractExceptionHandler::handleException()
+
+
+</pre>
+
+Karsten mentions in his ""tweeting"" with me
+
+<pre>
+Ah, well. Classes disappearing cause havoc, true.
+</pre>
+
+Sorry, can't give better explanation ATM"
+30491,TYPO3 Flow Base Distribution,Bug,"",Closed,Must have,Commands with only one optional argument don't work,Martin Brüggemann,Robert Lemke,2011-09-30 17:35,"","",2011-09-30,"","",0,2011-09-30 16:44,"","",294900,"","","I kickstarted a command controller and added one command action with one optional argument:
+
+<pre>
+[...]
+
+class TestCommandController extends \TYPO3\FLOW3\MVC\Controller\CommandController {
+
+    /**
+     * Render the documentation for a specific package.
+     * 
+     * @param string $packageKey The unique package key
+     * @return void
+     */
+    public function renderCommand($packageKey = NULL) {
+	echo 'THIS IS '.$packageKey; 
+        exit;
+    }
+</pre>
+
+If I start the controller with:
+
+<pre>
+./flow3 test:render TYPO3.TheDefinitiveGuideToFLOW3
+</pre>
+
+it outputs:
+
+<pre>
+THIS IS 
+</pre>
+
+If I make the argument $packageKey required everything works fine and de render command outputs:
+
+<pre>
+THIS IS TYPO3.TheDefinitiveGuideToFLOW3
+</pre>
+
+Bug or feature?"
+30417,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Package dependency names in Package.xml files need update,Benjamin Heek,Karsten Dambekalns,2011-10-19 19:27,"",1.0.0,2011-09-29,"","",100,2011-09-29 06:05,"","",291350,"","","In the Package.xml of the package TYPO3.FlOW3 there is a dependency on the package `Fluid`. 
+But that name is invalid, because it has to be `TYPO3.Fluid`"
+30268,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,Setpermissions path incorrect,Felix Kopp,Karsten Dambekalns,2011-09-30 06:23,- Documentation -,1.0.0,2011-09-25,"","",100,2011-09-25 06:29,"","",283900,"","",In Readme file on Base root
+30163,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,var_dump recursion error,Rens Admiraal,"",2011-09-21 10:05,"","",2011-09-21,"","",100,2011-09-21 06:17,"","",278700,"","",If you dump an object which is in the blacklist of the debugger you have a chance on recursion since the actual dumped object is not checked against this array. For example the PersistenceManager. A dump of this object ends up in a memory exhausted error in PHP.
+29910,TYPO3 Flow Base Distribution,Feature,"",Closed,Should have,Frontend development toolbar,Martin Brüggemann,Robert Lemke,2011-09-16 13:53,"","",2011-09-16,"","",0,2011-09-16 13:43,"","",266050,"","","I like using the Symfony2 web profile toolbar. Reading FLOW3 logs during development feels stupid. There should be some basic debug-informations like Overall-Performance/simple Profiling, used Fluid-Templates, DQL-Queries and additional informations in the DEVELOPMENT-Frontend."
+29415,TYPO3 Flow Base Distribution,Task,"",Resolved,Could have,Remove @license tags and add general license information,Robert Lemke,Karsten Dambekalns,2011-09-29 06:32,"",1.0.0,2011-09-01,"","",100,2011-09-01 06:59,"","",242200,"","",We should remove all @license tags in class doc comments and instead place a general LICENSE.txt file in the Documentation or Meta directory of each package. The general file comment block could also be simplified and mention that license file.
+29257,TYPO3 Flow Base Distribution,Feature,"",Rejected,Should have,Doctrine migrations couldn't be specified by environment,Fernando Arconada,Karsten Dambekalns,2011-08-29 05:47,"","",2011-08-25,"","",0,2011-08-25 17:36,"","",234550,"","",From command line you can execute doctrine migrations only in production environment
+29045,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Wakeup of Query sets wrong state if originally no constraint has been set,Ferdinand Kuhl,"",2011-08-17 11:39,"","",2011-08-17,"","",0,2011-08-17 11:21,"","",224150,"","","If I save a Query-Result in a WidgetController and afterwards call $result->getQuery->execute() I receive an empty result, because of the try-catch block around the execute call which simply returns an empty result in case of an exception.
+
+The problem seems to be in the __wakeup() method of \TYPO3\FLOW3\Persistence\Doctrine\Query 
+<pre>
+	public function __wakeup() {
+		$this->queryBuilder->where($this->constraint);
+</pre>
+
+everything works fine, if I inject a condition like this:
+
+<pre>
+	public function __wakeup() {
+		if ($this->constraint)
+			$this->queryBuilder->where($this->constraint);
+</pre>"
+28964,TYPO3 Flow Base Distribution,Feature,"",New,Could have,Integrate Behat tool for BDD,Fernando Arconada,"",2011-08-13 10:03,"","",2011-08-13,"","",0,2011-08-13 10:03,"","",220150,"","",In order to have BDD in FLOW3 should be great to integrate Bethat (http://behat.org/) as is it done for Symfony (or even better for FLOW3)
+28806,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,check why flow3.bat is not included in the build,Sebastian Kurfuerst,Sebastian Kurfuerst,2011-08-25 05:08,Build Process,1.0 beta 1,2011-08-07,"","",0,2011-08-07 01:53,"","",212300,"","",""
+27770,TYPO3 Flow Base Distribution,Task,"",Resolved,Should have,Remove deprecated methods/classes for FLOW3 1.1,Karsten Dambekalns,Karsten Dambekalns,2012-03-12 21:38,"",1.1,2011-06-29,"","",100,2011-06-29 09:32,"","",163200,"","","Everything that was deprecated before 1.0.0 can be removed (@create()@ on the ObjectManager will stay for Fluid *only*, to ease backporting)."
+27724,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Missing vfsStream produces empty output,Bastian Waidelich,Karsten Dambekalns,2011-06-29 06:01,"",1.0 beta 1,2011-06-27,"","",100,2011-06-27 15:35,"","",160900,"","","PHPUnit dies without output if vfsStream is not available.
+This is fixed for me by replacing the line
+<pre>
+@require_once('vfsStream/vfsStream.php');
+</pre>
+with
+<pre>
+@include_once('vfsStream/vfsStream.php');
+</pre>
+in *UnitTestBootstrap.php*
+
+@Karsten: I'm assigning this to you cause I don't have commit rights for BuildEssentials.git"
+27527,TYPO3 Flow Base Distribution,Bug,"",Resolved,Should have,Unable to run tests for F3\FLOW3\Tests\Unit\Security\Authorization\AccessDecisionVoterManagerTest,Michael Klapper,Karsten Dambekalns,2011-07-06 10:16,"",1.0 beta 1,2011-06-18,"","",100,2011-06-18 06:04,"","",151250,"","","When i use the testing package to run the tests on the web i got the following Fatal error.
+
+<pre>
+F3 \ FLOW3 \ Tests \ Unit \ Security \ Authorization \ AccessDecisionVoterManagerTest
+Fatal error: Call to a member function isRegistered() on a non-object in /var/www/project/Data/Temporary/Development/Cache/Code/FLOW3_Object_Classes/F3_FLOW3_Security_Authorization_AccessDecisionVoterManager_Original.php on line 180 
+</pre>"
+27488,TYPO3 Flow Base Distribution,Task,"",Closed,Must have,Update documentation for 1.0 beta 1,Robert Lemke,"",2011-08-04 02:27,"",1.0 beta 1,2011-06-16,"","",0,2011-06-16 05:25,"","",149300,"","",This is an umbrella task for updating and extending the documentation of the packages in the FLOW3 base distribution.
+27482,TYPO3 Flow Base Distribution,Bug,"",Resolved,Must have,CLI not working on Windows,Bastian Waidelich,Karsten Dambekalns,2011-08-04 02:20,"",1.0 beta 1,2011-06-15,"","",100,2011-06-15 16:53,"","",149050,"","","It seems, Git [1] ""resolves"" symlinks on Windows by creating a file that only contains the relative path to the target file.
+E.g. it replaces (http://git.typo3.org/FLOW3/Distributions/Base.git?a=blob;f=flow3;h=2843cf594ee6b2d77c11afdd7ea8ead25d49048b;hb=HEAD) with a file that contains the string ""Packages/Framework/FLOW3/Scripts/flow3"" when one pulls the distribution.
+See http://code.google.com/p/msysgit/issues/detail?id=224 for a corresponding bug report in the msysgit project.
+
+Among other things this leads to the situation, that CLI arguments are stripped off when executing Commands through the console.
+
+[1] using ""msysgit"":http://code.google.com/p/msysgit/"
+27332,TYPO3 Flow Base Distribution,Bug,"",Resolved,Could have,Problems with declare(ENCODING = 'utf-8'); in file header,Tim Wagner,Karsten Dambekalns,2011-07-06 10:01,"",1.0 beta 1,2011-06-09,"","",100,2011-06-09 16:12,"","",141650,"","","On MAC OS X 10.6.7 with default PHP installation (no Ports) every time you call command ./flow3_dev or ./flow3 it leads to the following error:
+
+[09-Jun-2011 20:30:25] PHP Parse error:  syntax error, unexpected '*', expecting ',' or ')' in /private/var/www/flow3/Packages/Framework/FLOW3/Scripts/flow3 on line 3
+
+The same error occurs when requesting the welcome page on the browser.
+
+After removing declare(ENCODING = 'utf-8'); from each files header FLOW3 works as expected. "
+26786,TYPO3 Flow Base Distribution,Feature,"",Resolved,Must have,Use a safe password hashing mechanism,Christopher Hlubek,Christopher Hlubek,2011-07-18 06:05,"",1.0 beta 1,2011-05-12,"","",100,2011-05-12 10:36,"","",116100,"","","The current AccountFactory uses the @generateSaltedMd5@ method of the @HashService@. Since MD5 is considered to be not safe, we should switch to either sha1 or another method for password hashing (e.g. also use an hmac)."
+13943,TYPO3 Flow Base Distribution,Task,"Story #12862: As Roger, I want a clean Property Mapper",Resolved,Should have,Restructured MVC Error Handling ,Sebastian Kurfuerst,Sebastian Kurfuerst,2011-05-06 02:17,"",1.0 beta 1,"","","",0,2011-03-21 06:14,"","",88200,"","",""
+13942,TYPO3 Flow Base Distribution,Task,"Story #12862: As Roger, I want a clean Property Mapper",Resolved,Should have,Restructured Property Mapper,Sebastian Kurfuerst,Sebastian Kurfuerst,2011-05-06 02:17,"",1.0 beta 1,"","","",0,2011-03-21 06:14,"","",88150,"","",""
+13703,TYPO3 Flow Base Distribution,Task,Story #11169: Implement new operator support,Resolved,Should have,Fix file monitoring / optimize compile step,Robert Lemke,Robert Lemke,2011-05-06 02:12,"",1.0 beta 1,"","","",0,2011-03-09 03:28,"","",85500,"","",""
+13702,TYPO3 Flow Base Distribution,Task,Story #11169: Implement new operator support,Resolved,Should have,Replace remaining uses of objectManager->create() with new and adjust tests accordingly,Robert Lemke,"",2011-05-06 02:12,"",1.0 beta 1,"","","",0,2011-03-09 03:27,"","",85450,"","",""
+13604,TYPO3 Flow Base Distribution,Task,Story #11169: Implement new operator support,Resolved,Should have,Fix bugs and adjust affected code,Robert Lemke,Robert Lemke,2011-05-06 02:12,"",1.0 beta 1,"","",0.00,0,2011-03-04 03:42,"","",84100,0.00,"",""
+13503,TYPO3 Flow Base Distribution,Task,Story #11948: Security Framework improvements,Resolved,Should have,Write policies for TYPO3 package,Robert Lemke,Andreas Förthner,2011-05-06 03:53,"",1.0 beta 1,"","","",0,2011-03-02 04:11,"","",82700,"","",""
+13161,TYPO3 Flow Base Distribution,Task,"Story #12862: As Roger, I want a clean Property Mapper",Resolved,Should have,We also need some better Error / Warning / Notice handling,Sebastian Kurfuerst,"",2011-05-06 02:17,"",1.0 beta 1,"","",0.00,0,2011-02-18 09:29,"","",79900,0.00,"",""
+12862,TYPO3 Flow Base Distribution,Story,"",Resolved,Should have,"As Roger, I want a clean Property Mapper",Sebastian Kurfuerst,Sebastian Kurfuerst,2011-05-06 03:29,"",1.0 beta 1,"","","",67,2011-02-08 03:11,"","",1766250,0.00,"","{{>toc}}
+
+h2. Goal
+
+*The property mapper maps simple types to Objects*. (Hence, we (for now) drop the Object to Object support, although this could be added later)
+
+*The Property Mapper maps all values present in $source to $target (or a subset thereof)* (right now, it requires a list of properties to be mapped, and if $source[$propertyName] does not exist, an error is thrown)
+
+* We try to strip down the Property Mapper, and make it extensible instead.
+
+h2. Wanted Features
+
+* Support for Object Converters:
+** array / ArrayObject / SplObjectStorage
+** DateTime use case
+** File Upload (Resource objects)
+* Partial Validation should be supported
+* Property Merging should be supported (pass in existing object as base-object)
+* Better error handling in case target property is not found (right now, NULL returned)
+* Mapping should be configurable
+* Secure by default
+
+h2. Basic Interface
+
+<pre><code class=""php"">
+map(mixed $source, string $targetType, PropertyMappingConfigurationInterface $propertyMappingConfiguration = NULL)
+</code></pre>
+
+* @$source@ can be:
+** all simple values (integer, string, ...)
+** ARRAY
+** an Object implementing @ArrayAccess@
+** *We will drop support for arbitary objects through @ObjectAccess::isPropertyGettable@* (for now)
+** else EXCEPTION
+
+* @$target@ is the classname on which the value should be mapped to (or a simple type)
+
+Pseudocode:
+<pre><code class=""php"">
+map(...) {
+	if ($propertyMappingConfiguration === NULL) {
+		$propertyMappingConfiguration = $this->buildDefaultPropertyMappingConfiguration();
+	}
+	$propertyMappingConfiguration->setTargetType($targetType); // Just a convenience shorthand method
+	$this->doMapping(....);
+}
+
+protected function doMapping(mixed $source, $propertyMappingConfiguration) {
+	$typeConverter = $this->somehowDetermineTypeConverter(); // TODO, see below
+	
+	$object = $typeConverter->convertFrom($source, $propertyMappingConfiguration);
+	
+	foreach ($typeConverter->getPropertyNames($source) as $sourcePropertyName) {
+		$targetPropertyName = $propertyMappingConfiguration->getTargetPropertyName($sourcePropertyName);
+		if (!$propertyMappingConfiguration->shouldMap($targetPropertyName)) continue;
+
+		$mappedPropertyValue = $this->doMapping($source[$sourcePropertyName], $propertyMappingConfiguration->getConfigurationFor($targetPropertyName));
+		
+		$typeConverter->setResultInTarget($target, $targetPropertyName, $mappedPropertyValue);
+	}
+	return $object;
+}
+</code></pre>
+
+* The property mapper only *delegates* the actual mapping to *Type Converters*.
+* Type converters expose the following information:
+** Applicable source types
+** The target type the converter can convert to
+** A priority
+* The used type converter is determined as follows:
+** If a TypeConverter is set inside the current @propertyMappingConfiguration@, this one is taken.
+** Else, we do the following:
+<pre><code class=""php"">
+$typeConvertersWhichCanHandleSourceType = // first, we pick all TypeConverters
+		// which can handle $sourceType, and put it into an
+		// associative array where KEY is the target class name of the converter
+$classNamesInInheritanceHierarchy = // $targetType combined with all superclasses
+		// and interfaces, ordered from the inside out (so the $targetType
+		// is the first element in the list)
+
+foreach ($classNamesInInheritanceHierarchy as $singleTargetClassName) {
+	if (isset($typeConvertersWhichCanHandleSourceType[$singleTargetClassName])) {
+		return the type converter from $typeConvertersWhichCanHandleSourceType[$singleTargetClassName] with highest priority
+	}
+}
+// Exception if no type converter found
+</code></pre>
+
+* Type Converters have to adhere to the following interface:
+<pre><code class=""php"">
+public function convertFrom($source, $propertyMappingConfiguration);
+public function getPropertyNames($source);
+public function setMappingResultInTarget($target, $propertyName, $mappingResult);
+</code></pre>
+
+* In case a type converter does *not* want to handle a certain element (for whatever reason), he can throw an @DontWantToHandleThisInputException@ inside @convertFrom@. Then, the next Type converter according to the above rules is taken.
+
+* Furthermore, the Property Mapper *can handle renaming of properties*, see the method @getTargetPropertyName@ in the @PropertyMappingConfigurationInterface@
+
+h2. PropertyMappingConfiguration
+
+<pre><code class=""php"">
+interface PropertyMappingConfigurationInterface {
+	
+	/**
+	 * @return string
+	 */
+	public function getTargetType();
+	
+	
+	/**
+	 * @return TRUE if the given propertyName should be mapped
+	 */
+	public function shouldMap($propertyName);
+	
+	/**
+	 * @return PropertyMappingConfigurationInterface the property mapping configuration for the given PropertyName.
+	 */
+	public function getConfigurationFor($propertyName);
+	
+	/**
+	 * @return string property name of target; can be used to rename properties from source to target.
+	 */
+	public function getTargetPropertyName($sourcePropertyName);
+	
+	/**
+	 * @return mixed configuration value for the specific $typeConverterClassName. Can be used by Type Converters to fetch converter-specific configuration
+	 */
+	public function getConfigurationValue($typeConverterClassName, $key);
+}
+</code></pre>
+
+This interface will have an implementing class ""PropertyMappingConfiguration"", looking like the following:
+
+<pre><code class=""php"">
+class PropertyMappingConfiguration implements PropertyMappingConfigurationInterface {
+	public function setTargetType($type);
+	public function setMapping($sourcePropertyName, $targetPropertyName);
+	public function setConfigurationValue($typeConverter, $key, $value);
+	
+	/**
+	 * Returns the default configuration for all sub-objects, ready to be modified
+	 */
+	public function defaultSubConfiguration();
+	
+	/**
+	 * Returns the configuration for the specific property path, ready to be modified
+	 */
+	public function at($propertyPath);
+	
+}
+</code></pre>
+
+This API can then be used as follows:
+
+* To globally disable the modification of entities by the property mapper:
+ <pre><code class=""php"">$propertyMappingConfiguration->setConfigurationValue('F3....\EntityConverter', 'modificationAllowed', FALSE);</code></pre>
+* To disable the modification of sub-entities of the root element:
+ <pre><code class=""php"">$propertyMappingConfiguration->defaultSubConfiguration()->setConfigurationValue('F3....\EntityConverter', 'modificationAllowed', FALSE);</code></pre>
+* To enable the creation of sub-objects inside a certain element:
+ <pre><code class=""php"">$propertyMappingConfiguration->at('subobject1.subsubobject2')->setConfigurationValue('F3....\EntityConverter', 'creationAllowed', TRUE);</code></pre>
+
+Furthermore, there will be a subclass @ControllerPropertyMappingConfiguration@, which has some convenience methods implemented such that people can program against a type-safe API:
+
+<pre><code class=""php"">
+class ControllerPropertyMappingConfiguration extends PropertyMappingConfiguration {
+	public function allowCreationOfSubObjectsAt($position) {
+		$this->at($position)->setConfigurationValue('F3....\EntityConverter', 'creationAllowed', TRUE);
+	}
+	public function allowModificationOfSubObjectsAt($position) {
+		$this->at($position)->setConfigurationValue('F3....\EntityConverter', 'modificationAllowed', TRUE);
+	}
+}
+</code></pre>
+
+h2. Default Property Mapping Configuration
+
+* The default property mapping configuration for the *top level* should configure the @Entity Type Converter@ to *modify* and *create new* objects
+* The property mapping configuration further down the hierarchy should configure the @Entity Type Converter@ to *not modify* and *not create* objects.
+* The above two things are safety precautions for the user.
+* This boils down to the following code:
+
+<pre><code class=""php"">
+ $propertyMappingConfiguration->setConfigurationValue('F3....\EntityConverter', 'modificationAllowed', TRUE);
+ $propertyMappingConfiguration->defaultSubConfiguration()->setConfigurationValue('F3....\EntityConverter', 'modificationAllowed', FALSE);
+</code></pre>
+
+h2. Type Converter examples
+
+Here follow some examples of type converters, to see the concept more easily:
+
+h3. Entity Type Converter
+
+* *Input Type*: String and Array
+* *Output Type*: Object
+* *Priority*: low
+
+<pre><code class=""php"">
+public function convertFrom($source, $propertyMappingConfiguration) {
+	if (is_string($source)) {
+		if (/* is UUID */) {
+			// create and return object
+		} else {
+			// Exception
+		}
+	}
+	
+	if (isset($source['__identity'])) {
+		$target = // fetch from persistence
+		if (count($source) > 1) {
+			if ($propertyMappingConfiguration->getConfigurationValue('F3\....\EntityConverter', 'modificationAllowed') !== TRUE) {
+				// throw exception
+			}
+			$target = clone $target;
+		}
+	} else {
+		if ($propertyMappingConfiguration->getConfigurationValue('F3\....\EntityConverter', 'creationAllowed') !== TRUE) {
+			// throw exception
+		}
+		$target = // new
+	}
+	
+	return $target;
+}
+
+public function getPropertyNames($source) {
+        if (is_string($source)) return array();
+        return all $source property names, *except* __identity;
+}
+
+public function setMappingResultInTarget($target, $propertyName, $mappingResult) {
+        // Set Property through Object Access
+}
+</code></pre>
+
+h3. Date Type Converter
+
+* *Input Type*: String and Array
+* *Output Type*: DateTime
+* *Priority*: low
+
+<pre><code class=""php"">
+public function convertFrom($source, $propertyMappingConfiguration) {
+    new DateTime($source); // or more advanced...
+};
+public function getPropertyNames() {
+    return array();
+}
+public function setMappingResultInTarget($target, $propertyName, $mappingResult) {
+	// empty, as it is never called
+}
+</code></pre>
+
+h3. SplObjectStorage/ArrayCollection Type Converter
+
+* *Input Type*: Array
+* *Output Type*: SplObjectStorage
+* *Priority*: low
+
+<pre><code class=""php"">
+public function convertFrom($source, $propertyMappingConfiguration) {
+    return new \SplObjectStorage();
+};
+public function getPropertyNames($source) {
+    return array_keys($source);
+}
+
+public function setMappingResultInTarget($target, $propertyName, $mappingResult) {
+    $target->attach($value);
+}
+</code></pre>
+
+h2. Error Handling
+
+* Instead of outputting human-readable error messages, the property mapper will throw *exceptions* in case of errors. For things like mandatory properties, specific validators should be used.
+
+h2. Validation / Partial Validation
+
+* The property mapper will *not* execute any validators for the given objects.
+* However, it should return a list of mapped properties. This list can be used later, such that the ObjectValidator only needs to validate changed properties.
+
+h2. Naming
+
+*Object Converters will be superseded by this concept, and thrown away.*
+
+*We suggest to change the naming in the following way:*
+
+* PropertyMapper -> TypeMapper / ObjectMapper?
+* Object Converter -> Type Converter
+
+h2. Further work
+
+* This concept could be extended lateron to work with *arbitrary* input objects, not just simple types. However, one would then need a way to deal with object inheritance hierarchies on the source side as well.
+* Extend the concept such that Half-ready objects as $target are also supported; but we would use an explicit new API function for this:
+<pre><code class=""php"">
+merge(mixed $source, object $targetObject, PropertyMappingConfigurationInterface $propertyMappingConfiguration = NULL)
+</code></pre>"
+12204,TYPO3 Flow Base Distribution,Task,Story #11958: Check loose ends in FLOW3,Resolved,Should have,Improve Fluid Resource Interceptor Performance,Sebastian Kurfuerst,Sebastian Kurfuerst,2011-05-06 02:17,"",1.0 beta 1,"","",0.00,0,2011-01-14 02:50,"","",72700,0.00,"","While I profiled the welcome package, I noticed that much time was spent during preg_match -- see attached screenshot ""before"". A quick drill-down showed that this was almost fully spent in the resource interceptor of fluid (99,2% of the time).
+
+That's why I decided to optimize the RegEx a little bit, and add an early return which covers most cases, leading to a much improved behavior (see attached screenshot ""after"").
+
+"
+12100,TYPO3 Flow Base Distribution,Task,Story #11169: Implement new operator support,Resolved,Should have,Implement a generic Proxy Builder,Robert Lemke,Robert Lemke,2011-05-06 02:12,"",1.0 beta 1,"","",0.00,0,2011-01-11 09:20,"","",71500,0.00,"",""
+12099,TYPO3 Flow Base Distribution,Task,Story #11169: Implement new operator support,Resolved,Should have,Check feasibility and create rough concept,Robert Lemke,Robert Lemke,2011-05-06 02:12,"",1.0 beta 1,"","",0.00,0,2011-01-11 09:20,"","",71450,0.00,"",""
+11970,TYPO3 Flow Base Distribution,Task,Story #11958: Check loose ends in FLOW3,Closed,Should have,Improve error handling in Property Mapper,Sebastian Kurfuerst,"",2011-05-06 02:17,"",1.0 beta 1,"","",0.00,0,2011-01-06 08:31,"","",71050,0.00,"",""
+11964,TYPO3 Flow Base Distribution,Task,"",Closed,Should have,Profile under windows,Sebastian Kurfuerst,Bastian Waidelich,2012-05-08 12:00,"",1.1,"","","",0,2011-01-06 08:23,"","",70900,"","",""
+11958,TYPO3 Flow Base Distribution,Story,"",Resolved,Should have,Check loose ends in FLOW3,Sebastian Kurfuerst,"",2011-05-06 04:09,"",1.0 beta 1,"","","",0,2011-01-06 08:20,"","",1766300,0.00,"",""
+11953,TYPO3 Flow Base Distribution,Task,Story #11948: Security Framework improvements,Closed,Should have,look through issues in the tracker with the security category,Sebastian Kurfuerst,"",2011-05-06 02:17,"",1.0 beta 1,"","",0.00,0,2011-01-06 08:15,"","",70450,0.00,"",""
+11951,TYPO3 Flow Base Distribution,Task,Story #11948: Security Framework improvements,Closed,Should have,Plan Implementation of Request Stack,Sebastian Kurfuerst,"",2011-05-06 02:17,"",1.0 beta 1,"","",0.00,0,2011-01-06 08:14,"","",70400,0.00,"",""
+11950,TYPO3 Flow Base Distribution,Task,Story #11948: Security Framework improvements,Closed,Should have,Re-visit HMAC features,Sebastian Kurfuerst,Andreas Förthner,2011-05-06 02:17,"",1.0 beta 1,"","","",0,2011-01-06 08:14,"","",70350,"","",""
+11948,TYPO3 Flow Base Distribution,Story,"",Resolved,Should have,Security Framework improvements,Sebastian Kurfuerst,"",2011-05-06 03:56,"",1.0 beta 1,"","","",50,2011-01-06 08:14,"","",1766150,0.00,"",""
+11169,TYPO3 Flow Base Distribution,Story,"",Resolved,Should have,Implement new operator support,Robert Lemke,Robert Lemke,2011-05-06 03:24,"",1.0 beta 1,"","","",40,2010-11-30 09:15,"","",1766200,0.00,"","Refactor FLOW3 so that the PHP ""new"" operator can be used instead of  ObjectManager->create()"

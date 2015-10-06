@@ -1,0 +1,783 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Has patch,Tags,Description
+3677,Fluid - ViewHelper - Incubator,Suggestion,"",New,Could have,embed.javaScript,Steffen Ritter,"",2013-07-17 06:06,"","",2009-06-16,"","",0,2009-06-16 02:10,"","",2894050,"",No,"","Hi,
+if you wanna put Inline JS into your fluid template your validation may fail if you lack the CDATA Section.
+
+If you wanna call internal ViewHelpers in JS you cannot set CDATA manually in the template
+
+--> Need for a ViewHelper
+
+Attached is a ViewHelper I'm currently using and satisfying this.
+
+Turns
+<pre>
+<f:js>
+	Ext.get('BezirkeSearchField').on('keypress', function(){
+		BezirkeAjaxSearch.delay(500); 
+	});
+	Ext.Ajax.url = '<f:uri.action action=""ajax"" />';
+</f:js>
+</pre>
+
+into
+<pre>
+
+<script type=""text/javascript"">
+	/* <![CDATA[ */
+
+	Ext.get('BezirkeSearchField').on('keypress', function(){
+		BezirkeAjaxSearch.delay(500); 
+	});
+	Ext.Ajax.url = '...?tx_rsbezirke_pi1%5Baction%5D=ajax&tx_rsbezirke_pi1%5Bcontroller%5D=Street';
+
+	/* ]]> */
+</script>
+
+
+</pre>
+
+It's pretty simple...
+Thanks for taking care.
+
+regards
+
+Steffen"
+5948,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,join,Martin Kutschker,"",2010-10-20 05:53,"","",2010-01-10,"","",0,2010-01-10 04:41,"","",2894000,"","","","Sometimes you want to concatenate elements as a comma separated list. Or maybe you want to put the elements in different lines by <br>.
+
+The attached file implements this feature:
+
+Shortest possible syntax:
+
+<f:join each=""{0: 'apple', 1: 'banana'}"" by="" and "" />
+
+Typical syntax:
+
+<f:join each=""{0: 'apple', 1: 'banana'}"" as=""fruit"" by="" and "" >{fruit}</f:join><br>
+
+Long syntax:
+
+<f:join each=""{0: 'apple', 1: 'banana'}"" as=""fruit"">
+ <f:item>{fruit}</f:item>
+ <f:by> and </f:by>
+</f:join>
+
+The necessary ""item"" and ""by"" view helpers are similar to ""then"" and ""else""."
+5949,Fluid - ViewHelper - Incubator,Suggestion,"",Needs Feedback,Could have,comment,Laurent Foulloy,"",2010-10-20 05:53,"","",2010-01-10,"","",0,2010-01-10 10:18,"","",2893950,"","","","A CommentViewHelper could be added to the standard distribution.
+
+/**
+ *
+ * @param boolean If true the comment should be displayed
+ * @return string Either the comment or a null string
+ */
+ public function render($show = FALSE) {
+    if ($show) {
+      return $this->renderChildren();
+    } else {
+      return '';
+    }
+ }
+
+"
+6007,Fluid - ViewHelper - Incubator,Suggestion,"",New,Could have,form.dateTextbox,Nathan L,"",2010-10-20 05:53,"","",2010-01-13,"","",0,2010-01-13 10:59,"","",2893900,"","","","This could maybe be integrated into the textbox element instead of the way I did it in the attached view helper.
+
+The textbox view helper could detect if the property is of type DateTime and then look for a format attribute.
+
+
+"
+6301,Fluid - ViewHelper - Incubator,Suggestion,"",Closed,Could have,form.select: Possibility to add an emptyOption,Susanne Moog,"",2013-09-17 03:47,"","",2010-02-01,"","",0,2010-02-01 10:52,"","",2893850,"",No,"","It would be nice to have an emptyOption as attribute for the f:form.select view helper. 
+
+So you could write 
+
+<f:form.select property=""category"" options=""{categories}""
+optionLabelField=""name"" size=""1"" id=""category"" emptyOption=""- none -"" />
+
+and generate:
+<select name=""category"" size=""1"" id=""category"">
+<option value="""">- none -</option>
+<option value=""cat1"">cat1</option>
+<option value=""cat2"">cat2</option>
+<option value=""cat3"">cat3</option>
+</select>
+
+
+I implemented it with adding in selectViewHelper lines 210 ff (FLOW3 a7 version) these lines:
+		if ($this->arguments->hasArgument('emptyOption')) {
+			$options = array('' => $this->arguments['emptyOption']) + $options;
+		}
+
+and registering it in the initializeArguments method:
+$this->registerArgument('emptyOption', 'string', 'If specified, an empty option will be added with the given string as label.');
+
+I can't currently provide a real patch, as I have no svn version here, sorry :("
+6327,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,page.title,Nathan L,"",2014-06-18 05:36,"","",2010-02-03,"","",0,2010-02-02 22:58,"","",2893800,"","","","I thought it might be nice to be able to set a page title.
+
+<f:page.title>{blog.name}</f:page.title>
+
+Arguments:
+
+mode
+glue 
+display
+
+Mode has three potential values:  
+replace  - overwrite the existing page title.  This is the default.
+append - add the value to the end of the existing title
+prepend - add the value to the beginning of the existing title
+
+glue is the string to use if the value is append or prepend.
+
+display has two potential values:
+none - meaning the viewHelper renders nothing in the template.
+render - means that the tag will render it's children.  This way you could use it in the context of an h1 tag like this:
+
+<h1><f:page.title display=""render"">{blog.title}</f:page.title></h1>
+"
+6459,Fluid - ViewHelper - Incubator,Feature,"",Closed,Could have,Loop information inside a For loop,Marc Neuhaus,"",2010-10-20 05:53,"","",2010-02-13,"","",0,2010-02-13 14:45,"","",2893750,"","","","In the past i used the template engine h2o. One thing about the For loop i liked was the special var {loop} which was available in For loop which contains some information about the loop like:
+*first
+*last
+*odd
+*even
+*current
+*length
+http://wiki.github.com/speedmax/h2o-php/built-in-tags
+
+i made some changes to the ForViewHelper which adds this behavior. Would be cool if you could integrate it."
+6526,Fluid - ViewHelper - Incubator,Suggestion,"",Needs Feedback,Should have,cdata,Nils Blattner,"",2010-10-20 05:53,"","",2010-02-19,"","",0,2010-02-19 10:34,"","",2893700,"","","","Simple, yet essential ViewHelper if you want to print out CData content (as fluid removes the CDATA start/end tags and just prints the content).
+
+<?php
+
+/*                                                                        *
+ * This script is part of the TYPO3 project - inspiring people to share!  *
+ *                                                                        *
+ * TYPO3 is free software; you can redistribute it and/or modify it under *
+ * the terms of the GNU General Public License version 2 as published by  *
+ * the Free Software Foundation.                                          *
+ *                                                                        *
+ * This script is distributed in the hope that it will be useful, but     *
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-    *
+ * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
+ * Public License for more details.                                       *
+ *    */
+
+/**
+ * @package Fluid
+ * @subpackage ViewHelpers
+ * @version $Id: CropViewHelper.php 1734 2009-11-25 21:53:57Z stucki $
+ */
+
+/**
+ * Use this Helper if you need to print <![CDATA[ ]].
+ *
+ * @version $Id:$
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License, version 2
+ * @scope prototype
+ */
+class Tx_CabagSteps_ViewHelpers_CdataViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+
+    /**
+     * Render the CDATA content.
+     *
+     * @return string CDATA comment
+     * @author Nils Blattner <nb@cabag.ch>
+     */
+    public function render() {
+        return '<![CDATA[' . $this->renderChildren() . ']]>';
+    }
+}
+
+
+?> "
+7508,Fluid - ViewHelper - Incubator,Suggestion,"",Needs Feedback,Should have,form.noFunctionButton,Soren Malling,"",2010-10-20 05:53,"","",2010-04-28,"","",0,2010-04-28 02:37,"","",2893650,"","","","I really think Fluid needs a ""no function"" button
+
+http://w3schools.com/tags/tag_button.asp
+
+This button could be used a long with ex. a Javascript Framework, to customize a function when the button is clicked.
+
+Ex:
+
+HTML:
+<form>
+<input type=""button"" name=""showInfo"" ud=""showInfo"" />
+</form>
+
+JS (ExtJS):
+Ext.get('showInfo').on('click', function() {
+  Ext.get('infoBox').fadeIn();
+});
+
+If accepted I will take the time to write the viewhelper"
+7533,Fluid - ViewHelper - Incubator,Suggestion,"",New,Could have,form.select: building option keys with viewhelper not possible,Marc Bastian Heinrichs,"",2011-07-25 13:58,"","",2010-04-29,"","",0,2010-04-29 10:00,"","",2893600,"","","","The fluid parser doesn't support using viewhelpers as array keys, so 
+the following would not get parsed
+<pre>
+<f:form.select name=""filter"" id=""filterbox"" options=""{ 
+    {f:uri.action(action: 'index', arguments:{filter: 'health'})}:'{f:translate(key: \'dep.health\')}' 
+}""> 
+    <select> 
+        <option value="""">###dummy###</option> 
+    </select> 
+</f:form.select>
+</pre>
+
+Feature-request:
+Introducing an new argument optionsValuesArray to map the options array keys to other values.
+Example:
+
+<pre>
+<f:form.select name=""filter"" id=""filterbox"" options=""{ 
+    health: '{f:translate(key: \'dep.health\')}' 
+}"" optionsValuesArray =""{ 
+    health: '{f:uri.action(action: \'index\', arguments: {filter: \'health\'})}'
+}""> 
+    <select> 
+        <option value="""">###dummy###</option> 
+    </select> 
+</f:form.select>
+</pre>"
+7653,Fluid - ViewHelper - Incubator,Suggestion,"",Resolved,Could have,calculation,Nikolas Hagelstein,Bastian Waidelich,2010-12-07 11:41,"","",2010-05-05,"","",20,2010-05-05 08:21,"","",2893550,"","","","Something like:
+{whatever - 1} or {operand1 - operand2} would be great.
+
+A calculation viewhelper would be sufficient as well.
+
+e.g. :
+<f:calculate operand1=""{something}"" operand2=""{somethingElse}"" operator=""-"" />
+
+"
+7654,Fluid - ViewHelper - Incubator,Suggestion,"",Rejected,Could have,loop,Nikolas Hagelstein,"",2010-10-20 05:53,"","",2010-05-05,"","",0,2010-05-05 08:23,"","",2893500,"","","","e.g. :
+
+<f:Loop from=""1"" to=""{shoppingCartItem.quantity}"" as=""loopIndex"" step=""+1"">
+</f:Loop>
+
+Could take step argument into account."
+8779,Fluid - ViewHelper - Incubator,Suggestion,"",Accepted,Should have,format.filesize,Thomas Deinhamer,"",2012-08-29 10:44,"","",2010-07-09,"","",0,2010-07-09 15:01,"","",2893450,"","","","Attached is a basic filesize formatting viewhelper for TYPO3 v4.
+It's still missing some functions like the ability to disable
+the unit suffix. Also localization features are missing, e.g.
+defining the symbol which should be used as comma or thousands separator.
+
+Feedback is highly appreciated!"
+8828,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,format.telephoneNumber,Thomas Deinhamer,"",2011-07-25 13:58,"","",2010-07-12,"","",0,2010-07-12 15:24,"","",2893400,"","","","First version of the telephone format viewhelper.
+Have a look at the file; the code is quite straightforward.
+
+What I'm curious about is a nice way to implement a way
+for localized formats of phone numbers.
+
+In other words: The syntax/format of a phone number varies
+from country to country, so there could be maybe a way to
+have default ""presets"" of the function's arguments for
+every country or something. Especially thinking about
+the 'segmentSeparator' and 'directDialNumberSeparator', etc.
+(Maybe even for the segmentLength and the countryCodePrefix.)
+
+Please give feedback! =o)"
+8882,Fluid - ViewHelper - Incubator,Suggestion,"",New,Could have,AddToHtmlHead,Adrian Föder,"",2012-07-16 05:30,"","",2010-07-15,"","",0,2010-07-15 08:36,"","",2893350,"","","","Just a suggestion and I don't know if it does exist already in another case; but here's a ViewHelper i've just written for a custom project:
+
+<pre>
+	/**
+	 * Render the head addition
+	 *
+	 * @param string $key the key for additionalHeaderData; useful for overriding
+	 * @return void
+	 */
+	public function render($key = NULL) {
+		$textToAdd = $this->renderChildren();
+
+		if($key !== NULL) {
+			$GLOBALS['TSFE']->additionalHeaderData[$key] = $textToAdd;
+		} else {
+			$GLOBALS['TSFE']->additionalHeaderData[] = $textToAdd;
+		}
+	}
+
+</pre>
+
+Usage:
+<pre>
+<solpersons:addToHtmlHead>
+	<link rel=""stylesheet"" type=""text/css"" href=""{f:uri.resource(path:'Styles/default.css')}"" />
+</solpersons:addToHtmlHead>
+
+<div class=""tx-solpersons-pi1"">
+	<f:render section=""main"" />
+</div>
+</pre>
+
+...or alternatively
+<pre>
+<solpersons:addToHtmlHead key=""tx_solpersons_pi1_headCSS"">
+	<link rel=""stylesheet"" type=""text/css"" href=""{f:uri.resource(path:'Styles/default.css')}"" />
+</solpersons:addToHtmlHead>
+</pre>
+
+
+Thanks for reading :)
+
+
+Best,
+Adrian"
+8901,Fluid - ViewHelper - Incubator,Suggestion,"",Needs Feedback,Should have,translate,Karol Gusak,Karol Gusak,2011-07-25 13:58,"","","","","",50,2010-07-16 07:35,"","",2893300,"","","","The TranslateViewHelper is meant to be used for message translation in Fluid Templates.
+
+It has two modes of work:
+* 'originalLabel' - the source label is used as a key, for which translated label is searched
+* 'id' - key ID is given in order to find translation
+
+Simple examples:
+<pre>
+<f:translate mode=""originalLabel"" source=""main"">Untranslated label</f:translate>
+<f:translate mode=""id"" source=""main"">user.unregistered</f:translate>
+</pre>
+
+This ViewHelper supports plural forms, and parameters (values) substitution and formating. It is a wrapper for _\F3\FLOW3\I18n\Translator_ class."
+9051,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,DateTimeViewHelper,Christian Zenker,"",2012-01-10 05:28,"","",2010-07-27,"","",0,2010-07-27 09:32,"","",2893250,"",No,"","The current DateViewHelper has no support for localized dates so I created a version that uses strftime() to render strings.
+
+Additionally it supports UNIX-timestamps, dates that are understood by strtotime() (i.e. ""2010-07-27"") and DateTime-objects.
+
+And you can also calculate dates relative to the given one. This way you can add days, weeks, months or whatsoever or get the first day of a week, a month or a year.
+
+Keen on hearing your opinion.
+
+source:DateTimeViewHelper/_Extension/trunk"
+9077,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,format.numberChoice,Christian Zenker,"",2010-10-20 05:53,"","",2010-07-29,"","",0,2010-07-29 07:19,"","",2893200,"","","","This ViewHelper is a port of Symfony's <code>format_number_choice()</code> helper.
+
+You can use it to render different strings depending on a given number. In the simplest of cases it can be used to have correct singulars and plurals. It also works well with localized strings.
+
+Example:
+
+<pre><code><f:format.numberChoice number=""42"" arguments=""{number:42}"">[0] no eggs|[1] 1 egg|[2,+Inf] ###number### eggs</f:format.numberChoice></code></pre>
+will output 
+<pre><code>42 eggs</code></pre>"
+9179,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,Tx_Fluid_ViewHelpers_Form_RteViewHelper ,Frank Frewer,"",2013-05-23 10:00,"","",2010-08-06,"","",0,2010-08-06 05:29,"","",2893150,"",No,"","With the attached RteViewHelper.php (Tx_Fluid_ViewHelpers_Form_RteViewHelper) it is possible to render a form field with the rtehtmlarea. 
+
+Due to the fact that rtehtmlarea needs to make some modifications to the form tag (attribute ""onsubmit"") and adds some js before and beyond the form, it is necessary to modify the FormViewhelper.php (see attached patch_FormViewHelper.diff based on FormViewHelper.php in https://svn.typo3.org/TYPO3v4/CoreProjects/MVC/fluid/trunk/ Revision 2522).
+With this modifications the FormViewHelper gets the needed JS for all Rte form fields from the viewHelperVariableContainer which is filled in by the RteViewHelper and adds this to the returned content.
+
+I'm working with extbase/fluid just since two weeks. So I hope my suggestion matches your coding guidelines. If not, please tell me, what could be better.
+
+I didn't attach now files for v5. If you are interested i can do that later.
+
+Note:
+In conjunction with extensions based an extbase / fluid the RTE produces tags with ID's which are not valid:
+<div id=""pleasewaittx_meyxt_pi1[myobject][myfield] ...
+<div id=""editorWraptx_meyxt_pi1[myobject][myfield] ...
+<textarea id=""RTEareatx_meyxt_pi1[myobject][myfield] ...
+
+The W3C Markup Validator says:
+character ""["" is not allowed in the value of attribute ""id"" 
+
+This happens in backend and frontend.
+
+I reported this already to the bugtracker: http://bugs.typo3.org/view.php?id=15326"
+9486,Fluid - ViewHelper - Incubator,Suggestion,"",New,Could have,breadcrumb,Soren Malling,"",2011-07-25 13:57,"","",2010-08-28,"","",0,2010-08-28 15:02,"","",2893100,"","","","A breadcrumb viewhelper could be made using the cObj viewhelper, but that will require the designer/layouter to know get the needed TypoScript written.
+
+Please comment on the example below
+
+<pre>
+<f:breadcrumb separator=""-"" linkToCurrent=""true/false"" linkToPrevious=""true/false"" />
+</pre>
+
+* separator = Used to separate the links
+* linkToCurrent = Should the text for the current page link to the current page
+* linkToPrevious = Should the text for previous pages link to the pages
+
+Should it use another name than breadcrumb?"
+14039,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,Backend ViewHelper Tx_Sitemgr_ViewHelper_Be_Doc_AddCssFileViewHelper,Kay Strobach,"",2011-03-25 04:19,"","",2011-03-25,"","",0,2011-03-25 02:15,"","",2893050,"","","","Hi guys,
+
+i have developed some small but usefully viewHelpers for Be Development.
+You can find them here on forge:
+http://forge.typo3.org/projects/extension-sitemgr/repository/show/trunk/Classes/ViewHelper/Be/Doc
+
+As told on the newsgroup typo3v4mvc i will create and issue for every single viewHelper.
+
+This ViewHelper allows you to add a css file with the pagerenderer.
+
+Thanks for all your work.
+Regards
+Kay"
+14040,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,Tx_Sitemgr_ViewHelper_Be_Doc_AddInlineLanguageLabelFileViewHelper,Kay Strobach,"",2011-03-25 04:19,"","",2011-03-25,"","",0,2011-03-25 02:16,"","",2893000,"","","","Hi guys,
+
+i have developed some small but usefully viewHelpers for Be Development.
+You can find them here on forge:
+http://forge.typo3.org/projects/extension-sitemgr/repository/show/trunk/Classes/ViewHelper/Be/Doc
+
+As told on the newsgroup typo3v4mvc i will create and issue for every single viewHelper.
+
+This ViewHelper allows you to add an ll-file to the be as js.
+
+Thanks for all your work.
+Regards
+Kay"
+14041,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,Tx_Sitemgr_ViewHelper_Be_Doc_AddInlineSettingArrayViewHelper,Kay Strobach,"",2011-03-25 04:19,"","",2011-03-25,"","",0,2011-03-25 02:17,"","",2892950,"","","","Hi guys,
+
+i have developed some small but usefully viewHelpers for Be Development.
+You can find them here on forge:
+http://forge.typo3.org/projects/extension-sitemgr/repository/show/trunk/Classes/ViewHelper/Be/Doc
+
+As told on the newsgroup typo3v4mvc i will create and issue for every single viewHelper.
+
+This ViewHelper allows you to add settings to the be as js.
+
+Thanks for all your work.
+Regards
+Kay"
+14042,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,Tx_Sitemgr_ViewHelper_Be_Doc_AddJsFileViewHelper,Kay Strobach,"",2011-03-25 04:20,"","",2011-03-25,"","",0,2011-03-25 02:18,"","",2892900,"","","","Hi guys,
+
+i have developed some small but usefully viewHelpers for Be Development.
+You can find them here on forge:
+http://forge.typo3.org/projects/extension-sitemgr/repository/show/trunk/Classes/ViewHelper/Be/Doc
+
+As told on the newsgroup typo3v4mvc i will create and issue for every single viewHelper.
+
+This ViewHelper allows you to add a js to the be with the pagerenderer.
+
+Thanks for all your work.
+Regards
+Kay"
+14043,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,Tx_Sitemgr_ViewHelper_Be_Doc_AddJsFooterFileViewHelper,Kay Strobach,"",2011-03-25 04:20,"","",2011-03-25,"","",0,2011-03-25 02:19,"","",2892850,"","","","Hi guys,
+
+i have developed some small but usefully viewHelpers for Be Development.
+You can find them here on forge:
+http://forge.typo3.org/projects/extension-sitemgr/repository/show/trunk/Classes/ViewHelper/Be/Doc
+
+As told on the newsgroup typo3v4mvc i will create and issue for every single viewHelper.
+
+This ViewHelper allows you to add a js file to the footer of the page.
+
+Thanks for all your work.
+Regards
+Kay"
+26929,Fluid - ViewHelper - Incubator,Suggestion,"",New,Could have,Inline translation,Adrian Föder,"",2011-07-25 13:54,"","",2011-05-20,"","",0,2011-05-20 05:33,"","",122850,"","","","Hi folks,
+
+in usual project context, labels and strings in templates neither can be really re-used nor an abstract, generic ""variable name"" for each string can be found.
+So I would suggest some kind of ""inline translation"" View Helper, it uses an appoach I used to have use of in earlier ""pibase""-projects.
+
+It would read simply the following:
+
+<pre>
+{f:inlineTranslate(values:{def:'My translation',de:'Meine Übersetzung',fr:'Mon translation(?)'})}
+</pre>
+
+This would reduce update overhead because translations that are anyway only used once in a specific context do not have to be updated in two files (the template file where the key is used and the locallang-xml-file).
+
+
+Consider the situation where the customer wants to change the intro text of the login screen from ""Please login using your credentials"" to ""Please login using your user name and password"".
+With ""the old style"" you have to look at the template file, obtain the key, switch to the locallang file and correct it in each language. And maybe the change of the textual value should result in changing the key also; changing the key could result in conflicts with existing ones...
+
+
+What do you think?
+
+I just wrote a project specific view helper that could be ported; I would be honoured to find it in the core."
+28013,Fluid - ViewHelper - Incubator,Feature,"",Rejected,Should have,ViewHelper: CdataViewHelper,Jonas Felix,"",2011-07-11 05:12,"","",2011-07-09,"","",0,2011-07-09 04:30,"","",173600,"","","","This is a viewhelper suggested for the upcoming viewhelper incubator.
+
+<pre>
+{namespace cabagext=Tx_CabagExtbase_ViewHelpers_CdataViewHelper}
+
+<cabagext:cdata>
+Data you need CDATA
+</cabagext>
+
+</pre>
+
+Output:
+
+<![CDATA[
+
+...your data...
+
+]]>"
+28021,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,ViewHelper: raw output,Jonas Felix,"",2011-07-25 13:55,"","",2011-07-09,"","",0,2011-07-09 05:06,"","",174000,"","","","This is a viewhelper suggested for the upcoming viewhelper incubator.
+
+{namespace cabagext=Tx_CabagExtbase_ViewHelpers}
+
+<cabagext:raw>
+{funnyvariable}
+raw outputed data - you need that sometimes
+</cabagext>
+
+Output:
+
+Raw output of a variable... (ask Nils and Dimitri why it's needed...)
+
+"
+28038,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,ViewHelper: Date2CalViewHelper,Jonas Felix,"",2011-07-25 13:55,"","",2011-07-09,"","",0,2011-07-09 10:16,"","",174800,"","","","Adds a date2cal element into your fluid:
+
+<pre>
+{namespace cab=Tx_JamesServices_ViewHelpers}
+
+<cab:Date2Cal id=""wishedStartDateTime"" prefix=""tx_jamesservices"" name=""tx_jamesservices_pi1[newOrder][singleorders][{service.uid}][wishedStartDateTime]"" />
+
+</pre>
+
+output -> calender field"
+28101,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,SetBrowserTitleViewHelper,Mike Streibl,"",2011-07-25 13:55,"","",2011-07-12,"","",0,2011-07-12 02:33,"","",177950,"","","","You can overwrite the browsertitle with variables from your extension.
+
+<pre>
+<?php
+class Tx_DlExt_ViewHelpers_SetBrowserTitleViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractConditionViewHelper {
+	
+	/**
+	 *	@param string $browsertitle The name of browser title
+	 */
+	public function render( $browsertitle ) {
+		$GLOBALS['TSFE']->page['title'] = $browsertitle;
+	}
+}
+</pre>
+
+<pre>
+{namespace dl=Tx_DlExt_ViewHelpers}
+<dl:setBrowserTitle browsertitle=""{myVar} in {myVar2} - My Title""/>
+
+</pre>"
+28102,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,IfContains,Dimitri Koenig,"",2011-07-25 13:53,"","",2011-07-12,"","",0,2011-07-12 03:45,"","",178000,"","","","<c:ifContains value=""15"" in=""{entry.feGroup}"">
+
+Searches for value in entry.feGroup"
+28437,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,Viewhelper to escape quotes and remove newlines for Javascript,Marco Huber,"",2011-07-25 13:55,"","",2011-07-24,"","",0,2011-07-24 17:31,"","",194250,"","","","Removes linebreaks and escapes ' (or "").
+By default ' is replaced by \', but you can set the argument 
+quote to say that all "" should be replaced by \"".
+
+As soon as I'm allowed to I will commit it to the repository.
+
+= Examples =
+
+<code>
+<script type=""text/javascript"">
+var myString = '<f:jsString>this is a string<br />
+perhaps it has a linebreak<br />
+or it has a ' and would break the Javascript!</f:jsString>';
+</script>
+</code>
+<output>
+<script type=""text/javascript"">
+var myString = 'this is a string<br />perhaps it has a linebreak<br />or it has a \' and would break the Javascript!';
+</script>
+</output>
+
+<code>
+<script type=""text/javascript"">
+var myString = ""<f:jsString quote='\""'>this is a string and the "" should be escaped</f:jsString>"";
+</script>
+</code>
+<output>
+<script type=""text/javascript"">
+var myString = ""this is a string and the \"" should be escaped"";
+</script>
+</output>"
+28438,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,Viewhelper to add Javascript to <head>,Marco Huber,"",2012-07-16 05:30,"","",2011-07-24,"","",0,2011-07-24 17:34,"","",194300,"","","","Put your Javascript to the <head>
+
+As soon as I'm allowed to I will commit it to the repository.
+
+= Examples =
+
+<code>
+   <f:js>
+      var myJavascriptVar;
+      myJavascriptFunction();
+   </f:js>
+</code>
+<output>
+   <script type=""text/javascript"">
+      var myJavascriptVar;
+      myJavascriptFunction();
+   </script>
+</output>
+
+<code>
+   <f:js path=""path/to/my/javascript.js"" />
+</code>
+<output>
+   <script type=""text/javascript"" src=""path/to/my/javascript.js""></script>
+</output>"
+28859,Fluid - ViewHelper - Incubator,Suggestion,"",New,Could have,Implode ViewHelper,Alex Kellner,"",2011-08-09 05:36,"","",2011-08-09,"","",0,2011-08-09 04:23,"","",214950,"",Yes,"","I really often need a commaseparated list of subobjects in relation to my current object.
+No problem with a foreach loop in fluid, but how to delete the last "",""?
+
+Could be fixed with a viewhelper - e.g.:
+<pre>
+public function render($array, $field, $glue) {
+	$string = '';
+	foreach ($array as $object) {
+		$string .= $object->{'get' . ucfirst($field)}(); // getTitle()
+		$string .= $glue;
+	}
+	return substr($string, 0, (-1 * strlen($glue)));
+}
+</pre>"
+29294,Fluid - ViewHelper - Incubator,Suggestion,"",New,Could have,IncreaseValue ViewHelper,David Greiner,"",2011-08-27 08:08,"","",2011-08-27,"","",0,2011-08-27 08:08,"","",236250,"",No,"","This ViewHelper increases a value in foreach-loops. 
+
+<pre>
+
+    protected $increasedValue;
+    
+    /**
+     *
+     * @param int $value 
+     * @validate $value IntegerValidator
+     * @return int
+     */
+    public function render($value) {
+        
+        $this->increasedValue = $this->increasedValue+$value;
+        return $this->increasedValue;
+    }
+}
+</pre>
+
+"
+37464,Fluid - ViewHelper - Incubator,Bug,"",New,Could have,ImageViewhelper with params,Mike Streibl,"",2014-02-18 03:46,"","",2012-05-24,"","",0,2012-05-24 08:13,"","",635950,"",No,"","<pre>
+<?php
+
+/*                                                                        *
+ * This script belongs to the FLOW3 package ""Fluid"".                      *
+ *                                                                        *
+ * It is free software; you can redistribute it and/or modify it under    *
+ * the terms of the GNU Lesser General Public License as published by the *
+ * Free Software Foundation, either version 3 of the License, or (at your *
+ * option) any later version.                                             *
+ *                                                                        *
+ * This script is distributed in the hope that it will be useful, but     *
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-    *
+ * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser       *
+ * General Public License for more details.                               *
+ *                                                                        *
+ * You should have received a copy of the GNU Lesser General Public       *
+ * License along with the script.                                         *
+ * If not, see http://www.gnu.org/licenses/lgpl.html                      *
+ *                                                                        *
+ * The TYPO3 project - inspiring people to share!                         *
+ *                                                                        */
+
+
+class Tx_DlExtlib_ViewHelpers_ImageViewHelper extends Tx_Fluid_ViewHelpers_ImageViewHelper {
+	/**
+	 * Resizes a given image (if required) and renders the respective img tag
+	 * @see http://typo3.org/documentation/document-library/references/doc_core_tsref/4.2.0/view/1/5/#id4164427
+	 *
+	 * @param string $src
+	 * @param string $width width of the image. This can be a numeric value representing the fixed width of the image in pixels. But you can also perform simple calculations by adding ""m"" or ""c"" to the value. See imgResource.width for possible options.
+	 * @param string $height height of the image. This can be a numeric value representing the fixed height of the image in pixels. But you can also perform simple calculations by adding ""m"" or ""c"" to the value. See imgResource.width for possible options.
+	 * @param integer $minWidth minimum width of the image
+	 * @param integer $minHeight minimum height of the image
+	 * @param integer $maxWidth maximum width of the image
+	 * @param integer $maxHeight maximum height of the image
+	 * @param string $params
+	 *
+	 * @return string rendered tag.
+	 * @author Sebastian Böttger <sboettger@cross-content.com>
+	 * @author Bastian Waidelich <bastian@typo3.org>
+	 * @author Mike Streibl <m.streibl@die-lobby.de>
+	 */
+	public function render($src, $width = NULL, $height = NULL, $minWidth = NULL, $minHeight = NULL, $maxWidth = NULL, $maxHeight = NULL, $params = NULL) {
+		
+		$setup = array(
+			'width' => $width,
+			'height' => $height,
+			'minW' => $minWidth,
+			'minH' => $minHeight,
+			'maxW' => $maxWidth,
+			'maxH' => $maxHeight,
+			'params' => $params
+		);
+		$imageInfo = $this->contentObject->getImgResource($src, $setup);
+		$imageInfo[3] = t3lib_div::png_to_gif_by_imagemagick($imageInfo[3]);
+		$imageSource = $GLOBALS['TSFE']->absRefPrefix . t3lib_div::rawUrlEncodeFP($imageInfo[3]);
+		
+		return parent::render($imageSource, $width, $height, $minWidth, $minHeight, $maxWidth, $maxHeight );
+		
+	}
+	
+
+}
+
+?>
+</pre>
+
+
+Example:
+<pre>
+{namespace vh=Tx_DlExtlib_ViewHelpers}
+
+<vh:image src=""uploads/pics/{user.profileImage}"" alt=""{user.lastName}"" height=""80c"" width=""65"" params=""-colorspace GRAY""/>
+
+
+</pre>"
+46218,Fluid - ViewHelper - Incubator,Suggestion,"",New,Should have,ImageViewHelper with comma separated images and imageLinkWrap,Andrea Schmuttermair,"",2014-05-19 03:52,"","",2013-03-12,"","",100,2013-03-12 15:03,"","",1062100,"",No,"","Hi,
+
+This ImageViewHelper can process image lists as they come from database: image1.jpg,image2.jpg
+
+It just calls the standard ImageViewHelper for every image.
+
+Then you can add a ImageLinkWrap config array, so you can use JSWindow.
+
+And every image can be wrapped. 
+
+Example:
+<pre>
+In Controller: 
+$imageLinkWrap = array(
+        'JSwindow' => 1,
+        'JSwindow.' => array(
+            'newWindow' => '0',
+            'expand' => '17,20',
+        ),
+        'enable' => 1,
+);
+$this->view->assign('images', $item->getImages());
+$this->view->assign('imageLinkWrap', $imageLinkWrap);
+
+In Fluid Template: 
+<myviewhelper:imageLinkWrap srcList=""{images}"" srcPath=""uploads/tx_myextension/"" alt="""" width=""120m"" height=""120m"" imageLinkWrap=""{imageLinkWrap}"" wrap=""<li>|</li>"" />
+</pre>
+
+
+View Helper Code:
+
+<pre>
+class Tx_MyExtension_ViewHelpers_ImageLinkWrapViewHelper extends Tx_Fluid_ViewHelpers_ImageViewHelper {
+    
+    /**
+     * Extends ImageViewHelper with: 
+     * - image lists (comma-separated image filenames)
+     * - image wrap for every list item
+     * - imageLinkWrap TypoScript
+     *
+     * @param string $srcList image list like: image1.jpg,image2.jpg (of course only one image is possible, too!)
+     * @param string $srcPath image upload path
+     * @param string $width width of the image. This can be a numeric value representing the fixed width of the image in pixels. But you can also perform simple calculations by adding ""m"" or ""c"" to the value. See imgResource.width for possible options.
+     * @param string $height height of the image. This can be a numeric value representing the fixed height of the image in pixels. But you can also perform simple calculations by adding ""m"" or ""c"" to the value. See imgResource.width for possible options.
+     * @param integer $minWidth minimum width of the image
+     * @param integer $minHeight minimum height of the image
+     * @param integer $maxWidth maximum width of the image
+     * @param integer $maxHeight maximum height of the image
+     * @param array $imageLinkWrap TypoScript imageLinkWrap TypoScript Configuration array
+     * @param string $wrap a wrap for every image in the list 
+     *
+     * @return string rendered tag.
+     * @author Andrea Schmuttermair <spam@schmutt.de>
+     */
+    public function render($srcList, $srcPath, $width = NULL, $height = NULL, $minWidth = NULL, $minHeight = NULL, $maxWidth = NULL, $maxHeight = NULL, $imageLinkWrap = NULL, $wrap = """") {
+
+        $imageArray = explode("","", $srcList);
+        
+        $output = """";
+        foreach($imageArray as $image) {
+            
+            //create image with fluid image view helper
+            $imagetag = parent::render($srcPath . $image, $width, $height, $minWidth, $minHeight, $maxWidth, $maxHeight );
+            
+            //process imageLinkWrap
+            $imageOutput = $imagetag;
+            if ($imageLinkWrap != NULL) {
+                $imageOutput = $this->contentObject->imageLinkWrap($imagetag, $srcPath . $image, $imageLinkWrap);    
+            }
+            
+            //process wrap
+            if (strlen($wrap)>0) {
+                $imageOutput = $this->contentObject->wrap($imageOutput,$wrap);    
+            }
+            $output .= $imageOutput;
+            
+        }
+        
+        return $output;
+    }
+  
+
+  
+}
+</pre>"

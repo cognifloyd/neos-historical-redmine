@@ -1,0 +1,1435 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Affected Flow version,Description
+1,TYPO3.Flow,Feature,"",Closed,Should have,Use SPL when searching/listing files.,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Package,0.1,"","","",0,2006-12-14 14:21,"","",1790650,"","","The ""SPL"":http://www.php.net/~helly/php/ext/spl/ provides some nice iterators for (recursively) working through directories, there even is a way to nicely implement a !DirectoryIterator variant that omits . and .. automagically. 
+
+This would provide a nice way to replace custom opendir-read-check-for-dot."
+2,TYPO3.Flow,Feature,"",Closed,Should have,authorName in PackageInfo.xml should be changed,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,Package,0.1,"","","",0,2006-12-14 14:27,"","",1790600,"","","authorName in !PackageInfo.xml is nonsense - there eventually will be more than one author at the same time, and the name gets loaded as single value in source:Packages/Core/Classes/PackageManager/.
+
+Ideas:
+* Should rather be maintainerName
+* Additionally handle as multi-value?"
+4,TYPO3.Flow,Bug,"",Closed,Could have,Default autoloader should handle sub-direcories of Classes directory,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,"",0.1,"","","",0,2006-12-14 14:38,"","",1790550,"","","The phpCRJackrabbit package has classes in subdirectories of the Classes directory; in fact the CGL explicitly allow having subdirectories there.
+
+The default autoloader autoloadPackageClass($className) in source:Packages/Core/Classes/PackageManager/T3P_Core_PackageManager.php#72 does not search those, this needs to be implemented."
+5,TYPO3.Flow,Bug,"",Closed,Should have,Remove use of DIRECTORY_SEPARATOR,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,"","","","","",0,2006-12-14 14:54,"","",1789100,"","","Currently a lot of places use the PHP constant DIRECTORY_SEPARATOR. This constant belongs to the directory functions (see http://de.php.net/manual/en/ref.dir.php), i.e. it is not even defined for the usual filesystem functions like fopen nor is it required for include/require. PHP translates a forward slash automagically on Windows.
+
+When specifying paths in php.ini it is even *required* to always use a forward slash, even when on Windows.
+
+What I want to say is: let's remove this ugly thing and just use / everywhere.
+
+For the sake of completeness: when calling local commands with exec() and friends one has to use the ""right"" separator, this is when it might come in handy... "
+8,TYPO3.Flow,Feature,"",Closed,Should have,T3P_Core_PAckageConfFileComponentsConfigurationSourceTest->test_getComponentConfigurations_matchesFixutreOfTestPackage always fails,Robert Lemke,Robert Lemke,2010-10-20 05:39,Package,0.1,"","","",0,2007-02-19 07:38,"","",1790500,"","",Currently this test uses a fixture which only matches on roberts system - that should be generalized of course!
+9,TYPO3.Flow,Bug,"",Closed,Should have,"AOP Framework doesn't work at all - invalid type ""...BasicClass_AOPProxy""",Robert Lemke,Robert Lemke,2010-10-20 05:39,Reflection,0.1,"","","",0,2007-02-19 11:18,"","",1790450,"","","The T3P_Core_AOPFramework_Tests fail all and the FileCache/.../AOPProxy directory contains no files.
+
+PHP Version: 5.1.6
+OS: Gentoo Linux"
+10,TYPO3.Flow,Feature,"",Closed,Should have,Register component types automatically from interfaces,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,0.1,"","","",0,2007-02-20 05:58,"","",1790400,"","","From _The Guide_:
+
+
+h2. Component names and types
+
+
+By default, the name of a component is identical to the PHP class which implements the component's functions. A class called T3P_MyPackage_MyImplementation will be automatically available as a component with the exact same name. Every part of the system which asks for a component instance with a certain name will therefore - by default - get an instance of the class of that name. It is possible to replace the original implementation of a component by another one. In that case the class name of the new implementation will naturally differ from the component name which stays the same at all times.
+
+If the component name is the same as the name of a PHP interface, it is often referred to as a component type. An interface called T3P_MyPackage_MyInterface will be available as a component name as long as there exists at least one class in the same package implemententing that interface."
+11,TYPO3.Flow,Feature,"",Closed,Should have,Add wildcard support for components in Components.ini,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,"","","","",0,2007-02-20 06:02,"","",1789050,"","","Currently each component must be configured individually in the _Components.conf_ file. It should be possible to bulk-configure components by using wildcards:
+
+<pre>
+   [T3_MyPackage_SomeCompon*]
+   scope = prototype
+</pre>
+
+See also #339."
+12,TYPO3.Flow,Bug,"",Closed,Should have,Add support for autowiring,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-02-20 06:10,"","",1790350,"","",The Component Manager should support autowiring for the constructor arguments during the dependency injection. Though It is still up for discussion if that should be the default behaviour.
+13,TYPO3.Flow,Bug,"",Closed,Should have,Implement support for lifecycle methods,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,0.1,"","","",0,2007-02-20 06:14,"","",1790300,"","",The Component Manager (more precisely the object builder) should support at least some initialization life cycle method which is executed in the target object after the setter-based dependencies have been injected. Probably other methods for session-persistent components make sense as well.
+14,TYPO3.Flow,Feature,"",Resolved,Should have,Define the packageInfo.xml format,Robert Lemke,"",2010-10-20 05:39,Package,"","","","",100,2007-02-20 10:04,"","",1789000,"","","The structure of meta information for packages stored in the packageInfo.xml file must be defined. This ticket covers the minimum features:
+
+ - define general information like title, author, maintainer etc.
+ - create a format for constraints
+
+Constraints are important for checking for the minimum PHP version!
+
+Not included in this ticket is setting up a schema for the xml format."
+17,TYPO3.Flow,Bug,"",Closed,Should have,Optimize reflection usage by introducing a cache,Robert Lemke,Robert Lemke,2010-10-20 05:39,Reflection,0.1,"","","",0,2007-02-20 12:00,"","",1790250,"","","As reflection is used in many parts of the Component Manager and the AOP Framework, it might make sense to create some clever way of caching Reflection objects. While the results of the AOP Framework (the proxies) will be cached anyway, the Component Manager still does class reflection for finding component type implementations (source:Packages/Core/Classes/ComponentManager/T3P_Core_ComponentManager.php)."
+19,TYPO3.Flow,Feature,"",Closed,Should have,"Add a feature for replacing ""new"" with ""getComponent"" in php source files",Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,"","","","",0,2007-02-21 03:03,"","",1788950,"","","The AOP Framework should have a feature (which can be enabled through the Component configuration) which results in parsing the php source files and replace the new operator with a getComponent call. These modified files should be written into the FileCache and the modified classes used as the parent class for AOP proxies or, if no such proxy exists, registered as the implementation class of the component with that class name."
+20,TYPO3.Flow,Bug,"",Closed,Should have,Implement support for introductions / intertype-declarations,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-02-21 03:06,"","",1790200,"","",Implement support for introductions / intertype-declarations in the AOP framework.
+21,TYPO3.Flow,Bug,"",Closed,Should have,Implement support for pointcut definitions,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-02-21 03:08,"","",1790150,"","",Support for declaring pointcut definitions must be implemented. They should be defined through annotations (@pointcut) and it must be possible to refer to them in advice declarations.
+22,TYPO3.Flow,Bug,"",Closed,Should have,Enhance pointcut expression parser: within(),Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-02-21 03:14,"","",1790100,"","",The pointcut expression parser should support the within() statement which allows to filter for target objects of a certain type (class).
+23,TYPO3.Flow,Feature,"",Resolved,Should have,"Implement ""context"" support",Robert Lemke,Robert Lemke,2010-10-20 05:39,"","","","","",0,2007-02-21 03:20,"","",1788900,"","","It should be possible to put FLOW3 into different environment contexts. Examples are ""optimized"", ""production"", ""development"" and ""testing"".
+
+Other parts may then behave accordingly, for example the AOP would adjust the caching of the proxy classes depending on the selected mode.
+
+See also #339 about Components.ini format."
+27,TYPO3.Flow,Feature,"",Closed,Should have,Add support for visibility modifier in pointcut expressions,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-02-22 08:18,"","",1790050,"","","Add support for a visibility modifier (public, protected, private) in pointcut expressions."
+28,TYPO3.Flow,Feature,"",Closed,Should have,Add support for argument modifiers in pointcut expressions,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-02-22 08:20,"","",1790000,"","",Add support for argument modifiers in pointcut expressions: It should be possible to narrow down the set of joinpoints by specifying parameters and what value they should have in the definition of a pointcut
+29,TYPO3.Flow,Bug,"",Closed,Should have,Class files in sub directories are not loaded,Robert Lemke,Robert Lemke,2010-10-20 05:39,Package,0.1,"","","",0,2007-02-22 08:34,"","",1789950,"","","Although the T3P_Core_Package finds class files in sub directories, they are not loaded by the T3P_Core_PackageClassLoader. This has an impact on the phpCRJackrabbit classes."
+30,TYPO3.Flow,Feature,"",Closed,Should have,Add feature to detect circular pointcut references,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-02-23 09:21,"","",1789900,"","",Theoretically a pointcut can refer to itself in a poincut declaration or circular reference might appear on a deeper level. On a matches() call this would lead to an infinite loop and therefore must be detected.
+32,TYPO3.Flow,Feature,"",Resolved,Should have,Design and implement a configuration manager,Robert Lemke,"",2010-10-20 05:39,"","","","","",0,2007-02-28 12:17,"","",1788850,"","",Design and implement a configuration manager
+35,TYPO3.Flow,Feature,"",Closed,Should have,Refactor T3P_Core_AOPFramework: Extract build methods,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-03-01 08:58,"","",1789850,"","","The T3P_Core_AOPFramework got a bit too large by the time and it makes sense extracting the whole proxy code building methods into its own class. While doing that, the code snippets should also be externalized and put into template files where it makes sense."
+36,TYPO3.Flow,Feature,"",Resolved,Must have,Add automatic documentation in AOP proxy classes,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,"","","","",0,2007-03-01 09:20,"","",1788800,"","",Parameters and maybe some other parts are not yet automatically documented through reflection in the AOP proxy builder. That would be nice.
+37,TYPO3.Flow,Feature,"",Closed,Should have,AOP: Test introducing multiple interfaces,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-03-01 10:46,"","",1789800,"","",Some more tests need to be written to test introduction of more than one interface and what happens if interfaces have conflicting method signatures.
+40,TYPO3.Flow,Feature,"",Closed,Should have,Check all classes for Array type hinting,Robert Lemke,Robert Lemke,2010-10-20 05:39,"",0.1,"","","",0,2007-03-05 14:01,"","",1789750,"","","There might be places where an array is expected as a parameter but no type hinting is used yet. In these cases, type hinting should be introduced.
+
+Example:
+<pre>
+protected function mySuperFunction(array $thisIsAnArray) {
+ ...
+}
+</pre>"
+41,TYPO3.Flow,Bug,"",Closed,Should have,Custom autoloaders are registered too late,Robert Lemke,Robert Lemke,2010-10-20 05:39,Package,0.1,"","","",0,2007-03-06 07:12,"","",1789700,"","","Currently custom autoloaders are registered by some PHP code contained in the ComponentsConfiguration.php file. This file is included while the Package Manager configures and registers the components from the Classes directory. After that step, the component types are registered.
+
+Due to this order, it might be that an interface of a package is required which is not yet loaded. If that interface can only be loaded by the custom autoloader, but that autloader is not yet registered (because the components of that package are not registered) PHP throws a fatal error.
+
+The solution is to move autoloader registration to an earlier stage, before any component is registered or configured."
+43,TYPO3.Flow,Feature,"",Closed,Must have,make extensibility of Components.conf possible,Sebastian Kurfuerst,Robert Lemke,2010-10-20 05:39,Object,"","","",0.00,0,2007-03-09 03:47,"","",1788750,"","",We need some mechanism to make the Components.conf file extendable by other components.
+44,TYPO3.Flow,Bug,"",Closed,Should have,Fix injection of straight values with Setter Injection,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,0.1,"","","",0,2007-03-13 04:24,"","",1789650,"","","While demonstrating setter injection, injection of straight values didn't work. Check this (and constructor injection, too), create a test and fix if necessary."
+45,TYPO3.Flow,Bug,"",Closed,Should have,Core ComponentObjectBuilder: Create test for different types of constructor arguments,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,0.1,"","","",0,2007-03-14 17:32,"","",1789600,"","",Currently only simple types are tested for constructor injection and probably no test exists for the optional constructor argument feature with types like array etc.
+46,TYPO3.Flow,Feature,"",Resolved,Must have,Implement After Advice,Robert Lemke,Andreas Förthner,2010-10-20 05:39,AOP,1.0 alpha 1,"","","",100,2007-03-23 06:15,"","",1794350,"","",Currently only After Returning and After Throwing advices exist. Implement the general After advice as well and make sure that After Returning is only invoked if no exception is thrown!
+47,TYPO3.Flow,Feature,"",Resolved,Should have,Implement pointcut designator for annotations,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,"","","","",100,2007-03-26 03:46,"","",1788700,"","",Currently there is no pointcut filter for matching annotations - create it!
+51,TYPO3.Flow,Bug,"",Closed,Should have,Two tests for AOP introductions fail,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-05-16 10:14,"","",1789550,"","","Currently these two tests fail:
+
+test_framework_introductionDeclarationBasicallyWorks
+test_framework_introductionWithoutAdviceWorks
+
+
+Full description:
+
+Failure in test_framework_introductionDeclarationBasicallyWorks Detail
+/users/shared/sites/t3dev/typo3_5.0/typo3_5.0/packages/framework/tests/t3p_framework_aop_frameworktest.php:126
+The method ""newMethod"" does not exist in the target class (T3P_TestPackage_IntroductionTargetClass). Failed asserting that <boolean:false> is identical to <boolean:true>.
+Failure in test_framework_introductionWithoutAdviceWorks Detail
+/users/shared/sites/t3dev/typo3_5.0/typo3_5.0/packages/framework/tests/t3p_framework_aop_frameworktest.php:139
+The method ""anotherMethod"" does not exist in the target class (T3P_TestPackage_IntroductionTargetClass). Failed asserting that <boolean:false> is identical to <boolean:true>.
+"
+52,TYPO3.Flow,Bug,"",Closed,Should have,T3P_Framework_AOP_Pointcut: too many recursions,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,0.1,"","","",0,2007-05-17 10:16,"","",1789500,"","","The more classes exist in TYPO3 5.0, the more recursions occur in during the pointcut filter matching. That is not the wanted behaviour though and it may result in either xdebug complaining about too many recursions or an exception thrown.
+
+Example:
+
+Fatal error: Uncaught exception 'RuntimeException' with message 'Circular pointcut reference detected in T3P_TestPackage_IntroductionAspect->newMethodAroundAdvice, too many recursions (Query identifier: 0).' in /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/Packages/Framework/Classes/AOP/T3P_Framework_AOP_Pointcut.php:94 Stack trace: #0 /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/Packages/Framework/Classes/AOP/T3P_Framework_AOP_ProxyClassBuilder.php(240): T3P_Framework_AOP_Pointcut->matches(Object(T3P_Framework_Reflection_Class), Object(ReflectionMethod), 0) #1 /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/Packages/Framework/Classes/AOP/T3P_Framework_AOP_ProxyClassBuilder.php(63): T3P_Framework_AOP_ProxyClassBuilder->getMatchingIntroductions(Array, Object(T3P_Framework_Reflection_Class)) #2 /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/Packages/Framework/Classes/AOP/T3P_Framework_AOP_Framework.php(291): T3P_Framework_AOP_ProxyClassBuilder->buildProxyClass(Object(T3P_Framework_Reflection_Class), Object(T3P_Framework_Compo in /Users/Shared/Sites/t3dev/typo3_5.0/typo3_5.0/Packages/Framework/Classes/AOP/T3P_Framework_AOP_Pointcut.php on line 94"
+56,TYPO3.Flow,Bug,"",Closed,Should have,DirectoryIterator returns an Path with /C under Windows,Thomas Peterson,"",2010-10-20 05:39,Object,"","","","",100,2007-06-28 07:59,"","",1788650,"","","This results in an Error:
+
+Warning: Invalid \C{..} sequence in C:\xampp\htdocs\typo35\Packages\Framework\Classes\Component\T3P_Framework_Component_ObjectBuilder.php(74) : eval()'d code on line 1 "
+58,TYPO3.Flow,Bug,"",Closed,Should have,"Create support for ""Component Manager aware"" components",Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,0.1,"","","",0,2007-07-04 04:58,"","",1789450,"","","Dependency injection (specifically constructor injection) can be used in most cases when the instance of a component is required whose scope is ""singleton"". However, if a prototype is needed at arbitrary places in the method control flow, the component must refer to the component manager to get one. Because of this, many components already come with a constructor which exists solely for injecting a reference to the component manager so it can be used elsewhere in the component.
+
+This should be solved by creating a marker interface ""T3P_Framework_Component_ManagerAwareInterface"": All components implementing this void interface automatically get some magic functions through AOP introductions which allow them to conveniently retrieve prototypes.
+"
+60,TYPO3.Flow,Bug,"",Closed,Should have,Problems with constructor arguments and DI in non-adviced constructor interceptors,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,0.1,"","","",0,2007-07-04 08:00,"","",1789400,"","","A constructor argument of a target class will end up correctly in the proxy class (ie. the proxy class builder works). However, the component configuration does not contain that argument but only the componentManager argument which was added by the AOP framework. The result is that autowiring does not work anymore (as the required original argument is not known to the object builder) and the component manager is injected instead of the expected first argument."
+61,TYPO3.Flow,Bug,"",Closed,Must have,Errors in Framework_Utility_Environment::getScriptRequestPathAndName with mod_fcgid,Sebastian Kurfuerst,Robert Lemke,2010-10-20 05:39,Utility,0.1,"","","",0,2007-07-13 02:10,"","",1789350,"","","Hello,
+I am running PHP with mod_fcgid - and it transmits the path in a wrong way:
+I needed to apply the following patch to make it work properly on my installation - but I did not yet find any good ressources about the difference between orig_script_filename and script_filename.
+So I currently think that the patch fixes just the symptoms...
+My phpinfo() is also attached.
+Greets,
+Sebastian"
+64,TYPO3.Flow,Task,"",Closed,Must have,"More Details for Apache2 ""prefork"" setup?",christoph -,"",2010-10-20 05:39,"","","","","",0,2007-09-20 07:13,"","",0,"","","Hello evererbody,
+I just wanted to setup a Ubuntu 7.04 vmware image with apache2 and php6 to test the framework.
+I got everything run, but The Framework doesn't worked. The spl_autload_register didn't register any classes. :-(
+
+I found out that the apache2 was installed as a apache2-mpm-worker (multithreaded).
+After _apt-get remove apache2-mpm-worker_ and _apt-get install apache2-mpm-prefork_
+it worked. Yuhu! :-D
+
+So perhaps somebody of you can add some more details about the installation process. I think it could help other developers, too.
+
+Have fun on T3CON07
+I'm sorry that I can't be there ;-)
+
+
+
+"
+65,TYPO3.Flow,Feature,"",Resolved,Should have,"Move ""Validation"" to its own subpackage",Robert Lemke,Andreas Förthner,2010-10-20 05:39,Validation,"","","","",100,2007-12-07 05:45,"","",1788600,"","","Currently the ""Validation"" features reside in the ""Security"" subpackage of ""Framework"". As discussed, this should be moved to its own subpackage:
+
+Framework/
+   Classes/
+      Validation/
+         T3_Framework_Validation_ValidatorInterface.php
+         ...
+         Filter/
+            T3_Framework_Validation_FilterInterface.php
+
+""Filter"" may become a subpart of ""Validation"" (""FilterInterface"" doesn't exist yet).
+
+"
+66,TYPO3.Flow,Feature,"",Resolved,Should have,"Add the feature ""Mapping Results"" to the Property Mapper",Robert Lemke,Andreas Förthner,2010-10-20 05:39,Property,"","","","",100,2007-12-07 06:13,"","",1788550,"","","The Property Mapper doesn't only map properties from one object to another but also invokes the necessary validators and filters. Validation, filtering and other mapping errors should be tracked in an object. 
+
+The interface for !MappingResult should look similar to this:
+
+<pre>
+#!php
+public function addError(T3_Framework_Error_Error $error);
+public function getErrors();
+public function hasErrors();
+
+public function addSuppressedField($fieldName);
+public function getSuppressedfields();
+</pre>
+
+Additionally we probably need a ""!MappingError"" class which extends T3_Framework_Error_Error. This class is then used for true mapping errors. Finally we also need ""!ValidationError"" - but that belongs to the Validation subpackage.
+
+"
+67,TYPO3.Flow,Feature,"",Resolved,Should have,"Refine the generic ""Error"" class",Robert Lemke,Andreas Förthner,2010-10-20 05:39,Error,"","","","",100,2007-12-07 06:14,"","",1788500,"","","The T3_Framework_Error_Error class needs at least these additional methods:
+
+getCode();
+getMessage();"
+68,TYPO3.Flow,Feature,"",Resolved,Should have,Add validateProperty() to the Validator interface,Robert Lemke,Andreas Förthner,2010-10-20 05:39,Validation,"","","","",100,2007-12-07 06:19,"","",1788450,"","","Add validateProperty($object, $propertyName) to the Validator interface.
+
+And while you're there you could rename the $subject argument to $object in validate();"
+69,TYPO3.Flow,Feature,"",Resolved,Should have,Add validation to the PropertyMapper,Robert Lemke,Andreas Förthner,2010-10-20 05:39,Property,"","","","",100,2007-12-07 06:27,"","",1788400,"","","Add validation functionality to the Property Mapper.
+
+First we need a way to set the validator - a method like setValidator() should be added to the property mapper.
+If no validator was set but map() was called, the Property Mapper should try to find one by asking the T3_Framework_Validation_ValidatorResolver (see #70). If none was found, no validation is done.
+
+While mapping we should probably validate each property *before* setting it in the target object. An open question is if it makes sense to validate the whole target object after mapping.
+
+Validation Errors should be added to the Mapping Results."
+70,TYPO3.Flow,Feature,"",Resolved,Should have,Implement a Validator Resolver,Robert Lemke,Andreas Förthner,2010-10-20 05:39,Validation,"","","","",100,2007-12-07 06:31,"","",1788350,"","","As a convenience function (eg. in the Property Mapper) we need a resolver which is able to find a validator for the given object. The interface of T3_Framework_Validation_ValidatorResolver could be as simple as:
+
+<pre>
+   public function resolveValidatorName($targetObject);
+   public function resolveValidator($targetObject);
+</pre>
+
+the first method returns the component name (or NULL if no validator could be found) and the second method returns an actual validator object.
+
+"
+71,TYPO3.Flow,Feature,"",Resolved,Should have,Add Validators for generic base types,Robert Lemke,Andreas Förthner,2010-10-20 05:39,Validation,"","","","",100,2007-12-07 06:39,"","",1788300,"","","The framework should provide a few validators which can handle basic types such as:
+
+* Text (ie. text without control characters. Question is if HTML would be a valid text?)
+* Float
+* Number
+* NumberRange
+* Integer
+* EmailAddress
+* NotEmpty
+* RegularExpression
+
+(Maybe create tickets for each of them)
+Always make sure to be clear about the difference between filter and validator.
+
+"
+72,TYPO3.Flow,Feature,"",Closed,Should have,Fix @package and @subpackage annotation in all Framework classes,Robert Lemke,Robert Lemke,2010-10-20 05:39,"",0.1,"","","",0,2007-12-07 08:11,"","",1789300,"","","Some (well, most) of the @subpackage annotations are wrong ..."
+73,TYPO3.Flow,Bug,"",Closed,Should have,Fix MVC CLI Request Handler / -Builder,Robert Lemke,Andreas Förthner,2010-10-20 05:39,MVC,0.1,"","","",0,2007-12-07 11:03,"","",1789250,"","","As soon as the Property Mapper and Validator are in place, the MVC CLI Request Handler and -Builder should be fixed.
+
+[[Image(MVC_Failing_Tests.png,200px)]]"
+74,TYPO3.Flow,Feature,"",Resolved,Should have,Request Builder doesn't convert POST arguments into Request arguments,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,"","","","",100,2007-12-10 07:50,"","",1788250,"","","The Web Request Builder currently ignores POST arguments. GET arguments are implicitly set on calling setBaseURI() in T3_Framework_MVC_Web_Request. However, that should better be moved to the Web Request Builder as well.
+
+"
+75,TYPO3.Flow,Feature,"",Resolved,Should have,Move T3_Framework_MVC_URI to a more fitting subpackage,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,"","","","",100,2007-12-10 12:25,"","",1788200,"","",The T3_Framework_MVC_URI represents a URI and is not bound to the MVC framework. It better fits where other data types are located - e.g. in the Property subpackage.
+76,TYPO3.Flow,Bug,"",Closed,Should have,"Rename test methods, add @test annotation, extend base class",Robert Lemke,"",2010-10-20 05:39,"","","","","",90,2007-12-12 09:19,"","",1788150,"","","PHPUnit supports annotations for some time now. Therefore we should remove the ""test_"" prefix from all test methods and mark the method with a @test annotation instead.
+
+Additionally, test cases should now extend the T3_Testing_BaseTestCase instead of PHPUnit_Framework_TestCase.
+
+Finally, the require_once() for the PHPUnit Base Class is not needed anymore and should be removed.
+
+All this also needs to be documented in the Coding Guidelines."
+77,TYPO3.Flow,Bug,"",Closed,Should have,typo in MINUMUM_PHP_VERSION,Tim Eilers,Robert Lemke,2010-10-20 05:39,"",0.1,"","","",0,2007-12-13 18:03,"","",1789200,"","",in File Packages/Framework/Classes/T3_Framework.php the constant MINUMUM_PHP_VERSION is used. Shouldn't it be called MINIMUM_PHP_VERSION?
+79,TYPO3.Flow,Bug,"",Closed,Should have,ssl vhost of 5-0 dev website buggy & link in trac-ticket-mails wrong,Tim Eilers,"",2010-10-20 05:39,"","","","","",0,2007-12-14 12:47,"","",1788100,"","","I opened a ticket to a problem yesterday, today i read the email i got because of that. at the bottem there was a link:
+<pre>
+Ticket URL: <https://5-0.dev.typo3.org/TYPO3/ticket/77#comment:1>
+</pre>
+the link results into a 404. if you surf a bit around you get only dir listings and not a working website."
+84,TYPO3.Flow,Feature,"",Closed,Should have,ComponentManager should not manage abstract classes,Malte Jansen,Robert Lemke,2010-10-20 05:39,Object,0.1,"","","",0,2007-12-21 11:42,"","",1789150,"","","Abstract classes can not run standalone. So they should not be managed by the Component Manager and should not be available as components.
+"
+87,TYPO3.Flow,Feature,"",Resolved,Should have,Add fallback for servers without mod_rewrite / .htaccess support,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,MVC,1.0 alpha 5,"","","",100,2008-01-14 06:09,"","",1798150,"","",Add fallback for servers without mod_rewrite / .htaccess support
+88,TYPO3.Flow,Feature,"",Resolved,Should have,Add forwarding support to MVC controller,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,"","","","",100,2008-01-15 06:34,"","",1788050,"","","Add forwarding support to MVC controller ... something like $this->forward($controllerName, $actionName) and other features."
+89,TYPO3.Flow,Bug,"",Resolved,Should have,Create proper exceptions for the Utility subpackage,Robert Lemke,Robert Lemke,2010-10-20 05:39,Utility,"","","","",100,2008-01-15 08:33,"","",1788000,"","",The Utility sub package only throws RuntimeExceptions.
+90,TYPO3.Flow,Feature,"",Closed,Could have,Add PHP dependency support,Robert Lemke,Christian Jul Jensen,2012-11-07 05:41,Package,"","","","",0,2008-01-15 10:06,"","",1787950,"","","The package manager should support dependencies on PHP extensions and compiling options. A package should just define these dependencies, conflicts etc. in its PackageInfo.xml file."
+91,TYPO3.Flow,Feature,"",Closed,Should have,Check how eAccelerator can be supported,Robert Lemke,Robert Lemke,2010-10-20 05:39,"","","","",0.00,100,2008-01-16 10:19,"","",1787900,"","","Currently eAccelerator causes problems because annotations are not cached. Also some other weird behaviour occurred which I didn't check any further.
+
+For now caching is disabled if eAccelerator is detected, but it would be nice to find some way to support it."
+116,TYPO3.Flow,Feature,"",Resolved,Must have,Package Manager provides CLI access,Robert Lemke,Christopher Hlubek,2010-10-20 05:39,Package,1.0 alpha 1,2008-01-28,"","",100,2008-01-28 10:04,"","",1794300,"","","The Package Manager should provide a CLI controller which initially should support the ""create"" command for creating a new, empty package.
+The command for creating a package could look like this:
+
+<pre>php index.php flow3 package -a create -p MyPackage</pre>
+"
+215,TYPO3.Flow,Major Feature,"",Resolved,Should have,"The MVC Framework can handle, dispatch and forward GET, POST and CLI requests",Robert Lemke,"",2010-10-20 05:39,MVC,"",2008-02-12,"","",100,2008-02-12 07:08,"","",1787850,"","","The MVC Framework can handle, dispatch and forward GET, POST and CLI requests"
+216,TYPO3.Flow,Major Feature,"",Resolved,Should have,AOP proxy classes are cached in production mode,Robert Lemke,"",2010-10-20 05:39,AOP,"",2008-02-12,"",0.00,100,2008-02-12 07:09,"","",1787800,"","",AOP proxy classes are cached in production mode
+218,TYPO3.Flow,Major Feature,"",Closed,Should have,Comprehensive reference documentation for the MVC framework,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,"",2008-02-12,"","",0,2008-02-12 07:13,"","",1787750,"","",Comprehensive reference documentation for the MVC framework
+220,TYPO3.Flow,Major Feature,"",Closed,Should have,"A basic persistence framework, based on annotations, with the content repository as backend",Robert Lemke,"",2010-10-20 05:39,Persistence,"",2008-02-12,"","",0,2008-02-12 07:15,"","",1787700,"","","A basic persistence framework, based on annotations, with the content repository as backend"
+222,TYPO3.Flow,Bug,"",Resolved,Should have,Logger test should use a mock instead of file or write the file to FileCache,Robert Lemke,Robert Lemke,2010-10-20 05:39,Log,"",2008-02-12,"","",100,2008-02-12 08:17,"","",1787650,"","","Currently the tests in the Log package (try to) write a real file into the main directory, which usually won't work due to access restrictions."
+263,TYPO3.Flow,Bug,"",Resolved,Should have,Object Builder injects constructor arguments of previous builds if no arguments are passed explicitly,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,"",2008-02-13,"","",100,2008-02-13 06:11,"","",1787600,"","","Code which exploits the bug:
+
+<pre>
+$component1 = $componentManager->getComponent('T3_TestPackage_ClassWithOptionalConstructorArguments', 'someValue');
+echo $component1->argument1; // output: ""someValue""
+$component2 = $componentManager->getComponent('T3_TestPackage_ClassWithOptionalConstructorArguments');
+echo $component2->argument1; // output: still ""someValue"", expected output: """"
+</pre>"
+266,TYPO3.Flow,Bug,"",Resolved,Should have,Proxied classes loose annotation information,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,"",2008-02-13,"","",100,2008-02-13 07:52,"","",1787550,"","","Currently the annotations are not copied into the target class when a class is proxied by the AOP framework. One effect is that the component manager doesn't get the ""scope"" configuration correctly - but as soon as we use more annotations, it will have other side effects as well."
+267,TYPO3.Flow,Feature,"",Resolved,Should have,Method basicAction for T3_FLOW3_MVC_Controller_ActionController,Malte Jansen,"",2010-10-20 05:39,MVC,"",2008-02-13,"","",0,2008-02-13 10:10,"","",1787500,"","","You can use initializeAction() for initialization.
+But at this point the $this->view does not exist.
+If you have several further inits for the like injections you have to define them for each action (e.g. defaultAction(), runAction()). So it would be cool to have some basicAction(), which is call before the ""real""-action is called."
+309,TYPO3.Flow,Task,"",Resolved,Should have,Move Classes/Components.conf to Configuration/,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,"",2008-02-14,"","",100,2008-02-14 10:05,"","",1050,"","",The Components.conf file should be renamed to Components.ini and moved to a package specific Configuration directory.
+310,TYPO3.Flow,Feature,"",Resolved,Should have,Find a way to simplify setter injection in ActionController (and elsewhere),Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,"",2008-02-14,"","",100,2008-02-14 10:13,"","",1787450,"","","Currently we need to write a setter method for all dependencies of an ActionController. The constructor can't be used for DI because it is needed by the base class.
+
+This is a very tedious and repetitive task which could be simplified by just declaring the dependency and get them setter injected automatically."
+311,TYPO3.Flow,Task,"",Resolved,Should have,Move PackageConfiguration.php to the package Configuration/ directory and rename it,Robert Lemke,Robert Lemke,2010-10-20 05:39,Package,"",2008-02-14,"","",100,2008-02-14 10:44,"","",1100,"","",Move PackageConfiguration.php to the package Configuration/ directory and rename it
+314,TYPO3.Flow,Bug,"",Resolved,Should have,Improve directory structure and naming for views in a package,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,"",2008-02-15,"","",100,2008-02-15 05:04,"","",1787400,"","","Currently all views in a package are located in the Classes/View/ directory. The naming scheme for view classes is:
+
+T3_PackageKey_View_ActionName
+
+That's a mistake. The naming convention for views should have been:
+
+T3_PackageKey_View_ControllerName_ActionName
+
+Adapt the MVC view resolver and rename / move existing views to the new directory layout."
+315,TYPO3.Flow,Feature,"",Resolved,Must have,"Add ""format"" support to the Request object",Robert Lemke,Robert Lemke,2010-10-20 05:40,MVC,1.0 alpha 11,2008-02-15,"","",100,2008-02-15 05:38,"","",1806300,"","","The Request object (mainly WebRequest) should contain information about the requested format. Currently it only provides a controller and an action name.
+The default format would be ""html"" for web requests and ""text"" for CLI requests.
+
+The router which extracts information for building a web request could determine the requested format from two sources:
+
+* the file extension (.html, .txt, .pdf, .js, .json, .atom, .rss, .xml etc.)
+* the HTTP headers (content negotiation) - this is mainly for AJAX requests
+
+See also:
+http://www.iana.org/assignments/media-types/
+http://en.wikipedia.org/wiki/Content_negotiation
+"
+319,TYPO3.Flow,Feature,"",Resolved,Should have,"Support setter injection without configuration through ""inject"" methods",Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,"",2008-02-18,"","",100,2008-02-18 12:27,"","",1787350,"","","Currently setter injection is only possible via setter methods whose name follows the scheme ""setPropertyName"". These dependencies need to be configured explicitly in the Components.ini file because autowiring is not possible in this case.
+
+It would be nice if there was (additionally) support for ""inject"" methods (setter methods with names like ""injectPropertyName""). By convention these methods would be recognized as setters for dependencies and could be autowired.
+
+inject* methods should be preferred over set* methods."
+321,TYPO3.Flow,Major Feature,"",Closed,Should have,The MVC Framework supports RESTful URLs,Robert Lemke,"",2010-10-20 05:39,MVC,"",2008-02-19,"","",0,2008-02-19 02:55,"","",1787300,"","",see also http://en.wikipedia.org/wiki/Representational_State_Transfer
+324,TYPO3.Flow,Feature,"",Resolved,Should have,"Add support for ""required"" dependencies via setter injection",Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,"",2008-02-19,"","",100,2008-02-19 04:48,"","",1787250,"","","Currently all dependencies injected through autowired setter injection (see #319) are optional.
+
+This should be configurable through a ""@required"" annotation on the inject* method. If an inject method is marked as required, the object builder would throw an exception if the dependencies can't be resolved. Such an exception would not be thrown for optional dependencies.
+
+"
+332,TYPO3.Flow,Bug,"",Rejected,Should have,Error screen just displays the beginning of an absolute path,Malte Jansen,Robert Lemke,2010-10-20 05:39,Error,"",2008-02-19,"","",0,2008-02-19 12:34,"","",1787200,"","","A relative path would be more useful, because you normally know, where you are running you installation.
+See Screenshot..."
+339,TYPO3.Flow,Feature,"",Closed,Should have,Improve the Components.ini format,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,"",2008-02-20,"","",0,2008-02-20 04:02,"","",1787150,"","","The current Components.ini format mixes up the actual component configuration, the injection of constructor arguments and properties and other configuration options such as AOP settings. Maybe all these options should be organized in a better way.
+
+We also need to support contexts (see #23) maybe like this:
+
+<pre>
+[T3_FLOW3_MVC_Controller_ActionController]
+
+@production: className = ""T3_FLOW3_MVC_Controller_ActionController""
+@development: className = ""T3_FLOW3_MVC_Controller_DebuggableActionController""
+
+addToAOPProxyBlackList = TRUE
+
+
+# Note this: If we had our own .ini parser we could distinguish between these two variants:
+
+constructorArguments.1 = T3_FLOW3_Something
+constructorArguments.1 = ""T3_FLOW3_Something""
+
+# The first would inject a reference, the second would inject the string literally
+
+</pre>
+"
+340,TYPO3.Flow,Major Feature,"",Closed,Should have,The MVC framework provides a default rewriting router and an interface for custom routers,Robert Lemke,"",2010-10-20 05:39,"","",2008-02-20,"","",0,2008-02-20 04:36,"","",1787100,"","",The MVC framework provides a default rewriting router and an interface for custom routers
+341,TYPO3.Flow,Feature,"",Closed,Should have,Define a router interface and Implement a rewrite router,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,"",2008-02-20,"",0.00,0,2008-02-20 04:37,"","",1787050,"","",Define a router interface and Implement a rewrite router
+342,TYPO3.Flow,Feature,"",Resolved,Must have,Support for file uploads,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,1.0 alpha 7,2008-02-20,"","",100,2008-02-20 06:08,"","",1800050,"","",The MVC framework needs to support file / multipart uploads. It should be implemented in a way that uploads are only accepted if they have been announced on beforehand. Could be implemented with a token which is passed along.
+345,TYPO3.Flow,Major Feature,"",Closed,Should have,An initial implementation of the Resource Manager,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,Resource,"",2008-02-20,"",0.00,40,2008-02-20 08:00,"","",1787000,"","",An initial implementation of the Resource Manager
+363,TYPO3.Flow,Bug,"",Rejected,Should have,Order of includes (not possible to implement a interface in subfolder?),Daniel Poetzinger,Robert Lemke,2010-10-20 05:39,Object,"",2008-02-24,"",0.00,0,2008-02-24 09:25,"","",1786950,"","","I have the following:
+
+Classes/T3_XQuery_ExpressionInterface.php (=Interface)
+Classes/MonetDB/T3_XQuery_MonetDBExpression (=a implementation)
+
+I get the Exeption:
+""Interface T3_XQuery_ExpressionInterface does not exist..
+
+ReflectionException thrown in file
+Packages/FLOW3/Classes/Component/T3_FLOW3_Component_Manager.php in line 336.""
+
+When i move the implementation also in Folder ""Classes"" it works.
+
+So is there a way to resolve this dependencies automatic? E.g. autodetection of Interfaces (by name?) and include interfaces before implementations?"
+368,TYPO3.Flow,Major Feature,"",Closed,Should have,Caching Manager with support for different kinds of caches and stores.,Robert Lemke,"",2010-10-20 05:39,"","",2008-02-26,"",0.00,60,2008-02-26 03:38,"","",1786900,"","","The caching framework at least supports caching of arbitrary variables, classes and files. As for the stores, there is a backend for writing caches into files, into memcached and the content repository."
+369,TYPO3.Flow,Feature,"",Resolved,Must have,Replace path constants by resource manager calls,Robert Lemke,Robert Lemke,2010-10-20 05:39,Resource,"",2008-02-26,"","",100,2008-02-26 03:40,"","",1786850,"","","The constants for certains paths still have ""TYPO3"" in their name and they are ... constants (eg. TYPO3_PATH_PRIVATEFILECACHE).
+These constants should be replaced by a more flexible solution, implemented in the resource subpackage."
+370,TYPO3.Flow,Bug,"",Resolved,Should have,T3_FLOW3_Reflection_Class->getProperty() does not return FLOW3s property reflection,Robert Lemke,Robert Lemke,2010-10-20 05:39,Reflection,"",2008-02-27,"","",100,2008-02-27 05:21,"","",1786800,"","","$class = new T3_FLOW3_Reflection_Class(__CLASS__);
+var_dump($class->getProperty('someProperty');
+
+output: ReflectionProperty
+expected output: T3_FLOW3_Reflection_Property
+
+"
+374,TYPO3.Flow,Major Feature,"",Closed,Should have,Speed,Robert Lemke,"",2010-10-20 05:39,"","",2008-02-29,"","",0,2008-02-29 06:05,"","",1786750,"","",Speed
+378,TYPO3.Flow,Bug,"",Closed,-- undefined --,Replace Constant TYPO3_PATH_ROOT to FLOW3_PATH_ROOT in index.php,Malte Jansen,Robert Lemke,2010-10-20 05:39,"","",2008-03-04,2008-03-04,"",100,2008-03-04 05:45,"","",1786700,"","",Some how this file was forgotten...
+400,TYPO3.Flow,Task,"",Closed,Must have,Security Report of CeBit '08,Malte Jansen,"",2010-10-20 05:39,Security,"",2008-03-05,"","",100,2008-03-05 13:40,"","",1600,"","","Today I was on the CeBit in Hannover. 
+
+I read this article: http://t3n.yeebase.com/aktuell/news/newspost/cebit-kostenlose-quellcode-analyse-von-web-anwendungen/1271/
+
+So I tried it and copy my version on a usb-stick.
+
+So until now there no vulnerable statements. So FLOW3 is pretty secure.
+
+
+"
+401,TYPO3.Flow,Bug,"",Resolved,Must have,Permission problems with /tmp/FLOW3,Johannes K,Robert Lemke,2010-10-20 05:39,Cache,"",2008-03-09,"","",100,2008-03-09 12:01,"","",1786650,"","","I called the index.php from the command line everythings fine:
+
+<pre>
+>php index.php
+
+
+Welcome to FLOW3!
+
+This is the default view of the FLOW3 MVC component. You see this message because no 
+other view is available. Please refer to the Developer's Guide for more information 
+how to create and configure one.
+
+Have fun! The FLOW3 Development Team
+</pre>
+
+Then I called the index.php via webserver : http://localhost/hnes/flow3/Distribution/trunk/
+and got the exception in the attachment (really nice stacktrace view by the way).
+
+The problem are the permissions of the  /tmp/FLOW3/ folder after I called index.php from commandline:
+<pre>
+drwxr-xr-x 3 jk       jk          1024 2008-03-09 16:53 FLOW3
+</pre>
+
+Or am I not supposed to use flow3 from commandline, or is there a wrapper, or ...  
+
+
+
+"
+405,TYPO3.Flow,Feature,"",Resolved,Should have,getRegisteredComponents Method in Component Manager,Michael Feinbier,Robert Lemke,2010-10-20 05:39,Object,"",2008-03-14,"","",100,2008-03-14 18:04,"","",1786600,"","","For implementing a component browser in my ""AOPBrowser"" it would be usefull to have access to the $registeredComponents-Array. This could be done by a getRegisteredComponents() method
+
+I applied a patch implementing that method."
+406,TYPO3.Flow,Bug,"",Resolved,Should have,Strange behaviour with PHP-CGI,Michael Feinbier,Robert Lemke,2010-10-20 05:39,Object,"",2008-03-16,"","",100,2008-03-16 09:00,"","",1786550,"","","If PHP runs as a CGI, FLOW3 does strange things with the context.
+
+By default you get this Message when calling an own package (ie /Testing)
+??No input file specified.??
+
+This has something to do with the default .htaccess and url-rewriting. I'll try around a little bit with that but a quick-fix is to add
+cgi.fix_pathinfo = 0
+to your php.ini to make the url_rewriting work
+
+But then, the component manager tries to init wrong/non existing classes. eg
+<pre>$this->aopFramework = $this->componentManager->getComponent('T3_FLOW3_AOP_Framework');</pre>
+throws 
+'Class T3_FLOW3_AOP_Framework_AOPProxy_Development does not exist '
+
+It seems to me, that this has something to do with the 'context'. Im not pretty sure what the 'context' is all about and thus im not sure if this is a bug or a feature.
+On other Systems (PHP as apache module) this snippet works perfect.
+
+
+"
+407,TYPO3.Flow,Feature,"",Resolved,Should have,Implement getAspectContainers() for the AOP Framework,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,"",2008-03-17,"","",100,2008-03-17 05:06,"","",1786500,"","",Michael Feinbier needs an getAspectContainers() method to retrieve all defined aspects from the AOP Framework in order to display them in an AOP browser.
+408,TYPO3.Flow,Feature,"",Resolved,Should have,Implement getAdvicedMethodsInformation...() for the AOP Framework,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,"",2008-03-17,"","",100,2008-03-17 05:08,"","",1786450,"","","For the AOP browser / debugging we need a method which returns all advices which apply to a given method.
+
+"
+409,TYPO3.Flow,Task,"",Resolved,Should have,"Rename ""PackageInfo.xml"" to ""Package.xml""",David Bruehlmeier,Robert Lemke,2010-10-20 05:39,Package,"",2008-03-18,"","",100,2008-03-18 05:23,"","",1650,"","","After the discussion on the mailing list, we agreed to rename the ""PackageInfo.xml"" file in the ""Meta"" directory to ""Package.xml"".
+
+http://lists.netfielders.de/pipermail/typo3-project-5_0-general/2008-March/000843.html"
+410,TYPO3.Flow,Major Feature,"",Resolved,Should have,A simple and robust configuration system,Robert Lemke,"",2010-10-20 05:39,"","",2008-03-18,"","",30,2008-03-18 08:42,"","",1786400,"","",A simple and robust configuration system
+422,TYPO3.Flow,Feature,"",Rejected,Won't have this time,XMLHttpRequest Request,Michael Feinbier,"",2010-10-20 05:39,MVC,"",2008-03-20,"","",0,2008-03-20 09:45,"","",1786350,"","","I think it would be useful to have an XMLHttpRequest-Object beneath the Web and CLI-Request in the MVC. This Ajax request would be very similar to a Web-Request (maybe a sub-module of that?).
+Most JS-Frameworks send a 'X-Requested-With'	=> 'XMLHttpRequest' to the request-header so this request could be easily differenced from a normal web-request."
+423,TYPO3.Flow,Task,"",Resolved,Should have,"Rename top-level namespace prefix ""T3"" to ""F3""",Robert Lemke,Robert Lemke,2010-10-20 05:39,"","",2008-03-25,"","",100,2008-03-25 09:55,"","",1700,"","","As discussed in the mailing list, the class prefix ""T3_"" should be renamed to ""F3_"".
+See http://lists.netfielders.de/pipermail/typo3-project-5_0-general/2008-February/000808.html
+
+"
+424,TYPO3.Flow,Feature,"",Resolved,Should have,Refactoring: Rename Components.ini to Components.php and transfer responsibility to configuration manager,Robert Lemke,Robert Lemke,2010-10-20 05:39,Configuration,"",2008-03-25,"","",100,2008-03-25 10:28,"","",1786300,"","",Currently each package may provide components configuration by means of a Components.ini file placed in the package's Configuration/ directory. This needs to be changed: The configuration file format should be changed to a unified .php configuration format and the files should be parsed and managed by the Configuration Manager.
+437,TYPO3.Flow,Bug,"",Resolved,Could have,Identifiers are used as is in the filenames used by the file cache backend,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,Cache,"",2008-04-02,2008-04-02,"",100,2008-04-02 05:37,"","",1786250,"","","Things like
+
+Warning: file_put_contents(/tmp//FLOW3/143f698bcb42f2a69b18d164896d265d//Production/Cache/FLOW3_Resource_Manager/0/7/2008-04-02T10;30;27Z_file://FLOW3/Public/MVC/DefaultView_Template.html.cachedata.47f35233ef0cc.temp) [function.file-put-contents]: failed to open stream: No such file or directory in /Users/karsten/Sites/TYPO3v5/Packages/FLOW3/Classes/Cache/Backend/F3_FLOW3_Cache_Backend_File.php line 135 
+
+should not happen... The identifier given to VariableCache in this case was ""file://FLOW3/Public/MVC/DefaultView_Template.html"""
+441,TYPO3.Flow,Feature,"",Resolved,Should have,Extract component configuration modifications from AOP Framework initialize method,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,1.0 alpha 1,2008-04-02,"","",100,2008-04-02 15:35,"","",1794250,"","","The initialize() method of the AOP Framework builds proxy classes and then sets the modified component configuration directly through the component manager. 
+
+However, this should be not the responsibility of the AOP framework - it should rather return some information about what classes have been created and the actual component configuration modifications should happen elsewhere. One way to implement this would be a generic post processing mechanism for the component configuration initialization.
+"
+442,TYPO3.Flow,Feature,"",Resolved,Should have,Cache Backend for Memcached,Robert Lemke,Christian Jul Jensen,2010-10-20 05:39,Cache,"",2008-04-03,"","",100,2008-04-03 03:44,"","",1786200,"","","It would be nice? if we had a cache backend for Memcached (see http://www.danga.com/memcached/)
+"
+444,TYPO3.Flow,Bug,"",Resolved,Should have,"""func_get_args()"" is not allowed to be an argument",Jochen Rau,Karsten Dambekalns,2010-10-20 05:39,"","",2008-04-03,"","",100,2008-04-03 12:07,"","",1786150,"","","Hi,
+
+The method ""getComponent()"" in the class ""F3_FLOW3_Component_Manager"" has the following call:
+
+$this->getOverridingConstructorArguments($componentConfiguration, array_slice(func_get_args(), 1))
+
+But ""func_get_args()"" is not allowed to be an argument. The PHP-Documentation says:
+
+----
+Note: Because this function depends on the current scope to determine parameter details, it cannot be used as a function parameter. If you must pass this value, assign the results to a variable, and pass the variable.
+----
+
+I changed the order of the arguments and got the following error message:
+ 
+Fatal error: func_get_args(): Can't be used as a function parameter in /Applications/MAMP/htdocs/flow3/Packages/FLOW3/Classes/Component/F3_FLOW3_Component_Manager.php on line 125
+
+Whether the function call produces an error or not obviously depends on the order of the arguments. This may be a bug in PHP 5.2.x..
+
+I introduced a variable ""$arguments"" and solved the problem for me:
+
+$arguments = array_slice(func_get_args(), 1);
+$overridingConstructorArguments = $this->getOverridingConstructorArguments($arguments, $componentConfiguration);
+
+Greetings
+Jochen"
+459,TYPO3.Flow,Feature,"",Closed,Should have,Implement dependency injection via abstract factory methods,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,"",2008-04-16,"",0.00,0,2008-04-16 04:59,"","",1786100,"","","Dependency injection works fine so far as long as components in a singleton scope are requested. Protoype components can't be injected as soon as more than one instance is needed or the requesting class / method needs to have control over the constructor arguments (which is very often the case).
+
+Therefore consumer code currently calls $this->componentManager->getComponent('NameOfProtoypeComponent') in order to get a fresh instance.
+
+This can be optimized by moving the instantiation into an (abstract) factory method:
+
+<pre>
+abstract protected function createSomeComponent($argument1, $argument2);
+</pre>
+
+This method should be detected by the component manager and automatically be implemented by creating a proxy class. "
+474,TYPO3.Flow,Task,"",Rejected,Must have,Refactor the MVC controller class names,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,1.0 alpha 1,2008-04-21,"","",0,2008-04-21 12:09,"","",2050,"","","For consistency, the following classes should be renamed:
+
+F3_FLOW3_MVC_Controller_ActionController -> F3_FLOW3_MVC_Controller_Action
+F3_FLOW3_MVC_Controller_DefaultController -> F3_FLOW3_MVC_Controller_Default
+F3_FLOW3_MVC_Controller_RequestHandlingController -> F3_FLOW3_MVC_Controller_RequestHandling
+F3_FLOW3_MVC_Controller_PresentationController -> F3_FLOW3_MVC_Controller_Presentation
+
+... and don't forget the documentation."
+477,TYPO3.Flow,Task,"",Resolved,Should have,Globally adjust copyright notice,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,"","",2008-04-23,"",0.00,100,2008-04-23 04:52,"","",2150,"","","Due to the new copyright / licensing situation, the copyright notice in all files need to be adjusted:
+
+old: @copyright Copyright belongs to the respective authors
+new: @copyright TYPO3 Association"
+478,TYPO3.Flow,Feature,"",Resolved,Should have,More speed for object creation,Axel ,Robert Lemke,2010-10-20 05:39,Object,"",2008-04-24,"","",100,2008-04-24 02:45,"","",1786050,"","","I attached the file F3_FLOW3_Component_ObjectBuilder.php with some changes in the methods createComponentObject and injectConstructorArguments.
+
+The objectcreation with eval() is a litte bit slow and i changed this to ReflectionClass::newInstance. This results in a 17% better performance (testet with ApacheBench on the TestPackage) and a more readable injectConstructorArguments - method.
+All seems to work fine, but i was not able to run the testcase yet(PHPUnit crashes my apache). Perhabs someone else can test that.
+
+(I'm sorry about my bad english)"
+480,TYPO3.Flow,Task,"",Resolved,Should have,Unnecessary methodcall in F3_Flow_Resource_Manager?,Axel ,Karsten Dambekalns,2010-10-20 05:39,Resource,"",2008-04-24,"","",100,2008-04-24 04:59,"","",2200,"","","In the class F3_Flow_Resource_Manager, method ""instantiateResource"" is a call to 
+F3_FLOW3_Utility_FileTypes::mimeTypeFromFilename($metadata['name']);
+
+$metadata['mimeType'] should do the job as well. "
+486,TYPO3.Flow,Bug,"",Resolved,Should have,Configuration from Components.php is not merged among different packages,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,"",2008-04-29,"","",100,2008-04-29 07:22,"","",1786000,"","","The situation: Package A configures some component of package B. If the configuration of package B is processed after that of package A (in F3_FLOW3), all information from package A is lost because the configuration is not merged but replaced."
+491,TYPO3.Flow,Bug,"",Resolved,Should have,FLOW3 not working under Windows,Christoph Blömer,Karsten Dambekalns,2010-10-20 05:39,Resource,"",2008-05-08,"",0.00,100,2008-05-08 08:54,"","",1785950,"","","After Revision 784 I get this StackTrace under Windows Vista. 
+I also checked it on Ubuntu 8.04. It works on Linux.
+
+So because the Core Developers ""only"" have a Mac Book I post it here ;-)
+
+On Windows Vista I get a ""500 Internal Server Error"" when I use index.php and following StackTrace when I use index_dev.php:
+
+Warning: mkdir() [function.mkdir]: Invalid argument in D:\xampp\htdocs\demo\Packages\FLOW3\Classes\Utility\F3_FLOW3_Utility_Files.php line 112
+
+F3_FLOW3_Error_Exception thrown in file
+D:\xampp\htdocs\demo\Packages\FLOW3\Classes\Error\F3_FLOW3_Error_ErrorHandler.php in line 87.
+
+6 F3_FLOW3_Error_ErrorHandler::handleError(2, ""mkdir() [<a href='fu?>]: Invalid argume"", ""D:\xampp\htdocs\demo?W3_Utility_Files.p"", 112, array)
+
+D:\xampp\htdocs\demo\Packages\FLOW3\Classes\Utility\F3_FLOW3_Utility_Files.php:
+
+00110:    if (!is_dir($currentPath) && F3_PHP6_Functions::strlen($directoryName) > 0) {
+00111:     $oldMask = umask(000);
+00112:     mkdir($currentPath, 0777);
+00113:     umask($oldMask);
+00114:     if (!is_dir($currentPath)) throw new F3_FLOW3_Utility_Exception('Could not create directory ""' . $path . '""!', 1170251400);
+
+
+5 F3_FLOW3_Utility_Files::createDirectoryRecursively(""D:/xampp/htdocs/demo?docs\demo\Packages"", 511)
+
+D:\xampp\htdocs\demo\Packages\FLOW3\Classes\Resource\F3_FLOW3_Resource_Publisher.php:
+00155:    $metadata = $this->extractResourceMetadata($URI);
+00156: 
+00157:    F3_FLOW3_Utility_Files::createDirectoryRecursively($destinationPath . dirname($relativeFile));
+00158:    if($metadata['mimeType'] == 'text/html') {
+00159:     $HTML = F3_FLOW3_Resource_Processor::adjustRelativePathsInHTML(file_get_contents($file), 'Resources/' . $packageName . '/Public/' . dirname($relativeFile) . '/');
+
+
+4 F3_FLOW3_Resource_Publisher::mirrorPublicPackageResources(""D:/xampp/htdocs/demo?Resources/Public\C"")
+
+D:\xampp\htdocs\demo\Packages\FLOW3\Classes\F3_FLOW3.php:
+00271:   $activePackages = $packageManager->getActivePackages();
+00272:   foreach ($activePackages as $packageKey => $package) {
+00273:    $resourcePublisher->mirrorPublicPackageResources($packageKey);
+00274:   }
+00275: 
+"
+495,TYPO3.Flow,Bug,"",Resolved,Should have,memcached cache backend with multiple FLOW3 installations will fail,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Cache,"",2008-05-09,"",0.00,100,2008-05-09 10:44,"","",1785900,"","","_(as reported by Axel Hoogestraat)_
+
+The memcached backend (the filecache, as well) will not work properly, if there is more than on FLOW3 installation on a server.
+
+In F3_FLOW3.php, for example, there is the following code: $componentConfigurationsCache->save('baseComponentConfigurations', $componentConfigurations);
+
+The key 'baseComponentConfigurations' will be overwritten, if another FLOW3 installation will save the same key. But the configuration, that should be saved, could be different.
+
+So, a possible solution is to add an prefix to the key, i think. The prefix could be the installation path of FLOW3 or something like an ID, that is configured in the FLOW3 configuration."
+497,TYPO3.Flow,Task,"",Resolved,Should have,Remove createDirectoryRecursively() and replace by recursive mkdir() call,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Utility,"",2008-05-09,"",0.00,100,2008-05-09 11:29,"","",2300,"","","createDirectoryRecursively() in F3_FLOW3_Utility_Files can be removed, as PHP since 5.0.0 supports creating directories recursively with mkdir() through a simple method argument:
+ mkdir ( string $pathname [, int $mode [, bool $recursive ]] )"
+499,TYPO3.Flow,Bug,"",Resolved,Must have,Replace TYPO3 with FLOW3 in F3_FLOW3_Error_DebugExceptionHandler,Christopher Hlubek,Karsten Dambekalns,2010-10-20 05:39,Error,"",2008-05-09,"",0.00,100,2008-05-09 12:21,"","",1785850,"","","The exception handler outputs ""TYPO3 Exception"" as the title and the text ""Uncaught TYPO3 Exception"" at the top of the stack trace. This should be changed to FLOW3 for consistency."
+502,TYPO3.Flow,Feature,"",Resolved,Should have,Make error message from exception handler in production mode more user-friendly,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Error,"",2008-05-09,"",0.00,100,2008-05-09 13:28,"","",1785800,"","","The simple ""500 internal server error"" is misleading, this should be better-looking and at least reveal that the error is caused/raised by FLOW3, and not Apache or some other system-level cause."
+507,TYPO3.Flow,Bug,"",Closed,Must have,DebugExceptionHandler prints arguments at wrong place,Tim Eilers,Karsten Dambekalns,2010-10-20 05:39,Error,"",2008-05-09,"",0.00,0,2008-05-09 17:08,"","",1785750,"","","Don't know if i am the only one, or if it is a windows problem again, but i strongly believe the arguments are printed in the wrong order in the stack trace.
+
+for example there is:
+<pre>
+4 F3_FLOW3::initializeResources(""TestPackage"")
+</pre>
+but in the code below you see, that this call hasn't any arguments:
+<pre>
+00123:   $this->initializeResources();
+</pre>
+
+In the next place the argument ""TestPackage"" would fit better:
+<pre>
+5 F3_FLOW3_Resource_Publisher::mirrorPublicPackageResources(""C:/xampp/htdocs/FLOW3/Public/Resources/TestPackage/Public/."")
+</pre>
+but as you can see, it also has the wrong argument there, and so on and so on...
+
+Additional to that it is very disturbing that the arguments are shortened. if the argument is the browser window, which should be extended to wide, you at least could give the full argument as title parameter in the corresponding span."
+513,TYPO3.Flow,Bug,"",Resolved,Must have,Resource manager does not handle links in public files correct,Malte Jansen,Karsten Dambekalns,2010-10-20 05:39,Resource,1.0 alpha 1,2008-05-10,"",2.00,100,2008-05-10 03:58,"","",1794200,"","","See the screenshot with firebug.
+
+_Further details:_
+The response for all files is the same file (the html-output).
+In the ""Public""-folder the files are stored correctly.
+
+"
+670,TYPO3.Flow,Task,"",Resolved,Could have,Change @type annotation in configuration files to @var,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Configuration,"",2008-05-29,2008-05-30,1.00,100,2008-05-29 06:06,"","",2700,"","","As discussed on the list, we should switch to using @var. The configuration parser and documentation have to be adjusted as well, if necessary."
+672,TYPO3.Flow,Task,Task #27561: Complete documentation,Resolved,Should have,Finish documentation about configuration in FLOW3,Karsten Dambekalns,Sebastian Kurfuerst,2011-08-04 02:43,- Documentation -,1.0 beta 1,2008-07-15,"",2.00,100,2008-05-29 06:33,"","",2750,2.00,"",The documentation about FLOW3 configuration needs to be updated and completed (do we still support PHP based configuration???)
+702,TYPO3.Flow,Task,"",Resolved,Could have,RNG schema for Package.xml files is too strict,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Package,1.0 alpha 1,"","",0.00,100,2008-06-03 05:59,"","",2850,"","","A few issues:
+* When defining such a file, the schema requires an @upload@ element to be present, which makes it impossible to have a valid file without an upload.
+* @parties@ *must* have a @company@ element, which might not always be needed/possible"
+718,TYPO3.Flow,Feature,"",Closed,Could have,make docCommentParser static,Robert Lemke,Robert Lemke,2010-10-20 05:39,Reflection,"",2008-06-06,"",0.00,0,2008-06-06 08:08,"","",1785700,"","",Currently the F3_FLOW3_Reflection_DocCommentParser is instantiated for each reflection - that's nonsense.
+764,TYPO3.Flow,Feature,"",Resolved,Could have,Implement tagging support for Memcache backend,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,Cache,"",2008-06-10,2008-06-11,0.00,100,2008-06-10 11:36,"","",1785650,"","","The caching framework allows for tagging of cache entries. This feature has not yet been implemented for the Memcache backend (but exists for the File backend).
+
+Refer to the File backend's unit tests for how this needs to be implemented."
+842,TYPO3.Flow,Bug,"",Closed,Could have, Some test fail on Windows,Christoph Blömer,Robert Lemke,2010-10-20 05:39,"","",2008-06-21,"",0.00,100,2008-06-21 07:08,"","",1785600,"","","I think these tests only fail on windows.
+
+F3_FLOW3_Package_ManagerTest:
+Failure in getPackageClassesPathReturnsClassesPathOfTestPackage Detail
+D:\xampp\htdocs\demo\Packages\PHPUnit\Resources\PHP\PHPUnit\Framework\Assert.php:1524
+getPackageClassesPath() did not return the correct path for package ""TestPackage"". Failed asserting that <string:D:/xampp/htdocs/demo/Packages\TestPackage/Classes/> is equal to <string:D:/xampp/htdocs/demo/Packages/TestPackage/Classes/>. getPackageClassesPath() did not return the correct path for package ""TestPackage"".
+
+F3_FLOW3_Cache_Backend_FileTest:
+Failure in getCacheDirectoryReturnsThePreviouslySetDirectory Detail
+D:\xampp\htdocs\demo\Packages\PHPUnit\Resources\PHP\PHPUnit\Framework\Assert.php:1524
+getDirectory() did not return the expected value. Failed asserting that <string:C:\Windows\temp\/> is equal to <string:C:\Windows\temp\>. getDirectory() did not return the expected value."
+857,TYPO3.Flow,Bug,"",Resolved,Could have,Date is not save correctly in logfile,Malte Jansen,Bastian Waidelich,2010-10-20 05:39,Log,"",2008-06-25,"",0.00,100,2008-06-24 18:11,"","",1785550,"","","On line 75 of http://forge.typo3.org/repositories/entry/package-log/trunk/Classes/F3_Log_SimpleFileLogger.php
+
+The dateformat '%y-%m-%d %T' must look like this '%y-%m-%d %H:%M:%S' although %T should be the same as %H:%M:%S. But windows leaves the time blank.
+
+"
+879,TYPO3.Flow,Bug,"",Closed,Could have,setValidator et al. are misleading method names,Robert Lemke,Andreas Förthner,2010-10-20 05:39,MVC,"",2008-06-26,"",0.00,0,2008-06-26 05:19,"","",1785500,"","","Method names such ""setValidator"" imply that the expected argument actually is a validator object. However in F3_FLOW3_MVC_Controller_Argument the expected argument is a class name.
+
+Either rename the method to setNewValidator or change the method signature.
+
+There are also a lot of tests missing for new methods introduced to F3_FLOW3_MVC_Controller_Argument."
+880,TYPO3.Flow,Bug,"",Resolved,Must have,F3_FLOW3_MVC_Controller_ArgumentsValidator is untested,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,1.0 alpha 1,2008-06-26,"",0.00,100,2008-06-26 05:38,"","",1794150,"","","There is no testcase yet for F3_FLOW3_MVC_Controller_ArgumentsValidator and isValidProperty() doesn't work really in a real-world application:
+
+Fatal error: Call to a member function getValue() on a non-object in /Users/Shared/Sites/dev/t3v5/dist/Packages/FLOW3/Classes/MVC/Controller/F3_FLOW3_MVC_Controller_ArgumentsValidator.php on line 116
+
+(as of r844)"
+889,TYPO3.Flow,Feature,"",Resolved,Must have,Add a callback pointcut filter,Andreas Förthner,Robert Lemke,2010-10-20 05:39,AOP,"",2008-06-27,"",0.00,100,2008-06-27 08:32,"","",1785450,"","","There should be a pointcut filter, that calls a user function if it should match on a specific pointcut."
+890,TYPO3.Flow,Feature,"",New,Should have,Add priority for advice chains,Andreas Förthner,Robert Lemke,2011-10-19 19:43,AOP,"",2008-06-27,"",0.00,0,2008-06-27 08:34,"","",1811100,"","","The order of running the advices in an advice chain, should be configurable over a priority. E.g. security advices have to be called at first."
+917,TYPO3.Flow,Bug,"",Closed,Could have,F3_FLOW3_Package_ManagerTest shows 2 errors on WAMP installation,David Bruehlmeier,"",2010-10-20 05:39,Package,"",2008-06-30,"",0.00,0,2008-06-30 02:50,"","",1785400,"","","Hi,
+
+I checked out the distribution from SVN as shown in the podcast. The default view is showing fine. When running the unit tests for the FLOW3 package, I get the following two errors:
+
+<pre>
+F3_FLOW3_Package_ManagerTest
+Failure in getPackagePathReturnsTheCorrectPathOfTheTestPackage Detail
+D:\Entwicklung\Projekte\PHP\FLOW3\Packages\PHPUnit\Resources\PHP\PHPUnit\Framework\Assert.php:1524
+getPackagePath() did not return the correct path for package ""TestPackage"". Failed asserting that <string:D:/Entwicklung/Projekte/PHP/FLOW3/Packages\TestPackage/> is equal to <string:D:/Entwicklung/Projekte/PHP/FLOW3/Packages/TestPackage/>. getPackagePath() did not return the correct path for package ""TestPackage"".
+Failure in getPackageClassesPathReturnsClassesPathOfTestPackage Detail
+D:\Entwicklung\Projekte\PHP\FLOW3\Packages\PHPUnit\Resources\PHP\PHPUnit\Framework\Assert.php:1524
+getPackageClassesPath() did not return the correct path for package ""TestPackage"". Failed asserting that <string:D:/Entwicklung/Projekte/PHP/FLOW3/Packages\TestPackage/Classes/> is equal to <string:D:/Entwicklung/Projekte/PHP/FLOW3/Packages/TestPackage/Classes/>. getPackageClassesPath() did not return the correct path for package ""TestPackage"".
+Tests: 6 total, 0 skipped, 0 incomplete, 2 failed, 0 errors
+</pre>
+
+I have attached the phpinfo() so you can have a look at my installation (basically Windows XP with Apache 2.2.6 and PHP 5.2.4)
+
+Greetings, Dave"
+918,TYPO3.Flow,Bug,"",Resolved,Could have,F3_FLOW3_Cache_Backend_FileTest shows 2 errors on WAMP installation,David Bruehlmeier,Bastian Waidelich,2010-10-20 05:39,Cache,"",2008-06-30,"",0.00,100,2008-06-30 02:53,"","",1785350,"","","Hi,
+
+I checked out the distribution from SVN as shown in the podcast. The default view is showing fine. When running the unit tests for the FLOW3 package, I get the following two errors:
+
+<pre>
+F3_FLOW3_Cache_Backend_FileTest
+Failure in setCacheDirectoryThrowsExceptionOnNonWritableDirectory Detail
+D:\Entwicklung\Projekte\PHP\FLOW3\Packages\FLOW3\Tests\Cache\Backend\F3_FLOW3_Cache_Backend_FileTest.php:81
+setCacheDirectory() to non-writable directory did not result in an exception.
+Failure in getCacheDirectoryReturnsThePreviouslySetDirectory Detail
+D:\Entwicklung\Projekte\PHP\FLOW3\Packages\PHPUnit\Resources\PHP\PHPUnit\Framework\Assert.php:1524
+getDirectory() did not return the expected value. Failed asserting that <string:C:\WINDOWS\temp\/> is equal to <string:C:\WINDOWS\temp\>. getDirectory() did not return the expected value.
+Tests: 17 total, 0 skipped, 0 incomplete, 2 failed, 0 errors
+</pre>
+
+I have attached the phpinfo() so you can have a look at my installation (basically Windows XP with Apache 2.2.6 and PHP 5.2.4)
+
+Greetings, Dave
+"
+1064,TYPO3.Flow,Bug,"",Resolved,Should have,Non-existing configuration options should throw an exception,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,Configuration,"",2008-07-15,"",0.50,100,2008-07-15 15:51,"","",1785300,"","","When accessing an option in a configuration container that has not been set (i.e. does not exist) an exception should be thrown. Currently an object is returned in all cases; if using that it may have unexpected results due to automatic typecasting in PHP (e.g. it evaluates to TRUE if used as boolean).
+
+If an exception would be thrown the typo or missing configuration would be visible immediately."
+1081,TYPO3.Flow,Bug,"",Resolved,Must have,Fatal Error on Windowsd due to not support functions (POSIX),Malte Jansen,"",2010-10-20 05:39,Utility,"",2008-07-17,"",0.00,100,2008-07-17 10:52,"","",1785250,"","","Following error occurs in the current trunk (r1024):
+
+<pre>
+Fatal error: Call to undefined function posix_getpwuid() in D:\workspace-flow3\htdocs\development\Packages\FLOW3\Classes\Utility\F3_FLOW3_Utility_Environment.php on line 283
+</pre>
+
+On php.net (http://de.php.net/manual/de/intro.posix.php) it says, that POSIX-functions are not supported on windows."
+1092,TYPO3.Flow,Bug,"",Resolved,Should have,MVC - Arguments Validation on Arrays / MVC Validation,Daniel Poetzinger,Robert Lemke,2010-10-20 05:39,"","",2008-07-20,"",0.00,100,2008-07-20 16:47,"","",1785200,"","","Currently no filter to validate an Array (e.g. a serialized form with a certain namespace)
+
+in the current concept something like register the argument in the controller like this would be good:
+
+$this->arguments->addNewArgument('searchFilter','RecursiveTextArray');
+
+or I also would like something like 
+$this->arguments->addNewArgument('searchFilter','NoValidation');
+
+also
+
+$this->arguments->addNewArgument('searchFilter',''); throws currently a unfetched fatal error.
+
+"
+1132,TYPO3.Flow,Bug,"",Resolved,Should have,F3_FLOW3_Package_ManagerTest produces two failures on WAMP installation,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,Package,"",2008-07-26,"",0.00,100,2008-07-26 06:28,"","",1785150,"","","Running the FLOW3 Testrunner for ""F3_FLOW3_Package_ManagerTest"" results in two failures:
+*getPackagePathReturnsTheCorrectPathOfTheTestPackage:*
+<pre>
+[...]\flow3\Packages\PHPUnit\Resources\PHP\PHPUnit\Framework\Assert.php:1524
+getPackagePath() did not return the correct path for package ""TestPackage"".
+Failed asserting that <string:flow3/Packages\TestPackage/> is equal to <string:[...]/flow3/Packages/TestPackage/>.
+getPackagePath() did not return the correct path for package ""TestPackage"".
+</pre>"
+1133,TYPO3.Flow,Task,"",Resolved,Should have,Create unit tests for F3_FLOW3_MVC_Web_Routing_Router,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,MVC,"",2008-07-26,"",0.00,0,2008-07-26 06:41,"","",6150,"","","Until now, only tests for routing components exist. The router itself is not properly covered by the unit tests."
+1134,TYPO3.Flow,Bug,"",Resolved,Should have,F3_FLOW3_Utility_EnvironmentTest produces an error on WAMP installations,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,Utility,"",2008-07-26,"",0.00,100,2008-07-26 06:47,"","",1785100,"","","Running the FLOW3 Testrunner for ""F3_FLOW3_Utility_EnvironmentTest"" results raises one failure:
+*getPathToTemporaryDirectoryReturnsPathWithTrailingSlash*:
+<pre>
+[...]\flow3\Packages\PHPUnit\Resources\PHP\PHPUnit\Framework\Assert.php:1524
+The temporary path did not end with slash (as in DIRECTORY_SEPARATOR). Failed asserting that <string:/> is equal to <string:\>. The temporary path did not end with slash (as in DIRECTORY_SEPARATOR).
+</pre>"
+1198,TYPO3.Flow,Bug,"",Resolved,Should have,Different return values  for findEntriesByTag in cache fiel backend and memcached backend,Ingo Renner,Karsten Dambekalns,2010-10-20 05:39,Cache,"",2008-08-01,"",0.00,100,2008-08-01 05:55,"","",1785050,"","","The cache backedns file and memcached return different values for the method findEntriesByTag.
+
+While the cache backend returns an array of identifiers, the memcached backend returns complete cache entries."
+1199,TYPO3.Flow,Feature,"",Resolved,Must have,Add a method findByTag() to F3_FLOW3_Cache_AbstractCache,Ingo Renner,Karsten Dambekalns,2010-10-20 05:39,Cache,1.0 alpha 1,2008-08-22,"",0.00,100,2008-08-01 05:57,"","",1794100,"","","Although one can store cache entries with tags, one can only load cache entries by identifier. Thus a method findByTag() would be useful."
+1200,TYPO3.Flow,Bug,"",Resolved,Must have,F3_FLOW3_Cache_Backend_File does not honor an entries lifetime,Ingo Renner,Karsten Dambekalns,2010-10-20 05:39,Cache,"",2008-08-01,"",0.00,100,2008-08-01 05:58,"","",1785000,"","",The file backend returns cache entries older than their supposed lifetime
+1209,TYPO3.Flow,Task,"",Resolved,Could have,Make @required default and add @optional instead,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Object,"","","","",100,2008-08-04 07:48,"","",6450,"","","Setter injection methods can currently be annotated with @required. It seems to be that most injected dependencies are required, so this should be the default and instead optional dependencies should be marked with @optional."
+1226,TYPO3.Flow,Feature,"",Resolved,Should have,Package manager should take additional package paths into account,Sebastian Kurfuerst,Robert Lemke,2010-10-20 05:39,Package,1.0 alpha 1,2008-08-05,"","",0,2008-08-05 09:48,"","",1794050,"","","Hey,
+
+it would be really nice if the package manager would take additional package directories into account, so the packages could be located at multiple places.
+
+Greets,
+Sebastian"
+1235,TYPO3.Flow,Feature,"",Closed,Should have,Check if mod_rewrite is enabled,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,"","",2008-08-06,"","",0,2008-08-06 05:01,"","",1784950,"","","FLOW3 should check (somehow) if mod_rewrite is enabled. Without the check the user will just get an internal server error.
+
+One way to do that is adding an IfModule section into the .htaccess and let the FLOW3 checkEnvironment() care about the details and issue an error message."
+1250,TYPO3.Flow,Feature,"",Resolved,Should have,Add support for multiple route parts in one URL pattern segment,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,MVC,"",2008-08-08,"","",100,2008-08-08 06:36,"","",1784900,"","","Currently only one route part is allowed between two slashes in a route URL pattern:
+news/[id]
+we need support for more than one dynamic route part in one segment to enable URL patterns like:
+news/[id].[@format]
+or
+user/[firstName]-[lastName]"
+1251,TYPO3.Flow,Feature,"",Resolved,Should have,Add route part handler support,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,MVC,"",2008-08-08,"","",100,2008-08-08 06:42,"","",1784850,"","","Route part handlers are classes which follow a certain interface and can resolve one ore more URL segments as well as build up URL parts from given data.
+E.g. we'll need a route part handler to resolve titles of TYPO3 pages.
+The configuration will look something like
+
+    $c->myRoute
+        ->setUrlPattern('[language]/[[page]]/[[pluginOptions]]')
+        ->setDefaults(
+            array(
+                'package' => 'TYPO3',
+                'controller' => 'Page',
+                'action' => 'default',
+                'language' => 'en'
+            )
+        )
+        ->setRoutePartHandlers(
+            array(
+                'language' => 'F3_L10N_Routing_ISOResolver',
+                'page' => 'F3_TYPO3_Routing_PageResolver',
+                'pluginOptions' => 'F3_TYPO3_Routing_PluginResolver'
+            )
+        ); "
+1253,TYPO3.Flow,Task,"",Resolved,Should have,Enable lower case URLs,Bastian Waidelich,Robert Lemke,2010-10-20 05:39,MVC,"",2008-08-08,"","",100,2008-08-08 06:48,"","",6550,"","","Currently FLOW3s routing mechanism is case sensitive. As All Packages and Controller start with an upper case letter, this leads to URLs like
+http://domain/MyPackage/MyController/Default
+which is rather confusing.
+
+Although upper case letters are supported in URLs (after the host part that is), we decided to go with lower case URLs for now as it's common practice.
+When needed we'll add some configuration option to re-enable case sensitive URLs globally or on a route(part) basis."
+1257,TYPO3.Flow,Bug,"",Resolved,Must have,The dirty monitoring aspect works only for classes actually having a constructor.,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Persistence,"",2008-08-11,"","",100,2008-08-08 14:11,"","",1784800,"","","When cerating an entity class, the registerNewObject() advice only works if the target class actually has a constructor. This is caused by the use of @afterreturning in conjunction with __construct.
+
+Two possible ways out of this:
+* use introduction if no constructor is present
+* instead of using an advice hook into the component factory - if one uses new to create an object it won't be an AOP proxy anyway and persistence fails in any case
+
+"
+1264,TYPO3.Flow,Bug,"",Resolved,Must have,"Routes with default values for ""multiple route part"" segments are not resolved correctly",Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,MVC,"",2008-08-11,"","",100,2008-08-11 14:06,"","",1784750,"","","With the new possibility to add multiple route parts in one URL pattern segment (see #1250) a new issue emerged:
+The route ""[firstName]-[lastName]/[@action]"" is not resolved correctly if defaults are set for lastName and @action and lastName is empty in request URL (e.g. ""john-/list"").
+This happens because static route part handler cuts first url segment from request path when matching the hyphen."
+1267,TYPO3.Flow,Feature,"",Resolved,Must have,Make CLI requests to controllers in subpackage possible,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,MVC,"",2008-09-23,"","",100,2008-08-12 05:17,"","",1784700,"","","While the web router allows for routing of requests to subpackages, CLI requests to controllers in subpackages are currently impossible."
+1268,TYPO3.Flow,Task,"",Resolved,Should have,"CLI options must be written as ""real"" options, being prefixed with a (double) dash",Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,MVC,"",2008-09-23,"","",100,2008-08-12 05:24,"","",6650,"","","Currently anything following the first three arguments to a CLI request is considered as options. This should be changed so that only short- or long-style options are considered, anything else should be ""input"", as with traditional CLI tools.
+
+Alternatively this could be anything after a double-dash, to make variable numbers of package/controller/action arguments possible (see #1267)."
+1278,TYPO3.Flow,Bug,"",Resolved,Must have,Router matches static route parts even on substrings,Robert Lemke,Bastian Waidelich,2010-10-20 05:39,MVC,"",2008-08-13,"","",100,2008-08-13 10:26,"","",1784650,"","","Consider these two routes:
+
+1) typo3/[@controller]
+2) typo3cr/[@controller]
+
+Currently route 1) will match this url pattern:
+
+http://myhost/typo3cr/
+
+... because the static route part does not know that the segment is longer
+than 5 characters, the ""typo3"" pattern will match. This is due to the ability
+to match patterns like ""typo3/[@controller]/[@action].[@format]""
+
+The static route part does not have the split string information and therefore
+cuts off the beginning of the url according to the length of the ""name""."
+1280,TYPO3.Flow,Task,"",Resolved,Must have,Tag all classes as @internal - except the released API,Robert Lemke,Robert Lemke,2010-10-20 05:39,- Documentation -,1.0 alpha 1,2008-08-14,2008-09-15,"",100,2008-08-14 09:09,"","",6950,"","","Starting with the first release of FLOW3 we need to communicate which APIs are safe for use in third-party packages and which ones you should better avoid. This should be done through the API documentation - all classes and methods which are documented there, may be used.
+
+In order to create that source of information we need to initially tag all classes as @internal and then remove the annotation from all classes we want to release as public API."
+1292,TYPO3.Flow,Feature,"",Resolved,Should have,Introduce @identifier annotation for objects,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Persistence,"",2008-08-25,"","",100,2008-08-18 08:50,"","",1784600,"","",With the @identifier annotation an object could mark it's internal identifier as usable towards persistence. The persistence layer would then use that when persisting the object and restore that identifier upon reconstitution of an object.
+1315,TYPO3.Flow,Bug,"",Closed,Must have,Routing: URLs with/without trailing slash change meaning of relative links,Matthias Hörmann,Bastian Waidelich,2010-10-20 05:39,MVC,1.0 alpha 1,2008-08-22,"","",0,2008-08-22 06:17,"","",1794000,"","","Both the URLs e.g. /typo3cr/setup and /typo3cr/setup/ call the same controller code.
+
+If a relative link to e.g. ""install"" is created in that code it will point to either
+""/typo3cr/install"" or ""/typo3cr/setup/install"" depending on the URL used.
+
+Suggested solution:
+
+Add the trailing slash before calling the controller code so both versions
+give the same result."
+1349,TYPO3.Flow,Bug,"",Resolved,Should have,Remove MVC\View\Template (was: Method MVC\View\Template->substitutePart is not used and empty),Sebastian Kurfuerst,Karsten Dambekalns,2010-10-20 05:39,MVC,1.0 alpha 1,2008-08-26,"","",100,2008-08-26 08:24,"","",1793950,"","","Hello,
+
+I think that the method F3_FLOW3_MVC_View_Template->substitutePart can be removed, as it looks like the following:
+
+<pre>
+	/**
+	 * Substitutes a subpart in $content with the content of $subpartContent.
+	 *
+	 * @param string Content with subpart wrapped in fx. ""###CONTENT_PART###"" inside.
+	 * @param string Marker string, eg. ""###CONTENT_PART###""
+	 * @param array
+	 * @return string Processed input content
+	 * @author Robert Lemke <robert@typo3.org>
+	 */
+	protected function substitutePart($subject, $marker, $replacement) {
+	}
+</pre>"
+1355,TYPO3.Flow,Bug,"",Resolved,Must have,initalize should be initialize,Sebastian Kurfuerst,Karsten Dambekalns,2010-10-20 05:39,MVC,"",2008-08-26,"","",100,2008-08-26 09:37,"","",1784550,"","","Hello,
+
+I just tried to work with the F3_FLOW3_MVC_Controller_ActionController and just stumbled about a really hard-to-spot naming error:
+
+in Function callActionMethod: 
+<pre>
+if ($this->initalizeView) $this->initializeView();
+</pre>
+in the if-clause, it should read $this->init*i*alizeView
+Of course, the variable name and the variable name comment needs to be changed as well.
+
+Should I just go ahead and fix this?
+
+Greets,
+Sebastian"
+1402,TYPO3.Flow,Bug,"",Resolved,Should have,Opening Public directory: PHP Error,IT Corporation,"",2010-10-20 05:39,"","",2008-08-28,"","",100,2008-08-28 09:46,"","",1784500,"","","I get this error, if i open the public dirctory in opera:
+
+Warning: require(__DIR__/../Packages/FLOW3/Classes/F3_FLOW3.php) [function.require]: failed to open stream: No such file or directory in C:\Programme\Apache Software Foundation\Apache2.2\htdocs\aa\2\trunk\Public\index.php on line 27
+
+Fatal error: require() [function.require]: Failed opening required '__DIR__/../Packages/FLOW3/Classes/F3_FLOW3.php' (include_path='.;C:\php5\pear') in C:\Programme\Apache Software Foundation\Apache2.2\htdocs\aa\2\trunk\Public\index.php on line 27
+
+PHP Version: 5.2.5 (need i version 5.2.6)
+MysqlVersion: 5.0.0
+Apache 2
+"
+1454,TYPO3.Flow,Task,"",Resolved,Should have,Integrate Log Package into FLOW3,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,Log,"",2008-09-02,"","",100,2008-09-02 06:32,"","",8050,"","","Currently Logging resides in its own package ""Log"".
+A basic logging mechanism should be integrated into the FLOW3 package (and possibly extended by packages)."
+1456,TYPO3.Flow,Bug,"",Resolved,Should have,Empty array causes PDO exception if not documented as @reference,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,Persistence,"",2008-09-02,"","",100,2008-09-02 11:59,"","",1784450,"","","Consider this model:
+
+<pre>
+/**
+ *@entity
+ */
+class {
+   /**
+    * @var array
+    */
+   protected $subObjects = array();
+
+}
+</pre>
+
+This will result in a PDO exception because the type of the array items cannot be determined and no @reference annotation is given.
+
+Even if multi-value properties of different types are not allowed (yet), there should be some proper handling for these cases."
+1501,TYPO3.Flow,Feature,"",Resolved,Should have,MVC: initializeView,Daniel Poetzinger,Robert Lemke,2010-10-20 05:39,MVC,1.0 alpha 1,2008-09-12,"",1.00,100,2008-09-12 04:08,"","",1793900,"","","Just an idea:
+
+I would like to split the current initializeView into two methods:
+
+detectViewForCurrentAction()  (returns a view or emptyView)
+
+initializeView($view)  (that initialisze a view with controller context)
+
+
+That way if required you are also able to set your own view in your action like:
+
+
+myAction() {
+
+//...some logik
+$newView=...
+$this->initializeView($newView);
+
+...
+
+
+"
+1511,TYPO3.Flow,Feature,"",Resolved,Must have,"Create a ""Not Found"" Controller",Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,"",2008-09-14,"","",100,2008-09-14 13:24,"","",1784400,"","","Currently a ""No such controller"" exception is thrown if a matching controller is not found. This exception should either be catched or removed and transformed into a redirection to a 404 Not Found controller.
+
+There should be a default 404 controller and the ability to easily define a custom view or whole controller."
+1513,TYPO3.Flow,Feature,"",Resolved,Should have,Add magic call method to the Empty View,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,"",2008-09-15,"","",100,2008-09-15 04:22,"","",1784350,"","","The Empty View is meant as a Special Case for situations in which no matching view could be resolved. However, most views come with their own specific methods (such as setters for models etc.) which then result in a fatal error because the Empty View doesn't have these methods.
+
+A magic __call() method should solve this issue."
+1514,TYPO3.Flow,Feature,"",Resolved,Could have,Add Event-Dispatcher,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,SignalSlot,"",2008-09-15,"","",100,2008-09-15 06:04,"","",1784300,"","",Implement Event-Dispatcher pattern in order to get some kind of hook-mechanism into FLOW3.
+1518,TYPO3.Flow,Bug,"",Closed,Must have,"FLOW3 crashes during the init, due to namespace",Malte Jansen,"",2010-10-20 05:39,"","",2008-09-15,"","",100,2008-09-15 09:21,"","",1784250,"","","Hi!
+I just made a synchronization and now get following error:
+
+<pre>
+Fatal error: Class 'F3_FLOW3_Error_DebugExceptionHandler' not found in ...\Packages\FLOW3\Classes\F3_FLOW3.php on line 244
+</pre>
+
+
+
+F3_FLOW3.php (r1210)
+<pre>
+242: $errorHandler = new F3::FLOW3::Error::ErrorHandler();
+243: $errorHandler->setExceptionalErrors($this->settings->errorHandler->exceptionalErrors);
+244: new $this->settings->exceptionHandler->className;
+</pre>
+
+So, it's seems to me, that in className the old style of a class Name is used.
+
+System: WindowsXP, Xampp with PHP5.3, mbstring,...
+"
+1523,TYPO3.Flow,Task,"",Resolved,Should have,Rename Reflection classes,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,Reflection,"",2008-09-16,"","",100,2008-09-16 04:21,"","",8450,"","","After the introduction of namespaces, the *_Reflection_Class has been renamed to *::ReflectionClass. Some other classes need to be renamed as well and these classes should be named SomethingReflection rather than ReflectionSomething:
+
+F3::FLOW3::Reflection::ReflectionClass -> F3::FLOW3::Reflection::ClassReflection
+F3::FLOW3::Reflection::Method -> F3::FLOW3::Reflection::MethodReflection
+F3::FLOW3::Reflection::Property -> F3::FLOW3::Reflection::PropertyReflection
+F3::FLOW3::Reflection::ReflectionClassFactory -> (removed)
+
+
+"
+1528,TYPO3.Flow,Feature,"",Resolved,Must have,Add new pointcut designator for checks against configuration,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,AOP,1.0 alpha 1,2008-09-16,"","",100,2008-09-16 11:27,"","",1793850,"","",To allow activation/deactivation of advice it would be nice to have a new pointcut designator that checks against the given configuration path and returns a boolean depending on the configuration value found.
+1543,TYPO3.Flow,Feature,"",Resolved,Must have,Support 1-1 object references,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,Persistence,"",2008-09-17,"","",100,2008-09-17 11:12,"","",1784200,"","","/**
+ *@entity
+ */
+class Site {
+
+	/**
+	 * @var F3::TYPO3::Domain::StructureNode
+	 * @reference
+	 */
+	protected $rootNode;
+
+}
+
+Results in:
+
+#1: Catchable Fatal Error: Argument 1 passed to F3::FLOW3::Persistence::Manager::traverseAndInspectReferenceObjects() must be an array, object given, called in /Users/Shared/Sites/dev/t3v5/dist/Packages/FLOW3/Classes/Persistence/F3_FLOW3_Persistence_Manager.php on line 202 and defined in /Users/Shared/Sites/dev/t3v5/dist/Packages/FLOW3/Classes/Persistence/F3_FLOW3_Persistence_Manager.php line 186
+"
+1634,TYPO3.Flow,Feature,"",Resolved,Should have,Allow omitting the @reference annotation for object properties,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,Persistence,"",2008-10-02,"","",100,2008-10-02 07:10,"","",1784150,"","","Currently all properties of type object which are supposed to be persisted need to be annotated as a reference:
+
+<pre>
+	/**
+	 * Content attached to this structure node
+	 *
+	 * @var F3::TYPO3::Domain::Model::ContentInterface
+	 * @reference
+	 */
+	protected $content;
+</pre>
+
+I'd say that this is counter-intuitive for most developers. Ideally the persistence framework would recognize object properties and assume that they are references:
+
+<pre>
+	/**
+	 * Content attached to this structure node
+	 *
+	 * @var F3::TYPO3::Domain::Model::ContentInterface
+	 */
+	protected $content;
+</pre>
+
+If the object should not be persisted, @transient is used (as usual).
+
+"
+1635,TYPO3.Flow,Bug,"",Resolved,Must have,Routing: Routes should ignore query parameters if not configured,Karsten Dambekalns,Bastian Waidelich,2010-10-20 05:39,MVC,1.0 alpha 1,2008-10-02,"","",100,2008-10-02 10:28,"","",1793800,"","","Currently a route behaves weird if a query is given but not configured. Consider this example:
+
+<pre>
+$c->TYPO3Route_ServiceWithControllerAndFormat
+	->setUrlPattern('typo3/service/v1/[@controller].[@format]')
+	->setControllerComponentNamePattern('F3::@package::Service::Controller::@controllerController')
+	->setViewComponentNamePattern('F3::@package::Service::View::@controller::@action@format')
+	->setDefaults(
+		array(
+			'@package' => 'TYPO3',
+		)
+	);
+</pre>
+
+Now calling the URLs as following results in...
+
+http://site/typo3/service/v1/sites.json
+ => correct output
+http://site/typo3/service/v1/sites.json?something
+ => An invalid request format (json?something) was given.
+
+Not good. Trying to add ? to the end:
+<pre>
+$c->TYPO3Route_ServiceWithControllerAndFormat
+	->setUrlPattern('typo3/service/v1/[@controller].[@format]?')
+</pre>
+
+Still the same results.
+
+Workaround: add ""?[@dummy]"" to the pattern, and it works.
+<pre>
+$c->TYPO3Route_ServiceWithControllerAndFormat
+	->setUrlPattern('typo3/service/v1/[@controller].[@format]?[@dummy]')
+</pre>
+
+Expected solution:
+* ignore a query if not needed
+
+"
+1644,TYPO3.Flow,Bug,"",Resolved,Must have,Redirects after StopAction exceptions not carried out correctly,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,MVC,"",2008-10-03,2008-10-03,"",100,2008-10-03 10:29,"","",1784100,"","","When calling the backend of the TYPO3 package without a valid login one would get the backend HTML delivered - and after that would be the redirect HTML produced by getPreparedController() in case authentication is required. The request inside that method itself was correct, including 302 status code and location header. But, since the StopAction exception was ignored, the dispatcher got the LoginController next and continued processing the reuqest, overriding the ""failure"", and bang - here you are."
+1663,TYPO3.Flow,Feature,"",Resolved,Should have,Make session save path configurable for PHP session backend,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Session,1.0 alpha 5,2008-10-08,"","",100,2008-10-08 06:02,"","",1798100,"","",The path should point to our temporary path by default. This is to avoid bugs like the one described in http://lists.netfielders.de/pipermail/typo3-project-5_0-general/2008-October/001180.html
+1676,TYPO3.Flow,Feature,"",Resolved,Could have,"FLOW3, Persistence: support for ""magic finder methods""",Bastian Waidelich,"",2010-10-20 05:39,"","",2008-10-11,"","",100,2008-10-11 05:02,"","",1784050,"","","it would be great, if the base repository would offer interceptor methods returning a subset of stored objects based on properties.
+This could look something like:
+
+<pre>
+$customerRepository->findByName('Skårhøj');
+</pre>
+
+returning an array of customer objects with the property ""name"" of ""Skårhøj"". And:
+<pre>
+$customerRepository->findOneByName('Skårhøj');
+</pre>
+
+to return the first matching object. And maybe something like:
+
+<pre>
+$customerRepository->find($id);
+</pre>
+
+to return a single object with a matching identifier property.
+
+
+"
+1677,TYPO3.Flow,Feature,"",Resolved,Could have,Query: add convenience method returning the first object of a result set,Bastian Waidelich,Karsten Dambekalns,2010-10-20 05:39,Persistence,"",2008-10-11,"","",100,2008-10-11 05:09,"","",1784000,"","","To retrieve one single object from a repository, one has to do something like this currently:
+
+<pre>
+$objects = $query->execute();
+if (count($objects) < 1) {
+  return NULL;
+}
+return $objects[0];
+</pre>
+
+Something like a ""fetchOne()""-method in F3::TYPO3CR::Query::Query would be helpful:
+
+<pre>
+$query->execute()->fetchOne();
+</pre>
+
+or probably more like that
+
+<pre>
+$query->fetchOne();
+</pre>
+
+this could also set the limit to 1 to improve performance."
+1724,TYPO3.Flow,Bug,"",Resolved,Must have,Unserialzing of persisted objects will call the __wakeup function,Christian Jul Jensen,Karsten Dambekalns,2010-10-20 05:39,Persistence,"",2008-10-15,"","",100,2008-10-15 12:52,"","",1783950,"","","If a user for some reason wants to serializa an object that has been persisted, it will call the persistence frameworks __wakeup function upon unserializing, which will expect stuff to be available in $GLOBALS and then fail.
+
+I didn't test it, just came across looking into the persistence code."
+1727,TYPO3.Flow,Bug,"",Resolved,Should have,Unable to install FLOW3/TYPO3v5 (Uncaught FLOW3 Exception),Peter Beernink,Karsten Dambekalns,2010-10-20 05:39,Configuration,"",2008-10-16,"","",100,2008-10-16 02:58,"","",1783900,"","","After checking out FLOW3 (r1360) or TYPO3v5 (r838) from the SVN repository, I get an uncaught FLOW3 Exception (The controller component ""f3::flow3::controller::defaultcontroller"" does not exist.) when I run the install.sh
+
+I've also tried to access the installation without running the installer but than I get a F3::TYPO3CR::StorageException.
+
+I'm running these tests on a debian 4.0 machine, with php5.3a1 compiled on it.
+I've attached my install.conf and the output of my install.sh session.
+
+If you need any additional information, I'm happy to provide it."
+1785,TYPO3.Flow,Feature,"",New,Must have,Automatic garbage collection for expired cache entries,Robert Lemke,"",2011-10-19 19:43,Cache,"",2008-10-22,"","",0,2008-10-22 17:02,"","",1783850,"","",Expired cache entries - even those of caches which are not registered (anymore) - should be cleaned up from time to time by a garbage collection.
+1786,TYPO3.Flow,Feature,"",Closed,Must have,findByTag support for the cache frontend,Robert Lemke,Karsten Dambekalns,2010-10-20 05:39,Cache,"",2008-10-22,"","",0,2008-10-22 17:04,"","",1783800,"","",Cache entries need to be found by tag through the cache frontend. That method is still missing ...
+1787,TYPO3.Flow,Feature,"",Resolved,Must have,Improved cache registration,Robert Lemke,"",2010-10-20 05:39,Cache,1.0 alpha 1,2008-10-22,"","",100,2008-10-22 17:06,"","",1793750,"","",Currently there is no fixed time during the app flow when a cache needs to be registered. That might / will raise problems with garbage collection etc. and therefore needs to be improved (eg. register caches by configuration and not through php code)
+1789,TYPO3.Flow,Feature,"",Resolved,Must have,Routing: Implement automatic UUID to object conversion,Bastian Waidelich,Robert Lemke,2010-10-20 05:39,MVC,1.0 alpha 1,2008-10-23,"","",100,2008-10-23 04:38,"","",1793700,"","","Fluid already converts objects used as arguments for URIs (in forms and action links) to uuids and if no custom route is specified, the router adds them as regular GET parameters:
+
+http://myhost/foo/bar?baz=297f1954-3904-4824-94c9-3b66d46f2e74
+
+In the example above ""baz"" is an controller argument of some object type which has been converted to its uuid by Fluid. What we need now is the counterpart which transparently converts the uuid into an object."
+1790,TYPO3.Flow,Feature,"",Resolved,Must have,Routing: optional RouteParts,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,MVC,1.0 alpha 1,2008-10-23,"","",100,2008-10-23 04:40,"","",1793650,"","","We were thinking about a possibility to mark parts of the uriPattern optional. This could look something like:
+
+<pre>
+$c->TYPO3Route_ServiceWithControllerAndFormat
+    ->setUrlPattern('typo3/service/v1/[@controller].[@format](?orderby=[orderby])')
+    ->setControllerComponentNamePattern('F3::@package::Service::Controller::@controllerController')
+    ->setViewComponentNamePattern('F3::@package::Service::View::@controller::@action@format')
+    ->setDefaults(
+        array(
+            '@package' => 'TYPO3',
+            'orderby' => 'id'
+        )
+    );
+</pre>
+
+the query part would be optional in this example. This would help to drastically reduce the amount of routes. You could do something like this too:
+<pre>
+$c->myRoute
+    ->setUrlPattern('typo3/service/v1/[@controller](.[@format])')
+    ...
+</pre>
+to mark the format suffix optional.
+
+We'll have to resolve some logical challenges though.
+E.g. we'll have to dissallow routes like this one:
+
+<pre>
+$c->impossibleRoute
+    ->setUrlPattern('static/[dynamic1](optional)[dynamic2]')
+    ...
+</pre>
+
+because the routing mechanismn could not tell where [dynamic1] ends."
+1791,TYPO3.Flow,Feature,"",Resolved,Must have,Routing: Implement Caching,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,MVC,1.0 alpha 1,2008-10-23,"","",100,2008-10-23 04:48,"","",1793600,"","","Routes are not cached at the moment.
+Todo:
+* Whenever calling match() or resolve() the Cache must be checked for applicable entries.
+* Whenever a route matches, the current URI and it's ""matchingValues"" must be stored in the Cache.
+* Whenever a route was resolved, the current ""routeValues"" and it's ""matchingURI"" must be stored in the Cache."
+1794,TYPO3.Fluid,Task,"",Resolved,Should have,"Rename ""DynamicNode""",Bastian Waidelich,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-10-23,"","",100,2008-10-23 09:39,"","",9400,"","","Right now we have four kinds of ""nodes"":
+* ObjectAccessorNode
+* TextNode
+* RootNode
+* DynamicNode
+
+(There will be another node for array arguments).
+
+""DynamicNode"" isn't an appropriate name, as all nodes are kind of dynamic (except for the TextNode).
+
+Todo: find a better name ;)"
+1795,TYPO3.Fluid,Task,"",Resolved,Should have,Restructure Node Architecture,Bastian Waidelich,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-10-23,"","",0,2008-10-23 09:53,"","",9450,"","","Currently we have:
+* AbstractNode [implements NodeInterface]
+* * ObjectAccessorNode
+* * TextNode
+* * DynamicNode
+* * RootNode
+
+NodeInterface contains four methods renderSubtree(), evaluateSubtree(), addToContext(), removeFromContext(). They are actually only supported by DynamicNode. So we rather need something like:
+
+* AbstractNode
+* * ObjectAccessorNode
+* * TextNode
+* * DynamicNode [implements TreeInterface, ContextNodeInterface]
+* * RootNode [implements TreeInterface]
+
+(""TreeInterface"" and ""ContextNodeInterface"" are no adequate names at all, I just can't think of better ones at the moment).
+
+
+"
+1796,TYPO3.Fluid,Task,"",Resolved,Should have,ubiquitous naming,Bastian Waidelich,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-10-23,"","",100,2008-10-23 09:58,"","",9500,"","","To avoid introducing a lot of new designators and methods we should unify the naming.
+That is (for example):
+* renderSubtree() -> renderChildNodes()
+* evaluateSubtree() -> evaluateChildNodes()
+* $subnodes -> $childNodes
+* addSubNode() -> addChildNode()"
+1822,TYPO3.Flow,Task,"",Closed,Could have,"Tag SVN before major changes and ""stable"" versions",Daniel Poetzinger,"",2010-10-20 05:39,"","",2008-10-25,"",0.50,0,2008-10-24 18:23,"","",9650,"","","Just a hint or comment:
+
+Would be cool to have sme tags for a working vrsion of the FLOW3 Distribution folder and/or also before major refactorings?
+
+e.g. 
+svn co -r 1206 https://svn.typo3.org/FLOW3/Distribution/trunk/
+
+should imho be the last version before namespaces."
+1843,TYPO3.Flow,Task,"",Resolved,Must have,Check file cache backend,Karsten Dambekalns,"",2010-10-20 05:39,Cache,1.0 alpha 1,2008-10-27,"","",100,2008-10-27 12:56,"","",9800,"","",Make sure it does all it needs to do and does it well.
+1844,TYPO3.Flow,Task,"",Resolved,Must have,Check memcached cache backend,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Cache,1.0 alpha 1,2008-10-27,"","",100,2008-10-27 12:58,"","",9850,"","",Make sure it does all it needs to do and does it well.
+1846,TYPO3.Flow,Task,"",Resolved,Must have,Rename getComponent() to create() in component factory,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,Object,1.0 alpha 1,2008-10-27,"","",100,2008-10-27 13:01,"","",9900,"","",.
+1847,TYPO3.Flow,Feature,"",Resolved,Must have,ComponentFactory->create() throws an exception on trying to create a component of singleton scope,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,Object,1.0 alpha 1,2008-10-27,"","",100,2008-10-27 13:03,"","",1793550,"","",.
+1848,TYPO3.Flow,Feature,"",Closed,Must have,ComponentManager->getComponent() throws an exception on trying to retrieve a component of prototype scope,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,Object,1.0 alpha 1,2008-10-27,"","",0,2008-10-27 13:03,"","",1793500,"","",.
+1849,TYPO3.Flow,Feature,"",Resolved,Must have,Inject dependencies after object reconstitution,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Object,1.0 alpha 1,2008-10-27,"","",100,2008-10-27 13:07,"","",1793450,"","",.
+1852,TYPO3.Flow,Feature,"",Resolved,Must have,Add YAML configuration source,Karsten Dambekalns,Robert Lemke,2010-10-20 05:39,Configuration,1.0 alpha 1,2008-10-27,"","",100,2008-10-27 13:10,"","",1793400,"","",.
+1856,TYPO3.Flow,Feature,"",New,Should have,The Package Manager checks dependencies between packages on each activation / deactivation,Karsten Dambekalns,Christopher Hlubek,2010-10-20 05:39,Package,"",2008-10-27,"","",0,2008-10-27 13:20,"","",1783750,"","",.
+1882,TYPO3.Flow,Feature,"",Resolved,Must have,Objects can be deleted,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,Persistence,1.0 alpha 1,2008-10-27,"","",100,2008-10-27 13:53,"","",1793350,"","",.
+1884,TYPO3.Flow,Feature,"",Resolved,Should have,Add more query options,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:40,Persistence,1.0 alpha 8,2008-10-27,"","",100,2008-10-27 13:56,"","",1803550,"","","-Querying is very basic right now.-
+
+When doing a query against object properties the following should work:
+* equality
+** -checking against an object should work-
+** checking against a value contained in an array/SplObjectStorage should work
+* -lessThan, greaterThan, lessThanOrEqual, greaterThanOrEqual-
+* -like-
+* something along the lines of IN(...)
+"
+1891,TYPO3.Flow,Task,"",Resolved,Must have,Adjust license to LGPL,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:39,"",1.0 alpha 1,2008-10-28,"","",100,2008-10-28 08:03,"","",10100,"","",.
+1907,TYPO3.Fluid,Feature,"",New,Could have,Default values for view helpers based on context,Sebastian Kurfuerst,"",2014-03-10 12:53,Core,"",2008-10-29,"","",0,2008-10-29 11:34,"","",2602550,"","","We should supply a mechanism in the ""ViewHelperNode"" which will merge the given parameters with certain default parameters.
+
+The default parameters should be context dependent (However, we don't know yet how this might look like).
+
+This would be helpful for numerous cases:
+
+* <f3:uri.linkTo> -> ""action"", ""controller"", and ""package"" arguments could be supplied if no other parameter given
+* Link parameters - we could realize something like ""keepPIVars"" with this feature
+* <f3:image> tag - supplying default parameters for maxWidth, maxHeight, ..."
+1927,TYPO3.Fluid,Bug,"",Resolved,Should have,Rename context to VariableContainer,Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-10-31,"","",0,2008-10-31 08:32,"","",2602500,"","","We just decided, that we should rename the ""Context"" to ""VariableContainer"", as this is more appropriate on what it does.
+
+""Context"" might be used differently - let's see."
+1928,TYPO3.Fluid,Bug,"",Rejected,Should have,Fail silently in production mode,Sebastian Kurfuerst,"",2011-05-05 12:27,"","",2008-10-31,"","",0,2008-10-31 08:33,"","",2602450,"","",All runtime exceptions should be caught in production mode and outputted somewhere else.
+1929,TYPO3.Fluid,Bug,"",Resolved,Must have,HTMLSPECIALCHAR OUTPUT,Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"",1.0.0 alpha 1,2008-10-31,"","",100,2008-10-31 08:35,"","",2603150,"","","HTMLSpecialChar has to be switched on somewhere (where?), and then each view helper will automatically htmlspecialchar the output coming from ObjectAccessors. (""render""-method in ObjectAccessor)"
+1930,TYPO3.Fluid,Bug,"",Resolved,Should have,Use class-based view helpers,Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-10-31,"","",100,2008-10-31 08:35,"","",2602400,"","","after some really long long discussions with bastian, we decided that view helpers should be class-based. Finally ;-)"
+1947,TYPO3.Flow,Feature,"",Resolved,Could have,Implement session scope for object manager,Karsten Dambekalns,Andreas Förthner,2010-10-20 05:39,Object,1.0 alpha 3,"","","",0,2008-11-04 07:26,"","",1796350,"","",We need to implement @@scope session@
+1948,TYPO3.Flow,Bug,"",Resolved,Must have,Fatal error when tokens are retrieved from session,Karsten Dambekalns,Andreas Förthner,2010-10-20 05:39,Security,1.0 alpha 1,2008-11-04,"","",100,2008-11-04 07:27,"","",1793300,"","","As soon as a session is present FLOW3 is unable to start up because of
+@Fatal error: Call to a member function getPOSTArguments() on a non-object in .../F3_FLOW3_Security_Authentication_Token_UsernamePassword.php on line 145@
+
+This is caused by the token trying to use @$this->environment@ after being fetched from a PHP session in ContextHolderSession. This must be fixed ASAP, e.g. by making sure the inject* methods are called after the context holding the tokens is woken up.
+
+In a later stage this should be using session scope with the component manager (see #1947)."
+1985,TYPO3.Fluid,Feature,"",Resolved,Should have,"Rename core classes to ""Core""",Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-11-07,"","",100,2008-11-07 16:41,"","",2602350,"","",Rename standard classes to core package
+1986,TYPO3.Fluid,Bug,"",Resolved,Should have,changes in TemplateView,Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-11-07,"","",100,2008-11-07 16:45,"","",2602300,"","",rename templatePath to templatePattern inside templateview
+1987,TYPO3.Fluid,Feature,"",Resolved,Should have,TemplateView,Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-11-07,"","",100,2008-11-07 16:47,"","",2602250,"","","TemplateView should add ""view"" (itself) to context"
+1988,TYPO3.Fluid,Feature,"",Resolved,Should have,create multiple facets(=Interfaces) for ViewHelpers,Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-11-07,"","",100,2008-11-07 16:48,"","",2602200,"","","- ""onParse"" facet
+- ""useChildNodes"" facet"
+1991,TYPO3.Flow,Feature,"",Resolved,Should have,AbstractView should have access to request in initialaizeView(),Sebastian Kurfuerst,"",2010-10-20 05:39,MVC,1.0 alpha 1,2008-11-08,"","",0,2008-11-08 04:24,"","",1793250,"","","Hello,
+
+I think it would make sense if the AbstractView had access to the $this->request in the $this->initializeView method available, as many initializations might need the current controller, ... to resolve a template path, for example.
+
+Greets,
+Sebastian"
+1992,TYPO3.Fluid,Bug,"",Resolved,Should have,test scope prototype,Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-11-08,"","",100,2008-11-08 04:34,"","",2602150,"","",in viewhelpernode
+2109,TYPO3.Flow,Feature,"",Resolved,Should have,Support constructor / factory arguments in Objects injection configuration,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,1.0 alpha 1,2008-11-10,"","",100,2008-11-10 11:48,"","",1793200,"","","Currently it is not possible to pass (constructor) arguments or properties (for setter injection) to the object which is supposed to be injected into another object. In order to support this, the configuration syntax for the Objects.* file needs to be enhanced (and while we're at it, cleaned up a bit).
+
+As soon as the object framework supports custom factories, the syntax needs to reflect that, too.
+
+Example:
+
+<pre>
+F3\Test\Controller\DefaultController:
+??properties:
+????cache:?
+??????object:
+????????factoryClassName:?F3\FLOW3\Cache\Factory
+????????arguments:
+??????????1:?value:?MyCache
+??????????2:?value:?F3\FLOW3\Cache\VariableCache
+??????????3:?value:?F3\FLOW3\Cache\Backend\File
+??????????4:?value:?{cacheDirectory:?/tmp}
+</pre>"
+2110,TYPO3.Flow,Feature,"",Resolved,Should have,Add support for custom factories,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,1.0 alpha 1,2008-11-10,"","",100,2008-11-10 11:58,"","",1793150,"","","The Object Framework should support custom factories which are used whenever a object of a certain type needs to be instantiated.
+
+Such a factory could be defined / configured in the Objects configuration like this:
+
+<pre>
+F3\FLOW3\Cache\CacheInterface
+??factoryClassName:?F3\FLOW3\Cache\Factory
+</pre>
+
+Now whenever a ""CacheInterface"" object type needs to be intantiated, the Cache Factory's create() method will be called. Of course the arguments for the create() method still have to be defined:
+
+<pre>
+$myCache = $this->objectFactory->create('F3\FLOW3\Cache\CacheInterface', 'cacheId', 'F3\FLOW3\Cache\VariableCache', 'F3\FLOW3\Cache\Backend\File');
+</pre>
+"
+2115,TYPO3.Flow,Bug,"",Resolved,Must have,Base href is not correct when calling index_dev.php,Christoph Blömer,Karsten Dambekalns,2010-10-20 05:39,Resource,"",2008-11-11,"","",100,2008-11-11 01:34,"","",1783700,"","","The base href looks like:
+
+Resources/Web/FLOW3/Public/MVC/http://192.168.149.129/
+
+But it should be:
+
+http://192.168.149.129/"
+2117,TYPO3.Flow,Task,"",Resolved,Should have,Clean up bootstrap,Robert Lemke,Robert Lemke,2011-08-04 02:57,Core,"",2008-11-11,"","",100,2008-11-11 03:52,"","",10450,"","","The subpackages of FLOW3 are initialized in the bootstrap. Currently this whole process is hardcoded in the FLOW3 class which makes it impossible to deactivate certain subpackages if (not) needed. The range and order of subpackages should be configurable in the FLOW3.php configuration file
+
+"
+2118,TYPO3.Flow,Task,"",Resolved,Must have,Decouple MVC and Security,Robert Lemke,Robert Lemke,2010-10-20 05:39,MVC,1.0 alpha 1,2008-11-11,"","",100,2008-11-11 03:53,"","",10500,"","","Remove dependencies between MVC and Security Framework (in Dispatcher)
+
+"
+2119,TYPO3.Flow,Task,"",Resolved,Must have,"Rename ""component"" to ""object""",Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,1.0 alpha 1,2008-11-11,"","",100,2008-11-11 04:46,"","",10550,"","","Although the whole concept of componentry still applies to FLOW3, the name ""component manager"" etc. is rather confusing, especially for developers new to FLOW3. Because technically the component manager and the factory are managing and creating just plain objects, it makes sense to rename them to object manager and object factory.
+
+Certain classes and methods will have to be renamed in a special way (ComponentObjectBuilder > ObjectBuilder) but apart of that, a well-thought global search and replace will do."
+2123,TYPO3.Flow,Task,"",Resolved,Should have,Refactor (Object) Framework unit tests,Robert Lemke,Robert Lemke,2010-10-20 05:40,Object,1.0 alpha 8,2008-11-11,"","",100,2008-11-11 08:04,"","",10600,"","","Currently most of the Object Framework's tests are rather functional tests than unit tests. Even worse, most of them depend on a real package, the ""TestPackage"".
+
+The tests should be refactored so they
+* are true unit tests
+* don't depend on another package but come with their own fixtures
+
+Additionally get rid of using the object manager and/or factory of the ""outer"" FLOW3, making it possible to run the tests completely without needing a FLOW3 instance."
+2126,TYPO3.Flow,Task,"",Resolved,Must have,Implement sub routes support (routes should be configured globally in one place),Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,Configuration,1.0 alpha 1,2008-11-11,"","",100,2008-11-11 09:41,"","",10650,"","","Routes should be configured globally at one place to avoid complexity and make it possible to disable/change existing routes in new distributions.
+Currently every package can define it's own routes which might cause an unmanageable configuration and leads to the problem that the loading order of the packages matter.
+TODO:
+* -move all existing route definitions to the global Routes.yml file-
+* -make sure, that FLOW3 ConfigurationManager only loads global Routes-
+* -allow Packages to suggest Routes or to add Sub Routes (probably not in this release)-"
+2156,TYPO3.Flow,Task,"",Resolved,Must have,Optimize autowiring in the Object Builder,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,1.0 alpha 1,2008-11-12,"","",100,2008-11-12 06:55,"","",10750,"","","The whole autowiring process (constructor arguments and setter injection) currently happens while actually creating the object (!). That means: reflection, a lot of analysis etc. on each object instantiation.
+
+Autowiring should be moved to elsewhere and made cacheable."
+2158,TYPO3.Flow,Bug,"",Resolved,Must have,flushByTag() does not check tags for validity,Robert Lemke,Robert Lemke,2010-10-20 05:39,Cache,"",2008-11-12,"","",100,2008-11-12 08:30,"","",1783650,"","",Neither the File cache backend nor the Memcached backend check if the tag passed to flushByTag() is valid.
+2209,TYPO3.Fluid,Feature,"",Resolved,Should have,"Improve ""select"" view helper",Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-11-26,"","",100,2008-11-26 09:26,"","",2602100,"","","The select view helper needs to handle domain objects as well. 
+See http://grails.org/doc/1.0.x/ref/Tags/select.html"
+2210,TYPO3.Fluid,Task,"",Resolved,Should have,eclipse integration,Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-11-26,"","",100,2008-11-26 09:28,"","",11100,"","",autocompletion for view helpers
+2228,TYPO3.Fluid,Major Feature,"",Rejected,Won't have this time,Default namespaces,Niels Fröhling,"",2010-10-20 05:44,"","",2008-11-27,"","",0,2008-11-27 05:17,"","",2602050,"","","It would very powerfull to turn on a default namespace:
+A viewhelper-method like:
+
+<f3::textarea />
+
+Could be used to implement self-correcting and output sensitive templates:
+
+{namespace f3=F3::Beer3::XHTML default}
+<textarea />
+
+Immediatly textarea becomes a method, can add default-attributes, like rows/cols and may even be used for complete transformation (into another language: XHTML -> PDF).
+
+--------------------------------------------------------
+As reminder of the ongoing discussion here a little log:
+
+Ich verstehe, dass die Logik ist, dass im Falle des XML<->BEER mixes, BEER-tags immer namespace haben? Ist das nicht zu restriktiv. Wäre es nicht besser overlayed default-namespaces zu machen? Ein Beispiel:
+
+<xform type=""text"" >
+
+Im Falle, des wenn die Applikation erkennt, dass mein Browser XForms kann, wird <xform> nicht verändert (default namespace: null). Im anderen Fall wird der default namespace auf xform::iecrap gesetzt und der Tag ist als ViewHelper in iecrap implementiert, und spuckt schön HTML3 aus.
+
+Dies impliziert natürlich sozusagen special handling für XML-basierte templates, da dieselbe Logik nicht für XYZ reicht:
+
+\{xform type,text}
+
+Nun kann man selbstverständlich nichts mit einem namespace-overlay und default-namespace anfangen. Allerdings halte ich die default-namespace Geschichte für sehr wichtig um switchende und overloaded ViewHelpers
+
+Ein weiterer Aspekt ist, dass Du vielleicht Deine ViewHelper in Klassen Kategorisieren möchtest. Sagen wir mal Du erzeugst ein XHTML+XML mit embedded SVG:
+
+{namespace xhtml=F3::Beer3::XHTML default}
+{namespace xft=F3::Beer3::XHTML::FireFox::Tools default overlay}
+<blabla XHTML-code>
+<svg>
+   {namespace sft=F3::Beer3::SVG::FireFox::Tools default}
+   <blabla SVG-code>
+</svg>
+<blabla XHTML-code>
+
+So, geht natürlich nicht anders als im Firefox. Deshalb switchend:
+
+{namespace xhtml=F3::Beer3::XHTML default}
+{namespaceswitch
+    xft=F3::Beer3::XHTML::FireFox::Tools
+    xft=F3::Beer3::XHTML::IEcrap::Tools
+default overlay}
+<blabla XHTML-code der im Falle des IE in HTML verwandelt wird>
+<svg>
+   {namespaceswitch
+       xft=F3::Beer3::SVG::FireFox::Tools 
+       xft=F3::Beer3::SVG::IEcrap::Tools 
+    default}
+   <blabla SVG-code der im Falle des IE in VML verwandelt wird>
+</svg>
+<blabla XHTML-code der im Falle des IE in HTML verwandelt wird>
+
+Das heisst ViewHelpers würden TagLibraries implementieren können.
+Und damit wäreen Beer-Templates Tranformation-Fähig. Allerdings nur für XML-dialekte. Oder für Total-Transformationen.
+
+In einfachen Worten nochmal, wenn Du default-NS hättest, und die namespace-definition weglassen könntest, könntest Du ViewHelper über HTML-Tags definieren.
+
+Evtl. sollte man ganz einfach den Switch in den ViewHelper-constructor legen, und der liefert eine null-Klasse, oder eine korrigierende Klasse.
+"
+2230,TYPO3.Fluid,Feature,"",Rejected,Should have,Overlay named and default namespaces,Niels Fröhling,"",2010-10-20 05:44,"","",2008-11-27,"","",0,2008-11-27 05:28,"","",2602000,"","","Implement overloading on namespaces:
+
+{namespace f3=F3::Beer3::HTML overlay}
+{namespace f3=F3::Beer3::XHTML1 overlay}
+{namespace f3=F3::Beer3::XHTML2 overlay}
+{namespace f3=F3::Beer3::XHTML2::XFORMS overlay}
+
+Then a tag:
+
+<f3::xform type=""text"" />
+
+is called/searched in cascade:
+
+$in = ...
+foreach (all namespaces f3::) {
+    if (viewhelper in current namespace has method xform)
+       $in = viewhelper->xform(params)
+}
+
+It's important to keep the Cascade in mind in repect to default-namespaces, as this enables almost complete OOP behaviour for ViewHelpers as Transformers:
+
+initial
+F3::Beer3::XHTML2::XFORMS->xform              $in = <xform type=""text"" />
+F3::Beer3::XHTML2->xform                      $in = <input type=""text"" style=""color: red"" />
+F3::Beer3::XHTML1->input                      $in = <input type=""text"" style=""color: red"" />
+F3::Beer3::HTML->input                        $in = <input type=""text"" color=""red"">
+"
+2237,TYPO3.Flow,Feature,"",Resolved,Must have,URLs can only be lowercase,Sebastian Kurfuerst,Karsten Dambekalns,2010-10-20 05:39,MVC,1.0 alpha 6,2008-11-27,"","",100,2008-11-27 14:23,"","",1798750,"","","Hello,
+
+I cannot use upper-cased URLs in case I want to.
+
+I just had a route configuration like:
+
+Mapping_CRUD_RenderingGroupHelpers:
+  uriPattern: '[@package]/[@controller]/[@action]/id/[id]/renderingItem/[renderingItemId]'
+  defaults:
+    @controller: Default
+    @action:     index
+    @format:     html
+
+(note the big ""I"" in renderingItem).
+
+What happens is that it lowercases the URL during link generation, then you click onto the link, and see the DefaultView of FLOW3, appearently because no route matched... :-(
+
+It'd be really nice to have uppercase URLs if you want them as well. Is there a reason this is prohibited?
+
+Greets, and thanks,
+Sebastian"
+2244,TYPO3.Flow,Bug,"",Closed,Should have,Exception is not catchable. Exception is still shown after throwStatus,Christoph Blömer,Karsten Dambekalns,2010-10-20 05:39,Error,"",2008-11-29,"","",100,2008-11-29 03:28,"","",1783600,"","","If I excecute the following code in FLOW3 a F3::PHPCR::NodeType::NoSuchNodeTypeException is thrown:
+
+@$taskManagement1 = $this->objectFactory->create('F3::TaskManagement::Domain::TaskManagement');
+$taskManagement1->setName('TheTaskManagement');
+$this->taskManagementRepository->add($taskManagement1);@
+
+Then I tried to catch the Exception which is thrown and throw a status. 
+
+@try {
+    $taskManagement1 = $this->objectFactory->create('F3::TaskManagement::Domain::TaskManagement');
+    $taskManagement1->setName('TheTaskManagement');
+    $this->taskManagementRepository->add($taskManagement1);
+} catch(F3::PHPCR::NodeType::NoSuchNodeTypeException $e) {
+    $this->throwStatus(500);
+}@
+
+Result: This does not work and no ""500 Internal Server Error"" is shown. Only the Exception itself.
+
+After that I added the throwStatus(500) outside the catch-block to check if that works.
+Result:The Status ""500 Internal Server Error"" is shown but also the exception appears.
+Is this the correct behavier, that the exception is still shown after throwing the status?
+"
+2246,TYPO3.Fluid,Bug,"",Resolved,Should have,Tag which disables parsing,Sebastian Kurfuerst,Sebastian Kurfuerst,2010-10-20 05:44,"","",2008-11-29,"","",100,2008-11-29 12:40,"","",2601950,"","","We need some tag between which every string is being taken as literal - else, we get problems because {} in JavaScript is replaced..."
+2266,TYPO3.Flow,Task,"",Resolved,Could have,Update MVCFramework.xml [has patch],Irene Höppner,Karsten Dambekalns,2010-10-20 05:39,- Documentation -,"",2008-12-03,"","",100,2008-12-03 16:49,"","",11700,"","","FLOW3:
+* Adapted the MVC-documentation to the viewObjectNamePattern and added an example of the standard resolving of the URI"
+2284,TYPO3.Flow,Feature,"",Resolved,Must have,Make Reflection caching more intelligent,Robert Lemke,Robert Lemke,2010-10-20 05:39,Reflection,1.0 alpha 1,2008-12-09,"","",100,2008-12-09 03:15,"","",1793100,"","","The Reflection Service caches all the reflection information. If a class is altered, the cache is not automatically cleared because FLOW3 just doesn't know about it - the reflection information becomes inaccurate. Furthermore it is only possible to flush the whole reflection cache and not only the information related to a specific class.
+
+We need some File Alteration Monitoring which automatically monitors all class files (in development context) and flushes the relevant parts of the reflection cache if classes are modified."
+2297,TYPO3.Flow,Feature,"",Resolved,Should have,automagic settings injection,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,1.0 alpha 1,2008-12-10,"","",100,2008-12-10 06:30,"","",1793050,"","","The object builder (setter autowiring) should have special support for injecting settings.
+
+If a method ""injectSettings"" exists, the object builder will try to retrieve settings for the package the object is in and calls the injectSettings method, passing these settings."
+2298,TYPO3.Flow,Bug,"",Resolved,Should have,wrong debug exception handler,Marcel Schlesinger,Karsten Dambekalns,2010-10-20 05:39,"","",2008-12-10,"","",100,2008-12-10 09:57,"","",1783550,"","","file: Configuration/Development/FLOW3.yaml
+
+Line 14:
+""F3::FLOW3::Error::DebugExceptionHandler"" -> ""F3\FLOW3\Error\DebugExceptionHandler""
+
+=====
+
+file: Configuration/Testing/FLOW3.yaml
+
+Line 14:
+""F3::FLOW3::Error::DebugExceptionHandler"" -> ""F3\FLOW3\Error\DebugExceptionHandler"""
+2305,TYPO3.Flow,Feature,"",Resolved,Should have,Automatic flushing of AOP Proxy Cache,Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,1.0 alpha 1,2008-12-12,"","",100,2008-12-12 10:24,"","",1793000,"","","Similar to the automatic flushing of the Reflection Cache (or parts of it) the AOP proxy classes should be rebuilt whenever a class is modified - at least in the development context. However, that's only realistic if rebuilding the cache doesn't take too long so it remains to be seen if this is realistic or not."
+2318,TYPO3.Flow,Feature,"",Resolved,Must have,Implement point cut designator methodTaggedWith(),Robert Lemke,Robert Lemke,2010-10-20 05:39,AOP,1.0 alpha 1,2008-12-15,"","",100,2008-12-15 07:03,"","",1792950,"","",Analog to classTaggedWith() we need a pointcut designator which matches methods tagged with a certain annotation.
+2342,TYPO3.Flow,Task,"",Resolved,Should have,Routing: Replace square brackets by curly brackets in dynamic Route Parts,Bastian Waidelich,Bastian Waidelich,2010-10-20 05:39,MVC,1.0 alpha 1,2008-12-19,"","",100,2008-12-19 05:01,"","",11900,"","","Currently we use square brackets to define a dynamic Route Part:
+<pre>[@package]/[@controller]/[@action]</pre>
+To become more similar to the syntax of the upcoming FLOW3 templating engine Fluid, and to be able to use square brackets in URIs (without the need of implementing an escaping syntax) we decided to change the syntax to:
+<pre>{@package}/{@controller}/{@action}</pre>
+
+Additionally, dynamic parts should be enclosed in curly brackets in name patterns too. So instead of:
+<pre>F3\@package\MVC\Controller\@controllerController</pre>
+it will be
+<pre>F3\{@package}\MVC\Controller\{@controller}Controller</pre>"
+2359,TYPO3.Fluid,Bug,"",Resolved,Could have,Update Documentation [has patch],Irene Höppner,"",2010-10-20 05:44,"","",2008-12-22,"","",0,2008-12-22 04:17,"","",2601900,"","","Fluid:
+* updated documentation to new namespace syntax
+* replaced BEER3 with Fluid in documentation"
+2365,TYPO3.Flow,Feature,"",Resolved,Should have,Support simple comparisons in Setting Pointcutfilter expression,Robert Lemke,Andreas Förthner,2010-10-20 05:39,AOP,1.0 alpha 1,2008-12-22,"","",100,2008-12-22 11:31,"","",1792900,"","","The -Configuration- Setting Pointcutfilter currently matches if the specified setting evaluates to TRUE or FALSE. A nice enhancement would be the (optional) support for specifying comparisons:
+
+<pre>
+@around method(.*->.*) && setting(MyPackage:myOption:mySubOption = foo)
+</pre>
+
+The value (""foo"") should be compared with the actual setting using PHP's == operator."
+2373,TYPO3.Flow,Bug,"",Resolved,Should have,PHP session issues fatal error if session_save_path is not writable,Christian Jul Jensen,Robert Lemke,2010-10-20 05:39,Session,1.0 alpha 1,2008-12-26,"","",100,2008-12-26 09:06,"","",1792850,"","","By default PHP uses /tmp as save-path for PHP Sessions, if this directory is not writable, PHP will die with a fatal error. FLOW3 should handle this in a more elegant by checking the writable of the save-path. Also the use of /tmp for session storage imposes a security risk on shared hosting, so we might consider making save-path configurable from within FLOW3 and not accepting and unset value (implicitly /tmp) as a valid path."
+2375,TYPO3.Flow,Bug,"",Resolved,Should have,Property Mapper: Does not call Property Editor in all cases,Sebastian Kurfuerst,Andreas Förthner,2010-10-20 05:39,"","",2008-12-27,"","",100,2008-12-27 10:39,"","",1783500,"","","When using property editors, I got:
+
+Fatal error: Call to a member function setAs() on a non-object in /.../flow3/Packages/FLOW3/Classes/Property/F3_FLOW3_Property_Mapper.php on line 426
+
+To fix this, I had to apply the attached patch."
+2384,TYPO3.Flow,Feature,"",Resolved,Should have,Support for injection of setting values,Robert Lemke,Robert Lemke,2010-10-20 05:39,Object,1.0 alpha 1,2008-12-30,"","",100,2008-12-30 09:37,"","",1792800,"","","Make it possible that, additional to straight values and objects, (the values of) settings can be injected into an object by using the ""setting"" option (like ""object"" or ""value"")"
+2386,TYPO3.Flow,Task,"",Resolved,Should have,AbstractView should be ViewInterface,Bastian Waidelich,Robert Lemke,2010-10-20 05:39,MVC,1.0 alpha 1,2008-12-30,"","",100,2008-12-30 11:34,"","",12050,"","","To reduce concrete dependencies and enforce loose coupling 
+""F3\FLOW3\MVC\View\AbstractView"" should be an interface ""F3\FLOW3\MVC\View\ViewInterface"""

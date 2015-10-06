@@ -1,0 +1,96 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+33786,TYPO3.Comments,Task,"",Resolved,Should have,Submit initial Code,Adrian Föder,Bastian Waidelich,2012-03-13 21:30,"","",2012-02-08,"","",100,2012-02-08 09:26,"","",455700,"",Submit the initial code to Gerrit
+34628,TYPO3.Comments,Task,"",Resolved,Should have,Fix/take care of license headers along all files,Adrian Föder,Adrian Föder,2012-03-14 08:42,"","",2012-03-07,"","",100,2012-03-07 04:46,"","",496950,"","Sometimes, you can read for example
+<pre>
+* This script belongs to the FLOW3 package ""Comments"".                   *
+</pre>
+
+while it should rather be ...package ""TYPO3.Comments"".
+
+So generally: it should be made sure that that header is corrected and included at all in every involved file."
+34630,TYPO3.Comments,Feature,"",Resolved,Could have,"generic ""Comments"" ViewHelper",Adrian Föder,Adrian Föder,2012-07-31 04:30,"","",2012-03-07,"","",100,2012-03-07 04:53,"","",497050,"","I'm currently writing a generic Comments ViewHelper that'll have the following signature / functionality:
+
+<pre>
+/**
+ * Returns comments for an entity as collection in order to e.g. <f:for each=""""> it
+ * 
+ * = Examples =
+ *
+ * <code title=""Inline notation, foreach usage"">
+ * <f:for each=""{c:comments(object: affectedObject)}"" as=""comment"">
+ *     <cite>{comment.author.name</cite>
+ *     <blockquote>{comment.message}</blockquote>
+ * </f:for>
+ * </code> 
+ */
+</pre>
+
+(I personally will use that as a base for converting it to JSON; but the sampled use case is very... useful, I think).
+
+I'll keep it locally and make a Gerrit once the base code is in the master branch."
+34641,TYPO3.Comments,Bug,"",Resolved,Should have,Comment's message should be > 255 chars,Adrian Föder,Adrian Föder,2012-05-04 08:30,"","",2012-03-07,"","",100,2012-03-07 08:23,"","",497600,"","Currently the property @message@ is not specially annotated and therefore limited to a max length of 255; which should, for a message, clearly be more."
+34666,TYPO3.Comments,Task,"",Accepted,Must have,Reconsider the handling of persons/parties,Adrian Föder,"",2012-03-09 08:58,"","",2012-03-08,"","",0,2012-03-08 05:44,"","",498750,"","With the current implementation, a new comment's author's given first name and email address is gathered as data for retrieving a probably already existing Person instance.
+
+If such a Person entity is used in various contexts at the platform, this might result in a security issue, because you could slip into that user's representation just with spoofing the first name and email address.
+
+So, how could this be prevented?
+
+One use case may be that the author of a comment *must always* be the authenticated user. But if that's not needed, what then? Make that behavior configurable?
+
+Please post any ideas you have."
+34763,TYPO3.Comments,Bug,"",Resolved,Must have,Occurence of proxied object,Adrian Föder,Adrian Föder,2012-10-31 04:43,"","",2012-03-12,"","",0,2012-03-12 12:47,"","",503600,"","I just had the case that I came in contact with the proxied representation of my ""parent"" entity, so it wasn't @\Acme\Blog\Domain\Model\Post@ but @TYPO3\FLOW3\Persistence\Doctrine\Proxies\AcmeBlogDomainModelPost@.
+The chain was nothing more than
+
+<pre>
+http://example.org/acme.blog/post/show?post[__identity]=abcd-12345-ehff
+</pre>
+
+controlled by 
+
+<pre>
+public function showAction(\Acme\Blog\Domain\Model\Post $post) {
+    $this->view->assign('post', $post);
+    // get_class($post) is that proxy one, also in all subsequent occurences/usages
+}
+</pre>
+
+
+Basically that lead to my CommentsViewHelper not working anymore, but I wonder if that might make trouble also in current, present implementations; in the Widget controller there is also just used @get_class($object)@.
+I just absolutely don't know in what cases a proxy occurs and in what it doesn't.
+Maybe you can say if that might be a problem."
+34765,TYPO3.Comments,Support,"",Closed,Should have,Set the default orderings from outside,Adrian Föder,"",2013-03-07 11:19,"","",2012-03-12,"","",0,2012-03-12 12:54,"","",503700,"","I need support, please :)
+
+The repository has the default orderings set in its repository class,
+
+<pre><code class=""php"">
+class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
+
+	/**
+	 * @var array
+	 */
+	protected $defaultOrderings = array('creationDate' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING); 
+...
+?>
+</code></pre>
+
+how is it possible to overwrite this from outside? Maybe it must even be substituted to a variant that allows setting this via Objects.yaml; but that I don't know surely."
+34818,TYPO3.Comments,Feature,"",New,Should have,Provide JavaScript sample for JSON usage,Adrian Föder,"",2012-03-21 09:35,"","",2012-03-14,"","",0,2012-03-14 04:02,"","",506350,"","Bastian wrote:
+> It would be cool if we added a 2nd javascript file that does not require jQuery and shows the second usage (transferring JSON).
+
+Well, basically my implementation uses MooTools, and it's very very verbose (I wrote an MVC handler around it...).
+I gladly could rewrite some working-dummy-code for MooTools; Question for that is:
+
+* What should be shown/presented?
+* And, if not MooTools, what else? Rough pure JavaScript may result in too much stuff that JS Frameworks already do intrinsically. (pro MooTools: it has a self-explanating method naming, unlike jQuery, for example :-P (SCNR :)
+"
+46111,TYPO3.Comments,Feature,"",New,Could have,Provide security skeleton,Adrian Föder,"",2013-03-07 11:28,"","",2013-03-07,"","",0,2013-03-07 11:11,"","",1056950,"","I need to allow to delete a comment by the author, hence I'd like to provide a deleteAction and an appropriate Policy.yaml snippet which is present per default and can be activated by users.
+
+Question is: should the Policy secure the Repository or the action?  Currently my Policy.yaml for it looks like this,
+
+<pre>
+resources:
+  methods:
+    TYPO3_Comments_RepositoryDeleteComment: 'method(TYPO3\Comments\Domain\Repository\CommentRepository->remove(object.author === current.securityContext.party))'
+</pre>
+
+but maybe deleteAction should be secured rather than the Repository->remove() method. What do you think?"

@@ -1,0 +1,205 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+4318,Getting Started,Bug,"",Resolved,Should have,generateController only generates one controller at a time,ziyad saeed,Karsten Dambekalns,2010-10-20 05:49,Content / Instructions,1.0.0 alpha 4,2009-08-25,"","",0,2009-08-25 12:56,"","",2765650,"","According to the Getting Started guide alpha3. it says that using the following command
+@(php Packages\Framework\FLOW3\Scripts\FLOW3.php
+Kickstart Kickstart generateController --packageKey Blog --controllerName
+Blog,Post,Comment)@ will generate the controllers for blog, post and comment.
+
+On Windows 7 with WAMP 2 and Powershell
+the command only generates controller for just one of them.
+@PS C:\wamp\www\FLOW3Tutorial> (php Packages\Framework\FLOW3\Scripts\FLOW3.php Kickstart Kickstart generateController --packageKey Blog --controllerName Blog,Post,Comment)
++ .../Packages/Application/Blog/Classes/Controller/BlogController.php
++ .../Packages/Application/Blog/Resources/Private/Templates/Blog/index.html@"
+4325,Getting Started,Bug,"",Resolved,Should have,Call to a member function findAll() on a non-object,ziyad saeed,Karsten Dambekalns,2010-10-20 05:49,Content / Instructions,1.0.0 alpha 4,2009-08-26,"","",0,2009-08-25 18:51,"","",2765600,"","Using the example given in Getting Started guide and creating a Blog model and Blog Repository and changing the Blog controller
+The line of code @$blogs = $this->blogRepository->findAll();@ in the BlogController class is the problem. $this->blogRepository isn't an object. the framework should have injected the blogRepository object, but it didn't
+
+@Call to a member function findAll() on a non-object in C:\wamp\www\FLOW3Tutorial\Packages\Application\Blog\Classes\Controller\BlogController.php on line 46@"
+4327,Getting Started,Bug,"",Resolved,Should have,"Object ""F3\Blog\Domain\Model\Blog"" is not registered",ziyad saeed,Karsten Dambekalns,2010-10-20 05:49,Content / Instructions,1.0.0 alpha 4,2009-08-26,"","",0,2009-08-25 19:08,"","",2765550,"","As per Getting Started guide the BlogController's CreateAction is giving an exception
+
+@$blog = $this->objectFactory->create('F3\Blog\Domain\Model\Blog');@
+
+The exception is _Object ""F3\Blog\Domain\Model\Blog"" is not registered_"
+4485,Getting Started,Bug,"",Resolved,Should have,Use Setx instead of Set,ziyad saeed,Karsten Dambekalns,2010-10-20 05:49,Content / Instructions,1.0.0 alpha 5,2009-09-08,"","",0,2009-09-08 06:19,"","",2765700,"","Getting Started Guide Chapter 6
+When you set the environment variable in windows using Set, the variable isn't persistent, it disappears when you close the command window or console.
+
+Use Setx instead. Its syntax is slightly different
+<pre>
+c:\> setx FLOW3_CONTEXT ""Development""
+c:\> setx FLOW3_ROOTPATH ""C:\xampp\htdocs\tutorial""
+c:\> setx FLOW3_WEBPATH ""C:\xampp\htdocs\tutorial""
+</pre>
+
+btw shouldn't the WEBPATH point to the Web folder inside the Tutorial directory"
+4713,Getting Started,Bug,"",Resolved,Must have,"""Download PDF"" link does not work",Bastian Waidelich,Karsten Dambekalns,2010-10-20 05:48,"","",2009-09-21,"","",0,2009-09-21 05:45,"","",2765500,"",The links to the PDF version of the Getting Started tutorial on http://flow3.typo3.org/documentation/tutorials/ and http://flow3.typo3.org/documentation/tutorials/getting-started/ do not work. They point to a non-existing http://flow3.typo3.org/fileadmin/Tutorials/GettingStarted.pdf
+5099,Getting Started,Bug,"",Closed,Should have,"Tutorial Bug on ""View""-Page",Nadine Schwingler,"",2010-10-20 05:48,"","",2009-10-25,"","",100,2009-10-25 10:40,"","",2765450,"","In the View Part about Templates.
+The Template for the ""master.html"" is correct. The explanation is not.
+
+In the template it says:
+@<f:base />@
+which works fine.
+The explanation following it says:
+@<base href=""http://dev.tutorial.local/""></base>@
+which causes an error in the FE"
+5661,Getting Started,Bug,"",Closed,Should have,Fatal error: F3\PHP6\Functions::getT3LibCS(),Romeo Disca,Karsten Dambekalns,2010-10-20 05:49,Content / Instructions,"",2009-12-07,"","",0,2009-12-07 14:44,"","",2765400,"","I tried to walk through the tutorial and received following error message:
+
+@/var/www/flow-tutorial$ ./flow3 kickstart package Blog@
+
+<pre>
+Fatal error: F3\PHP6\Functions::getT3LibCS(): Failed opening required '/var/www/flow-tutorial/Packages/Framework/PHP6/Classes/../Resources/PHP/class.t3lib_cs.php' (include_path='/var/www/flow-tutorial/Packages/Framework/PHPUnit/Resources/PHP:.:/usr/local/lib/php') in /var/www/flow-tutorial/Packages/Framework/PHP6/Classes/Functions.php on line 0
+</pre>
+
+<pre>
+line 183: if (!class_exists('t3lib_cs', FALSE)) {
+debug:      var_dump(is_file(__DIR__  . '/../Resources/PHP/class.t3lib_cs.php'));
+line 184:   require(__DIR__  . '/../Resources/PHP/class.t3lib_cs.php');
+line 185: }
+</pre>
+
+@var_dump@ returns false but the file is located there.
+
+i use PHP Version 5.3.1-0.dotdeb.1 with ubuntu."
+5666,Getting Started,Bug,"",Accepted,Must have,Change {f:uri.resource('Blog.css')} syntax to {f:uri.resource(path: 'Blog.css')} in Getting Started Tutorial ,Sebastian Wojtowicz,Robert Lemke,2010-10-20 05:49,Content / Instructions,1.0.0 alpha 7,2009-12-08,"","",0,2009-12-08 03:26,"","",2765900,"","In in r3354 the syntax of the ResourceViewHelper has changed. But the Getting Started Tutorial (Chapter 9) hasn't been updated yet.
+
+So in the Documentation it should be
+
+{f:uri.resource(path: 'Blog.css')} instead of {f:uri.resource('Blog.css')} and
+
+{f:uri.resource(path: 'FLOW3-Logo-11px.png')} instead of {f:uri.resource('FLOW3-Logo-11px.png')}
+
+
+See also Issue #5150"
+5690,Getting Started,Feature,"",Accepted,Should have,Getting started documentation - setting the environment variables for FCGI,Marco Weber,Robert Lemke,2010-10-20 05:49,Content / Instructions,1.0.0 alpha 7,2009-12-09,"","",0,2009-12-09 10:09,"","",2765850,"","It is very important, that people are informed in the Getting Started Doumentation, that somethimes the ""SetEnv FLOW3_CONTEXT Development"" Directive doesn't set the environment variables in PHP!
+
+In case you're using an SUEXEC/FCGI PHP Version in Apache, SUEXEC wont pass FLOW3_CONTEXT to the fcgi script...
+( Because the varible wasn't defined in ""Safe-Vars"" on SUEXEC compilation time. )
+Since providers propably won't recompile SUEXEC with FLOW3_CONTEXT defined in ""Safe-Vars"", php won't receive the value SET with SetEnv in apache...
+
+In this case i've found just 3 quick solutions to set the environment variable:
+
+*Solution 1: In the FCGI Starter Script:*
+It usually looks something like this:
+<pre>
+#!/bin/sh
+FLOW3_CONTEXT='Development'
+export FLOW3_CONTEXT
+PHPRC=""/path/to/php5/conf/directory""
+export PHPRC
+PHP_FCGI_CHILDREN=5
+export PHP_FCGI_CHILDREN
+PHP_FCGI_MAX_REQUESTS=5000
+export PHP_FCGI_MAX_REQUESTS
+exec '/path/to/php5.3/bin/php-cgi'
+</pre>
+
+*Solution 2: Creating a prepend file in your php.ini*
+Create a prepend file that looks like this:
+<pre>
+<?php
+$_SERVER['FLOW3_CONTEXT']='Development';
+?>
+</pre>
+Finally, set the ""auto_prepend_file = /path/to/your/prepend-file.php"" option in your php.ini
+
+*Solution 3: Alter the Web/index.php file*
+Add the following line to the file after the ""define"" line:
+<pre>
+$_SERVER['FLOW3_CONTEXT']='Development';
+</pre>
+
+
+There might be other ways to set the environment variable, but this should be mentioned in the documentation."
+6180,Getting Started,Bug,"",New,-- undefined --,Bugs in Getting-Started-Tutorial,Lukas Lentner,Robert Lemke,2010-10-20 05:49,"","",2010-01-22,"","",60,2010-01-22 12:48,"","",2765350,"","* im Template für das Bearbeiten von Blogs stimmt das for Attribut im Label-Tag von ""Titel"" nicht:
+<pre>
+<label for=""*name*"">Title <span class=""required"">(required)</...
+<f:form.textbox property=""title"" id=""*title*"" />
+</pre>
+
+* die adressierung der Resourcen im Layout wird mit ""path: "" gemacht:
+<pre>
+<?xml version=""1.0"" encoding=""utf-8""?>
+<!DOCTYPE html
+     PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN""
+     ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
+<html lang=""en"" xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"">
+	<head>
+		<meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />
+		<f:base />
+		<title>{blog.title}</title>
+		<link rel=""stylesheet"" href=""{*f:uri.resource('Blog.css')*}"" type=""text/css"" />
+	</head>
+	<body>
+		<div id=""header"">
+			<f:if condition=""{blog}"">
+				<f:link.action action=""index"" controller=""Post"" arguments=""{blog: blog}"">
+					<h1 class=""title"">{blog.title}</h1></f:link.action>
+				<p class=""description"">{blog.description}</p>
+			</f:if>
+		</div>
+		<div id=""maincontainer"">
+			<div id=""mainbox""><f:render section=""mainbox"" /></div>
+			<div class=""clear""></div>
+		</div>
+		<div id=""footer"">
+			<a href=""http://flow3.typo3.org"">Powered by FLOW3 
+				<img src=""{*f:uri.resource('FLOW3-Logo-11px.png')*}"" width=""11"" height=""11"" />
+			</a>
+		</div>
+	</body>
+</html>
+</pre>
+
+* Hat man den NICHT-Validierungsbefehl noch nicht geschrieben (10.3. Validating Updated Arguments) gibt es keinen Formatierten Fehler UND er kommt schon beim Aufrufen des Edit-Formulars und nicht beim Abschicken!"
+6340,Getting Started,Bug,"",New,Must have,Wrong dokumentation for FLOW3.yaml setting,Simon Schaufelberger,"",2010-10-20 05:49,Content / Instructions,1.0.0 alpha 7,2010-02-04,"","",0,2010-02-04 04:38,"","",2765800,"","Here is written that you have to add the following line into FLOW3.yaml file:
+
+http://flow3.typo3.org/documentation/tutorials/getting-started/gettingstarted.configuration/
+
+utility: environment: temporaryDirectoryBase: 'C:/tmp/'
+
+in the latest version alpha 7 this file does not exist and the setting MUST be done in Settings.yaml. i created the file FLOW3.yaml and tried it with this one but that does not affect anything.
+
+Also the syntax is wrong. it should be:
+FLOW3:
+  utility: 
+    environment: 
+      temporaryDirectoryBase: 'C:/tmp/'"
+6341,Getting Started,Bug,"",New,Must have,Wrong dokumentation for FLOW3.yaml setting,Simon Schaufelberger,"",2010-10-20 05:49,"",1.0.0 alpha 7,2010-02-04,"","",0,2010-02-04 04:41,"","",2765750,"","Here is written that you have to add the following line into FLOW3.yaml file:
+
+http://flow3.typo3.org/documentation/tutorials/getting-started/gettingstarted.configuration/
+
+utility: environment: temporaryDirectoryBase: 'C:/tmp/'
+
+in the latest version alpha 7 this file does not exist and the setting MUST be done in Settings.yaml. i created the file FLOW3.yaml and tried it with this one but that does not affect anything.
+
+Also the syntax is wrong. it should be:
+FLOW3:
+  utility: 
+    environment: 
+      temporaryDirectoryBase: 'C:/tmp/'"
+6342,Getting Started,Task,"",New,Should have,Missing Dokumentation for including other Packages,Simon Schaufelberger,"",2010-10-20 05:49,Content / Instructions,1.0.0 alpha 7,2010-02-04,"","",0,2010-02-04 04:46,"","",27400,"","Please provide some dokumentation for using other Packages like ExtJS like how to include them, call them and so on"
+7289,Getting Started,Task,"",Resolved,Should have,Update Getting Started Tutorial,Irene Höppner,Karsten Dambekalns,2010-10-20 05:49,"","",2010-04-16,"",1.00,100,2010-04-15 18:43,"","",33800,"","What I did (too lazy to translate :-)):
+
+- alpha 7 -> alpha 8
+- Setup Controller, erstes Listing: Klasse und php-Tag zu gemacht
+- Chapter Controller -> 3 Create Action: Hinweis, dass in PostController
+- Chapter View -> Templates: komisches erstes Zeichen im ersten Listing weg gemacht
+- 2 Listings später: $postRepository injected + Hinweis, dass PostRepository und Partials rüber kopiert werden müssen
+- edit.html: ausgetauscht, weil's des vom blog und nich des vom post war"
+11841,Getting Started,Bug,"",New,Should have,Link to setup guide for php 5.3 broken,Zoran Zaric,"",2011-01-02 10:23,Content / Instructions,"",2011-01-02,"","",0,2011-01-02 10:23,"","",2765300,"",In the requirements chapter of the getting started guide ( http://flow3.typo3.org/documentation/tutorials/getting-started/gettingstarted.requirements/)  the link to the php 5.3 setup guide points to  http://flow3.typo3.org/documentation/reference/flow3.installingphp53/ but I think it should be http://flow3.typo3.org/documentation/manuals/flow3/flow3.installingphp53/
+12845,Getting Started,Bug,"",New,Must have,broken link in GettingStarted,Daniel Brüßler,"",2011-06-20 05:03,"","",2011-02-07,"","",0,2011-02-07 07:59,"","",1778150,"","Hi,
+
+on page http://flow3.typo3.org/documentation/tutorials/getting-started/gettingstarted.requirements/
+
+there's a link ""setup guides for the most popular platforms"" pointing to 
+http://flow3.typo3.org/documentation/reference/flow3.installingphp53/
+
+what tells, that the parent page-name ""reference"" isn't there anymore."
+12847,Getting Started,Bug,"",New,Could have,"GettingStarted package: link ""Known Issues"" has broken link",Daniel Brüßler,"",2011-06-20 05:03,"","",2011-02-07,"","",0,2011-02-07 08:43,"","",1778100,"","When the GettingStarted package 100a7 is just installed, the link ""KnownIssue"" points to http://forge.typo3.org/projects/package-flow3/issues?query_id=55 should point to
+* for alpha7 to http://forge.typo3.org/projects/package-flow3/issues?query_id=74
+* for alpha14 to http://forge.typo3.org/projects/package-flow3/issues?query_id=148
+"
+14064,Getting Started,Bug,"",New,Should have,Getting Started tutorial shouldn't use objectFactory,Jacob Floyd,"",2011-12-14 17:44,Content / Instructions,"",2011-03-26,"","",0,2011-03-26 06:06,"","",2765250,"","http://flow3.typo3.org/documentation/tutorials/getting-started/gettingstarted.controller/
+
+The setup controller uses the objectFactory is an ""undefined property"" because it was removed in alpha 8:
+http://wiki.typo3.org/FLOW3_1.0.0_alpha8
+
+Please update the code sample to reflect the change in FLOW3."
+28409,Getting Started,Task,"",Resolved,Must have,Update documentation to match the current master,Thomas Layh,Thomas Layh,2011-08-16 05:00,"","",2011-07-23,"","",100,2011-07-23 06:03,"","",193000,"",In preparation the documentation for the Getting Started tutorial has to be updated to match the current master.

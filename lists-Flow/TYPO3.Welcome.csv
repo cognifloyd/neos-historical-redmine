@@ -1,0 +1,52 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Affected Flow version,Description
+4280,TYPO3.Welcome,Bug,"",Resolved,Should have,Welcome screen should warn if context != Development,Robert Lemke,Karsten Dambekalns,2010-10-20 05:48,"",1.0.0 alpha 4,2009-08-20,"","",100,2009-08-20 05:55,"","",2739900,"","","The steps mentioned on the welcome screen only work if FLOW3 runs in Development context (because the caches are not flushed automatically in Production context).
+
+There should be a warning if FLOW3 runs in Production context."
+4489,TYPO3.Welcome,Bug,"",Resolved,Should have,FLOW3 welcome page is still wrong,ziyad saeed,Karsten Dambekalns,2010-10-20 05:48,"",1.0.0 alpha 5,2009-09-08,"","",100,2009-09-08 08:44,"","",2740000,"","","Now that alpha4 is released the welcome page for windows is still wrong.
+It says that i need to cd into C:\wamp\www\flow3\Public.
+The kickstart code it mentions need to be run inside the flow3 directory not inside the Public directory.
+There is not public directory anyway. Its renamed to Web."
+4551,TYPO3.Welcome,Bug,"",Resolved,Must have,Commandline-code for windows is not correct (has patch),Irene Höppner,Karsten Dambekalns,2010-10-20 05:48,"",1.0.0 alpha 5,2009-09-10,"","",100,2009-09-10 09:20,"","",2739950,"","",The welcome screen shows the wrong commandline commands for windows. The patch contains the correct commands.
+5618,TYPO3.Welcome,Feature,"",Resolved,Should have,Proposal for new notice design on welcome screen,Christopher Hlubek,Christopher Hlubek,2010-10-20 05:48,"",1.0.0 alpha 7,2009-12-03,"","",100,2009-12-03 17:19,"","",2740050,"","","I think the notice/warning for enabling the development context should look nicer.
+
+I can commit the finished CSS (see attached screenshot) if it's okay."
+8061,TYPO3.Welcome,Bug,"",Resolved,Should have,Wrong directory case for resources,Robert Lemke,Karsten Dambekalns,2010-11-11 17:30,"",1.0 alpha 13,2010-11-11,"",1.00,100,2010-06-04 06:24,"","",2740100,"","","The public resources of the Welcome package still use lowercase directory names.
+
+There are also some places in the templates where resources are included by hard coded paths, such as:
+
+<pre>
+<script type=""text/javascript"" src=""../../../Public/js/mootools-1.2.2-core-yc.js"">
+</pre>"
+26531,TYPO3.Welcome,Bug,"",Resolved,Should have,Welcome package has fatal errors in link generation,Christian Jul Jensen,Christian Jul Jensen,2011-05-20 14:34,"","",2011-05-01,"","",100,2011-05-01 05:11,"","",104000,"","","It seems that FLOW3 now actually checks the presence of the package/controller/actions that links are generated for.
+
+There are 2 links in the welcome package which are for non-existing combinations resulting in a fatal erros when trying to run the FLOW3 distribution for the first time."
+26532,TYPO3.Welcome,Task,"",Resolved,Should have,Text in welcome package is outdated,Christian Jul Jensen,Robert Lemke,2011-07-06 06:32,"",1.0 beta 1,2011-05-01,"","",100,2011-05-01 05:12,"","",104050,"","","The instructional text in the welcome package is no longer valid, since the commandline tool has changed format."
+28140,TYPO3.Welcome,Task,"",Resolved,Should have,Remove obsolete occurence of flow3_dev,Michael Klapper,"",2011-07-13 04:36,"","",2011-07-12,"","",100,2011-07-12 15:59,"","",179900,"","","On the welcome screen is still the obsolete call to *flow3_dev* available.
+
+"
+28883,TYPO3.Welcome,Bug,"",Resolved,Must have,Pre-Beta Documentation link is a bit faulty,Patrick ,Robert Lemke,2011-08-24 04:05,"",1.0 beta 1,2011-08-10,"","",100,2011-08-10 03:35,"","",216150,"","","I've pulled todays version from GIT and tried to hit the link 'Pre-Beta Documentation' from the Welcome page. The link directs me to a non existent URL 'http://flow3.typo3.org/fileadmin/manual/nighly/'. I think it's just a typo 'nighly'->'nightly'.
+
+"
+31284,TYPO3.Welcome,Task,"",Resolved,Should have,add notice remove routes on deactivate welcome package,Karsten Vieth,Bastian Waidelich,2011-11-16 06:36,"",1.0.1,2011-10-25,"","",100,2011-10-25 10:18,"","",333550,"","","Point 4:
+Remove the Welcome package (optional)
+./flow3 package:deactivate TYPO3.Welcome
+
+
+please add
+Remove welcome routes from Configuration/Routes.yaml
+
+"
+32005,TYPO3.Welcome,Bug,"",Resolved,Should have,Links to FLOW3 website are broken,Karsten Dambekalns,Karsten Dambekalns,2011-12-08 11:36,"",1.0.2,2011-11-22,"","",100,2011-11-22 15:43,"","",369100,"",FLOW3 1.0.1,.
+36580,TYPO3.Welcome,Bug,"",Resolved,Should have,Broken links and outdated text on Welcome screen,Karsten Dambekalns,Karsten Dambekalns,2012-04-26 20:38,"",1.0.5,2012-04-25,"","",100,2012-04-25 16:22,"","",592300,"",Git master,"The links shown in the ""warning box"" when using production contect are broken. The ""About"" text mentions the number that shall not be named and could use a brush up on the list of contributors."
+42766,TYPO3.Welcome,Task,"",Resolved,Should have,Update logo to TYPO3 Flow,Wouter Wolters,"",2012-11-07 16:36,"","",2012-11-07,"","",100,2012-11-07 13:54,"","",892550,"","",Update logo to TYPO3 Flow
+44670,TYPO3.Welcome,Bug,"",Resolved,Could have,JS in Welcome Package broken,Axel Böswetter,Karsten Dambekalns,2013-03-19 11:37,"","",2013-01-20,"","",100,2013-01-20 08:36,"","",987100,"",Flow 2.0.0 beta 1,"Hi,
+
+I've just installed the 2.0b1 in a VM and recognized that the javascript in the welcome package seems to be broken. The mootools core v1.2.2 seems to be buggy as it does not return the first h2 element via @element.getFirst()@ but the "".tab"" div itself, which results in non object error after @element.getFirst('h2)@. It also results in a broken layout, as the ""tab-*"" css classes are not correctly assigned so that the stylesheets in the Styles.css don't apply correctly.
+
+Just replace the mootools library with the latest one and everthing seems to be fine again. I used the latest @mootools-core-1.4.5-full-compat-yc.js@ from the mootools website.
+
+This is just cosmetical, I know, but normaly it's the first part of Flow every new user sees.
+
+Regards,
+Axel"
+47818,TYPO3.Welcome,Bug,"",New,Must have,Wrong link on Welcome screen,Rafael Kähm,"",2013-05-02 06:01,"","",2013-05-02,"","",0,2013-05-02 06:01,"","",1141100,"",Git master,"There are ""Known issues"" and ""Report a bug"" wrong."

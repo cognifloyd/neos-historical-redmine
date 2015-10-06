@@ -1,0 +1,18 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+33262,TYPO3.Imagine,Feature,"",New,Should have,Introduce Transform service,Soren Malling,Soren Malling,2012-08-28 10:58,"","",2012-01-17,"","",0,2012-01-17 09:45,"","",429900,"","TYPO3.Media currently holds a Transform service, but Imagine doesn't
+
+This should be ported to Imagine and give a Interface for other to work against. Copy from IRC chat
+
+<pre>
+[14:38] bwaidelich: so my suggestion would be: move the concrete implementation to the imagine package (as you did) and introduce an ImageTransformerInterface (or similar)
+[14:41] bwaidelich: but again: i think, your change makes absolute sense. only, if you are going to remove the service from the Media package i'd suggest to add a new interface and code against that in the Media package
+[14:41] sorenmalling: bwaidelich: I like that suggetion, IMO Imagine should be shipped with some sort of service library, so you don't have to rewrite it your self, or depend on some other packages domain model (ex. TYPO3.Medias transformservice only ""accepts"" TYPO3.Media Image domain model)
+[14:41] bwaidelich: then the only dependency to Imagine would be in Objects.yaml
+</pre>"
+40348,TYPO3.Imagine,Bug,"",Resolved,Must have,Font and Image Factory don't work with current version,Bastian Waidelich,Bastian Waidelich,2012-09-06 03:47,"","",2012-08-28,"","",100,2012-08-28 11:06,"","",776950,"","With the latest version of the imagine library, the concrete implementations of @\Imagine\Image\FontInterface@ and @\Imagine\Image\ImageInterface@ expect a constructor argument. This breaks functionality of the respective factories.
+
+The easiest solution would be to remove the factories. As imagine images & fonts shouldn't be required stand-alone, this shouldn't be a problem."
+48347,TYPO3.Imagine,Bug,"",New,Should have,Remove this project,Christian Müller,"",2013-05-17 09:46,"","",2013-05-17,"","",0,2013-05-17 09:46,"","",1167200,"",As we now use the composer version of Imagine we might want to remove this project to reduce clutter.
+52602,TYPO3.Imagine,Bug,"",New,Must have,Fatal error in Production mode if PhpUnit is not installed,Christian Jul Jensen,"",2014-02-10 19:09,"","",2013-10-08,"","",0,2013-10-08 02:37,"","",1377600,"","Fatal error: Class 'PHPUnit_Framework_Constraint' not found in Packages/Libraries/imagine/imagine/lib/Imagine/Test/Constraint/IsImageEqual.php on line 19.
+
+Actually this should probably be fixed in Flow as unpresent or unreflectable classes should be ignored during compile time, I already implemented that, but I am not sure why it doesnt kick in, in this case"

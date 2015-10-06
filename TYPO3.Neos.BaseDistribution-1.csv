@@ -1,0 +1,965 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,Spent time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+7143,Base Distribution,Story,"",Resolved,Must have,As a WebsiteUser I want to see a simple website. ,Robert Lemke,"",2011-05-05 07:49,"","","","","",0.00,100,2010-04-06 11:16,"","",2607800,"","*As a [[website user]] I want to see a simple website.*
+
+* The content is in stored in the Content Repository
+* At least 2 pages with real urls
+* RTE text content is displayed
+* W3C valid layout (demo package)
+"
+7144,Base Distribution,Story,"",Resolved,Must have,As a PHP Developer I want to have an easy API to create a page and add content to it.,Robert Lemke,"",2011-05-05 07:49,"","","","","",0.00,100,2010-04-06 11:34,"","",2607750,"","*As a [[PHP Developer]] I want to have an easy API to create a page and add content to it*
+
+* demo controller
+* developer documentation explaining the usage
+"
+7214,Base Distribution,Story,"",Resolved,Should have,As a Editor I want to login and a basic editor interface should be loaded.,Daniel Poetzinger,"",2011-05-05 07:49,"","",2010-04-11,"","",0.00,100,2010-04-11 14:49,"","",2607700,"","criteria:
+
+* I can add ""/typo3"" to the Url and a login-screen is shown, that looks like the PSD
+
+  * own extjs theme should be used
+  * layout is not ""final"" but more ""example"" like
+
+* If I type wrong credentials an error should be shown
+* If I type in the correct credentials a basic BE is loaded (and below I see the page from before)
+* a Selenium-Test tests the sucessful login for the demopackage
+"
+7215,Base Distribution,Story,"",Resolved,Must have,As Phoenix team member I want a state-of-the art build and CI environment,Daniel Poetzinger,"",2011-05-05 07:49,"","",2010-04-11,"","",0.00,100,2010-04-11 14:59,"","",2607650,"","h2. Suggestion for Build environments:
+
+* integration_dev with own domain for fe access
+* * building from the ""phoenix"" trunk  (using (svn externals) to FLOW3, TYPO3 5.0 and the Demopackage that we want to build up)
+
+
+* integration with own domain for FE access
+* * building from the latest/defined tag (using also tagged packages and not trunk of packages)
+
+h2. Build Setups in Hudson:
+
+1) phoenix-integration_dev_commit
+* Quick build that is triggered by SVN commits. 
+* build xml just checkout the packages and run the basic unit tests
+
+2) phoenix-integration_dev_full
+* triggered nightly
+* build that builds from scratch (empty folder):
+* build xml:
+ * svn checkout of phoenix trunk
+ * fill the contentrepository with a CR dump
+ * system specific configurations (property file)
+ * run unit tests
+  * run integration unit tests and selenium tests
+
+3) phoenix-integration_dev_tests and 4) phoenix-integration_tests
+* triggered manual only running the selenium tests
+
+
+4) phoenix-integration_full
+* triggered manual (at en of sprint for instance)
+* simelar to phoenix-interagtion_dev_full but 
+  * as the first step it tags the relevant packages
+  * it tags the phoenix and adjust svn externals to new tag
+  * then it builds from tag
+
+
+
+
+
+*Criteria:*
+* phoenix-dev.typo3.org points to integration-dev
+* phoenix.typo3.org points to integration
+* Hudson shows the build projects
+* build (phing) files are in svn and understandable
+* some short system overview (physically) and some short explainations
+
+
+
+"
+7918,Base Distribution,Story,"",Resolved,Should have,As a User I want to see a dynamic navigation on the website,Daniel Poetzinger,Robert Lemke,2011-05-05 07:49,"","",2010-05-26,"","",0.00,100,2010-05-26 08:41,"","",2607900,"","- There should be a pagetree in the Content Repository with at least 1 Level
+- It should be rendered with TypoScript as ul / li based navigation. It should render as Folddown menu (CSS or JS)
+- The Menu Generation (TMENU?) should be documented, with features like:
+   - entryLevel
+   - diffrent Rendering of the diffrent Levels (wrap, classes)
+   - diffrent Rendering of diffrent States (normal, active (=page in menu = current page), current (=page in menu is in rootline of current page))
+
+
+
+"
+7920,Base Distribution,Story,"",Resolved,Should have,As an Editor I want to edit page properties of current page.,Daniel Poetzinger,Christopher Hlubek,2011-05-05 07:49,"","",2010-05-26,"","",0.00,100,2010-05-26 08:44,"","",2607850,"","- After a Login I want to click on ""edit"" > ""Page properties"" and a form which allows me to edit pageproperties should be loaded. At least this fields:
+(The fields that are avaiable for rendering should be configurable (TCA like)) 
+
+
+   - Pagetitle (<title> tag)
+   - Navigationtitle (Used in menues)
+   - Pathsegment?
+   - hidden
+
+- After saving the changes the page should reload and the changes should take effect"
+7921,Base Distribution,Story,"",Resolved,Should have,As  Magarethe I want to add  pages,Daniel Poetzinger,"",2011-05-05 07:49,"","",2010-07-06,"",1.00,0.00,100,2010-05-26 08:46,"","",2608500,0.00,"Click on ""add page""
+  - slide down of page properties
+  - Fields: title / navtitle / pathsegment
+  - Part to select the position of the new page...  (it shows the siblings)
+
+(creating childpages still needs to be planned)
+"
+7922,Base Distribution,Story,"",Resolved,Should have,As Magarethe I want to delete pages,Daniel Poetzinger,"",2011-05-05 07:49,"","","","","",0.00,0,2010-05-26 08:48,"","",2608450,0.00,"""trash"" icon shows a confirmation in a ""flyout dialog""
+  - after confirmation it just deletes current page and reloads (shows next useful page)
+"
+7923,Base Distribution,Story,"",Resolved,Should have,As Magarethe I want to edit content on the website using inline editing,Daniel Poetzinger,"",2011-11-07 05:37,"","","","","",0.00,0,2010-05-26 08:53,"","",2607600,0.00,"-Edit Headline and Text inline on all pages where we have Text elements
+  -if it looses focus it saves in the CE fields according to the CE structure
+
+Structure to support:
+
+   [mul_ZZ: Page]
+  /  
+[SN]    ------[de_DE: Section]
+  |    /       title: ""Willkommen""
+  |    +------[en_EN: Section]
+  +--[SN]      title: ""Welcome""
+       |
+       +--[SN]---[mul_ZZ: Text]
+            |     body: ""Go to our <link> other website!""
+            | 
+            +--[SN]---[mul_ZZ: Link] 
+                      href: 
+
+Content Context:
+   de_DE
+   time
+   ...
+
+
+
+
+
+"
+8643,Base Distribution,Story,"",Resolved,Should have,As a Developer I want a Plugin API Concept,Daniel Poetzinger,"",2011-05-05 07:49,"","",2010-07-04,"","",0.00,100,2010-07-03 18:34,"","",2608000,"","- Documentation of API
+- Dummy Controller Example
+"
+8644,Base Distribution,Story,"",Resolved,Should have,As Robin I want to have a Basic ManagementView (List),Daniel Poetzinger,"",2011-05-05 07:49,"","",2010-07-06,2010-07-07,"",0.00,0,2010-07-03 18:41,"","",2608400,0.00,"- click on management and a 2 column grid is shown:
+
+
+--------------------------------------------------
+ Pagetree   | tabbed panel (by object type)
+            |    in the tabs: flat list of elements in this page
+
+
+
+(no saving, editing yet)
+
+
+"
+8786,Base Distribution,Story,"",Closed,Should have,As Klaus I want to see all available contenttypes in order to add one to the current page,Daniel Poetzinger,"",2012-02-28 15:41,"",Sprint 7,"","","",0.00,100,2010-07-10 04:21,"","",1766050,0.00,"Includes
+- Concept for configuring available CE Types for certain sites (pagetrees) - including preview icon
+- Concept for permissions on CE Types
+- Concept for Basis Set of CE"
+8787,Base Distribution,Story,"",Closed,Should have,As  Klaus  I want to add new content elements to a website,Daniel Poetzinger,"",2011-09-20 11:54,"",Sprint 7,"","","",0.00,25,2010-07-10 04:21,"","",1766000,0.00,"Drag and Drop from the view area to the page
+"
+8788,Base Distribution,Story,"",Closed,Should have,As Magarethe I want to delete content elements on a website,Daniel Poetzinger,"",2011-11-07 04:48,"","","","","",0.00,100,2010-07-10 04:22,"","",2606850,0.00,Possible aloha tab?
+8789,Base Distribution,Story,"",Closed,Must have,As Robin I want to add and configure a plugin on a page,Daniel Poetzinger,"",2011-09-20 11:54,"",Sprint 7,2010-07-10,"","",0.00,0,2010-07-10 04:23,"","",1765950,"","In Content View it should be possible to
+
+* add a new content element of type Plugin
+* basically configure the plugin's behavior / appearence"
+8792,Base Distribution,Epic,"",New,Could have,EPIC: Speed and Contentcaching,Daniel Poetzinger,"",2012-08-31 05:07,"","",2010-07-10,"","",0.00,20,2010-07-10 06:04,"","",2607550,"","Integrate in Hudson a general jmeter performance graph
+
+This can also include support vor Varnish"
+8793,Base Distribution,Story,"",Resolved,Should have,Setup Git and Gerrit,Daniel Poetzinger,Karsten Dambekalns,2011-05-05 07:49,"","",2010-07-10,"","",0.00,100,2010-07-10 06:06,"","",2607950,"","- connection gerrit and redmine + authentification
+- documentation for the usage "
+8796,Base Distribution,Story,"",Closed,Could have,As Roger I want a flexible and powerful TCA Concept in order to define my objects,Daniel Poetzinger,"",2011-09-20 11:54,"","",2010-07-03,"","",0.00,100,2010-07-10 06:16,"","",2606800,0.00,"- documentation
+- flexibility
+- Domain driven design concepts"
+8797,Base Distribution,Story,"",Resolved,Should have,"As a backend user, I want the new Visual Design implemented",Daniel Poetzinger,"",2011-05-05 07:49,"","",2010-10-16,2010-10-22,1.00,0.00,100,2010-07-10 06:18,"","",2608350,1.00,""
+8798,Base Distribution,Story,"",On Hold,Should have,As Robin I want to edit basic objects in the management view.,Daniel Poetzinger,"",2013-04-10 14:53,"","",2010-07-10,"","",0.00,0,2010-07-10 06:19,"","",1765750,"",""
+9473,Base Distribution,Story,"",Resolved,Should have,As Robin I want to use the content-repository to add contentelements and domain objects.,Daniel Poetzinger,Robert Lemke,2011-05-05 07:49,"","",2010-08-26,"","",0.00,0,2010-08-26 16:37,"","",2608050,"","Technical Issue that targets the required refactoring of the content-repository, in order to store contenttype-nodes together with domain-objects in the same structure.
+
+Acceptance Criteria:
+
+- Since the management view is also part of this sprint it should be possible to see the basic pagetree of the starterpackage: With pages and its structure + the contentelements in the pages + In a certain page ""Blog"" there should be some sample ""post"" domain records.
+
+- Documentation:
+1) The usage of the API (if useful together with a UML scetch showing how it works) should be available on the flow3 website
+2) The definition of new contenttypes (How + Samples)
+3) Optional: Kickstart TCA like concept for defining the editing behaviour of domain objects in the management view later
+
+
+- Code-Coverage of persistence and contentrepository layer should be >80%"
+9475,Base Distribution,Story,"",Resolved,Should have,As Robin I want to use a REST service to access the content repository,Daniel Poetzinger,Robert Lemke,2011-05-05 07:49,"","","","","",0.00,0,2010-08-26 16:42,"","",2608300,0.00,"Accessing the contentrepository should be possible through a REST service.
+
+A nice acceptance criteria is a proof of concept access of the CR via the REST service through a mobile device. 
+
+
+acceptance criteria:
+- Documentation of the usage
+- Sample Usage in TYPO3 5.0
+- optional: Mobile device showcase"
+10273,Base Distribution,Story,"",Resolved,Should have,"As Roger, I want to have Doctrine2 for persistence evaluated",Karsten Dambekalns,Karsten Dambekalns,2011-05-05 07:49,"","","","","",0.00,0,2010-10-15 08:45,"","",2608700,0.00,"* our DB structure would be compatible with other packages
+* persistence is actually really usable afterwards :)
+* they offered their help
+* if Doctrine supports versioning, we should use it really soon"
+10285,Base Distribution,Story,"",Resolved,Should have,"As Roger, I want clean and extensible JavaScript Code",Sebastian Kurfuerst,"",2011-05-05 07:49,"","",2010-10-07,2010-10-07,"",0.00,0,2010-10-16 04:23,"","",2608250,0.00,this includes also the Breadcrumb Menu
+10367,Base Distribution,Story,"",Resolved,Should have,"As Roger, I want to have Guidelines for JavaScript and CSS Programming",Sebastian Kurfuerst,"",2011-05-05 07:49,"","",2010-10-06,"","",0.00,0,2010-10-21 04:30,"","",2608200,0.00,""
+10368,Base Distribution,Story,"",Resolved,Should have,As Gerrit I want that editors don't edit content directly on the live website,Robert Lemke,"",2011-05-05 07:49,"","","","","",0.00,0,2010-10-21 04:36,"","",2608150,0.00,"Any user editing content should do so only in their personal workspace. After an editing session TYPO3 should give the opportunity to publish the new content to the live workspace.
+
+* editing only affects the personal workspace of the logged in user
+* on logout or closing the browser window, TYPO3 asks if workspace should be published
+* publishing workspace overrides any other content of the live site (ie. no merge functionality yet)"
+10373,Base Distribution,Story,"",Resolved,Should have,As Roger I want to have functional testing support in FLOW3,Robert Lemke,"",2011-05-05 07:49,"","","","","",0.00,14,2010-10-21 04:47,"","",2608100,0.00,""
+10506,Base Distribution,Story,"",New,Must have,"Minimalistic Media Browser (Files, Images, Documents)",Daniel Poetzinger,Christian Müller,2013-01-30 08:29,Content Editing,1.0 beta 1,"","","",0.00,0,2010-10-28 08:40,"","",2607500,"",""
+10508,Base Distribution,Epic,"",New,Must have,EPIC: Roles / Security for BE and FE / Usermanagement,Daniel Poetzinger,"",2013-01-30 08:43,"","","","","",0.00,0,2010-10-28 08:43,"","",1763100,0.00,"TODO!!!
+
+* User Management for Frontend and Backend is the same.
+
+DoD:
+
+* Users are groupable into *Groups*
+* Groups are assigned to roles
+
+We start with the following roles:
+
+* Admin
+* Site Integrator
+* Editor == Content Manager
+
+
+Lateron, each module might define one or multiple roles."
+10509,Base Distribution,Epic,"",New,Should have,EPIC: Workspaces and Publishing Workflows,Daniel Poetzinger,"",2012-08-31 05:07,"","","","","",0.00,0,2010-10-28 08:43,"","",2607450,"",""
+10511,Base Distribution,Epic,"",Closed,Should have,EPIC: Timed Content,Daniel Poetzinger,"",2012-08-31 05:07,"","","","","",0.00,0,2010-10-28 08:45,"","",2607400,"",""
+10513,Base Distribution,Epic,"",New,Won't have this time,EPIC: System-Monitoring / Maintenance,Daniel Poetzinger,"",2012-08-31 05:08,"","","","","",0.00,0,2010-10-28 08:47,"","",2607350,"",""
+10514,Base Distribution,Epic,"",Closed,Should have,EPIC: Easy Layout Creatinon for Cornelius,Daniel Poetzinger,"",2012-08-31 05:08,"","","","","",0.00,0,2010-10-28 08:47,"","",2607300,"",""
+10515,Base Distribution,Work Package,"",New,Must have,[WIP] Content Translation Support,Daniel Poetzinger,Karsten Dambekalns,2013-08-02 06:36,General / Project,1.1,"","","",0.00,0,2010-10-28 08:47,"","",2607250,"","h1. Content Translation Support
+
+* Target Audience: *content editors* who want to deal with multi-lingual sites
+* Responsible: Karsten Dambekalns
+* Implemented by: Karsten Dambekalns, Christian Jul Jensen
+* Amount: XY work days
+* Version: *must have* for 1.1
+* Planned Implementation Timeframe: X - Y
+
+h2. Motivation
+
+[TODO write goal from a user's perspective. Try to answer the question: ""Why is this work package important for the target group?""]
+
+h2. Goal
+
+[TODO what do you want to archieve? Try to answer the question: ""What do you want to archieve?""]
+
+h2. Deliverables
+
+[TODO: write bullet points for measurable deliverables; flag them as must have and can have]"
+10620,Base Distribution,Story,"",Resolved,Should have,As Roger I want a reasonable test coverage of the TYPO3CR package,Robert Lemke,"",2011-05-05 07:49,"","","","","",0.00,0,2010-11-04 07:16,"","",2608650,0.00,""
+10828,Base Distribution,Epic,"",Closed,Should have,EPIC: Deploymentsupport,Daniel Poetzinger,"",2012-08-31 05:08,"","","","","",0.00,0,2010-11-16 06:03,"","",2607150,"",""
+11042,Base Distribution,Story,"",Closed,Should have,"As Roger, I want clean and extensible JavaScript Code",Robert Lemke,"",2011-09-20 11:54,"",Sprint 7,2010-11-16,"","",0.00,29,2010-11-24 06:31,"","",1765900,0.00,this includes also the Breadcrumb Menu
+11044,Base Distribution,Story,"",Resolved,Should have,As  Magarethe I want to add  pages,Robert Lemke,"",2011-05-06 02:49,"",Sprint 7,2010-07-06,"","",0.00,0,2010-11-24 06:44,"","",1765850,0.00,"Click on ""add page""
+  - slide down of page properties
+  - Fields: title / navtitle / pathsegment
+  - Part to select the position of the new page...  (it shows the siblings)
+
+(creating childpages still needs to be planned)
+"
+11045,Base Distribution,Story,"",Resolved,Should have,As Robin I want to have a Basic ManagementView (List),Robert Lemke,"",2011-05-05 07:49,"","",2010-07-08,2010-07-08,"",0.00,17,2010-11-24 06:46,"","",2608600,0.00,"- click on management and a 2 column grid is shown:
+
+
+--------------------------------------------------
+ Pagetree   | tabbed panel (by object type)
+            |    in the tabs: flat list of elements in this page
+
+
+
+(no saving, editing yet)
+
+
+"
+11187,Base Distribution,Story,"",Resolved,Should have,"As a community member, I want a smooth demo site experience",Robert Lemke,"",2011-05-05 07:49,"","","","","",0.00,20,2010-11-30 13:26,"","",2608550,0.00,""
+11946,Base Distribution,Story,"",Resolved,Should have,"As Roger, I want to have Doctrine implemented as Persistence backend",Sebastian Kurfuerst,"",2011-05-05 07:51,"","","","","",0.00,67,2011-01-06 08:07,"","",2608850,0.00,""
+11968,Base Distribution,Story,"",Closed,Won't have this time,Ext JS 4.0 integration,Sebastian Kurfuerst,"",2012-02-28 15:52,"",Sprint 7,2011-05-03,"","",0.00,75,2011-01-06 08:29,"","",1766350,0.00,""
+12443,Base Distribution,Epic,"",New,Should have,EPIC: performant Contenttargeting (personalisation),Daniel Poetzinger,"",2012-08-31 05:07,"","","","","",0.00,0,2011-01-21 09:55,"","",2607200,"",""
+13527,Base Distribution,Feature,"",Resolved,Should have,Simple backend usermanagement,Rens Admiraal,"",2012-01-31 01:47,"","","","","",0.00,100,2011-03-02 10:11,"","",2607050,"",""
+13528,Base Distribution,Story,"",Closed,Should have,Improve editing of content elements,Rens Admiraal,"",2011-11-07 04:48,"","","","","",0.00,100,2011-03-02 10:11,"","",2606750,0.00,""
+13532,Base Distribution,Story,"",New,Must have,Implement File Download Content Type,Rens Admiraal,Christian Müller,2013-01-30 10:06,Content Editing,1.0 beta 1,"","","",0.00,0,2011-03-02 10:14,"","",1760800,"","DoD:
+
+* download a single file"
+13534,Base Distribution,Feature,"",Resolved,Must have,"Links in continuous texts and a separate ""link"" field",Rens Admiraal,Sebastian Kurfuerst,2012-08-28 05:41,"","","","","",0.00,100,2011-03-02 10:14,"","",2608800,"",Linking to external and internal URLs must be supported in Aloha.
+31638,Base Distribution,Feature,"",Resolved,Must have,Rewrite Rendering Process based on Fluid and TypoScript,Sebastian Kurfuerst,"",2012-08-28 05:41,"","",2011-11-07,"","",0.00,100,2011-11-07 04:12,"","",350950,"","The rendering process based on TypoScript and Fluid needs to be rewritten.
+
+h1. Current Rendering Process
+
+Currently, *both* TypoScript and Fluid are involved in rendering. TypoScript controls the rendering while Fluid is just used to render the individual parts. Thus, TypoScript renders the content. The process is as follows:
+
+# @TYPO3\TYPO3\Controller\Frontend\NodeController::show@ gets a node passed, and triggers @render@ on the view
+# @TYPO3\TYPO3\View\TypoScriptView@ picks up:
+## it asks the TyposcriptObjectFactory to get a typoscript object name based on the current node type.
+## then it checks if the current TypoScript tree has a *top-level object* for the which matches the expected TypoScript object name
+## if yes, this is used. If no, we instanciate a default one.
+# TypoScript @Page@ object renders a @Template@ TypoScript object
+## For that, it assigns the @presentationPropertyNames@ to the template, after wrapping them into a proxy object which evaluate *TS Processors*
+## then, the @Node@ object is assigned to the template
+## Then, the template is rendered (see below), and the result is possibly wrapped again.
+# @TYPO3\TYPO3\TypoScript\Template@ is a Fluid TemplateView and renders the template.
+## Especially important is the @\TYPO3\TYPO3\TypoScript\Section@ (inheriting from @TYPO3\TYPO3\TypoScript\ContentArray@ and @\TYPO3\TypoScript\AbstractContentArrayObject@), which creates TypoScript sub-objects for *every* sub node, by asking the @\TYPO3\TypoScript\ObjectFactory@ again. This is how recursion is handled.
+
+h2. Drawbacks of the current rendering process
+
+* very complex
+* TypoScriptView is quite inflexible
+* recursive rendering creates very many objects, but is not really extensible.
+
+h1. Requirements for revamped rendering
+
+* Nodes can appear multiple times on a page. The rendering must be able to distinguish between these cases.
+* When rendering a nodePath, we need to be able to render it completely out-of-context. I.e. render just a single content element being part of a bigger page. This could look somehow like: .../somePage/someSection/text?typoscriptObjectPath=page.sections.someSection.text
+** This is needed for Varnish, ESI, etc.
+** Thus, the question is *how to address nodes and their rendering information without ambiguity*
+* Make Fluid replaceable by other rendering system?? TODO
+* TODO: TypoScript objects should be ONLY allowed on FOLDER nodes.
+* Bonus: wouldn't it be cool to use TypoScript in combination with Fluid *outside* of Phoenix as well?
+
+h1. Pros and Cons
+
+* *Fluid Template*
+** + easy to understand, easy to write
+** - only replaceable in an all-or-nothing manner
+** - not context dependent; so it is hard to implement things like ""in the right column, all images should be 500 px wide maximum""
+* *TypoScript*: 
+** + adjustable and overridable on a very fine-grained level through use of TypoScript paths
+** + processors are a powerful way to fine-tune rendering.
+** + presentationModel enables creating ""virtual nodes"" which are declared just through TypoScript.
+** - hard to write
+** - presentationModel is hard to grasp and adds a lot of boilerplate code
+
+h1. New Rendering Process
+
+* *central problem: Adressing.* How do we address stuff like ""render node X in context Y""? Y must be identified by a path.
+* *central problem: collections.* How do we render a *collection of nodes*? Through an <f:for> loop? Or differently?
+
+* TODO: continue here..."
+32034,Base Distribution,Story,"",Resolved,Should have,As a content editor I'd like to see the sub pages of my current page,Sebastian Kurfuerst,Markus Goldbeck,2012-09-04 16:35,"","",2011-11-23,"","",0.00,100,2011-11-23 08:26,"","",2952300,"","DoD:
+
+* on opening, the page tree should have the current page selected
+* the sub pages of the current page must be visible (expanded) already
+* path to current page (parent nodes) is visible in page tree"
+32772,Base Distribution,Feature,"",Resolved,Should have,Create localStorage API,Rens Admiraal,Rens Admiraal,2011-12-23 11:33,"","",2011-12-22,"","",0.00,100,2011-12-22 03:01,"","",406850,"",localStorage only supports storage of string values. This becomes an issue when we have complex fields storing arrays and objects. All those fields have to stringify / decode values themselves. We can work around this with a layer above the localStorage automatically converting the values.
+32833,Base Distribution,Feature,"",Resolved,Should have,Update Aloha to most recent Development Version -- with refactored Aloha Blocks,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-01-07 02:14,"","",2011-12-25,"","",0.00,100,2011-12-25 13:18,"","",408900,"","Aloha Blocks have been greatly reworked by me; with lots of performance improvements and bugfixes along the road.
+
+A short overview of the changes can be found at: https://github.com/alohaeditor/Aloha-Editor/pull/366/
+
+However, there are quite some architectural changes in Aloha, which means we need to adjust some parts:
+
+* Loading Order has changed; require.js is now embedded in aloha.js
+* jQuery is now available under Aloha.jQuery; not under window.alohaQuery
+* Block API has changed; block internals have changes
+* numerous bugfixes"
+40293,Base Distribution,Epic,"",Closed,Should have,EPIC: Workspace Publication,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 05:36,"","",1763050,"",was: PHX-9
+40294,Base Distribution,Epic,"",New,Should have,"EPIC: Inline Editing Support (Links, Content Types, Plugin)",Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 05:44,"","",1763000,"",""
+40295,Base Distribution,Epic,"",Resolved,Should have,EPIC: TypoScript Rendering,Robert Lemke,"",2013-01-29 10:00,"","","","","",0.00,0,2012-08-28 05:44,"","",1762950,"",""
+40296,Base Distribution,Epic,"",Resolved,Should have,EPIC: Plugin Support,Robert Lemke,"",2014-02-09 10:58,"","","","","",0.00,100,2012-08-28 05:45,"","",1762900,"",""
+40297,Base Distribution,Epic,"",New,Must have,EPIC: Basic Page Tree Operations,Robert Lemke,"",2013-12-04 13:54,"","","","","",0.00,0,2012-08-28 05:45,"","",1762850,0.00,""
+40298,Base Distribution,Epic,"",New,Should have,EPIC: Design / Icons,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 05:45,"","",1762800,"",""
+40299,Base Distribution,Epic,"",New,Must have,EPIC: Content Security (Workspaces),Robert Lemke,"",2012-09-07 04:11,"","","","","",0.00,0,2012-08-28 05:45,"","",1762750,0.00,""
+40300,Base Distribution,Epic,"",New,Should have,EPIC: Consistent UI Design (Bootstrap),Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 05:46,"","",1762700,"",""
+40301,Base Distribution,Epic,"",New,Should have,EPIC: System Log Viewer / Audit,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 05:46,"","",1762650,"",""
+40302,Base Distribution,Epic,"",New,Should have,EPIC: Account Profile,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 05:46,"","",1762600,"",""
+40305,Base Distribution,Story,"",Resolved,Should have,As a Content Editor I want to easily distinguish place holder texts in new content elements from actual content; placeholder text should disappear once I start to type.,Robert Lemke,Aske Ertmann,2014-06-16 09:37,Content Editing,1.1,"","","",0.00,100,2012-08-28 05:48,"","",1762400,"",""
+40306,Base Distribution,Epic,"",New,Should have,EPIC: Content import from TYPO3,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 05:48,"","",1762350,"",""
+40307,Base Distribution,Epic,"",New,Should have,EPIC: Custom View for Data Types,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 05:49,"","",1762300,"","For example: Business Card, Customer, Blog Post ?
+
+Based on Fluid templates."
+40308,Base Distribution,Epic,"",New,Should have,EPIC: In-table editing for items in the Management View,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 05:51,"","",1762250,"",""
+40309,Base Distribution,Story,"",New,Should have,As a system administrator I want to see a meaningful error message if the database has not been set up correctly,Robert Lemke,"",2012-08-28 05:51,"","","","","",0.00,0,2012-08-28 05:51,"","",1762150,"",""
+40310,Base Distribution,Story,"",Postponed,Should have,"As any User, if no site exists I want to be redirected to the Setup wizard",Robert Lemke,"",2012-09-18 02:55,"","","","","",0.00,0,2012-08-28 05:52,"","",1762450,"","- triggered by frontend request 
+- triggered by backend request 
+- redirects to respective step (""site setup"") of the Setup Wizard 
+- provide simple (empty) site preset to be imported 
+"
+40311,Base Distribution,Story,"",New,Should have,As a user I want the UI to respect the lights-off principle,Robert Lemke,"",2013-01-29 08:18,"","","","","",0.00,0,2012-08-28 05:53,"","",1761100,0.00,"- reverse fading
+- accelerate fading
+- define and document color code for active and inactive
+- define and document fading speed
+
+Some buttons are fading from light to dark on mouse over, the contrary should happen though.
+The animation should also be faster, about 0.5 seconds"
+40312,Base Distribution,Story,"",Rejected,Should have,As a content editor I'd like to see the Publish button only if I can use it,Robert Lemke,"",2012-09-07 03:40,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-08-28 05:55,"","",1759950,"","- hide button if no changes are pending
+- show button if changes are pending
+- relabel the button to ""Publish""
+
+The ""Publish Page"" button is visible (but deactivated) even if nothing is to be published. It should only be visible if there are pending changes.
+Later on, the Publish button should lead to a dedicated screen for reviewing changes if there are changes from more than one page pending. This story doesn't cover that functionality, but as it is planned, the label of the button should already be changed to just ""Publish"".
+"
+40313,Base Distribution,Story,"",Needs Feedback,Should have,As a Site Developer I can define the title and package key for a site,Robert Lemke,"",2013-05-11 12:55,"","","","","",0.00,0,2012-08-28 05:57,"","",1762100,"",""
+40314,Base Distribution,Story,"",Closed,Should have,As a Content Editor I want to use headlines just in my regular text elements,Robert Lemke,"",2012-10-04 10:02,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-08-28 05:57,"","",1759650,"","- remove dedicated ""headline"" field in all elements
+- allow headline in text element
+"
+40315,Base Distribution,Story,"",Closed,Should have,Explore: As a Content Editor I want to use different content types for different purposes,Robert Lemke,"",2012-09-04 08:53,"","","","","",0.00,0,2012-08-28 05:58,"","",1762050,"","- a list of content types which should be available by default
+- a thorough description of why each type is needed
+- a list of properties and description for each type
+"
+40316,Base Distribution,Story,"",Postponed,Must have,"As a content editor, I don't want anybody else to see the content of my personal workspace ",Robert Lemke,Andreas Förthner,2012-09-18 02:56,Administration,"","","","",0.00,0,2012-08-28 05:59,"","",1762550,"","- only live workspace is visible without login
+- personal workspace only visible for respective user"
+40319,Base Distribution,Story,"",Closed,Should have,As a Content Editor I'd like to see at one glance if I can edit an element inline or not while hovering over it with the mouse,Robert Lemke,"",2012-10-04 10:02,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-08-28 06:04,"","",1759700,"",""
+40320,Base Distribution,Epic,"",New,Should have,EPIC: User Interface style and implementation guide,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 06:04,"","",1762000,"",""
+40321,Base Distribution,Story,"",Closed,Should have,As a System Administrator I want to read step-by-step instructions for setting up a basic Phoenix installation. ,Robert Lemke,"",2012-10-04 10:03,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-08-28 06:05,"","",1759900,"",- manual rendered on *.typo3.org
+40322,Base Distribution,Story,"",New,Should have,As a site integrator I can disable and enable imported sites,Robert Lemke,"",2012-08-28 06:06,"","","","","",0.00,0,2012-08-28 06:06,"","",1761950,"",""
+40323,Base Distribution,Story,"",New,Should have,As an site integrator I can remove an inactive imported site,Robert Lemke,"",2012-08-28 06:07,"","","","","",0.00,0,2012-08-28 06:07,"","",1761900,"","- possible through the sites modules 
+- only possible if the site is inactive 
+- should remove all content related to the sites node 
+- should remove all domains tied to the site"
+40324,Base Distribution,Story,"",New,Should have,"As a site integrator I can change the title, description & version of an imported site",Robert Lemke,"",2012-08-28 06:07,"","","","","",0.00,0,2012-08-28 06:07,"","",1761850,"",""
+40325,Base Distribution,Story,"",Resolved,Should have,"As a site integrator I can create, modify & delete domains of an imported site",Robert Lemke,Mattias Nilsson,2013-01-30 16:37,"","","","","",0.00,100,2012-08-28 06:08,"","",1761800,"","- possible through the sites modules 
+- domains are tied to the site 
+- domains can be activated/inactivated"
+40326,Base Distribution,Story,"",New,Should have,As an administrator I can create a new site package using an existing site as template,Robert Lemke,"",2012-08-28 06:11,"","","","","",0.00,0,2012-08-28 06:10,"","",1761750,"","- possible through the sites modules 
+- site label & package key is configurable 
+- should be able to use existing site packages as templates"
+40328,Base Distribution,Story,"",New,Should have,As an administrator I can export selected parts of an existing site to a new site package,Robert Lemke,"",2012-08-28 06:12,"","","","","",0.00,0,2012-08-28 06:12,"","",1761700,"",""
+40329,Base Distribution,Story,"",Postponed,Should have,"As a content manager, I want to list and edit my Content and Domain Objects inside the Management view",Robert Lemke,"",2012-10-04 08:00,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-08-28 06:17,"","",1759250,0.00,"Definition of done:
+
+* List nodes / domain objects
+* Pagination of the list
+* configurable Sorting of the list
+* configurable filtering or full-text search of the list
+* create new domain objects
+* delete nodes / domain objects
+* edit a single domain object / node
+* edit multiple nodes / domain objects
+** change one property in all nodes/domain-objects to the same value
+** change a set of properties in all nodes/domain objects to different values
+* use AJAX where appropriate for a smooth user experience
+* (maybe) create new nodes
+
+we need a generic listing module which is fully adjustable.
+It should have a filter tree on the left, and a right area which contains the actual data. This could be a grid, an item-like list, or ..."
+40330,Base Distribution,Story,"",Closed,Should have,"[DISCUSS] As a Content manager, I want to identify specific content elements inside a list",Robert Lemke,Sebastian Kurfuerst,2012-10-04 10:02,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-08-28 06:19,"","",1759750,0.00,""
+40331,Base Distribution,Story,"",New,Should have,"As a Content Manager, I want to create multiple pages at once",Robert Lemke,"",2012-08-28 06:21,"","","","","",0.00,0,2012-08-28 06:21,"","",1761600,"",""
+40332,Base Distribution,Epic,"",New,Should have,EPIC: Management view content editing,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 06:21,"","",1761550,"",https://notes.typo3.org/p/PhoenixContentManagementModule
+40334,Base Distribution,Epic,"",New,Should have,EPIC: Module Overview Pages,Robert Lemke,"",2012-08-31 05:07,"","","","","",0.00,0,2012-08-28 06:23,"","",1761500,"","basic idea: configure path to Fluid template inside the module configuration; this fluid template can then render a single ""module widget""
+-> create a ViewHelper which wraps StandaloneView
+-> in case a ""module widget"" should do more interactive stuff, the fluid template can always include a fluid widget."
+40335,Base Distribution,Story,"",New,Should have,"As an Administrator, I want to run FLOW3 CLI commands in the Launch Bar",Robert Lemke,"",2013-05-11 12:57,"","","","","",0.00,0,2012-08-28 06:25,"","",1760150,"",""
+40336,Base Distribution,Story,"",New,Could have,As a Site Integrator I want to see a list of rendering issues,Robert Lemke,"",2013-05-15 10:20,Content Rendering,1.0 beta 1,"","","",0.00,0,2012-08-28 06:26,"","",1760000,"","currently, when ""something goes wrong"", the inner page in ""Backend mode"" stays white and when examining the source code, one can see, for example,
+<!-- Exception while rendering page&lt;TYPO3.TYPO3:Page&gt;/body : Cannot cast object of type ""TYPO3\Eel\FlowQuery\FlowQuery"" to string. -->
+I think such happenings should pop through to the user more obviously."
+40467,Base Distribution,Epic,"",Closed,Must have,Change the product name of TYPO3 Phoenix,Robert Lemke,"",2013-01-29 09:33,General / Project,Sprint February 2013,2012-08-31,"","",0.00,0,2012-08-31 05:24,"","",782750,"","Once we have decided upon and announced the real product name of ""Phoenix"", we need to adjust urls, namespaces and documentation.
+
+All stories and tasks related to this name introduction belong to this epic."
+40468,Base Distribution,Story,"",Closed,Should have,As a user I want to get instructions how to fix file permissions on the first run,Robert Lemke,"",2012-10-04 10:02,Setup,Sprint 10 (1.0 TP1),"","","",0.00,0,2012-08-31 05:55,"","",1759800,0.00,"When Phoenix is downloaded / cloned from git and run without running the setfilepermissions command, the first hit will fail in most cases because the Data/* directory and others can't be created. Instead of displaying a hint on how to proceed, the raw PHP error messages slips through (see screenshot).
+
+dod:
+
+* catch error messages resulting from insufficient file permissions on first run
+* display message which gives instructions on how to run the setfilepermissions command
+
+Even better (if possible):
+
+* redirect to setup tool
+* provide instructions for setting file permissions
+* check (through AJAX) if that worked out and proceed automatically if file permissions are fine"
+40469,Base Distribution,Story,"",New,Could have,(low prio) As a user I want to get redirected to setup tool if install is incomplete,Robert Lemke,"",2012-09-14 06:23,Setup,"","","","",0.00,50,2012-08-31 05:58,"","",1762200,0.00,"If file permissions are fine but a database has not been set up yet, the application displays an SQLSTATE exception instead of redirecting to the setup tool.
+
+DOD:
+
+* if database settings are wrong or database setup is incomplete or if no account exists, redirect to setup tool"
+40471,Base Distribution,Story,"",Closed,Should have,As a Administrator I don't want to look up the setup password if the server is my local machine,Robert Lemke,"",2012-09-13 05:12,Setup,"",2012-08-31,"","",0.00,0,2012-08-31 06:13,"","",2953850,"","In order to log into the setup tool, a user needs to look up the password stored in a file in ./Data/. This is a good security measure for remote servers, however we may be able to avoid this step for a local machine:
+
+If we try to include the file through an iFrame (using the path, like file:///foo/bar/baz) and that file would contain JS sending the password to the parent frame, the password could be entered and submitted automatically if the user is using a browser from the same machine Phoenix is being installed at.
+
+I'm not 100% sure if this is technically possible, but we might want to try this."
+40472,Base Distribution,Story,"",Closed,Should have,As a administrator I want to be warned if the selected database already contains data,Robert Lemke,"",2012-10-04 10:02,Setup,Sprint 10 (1.0 TP1),2012-09-04,"","",0.00,0,2012-08-31 06:16,"","",1759850,0.00,"In the setup tool, a database can be selected which already contains data. A user should be informed about this and be able to decide if
+
+* he wants to proceed anyway
+* go back and choose / create a different database
+"
+40473,Base Distribution,Epic,"",New,Should have,Bootstrap based login screen,Robert Lemke,"",2012-08-31 06:17,"","",2012-08-31,"","",0.00,0,2012-08-31 06:17,"","",782850,"",""
+40582,Base Distribution,Task,Story #40468: As a user I want to get instructions how to fix file permissions on the first run,Closed,Should have,TEST,Robert Lemke,Robert Lemke,2012-10-04 08:01,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-04 04:47,"","",788300,0.00,""
+40584,Base Distribution,Story,"",Closed,Should have,[Page Tree] As a user I want the page tree to respond quickly on expanding nodes,Robert Lemke,"",2012-10-04 05:08,Content Editing,Sprint 10 (1.0 TP1),2012-09-04,"","",0.00,0,2012-09-04 05:04,"","",1759600,"","DoD:
+
+* pre-load _all_ page nodes
+* for expanding a sub tree no additional HTTP request is necessary"
+40585,Base Distribution,Story,"",Closed,Should have,[Page Tree] As a content editor I want to move pages by drag and drop,Robert Lemke,"",2012-10-04 09:06,"",Sprint 10 (1.0 TP1),2011-12-05,"","",0.00,0,2012-09-04 05:47,"","",1759450,0.00,""
+40586,Base Distribution,Task,Story #40585: [Page Tree] As a content editor I want to move pages by drag and drop,Closed,Should have,"Fix drag and drop positioning: currently the drop marker icon positioning is wrongly calculated due to the ""new page"" toolbar.",Robert Lemke,Markus Goldbeck,2012-10-04 08:01,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-04 05:48,"","",788400,0.00,""
+40587,Base Distribution,Story,"",Closed,Should have,[Page Tree] As a Content Manager I want to create a new page,Robert Lemke,"",2012-10-04 09:13,Content Editing,Sprint 10 (1.0 TP1),2012-09-04,"","",0.00,0,2012-09-04 05:56,"","",1759500,0.00,""
+40588,Base Distribution,Story,"",Closed,Should have,[Page Tree] As a Content Manager I want to delete an existing page,Robert Lemke,"",2012-10-04 10:01,Content Editing,Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-04 05:56,"","",1759550,0.00,""
+40591,Base Distribution,Task,Story #40588: [Page Tree] As a Content Manager I want to delete an existing page,Closed,Should have,Replace drop removal zone with delete icon in action toolbar for selected node,Aske Ertmann,Markus Goldbeck,2012-10-04 08:01,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-04 06:15,"","",788550,0.00,""
+40599,Base Distribution,Story,Work Package #45013: Flexible plugin integration (TODO: Reviews),Resolved,Should have,Include arbitrary Flow-Applications as Plugins,Sebastian Kurfuerst,Marc Neuhaus,2013-12-20 11:37,Content Rendering,Sprint February 2013,2013-03-26,2013-04-20,"",0.00,100,2012-09-04 08:37,"","",1760250,0.00,"As a content editor, I want to include an arbitrary Flow-Application inside a page.
+
+Definition of done:
+
+* FLOW3 packages should run as plugin inside the frontend
+* we use the Blog package as example
+* the controllers and most of the views should be re-used"
+40612,Base Distribution,Task,Story #40587: [Page Tree] As a Content Manager I want to create a new page,Closed,Should have,Remove add a new page by dragging,Markus Goldbeck,Markus Goldbeck,2012-10-04 08:01,"",Sprint 10 (1.0 TP1),2012-09-04,"",0.00,0.00,100,2012-09-04 10:17,"","",789500,0.00,Only possibility for adding a page should be clicking on the plus icon
+40618,Base Distribution,Story,"",New,Should have,"[DISCUSS] As a user, I want to return to the last-used submodule when changing between main modules",Sebastian Kurfuerst,"",2013-01-29 08:18,"","","","","",0.00,0,2012-09-04 12:22,"","",1760850,"","Definition of Done:
+
+* when clicking on the main module titles in the menu, the last-used submodule should be opened.
+* we do not want a separate redirect for that
+* there should be no side-effect across browser tabs (i.e. two tabs should not influence each other)
+* the module overview can always be accessed through a special icon-link in the submenu (""tile-image"")
+
+Technical Details:
+
+* we give every browser window/tab an ID using window.name
+* based on the browser window/tab and main module identifier, we store the last-visited module pages in local storage
+* we intercept the main module links and replace them using JS"
+40619,Base Distribution,Task,"Story #40330: [DISCUSS] As a Content manager, I want to identify specific content elements inside a list",Closed,Should have,Display a meaningful content element preview in lists,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 08:01,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-04 12:38,"","",789800,0.00,""
+40628,Base Distribution,Story,"",Closed,Could have,"As any user, I need a Content Module based on semantic technologies (IKS)",Rens Admiraal,"",2012-10-04 10:10,"",Sprint 10 (1.0 TP1),"","","",0.00,9,2012-09-04 17:15,"","",1759100,0.00,""
+40629,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Add editor (aloha / hallo),Rens Admiraal,Rens Admiraal,2012-10-04 07:53,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-04 17:15,"","",790250,0.00,""
+40630,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Add range to sections in schema,Rens Admiraal,Rens Admiraal,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-04 17:15,"","",790300,0.00,""
+40631,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,create collection widget with content handles,Rens Admiraal,Rens Admiraal,2012-10-04 07:53,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-04 17:16,"","",790350,0.00,""
+40632,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Bind selected entity to the inspector panel,Rens Admiraal,Christopher Hlubek,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-04 17:16,"","",790400,0.00,""
+40633,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,link plugin (for aloha / hallo),Rens Admiraal,Rens Admiraal,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-04 17:18,"","",790450,0.00,""
+40634,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Make sure we can save changes to content,Rens Admiraal,"",2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-04 17:19,"","",790500,0.00,""
+40635,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Rejected,Could have,(low prio) Basic workflow support,Rens Admiraal,"",2012-09-20 09:43,"",Sprint 10 (1.0 TP1),"","","",0.00,100,2012-09-04 17:20,"","",790550,"",""
+40637,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Fetch templates for new content elements when they are created in the ui by clicking the 'new content element' handle,Rens Admiraal,"",2012-10-04 07:53,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-04 18:08,"","",790650,0.00,""
+40652,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Make the notification plugin work,Rens Admiraal,Rens Admiraal,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-05 07:54,"","",791400,0.00,""
+40691,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Test / fix image handling,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:07,"","",793350,0.00,""
+40692,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,"!! Fix ""create new content"" (test positioning of new content / nodes)",Sebastian Kurfuerst,Rens Admiraal,2012-10-04 07:53,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:07,"","",793400,0.00,""
+40693,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,!! remove submodules for create.js and VIE,Sebastian Kurfuerst,Rens Admiraal,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:07,"","",793450,0.00,""
+40694,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,!! style content handles,Sebastian Kurfuerst,Aske Ertmann,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:08,"","",793500,0.00,"Christopher and Rens discussed that:
+
+* we should use a twitter bootstrap button group with size button-mini: http://twitter.github.com/bootstrap/components.html#buttonGroups
+* see attached ""screenshot"""
+40695,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,re-implement copy / paste handles,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:08,"","",793550,0.00,""
+40696,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,!! fix styling of notifications; use Create.js notifications,Sebastian Kurfuerst,Rens Admiraal,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:09,"","",793600,0.00,""
+40697,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,minify javascript for release,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:52,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:10,"","",793650,0.00,""
+40698,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,!! test that starttime / endtime can be set using UI,Sebastian Kurfuerst,"",2012-10-04 07:53,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:10,"","",793700,0.00,""
+40699,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,"!! test that ""title"" and ""hidden"" can be changed by the inspector panel",Sebastian Kurfuerst,"",2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:11,"","",793750,0.00,""
+40700,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,"!! directly display nodes as hidden when the ""hidden"" flag is changed (greyed-out, as it was before)",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:11,"","",793800,0.00,""
+40701,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,"re-implement: if a changed property is marked as ""reloadOnChange: true"" in the schema, reload the current page",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:12,"","",793850,0.00,""
+40705,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,re-include aloha,Sebastian Kurfuerst,Rens Admiraal,2012-10-04 07:52,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:15,"","",794050,0.00,""
+40707,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,remove fontawesome,Sebastian Kurfuerst,"",2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 02:58,"","",794150,0.00,""
+40708,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,!! move to review.typo3.org,Sebastian Kurfuerst,"",2012-10-04 07:53,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 03:00,"","",794200,0.00,""
+40709,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Should have,Display activity indicator on server communication (saving / publishing),Sebastian Kurfuerst,Christopher Hlubek,2012-10-17 03:47,"","","","","",0.00,100,2012-09-07 03:10,"","",794250,"",""
+40710,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,"If you click publish, the button should be immediately deactivated",Sebastian Kurfuerst,Mattias Nilsson,2012-10-04 07:52,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 03:12,"","",794300,0.00,""
+40711,Base Distribution,Task,"Story #40329: As a content manager, I want to list and edit my Content and Domain Objects inside the Management view",Closed,Should have,create TYPO3.Expose on git.typo3.org and migrate TYPO3.Admin from mneuhaus' repository.,Sebastian Kurfuerst,Karsten Dambekalns,2012-10-04 05:00,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 03:17,"","",794350,0.00,""
+40714,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Should have,mark section+menu content elements as .t3-reloadable-content,Sebastian Kurfuerst,Christian Müller,2012-10-21 12:42,"","","","","",0.00,0,2012-09-07 03:29,"","",794400,"",""
+40715,Base Distribution,Task,Story #40311: As a user I want the UI to respect the lights-off principle,Accepted,Should have,global overlays should have the same color / transparency,Sebastian Kurfuerst,Martin Muzatko,2012-11-30 10:43,"","","","","",0.00,0,2012-09-07 03:31,"","",794450,"",""
+40716,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,!! check HTML content element behavior,Sebastian Kurfuerst,"",2012-10-04 07:53,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 03:34,"","",794500,0.00,""
+40717,Base Distribution,Story,"",Postponed,Should have,"Add Launch Bar to other modules (Management, ...)",Sebastian Kurfuerst,"",2012-09-18 02:56,"","","","","",0.00,0,2012-09-07 03:35,"","",1762500,"",""
+40718,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Could have,"(low prio) Fix ""inspect"" functionality (lower-left button)",Sebastian Kurfuerst,"",2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-07 03:37,"","",794550,0.00,""
+40720,Base Distribution,Story,Work Package #45020: Content Editing Stability and Features,Closed,Could have,"As a content editor with small screen, I want to have a collapsable inspector",Sebastian Kurfuerst,"",2014-11-02 12:21,"",Sprint February 2013,2014-11-02,"","",0.00,50,2012-09-07 03:41,"","",1760650,0.00,""
+40721,Base Distribution,Task,"Story #40720: As a content editor with small screen, I want to have a collapsable inspector",Closed,Could have,automatically collapse inspector on small page,Sebastian Kurfuerst,"",2014-11-02 12:21,"",Sprint February 2013,2014-11-02,"",0.00,0.00,0,2012-09-07 03:41,"","",794650,0.00,""
+40722,Base Distribution,Task,"Story #40720: As a content editor with small screen, I want to have a collapsable inspector",Closed,Should have,Make inspector panel collapsible,Sebastian Kurfuerst,Aske Ertmann,2014-11-02 12:21,Content Editing,Sprint February 2013,2014-11-02,"","",0.00,100,2012-09-07 03:41,"","",794700,0.00,""
+40723,Base Distribution,Task,Story #40469: (low prio) As a user I want to get redirected to setup tool if install is incomplete,Resolved,Should have,Implement configurable exception workflows,Sebastian Kurfuerst,Bastian Waidelich,2012-09-14 06:17,"","","","","",0.00,0,2012-09-07 03:45,"","",794750,"",""
+40724,Base Distribution,Story,"",Closed,Should have,"As a first-time user, I want a login screen consistent with the remaining UI",Sebastian Kurfuerst,Robert Lemke,2012-10-04 08:50,Global User Interface,Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-07 03:46,"","",1759350,0.00,""
+40725,Base Distribution,Task,Story #40469: (low prio) As a user I want to get redirected to setup tool if install is incomplete,New,Could have,display a message in login form if no account exists with a linl to the setup.,Sebastian Kurfuerst,"",2012-09-14 06:17,"","","","","",0.00,0,2012-09-07 03:47,"","",794800,"",""
+40736,Base Distribution,Task,Story #40587: [Page Tree] As a Content Manager I want to create a new page,Closed,Should have,Adding pages with action bar,Markus Goldbeck,Markus Goldbeck,2012-10-04 08:01,Content Editing,Sprint 10 (1.0 TP1),2012-09-07,"",0.00,0.00,100,2012-09-07 10:12,"","",795350,0.00,"* click the plus icon
+* a new page is created in the page tree below the current page (the new page is a sub page of the current page)
+* if pages already existed below the current page, the new page is set to be the last of these sub pages
+* if the level below the current page has been collapsed, it now is expanded
+* the new page is in edit mode: the cursors blinks and the user can now enter a title
+* only after the edit field looses context (that is, by pressing enter or clicking elsewhere), the new page is actually created"
+40752,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Cleanup the new content element button,Rens Admiraal,Rens Admiraal,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-08 08:28,"","",796150,0.00,""
+40753,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Could have,Implement moving content elements,Rens Admiraal,Sebastian Kurfuerst,2012-10-04 07:53,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-08 08:53,"","",796200,0.00,""
+40754,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Must have,re-implement delete node,Rens Admiraal,"",2012-09-25 15:35,Content Editing,"","","","",0.00,100,2012-09-08 08:54,"","",796250,"",""
+40755,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,!! Check the order of entities after save,Rens Admiraal,Rens Admiraal,2012-10-04 07:52,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-08 08:54,"","",796300,0.00,""
+40759,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Check the inspector button,Rens Admiraal,Sebastian Kurfuerst,2012-10-04 07:52,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-08 11:00,"","",796500,0.00,""
+40761,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,re-implement overlay for non-inline editable elements,Rens Admiraal,Rens Admiraal,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-08 12:41,"","",796600,0.00,""
+40762,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,"add button bar (create, paste, ...) in top of all sections; permanently visible",Rens Admiraal,Rens Admiraal,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-08 13:06,"","",796650,0.00,""
+40764,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",New,Could have,Check if we can remove the inject method in the \TYPO3\TYPO3\ViewHelpers\ContentElement\* ViewHelpers,Rens Admiraal,"",2012-09-20 06:05,"","","","","",0.00,0,2012-09-08 15:54,"","",796750,"",""
+40786,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,"HTML Editor does not work transactionally anymore (Edit HTML, do NOT press apply --> changes are directly applied)",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:53,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-10 07:29,"","",797850,0.00,""
+40789,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,"!! after an in-page reload, the content element handles disappear",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:50,"",Sprint 10 (1.0 TP1),"","","",0.00,100,2012-09-10 08:20,"","",798000,"",Bonus task: Save the currently selected node and restore it after reload.
+40790,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,hallo controls broken --> because images are not there anymore,Sebastian Kurfuerst,Mattias Nilsson,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-10 08:22,"","",798050,0.00,"The Hallo editor (see screenshot) uses icons based on Fontawesome (http://fortawesome.github.com/Font-Awesome/). However, these icon CSS classes *collide* with the glyphicons provided by Twitter Bootstrap 2.
+
+As a result, the editing controls are not visible anymore (see screenshot). To reproduce, just select a text in editing mode and see the black boxes to appear ;-)
+
+To fix, we either find a way to include fontawesome icons in a way that they do not collide with our twitter bootstrap icons, or we add the necessary CSS and use twitter bootstrap icons inside the hallo editor."
+40818,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Fix wireframe mode section editing,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-11 07:48,"","",799400,0.00,"TypeError: T3.Content.Model.BlockManager is undefined, pageBlock = T3.Content.Model.BlockManager.get('_pageBlock');"" in FireFox console when try to create a new section with Wireframe mode on an empty kickstarted site.
+
+
+
+createSection: function(sectionName) {
+
+			var pageBlock = T3.Content.Model.BlockManager.get('_pageBlock');
+
+Does not exist"
+40852,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Button-Bar should be positioned using jQuery UI position,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:52,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-12 03:29,"","",801050,0.00,"Currently the handles to add/delete/move content are displayed manually inside ui/elements/contentelement-handles.js around line 61.
+
+However, this seems to break depending on the site's CSS quite often (for example on the flow3.org website).
+
+Thus, we want to replace the manual positioning with using jQuery UI position helper: http://jqueryui.com/demos/position/#events
+
+*Bonus:* If possible make the handles appear only when the content element is active, and not on hover. This should make the UI more visually ""stable""."
+40853,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,show editing controls only for active element,Sebastian Kurfuerst,Mattias Nilsson,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-12 03:37,"","",801100,0.00,""
+40860,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,!! an added element is not properly initialized in VIE,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-12 06:24,"","",801450,0.00,"Steps to reproduce:
+
+* create a new content element through the UI
+* then, if you do: require('vie/instance').entities.models
+* pick the last, just created one; and expand ""attributes""
+* they are EMPTY except subject and type, even if the template contained them.
+
+* when checking the HTML source, the attributes are all there."
+40886,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Fix non-existing section exception,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-13 02:52,"","",802700,0.00,""
+40887,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,"Trigger loading indicator if we know a page load will happen (f.e. when pressing ""apply"")",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:52,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-13 02:52,"","",802750,0.00,""
+40891,Base Distribution,Story,"",Closed,Should have,"As any user, I want fast TypoScript rendering",Sebastian Kurfuerst,"",2013-01-29 09:36,"","","","","",0.00,100,2012-09-13 05:22,"","",1760300,0.00,""
+40892,Base Distribution,Task,"Story #40891: As any user, I want fast TypoScript rendering",Closed,Should have,check TypoScript performance bottlenecks,Sebastian Kurfuerst,Sebastian Kurfuerst,2013-01-29 09:36,"","","","","",0.00,0,2012-09-13 05:22,"","",802950,"",""
+40896,Base Distribution,Task,"",New,Should have,"Fix layout in ""create account"" setup step",Robert Lemke,"",2012-09-13 05:59,Setup,Sprint 10 (1.0 TP1),2012-09-13,"","",0.00,0,2012-09-13 05:59,"","",803150,"","* the last field ""Confirmation"" doesn't fit in (see screenshot)
+* the last field should be labeled ""Confirm password""
+"
+40901,Base Distribution,Story,"",Closed,Should have,"As a user, I do not want any JavaScript errors to appear because of Loading Order",Sebastian Kurfuerst,"",2012-10-04 08:10,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-13 07:34,"","",1759200,0.00,""
+40903,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,fix renaming of page nodes in UI (it just loads forever),Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-13 07:45,"","",803450,0.00,""
+40926,Base Distribution,Story,"",Closed,Should have,"As an Administrator, I wan to create, update and delete users",Robert Lemke,"",2012-10-04 10:28,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-14 07:45,"","",1759400,0.00,""
+40927,Base Distribution,Task,"Story #40926: As an Administrator, I wan to create, update and delete users",Closed,Should have,Disable deletion of the currently logged in user.,Robert Lemke,Rens Admiraal,2012-10-04 08:01,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-14 07:46,"","",804600,0.00,""
+40928,Base Distribution,Story,"",Closed,Should have,"As a content manager, I want to publish content through the Workspaces module",Robert Lemke,"",2012-10-04 08:49,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-14 07:49,"","",1759300,0.00,""
+40934,Base Distribution,Story,"",Closed,Could have,"As a Site Integrator, I want an easy way to get started with TypoScript",Robert Lemke,"",2012-10-04 06:04,"",Sprint 10 (1.0 TP1),2012-08-09,"","",0.00,33,2012-09-14 11:38,"","",1758950,0.00,""
+40935,Base Distribution,Task,"Story #40934: As a Site Integrator, I want an easy way to get started with TypoScript",Closed,Should have,Remove necessesity to include the All.ts2 file manually.,Robert Lemke,Robert Lemke,2012-10-04 05:40,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-14 11:39,"","",804900,"",""
+40985,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Create single issue tickets from walkthrough: https://dl.dropbox.com/u/1418806/PhoenixIssues-20120914.mov,Robert Lemke,Sebastian Kurfuerst,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-17 05:42,"","",807350,0.00,""
+40988,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Decide when to show the button bar for the sections,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-17 05:52,"","",807500,0.00,"* currently, they are always shown; leading to cluttered UI."
+40990,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Fix / debug empty-height sections,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:51,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-17 05:53,"","",807600,0.00,see attached screenshot
+40991,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,Check editing behavior of Hallo (You need to click twice ato activate an element),Sebastian Kurfuerst,Rens Admiraal,2012-10-04 07:51,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-17 05:55,"","",807650,"",""
+40992,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Could have,Replace default image placeholder (Resources/Public/Images/dummy-image.png),Sebastian Kurfuerst,Robert Lemke,2012-10-04 07:50,"",Sprint 10 (1.0 TP1),"","","",0.00,100,2012-09-17 05:55,"","",807700,"",""
+40993,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Accepted,Could have,Test whether drag / drop of image onto thumbnail works,Sebastian Kurfuerst,"",2013-01-23 10:02,"","","","","",0.00,0,2012-09-17 05:57,"","",807750,"",""
+40994,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,check why URL is broken after uploading image in new Demo Site (see screenshot for URI,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:52,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-17 05:58,"","",807800,0.00,not sure if this is still relevant / can be reproduced
+40995,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,"for global links (f.e. when clicking at the logo), the current workspace is not preserved",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-17 06:00,"","",807850,0.00,""
+40996,Base Distribution,Task,"Story #40928: As a content manager, I want to publish content through the Workspaces module",Closed,Should have,"Sometimes, the workspace module still throws exceptions and becomes unusable (probably when modifying images)",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 08:01,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-17 06:02,"","",807900,0.00,""
+41000,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Closed,Could have,add body+html CSS classes when changing pages,Sebastian Kurfuerst,"",2014-11-02 13:25,"","",2014-11-02,"",0.00,0.00,0,2012-09-17 08:26,"","",808050,0.00,""
+41005,Base Distribution,Task,"Story #40934: As a Site Integrator, I want an easy way to get started with TypoScript",Closed,Should have,Streamline and simplify namespaces in TypoScript,Robert Lemke,Robert Lemke,2012-10-04 05:39,Content Rendering,Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-17 09:37,"","",808300,0.00,""
+41009,Base Distribution,Task,"",Resolved,Should have,Replace twitter-bootstrap icons with fontawesome,Rens Admiraal,Rens Admiraal,2012-09-18 03:35,"","",2012-09-17,"","",0.00,100,2012-09-17 12:42,"","",808500,"",""
+41011,Base Distribution,Task,Story #40585: [Page Tree] As a content editor I want to move pages by drag and drop,Closed,Must have,Moving nodes into nodes with drag n drop,Markus Goldbeck,Markus Goldbeck,2012-10-04 08:01,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-17 14:15,"","",808600,0.00,""
+41014,Base Distribution,Task,"",Closed,Should have,Fix 'object is undefined' error in javascript during wireframe editing in original demo site,Rens Admiraal,Rens Admiraal,2012-10-04 05:00,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-17 14:51,"","",808750,"",""
+41032,Base Distribution,Task,"Story #40934: As a Site Integrator, I want an easy way to get started with TypoScript",Closed,Should have,Simplify TypoScript templates for phoenix.typo3.org (namespaces),Robert Lemke,"",2012-10-04 05:33,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-18 04:42,"","",809600,0.00,""
+41040,Base Distribution,Task,Story #41586: write Neos Integrator Guide,Resolved,Must have,(BREAKING) Rename page.headerData to page.head,Robert Lemke,Tim Kandel,2013-07-04 14:43,"",1.0 beta 1,"","","",0.00,100,2012-09-18 06:45,"","",810000,"",""
+41047,Base Distribution,Task,"",Closed,Should have,In FireFox a 'Ext.EventManager is undefined' error is thrown,Rens Admiraal,Rens Admiraal,2012-11-08 16:19,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-18 13:34,"","",810350,0.00,""
+41069,Base Distribution,Task,"Story #40329: As a content manager, I want to list and edit my Content and Domain Objects inside the Management view",Closed,Should have,"Style ""node delete"" view of Expose",Sebastian Kurfuerst,Mattias Nilsson,2012-10-04 08:00,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-19 08:40,"","",811400,0.00,"h2. Installation / Getting to the delete page
+
+* <code>./flow3 package:import TYPO3.Expose</code>
+* Then, inside the TYPO3.Expose package, apply the following changesets using cherry-pick:
+** https://review.typo3.org/#/c/14726/
+** https://review.typo3.org/#/c/14729/
+** https://review.typo3.org/#/c/14730/
+* Activate the package: <code>./flow3 package:activate TYPO3.Expose</code>
+* Then, go to ""Management -> Content"" in Backend, select a node in the tree on the left side, choose a node in the list and press ""delete""
+
+h2. Goal
+
+* Style the delete page such that it matches the remaining backend look + feel in terms of colors etc
+
+h2. Related:
+
+* TYPO3.Expose/Resources/Private/Elements/Delete/Index.html
+* Resources/Public -> compass compile"
+41085,Base Distribution,Story,"",New,Should have,"As an integrator, I want to use the HTML5 ""header"" element for indicating titles in text",Sebastian Kurfuerst,"",2013-01-29 08:18,"","","","","",0.00,0,2012-09-20 03:59,"","",1760350,"","Currently, at least Hallo breaks with it; see https://review.typo3.org/#/c/14751/"
+41087,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",New,Could have,paste in section pastes AFTER section instead of at first element.,Sebastian Kurfuerst,"",2012-10-08 03:22,"","","","","",0.00,0,2012-09-20 04:03,"","",812250,"",""
+41097,Base Distribution,Task,"Story #40724: As a first-time user, I want a login screen consistent with the remaining UI",Closed,Should have,Build login screen,Sebastian Kurfuerst,Christian Müller,2012-10-04 08:01,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-20 05:58,"","",812750,0.00,""
+41098,Base Distribution,Story,"",New,Should have,"As a developer, I want a clean TypoScript package",Sebastian Kurfuerst,"",2013-05-18 06:51,"","","","","",0.00,33,2012-09-20 05:59,"","",1760550,0.00,""
+41099,Base Distribution,Story,"",New,Should have,"As site integrator, I want a API reference for TypoScript objects",Sebastian Kurfuerst,"",2013-01-29 08:18,"","","","","",0.00,0,2012-09-20 05:59,"","",1760700,"",""
+41100,Base Distribution,Task,Story #41586: write Neos Integrator Guide,Accepted,Could have,Create one-page reference about all available TypoScript objects (nice to have),Sebastian Kurfuerst,Christian Müller,2012-10-11 05:18,"",1.0 beta 1,"","","",0.00,0,2012-09-20 06:01,"","",812800,"",""
+41101,Base Distribution,Story,"",New,Could have,"As user, I want a well-working content editing (Bugfix Story)",Sebastian Kurfuerst,"",2014-12-10 04:26,"","",2011-06-23,"","",0.00,44,2012-09-20 06:02,"","",1761150,0.00,""
+41103,Base Distribution,Story,"",New,Should have,"As everybody, I want the new product name to be used inside Phoenix",Sebastian Kurfuerst,"",2013-05-11 13:06,"","",2012-10-05,"","",0.00,29,2012-09-20 06:12,"","",1761200,0.00,""
+41104,Base Distribution,Task,"Story #40934: As a Site Integrator, I want an easy way to get started with TypoScript",Closed,Could have,Move all Phoenix content type definitions to an own package,Sebastian Kurfuerst,Christian Müller,2012-10-04 05:34,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-20 06:14,"","",812900,0.00,""
+41105,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,"while typing, we should not loose focus",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:50,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-20 06:15,"","",812950,0.00,"- we have the ""midgardStorage"" plugin active with autoSave activated.
+- while typing, the storage plugin periodically saves the changes to the server
+- then, when the reply occurs, the VIE entity seems to be updated.
+- this, in turn, triggers a DOM update of the innerHTML (at least that's how it looks like)
+- and that's how the editor looses the current cursor position, as the cursor is placed at the start of the editable. And that sucks for the editor "
+41106,Base Distribution,Task,"Story #40329: As a content manager, I want to list and edit my Content and Domain Objects inside the Management view",Closed,Should have,style forms to be more usable,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:59,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-20 06:17,"","",813000,0.00,""
+41107,Base Distribution,Story,"",New,Should have,"As a user, I want a working demo site",Sebastian Kurfuerst,"",2013-01-29 08:18,"","",2012-10-11,"","",0.00,50,2012-09-20 06:19,"","",1761350,0.00,""
+41108,Base Distribution,Task,"Story #41107: As a user, I want a working demo site",New,Should have,test / update demo/integration server,Sebastian Kurfuerst,"",2012-10-11 05:29,"","","","","",0.00,0,2012-09-20 06:20,"","",813050,"",""
+41109,Base Distribution,Task,"Story #40329: As a content manager, I want to list and edit my Content and Domain Objects inside the Management view",Closed,Should have,style pagination,Sebastian Kurfuerst,Mattias Nilsson,2012-10-04 07:59,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-20 06:30,"","",813100,0.00,see attached screenshot
+41110,Base Distribution,Task,"Story #40329: As a content manager, I want to list and edit my Content and Domain Objects inside the Management view",Closed,Should have,"disable ""table"" view",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:59,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-20 06:31,"","",813150,0.00,""
+41112,Base Distribution,Task,"Story #41186: as a user, I want a clean listing of nodes inside management view",New,Should have,use better Content-Type previews,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-09-21 12:15,"",1.1,"","","",0.00,0,2012-09-20 06:33,"","",813250,"",""
+41114,Base Distribution,Story,"",New,Should have,"As a user, I want to insert inline JavaScript in the HTML content elements",Sebastian Kurfuerst,"",2013-01-29 08:18,"","","","","",0.00,0,2012-09-20 08:23,"","",1760950,"",""
+41116,Base Distribution,Task,"Story #41186: as a user, I want a clean listing of nodes inside management view",New,Could have,textareas in edit form should be made bigger,Sebastian Kurfuerst,"",2012-09-21 12:15,"",1.1,"","","",0.00,0,2012-09-20 09:38,"","",813400,"",""
+41138,Base Distribution,Story,"",Closed,Should have,As a backend user I want to have sensible error handling,Robert Lemke,"",2012-10-04 10:11,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-20 17:01,"","",1759150,0.00,""
+41139,Base Distribution,Task,Story #41138: As a backend user I want to have sensible error handling,Closed,Should have,"Adjust error page (404, ?) to login screen design",Robert Lemke,Christian Müller,2012-10-04 08:02,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-20 17:01,"","",814500,0.00,""
+41140,Base Distribution,Task,Story #41592: As a backend user I want to have sensible error handling,New,Could have,Let client redirect to login page if inactivity timeout was reached.,Robert Lemke,"",2012-10-04 08:04,"","","","","",0.00,0,2012-09-20 17:03,"","",814550,"",""
+41145,Base Distribution,Task,"Story #40724: As a first-time user, I want a login screen consistent with the remaining UI",Closed,Should have,Set focus on username field or password field ? depending on username parameter,Robert Lemke,Robert Lemke,2012-10-04 08:01,Global User Interface,Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-21 03:13,"","",814800,0.00,""
+41149,Base Distribution,Task,"Story #41103: As everybody, I want the new product name to be used inside Phoenix",Closed,Must have,"Add ""TYPO3 Phoenix"", ""Phoenix"", ""phoenix"" etc. everywhere where we expect the new name.",Robert Lemke,"",2012-10-08 03:20,"","","","",0.00,0.00,0,2012-09-21 04:39,"","",815000,0.00,""
+41150,Base Distribution,Task,"Story #41103: As everybody, I want the new product name to be used inside Phoenix",Closed,Should have,Prepare logos and other visuals for new name.,Robert Lemke,"",2012-10-08 03:20,"","","","",0.00,0.00,0,2012-09-21 04:39,"","",815050,0.00,""
+41152,Base Distribution,Story,"",New,Could have,"As a content editor, I want to use a page tree which fits into the overall UI",Robert Lemke,"",2014-10-04 11:33,"","",2012-09-24,"","",0.00,100,2012-09-21 05:09,"","",1761300,0.00,""
+41153,Base Distribution,Task,"Story #41152: As a content editor, I want to use a page tree which fits into the overall UI",Closed,Should have,Confirmation dialog: use the same style like in User Administration (see screenshot),Robert Lemke,Markus Goldbeck,2012-10-04 05:13,Content Editing,"","","","",0.00,100,2012-09-21 05:10,"","",815150,"",""
+41154,Base Distribution,Task,"Story #41152: As a content editor, I want to use a page tree which fits into the overall UI",Resolved,Should have,"As a content editor, I want the Page Tree to hide when I click outside the flyout",Robert Lemke,Markus Goldbeck,2012-11-03 13:10,Content Editing,"","","","",0.00,100,2012-09-21 05:11,"","",815200,"",""
+41167,Base Distribution,Story,"",Closed,Should have,"As a site integrator, I want a flexible content type system",Robert Lemke,"",2012-10-04 05:11,"",Sprint 10 (1.0 TP1),"","","",0.00,50,2012-09-21 09:43,"","",1758900,0.00,""
+41168,Base Distribution,Task,"Story #41167: As a site integrator, I want a flexible content type system",Closed,Should have,Extract content type definitions from TYPO3.TYPO3 package to its own package.,Robert Lemke,Christian Müller,2012-10-04 05:10,Content Management,Sprint 10 (1.0 TP1),"","","",0.00,100,2012-09-21 09:44,"","",815850,"",""
+41172,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",New,Could have,Show button bar on hover with slight delay,Sebastian Kurfuerst,"",2012-09-26 00:18,"","","","","",0.00,0,2012-09-21 10:19,"","",816050,"",""
+41174,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Could have,Remove blue border around currently active editable -> make the border grey and slightly dashed or so.,Sebastian Kurfuerst,Mattias Nilsson,2012-11-07 13:11,"","","","",0.00,0.00,0,2012-09-21 10:26,"","",816150,0.00,""
+41175,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,"check whether ordering of tabs in ""New Content Element"" dialog is deterministic (""General, Structure, Plugins"")",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-21 10:31,"","",816200,0.00,""
+41176,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Could have,"! can't reproduce in chrome! remove blue glow when pressing ""tab"" in New content element choice dialog",Sebastian Kurfuerst,Mattias Nilsson,2012-11-07 13:11,"","","","",0.00,0.00,0,2012-09-21 10:32,"","",816250,0.00,""
+41177,Base Distribution,Task,Story #41138: As a backend user I want to have sensible error handling,Closed,Must have,add alert box if javascript error occurs (window.onerror),Sebastian Kurfuerst,Christian Müller,2012-10-04 08:02,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-21 10:34,"","",816300,0.00,""
+41178,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Closed,Should have,"Image Upload: Upload image in background directly after choosing it (without pressing ""upload"")",Sebastian Kurfuerst,Christian Müller,2014-12-10 04:26,"","",2014-12-10,"","",0.00,0,2012-09-21 10:37,"","",816350,0.00,""
+41179,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Must have,"when editing two-column content (f.e. on Phoenix site), selection of one column content does not work; always, the two-column is selected",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:54,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-21 10:39,"","",816400,0.00,""
+41186,Base Distribution,Story,"",New,Could have,"as a user, I want a clean listing of nodes inside management view",Sebastian Kurfuerst,"",2013-01-30 10:05,"",1.1,"","","",0.00,33,2012-09-21 12:14,"","",1760450,0.00,""
+41305,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Closed,Should have,"Create sub-contentelements as determined by the ""structure"" property in the schema",Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:55,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-24 04:14,"","",822650,0.00,""
+41311,Base Distribution,Story,"",Closed,Could have,"As user, I want a well-working content editing (Bugfix Story)",Robert Lemke,"",2012-10-04 07:46,Content Editing,Sprint 10 (1.0 TP1),"","","",0.00,50,2012-09-24 06:27,"","",1759050,0.00,""
+41312,Base Distribution,Task,"Story #41311: As user, I want a well-working content editing (Bugfix Story)",Closed,Could have,Headline should not support multiple lines,Robert Lemke,Sebastian Kurfuerst,2012-10-04 07:45,Content Editing,Sprint 10 (1.0 TP1),"","","",0.00,100,2012-09-24 06:32,"","",822950,"",""
+41313,Base Distribution,Story,"",Closed,Should have,General UI bugs (CSS / JS),Robert Lemke,"",2012-10-04 04:59,"",Sprint 10 (1.0 TP1),2012-09-25,"","",0.00,100,2012-09-24 06:38,"","",1758850,0.00,""
+41314,Base Distribution,Task,Story #41313: General UI bugs (CSS / JS),Closed,Should have,Page tree is off screen (with Zurb foundation),Robert Lemke,Sebastian Kurfuerst,2012-10-04 05:09,Content Editing,Sprint 10 (1.0 TP1),"","","",0.00,100,2012-09-24 06:39,"","",823000,"",""
+41315,Base Distribution,Task,"Story #41311: As user, I want a well-working content editing (Bugfix Story)",Closed,Must have,Fix deletion of nodes,Robert Lemke,Robert Lemke,2012-10-04 07:39,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-24 07:13,"","",823050,0.00,""
+41316,Base Distribution,Task,"Story #41311: As user, I want a well-working content editing (Bugfix Story)",Closed,Should have,Use correct icons for edit options,Robert Lemke,Sebastian Kurfuerst,2012-10-04 07:38,Content Editing,Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-24 07:16,"","",823100,0.00,""
+41348,Base Distribution,Task,"Story #40901: As a user, I do not want any JavaScript errors to appear because of Loading Order",Closed,Should have,write loading-order analyzer,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 08:02,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,100,2012-09-25 07:49,"","",824700,0.00,""
+41349,Base Distribution,Task,Story #41313: General UI bugs (CSS / JS),Closed,Must have,SiteImportService should use createSingleNode(),Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 05:09,"",Sprint 10 (1.0 TP1),"","","",0.00,100,2012-09-25 07:55,"","",824750,"",""
+41350,Base Distribution,Task,"Story #40628: As any user, I need a Content Module based on semantic technologies (IKS)",Rejected,Could have,"check how to create a single ""break"" with hallo editor",Sebastian Kurfuerst,"",2012-09-25 08:29,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-25 07:59,"","",824800,"",""
+41351,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Could have,"Make it possible to press ""enter"" when creating a link?",Sebastian Kurfuerst,Mattias Nilsson,2012-10-20 14:35,"","","","","",0.00,100,2012-09-25 08:00,"","",824850,"",""
+41352,Base Distribution,Task,"Story #41167: As a site integrator, I want a flexible content type system",Closed,Should have,remove headline element from all content elements except headline,Sebastian Kurfuerst,Christian Müller,2012-10-04 05:10,"",Sprint 10 (1.0 TP1),"","",0.00,0.00,0,2012-09-25 08:01,"","",824900,0.00,""
+41353,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Closed,Should have,phoenix.typo3.org website template still misses the multicolumn CSS from https://review.typo3.org/#/c/14975/,Sebastian Kurfuerst,Robert Lemke,2012-10-08 03:20,"","","","",0.00,0.00,0,2012-09-25 08:02,"","",824950,0.00,""
+41354,Base Distribution,Task,"Story #41311: As user, I want a well-working content editing (Bugfix Story)",Rejected,Should have,check why hiding content does not work for two-colum elements; unhide does change CSS class back in all cases,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-09-25 08:32,"",Sprint 10 (1.0 TP1),"","","",0.00,0,2012-09-25 08:04,"","",825000,"",extra: check that hidden elements are not displayed in preview mode.
+41355,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",New,Should have,activate link-clicking inside texts in preview mode,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-04 07:36,"","","","","",0.00,0,2012-09-25 08:09,"","",825050,"",""
+41356,Base Distribution,Task,"Story #41152: As a content editor, I want to use a page tree which fits into the overall UI",Resolved,Should have,"when adding a page in the page title, don't only create a new page and make it active, but also select the text inside the input field.",Sebastian Kurfuerst,Markus Goldbeck,2012-11-18 18:35,"","","","","",0.00,100,2012-09-25 08:11,"","",825100,"",""
+41357,Base Distribution,Task,"Story #41152: As a content editor, I want to use a page tree which fits into the overall UI",Resolved,Should have,"when pressing ""enter"" after creating new page, this page should be selected.",Sebastian Kurfuerst,Markus Goldbeck,2012-11-07 14:36,"","","","","",0.00,100,2012-09-25 08:12,"","",825150,"",""
+41359,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Needs Feedback,Should have,close popovers when clicking anywhere else,Sebastian Kurfuerst,Sebastian Kurfuerst,2013-05-11 13:08,"","","","","",0.00,0,2012-09-25 09:56,"","",825250,"",""
+41586,Base Distribution,Story,"",Accepted,Could have,write Neos Integrator Guide,Markus Goldbeck,Sebastian Kurfuerst,2013-07-04 14:43,Documentation,1.0 beta 1,"","","",0.00,50,2012-10-04 05:58,"","",1757550,0.00,"DoD:
+
+* Write Neos Integrator Guide
+* Document best practices including SASS/Compass + RequireJS in customer projects
+* document deployment using Surf (at least roughly)"
+41592,Base Distribution,Story,"",New,Could have,As a backend user I want to have sensible error handling,Markus Goldbeck,"",2012-10-04 08:04,"","","","","",0.00,0,2012-10-04 08:04,"","",2954050,0.00,""
+41621,Base Distribution,Task,"",Resolved,Should have,noBrainer TYPO3 Neos 1.0 Alpha1 - delete __MACOSX Folder of ZIP file,Roland Schenke,Karsten Dambekalns,2013-01-29 10:55,"",Sprint February 2013,2012-10-05,"","",0.00,0,2012-10-05 08:15,"","",837050,"",Apple's meta files Folder for ZIP Archives should be unessential to others.
+41626,Base Distribution,Task,"Story #41103: As everybody, I want the new product name to be used inside Phoenix",Closed,Should have,Replace old logos with new ones,Aske Ertmann,"",2012-10-08 03:20,"","",2012-10-05,"",0.00,0.00,0,2012-10-05 10:38,"","",837300,0.00,""
+41627,Base Distribution,Task,"Story #41103: As everybody, I want the new product name to be used inside Phoenix",Closed,Should have,Replace old name usages with the new name,Aske Ertmann,"",2012-10-08 03:20,"","",2012-10-05,"",0.00,0.00,0,2012-10-05 10:57,"","",837350,0.00,""
+41654,Base Distribution,Task,"",Resolved,Must have,Symlinks in ZIP install package causes setup to fail,Jochen Weiland,Karsten Dambekalns,2012-10-23 05:26,Setup,"",2012-10-07,"","",0.00,100,2012-10-07 12:45,"","",838700,"","When unzipping the file TYPO-Neos-1.0-alpha1, a number of symlinks with nonexistent targets are created in the Web/_Resources/Static/Packages folder:
+
+    linking: TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.Aloha  -> /Volumes/data/htdocs/neos-build/Packages/Application/TYPO3.Aloha/Resources/Public 
+    linking: TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.ExtJS  -> /Volumes/data/htdocs/neos-build/Packages/Application/TYPO3.ExtJS/Resources/Public 
+    linking: TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.Flow  -> /Volumes/data/htdocs/neos-build/Packages/Framework/TYPO3.Flow/Resources/Public 
+    linking: TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.Fluid  -> /Volumes/data/htdocs/neos-build/Packages/Framework/TYPO3.Fluid/Resources/Public 
+    linking: TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.PhoenixDemoTypo3Org  -> /Volumes/data/htdocs/neos-build/Packages/Sites/TYPO3.PhoenixDemoTypo3Org/Resources/Public 
+    linking: TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.Setup  -> /Volumes/data/htdocs/neos-build/Packages/Application/TYPO3.Setup/Resources/Public 
+    linking: TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.TYPO3  -> /Volumes/data/htdocs/neos-build/Packages/Application/TYPO3.TYPO3/Resources/Public 
+    linking: TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/Twitter.Bootstrap  -> /Volumes/data/htdocs/neos-build/Packages/Application/Twitter.Bootstrap/Resources/Public 
+(...)
+finishing deferred symbolic links:
+  TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.Aloha -> /Volumes/data/htdocs/neos-build/Packages/Application/TYPO3.Aloha/Resources/Public
+  TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.ExtJS -> /Volumes/data/htdocs/neos-build/Packages/Application/TYPO3.ExtJS/Resources/Public
+  TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.Flow -> /Volumes/data/htdocs/neos-build/Packages/Framework/TYPO3.Flow/Resources/Public
+  TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.Fluid -> /Volumes/data/htdocs/neos-build/Packages/Framework/TYPO3.Fluid/Resources/Public
+  TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.PhoenixDemoTypo3Org -> /Volumes/data/htdocs/neos-build/Packages/Sites/TYPO3.PhoenixDemoTypo3Org/Resources/Public
+  TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.Setup -> /Volumes/data/htdocs/neos-build/Packages/Application/TYPO3.Setup/Resources/Public
+  TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.TYPO3 -> /Volumes/data/htdocs/neos-build/Packages/Application/TYPO3.TYPO3/Resources/Public
+  TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/Twitter.Bootstrap -> /Volumes/data/htdocs/neos-build/Packages/Application/Twitter.Bootstrap/Resources/Public
+
+The setup program tries to create the folders, e.g. TYPO3.Aloha in the Packages folder. Since the symlink already exists, the creating of the folder fails with a fatal error: 
+
+Uncaught Exception
+  Could not create directory
+  ""/.../TYPO3-Neos-1.0-alpha1/Web/_Resources/Static/Packages/TYPO3.Aloha/Aloha""!
+
+Temporary solution: 
+Delete the symlinks in the Web/_Resources/Static/Packages folder after unzipping."
+41655,Base Distribution,Task,"",Resolved,Must have,Fatal error after completing setup when viewing FE or logging into BE,Jochen Weiland,"",2013-05-11 13:08,Setup,"",2012-10-07,"","",0.00,0,2012-10-07 12:50,"","",838750,"","After installing Neos there is a fatal error message when either trying to view the FE or after logging into the BE:
+
+Fatal error: require() [function.require]: Failed opening required '/.../TYPO3-Neos-1.0-alpha1/Data/Temporary/Production/Doctrine/Proxies/__CG__TYPO3TYPO3CRDomainModelNode.php' (include_path='.:/usr/local/lib/php') in /.../TYPO3-Neos-1.0-alpha1/Packages/Vendor/doctrine/orm/lib/Doctrine/ORM/Proxy/ProxyFactory.php on line 93
+
+The directory TYPO3-Neos-1.0-alpha1/Data/Temporary/Production/Doctrine/Proxies/ is empty."
+41668,Base Distribution,Task,"Story #41103: As everybody, I want the new product name to be used inside Phoenix",Resolved,Should have,Update code,Sebastian Kurfuerst,Karsten Dambekalns,2012-11-06 06:35,"","","","","",0.00,100,2012-10-08 03:20,"","",839350,"",""
+41669,Base Distribution,Story,"",New,Should have,"As team member, I want updated deployment working",Sebastian Kurfuerst,"",2013-01-29 10:56,"",Sprint February 2013,"","","",0.00,38,2012-10-08 03:22,"","",1760600,0.00,""
+41670,Base Distribution,Story,"",New,Should have,"as anybody, I want an updated flow and neos website",Sebastian Kurfuerst,"",2013-01-29 08:18,"","","","","",0.00,13,2012-10-08 03:22,"","",1760200,0.00,""
+41671,Base Distribution,Story,"",New,Should have,"as developer, I want to make sure that jquery and ember is cleanly encapsulated and does not interfere with site JS",Sebastian Kurfuerst,"",2013-01-29 08:18,"","","","","",0.00,0,2012-10-08 03:23,"","",1761450,0.00,""
+41672,Base Distribution,Story,"",New,Should have,"as developer, I want to make sure that CSS is cleanly encapsulated (i.e. site CSS does not change the UI css)",Sebastian Kurfuerst,"",2013-01-29 08:18,"","","","","",0.00,50,2012-10-08 03:23,"","",1761000,0.00,""
+41673,Base Distribution,Task,"Story #41670: as anybody, I want an updated flow and neos website",New,Should have,"add guide ""tuning Flow Performance""",Sebastian Kurfuerst,"",2012-10-08 03:24,"","","","","",0.00,0,2012-10-08 03:24,"","",839400,"",""
+41674,Base Distribution,Task,"Story #41670: as anybody, I want an updated flow and neos website",New,Should have,"add guide ""profile and debug Flow applications"" -> maybe ask othres to write that",Sebastian Kurfuerst,"",2012-10-08 03:24,"","","","","",0.00,0,2012-10-08 03:24,"","",839450,"",""
+41675,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,make sure Surf works both with ./flow3 and ./flow,Sebastian Kurfuerst,"",2013-01-29 08:48,"",Sprint February 2013,"","","",0.00,0,2012-10-08 03:25,"","",839500,"",""
+41676,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,fix documentation rendering on neos website,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-09 13:08,"",Sprint February 2013,"","",0.00,0.00,0,2012-10-08 03:25,"","",839550,0.00,""
+41677,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,update flow3 website to use Flow packages (FLOW3 -> Flow conversion of packages),Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-09 08:53,"",Sprint February 2013,"","",0.00,0.00,0,2012-10-08 03:26,"","",839600,0.00,""
+41678,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,make sure all Jenkins tasks run green again,Sebastian Kurfuerst,Karsten Dambekalns,2012-10-09 08:53,"",Sprint February 2013,"","",0.00,0.00,0,2012-10-08 03:26,"","",839650,0.00,""
+41679,Base Distribution,Story,"",New,Should have,"As developer, I want to use packagist.org for all packages",Sebastian Kurfuerst,"",2013-01-29 08:18,"","","","","",0.00,20,2012-10-08 03:27,"","",1761400,0.00,""
+41680,Base Distribution,Task,"Story #41679: As developer, I want to use packagist.org for all packages",New,Should have,"push all packages to packagist, with post-change hook",Sebastian Kurfuerst,"",2012-10-08 03:28,"","","","","",0.00,0,2012-10-08 03:28,"","",839700,"",""
+41681,Base Distribution,Task,"Story #41679: As developer, I want to use packagist.org for all packages",Resolved,Should have,provide documentation on how to update from FLOW3 1.1 to Flow 2.0,Sebastian Kurfuerst,Karsten Dambekalns,2012-12-17 12:11,"","","","","",0.00,100,2012-10-08 03:28,"","",839750,"",""
+41682,Base Distribution,Task,"Story #41679: As developer, I want to use packagist.org for all packages",Accepted,Should have,"create a package for flow.typo3.org website listing only typo3-flow-* composer packages (""mini-TER"")",Sebastian Kurfuerst,Marc Neuhaus,2012-10-11 05:30,"","","","","",0.00,0,2012-10-08 03:28,"","",839800,"",""
+41683,Base Distribution,Task,"Story #41670: as anybody, I want an updated flow and neos website",Resolved,Should have,replace FLOW3 -> Flow on website,Sebastian Kurfuerst,Christian Müller,2012-10-17 13:33,"","","","","",0.00,100,2012-10-08 03:29,"","",839850,"",""
+41684,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,disable sites.xml import on Neos website (production and integration server),Sebastian Kurfuerst,"",2012-10-11 10:48,"",Sprint February 2013,"","",0.00,0.00,0,2012-10-08 03:29,"","",839900,0.00,""
+41685,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,make regular sites.xml backup and commit this to some git repo,Sebastian Kurfuerst,Karsten Dambekalns,2012-10-10 04:57,"",Sprint February 2013,"","","",0.00,100,2012-10-08 03:29,"","",839950,"",""
+41686,Base Distribution,Task,"Story #41670: as anybody, I want an updated flow and neos website",New,Should have,"ask community to convert Christians ""Developing TYPO3 Neos Website"" to tutorial in ReST",Sebastian Kurfuerst,"",2012-10-08 03:30,"","","","","",0.00,0,2012-10-08 03:30,"","",840000,"",""
+41687,Base Distribution,Task,"Story #41670: as anybody, I want an updated flow and neos website",New,Should have,"ask community to convert Sebastians ""Technical Overview to Neos"" to documentation in ReST",Sebastian Kurfuerst,"",2012-10-08 03:30,"","","","","",0.00,0,2012-10-08 03:30,"","",840050,"",""
+41688,Base Distribution,Story,"",Closed,Should have,analyse log files from demo instance at T3CON and provide bug reports for that,Sebastian Kurfuerst,"",2013-01-29 09:38,"","","","","",0.00,0,2012-10-08 03:32,"","",1761650,"",""
+41700,Base Distribution,Story,"",New,Should have,As a developer I want to have a reasonable test coverage for JavaScript,Rens Admiraal,"",2013-01-29 08:18,"","","","","",0.00,0,2012-10-08 05:01,"","",1760100,"",""
+41701,Base Distribution,Story,"",New,Should have,As a content editor I want to have localization support ('single tree concept'),Rens Admiraal,"",2013-01-30 10:04,"",1.1,"","","",0.00,0,2012-10-08 05:01,"","",1757350,"",""
+41702,Base Distribution,Story,"",New,Should have,As an integrator I want to configure read / write access to pages / sections,Rens Admiraal,"",2013-01-29 08:18,"","","","","",0.00,0,2012-10-08 05:01,"","",1760900,"",""
+41703,Base Distribution,Story,"",New,Must have,Assign roles to users in user management,Rens Admiraal,Rens Admiraal,2013-01-30 08:43,Administration,1.0 beta 1,"","","",0.00,0,2012-10-08 05:02,"","",1760750,"","As an Administrator I want to assign roles to a user in the user management module.
+
+The valid roles for the first version are:
+
+* Administrator
+* Content Editor"
+41774,Base Distribution,Epic,"",Resolved,Must have,Thank you bug,Carsten Bleicker,Karsten Dambekalns,2012-12-17 14:37,General / Project,"",2012-10-09,"","",0.00,100,2012-10-09 06:40,"","",844150,"","A big ""*THANK YOU*"" because of the new TYPO3 Family members is missing.
+Patch attached."
+41775,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,Disable sites.xml import on flow.typo3.org,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-09 06:54,"",Sprint February 2013,"","",0.00,0.00,0,2012-10-09 06:54,"","",844200,0.00,""
+41780,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,deactivate flow3.typo3.org on robertlemke's servers,Sebastian Kurfuerst,Robert Lemke,2012-10-11 10:41,"",Sprint February 2013,"","",0.00,0.00,0,2012-10-09 08:53,"","",844450,0.00,""
+41781,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Accepted,Should have,set up integration.flow.typo3.org,Sebastian Kurfuerst,Karsten Dambekalns,2012-12-17 14:38,"",Sprint February 2013,"","","",0.00,90,2012-10-09 08:53,"","",844500,"",""
+41782,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,set up integration.neos.typo3.org,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-10-09 09:19,"",Sprint February 2013,"","",0.00,0.00,0,2012-10-09 08:53,"","",844550,0.00,""
+41787,Base Distribution,Task,"Story #41679: As developer, I want to use packagist.org for all packages",New,Should have,change git repositories on git.typo3.org (FLOW3 -> Flow; Neos Name),Sebastian Kurfuerst,"",2012-10-09 09:21,"","","","","",0.00,0,2012-10-09 09:21,"","",844800,"",""
+41788,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,create backend user accounts for neos.typo3.org,Sebastian Kurfuerst,Karsten Dambekalns,2012-10-31 04:00,"",Sprint February 2013,"","","",0.00,100,2012-10-09 09:26,"","",844850,"",""
+41789,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Resolved,Should have,create backend user accounts for flow.typo3.org,Sebastian Kurfuerst,Karsten Dambekalns,2012-10-31 03:59,"",Sprint February 2013,"","","",0.00,100,2012-10-09 09:26,"","",844900,"",""
+41805,Base Distribution,Task,"Story #41669: As team member, I want updated deployment working",Accepted,Should have,adjust release process to Composer / create Neos release using release plugin etc,Sebastian Kurfuerst,Karsten Dambekalns,2013-01-29 10:56,"",Sprint February 2013,"","","",0.00,0,2012-10-09 13:10,"","",845700,"",""
+41808,Base Distribution,Task,"",Rejected,Should have,Flow does not support Windows versions older than Windows Vista or Windows Server 2008 (Error #1312463704) ,Jean-Sébastien Gervais,"",2012-10-09 15:43,"","",2012-10-09,"","",0.00,0,2012-10-09 14:35,"","",845850,"",While trying to load up the setup page for a first install.  The message may be a bit misleading as I am working on a windows XP machine (virtualized) with under xampp 
+41821,Base Distribution,Task,"Story #41670: as anybody, I want an updated flow and neos website",New,Should have,discuss how documentation can be improved,Sebastian Kurfuerst,Berit Hlubek,2012-10-11 05:37,"","","","","",0.00,0,2012-10-10 03:48,"","",846500,"",""
+41838,Base Distribution,Task,"Story #41679: As developer, I want to use packagist.org for all packages",Accepted,Should have,document and update conventions for composer name and package keys,Sebastian Kurfuerst,Christian Jul Jensen,2012-10-10 08:33,"","","","","",0.00,0,2012-10-10 08:32,"","",847350,"","We want to go with the following conventions:
+<code><pre>
+TYPO3.Phoenix.ContentTypes ? typo3/phoenix-contenttypes
+TYPO3.Queue ? typo3/queue
+TYPO3.Queue.Redis ? typo3/queue-redis
+</pre></code>"
+41845,Base Distribution,Task,"Story #41670: as anybody, I want an updated flow and neos website",Needs Feedback,Should have,write chapter on Testing in flow.typo3.org guide (Christian Peters takes over this task),Sebastian Kurfuerst,Martin Muzatko,2012-11-05 10:35,"","","","","",0.00,0,2012-10-10 08:46,"","",847700,"",""
+41849,Base Distribution,Task,"Story #41672: as developer, I want to make sure that CSS is cleanly encapsulated (i.e. site CSS does not change the UI css)",Resolved,Should have,Create normalize.css,Berit Hlubek,Berit Hlubek,2012-10-16 06:35,"","","","","",0.00,100,2012-10-10 13:53,"","",847900,"","This should contain ar least:
+* <div> cleaning (no paddings, no margins, no borders on our own elements)
+* <bod> cleaning (put base text-align, base font-family on our t3-ui-classes and important IDs)"
+41850,Base Distribution,Story,"",New,Should have,As an integrator I would like to include default content styles from Neos,Berit Hlubek,"",2013-05-11 13:11,"","","","","",0.00,33,2012-10-10 14:06,"","",1761250,0.00,""
+41851,Base Distribution,Task,Story #41850: As an integrator I would like to include default content styles from Neos,Closed,Should have,Include default content element styles automatically via TypoScript if the package is installed.,Berit Hlubek,Christian Müller,2013-05-11 13:11,"","","","","",0.00,0,2012-10-10 14:14,"","",847950,"",""
+41852,Base Distribution,Task,Story #41850: As an integrator I would like to include default content styles from Neos,New,Should have,Add default content styles inside the content elements package.,Berit Hlubek,Berit Hlubek,2012-10-10 14:15,"","","","","",0.00,0,2012-10-10 14:15,"","",848000,"",""
+41853,Base Distribution,Story,"",New,Should have,As an integrator I want an optimized setup,Berit Hlubek,"",2013-01-29 08:18,"","",2012-09-13,"","",0.00,80,2012-10-10 14:19,"","",1760050,0.00,""
+41854,Base Distribution,Task,Story #41853: As an integrator I want an optimized setup,Resolved,Should have,Un-bootstrap-ify the setup and make it look like the backend,Berit Hlubek,Berit Hlubek,2012-10-21 04:36,"","","","","",0.00,100,2012-10-10 14:21,"","",848050,"",""
+41855,Base Distribution,Task,Story #41853: As an integrator I want an optimized setup,New,Should have,Optimize the usability of the site creation wizard,Berit Hlubek,Berit Hlubek,2012-10-10 14:26,"","","","","",0.00,0,2012-10-10 14:26,"","",848100,"",Add an accordion with one element for the site import and one element for the new creation of a site.
+41856,Base Distribution,Task,Story #41853: As an integrator I want an optimized setup,New,Should have,Require the needed graphic modules for the site import and show a warning if the modules are not found,Berit Hlubek,"",2012-10-10 14:28,"","","","","",0.00,0,2012-10-10 14:28,"","",848150,"",""
+41857,Base Distribution,Task,Story #41853: As an integrator I want an optimized setup,Resolved,Should have,Add information about the password requirements within the user creation step,Berit Hlubek,Berit Hlubek,2012-10-21 05:35,"","","","","",0.00,100,2012-10-10 14:31,"","",848200,"",""
+41858,Base Distribution,Story,"",New,Should have,As an integrator I want a complete feature set in TypoScript and EEL,Berit Hlubek,"",2013-07-19 08:53,"","","","","",0.00,65,2012-10-10 14:38,"","",1760400,0.00,""
+41859,Base Distribution,Task,Story #41858: As an integrator I want a complete feature set in TypoScript and EEL,Accepted,Should have,"Create a standard library for common string, array and date functions in EEL",Berit Hlubek,Christopher Hlubek,2013-07-19 08:53,"","","","","",0.00,30,2012-10-10 14:39,"","",848250,"",""
+41860,Base Distribution,Task,Story #41858: As an integrator I want a complete feature set in TypoScript and EEL,Resolved,Should have,Create a way to use static values/expressions in TypoScript paths,Berit Hlubek,Christopher Hlubek,2013-01-30 04:18,"","","","","",0.00,100,2012-10-10 14:41,"","",848300,"",For example something like a basic version of the old TEXT object.
+41861,Base Distribution,Story,"",New,Should have,As any user I want a better usability of the backend UI,Berit Hlubek,"",2013-01-29 08:18,"","","","","",0.00,100,2012-10-10 15:01,"","",1761050,0.00,""
+41862,Base Distribution,Task,Story #41861: As any user I want a better usability of the backend UI,Resolved,Should have,Change the logout button to a dropdown button also including a user settings link,Berit Hlubek,Christopher Hlubek,2012-10-30 14:35,"","","","","",0.00,100,2012-10-10 15:02,"","",848350,"",""
+41871,Base Distribution,Task,"Story #41186: as a user, I want a clean listing of nodes inside management view",Closed,Should have,as a developer i want to easily edit domain objects with expose,Marc Neuhaus,Marc Neuhaus,2012-10-11 05:14,"",1.1,"","","",0.00,0,2012-10-11 05:06,"","",848800,"",""
+41872,Base Distribution,Task,Story #41853: As an integrator I want an optimized setup,New,Should have,Detect if symlinks can be created,Rens Admiraal,"",2012-10-11 05:15,"","",2012-10-11,"","",0.00,0,2012-10-11 05:15,"","",848850,"","If symlinks can't be created a friendly error message should be shown.
+
+This could be checked for example using ini_get('disable_functions') and / or actually creating a test symlink to check for windows policy"
+41873,Base Distribution,Task,"Story #41107: As a user, I want a working demo site",Resolved,Should have,Fix the site:prune command,Rens Admiraal,"",2012-10-15 13:36,"","",2012-10-11,"","",0.00,100,2012-10-11 05:18,"","",848900,"",""
+41875,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Must have,"Updating Syncronization between Inspector, Content, Pagetree and Inspectree",Markus Goldbeck,Markus Goldbeck,2013-01-31 13:07,Content Editing,"","","","",0.00,100,2012-10-11 05:30,"","",849000,"",""
+41876,Base Distribution,Task,"Story #41671: as developer, I want to make sure that jquery and ember is cleanly encapsulated and does not interfere with site JS",New,Should have,Make Neos UI work with Zurb Foundation (for example),Robert Lemke,"",2012-10-11 05:30,"","","","","",0.00,0,2012-10-11 05:30,"","",849050,"",""
+41877,Base Distribution,Task,"Story #41670: as anybody, I want an updated flow and neos website",New,Should have,Explore: Find a way to include Neos / Flow news via RSS,Robert Lemke,"",2013-05-11 13:19,"","","","","",0.00,0,2012-10-11 05:39,"","",849100,"",""
+41878,Base Distribution,Task,"Story #41103: As everybody, I want the new product name to be used inside Phoenix",New,Should have,extract package management to own package,Sebastian Kurfuerst,"",2012-10-11 05:42,"","","","","",0.00,0,2012-10-11 05:42,"","",849150,"",""
+41879,Base Distribution,Story,"",New,Could have,extract user management to own package,Sebastian Kurfuerst,Rens Admiraal,2013-01-29 09:46,"","","","","",0.00,0,2012-10-11 05:42,"","",2954200,"","As developer, I want to use the Neos user-managmeent also for standalone Flow applications. Rens wanted to look at this."
+41892,Base Distribution,Task,"Story #41107: As a user, I want a working demo site",New,Should have,Set up an environment for the demo site plus the domain name: neos.demo.typo3.org,Ben van 't Ende,Ben van 't Ende,2012-10-11 10:47,"","","","","",0.00,0,2012-10-11 10:46,"","",849800,"",""
+41928,Base Distribution,Task,"",Resolved,Must have,"Comment is generated in source: <!-- TODO: add the page properties in a more clever way, and only when being in backend... -->",Henjo Hoeksma,Henjo Hoeksma,2012-12-17 14:36,Content Rendering,"",2012-10-12,"","",0.00,100,2012-10-12 10:05,"","",851450,"","The comment <!-- TODO: add the page properties in a more clever way, and only when being in backend... --> is default generated in the source code.
+
+Environment: new template creation.
+
+Location of problem: Packages/Application/TYPO3.Phoenix.ContentTypes/Resources/Private/Templates/TypoScriptObjects/PageTemplate.html"
+41930,Base Distribution,Task,"",Resolved,Should have,An empty div is default inserted in the generated source code,Henjo Hoeksma,"",2012-12-17 14:35,Content Rendering,"",2012-10-12,"","",0.00,100,2012-10-12 10:11,"","",851550,"","Coming from: 
+Packages/Application/TYPO3.Phoenix.ContentTypes/Resources/Private/Templates/TypoScriptObjects/PageTemplate.html
+
+<pre>
+<code class=""html"">
+<t:contentElement node=""{node}"" page=""1"" />
+</code>
+</pre>"
+41931,Base Distribution,Task,"",New,Should have,"TODO: add the page properties in a more clever way, and only when being in backend... ",Henjo Hoeksma,"",2012-10-12 10:23,Content Rendering,"",2012-10-12,"","",0.00,0,2012-10-12 10:23,"","",851600,"",See issue: #41928 for details.
+41958,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Should have,"Make the '@' usable in content editing (on a mac) by changing the ""search & navigate"" shortcut to another keyboard combination.",Berit Hlubek,Christopher Hlubek,2012-10-17 03:39,"","","","","",0.00,100,2012-10-13 14:02,"","",852950,"",""
+41964,Base Distribution,Task,"",Closed,Should have,Phoenix in copyright source code header,Henjo Hoeksma,Henjo Hoeksma,2012-12-15 10:49,Content Rendering,"",2012-10-13,"","",0.00,0,2012-10-13 17:09,"","",853250,"",Phoenix in copyright source code header
+41972,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Must have,Support user workspace names with underscore,Christopher Hlubek,Christopher Hlubek,2012-10-17 04:35,"","","","","",0.00,100,2012-10-14 07:42,"","",853650,"",""
+41973,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Accepted,Should have,Align button bars for editables on top of the editable border to prevent overlay issues with the content,Christopher Hlubek,Sebastian Kurfuerst,2012-10-17 02:53,"","","","","",0.00,0,2012-10-14 07:44,"","",853700,"",""
+41977,Base Distribution,Task,"Story #41103: As everybody, I want the new product name to be used inside Phoenix",Resolved,Should have,Make name in setup configurable (TYPO3 Setup -> Neos Setup),Christopher Hlubek,Christopher Hlubek,2012-10-17 03:16,"","","","","",0.00,100,2012-10-14 08:28,"","",853900,"",""
+41978,Base Distribution,Task,Story #41853: As an integrator I want an optimized setup,Resolved,Should have,Login after Logout does not work on first submit of the password,Christopher Hlubek,"",2013-01-22 05:48,"","","","","",0.00,100,2012-10-14 08:34,"","",853950,"",""
+42014,Base Distribution,Task,Story #44957: Reliable clipboard and content element handles,Resolved,Must have,Cut and Paste is not working reliably ,Christopher Hlubek,"",2013-05-23 12:52,"",Sprint February 2013,"","","",0.00,100,2012-10-15 07:43,"","",855750,"",""
+42038,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",New,Must have,"Automatic save is not always in sync with content, content could be lost",Christopher Hlubek,"",2012-10-16 06:00,"","","","","",0.00,0,2012-10-16 06:00,"","",856850,"",""
+42053,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Should have,Disable selection features in preview mode,Christopher Hlubek,Christopher Hlubek,2012-10-17 11:06,"","","","","",0.00,0,2012-10-16 10:44,"","",857600,"",""
+42203,Base Distribution,Task,Story #44921: Decide TypoScript and TYPO3CR Naming,Resolved,Should have,To discuss: naming of 'Section' in Neos,Rens Admiraal,Robert Lemke,2013-01-29 11:56,"",Sprint February 2013,2012-10-20,"",0.00,0.00,0,2012-10-19 19:31,"","",864900,0.00,In a meeting with developers there was a discussion about the naming of 'sections'. Multiple developers said this naming was confusing with the HTML5 tag 'sections' which have a different meaning. It was said that 'Content Area' could be a better name.
+42205,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",Resolved,Should have,"When you change a property in the inspector panel and press 'apply', the 'publish page' button does not become active",Rens Admiraal,Mattias Nilsson,2012-10-30 04:35,"","","","","",0.00,100,2012-10-19 19:43,"","",865000,"",""
+42206,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",New,Should have,When a content element is hidden based on hiddenBeforeDateTime / hiddenAfterDateTime the hidden CSS should also be applied (so the element should be transparent),Rens Admiraal,"",2012-10-19 19:44,"","","","","",0.00,0,2012-10-19 19:44,"","",865050,"",""
+42208,Base Distribution,Task,"Story #41152: As a content editor, I want to use a page tree which fits into the overall UI",Resolved,Should have,"The pagetree should be hidden if you enable the preview mode (reproduce: open page tree, click the preview mode button)",Rens Admiraal,"",2013-01-09 13:36,"","","","","",0.00,100,2012-10-19 19:47,"","",865150,"",""
+42209,Base Distribution,Task,Story #41853: As an integrator I want an optimized setup,Resolved,Should have,It should be explained what effect skipping steps has. For example explain an admin user has to be created by using CLI commands. Now the 'skip' button raises questions.,Rens Admiraal,Christopher Hlubek,2012-11-12 16:35,"","","","","",0.00,100,2012-10-19 19:49,"","",865200,"",""
+42216,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",New,Should have,Show at least some recognizable content of a node in the inspector panel. Now the header property is used which only works for headlines,Rens Admiraal,"",2012-10-20 06:19,"","","","","",0.00,0,2012-10-20 06:19,"","",865550,"",""
+42220,Base Distribution,Task,"Story #41101: As user, I want a well-working content editing (Bugfix Story)",New,Should have,"""Uncaught ReferenceError: nextAnimation is not defined"" javascript error on load (demo package)",Rens Admiraal,"",2012-10-20 06:37,"","","","","",0.00,0,2012-10-20 06:37,"","",865750,"",""
+42246,Base Distribution,Task,"Story #41672: as developer, I want to make sure that CSS is cleanly encapsulated (i.e. site CSS does not change the UI css)",New,Must have,Use same DOM hierarchy for logged in backend user and public and do not render content editing classes in public frontend,Christopher Hlubek,"",2012-10-21 10:42,"","","","","",0.00,0,2012-10-21 10:38,"","",867050,"","Basically the output has to be the same for a logged in user or a rendered page for every visitor. We should strive for the same DOM structure to prevent hard to find styling issues, because CSS could depend on the hierarchy.
+
+A Section renders a @div@ around the content only if logged in. We need a configurable tag element for the Section (with attributes) and should always render it for consistency.
+"
+42248,Base Distribution,Task,Story #41850: As an integrator I would like to include default content styles from Neos,New,Must have,Move backend includes (JS and CSS) back to Neos package,Christopher Hlubek,"",2012-10-21 12:47,"","","","","",0.00,0,2012-10-21 11:33,"","",867150,"",Right now the header includes for content editing are in the page template of the content types package. It should be placed inside the Neos package (@TYPO3.TYPO3@). 
+42670,Base Distribution,Task,"Story #41152: As a content editor, I want to use a page tree which fits into the overall UI",Resolved,Must have,creating two nodes depending on each other in a branch breaks the tree,Markus Goldbeck,Markus Goldbeck,2012-11-18 18:35,Content Editing,"","","","",0.00,100,2012-11-04 09:13,"","",887800,"",""
+42672,Base Distribution,Story,"",New,Should have,"As everybody, I want no JavaScript loading issues (Bugfix story)",Markus Goldbeck,"",2014-10-04 11:34,"","",2012-11-04,"","",0.00,100,2012-11-04 10:38,"","",1760500,0.00,""
+42740,Base Distribution,Task,Story #41853: As an integrator I want an optimized setup,Closed,Must have,Make all setup steps accessible again,Berit Hlubek,Karsten Dambekalns,2012-11-20 04:43,Setup,"","","","",0.00,0,2012-11-06 16:31,"","",891250,"","At the moment some setup steps seem to be broken.
+I have a running site but started the setup again to create an admin user: After selecting the database I got directly redirected to the congratulation screen with the homepage link.
+
+Independent on the current site status it should always be possible to have access to all setup steps (user create, site create/import, ...)."
+42804,Base Distribution,Task,"",Closed,-- undefined --,Error in installation,Rasikh Mashhadi,Karsten Dambekalns,2012-12-17 11:24,"","",2012-11-08,"","",0.00,0,2012-11-08 17:17,"","",894350,"","I am not sure if this is a bug or not, i have been trying to install neos on my local. its MAC with MAMP php 5.3.5
+
+Execution of subprocess failed with exitcode ""255"" and output: 
+
+TYPO3\Flow\Core\Booting\Exception\SubProcessException thrown in file
+Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Core/Booting/Scripts.php in line 518.
+Reference code: 201211090313548260ab
+
+Go to the FORGE issue tracker and report the issue - if you think it is a bug!"
+43313,Base Distribution,Impediment,"",Closed,Should have,Management/Administration tab in BE stop working,Visay Keo,Visay Keo,2012-12-11 07:15,"","",2012-11-26,"","",0.00,0,2012-11-26 11:50,"","",919650,"","* I clone the base distro from git master today (26 Nov 2012)
+* Kickstart a new site and login to the Backend
+* Only the ""Content"" tab is working but the ""Management"" and ""Administration"" tabs is not working anymore and lead to a server error with the following message:
+
+<pre>
+#1237823695: Argument ""uri"" was not registered.
+</pre>
+
+* These links were working properly with 1.0 Alpha 1 (same server config and php settings)"
+43479,Base Distribution,Task,Story #41861: As any user I want a better usability of the backend UI,Resolved,Should have,Removing the alert for page loading when the HTML selector wasn't found,Markus Goldbeck,Markus Goldbeck,2012-12-04 08:36,"","","","","",0.00,100,2012-11-30 05:02,"","",927950,"",""
+43684,Base Distribution,Task,"",Closed,Should have,Orange border around inline contentelement toolbar,Mattias Nilsson,Mattias Nilsson,2012-12-07 05:34,Content Editing,"",2012-12-06,"","",0.00,0,2012-12-06 13:08,"","",938100,"","In a orange border has appeared around the inline contentelement toolbar (class t3-contentelement-handle).
+
+See the attached image screen dump."
+43862,Base Distribution,Task,"",Rejected,Must have,ExtensionManager error after deleting typo3temp-files,Paul A. Auwehla,Paul A. Auwehla,2012-12-11 06:52,"","",2012-12-11,"","",0.00,0,2012-12-11 03:52,"","",946900,"","Oops, an error occurred!
+File has been deleted.
+This is all the ExtManager has to say
+when the typo3temo-directory is cleared.
+No further action of the ExtManager from this point on.
+"
+43940,Base Distribution,Task,"",Closed,Must have,Apache crashes every time,Felix Muster,Karsten Dambekalns,2012-12-17 11:16,"","",2012-12-13,"","",0.00,0,2012-12-13 03:24,"","",950800,"","Hello,
+
+My System:
+OS: Windows 7
+Bundle: XAMPP v1.8.1
+
+I installed Neos by ""this instruction"":http://www.binseed.com/post/553786-typo3-xampp-installation-typo3-neos-auf-windows-7-w-xampp.html. 
+Everything works fine, but I get this error message all day when surfing in front- or in backend:
+
+!error.png!
+
+
+Problemsignatur:
+  Problemereignisname:	APPCRASH
+  Anwendungsname:	httpd.exe
+  Anwendungsversion:	2.4.3.0
+  Anwendungszeitstempel:	502f70a3
+  Fehlermodulname:	php5ts.dll
+  Fehlermodulversion:	5.4.7.0
+  Fehlermodulzeitstempel:	505114f8
+  Ausnahmecode:	c0000005
+  Ausnahmeoffset:	00035ce8
+  Betriebsystemversion:	6.1.7601.2.1.0.256.4
+  Gebietsschema-ID:	1031
+  Zusatzinformation 1:	0a9e
+  Zusatzinformation 2:	0a9e372d3b4ad19135b953a78882e789
+  Zusatzinformation 3:	0a9e
+  Zusatzinformation 4:	0a9e372d3b4ad19135b953a78882e789
+
+
+I think this is the corresponding error in the log-File from apache:
+[Wed Dec 12 13:29:27.655765 2012] [mpm_winnt:notice] [pid 1412:tid 248] AH00428: Parent: child process exited with status 3221225477 -- Restarting.
+
+The strange thing is, that nothing crashes like it says, it works fine, I only have to click ""Programm schließen / Close program"" and the website resumes loading.
+XAMPP Control Panel also says, that apache is still running...
+
+
+I googled a bit and tried all of this solutions:
+
+Set in httpd.conf:
+
+TraceEnable off
+EnableMMAP off
+EnableSendfile Off
+
+output_buffer to 5000000
+
+<IfModule mpm_winnt.c>
+ThreadsPerChild 50
+MaxRequestsPerChild  0
+ThreadStackSize 8388608
+</IfModule>
+
+AcceptFilter http none
+<IfDefine AEX>
+Win32DisableAcceptEx
+</IfDefine>
+
+
+
+...But nothing works.
+
+Can someone help me?"
+44035,Base Distribution,Task,"",Resolved,Should have,"When deleting a page from pagetree, the modal prompt window is missing pagetitle and childrens pagetitles.",Mattias Nilsson,Mattias Nilsson,2012-12-20 06:36,"","",2012-12-16,"","",0.00,100,2012-12-16 06:58,"","",955500,"","When deleting a page from pagetree, the modal prompt window is missing pagetitle and childrens pagetitles.
+
+In deletePageDialog.html the markup is that follows:
+
+<div class=""modal"" id=""pagetreeDeleteDialog"">
+	<div class=""modal-header"">
+		{{view T3.Content.UI.ButtonDialog label=""x"" target=""parentView"" data-dismiss=""modal"" action=""cancel"" class=""close t3-button"" title=""x""}}
+		<h3>Are you sure you want to delete the page ""{{pageTitle}}""?</h3>
+		<p>This will delete the page {{page}} {{children}}.
+			This operation can be undone in the workspace management.</p>
+	</div>
+	<div class=""modal-footer"">
+			{{view T3.Content.UI.ButtonDialog label=""Cancel"" target=""parentView"" action=""cancel""   class=""btn t3-button"" title=""Cancel""}}
+			{{view T3.Content.UI.ButtonDialog label=""Delete"" target=""parentView"" action=""delete""   class=""btn btn-danger t3-button icon-trash icon-white"" title=""Delete""}}
+		</div>
+</div>
+<div class=""modal-backdrop in""></div>
+
+The markup:
+{{page}} {{children}} doesn´t output anything."
+44211,Base Distribution,Task,"",Resolved,Should have,When clicking on search toolbar the website gets a margin-right: 296px,Mattias Nilsson,"",2013-01-06 14:12,"","",2012-12-25,"","",0.00,100,2012-12-25 03:40,"","",964200,"",When clicking on search toolbar the website gets a margin-right: 296px

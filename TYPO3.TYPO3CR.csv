@@ -1,0 +1,1190 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Sprint,Description
+59970,TYPO3.TYPO3CR,Feature,"",New,Could have,TYPO3CR Documentation Request,Oliver Eglseder,"",2014-07-11 06:16,"","",2014-06-29,"","",0,2014-06-29 04:53,"","",1741800,"","","Dear TYPO3.TYPO3CR Team,
+
+i was searching for Documentation (independent from TYPO3.Neos) about this Package, but all i could find was this link http://de.slideshare.net/kfish/typo3-cr-in-phoenix from 2010. Looking at the Package stats on GitHub and the History, many things have changed since the last 4 years. A look into the Documentation Folder was also disappointing.
+
+Is there Documentation for this Package i missed?
+Is Documentation for this Package intended at all?
+
+Would be nice to have some Slides explaining how to properly create Nodes and NodeTypes for own use, what roles Contexts and Workspaces play, how everything is connected and last but not least, how to benefit in an own Package from TYPO3.TYPO3CR (, if possible. I know it was primary developed for Neos)."
+58428,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Set Unique Name if Exists in Structure,Carsten Bleicker,"",2014-06-20 10:51,Node handling,"",2014-05-02,"","",0,2014-05-02 11:47,"","",1665100,"","","copy or moving a node currently counts up the name with appending '-'.n
+If two users copying the same image f.e. on the same page, and the image has the nodename ""node1239"",
+both copied nodenames are ""node1239-1"", in both workspaces.
+
+user 1 puplishing ... anything is fine.
+user 2 publishing after user 1 gets an exception that node1239-1 already exists.
+he cant edit the nodename on normal content nodes. he does not know anything about the nodename and also can not
+locate the node to delete it."
+57245,TYPO3.TYPO3CR,Bug,"",Under Review,Must have,Child nodes are not deleted when a node is deleted,Pankaj Lele,Christopher Hlubek,2014-03-25 09:13,Node handling,"",2014-03-24,"","",0,2014-03-24 14:01,"","",1606250,"","",When a node is deleted its child nodes are not deleted from the database.
+56669,TYPO3.TYPO3CR,Bug,"",New,Must have,Transliterator object not created successful,Simon Edelmann,"",2014-03-08 06:19,"","",2014-03-08,"","",0,2014-03-08 06:19,"","",1577600,"","","I've set up a new TYPO3 Neos installation (1.0.2) with the Demo Content Page. When I try to add a new page I get this error message:
+
+> ExtDirect error: Unable to connect to the server.
+
+After reloading the Neos backend I've two new pages, named @node531af4151b5e8@ and @node531af4163697e@. 
+Neos twice tries and fails setting the node name. 
+
+The problem is in the TYPO3CR package in @Classes/TYPO3/TYPO3CR/Utility.php@ in line 30.
+
+<pre>
+if (class_exists('Transliterator', FALSE)) {
+	$transliterator = \Transliterator::create('Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Latin-ASCII; Lower();');
+	$name = $transliterator->transliterate($name);
+	return preg_replace('/[-\s]+/', '-', $name);
+} else {
+	// Alternative method to remove unwanted characters...
+}
+</pre>
+
+Neos checks if the class Transliterator exists, then it creates an object and used it. But creating the object fails on my server; I can't say why. Maybe there is a relation to PECL intl, which is installed in the (old) version 1.1.0. (It's a shared hosting machine, so I can't change that.) 
+
+As workaround I changed the line 29:
+
+<pre>
+// if (class_exists('Transliterator', FALSE)) {
+
+if (false) {
+</pre>
+
+So Neos always uses the alternative method without the Transliterator object. But it would be much better to check, if the class could be created successful."
+56566,TYPO3.TYPO3CR,Bug,"",New,Should have,Inconsistent node structure during publishing,Christopher Hlubek,Christian Müller,2014-03-05 04:29,"","",2014-03-05,"","",0,2014-03-05 04:29,"","",1572450,"","",If a workspace is published there is a chance that while publishing individual nodes an inconsistent state is created (nodes of level > 1 with a NULL parent node). This is a problem when listening for the signals of updated nodes if a consistent structure is expected.
+56386,TYPO3.TYPO3CR,Feature,"",Rejected,Should have,Add method for finding a node by it's identifier in a given context,Aske Ertmann,Aske Ertmann,2014-05-19 05:43,"","",2014-02-27,"","",0,2014-02-27 09:51,"","",1563500,"","",Similar to the findOneByPathInContext there's a use for one using identifier instead of path
+56024,TYPO3.TYPO3CR,Feature,"",New,Must have,Hardcoded transliteration,Tanel Põld,"",2014-02-16 14:30,"","",2014-02-16,"","",0,2014-02-16 14:30,"","",1545500,"","","Utiliti.php seems to hold transliteration for special characters.
+That ends up with wrong page urls translated from page titles in NEOS. For languages that's not German like.
+Estonian: ä = a, ö = o etc."
+55401,TYPO3.TYPO3CR,Bug,"",New,Must have,NodeDataRepository returns broken QueryResult if inconsistent nodes exist,Bernhard Schmitt,"",2014-01-28 11:47,Query handling,"",2014-01-28,"","",0,2014-01-28 11:18,"","",1515350,"","","If nodes exist that are inconsistent in that they have invalid relations (e.g. to Media images that have been deleted) in their serialized properties, the NodeDataRepository will on findAll() return an empty QueryResult (but with the correct count() value). That makes it technically impossible to repair the nodes in a proper way.
+
+Version: Neos beta1 - 1.0.1"
+54606,TYPO3.TYPO3CR,Bug,"",Accepted,Must have,TYPO3\Flow\Core\Booting\Exception\SubProcessException thrown in file Scripts.php,Dominic Garms,"",2014-01-29 09:19,"","",2013-12-27,"","",0,2013-12-27 04:41,"","",1476700,"","","Hello,
+
+I just received a new Macbook and with a fresh install of Neos 1.0.1 I receive following error after selecting the database. Is there any workaround existing to tackle this?
+
+Uncaught Exception
+  An exception occurred while executing 'ALTER TABLE
+  typo3_typo3cr_domain_model_nodedata DROP FOREIGN KEY
+  typo3_typo3cr_domain_model_nodedata_ibfk_1':
+
+  SQLSTATE[42000]: Syntax error or access violation: 1091 Can't DROP
+  'typo3_typo3cr_domain_model_nodedata_ibfk_1'; check that column/key
+  exists
+
+More Information
+  Exception code      #0
+  File                /data/www/websites/neos/stable/Packages/Libraries/doctrine/dbal/lib/Doctrine/DBAL/DBALException.php line 47
+
+31 TYPO3\Flow\Core\Booting\Scripts::executeCommand(""typo3.flow:doctrine:migrate"", array|16|, FALSE)
+
+30 TYPO3\Setup\Step\DatabaseStep_Original::postProcessFormValues(array|8|)
+
+29 TYPO3\Setup\Controller\SetupController_Original::postProcessStep(array|8|, TYPO3\Setup\Step\DatabaseStep)
+
+28 TYPO3\Setup\Controller\SetupController_Original::TYPO3\Setup\Controller\{closure}(TYPO3\Form\Core\Model\FinisherContext)
+
+27 TYPO3\Form\Finishers\ClosureFinisher_Original::executeInternal()
+
+26 TYPO3\Form\Core\Model\AbstractFinisher::execute(TYPO3\Form\Core\Model\FinisherContext)
+
+25 TYPO3\Form\Core\Runtime\FormRuntime_Original::invokeFinishers()
+
+24 TYPO3\Form\Core\Runtime\FormRuntime_Original::render()
+
+23 TYPO3\Setup\Controller\SetupController_Original::indexAction(0)
+
+22 TYPO3\Setup\Controller\SetupController::indexAction(0)
+
+21 call_user_func_array(array|2|, array|1|)
+
+20 TYPO3\Setup\Controller\SetupController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+19 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+18 TYPO3\Flow\Security\Aspect\PolicyEnforcementAspect_Original::enforcePolicy(TYPO3\Flow\Aop\JoinPoint)
+
+17 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+16 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+15 TYPO3\Setup\Controller\SetupController::indexAction(0)
+
+14 call_user_func_array(array|2|, array|1|)
+
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+9 call_user_func_array(array|2|, array|2|)
+
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\Flow\Http\Response)
+
+2 TYPO3\Setup\Core\RequestHandler::handleRequest()
+
+1 TYPO3\Flow\Core\Bootstrap::run()
+
+
+Please include more helpful information!"
+54566,TYPO3.TYPO3CR,Bug,"",New,Should have,Make node label configurable,Thomas Hempel,"",2013-12-22 04:04,"",1.1,2013-12-22,"","",0,2013-12-22 04:04,"","",1474750,"","","Right now the label in the node tree is either fetched from a property called ""title"" or ""text"". See Domain/Model/DefaultNodeLabelGenerator.php
+
+Please make this configurable via the NodeType configuration. ""Title"" or ""Text"" does not always appropriate and it can cause some confusion.
+
+I will try to provide a patch within the next days.
+
+
+Greets,
+Thomas"
+54262,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Publishing nodes can lead to persistence exception,Christian Müller,"",2013-12-07 12:37,"","",2013-12-07,"","",100,2013-12-07 09:04,"","",1460000,"","","Moveing a node works for me, but while publishing, an exception is thrown and the change is not published.
+
+ExtDirect error: Uncaught exception #0 - An exception occurred while executing 'INSERT INTO typo3_typo3cr_domain_model_nodedata (persistence_object_identifier, pathhash, path, parentpath, identifier, sortingindex, removed, hiddenbeforedatetime, hiddenafterdatetime, properties, nodetype, hidden, hiddeninindex, accessroles, workspace, contentobjectproxy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)' with params [""92742fcb-86cd-537e-b4d5-e15fe61ce3fc"", ""e43f9052837a4c63b1b621350b2b550e"", ""\/sites\/neosdemotypo3org\/features\/test\/main"", ""\/sites\/neosdemotypo3org\/features\/test"", ""06f314c6-f12d-decc-cab0-570268831749"", 100, 0, null, null, ""a:0:{}"", ""TYPO3.Neos:ContentCollection"", 0, 0, ""a:0:{}"", ""live"", null]: SQLSTATE23000: Integrity constraint violation: 1062 Duplicate entry 'e43f9052837a4c63b1b621350b2b550e-live' for key 'UNIQ_60A956B92DBEC7578D940019'
+
+But as i click the pulldown-menu right of the publish-button, i can go to the workspace-management. When i click there on ""Publish all changes"" the change is published as expected. But if i click here to publish the node itself, then the same exception is thrown.
+Best Regards Renzo"
+54253,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Moving nodes throws exception,Mathias Bolt Lesniak,Bastian Waidelich,2013-12-11 14:29,Node handling,"",2013-12-07,"","",100,2013-12-06 18:23,"","",1459600,"","","Hi!
+
+I hope this is the right place to post this bug. I figure it's Node related, so it has to belong in TYPO3CR.
+
+In Neos beta 2 I get an exception when trying to change the order of two nodes in the node tree using drag and drop.
+
+Example:
+Content Collection (main) has two nodes below it in the tree:
+
+- Node A
+- Node B
+
+If I drag Node B to change the order of the nodes so Node B is before Node A, I get an exception:
+
+<pre>
+13-12-06 18:00:53  CRITICAL  Flow                 Uncaught exception #1301610453 in line 354 of Data/Temporary/Production/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Routing_UriBuilder.php: Could not resolve a route and its corresponding URI for the given parameters. This may be due to referring to a not existing package / controller / action while building a link or URI. Refer to log and check the backtrace for more details. - See also: 20131206180051e12226.txt
+</pre>
+
+ 20131206180051e12226.txt:
+<pre>
+Uncaught exception #1301610453 in line 354 of Data/Temporary/Production/Cache/Code/Flow_Object_Classes/TYPO3_Flow_Mvc_Routing_UriBuilder.php: Could not resolve a route and its corresponding URI for the given parameters. This may be due to referring to a not existing package / controller / action while building a link or URI. Refer to log and check the backtrace for more details.
+
+34 TYPO3\Flow\Mvc\Routing\Router_Original::resolve(array|5|)
+33 TYPO3\Flow\Mvc\Routing\UriBuilder_Original::build(array|5|)
+32 TYPO3\Flow\Mvc\Routing\UriBuilder_Original::uriFor(""show"", array|1|, ""Frontend\Node"", ""TYPO3.Neos"", NULL)
+31 TYPO3\Flow\Mvc\Routing\UriBuilder::uriFor(""show"", array|1|, ""Frontend\Node"", ""TYPO3.Neos"", NULL)
+30 call_user_func_array(array|2|, array|5|)
+29 TYPO3\Flow\Mvc\Routing\UriBuilder::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+28 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+27 TYPO3\Neos\Aspects\PluginUriAspect_Original::rewritePluginViewUris(TYPO3\Flow\Aop\JoinPoint)
+26 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+25 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+24 TYPO3\Flow\Mvc\Routing\UriBuilder::uriFor(""show"", array|1|, ""Frontend\Node"", ""TYPO3.Neos"")
+23 TYPO3\Neos\Service\ExtDirect\V1\Controller\NodeController_Original::moveAction(TYPO3\TYPO3CR\Domain\Model\Node, TYPO3\TYPO3CR\Domain\Model\Node, ""before"")
+22 TYPO3\Neos\Service\ExtDirect\V1\Controller\NodeController::moveAction(TYPO3\TYPO3CR\Domain\Model\Node, TYPO3\TYPO3CR\Domain\Model\Node, ""before"")
+21 call_user_func_array(array|2|, array|3|)
+20 TYPO3\Neos\Service\ExtDirect\V1\Controller\NodeController::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+19 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+18 TYPO3\Flow\Security\Aspect\PolicyEnforcementAspect_Original::enforcePolicy(TYPO3\Flow\Aop\JoinPoint)
+17 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+16 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+15 TYPO3\Neos\Service\ExtDirect\V1\Controller\NodeController::moveAction(TYPO3\TYPO3CR\Domain\Model\Node, TYPO3\TYPO3CR\Domain\Model\Node, ""before"")
+14 call_user_func_array(array|2|, array|3|)
+13 TYPO3\Flow\Mvc\Controller\ActionController_Original::callActionMethod()
+12 TYPO3\Flow\Mvc\Controller\ActionController_Original::processRequest(TYPO3\Flow\Mvc\ActionRequest, TYPO3\ExtJS\ExtDirect\TransactionResponse)
+11 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\ExtJS\ExtDirect\TransactionResponse)
+10 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\ExtJS\ExtDirect\TransactionResponse)
+9 call_user_func_array(array|2|, array|2|)
+8 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+7 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+6 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+5 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+4 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+3 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Mvc\ActionRequest, TYPO3\ExtJS\ExtDirect\TransactionResponse)
+2 TYPO3\ExtJS\ExtDirect\RequestHandler::handleRequest()
+1 TYPO3\Flow\Core\Bootstrap::run()
+</pre>
+
+Moving nodes from one Content Collection to another appears to work ok."
+53607,TYPO3.TYPO3CR,Task,"",Resolved,Should have,Only persist recursive node changes once,Bastian Waidelich,Christian Müller,2013-12-09 07:35,Node handling,"",2013-11-13,"","",100,2013-11-13 08:20,"","",1427600,"","","https://review.typo3.org/#/c/25300/ fixed moving of nodes, but it leads to the situation that @NodeDataRepository::persistEntities()@ is called recursively for every child node of moved/renamed nodes.
+This has a negative effect on performance and it could break the complete sub tree if errors happen during persistence.
+
+One way to solve this would be to remove the persistEntities() call from Node::setPath() and call it after invoking that method from the move*() and setName methods."
+53354,TYPO3.TYPO3CR,Task,"",Resolved,Should have,Make workspace name its identifier,Bastian Waidelich,Christian Müller,2013-12-04 12:43,"",1.0 beta 2,2013-11-05,"","",100,2013-11-05 10:10,"","",1415000,"","","The name property of the Workspace domain model is marked @Flow\Identity forcing it to be unique.
+But the corresponding db table still contains a @persistence_object_identifier@ column.
+Instead I'd suggest to add the @ORM\Id annotation turning the name to the workspace identifier.
+
+This would require us to create a custom migration which is probably not so trivial as usual doctrine migrations.. But I think it would be worth it as this would bring some nice benefits:
+
+* Better readability in the database (instead of ""d4564fa1-6e7e-ac9b-2f38-95dff812566e"" the workspace column of a nodedata record would contain ""live"" or ""user-admin"" etc)
+* automatic property mapping: Even with https://review.typo3.org/#/c/25141/ we still use the ""workspace name"" in our javascript code. With this change ""workspaceName"" could be replaced with ""workspace"" there because a name would transparently be mapped to the corresponding instance in actions"
+53335,TYPO3.TYPO3CR,Task,"",Resolved,Should have,Replace magic __call method in NodeType,Bastian Waidelich,Bastian Waidelich,2013-12-04 12:43,Nodetype support,1.0 beta 2,2013-11-05,"","",100,2013-11-05 05:02,"","",1414050,"","","Magic @__call()@ methods have a lot of drawbacks. We should replace
+<pre>
+$nodeType->getSomeFoo()
+</pre>
+with
+<pre>
+$nodeType->getConfiguration('someFoo');
+</pre>"
+52646,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Copying a node into itself causes an endless loop,Aske Ertmann,Aske Ertmann,2013-10-10 13:35,Node handling,1.0 alpha 6,2013-10-09,"","",100,2013-10-09 16:28,"","",1379800,"","",If a node is copied into itself the node gets copied recursively in an endless loop when trying to copy child nodes into the copied node
+52498,TYPO3.TYPO3CR,Bug,"",Accepted,Should have,Pasting content into a collection keeps its original position,Tim Kandel,Tim Kandel,2013-10-03 09:51,"","",2013-10-03,"","",0,2013-10-03 06:02,"","",1372500,"","",If you copy some content and paste it into a collection it should actually be pasted at the beginning. Right now it is pasted at the same position it had before.
+52130,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,"Workspace->getRootNode() return NodeData, not Node(Interface)",Karsten Dambekalns,Karsten Dambekalns,2013-09-23 06:36,Node handling,1.0 alpha 6,2013-09-19,"","",100,2013-09-19 07:01,"","",1354300,"","",This exposes the internal NodeData instance and breaks the use of the returned node in anything that expects Node(Interface) via type hinting.
+51032,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Node type filters do never match,Karsten Dambekalns,Karsten Dambekalns,2013-08-12 09:05,Migrations,"",2013-08-12,"","",100,2013-08-12 08:49,"","",1299800,"","",The introduction of NodeData broke node type filtering in TYPO3CR migrations.
+50353,TYPO3.TYPO3CR,Bug,"",New,Should have,Node migration fails (probably) if access roles are set to Nodes,Adrian Föder,"",2013-07-24 03:11,"","",2013-07-24,"","",0,2013-07-24 03:11,"","",1266300,"","","When one of my nodes had an accessroles property set and I attempted to run (any) node migration, the following exception raised:
+
+<pre>
+Uncaught exception #1358513802 in line 1116 of \Data\Temporary\Development\Cache\Code\Flow_Object_Classes\TYPO3_Flow_Security_Context.php: The security Context cannot be initialized yet. Please check if it can be initialized with $securityContext->canBeInitialized() before trying to do so.
+
+54 TYPO3\Flow\Security\Context_Original::initialize()
+53 TYPO3\Flow\Security\Context::initialize()
+52 call_user_func_array(array|2|, array|0|)
+51 TYPO3\Flow\Security\Context::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+50 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+49 TYPO3\Flow\Session\Aspect\LazyLoadingAspect_Original::callMethodOnOriginalSessionObject(TYPO3\Flow\Aop\JoinPoint)
+48 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+47 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+46 TYPO3\Flow\Security\Context::initialize()
+45 TYPO3\Flow\Security\Context_Original::getRoles()
+44 TYPO3\Flow\Security\Context::getRoles()
+43 call_user_func_array(array|2|, array|0|)
+42 TYPO3\Flow\Security\Context::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+41 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+40 TYPO3\Flow\Session\Aspect\LazyLoadingAspect_Original::callMethodOnOriginalSessionObject(TYPO3\Flow\Aop\JoinPoint)
+39 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+38 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+37 TYPO3\Flow\Security\Context::getRoles()
+36 TYPO3\Flow\Security\Context_Original::hasRole(""EDSH.EdshDe:Member"")
+35 TYPO3\Flow\Security\Context::hasRole(""EDSH.EdshDe:Member"")
+34 call_user_func_array(array|2|, array|1|)
+33 TYPO3\Flow\Security\Context::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+32 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+31 TYPO3\Flow\Session\Aspect\LazyLoadingAspect_Original::callMethodOnOriginalSessionObject(TYPO3\Flow\Aop\JoinPoint)
+30 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+29 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+28 TYPO3\Flow\Security\Context::hasRole(""EDSH.EdshDe:Member"")
+27 TYPO3\TYPO3CR\Domain\Model\NodeData_Original::isAccessible()
+26 TYPO3\TYPO3CR\Domain\Model\Node_Original::isAccessible()
+25 TYPO3\TYPO3CR\Domain\Factory\NodeFactory_Original::filterNodeByContext(TYPO3\TYPO3CR\Domain\Model\Node, TYPO3\Neos\Domain\Service\ContentContext)
+24 TYPO3\TYPO3CR\Domain\Factory\NodeFactory_Original::createFromNode(TYPO3\TYPO3CR\Domain\Model\NodeData, TYPO3\Neos\Domain\Service\ContentContext)
+23 TYPO3\TYPO3CR\Domain\Repository\NodeDataRepository_Original::findByParentAndNodeTypeInContext(""/sites/edshde/intern"", NULL, TYPO3\Neos\Domain\Service\ContentContext, NULL, NULL)
+22 TYPO3\TYPO3CR\Domain\Model\Node_Original::getChildNodes()
+21 TYPO3\TYPO3CR\Migration\Service\NodeMigration_Original::walkNodes(TYPO3\TYPO3CR\Domain\Model\Node, ""up"")
+20 TYPO3\TYPO3CR\Migration\Service\NodeMigration_Original::walkNodes(TYPO3\TYPO3CR\Domain\Model\Node, ""up"")
+19 TYPO3\TYPO3CR\Migration\Service\NodeMigration_Original::walkNodes(TYPO3\TYPO3CR\Domain\Model\Node, ""up"")
+18 TYPO3\TYPO3CR\Migration\Service\NodeMigration_Original::walkNodes(TYPO3\TYPO3CR\Domain\Model\Node, ""up"")
+17 TYPO3\TYPO3CR\Migration\Service\NodeMigration_Original::migrateUp()
+16 TYPO3\TYPO3CR\Migration\Command\NodeCommandController_Original::migrateCommand(""live"", ""20120725073211"", TRUE, ""up"")
+15 call_user_func_array(array|2|, array|4|)
+14 TYPO3\Flow\Cli\CommandController_Original::callCommandMethod()
+13 TYPO3\Flow\Cli\CommandController_Original::processRequest(TYPO3\Flow\Cli\Request, TYPO3\Flow\Cli\Response)
+12 TYPO3\Flow\Mvc\Dispatcher_Original::dispatch(TYPO3\Flow\Cli\Request, TYPO3\Flow\Cli\Response)
+11 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Cli\Request, TYPO3\Flow\Cli\Response)
+10 call_user_func_array(array|2|, array|2|)
+9 TYPO3\Flow\Mvc\Dispatcher::Flow_Aop_Proxy_invokeJoinPoint(TYPO3\Flow\Aop\JoinPoint)
+8 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+7 TYPO3\Flow\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\Flow\Aop\JoinPoint)
+6 TYPO3\Flow\Aop\Advice\AroundAdvice::invoke(TYPO3\Flow\Aop\JoinPoint)
+5 TYPO3\Flow\Aop\Advice\AdviceChain::proceed(TYPO3\Flow\Aop\JoinPoint)
+4 TYPO3\Flow\Mvc\Dispatcher::dispatch(TYPO3\Flow\Cli\Request, TYPO3\Flow\Cli\Response)
+3 TYPO3\Flow\Cli\CommandRequestHandler::handleRequest()
+2 TYPO3\Flow\Core\Bootstrap::run()
+1 require(""\Packages\Framework\TYPO3.Flow\Scripts\flow.php"")
+</pre>
+
+(temporarily) removing that property (setting it to @a:0:{}@ manually in typo3_typo3cr_domain_model_nodedata.accessroles, made the error disappear."
+49970,TYPO3.TYPO3CR,Bug,"",New,Should have,Node migration throwing fatal error,Sagar Desai,"",2013-07-12 06:32,Nodetype support,"",2013-07-12,"","",0,2013-07-12 06:32,"","",1247500,"","","Uncaught Exception
+  Catchable Fatal Error: Argument 1 passed to
+  TYPO3\TYPO3CR\Migration\Service\NodeMigration_Original::walkNodes() must
+  be an instance of TYPO3\TYPO3CR\Domain\Model\NodeInterface, instance of
+  TYPO3\Flow\Persistence\Doctrine\Proxies\__CG__\TYPO3\TYPO3CR\Domain\Model\NodeData
+  given, called in
+  /var/www/Neos-Projects/Neos-Master/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_TYPO3CR_Migration_Service_NodeMigration.php
+  on line 85 and defined in
+  /var/www/Neos-Projects/Neos-Master/Data/Temporary/Development/Cache/Code/Flow_Object_Classes/TYPO3_TYPO3CR_Migration_Service_NodeMigration.php
+  line 106
+
+More Information
+  Exception code      #1
+  File                /var/www/Neos-Projects/Neos-Master/Packages/Framework/TYPO3.Flow/Classes/TYPO3/Flow/Error/ErrorHandler.php line 77
+  Exception reference #201307121523095ecc11"
+48214,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Moving of nodes across levels should not show the same node twice,Sebastian Kurfuerst,Sebastian Kurfuerst,2013-09-30 15:36,"",1.0 beta 1,2013-05-15,"","",100,2013-05-15 06:10,"","",1160700,"","","If having a node structure in live workspace, and MOVING a node into another
+parent node, this is copied into your personal workspace.
+
+In neos, the moved node is then shown *twice*: First from the user workspace (correct), and from the live workspace (wrong!).
+
+It only breaks for fetching *collections* of nodes, but that's what we do in Neos all the time."
+47421,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Fresh user workspace doesn't get persisted,Adrian Föder,"",2013-04-28 11:25,"","",2013-04-22,"","",100,2013-04-22 02:50,"","",1121500,"","","If a user logs in who does not yet have a workspace, this one does not get persisted (probably due to the Safe request implementation)."
+47282,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Broken inheritance on AbstractNode (with PHP ~5.3.5),Karsten Dambekalns,Karsten Dambekalns,2013-04-16 09:36,"","",2013-04-16,"","",100,2013-04-16 07:51,"","",1114750,"","","When running unit tests on PHP 5.3.5 (our Jenkins right now), there is a fatal error:
+
+<pre>Apr 16 13:21:10 17604 php: PHP Fatal error:  Can't inherit abstract function TYPO3\TYPO3CR\Domain\Model\NodeInterface::setName() (previously declared abstract in TYPO3\TYPO3CR\Domain\Model\AbstractNode) in /?/TYPO3CR/Domain/Model/AbstractNode.php on line 31
+Apr 16 13:21:10 17604 php: PHP Stack trace:
+Apr 16 13:21:10 17604 php: PHP   1. {main}() /usr/bin/phpunit:0
+Apr 16 13:21:10 17604 php: PHP   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
+Apr 16 13:21:10 17604 php: PHP   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:130
+Apr 16 13:21:10 17604 php: PHP   4. PHPUnit_TextUI_TestRunner->doRun() /usr/share/php/PHPUnit/TextUI/Command.php:192
+Apr 16 13:21:10 17604 php: PHP   5. PHPUnit_Framework_TestSuite->run() /usr/share/php/PHPUnit/TextUI/TestRunner.php:325
+Apr 16 13:21:10 17604 php: PHP   6. PHPUnit_Framework_TestSuite->run() /usr/share/php/PHPUnit/Framework/TestSuite.php:705
+Apr 16 13:21:10 17604 php: PHP   7. PHPUnit_Framework_TestSuite->runTest() /usr/share/php/PHPUnit/Framework/TestSuite.php:745
+Apr 16 13:21:10 17604 php: PHP   8. PHPUnit_Framework_TestCase->run() /usr/share/php/PHPUnit/Framework/TestSuite.php:772
+Apr 16 13:21:10 17604 php: PHP   9. PHPUnit_Framework_TestResult->run() /usr/share/php/PHPUnit/Framework/TestCase.php:751
+Apr 16 13:21:10 17604 php: PHP  10. TYPO3\Flow\Tests\BaseTestCase->runBare() /usr/share/php/PHPUnit/Framework/TestResult.php:649
+Apr 16 13:21:10 17604 php: PHP  11. PHPUnit_Framework_TestCase->runBare() /?/Framework/TYPO3.Flow/Tests/BaseTestCase.php:41
+Apr 16 13:21:10 17604 php: PHP  12. TYPO3\TYPO3CR\Tests\Unit\Domain\Model\NodeTest->setUp() /?/TestCase.php:801
+Apr 16 13:21:10 17604 php: PHP  13. TYPO3\Flow\Tests\BaseTestCase->getAccessibleMock() /?/Application/TYPO3.TYPO3CR/Tests/Unit/Domain/Model/NodeTest.php:28
+Apr 16 13:21:10 17604 php: PHP  14. TYPO3\Flow\Tests\BaseTestCase->buildAccessibleProxy() /?/Framework/TYPO3.Flow/Tests/BaseTestCase.php:59
+Apr 16 13:21:10 17604 php: PHP  15. ReflectionClass->__construct() /?/Tests/BaseTestCase.php:89
+Apr 16 13:21:10 17604 php: PHP  16. Composer\Autoload\ClassLoader->loadClass() /?/Libraries/composer/ClassLoader.php:0
+Apr 16 13:21:10 17604 php: PHP  17. include() /?/Libraries/composer/ClassLoader.php:183
+Apr 16 13:21:10 17604 php: PHP  18. Composer\Autoload\ClassLoader->loadClass() /?/Libraries/composer/ClassLoader.php:0
+Apr 16 13:21:10 17604 php: PHP  19. include() /?/Libraries/composer/ClassLoader.php:183</pre>
+
+The tests pass with PHP 5.4.12 and 5.3.22, so this seems to be some weird old issue. Anyway, since the methods @getName()@ and @setName()@ are in the @NodeInterface@, there is no need for them to be in @AbstractNode@ as abstract methods."
+46464,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Remove Neos SiteRepository from NodeConverter,Soren Malling,"",2014-03-26 07:48,"","",2013-03-20,"","",100,2013-03-20 09:06,"","",1074400,"","","ATM TYPO3.TYPO3CR packages in only useable along with the TYPO3.Neos package, since the Neos SiteRepository it required in the typeconverter NodeConverter
+
+        /**
+         * @Flow\Inject
+         * @var \TYPO3\Neos\Domain\Repository\SiteRepository
+         */
+        protected $siteRepository;
+
+
+Solution (I guess):
+-------------------
+Move the NodeConverter to TYPO3.Neos or remove dependency on the neos siterepository
+
+* or declare the dependency in composer.json "
+46401,TYPO3.TYPO3CR,Task,Work Package #45020: Content Editing Stability and Features,Closed,Must have,Workspace module breaks when having two node with same path,Aske Ertmann,Tim Kandel,2014-11-02 12:22,"","",2013-03-18,"","",0,2013-03-18 08:04,"","",1071250,"","","Due to the uniqueness of paths, the workspace module breaks if you have two nodes on the same level with the same path. E.g. two subpages or a subpage and a section with the same path.
+
+We need to figure out what we can do about this issue, since it will become a regular problem."
+45312,TYPO3.TYPO3CR,Feature,"",New,Could have,add required child nodes to Node Types,Sebastian Kurfuerst,"",2013-02-09 05:11,Node handling,"",2013-02-09,"","",0,2013-02-09 05:11,"","",1017650,"","","required child-nodes cannot be deleted. Req. child nodes are defined in the schema:
+
+<pre>
+MyNodeType:
+  childNodes:
+    foo:
+      autoCreated: false (true is the default; might need to implement this at some point)
+      required/mandatory: true # TODO implement
+</pre>
+
+Doesn't have high priority though; we thought about this in #44955"
+45311,TYPO3.TYPO3CR,Feature,"",New,Should have,Add isAbstract and isMixin to NodeType Schema,Sebastian Kurfuerst,"",2013-11-05 04:56,Node handling,"",2013-02-09,"","",50,2013-02-09 05:08,"","",1017600,"","","for each node type, it might be helpful to know whether it is abstract or mixin, we thought about an @isAbstract@  or @isMixin@ property."
+44072,TYPO3.TYPO3CR,Feature,"",Rejected,Should have,Add content type filtering to the node repository's method findOnPath,Aske Ertmann,Aske Ertmann,2014-06-16 05:02,Query handling,"",2012-12-17,"","",70,2012-12-17 15:18,"","",957350,"","","It would be nice to have a way of filtering which kinds of nodes findOnPath returned so it would happen in the query like the and not have to processed afterwards. It would make it easier to find a specific kind of node on a given path, since the logic is quite complex with all the subtypes etc."
+40677,TYPO3.TYPO3CR,Bug,Work Package #45020: Content Editing Stability and Features,Closed,Should have,Pasting pastes into target node rather than after,Adrian Föder,Tim Kandel,2014-11-02 12:22,Node handling,"",2012-09-06,"","",100,2012-09-06 10:14,"","",792650,"","","When having the following given node structure (@GridContainer@ and @FreeColumn@ are own Section content elements):
+
+<pre>
+Page
+  GridContainer
+    FreeColumn ~
+    FreeColumn #
+</pre>
+
+I want to make the both FreeColumns siblings. So I
+* select FreeColumn #
+* click Cut on it
+* select FreeColumn ~ via the Inspector
+* click paste on it
+
+I therefore expect # being a sibling of ~, hence being inserted after rather than into ~.
+But the result stays the same: # is child of ~ like before."
+40664,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Cut and Paste of Content Elements gives 500,Adrian Föder,Aske Ertmann,2012-09-06 10:35,Node handling,Sprint 10 (1.0 TP1),2012-09-06,"","",100,2012-09-06 02:17,"","",792000,"","","When cutting and pasting, an Error occurs, saying
+
+> [06-Sep-2012 06:05:43 UTC] PHP Fatal error:  Call to undefined method TYPO3\TYPO3CR\Domain\Model\ProxyNode::setPath() in C:\Users\afoeder\PhpstormProjects\Edsh\edsh.de\Data\Temporary\Development\Cache\Code\FLOW3_Object_Classes\TYPO3_TYPO3CR_Domain_Model_Node_Original.php on line 222
+
+The loop on the mentioned line seems to unintendedly get a ProxyNode instead of a ""plain"" node.
+
+May this (again) be due to a ""went inconsistent"" persisted nodes state?"
+40623,TYPO3.TYPO3CR,Feature,"",Resolved,Should have,Add method to rename a node,Karsten Dambekalns,Karsten Dambekalns,2012-09-05 09:35,Node handling,Sprint 10 (1.0 TP1),2012-09-04,"","",100,2012-09-04 13:48,"","",790000,"","","Using move methods it is possible to rename a node, but it is cumbersome to retain the position. A simple @rename()@ seems much better."
+40622,TYPO3.TYPO3CR,Feature,"",Resolved,Should have,Copying of nodes,Karsten Dambekalns,Karsten Dambekalns,2012-09-04 17:35,Node handling,Sprint 10 (1.0 TP1),2012-09-04,"","",100,2012-09-04 13:47,"","",789950,"","","We need @copyBefore()@, @copyAfter()@ and @copyInto()@."
+40551,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,"Sections are not published in the current publishing process, so any content of multi column elements fails to display",Adrian Föder,Aske Ertmann,2012-09-04 17:42,Node handling,Sprint 10 (1.0 TP1),2012-08-15,2012-08-15,"",100,2012-09-03 06:00,"","",786750,"","","Currently, a four-column-container is added to the site, each column having plain TS text objects.
+The publish button is pressed and went disabled, after changing some content the publish button is pressed again.
+However, the column content is not part of the exported XML, it's just
+
+<pre><code class=""xml"">
+<?xml version=""1.0"" encoding=""UTF-8""?>
+<root>
+	<site nodeName=""mysite"">
+		<properties><!-- abridged --></properties>
+		<node identifier=""f8f70a5f-7fcd-4e2c-b677-ee918a436c5c"" type=""TYPO3.TYPO3:Page"" nodeName=""homepage"" locale="""">
+			<properties>
+				<title>Start</title>
+			</properties>
+			<node identifier=""560e38d2-5246-4f23-b2ca-1d26334834df"" type=""TYPO3.TYPO3:Section"" nodeName=""main"" locale="""">
+				<node identifier=""59110f02-e0fa-4a61-8b9f-38f47ede75f2"" type=""TYPO3.TYPO3:FourColumn"" nodeName=""502780c427f66"" locale="""">
+					<properties>
+						<layout>25-25-25-25</layout>
+					</properties>
+				</node>
+			</node>
+		</node>
+	</site>
+</root>
+</code></pre>
+
+
+if that helps; the db content looks like
+<pre>
+model_workspace:                                                                                                       
+flow3_persistence_identifier         | baseworkspace                        | rootnode                             | name       
+0ac909bc-0cf4-4ad1-80dd-5f5580c2415d | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 | 1bb9382b-3d09-454e-8f4a-8f55350308b9 | user-adrian
+0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |                                      | 31047548-8e7b-4d7b-bbb2-919f07bb0f20 | live       
+</pre>
+
+<pre>
+model_node:                                                                                                                                                                                                                                                                                                                                                                                           
+53f70cc2-11ab-43dc-b69b-65ab187872a8 | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage                                          | f8f70a5f-7fcd-4e2c-b677-ee918a436c5c | 100 | a:1:{s:5:""title"";s:5:""Start"";}                                                                                               | TYPO3.TYPO3:Page       | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite                                    
+a7602ae7-94f4-4133-ae1f-2927eef35284 | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66                       | 59110f02-e0fa-4a61-8b9f-38f47ede75f2 | 144 | a:1:{s:6:""layout"";s:11:""25-25-25-25"";}                                                                                       | TYPO3.TYPO3:FourColumn | 0 | 0 |  |  | 0 | a:0:{} | 4 | /sites/mysite/homepage/main                      
+ea9f9ce8-a115-4d71-8924-c602090f214a | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main                                     | 560e38d2-5246-4f23-b2ca-1d26334834df | 100 | a:0:{}                                                                                                                       | TYPO3.TYPO3:Section    | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite/homepage                           
+                                                                                                                                                                                                                                                                                                                                                                                           
+0c0f13b7-3217-4cca-bafc-7fa2875a9cd8 | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66/column1/50278122c4de5 | 8ebd41bf-62c8-4e2d-a3cd-31dc2604df94 | 100 | a:2:{s:5:""title"";s:26:""<h1>Zweite Spalte<br></h1>"";s:4:""text"";s:23:""<p>Enter text here.</p>"";}                               | TYPO3.TYPO3:Text       | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite/homepage/main/502780c427f66/column1
+2f8bac30-0c56-4cd6-80ba-9bba5fc061ef | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66/column3/5027815de974b | 735bd7d3-ec1b-4854-9b0c-0ab5391d3a12 | 100 | a:2:{s:5:""title"";s:26:""<h1>Vierte Spalte<br></h1>"";s:4:""text"";s:23:""<p>Enter text&nbsp;</p>"";}                               | TYPO3.TYPO3:Text       | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite/homepage/main/502780c427f66/column3
+aba0ba6c-68a4-4e91-ab94-c5ef9815d29a | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66/column0/502780f0f3926 | 822d9909-2ee2-44bb-a422-b2dffcde3276 | 100 | a:2:{s:5:""title"";s:38:""<h1>Ich bin eine Überschrift<br></h1>"";s:4:""text"";s:42:""<p>Und ein Plaintext; erste Spalte<br></p>"";} | TYPO3.TYPO3:Text       | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite/homepage/main/502780c427f66/column0
+b9cb9218-587a-4da7-b3a1-61f80158ac70 | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66/column2/5027813fca49c | f1047ac7-a030-4405-9d44-2926dc3bb114 | 100 | a:2:{s:5:""title"";s:26:""<h1>Dritte Spalte<br></h1>"";s:4:""text"";s:22:""<p>Enter text here</p>"";}                                | TYPO3.TYPO3:Text       | 0 | 0 |  |  | 0 | a:0:{} | 6 | /sites/mysite/homepage/main/502780c427f66/column2
+</pre>
+
+If you need further info, don't hesitate to ask; it's just an experimental web page."
+40373,TYPO3.TYPO3CR,Feature,"",Resolved,Should have,TYPO3CR content migration support,Karsten Dambekalns,Christian Müller,2012-09-04 16:35,"",Sprint 10 (1.0 TP1),2012-08-29,"","",100,2012-08-29 06:41,"","",778200,"","","We need a way to migrate content when content types or internal structures change, so one can e.g. rename a content type."
+39795,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,"Sections are not published in the current publishing process, so any content of multi column elements fails to display",Adrian Föder,"",2012-09-03 05:35,Node handling,"",2012-08-14,"","",100,2012-08-14 05:24,"","",751250,"","","Currently, a four-column-container is added to the site, each column having plain TS text objects.
+The publish button is pressed and went disabled, after changing some content the publish button is pressed again.
+However, the column content is not part of the exported XML, it's just
+
+<pre><code class=""xml"">
+<?xml version=""1.0"" encoding=""UTF-8""?>
+<root>
+	<site nodeName=""mysite"">
+		<properties><!-- abridged --></properties>
+		<node identifier=""f8f70a5f-7fcd-4e2c-b677-ee918a436c5c"" type=""TYPO3.TYPO3:Page"" nodeName=""homepage"" locale="""">
+			<properties>
+				<title>Start</title>
+			</properties>
+			<node identifier=""560e38d2-5246-4f23-b2ca-1d26334834df"" type=""TYPO3.TYPO3:Section"" nodeName=""main"" locale="""">
+				<node identifier=""59110f02-e0fa-4a61-8b9f-38f47ede75f2"" type=""TYPO3.TYPO3:FourColumn"" nodeName=""502780c427f66"" locale="""">
+					<properties>
+						<layout>25-25-25-25</layout>
+					</properties>
+				</node>
+			</node>
+		</node>
+	</site>
+</root>
+</code></pre>
+
+
+if that helps; the db content looks like
+<pre>
+model_workspace:                                                                                                       
+flow3_persistence_identifier         | baseworkspace                        | rootnode                             | name       
+0ac909bc-0cf4-4ad1-80dd-5f5580c2415d | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 | 1bb9382b-3d09-454e-8f4a-8f55350308b9 | user-adrian
+0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |                                      | 31047548-8e7b-4d7b-bbb2-919f07bb0f20 | live       
+</pre>
+
+<pre>
+model_node:                                                                                                                                                                                                                                                                                                                                                                                           
+53f70cc2-11ab-43dc-b69b-65ab187872a8 | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage                                          | f8f70a5f-7fcd-4e2c-b677-ee918a436c5c | 100 | a:1:{s:5:""title"";s:5:""Start"";}                                                                                               | TYPO3.TYPO3:Page       | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite                                    
+a7602ae7-94f4-4133-ae1f-2927eef35284 | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66                       | 59110f02-e0fa-4a61-8b9f-38f47ede75f2 | 144 | a:1:{s:6:""layout"";s:11:""25-25-25-25"";}                                                                                       | TYPO3.TYPO3:FourColumn | 0 | 0 |  |  | 0 | a:0:{} | 4 | /sites/mysite/homepage/main                      
+ea9f9ce8-a115-4d71-8924-c602090f214a | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main                                     | 560e38d2-5246-4f23-b2ca-1d26334834df | 100 | a:0:{}                                                                                                                       | TYPO3.TYPO3:Section    | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite/homepage                           
+                                                                                                                                                                                                                                                                                                                                                                                           
+0c0f13b7-3217-4cca-bafc-7fa2875a9cd8 | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66/column1/50278122c4de5 | 8ebd41bf-62c8-4e2d-a3cd-31dc2604df94 | 100 | a:2:{s:5:""title"";s:26:""<h1>Zweite Spalte<br></h1>"";s:4:""text"";s:23:""<p>Enter text here.</p>"";}                               | TYPO3.TYPO3:Text       | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite/homepage/main/502780c427f66/column1
+2f8bac30-0c56-4cd6-80ba-9bba5fc061ef | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66/column3/5027815de974b | 735bd7d3-ec1b-4854-9b0c-0ab5391d3a12 | 100 | a:2:{s:5:""title"";s:26:""<h1>Vierte Spalte<br></h1>"";s:4:""text"";s:23:""<p>Enter text&nbsp;</p>"";}                               | TYPO3.TYPO3:Text       | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite/homepage/main/502780c427f66/column3
+aba0ba6c-68a4-4e91-ab94-c5ef9815d29a | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66/column0/502780f0f3926 | 822d9909-2ee2-44bb-a422-b2dffcde3276 | 100 | a:2:{s:5:""title"";s:38:""<h1>Ich bin eine Überschrift<br></h1>"";s:4:""text"";s:42:""<p>Und ein Plaintext; erste Spalte<br></p>"";} | TYPO3.TYPO3:Text       | 0 | 0 |  |  | 0 | a:0:{} | 2 | /sites/mysite/homepage/main/502780c427f66/column0
+b9cb9218-587a-4da7-b3a1-61f80158ac70 | 0ce8adbc-f358-46af-bd1d-3cce7a73bb40 |  | /sites/mysite/homepage/main/502780c427f66/column2/5027813fca49c | f1047ac7-a030-4405-9d44-2926dc3bb114 | 100 | a:2:{s:5:""title"";s:26:""<h1>Dritte Spalte<br></h1>"";s:4:""text"";s:22:""<p>Enter text here</p>"";}                                | TYPO3.TYPO3:Text       | 0 | 0 |  |  | 0 | a:0:{} | 6 | /sites/mysite/homepage/main/502780c427f66/column2
+</pre>
+
+If you need further info, don't hesitate to ask; it's just an experimental web page."
+37958,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Authentication no longer triggered for inaccessible node,Karsten Dambekalns,Christian Müller,2012-07-13 10:39,Node handling,Sprint 9,2012-06-12,"","",100,2012-06-12 08:56,"","",660500,"","","Until now we could redirect to the ""My T3CON"" page from the typo3.org SSO login and the user would be authenticated. This does not work any longer since this change:
+<pre>
+e6aac075332b526e7fde5e22ebd370238d43c99d
+commit e6aac075332b526e7fde5e22ebd370238d43c99d
+Author: Christian Müller <christian@kitsunet.de>
+Date:   Tue May 22 18:03:52 2012 +0200
+
+    [BUGFIX] Nodes with access roles should behave as expected
+    
+    Change-Id: Ib21f641ed15164b15a5d48397511234ad503d59c
+
+diff --git a/Classes/Domain/Model/Node.php b/Classes/Domain/Model/Node.php
+index 3147220..a445eda 100644
+--- a/Classes/Domain/Model/Node.php
++++ b/Classes/Domain/Model/Node.php
+@@ -972,7 +972,7 @@ class Node implements NodeInterface {
+                        return NULL;
+                }
+ 
+-               if (!$this->isAccessible() && !$this->nodeRepository->getContext()->isInaccessibleContentShown()) {
++               if (!$node->isAccessible() && !$this->nodeRepository->getContext()->isInaccessibleContentShown()) {
+                        return NULL;
+                }
+                return $node;
+</pre>
+
+Now instead of being authenticated a 404 is returned, as the node is not ""found"" in the first place."
+37435,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Functional Domain/NodesTest fail with 2 Errors,Adrian Föder,Christian Müller,2012-07-13 10:22,Node handling,"",2012-05-23,"","",100,2012-05-23 09:22,"","",634500,"","","Functional Testing fails with the following messages:
+
+<pre>
+There were 2 failures:
+
+1) TYPO3\TYPO3CR\Tests\Functional\Domain\NodesTest::renumberingTakesUnpersistedNodeOrderChangesIntoAccount
+Expected node node003 (index 3), actual node node004 (index 5)
+
+/var/www/Packages/Application/TYPO3.TYPO3CR/Tests/Functional/Domain/NodesTest.php:552
+/var/www/Packages/Application/TYPO3.TYPO3CR/Tests/Functional/Domain/NodesTest.php:500
+/var/www/Packages/Framework/TYPO3.FLOW3/Tests/BaseTestCase.php:50
+
+2) TYPO3\TYPO3CR\Tests\Functional\Domain\NodesTest::nodeRepositoryRenumbersNodesIfNoFreeSortingIndexesAreAvailable
+Expected node node150 (index 800), actual node node149 (index 7900)
+
+/var/www/Packages/Application/TYPO3.TYPO3CR/Tests/Functional/Domain/NodesTest.php:552
+/var/www/Packages/Application/TYPO3.TYPO3CR/Tests/Functional/Domain/NodesTest.php:526
+/var/www/Packages/Framework/TYPO3.FLOW3/Tests/BaseTestCase.php:50
+
+FAILURES!
+Tests: 20, Assertions: 30, Failures: 2.
+</pre>
+
+Maybe you have that, too; System is Debian Sqeeze with PHP 5.4 (!)"
+37434,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Functional Domain/NodesTest must have testableHttpEnabled,Adrian Föder,Adrian Föder,2012-05-23 18:45,Node handling,"",2012-05-23,"","",0,2012-05-23 09:10,"","",634450,"","","TYPO3\TYPO3\Domain\Service\ContentContext::initializeObject() has 
+<pre>
+$activeRequesthandler->getHttpRequest()->getUri()->getHost())
+</pre>
+
+getHttpRequest() returns NULL if the TYPO3CR's NodesTest doesn't have 
+<pre>
+protected $testableHttpEnabled = TRUE;
+</pre>
+and therefore the FunctionalTest fatal error's very early with ""calling getUri() on a Non-object""
+"
+36635,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,ContextInterface lacks two needed methods,Karsten Dambekalns,Karsten Dambekalns,2012-04-26 20:38,"","",2012-04-26,"","",100,2012-04-26 15:59,"","",595000,"","","The methods @setInaccessibleContentShown()@ and @isInaccessibleContentShown()@ were introduced to the context, but not the @ContextInterface@"
+34291,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Node Reordering needs to take unpersisted node order changes into account,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-05-23 05:45,Node handling,"",2012-02-26,"","",100,2012-02-26 11:33,"","",480700,"","","he error can be reproduced in the following way:
+
+* First, create some nodes, and persist them.
+* Then, move a node after another one, filling the LAST free sorting index between the nodes. Do NOT persist after that.
+* After that, try to *again* move a node to this spot. In this case, we need to *renumber* the node indices, and the system needs to take the before-moved node into account as well.
+
+The bug tested by this testcase led to wrong orderings on the flow3org website in the documentation part under some circumstances."
+34116,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,setNewIndex() breaks when invalid position is given,Karsten Dambekalns,Karsten Dambekalns,2012-05-21 09:37,Node handling,"",2012-02-20,"","",100,2012-02-20 11:25,"","",472000,"","","When an invalid position is given to setNewIndex(), the index of the target node iss either set to NULL or the code will break due to the use of an uninitialized variable."
+33825,TYPO3.TYPO3CR,Feature,"",New,Should have,Type hierarchy support for content type filter,Karsten Dambekalns,"",2012-02-09 16:58,Node handling,"",2012-02-09,"","",0,2012-02-09 16:58,"","",457650,"","","When using content type filtering with @getChildNodes()@, it is not possible to make use of a type hierarchy. It would be nice to have an operator like @instanceof@ to fetch all nodes of type ""x or above""."
+32667,TYPO3.TYPO3CR,Bug,"",Resolved,-- undefined --,TYPO3\TYPO3CR\Exception\NodeException thrown in file TYPO3_TYPO3CR_Domain_Model_Node_Original.php,Jonathan Starck,"",2012-01-20 20:41,"","",2011-12-18,"","",0,2011-12-18 10:24,"","",401600,"","","The security context is not yet intialized, thus the Node ""/sites/phoenixdemotypo3org/homepage/adminpage"" cannot determine if it is accessible. Some code part is calling isAccessible() early than is possible at that initialization stage.
+19 TYPO3\TYPO3CR\Domain\Model\Node_Original::isAccessible()
+
+18 TYPO3\TYPO3\Controller\Frontend\NodeController_Original::showAction(TYPO3\TYPO3CR\Domain\Model\Node)
+
+17 call_user_func_array(array, array)
+
+16 TYPO3\FLOW3\MVC\Controller\ActionController_Original::callActionMethod()
+
+15 TYPO3\FLOW3\MVC\Controller\ActionController_Original::processRequest(TYPO3\FLOW3\MVC\Web\Request, TYPO3\FLOW3\MVC\Web\Response)
+
+14 TYPO3\FLOW3\MVC\Dispatcher_Original::dispatch(TYPO3\FLOW3\MVC\Web\Request, TYPO3\FLOW3\MVC\Web\Response)
+
+13 TYPO3\FLOW3\MVC\Dispatcher::dispatch(TYPO3\FLOW3\MVC\Web\Request, TYPO3\FLOW3\MVC\Web\Response)
+
+12 call_user_func_array(array, array)
+
+11 TYPO3\FLOW3\MVC\Dispatcher::FLOW3_AOP_Proxy_invokeJoinPoint(TYPO3\FLOW3\AOP\JoinPoint)
+
+10 TYPO3\FLOW3\AOP\Advice\AdviceChain::proceed(TYPO3\FLOW3\AOP\JoinPoint)
+
+9 TYPO3\FLOW3\Security\Aspect\RequestDispatchingAspect_Original::setAccessDeniedResponseHeader(TYPO3\FLOW3\AOP\JoinPoint)
+
+8 TYPO3\FLOW3\AOP\Advice\AroundAdvice::invoke(TYPO3\FLOW3\AOP\JoinPoint)
+
+7 TYPO3\FLOW3\AOP\Advice\AdviceChain::proceed(TYPO3\FLOW3\AOP\JoinPoint)
+
+6 TYPO3\FLOW3\Security\Aspect\RequestDispatchingAspect_Original::blockIllegalRequestsAndForwardToAuthenticationEntryPoints(TYPO3\FLOW3\AOP\JoinPoint)
+
+5 TYPO3\FLOW3\AOP\Advice\AroundAdvice::invoke(TYPO3\FLOW3\AOP\JoinPoint)
+
+4 TYPO3\FLOW3\AOP\Advice\AdviceChain::proceed(TYPO3\FLOW3\AOP\JoinPoint)
+
+3 TYPO3\FLOW3\MVC\Dispatcher::dispatch(TYPO3\FLOW3\MVC\Web\Request, TYPO3\FLOW3\MVC\Web\Response)
+
+2 TYPO3\FLOW3\MVC\Web\RequestHandler::handleRequest()
+
+1 TYPO3\FLOW3\Core\Bootstrap::run()
+
+
+Please include more helpful information!"
+32298,TYPO3.TYPO3CR,Task,Story #40585: [Page Tree] As a content editor I want to move pages by drag and drop,Closed,Must have,Feature Moving Pages into branches / create new branches,Markus Goldbeck,Karsten Dambekalns,2012-10-04 08:01,Node handling,Sprint 10 (1.0 TP1),2011-12-05,"",0.00,100,2011-12-05 06:03,"","",383600,0.00,"","Missing Implementation of moving pages into branches in /TYPO3.TYPO3CR/Classes/Domain/Model/Node.php
+
+The functions _moveBefore()_ and _moveAfter()_ are implemented but there is no possibility to move pages into branches or create new branches by moving a page on another.
+
+
+Needed functions which update recursivly the paths of their childs:
+* _moveIntoBefore()_
+* _moveIntoAfter()_
+* special case _moveInto()_ for creating a new branch"
+30384,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Sorting order of nodes is broken,Robert Lemke,Robert Lemke,2011-09-30 09:05,Node handling,"",2011-09-28,"","",100,2011-09-28 07:46,"","",289700,"","","The sorting order of nodes, especially in a multi-workspace scenario, is partly random. Creating a node and then moving it with moveBefore() and moveAfter() doesn't always lead to the expected result."
+30167,TYPO3.TYPO3CR,Bug,"",Resolved,Could have,Rename hiddenBeforeDate and hiddenAfterDate,Rens Admiraal,Rens Admiraal,2011-12-23 09:52,Node handling,"",2011-09-21,"","",0,2011-09-21 09:02,"","",278900,"","","hiddenBeforeDate and hiddenAfterDate both hold a DateTime object, so the names should reflect that. Suggestion:
+
+hiddenBeforeDateTime / hiddenAfterDateTime
+
+credits for finding go to Peter Beernink"
+29538,TYPO3.TYPO3CR,Task,"",Resolved,Should have,Streamline isVisible() and isAccessible implementations,Robert Lemke,Robert Lemke,2011-11-07 04:29,Node handling,"",2011-09-07,"","",100,2011-09-07 05:28,"","",247750,"","","Currently Node::isVisible() will only consider if a Node is accessible or not, if the security context is already initialized.
+This is usually the case, but in the Node Routepart Handler it is not. 
+
+We need to do some further investigation to see if FLOW3 could provide the necessary information already at that early stage.
+
+Maybe, isVisible() should only tell if the Node has any visibility modifiers set and access restrictions should be handled separately."
+28214,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Nodes should be accessible if authenticated user is in one of the required roles,Bastian Waidelich,Bastian Waidelich,2011-07-15 12:07,Node handling,"",2011-07-14,"","",100,2011-07-14 16:01,"","",183500,"","","Currently a node is only accessible if the logged in user is in *all* of the required *accessRoles*.
+This should be changed so that a node is visible as soon as the logged in user is in *one* of the required roles."
+27181,TYPO3.TYPO3CR,Bug,"",Closed,Must have,Moving of nodes should not duplicate content,Sebastian Kurfuerst,"",2011-09-20 11:54,Node handling,Sprint 7,2011-06-01,"","",0,2011-06-01 06:11,"","",134450,"","","right now, the way moving of nodes is implemented has some drawbacks. If we have 5 nodes:
+
+* Node1 (Sorting:1)
+* Node2 (Sorting:2)
+* Node3 (Sorting:3)
+* Node4 (Sorting:4)
+* Node5 (Sorting:5)
+
+and then we move Node5 before Node1, this will lead to a complete re-numbering:
+
+* Node5 (Sorting:1)
+* Node1 (Sorting:2)
+* Node2 (Sorting:3)
+* Node3 (Sorting:4)
+* Node4 (Sorting:5)
+
+This will copy *all nodes to personal workspace*, although nothing changed.
+
+* An idea would be to distinguish between *content changes* and further changes like moving or deleting nodes."
+27140,TYPO3.TYPO3CR,Bug,"",Closed,Should have,Creating an already-deleted node leads to an error,Sebastian Kurfuerst,"",2011-09-20 11:54,"","",2011-05-30,"","",0,2011-05-30 09:18,"","",132400,"","","Try the following:
+
+Create a node with nodeName ""test""
+Delete this node
+Create another node with nodeName ""test"" (at the same place)
+
+-> Should work, but does not.
+
+*Suggested solution*: Create followed by Delete should directly remove the node (when the changes have not been committed yet to live workspace)."
+26851,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,ProxyNode should not automatically persist newNode if it has been cloned beforehand.,Sebastian Kurfuerst,Sebastian Kurfuerst,2011-05-25 03:05,Node handling,Sprint 7,2011-05-17,"","",100,2011-05-17 05:02,"","",119250,"","","If one has a @$proxyNode@, clones it, and changes a property on that node, these changes are automatically persisted. This also happens if one *clones* the ProxyNode. In this case, however, it needs to lose its connection with the Persistence Layer (and a call to Repository::update() is needed again)."
+13704,TYPO3.TYPO3CR,Task,"",Resolved,Should have,Fix Node Repository to search in non persistet nodes.,Christian Müller,Christian Müller,2013-05-11 12:27,"","",2011-03-09,"","",0,2011-03-09 03:31,"","",85550,"","","Currently the Node methods / Node Repository do not always consider Nodes that are not yet persistet, which leads to several problems, which remained undetected due to not using them until now and having few functional tests. So fix that and add tests."
+11550,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,ProxyNodes for the same node not the same instance,Karsten Dambekalns,Robert Lemke,2011-05-05 11:14,Node handling,"",2010-12-17,"","",100,2010-12-17 07:04,"","",1814000,"","","When proxy nodes for a node are created, it is not ensured that for each node only one proxy instance is created."
+7671,TYPO3.TYPO3CR,Task,"",Resolved,Must have,Fix unit tests,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,"","",2010-05-05,"",6.00,100,2010-05-05 11:47,"","",37350,6.00,"",.
+6522,TYPO3.TYPO3CR,Bug,"",Closed,Must have,Referenziert noch nach dem alten Resourcenpfad,Lukas Lentner,"",2011-05-05 11:14,"","",2010-02-19,"","",0,2010-02-19 06:54,"","",1811150,"","","Ruft man das Admin Interface auf, so passiert nix, da die falschen JS-Dateien eingebunden werden."
+5921,TYPO3.TYPO3CR,Bug,"",Closed,Should have,Equals (Query) ignore the propertyName in a comparison with objects.,Tommy Seus,"",2011-05-05 11:14,"","",2010-01-07,"","",0,2010-01-07 11:11,"","",1811200,"","","Hello, I think the ""propertyName"" is ignored when comparing with objects (query, equals).
+PostRepository: 
+works: $query->matching($query->equals('blog', $blog))
+works too: $query->matching($query->equals('nothing', $blog))
+
+I suspect that will return all objects that have a reference to the object of comparison. The propertyname is ignored.
+I noticed the mistake because I have 2 properties in which the comparison object can be saved. I would now like to get back all the objects that reference the object at a particular property.
+"
+5600,TYPO3.TYPO3CR,Bug,"",Closed,Should have,nested domain-models produce a endless loop,Tommy Seus,"",2011-05-05 11:14,"","",2009-12-02,"","",0,2009-12-01 21:36,"","",1811250,"","","Hi,
+
+I have special nested domain-models. To reproduce the Bugs it is necessary to use no Lazy SplStorageObjects. I have two classes. Each class has a property to store the other class in a SplStorageObject.
+
+The class backend.php calls the method persistObject($object). The Objects in the SplStorageObject are stored in a QUEUE. All objects in the QUEUE are persisted again (persistObject($object)). It is a endless loop to persist the nested object.  
+
+Error: Fatal Error: Maximum function nesting level of  ?
+
+One solution would be to persist only objects that have not been saved so far.
+
+
+---
+
+The second problem occurs with an update. The method replaceObject() removes the oldObject1 from the identity-mapper. 
+
+persistObject():
+updatedObject1 -> SPL -> Object2 (AOPProxy) -> SPL -> OldObject1 = cant find the UID and the OldObject1 in the Idenity-Mapper
+
+Error: CRITICAL TYPO3 Uncaught Exception 1246892970
+"
+4317,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Still Problems with SplObjectStorage duplicates,Tommy Seus,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-08-25,"","",100,2009-08-25 10:17,"","",1811300,"","","My Version is Revision r3094
+
+There are still problems with the SplObjectStorage duplicates (Issue #3819).
+
+I have attached my script. In addition, the blog model must be expanded.
+
+Step1:
+creating a Blog
+creating a Post1
+creating a Post2
+add Post1 to Blog
+
+
+Step2:
+add Post2 to Blog
+
+Step3
+detach Post1 from Blog"
+4313,TYPO3.TYPO3CR,Bug,"",Resolved,-- undefined --,TYPO3CR Setup not working anymore (has patch),Irene Höppner,Karsten Dambekalns,2011-05-05 11:14,"","",2009-08-25,"","",100,2009-08-25 04:52,"","",1811350,"","",Just renamed initializeArguments() to initializeSetupAction() and changed the action of the form from setup to setup/setup/ to make it work again.
+3959,TYPO3.TYPO3CR,Feature,"",Resolved,Must have,Implement limit and ordering for query object model,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,Query handling,"",2009-07-22,"","",100,2009-07-22 04:30,"","",1813750,"","",.
+3890,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,"If FLOW3 lies in a Subfolder, Browser can't find CSS and Javascript.",Tommy Seus,"",2011-05-05 11:14,"","",2009-07-13,"","",100,2009-07-13 17:38,"","",1811400,"","","*File:* /TYPO3CR/Resources/Public/HTML/View_Admin_Viewport.html
+
+If FLOW3 operates in a subfolder, this call does not work anymore. 
+
+<pre>
+<link rel=""stylesheet"" href=""/Resources/Packages/ExtJS/CSS/ext-all.css"" />
+</pre> 
+
+The insert of ###BASEURI### fixes this bug. 
+<pre>
+<link rel=""stylesheet"" href=""###BASEURI###Resources/Packages/ExtJS/CSS/ext-all.css"" />
+</pre>"
+3889,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Reinjected dependencies are overwritten with NULL,Robert Lemke,Robert Lemke,2011-05-05 11:14,FLOW3 Persistence,"",2009-07-13,"","",100,2009-07-13 12:43,"","",1813800,"","","If a dependency property is not tagged with @transient, it will be overwritten with NULL by the DataMapper right after the dependency has been reinjected (while thawing the property)."
+3859,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Reference cycles can not be persisted if no aggregate roots are involved,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-07-09,"","",100,2009-07-09 11:43,"","",1813850,"","","When having reference cycles in an object tree that is persisted, the Backend bails out if the objects are not aggregate root (i.e. don't have a repository):
+<pre>
+Uncaught FLOW3 Exception
+#1219424096: The identifier requested (7e449a8f-94cb-41bc-ad1f-927fb4ca0643) for ""flow3:contentNode""is already in use. (More information)
+
+F3\PHPCR\ItemExistsException thrown in file
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/Node.php in line 465.
+
+9 F3\TYPO3CR\Node::addNode(""flow3:contentNode"", ""flow3:F3_TYPO3_Domain_Model_Structure_ContentNode"", ""7e449a8f-94cb-41bc-ad1f-927fb4ca0643"")
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/Backend.php:
+00478:    $node = $parentNode->addNode($nodeName, $nodeTypeName, $object->FLOW3_AOP_Proxy_getProperty($uuidPropertyName));
+00479:   } elseif ($object->FLOW3_AOP_Proxy_getProperty('FLOW3_Persistence_Entity_UUID') !== NULL) {
+00480:    $node = $parentNode->addNode($nodeName, $nodeTypeName, $object->FLOW3_AOP_Proxy_getProperty('FLOW3_Persistence_Entity_UUID'));
+00481:   } else {
+00482:    $node = $parentNode->addNode($nodeName, $nodeTypeName);
+
+8 F3\TYPO3CR\FLOW3\Persistence\Backend::createNodeForEntity(F3\TYPO3\Domain\Model\Structure\ContentNode_AOPProxy_Development, F3\TYPO3CR\Node, ""flow3:contentNode"")
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/Backend.php:
+00393:      if ($object->FLOW3_Persistence_isNew()) {
+00394:       if ($this->classSchemata[$propertyValue->FLOW3_AOP_Proxy_getProxyTargetClassName()]->getModelType() === \F3\FLOW3\Persistence\ClassSchema::MODELTYPE_ENTITY) {
+00395:        $this->createNodeForEntity($propertyValue, $node, 'flow3:' . $propertyName);
+00396:       } else {
+00397:        $this->createNodeForValueObject($propertyValue, $node, 'flow3:' . $propertyName);
+
+7 F3\TYPO3CR\FLOW3\Persistence\Backend::persistObject(F3\TYPO3\Domain\Model\Content\Page_AOPProxy_Development)
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/Backend.php:
+00414:    // right place and have the right name. fancy, eh?
+00415:   foreach ($queue as $object) {
+00416:    $this->persistObject($object);
+00417:   }
+00418:  }
+
+6 F3\TYPO3CR\FLOW3\Persistence\Backend::persistObject(F3\TYPO3\Domain\Model\Structure\ContentNode_AOPProxy_Development)
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/Backend.php:
+00414:    // right place and have the right name. fancy, eh?
+00415:   foreach ($queue as $object) {
+00416:    $this->persistObject($object);
+00417:   }
+00418:  }
+
+5 F3\TYPO3CR\FLOW3\Persistence\Backend::persistObject(F3\TYPO3\Domain\Model\Structure\Site_AOPProxy_Development)
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/Backend.php:
+00329: 
+00330:   foreach ($this->aggregateRootObjects as $object) {
+00331:    $this->persistObject($object);
+00332:   }
+00333: 
+
+4 F3\TYPO3CR\FLOW3\Persistence\Backend::persistObjects()
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/Backend.php:
+00249:   */
+00250:  public function commit() {
+00251:   $this->persistObjects();
+00252:   $this->processDeletedObjects();
+00253:   $this->session->save();
+
+3 F3\TYPO3CR\FLOW3\Persistence\Backend::commit()
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/FLOW3/Classes/Persistence/Manager.php:
+00209:   $this->backend->setAggregateRootObjects($aggregateRootObjects);
+00210:   $this->backend->setDeletedObjects($removedObjects);
+00211:   $this->backend->commit();
+00212: 
+00213:    // this needs to unregister more than just those, as at least some of
+
+2 F3\FLOW3\Persistence\Manager::persistAll()
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/FLOW3/Classes/Core/Bootstrap.php:
+00652: 
+00653:    if ($this->settings['persistence']['enable'] === TRUE) {
+00654:     $this->objectManager->getObject('F3\FLOW3\Persistence\ManagerInterface')->persistAll();
+00655:    }
+00656:    $this->objectManager->getObject('F3\FLOW3\Session\SessionInterface')->close();
+
+1 F3\FLOW3\Core\Bootstrap::run()
+
+/Users/Shared/Sites/dev/t3v5/dist/Public/index.php:
+00045: $flow3 = new $bootstrapClassName(getenv('FLOW3_CONTEXT'));
+00046: $flow3->initialize();
+00047: $flow3->run();
+00048: 
+00049: ?>
+</pre>
+
+Instead of producing that exception, an object proxy should be created in the CR."
+3858,TYPO3.TYPO3CR,Feature,"",Resolved,Must have,Add objects to their own repository automatically,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-07-09,"","",100,2009-07-09 08:55,"","",1813900,"","","On persisting Entities which are referencing Entities being aggregate roots as well an exception is thrown if those are not added to their own repository (they must be added to their own repository, too).
+
+Instead of throwing that exception, objects should be added to their own repository automatically."
+3835,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Nested array containing objects as leafs are not handled correctly,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-07-06,"","",100,2009-07-06 11:36,"","",1813950,"","","Consider this class:
+
+<pre>
+/**
+ * @scope prototype
+ * @entity
+ */
+class FooNode {
+
+	/**
+	 * @var array
+	 */
+	protected $objects = array();
+
+	public function bar($foo, $bar, $object) {
+		$this->objects[$foo][$bar] = $object;
+	}
+}
+</pre>
+
+bar() adds the given object to $this->objects ? but indexed by $foo and $bar.
+What you'll get during persistence time is:
+
+<pre>
+#1246892972: Object expected, array given. (More information)
+
+InvalidArgumentException thrown in file
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/IdentityMap.php in line 102.
+
+12 F3\TYPO3CR\FLOW3\Persistence\IdentityMap::getUUIDByObject(array)
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/Backend.php:
+00347:  protected function persistObject($object) {
+00348:   $queue = array();
+00349:   $node = $this->session->getNodeByIdentifier($this->identityMap->getUUIDByObject($object));
+00350: 
+00351:   $classSchema = $this->classSchemata[$object->FLOW3_AOP_Proxy_getProxyTargetClassName()];
+</pre>
+
+This should be handled correctly - or if that is not possible, at least a meaningful error should be shown."
+3819,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Objects in SplObjectStorage are stored over and over again,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-07-02,"","",100,2009-07-02 08:25,"","",1812750,"","","When an object inside an SplObjectStorage is stored (at least when using a reference), it will be stored again whenever the source property is dirty.
+
+This doesn't cause problems on reading, as the object will be reconstituted only once and SplObjectStorage stores only distinct instances, but - it's a waste of space, exremely unclean and needs to be fixed.
+
+Might apply to objects in arrays, too."
+3756,TYPO3.TYPO3CR,Bug,"",Rejected,Should have,Empty SplObjectStorage property is not reconstituted,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-06-25,"","",100,2009-06-25 04:28,"","",1813700,"","","If a persisted object contains a property of type SplObjectStorage and that storage does not contain any objects, the storage itself won't be reconstituted on recreating the persisted object.
+
+Example:
+<pre>
+/**
+ * A blog
+ *
+ * @scope prototype
+ * @entity
+ */
+class Blog {
+
+	/**
+	 * The posts contained in this blog
+	 *
+	 * @var \SplObjectStorage
+	 * @lazy
+	 */
+	protected $posts;
+
+	/**
+	 * Constructs a new Blog
+	 */
+	public function __construct() {
+		$this->posts = new \SplObjectStorage();
+	}
+
+	/**
+	 * Adds a post to this blog
+	 *
+	 * @param \F3\Blog\Domain\Model\Post $post
+	 * @return void
+	 */
+	public function addPost(\F3\Blog\Domain\Model\Post $post) {
+		$post->setBlog($this);
+		$this->posts->attach($post);
+	}
+
+	/**
+	 * Returns all posts in this blog
+	 *
+	 * @return \SplObjectStorage
+	 * @author Robert Lemke <robert@typo3.org>
+	 */
+	public function getPosts() {
+		if ($this->posts instanceof \F3\FLOW3\Persistence\LazyLoadingProxy) {
+			$this->posts->_loadRealInstance();
+		}
+		return clone $this->posts;
+	}
+
+}
+?>
+</pre>
+
+If the Blog contains no Posts, getPosts() will return a clone of the empty SplObjectStorage. However, if the Blog has been reconstituted, $this->posts is NULL and therefore issues a fatal error on cloning $this->posts."
+3672,TYPO3.TYPO3CR,Feature,"",Closed,Could have,Allow export of invalid item names in document view,Karsten Dambekalns,"",2011-05-05 11:14,Import/Export,"",2009-06-15,"","",0,2009-06-15 08:24,"","",1811450,"","","Export of invalid item (node, property) names needs escaping, see JSR-283."
+3671,TYPO3.TYPO3CR,Feature,"",Closed,Could have,Multivalued properties can be exported in document view,Karsten Dambekalns,"",2011-05-05 11:14,Import/Export,"",2009-06-15,"","",0,2009-06-15 08:22,"","",1811500,"","","Export of multivalued properties needs escaping of whitespace and subsequent concatenation into a single XML attribute, see JSR-283."
+3486,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,getUUIDByObject() in persistence backend must return NULL if no UUID is found,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-05-27,"","",100,2009-05-27 07:28,"","",1812800,"","",Currently it dies if FLOW3_AOP_Proxy_getProperty() fails.
+3485,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Non-persistable properties of an entity which are not marked as transient cause a fatal error,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-05-27,"","",100,2009-05-27 07:26,"","",1812850,"","","This entity ...
+
+<pre>
+/**
+ * @entity
+ * @scope prototype
+ */
+class Release {
+
+	/**
+	 * @var string
+	 */
+	protected $versionNumber;
+
+	/**
+	 * @inject
+	 * @var \F3\FLOW3\Object\FactoryInterface
+	 */
+	protected $objectFactory;
+</pre>
+
+... causes a fatal error during persisting time:
+
+<pre>
+Fatal error: Call to undefined method F3\FLOW3\Object\Factory::FLOW3_AOP_Proxy_getProxyTargetClassName() in /Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/Backend.php on line 359
+</pre>
+
+because the Object Factory is not marked as @transient"
+3478,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Reconstitution of object respects class schema - but persistence doesn't,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-05-27,"","",100,2009-05-27 05:30,"","",1812900,"","","<pre>
+/**
+ * @entity
+ * @scope prototype
+ */
+class Release {
+
+	/**
+	 * @var string
+	 */
+	protected $versionNumber;
+}
+</pre>
+
+$versionNumber is declared as string. If by some mistake $versionNumber contains an array of strings, the CR will persist the array (string[]) without problems (ignoring the class schema) but while reconstituting the object the CR complains with this exception:
+
+<pre>
+#1181084521: getValue() cannot be called on multi-valued properties. (More information)
+
+F3\PHPCR\ValueFormatException thrown in file
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/Property.php in line 166.
+
+25 F3\TYPO3CR\Property::getValue()
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/DataMapper.php:
+00316:   */
+00317:  protected function getNativeValue(\F3\PHPCR\PropertyInterface $property) {
+00318:   $value = $property->getValue();
+00319:   switch ($property->getType()) {
+00320:    case \F3\PHPCR\PropertyType::BOOLEAN:
+
+24 F3\TYPO3CR\FLOW3\Persistence\DataMapper::getNativeValue(F3\TYPO3CR\Property)
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/DataMapper.php:
+00170:      if ($node->hasProperty('flow3:' . $propertyName)) {
+00171:       $property = $node->getProperty('flow3:' . $propertyName);
+00172:       $propertyValue = $this->getNativeValue($property);
+00173:      }
+00174:     break;
+
+23 F3\TYPO3CR\FLOW3\Persistence\DataMapper::thawProperties(F3\Releazr\Domain\Model\Release_AOPProxy_Development, F3\TYPO3CR\Node, F3\FLOW3\Persistence\ClassSchema)
+
+/Users/Shared/Sites/dev/flow3/dist/Packages/Global/TYPO3CR/Classes/FLOW3/Persistence/DataMapper.php:
+00140: 
+00141:    $this->objectBuilder->reinjectDependencies($object, $objectConfiguration);
+00142:    $this->thawProperties($object, $node, $classSchema);
+00143:    $object->FLOW3_Persistence_memorizeCleanState();
+00144:    $this->persistenceManager->getSession()->registerReconstitutedObject($object);
+</pre>"
+3456,TYPO3.TYPO3CR,Task,"",Closed,Must have,Refactor internal CR representation of object references,Karsten Dambekalns,"",2011-05-05 11:14,FLOW3 Persistence,"",2009-05-25,"","",0,2009-05-25 11:22,"","",16950,"","","This can be less complex, see attached image."
+3336,TYPO3.TYPO3CR,Feature,"",Resolved,Should have,Allow fetching of arbitrary objects by UUID,Bastian Waidelich,Karsten Dambekalns,2011-05-05 11:14,Query handling,"",2009-05-16,"","",100,2009-05-16 04:27,"","",1811550,"","",There is a method getUUIDByObject() in the persistence manager backend. We need the inverse function to be able to retrieve any object by UUID (without the need to specify the object type).
+3133,TYPO3.TYPO3CR,Feature,"",Resolved,Should have,Abort persisting objects on reference errors,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-04-19,"","",100,2009-04-19 14:31,"","",1812950,"","",Abort persisting objects when instances are encountered that are aggregate roots but have not been added to their repository (example: structure nodes in TYPO3 backendcontroller setup action).
+2902,TYPO3.TYPO3CR,Feature,"",Closed,Must have,"Implementation of move, copy and NodeType.isNodeType",Christoph Blömer,"",2011-05-05 11:14,Node handling,"",2009-03-18,"","",0,2009-03-18 17:10,"","",1811600,"","","For the implementation of WebDAV for the TYPO3CR I am missing some CR functionality to provide all features.
+
+First of all I need the possibility to move and copy a node and its subtree.
+
+Second is, that I need to check if a NodeType is nt:folder or nt:file
+
+Therefore I need the method isNodeType() implemented in the NodeType class.
+
+My implementation looks currently like this:
+public function isNodeType($nodeTypeName) {
+    return $this->name == $nodeTypeName;
+}
+
+Thanks.
+"
+2891,TYPO3.TYPO3CR,Task,"",Closed,Should have,Clean up splitName() in storage backends,Karsten Dambekalns,"",2011-05-05 11:14,"","",2009-03-18,"","",30,2009-03-18 10:24,"","",14150,"","","splitName() is now present in the PDO storage and search backends, but needs to go elsewhere and cleaned up."
+2812,TYPO3.TYPO3CR,Feature,"",Resolved,Must have,Support querying by a property which is a reference,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,Query handling,"",2009-03-10,"","",100,2009-03-10 11:00,"","",1813550,"","","<pre>
+   $posts = $postRepository->findByBlog($blog);
+</pre>"
+2811,TYPO3.TYPO3CR,Feature,"",Resolved,Must have,Implement a case insensitive equals constraint,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,Query handling,"",2009-03-10,"","",100,2009-03-10 10:58,"","",1813600,"","","Add a new or enhance the existing ""equals"" query constraint to allow for case insensitive search in properties."
+2623,TYPO3.TYPO3CR,Task,"",Resolved,Should have,Clean up Data Mapper test case,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2009-02-12,"","",0,2009-02-12 10:31,"","",13150,"","","The tests in the data mapper cover too many methods at once - basically it's functional tests for the whole class (and some others) by calling the map() method.
+
+Please split up the tests so they only focus on one method at once and mock the others (ie. work with a mocked DataMapper in the first place).
+
+see thawPropertiesSetsPropertyValues()"
+2538,TYPO3.TYPO3CR,Feature,"",Closed,Should have,Basic support for XML import,Karsten Dambekalns,"",2011-05-05 11:14,Import/Export,"",2009-01-30,"","",0,2009-01-30 06:19,"","",1813000,"","",.
+2537,TYPO3.TYPO3CR,Feature,"",Resolved,Should have,Basic support for XML export,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,Import/Export,"",2009-01-30,"","",100,2009-01-30 06:17,"","",1813050,"","",.
+2420,TYPO3.TYPO3CR,Task,"",Resolved,Must have,Adjust license to LGPL,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,"","",2009-01-07,"","",100,2009-01-07 06:47,"","",12300,"","",.
+2277,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,When adding the same element more than one time to the repository only the first is created,Christoph Blömer,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2008-12-05,"","",100,2008-12-05 17:16,"","",1813100,"","","The Blog has tags which can be added to more than one post. After rev 1566 this is not possible anymore.
+
+Example:
+$tag1 = $this->objectFactory->create('F3::Blog::Domain::Tag');
+$tag1->setName('Development');
+
+$post1 = $this->objectFactory->create('F3::Blog::Domain::Post');
+$post1->addTag($tag1);
+
+$post2 = $this->objectFactory->create('F3::Blog::Domain::Post');
+$post2->addTag($tag1);
+
+The tag is not added to the second post. Also no Exception is shown."
+2195,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Fatal error when storing entities containing DateTime property,Bastian Waidelich,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2008-11-24,"","",100,2008-11-24 12:25,"","",1813150,"","","In the Blog Example I'm getting a fatal error when trying to store a comment in the CR:
+<pre>
+Fatal error: Call to undefined method DateTime::AOPProxyGetProxyTargetClassName() in Packages/TYPO3CR/Classes/FLOW3/Persistence/F3_TYPO3CR_FLOW3_Persistence_Backend.php on line 242
+</pre>"
+2163,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,"""no such table: namespaces* Exception is misleading",Christoph Blömer,Karsten Dambekalns,2011-05-05 11:14,Storage Backend,"",2008-11-12,"","",100,2008-11-12 15:05,"","",1811650,"","","After typo3cr.db was changed to TYPO3CR.db the file TYPO3CR.db was created and the Exception was thrown because the new DB file has no tables.
+
+A NoSuchDatabaseException or MissingDatabaseException would make more sense before creating just an empty DB file.
+"
+2121,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,(Almost) all objects in the TYPO3CR package should be prototype,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,"","",2008-11-11,"","",100,2008-11-11 05:45,"","",1813200,"","","Classes like QueryManager, QueryObjectModelFactory etc. should be instantiated as prototype because otherwise it doesn't make sense to pass on the session between them etc."
+1942,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Fatal error in F3::TYPO3CR::Node,Bastian Waidelich,Karsten Dambekalns,2011-05-05 11:14,Node handling,"",2008-11-03,"","",100,2008-11-03 13:40,"","",1811700,"","","When adding a comment to the posts collection in the Blog example I get a fatal error:
+
+<pre>Fatal error: Call to a member function isMultiple() on a non-object in Packages\TYPO3CR\Classes\F3_TYPO3CR_Node.php on line 574</pre>
+Probably there is something wrong in the Blog repository setup, but the exception should be caught anyways.
+
+BTW: In the Blog example this happens just before the Comments Controller redirects to the post single view, so this error is not displayed."
+1886,TYPO3.TYPO3CR,Task,"",Closed,Must have,Check indexing behaviour,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,Index/Search,"",2008-10-27,"","",0,2008-10-27 13:59,"","",10050,"","",Make sure content can be searched tokenized and non-tokenized.
+1883,TYPO3.TYPO3CR,Task,"",Resolved,Must have,Store objects as node hierarchy reflecting the object tree?!,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2008-10-27,"","",100,2008-10-27 13:55,"","",10000,"","","Check how this is possible, and how this affects efficiency"
+1875,TYPO3.TYPO3CR,Feature,"",Closed,Must have,Add more query options to persistence backend,Karsten Dambekalns,"",2011-05-05 11:14,Query handling,"",2008-10-27,"","",70,2008-10-27 13:47,"","",1813250,"","","We need to support more advanced querying, not only testing for equality."
+1874,TYPO3.TYPO3CR,Feature,"",Closed,Must have,Implement basic nodetype support,Karsten Dambekalns,"",2011-05-05 11:14,Nodetype support,"",2008-10-27,"","",0,2008-10-27 13:44,"","",1813300,"","",At least the nodes we have should declare themselves as being mix:referenceable. Implement all needed to allow that.
+1873,TYPO3.TYPO3CR,Feature,"",Closed,Must have,Look into an alternative storage schema for nodes (and properties?),Karsten Dambekalns,"",2011-05-05 11:14,Storage Backend,"",2008-10-27,"","",0,2008-10-27 13:43,"","",1813650,"","",The current storage schema is not better than in any crude beginner's code example. There are surely better ways...
+1872,TYPO3.TYPO3CR,Task,"",Closed,Must have,Check namespace handling,Karsten Dambekalns,"",2011-05-05 11:14,Namespacing,"",2008-10-27,"","",0,2008-10-27 13:41,"","",9950,"","","This is still raw, and we must check implications of the new syntax using curly braces."
+1871,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,System properties (like jcr:uuid) are missing,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,Property handling,"",2008-10-27,"","",100,2008-10-27 13:39,"","",1813350,"","",Those need to be exposed
+1840,TYPO3.TYPO3CR,Task,"",Resolved,Must have,LuceneKeywordAnalyser should not use iconv,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,Index/Search,"",2008-10-27,"","",100,2008-10-27 12:26,"","",9750,"","",Make it use the PHP6 package or get rid of the iconv dependency in some other way
+1623,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,"Searching for ""identifier"" is possible even though no property ""identifier"" exists",Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,Index/Search,"",2008-10-01,"","",100,2008-10-01 11:06,"","",1813400,"","","Consider this query:
+
+<pre>
+		$nodes =  $query->matching($query->equals('identifier', $id))->execute();
+</pre>
+
+This will even work if no property ""identifier"" has been defined in the domain model because the CR used the field name ""identifier"" internally.
+
+Then again searching for the identifier ""id"" (the name of the property annotated as @identifier) won't return any results because Lucene tokenizes the UUID.
+
+1. Hide the internal identifier
+2. Make sure that the QM recognizes the identifier property and then searches in the CR identifier field (jcr:uuid) instead of the domain model's property"
+1620,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Reference array keys are discarded during persistence without a warning,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,FLOW3 Persistence,"",2008-10-01,"","",100,2008-10-01 08:07,"","",1813450,"","",@reference properties of type array (ie. references to other objects) are persisted - but only the values. The keys of this array are discarded.  Either implement support for persisting these keys as well (would be very cool) or at least throw a warning in the meantime if the array keys are something else than integers.
+1486,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Keys in current schema too long for MySQL,Matthias Hörmann,Matthias Hörmann,2011-05-05 11:14,"","",2008-09-09,"","",100,2008-09-09 05:49,"","",1811750,"","","MySQL only supports key lengths of up to 1000 bytes (MyISAM) or 767 bytes (InnoDB).
+
+This means any key using more than one VARCHAR(255) UTF-8 encoded column won't work in MySQL.
+
+There is a syntax to limit the part of a text/blob column used in a key to the first n characters
+but it might not be wise to limit it too much with namespace URIs
+(as a lot of those probably have similar prefixes if they are published by the same organization).
+
+This problem affects both primary and unique keys."
+1484,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Namespace columns are used to store URIs now but are only VARCHAR(255),Matthias Hörmann,Matthias Hörmann,2011-05-05 11:14,"","",2008-09-09,"","",100,2008-09-09 05:43,"","",1811800,"","",...but URIs can be up to 2048 characters according to most sources
+1481,TYPO3.TYPO3CR,Task,"",Resolved,Must have,Implement referential integrity for reference properties,Matthias Hörmann,Karsten Dambekalns,2011-05-05 11:14,Property handling,"",2008-09-09,"","",100,2008-09-09 04:24,"","",8300,"","","Removing a node should not be possible when there are still references to that node.
+
+Creating a reference property to a non-existant node should not be possible.
+
+How would this interact with the persistence layer above the repository layer?
+
+Might lead to problems if it tries to do operations in the wrong order."
+1334,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Every node added to Lucene index twice?,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,Index/Search,"",2008-08-25,"","",100,2008-08-25 07:49,"","",1811850,"","","From looking at the Lucene index contents, it seems every node is added twice. Check and resolve."
+1291,TYPO3.TYPO3CR,Feature,"",Resolved,Should have,Make it possible to suggest an identifier for a new node,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,Node handling,"","","","",100,2008-08-18 08:47,"","",1811900,"","","To make the gap between a DDD domain object eventually having it's own UUID already and the CR persisting that object as a node, it should be possible to suggest an identifier to the CR when creating a node.
+
+* check what the spec says
+* think about a clean & lean way of doing this
+* implement :)"
+1286,TYPO3.TYPO3CR,Task,"",Resolved,Should have,Look into searching using Lucene,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,Query handling,"",2008-08-17,"","",100,2008-08-15 03:08,"","",7050,"","",The current approach of directly building a SQL search query is already at it's edges (when looking at multi-value properties). Rather look into using an existing solution like Zend_Search_Lucene.
+1285,TYPO3.TYPO3CR,Feature,"",Resolved,Should have,Implement Node.getReferences(),Karsten Dambekalns,Matthias Hörmann,2011-05-05 11:14,Node handling,"",2008-08-15,"","",0,2008-08-15 03:04,"","",1811950,"","",This should be an easy one given the requirements are fulfilled (#1283) but could come in extremely handy for users.
+1284,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,Single-value properties are stored in the database serialized,Karsten Dambekalns,Matthias Hörmann,2011-05-05 11:14,Storage Backend,"",2008-08-15,"","",100,2008-08-15 02:55,"","",1812000,"","",The serialized storage of property values (due to this being the only way to store various types in a character field) in the database must go away.
+1283,TYPO3.TYPO3CR,Task,"",Resolved,Must have,Make sure properties store their type in the database,Karsten Dambekalns,Matthias Hörmann,2011-05-05 11:14,Storage Backend,"",2008-08-15,"","",100,2008-08-15 02:53,"","",7000,"","","Properties should store their type in the database, to ease search and make less implicit assumptions possible..."
+656,TYPO3.TYPO3CR,Task,"",Closed,Must have,Implement session-awareness for StorageAccess_PDO,Karsten Dambekalns,"",2011-05-05 11:14,"","","","",0.00,0,2008-05-27 07:00,"","",2650,0.00,"",All methods dealing with raw node access should take the session of the node into account (to support transient storage).
+473,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,PDO Initialisierung: F3_TYPO3CR_StorageAccess_PDO,Christoph Blömer,Karsten Dambekalns,2011-05-05 11:14,"","",2008-04-20,"","",100,2008-04-20 13:48,"","",1812050,"","","You have to change this:
+$this->databaseHandle = new PDO($dsn, $username = NULL, $password = NULL);
+
+to:
+$this->databaseHandle = new PDO($dsn, $username, $password);
+
+in the constructor.
+
+Otherwise you can't set the username and password in the Components.php
+
+"
+354,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,setProperty() on a Node discards type parameter,Karsten Dambekalns,Matthias Hörmann,2011-05-05 11:14,Property handling,"",2008-02-22,"","",100,2008-02-22 12:45,"","",1813500,"","",When setting a property on a Node the type parameter is ignored completely!
+353,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Type conversion in ValueFactory::createValue() as described in API documentation is missing,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,"","",2008-02-21,"","",100,2008-02-21 07:47,"","",1812100,"","",@ValueFactory::createValue()@ is supposed to do type conversion if requested (and possible). Code for this is missing currently.
+317,TYPO3.TYPO3CR,Feature,"",Resolved,Should have,Make RangeIterator use array pointer functions,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,"","",2008-02-18,"",1.00,100,2008-02-18 09:13,"","",1812150,"","","RangeIterator should use PHP's native array pointer functions if possible, as this could be faster and would eliminate the need to have a continous numerically indexed array containing the iterators elements. This again would allow to remove the array_values() call in the constructor, which could become a real memory-hog if used with a lot of data."
+312,TYPO3.TYPO3CR,Bug,"",Resolved,Won't have this time,TYPO3CR_Session throws InvalidArgumentException in unit tests,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,"","",2008-02-14,"","",100,2008-02-14 11:32,"","",1812200,"","",See attached PDF file.
+93,TYPO3.TYPO3CR,Bug,"",Resolved,Should have,Complete StorageAccess interface,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,"","","","","",100,2008-01-17 20:01,"","",1812250,"","",The interface misses methods that are actually present in the PDO implementation for it and thus mock objects cannot be created automatically.
+92,TYPO3.TYPO3CR,Task,"",Closed,Must have,Implement workspace-awareness for StorageAccess_PDO,Karsten Dambekalns,"",2011-05-05 11:14,"","","","","",0,2008-01-17 20:00,"","",50,"","",All methods dealing with raw node access must take the workspace of the node into account.
+82,TYPO3.TYPO3CR,Bug,"",Resolved,Must have,TYPO3CR_BaseTest uses global variables,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,"","","","","",100,2007-12-19 12:38,"","",1812300,"","","In order to save memory / improve performance (I assume), the TYPO3CR_BaseTest stores the Repository and Session instance into a global variable. That's bad and needs a different solution.
+
+In general it might be that the tests could be implemented in a way which doesn't really need a repository etc. but rather a mock repository. That's very likely, especially if true unit testing is done.
+
+Please also read Jimmy Nilssons remarks about testing repositories, that might help a little."
+50,TYPO3.TYPO3CR,Feature,"",Closed,Should have,Documentation: watch that no mismatching .jar files are on java classpath,pnie -,"",2011-05-05 11:14,"","","","","",0,2007-04-26 13:27,"","",1812350,"","","The php-java-bridge (pjb) used the java classpath (in my case '/usr/share/java/ext/') first when initialising any of the java classes.
+
+If any of the needed java classes reside there (for example derby* or jackrabbit*) and are not in the correct and required version TYPO3/Unit Tests of 5.0 might fail.
+
+A note that the java libraries must not be available in the java environment in any wrong version should be added in the installation guide/docs."
+48,TYPO3.TYPO3CR,Feature,"",Closed,Should have,ValueStreamRegistry is a Singleton outside the IoC container,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,"","","","","",0,2007-04-04 11:06,"","",1812400,"","","In source:/Packages/phpCRJackrabbit/Classes/T3P_phpCRJackrabbit_ValueStream.php#138 there are some static calls to ValueStreamRegistry::getInstance(). These calls probably should go to some class like T3P_PHPCRJackrabbit_ValueStreamRegistry.
+
+Furthermore, it's not such a good solution to implement the Singleton registry (I suppose it is one) on your own, better use the Component Manager for that.
+
+Solution: Create a constructor which injects the ValueStreamRegistry and configure that registry as scope=singleton in the Components.conf."
+39,TYPO3.TYPO3CR,Bug,"",Closed,Should have,No access control on raw repository,Karsten Dambekalns,Karsten Dambekalns,2011-05-05 11:14,"","","","","",0,2007-03-05 11:25,"","",1812450,"","","The unit test in [source:Packages/phpCRJackrabbit/Tests/T3P_phpCRJackrabbit_CheckPermissionTest.php T3P_phpCRJackrabbit_CheckPermissionTest.php] always fails. Reason is missing resp. wrong access control for the Jackrabbit setup. The (sparse) Jackrabbit documentation says:
+
+----
+The default Repository.login() method starts a repository session using the default workspace and no user credentials. Jackrabbit tries to use the Java Authentication and Authorization Service (JAAS) configuration in such cases, but defaults to the anonymous user if a JAAS Subject is not found.
+
+...
+
+As discussed in the First Hop example, the default Repository.login() method returns an anonymous read-only session in the Jackrabbit default configuration. To be able to store and remove content we need to create a session with write access, and to do that we need to pass some credentials to the Repository.login(Credentials credentials) method.
+
+The default Jackrabbit login mechanism accepts any username and password as valid credentials and returns a session with full write access. Thus we only need to construct and use a !SimpleCredentials instance with some dummy username and password, in this case ""username"" and ""password"". 
+----
+
+So the read-only session should be fetched without calling login() at all... or we define a different login manager for Jackrabbit and use that to verify user credentials."
+38,TYPO3.TYPO3CR,Bug,"",Closed,Should have,Undefined constants and non-initialized properties,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,"","","","","",0,2007-03-05 09:07,"","",1812500,"","","As of changeset:166 there are a lot of constants and uninitialized property warnings in the phpCRJackrabbit tests. This ticket does not ask for fixing the other (fatal-) errors, it's just about the constants and properties."
+33,TYPO3.TYPO3CR,Feature,"",Closed,Should have,Restructure unit tests,Robert Lemke,Karsten Dambekalns,2011-05-05 11:14,"","","","","",0,2007-02-28 12:32,"","",1812550,"","","Move the unit tests which are currently in the phpCRJackrabbit package into the phpCR package. They will than act more as integration tests than as true unit tests and make it possible to test different implementations of the phpCR (Jackrabbit, TYPO3 CR, ...). 
+
+The tests must be triggered by the phpCRJackrabbit and the TYPO3CR packages respectively, therefore the phpCR tests must somehow be configured to work with either one's Repository implementation. How that is done is still up for discussion."
+31,TYPO3.TYPO3CR,Feature,"",Closed,Should have,Define an exception hierarchy,Robert Lemke,Robert Lemke,2011-05-05 11:14,"","","","","",0,2007-02-28 12:16,"","",1812600,"","",Create a concept for an exception hierarchy
+26,TYPO3.TYPO3CR,Bug,"",Closed,Should have,getSession() in T3P_phpCRJackrabbit_Workspace is broken,Karsten Dambekalns,Ronny Unger,2011-05-05 11:14,"","","","","",0,2007-02-21 17:24,"","",1812650,"","","The internal reference to the session object has been removed to solve the memory problems, but the method getSession() is to return that reference!
+
+I changed the code for now, so it throws an exception, but of course this need to be fixed correctly. Just removing the method is not an option, as it is required by JSR-170."
+24,TYPO3.TYPO3CR,Bug,"",Closed,Should have,Fix documentation in T3P_T3Lib_HashSet,Robert Lemke,Sebastian Kurfuerst,2011-05-05 11:14,"","","","","",0,2007-02-21 04:44,"","",1812700,"","","A bit of nitpicking here: 
+
+Some of the phpDoc comments are lacking spaces:
+
+<pre>
+	/**
+	* @var array Holds stored objects
+	*/
+</pre>
+
+should be
+
+<pre>
+	/**
+	 * @var array Holds stored objects
+	 */
+</pre>
+
+* For classes please don't add an author name to the class documentation but do that for every single method. (See also http://5-0.dev.typo3.org/guide/bk01pt01ch02.html#id2543166)
+ *Also check that all methods have parameters and return values documented (if the method doesn't return anything, write @return void). 
+* Always add a description for parameter documentation.
+* Only use one line for parameter or return value documentation, no matter how long it gets
+* Please use _protected_ instead of _private_ unless you really want to disallow subclasses to access the properties
+* Make sure not to forget the public / protected / private keyword for functions
+* Don't start the file with an empty line
+* Make sure that the Id is expanded by your SVN client (see http://5-0.dev.typo3.org/guide/bk01pt01ch02.html)
+* A constructor must always be called ""+construct""
+
+"

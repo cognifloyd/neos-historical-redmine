@@ -1,0 +1,36 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+34725,TYPO3.FormBuilder,Bug,"",Closed,Must have,Fatal error:  ImageTypeValidator not found,Nico de Haen,Bastian Waidelich,2012-03-15 07:35,"","",2012-03-10,"","",0,2012-03-10 10:55,"","",501700,"","I'm not sure if bug reports are already welcome in this early state. 
+There seems to be a missing Validator class in the latest git revision.
+
+<pre>
+PHP Fatal error:  Class 'TYPO3\\Media\\Validator\\ImageTypeValidator' not found in /www/flow3.local/Data/Temporary/Development/Cache/Code/FLOW3_Object_Classes/TYPO3_Form_FormElements_ImageUpload_Original.php on line 26, referer: http://flow3.local/typo3.formbuilder/editor/index?formPersistenceIdentifier=bildForm
+</pre>"
+36112,TYPO3.FormBuilder,Bug,"",Resolved,Must have,change filename spelling corresponig to #33705,Vaclav Janoch,Bastian Waidelich,2012-05-03 12:42,"","",2012-04-15,"","",100,2012-04-15 13:01,"","",570000,"","Some filenames an direcoty names have been changed in the TYPO3.FLOW3 package. All references to the changed parts has to be adjusted TYPO3.FormBuilder as well.
+
+e.g.
+\TYPO3\FLOW3\MVC -> \TYPO3\FLOW3\Mvc
+
+See Task #33705"
+36823,TYPO3.FormBuilder,Bug,"",Resolved,Must have,Undefined class constant 'PATTERN_IDENTIFIER',Wouter Wolters,Bastian Waidelich,2012-05-08 12:28,"","",2012-05-03,"","",100,2012-05-03 17:17,"","",604350,"","Due to a new `Feature` in the package TYPO3.Form, the constant 'PATTERN_IDENTIFIER' is not defined anymore.
+The constant is used in the FormManagerController on line 124
+
+https://review.typo3.org/#/c/10936/
+http://forge.typo3.org/issues/36722"
+37444,TYPO3.FormBuilder,Bug,"",Resolved,Must have,Remove Amadeus\Somea related code,Bastian Waidelich,Robert Lemke,2013-10-21 07:53,"","",2012-05-23,"","",100,2012-05-23 12:13,"","",634950,"","http://git.typo3.org/FLOW3/Packages/TYPO3.FormBuilder.git?a=commit;h=952e7bb39ae641428c62ecfe73a3b3bd4fb42abb introduces hard-coded references to some @Amadeus\Somea\Suite\Common\Mvc\View\SomeaTemplateView@
+
+I don't even know how it was technically possible to merge that, as Robert is not member of the project and I can't find the corresponding review request..!?"
+43821,TYPO3.FormBuilder,Bug,"",Resolved,Must have,"Uri.resource view helper argument ""uri"" has been deprecated",Aske Ertmann,Bastian Waidelich,2012-12-20 11:18,"","",2012-12-10,"","",100,2012-12-10 05:37,"","",944850,"",Resources/Private/Templates/Editor/Index.html has two usages of the uri argument in 14 & 20. The argument has been deprecated in favor of support resource:// in the path argument instead.
+53001,TYPO3.FormBuilder,Feature,"",New,Should have,Update FormBuilder to use Ember 1.0,Bastian Waidelich,"",2013-10-21 07:59,"","",2013-10-21,"","",0,2013-10-21 07:59,"","",1397500,"",If the FormBuilder would rely only on the latest version of Ember it would probably make it much easier to work inside a Neos module..
+53042,TYPO3.FormBuilder,Bug,"",New,Should have,Preview should work on installation without vhost (with path in URL),Lukas Ciszewski,Lukas Ciszewski,2014-01-20 18:16,"","",2013-10-22,"","",0,2013-10-22 11:14,"","",1399550,"","When clicking on the preview button a new window is opened with a wrong URI.
+This happens because the TYPO3.FormBuilder.Configuration.endpoints address is
+used with a '/' in front as the param to window.open. When on a development installation
+without a vhost, and therefore a base href with a path, the path is ignored.
+
+Possible solution:
+* make the address relative by removing the '/' in app.js:492
+* let TYPO3.FormBuilder.Utility.getUri() respect the base href in the html
+"
+53783,TYPO3.FormBuilder,Feature,"",New,Should have,Allow assigning a preset as default preset for the Form,Lorenz Ulrich,"",2013-11-20 03:23,"","",2013-11-20,"","",0,2013-11-20 03:23,"","",1436250,"","Currently, the FormBuilder loads every form with the defaultPreset. If an element configuration is not available in the default preset, the form won't load. Therefore it would be nice if a preset could be assigned to a form and stored in the form definition.
+
+This also needs a change in the YamlPersistenceManager of TYPO3.Form."
+54239,TYPO3.FormBuilder,Task,"",New,Should have,Missing Policy.yaml,Henjo Hoeksma,"",2013-12-06 08:12,"","",2013-12-06,"","",0,2013-12-06 08:07,"","",1458900,"",The policy.yaml is missing.

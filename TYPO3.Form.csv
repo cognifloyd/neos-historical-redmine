@@ -1,0 +1,106 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Description
+34198,TYPO3.Form,Feature,"",Resolved,Should have,Skip unknown FormElements,Bastian Waidelich,Bastian Waidelich,2013-10-29 10:36,"","",2012-02-23,"","",100,2012-02-23 08:21,"","",476100,"","Currently, if a FormElement that is not specified in the current FormDefinition (e.g. current preset) an Exception is thrown.
+It should be possible to skip such elements.
+
+In the FormBuilder (rootForm.renderingOptions.previewMode == TRUE) unknown elements should be replaced by some ""MissingFormElement"" that renders some error message.
+When rendering the Form it should be possible to simply skip those elements.
+Possibly this could be achieved with some setting @skipUnknownFormElements@"
+35969,TYPO3.Form,Bug,"",Resolved,Should have,\TYPO3\FLOW3\MVC\Web\SubRequestBuilder doesn't exist anymore,Soren Malling,Bastian Waidelich,2012-05-02 10:14,"","",2012-04-13,"","",100,2012-04-13 09:35,"","",562900,"","After the renaming/moving of classes in FLOW3, the following is causing issues in TYPO3.Form
+
+\TYPO3\FLOW3\MVC\Web\SubRequestBuilder doesn't exist anymore.
+If you need to create sub requests, do ""new ActionRequest($parentRequest)""""
+
+Will try and submit a patch doing T3DD12"
+36113,TYPO3.Form,Bug,"",Resolved,Must have,change filename spelling corresponig to #33705,Vaclav Janoch,Bastian Waidelich,2012-05-02 10:15,"","",2012-04-15,"","",100,2012-04-15 13:02,"","",570050,"","Some filenames an direcoty names have been changed in the TYPO3.FLOW3 package. All references to the changed parts has to be adjusted TYPO3.FormBuilder as well.
+
+e.g.
+\TYPO3\FLOW3\MVC -> \TYPO3\FLOW3\Mvc
+
+See Task #33705"
+36664,TYPO3.Form,Bug,"",Resolved,Should have,FormElements can't handle BackendModule Requests,Marc Neuhaus,Bastian Waidelich,2012-06-04 05:33,"","",2012-04-27,"","",0,2012-04-27 10:02,"","",596450,"","The current implementation of the Request handling only works for one getParentRequest level.
+This fails in the Context of the Phoenix BackendModule because the Request is hidden deeper.
+
+Attached is a diff to go as deep as it needs to go."
+36722,TYPO3.Form,Feature,"",Resolved,Should have,Support identifiers with special characters,Marc Neuhaus,Bastian Waidelich,2012-05-04 03:43,"","",2012-04-30,"","",0,2012-04-30 09:49,"","",599350,"","Currently it isn't possible to add internal Arguments like ""__identity"" because it isn't a valid name identifier.
+
+$page1->createElement(""__identity"", ""Foo.ContentManagement:Hidden"")
+
+In my opinion the most logical way would be a new Method $page1->addInternalArgument(""__identity"", $id); to add elements like that.
+"
+36723,TYPO3.Form,Bug,"",Resolved,Should have,The action URI of a form should be equal to the request URI,Marc Neuhaus,Bastian Waidelich,2012-05-29 03:29,"","",2012-04-30,"","",100,2012-04-30 09:53,"","",599400,"","The action target for the Forms is always directed to the index action in the context of the BackendModule.
+
+Since the Form should always have the current action as target i've attached a diff to set the actionUri in the FormViewHelper automatically.
+
+"
+36819,TYPO3.Form,Bug,"",Resolved,Should have,Element default values can't be set recursively,Bastian Waidelich,Bastian Waidelich,2012-05-08 11:54,"","",2012-05-03,"","",100,2012-05-03 12:52,"","",604150,"","Currently, if you use dots in the form element identifier in order to enable property mapping over multiple fields default values are no displayed as expected.
+The reason is that the FormRuntime has no notion of ""property paths"" for default values.
+So if you have a element with identifier ""user.name"", @$formRuntime['user']@ will return @NULL@ instead of @array('name' => 'some default value')@
+
+Thanks to Marc Neuhaus for reporting:
+
+> How to Reproduce:
+> Create a form with a property like ""item.test"" and set a default value.
+> The default value won't reach the textfield.
+
+"
+37725,TYPO3.Form,Bug,"",New,Should have,Set Dispatched on Request after FormRuntime run,Marc Neuhaus,"",2014-12-16 06:01,"","",2012-06-04,"","",0,2012-06-04 05:52,"","",648950,"",""
+37728,TYPO3.Form,Feature,"",Resolved,Should have,Make class attributes of elements configurable,Bastian Waidelich,Bastian Waidelich,2012-07-11 05:23,"","",2012-06-04,"","",100,2012-06-04 08:44,"","",649100,"",Currently class attributes are hard coded in the provided Form Element templates. Those should be configurable so that they can be changed with a custom preset.
+39034,TYPO3.Form,Feature,"",Resolved,Should have,Hidden field Form Element,Bastian Waidelich,Bastian Waidelich,2012-07-26 07:53,"","",2012-07-17,"","",100,2012-07-17 10:13,"","",713550,"","The Form package is currently missing a simple hidden field (<f:form.hidden />).
+"
+42562,TYPO3.Form,Bug,"",Resolved,Should have,Interrupt form rendering when redirect finisher is triggered,Martin Brüggemann,Bastian Waidelich,2013-10-29 10:36,"","",2012-10-31,"","",100,2012-10-31 10:29,"","",882650,"","There's a bug, that outputs content while a POST request is beeing processed by Flow. There should only be one redirect to the show action after the POST request has been processed. Otherwise it's very strange to see the ""old"" content after the POST data has been sent (f.e. after having added a comment but it's not there after the first redirect)."
+47427,TYPO3.Form,Feature,"",Closed,Should have,missing Hooks in showForm(),Ralf Zimmermann,"",2013-10-08 07:15,"","",2013-04-22,"","",0,2013-04-22 06:00,"","",1121800,"","Hi,
+i am a developer for the wt_spamshield extension.
+Since TYPO3 4.6 ""form"" is rewritten. We miss Hooks to integrate wt_spamshield.
+It would be great if the function showForm() in Classes/Controller/Form.php (for TYPO3 4.x) and FormController.php (for TYPO3 6.x)
+could provide a Hook to manipulate the mail sending process.
+I attached 2 patches for TYPO3 4.x and TYPO3 6.x"
+52481,TYPO3.Form,Feature,"",Resolved,Should have,Translations for Error Message should be easily changed,Thomas Allmer,Bastian Waidelich,2013-10-29 10:36,"","",2013-10-02,"","",100,2013-10-02 11:41,"","",1371650,"","currently you have to copy
+Packages\Application\TYPO3.Form\Resources\Private\Form\Layouts\Field.html
+
+edit this line
+{error -> f:translate(id: error.code, arguments: error.arguments, package: 'TYPO3.Form', source: 'ValidationErrors')}
+
+TYPO3.Form => <Vendor.Package>
+
+
+use your own layout
+<pre>
+TYPO3:
+  Form:
+    presets:
+      default:
+        formElementTypes:
+          'TYPO3.Form:Base':
+            renderingOptions:
+              layoutPathPattern: 'resource://<Vendor.Package>/Private/Form/Layouts/{@type}.html'
+</pre>
+
+and THEN you can use your own xlf files in
+Packages\Sites\<Vendor.Package>\Resources\Private\Translations\<language>\ValidationErrors.xlf
+
+a simpler approach would be nice. Maybe just introduce a setting that will be used within Field.html... something like
+ErrorTranslationPackage: 'TYPO3.Form'"
+52777,TYPO3.Form,Feature,"",New,Should have,Support of wizards/branched forms,Daniel Neumann,"",2013-11-06 09:16,"","",2013-10-14,"","",0,2013-10-14 05:16,"","",1386300,"","I wondered if there is a chance to support junctions within a _FormDefinition_. My idea was to decide whether to show or to hide a set of Page objects depending from e.g. checking a specific box. I tried to do this similar to the _ConditionalRequired_ _FormElement_ of the _TYPO3.FormExample_ Package, simply by doing something like 
+
+> $this->getRootForm()->removePage($pageToDisable);
+
+That solution works for one page-switch - if I press on next/previous at the page that I successfully skipped, I get led to the disabled one directly - that's really confusing.
+
+Maybe there is already a way to implement it as I imagine (see the pdf as example). Maybe I have to split the form into different forms which are simply connected by finishers?
+"
+53031,TYPO3.Form,Bug,"",Resolved,Should have,"when traversing back to a previous form step, make sure the current values are saved nevertheless",Sebastian Kurfuerst,Sebastian Kurfuerst,2013-10-22 10:35,"","",2013-10-22,"","",100,2013-10-22 06:09,"","",1399000,"","Steps to reproduce:
+
+* Create a form with multiple pages.
+* fill in things on the 1st and 2nd page
+* then go back to *1st* page
+* then go forward to *2nd* page
+* now, the form elements filled in on 2nd page are not filled anymore.
+
+Furthermore, we only want to trigger validation if we ""forward"", so while
+going back, validation should not be triggered, but the values shall be stored.
+"
+53784,TYPO3.Form,Feature,"",Under Review,Should have,Allow storing a presetName for a form,Lorenz Ulrich,"",2013-12-17 10:22,"","",2013-11-20,"","",0,2013-11-20 03:24,"","",1436300,"","In the Form Builder, a form is always opened with the defaultPreset. If a field configuration is not available in this preset, the form cannot be opened (see #53783). The yamlPersistenceManager should be extended by the presetName of a form (falling back to the defaultPreset of none is set)."
+63418,TYPO3.Form,Bug,"",New,Should have,Links inside form not available,d.ros no-lastname-given,"",2014-11-29 02:44,"","",2014-11-28,"","",0,2014-11-29 02:44,"","",-156750,"","
+No possiblity to put links into a form Textblock Element. 
+
+Links within Textblocks should be allowed."

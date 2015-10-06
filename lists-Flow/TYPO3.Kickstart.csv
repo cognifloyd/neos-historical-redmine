@@ -1,0 +1,397 @@
+#,Project,Tracker,Parent task,Status,Priority,Subject,Author,Assigned To,Updated,Category,Target version,Start date,Due date,Estimated time,% Done,Created,Story points,Velocity based estimate,Position,Remaining (hours),Affected Flow version,Description
+3715,TYPO3.Kickstart,Bug,"",Resolved,Must have,Kickstarter generates invalid Repositories,Bastian Waidelich,Karsten Dambekalns,2010-10-20 05:48,"",1.0.0 alpha 5,2009-06-21,"","",0,2009-06-21 09:33,"","",2740350,"","","Generated Repository classes (""Kickstart Generator generateRepository"") creates classes with ""@scope"" and ""@entity"" annotations."
+4847,TYPO3.Kickstart,Bug,"",Resolved,Could have,Lowercase package name causes an unexplained exception when using kickstart package,Daniel Hofstetter,Karsten Dambekalns,2010-10-20 05:48,"",1.0.0 alpha 7,2009-10-01,"","",100,2009-10-01 10:51,"","",2740450,"","","I'm currently following the ""Getting started"" tutorial and while creating my first package, I used, by accident, ""blog"" as package name (instead of ""Blog"" as in the tutorial):
+<pre>
+./flow3 kickstart package blog
+</pre>
+This causes the following error:
+<pre>
+Uncaught FLOW3 Exception #1220722210: The package key ""blog"" is invalid
+thrown in file /home/dho/projects/flowtutorial/Packages/Framework/FLOW3/Classes/Package/Manager.php
+in line 238
+</pre>
+It would be helpful to mention what the criteria are for a valid key. 
+
+I'm using the ""Getting started"" package with flow3 alpha 4."
+5833,TYPO3.Kickstart,Bug,"",Resolved,Should have,Inflection viewhelper doesn't work anymore,Robert Lemke,Karsten Dambekalns,2010-10-20 05:48,"",1.0.0 alpha 7,2009-12-22,"","",100,2009-12-22 12:24,"","",2740400,"","","While building models (and also kickstarting other types of classes) the placeholders in the Fluid template are not replaced by their real value anymore:
+
+<pre>
+/**
+ * A {k:inflect.humanizeCamelCase(""{modelName}"")}
+ *
+ * @version $Id: $
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @scope prototype
+ * @entity
+ */
+class Paper {
+
+	/**
+	 * The {k:inflect.humanizeCamelCase(""title"" lowercase=""true"")}
+	 * @var string
+	 */
+	protected $title;
+</pre>
+
+Maybe the view helpers don't work with the current Fluid API anymore?"
+6316,TYPO3.Kickstart,Bug,"",Resolved,Should have,Outdated reference to RenderingContext causes exception,Karsten Dambekalns,Karsten Dambekalns,2010-10-20 05:48,"",1.0.0 alpha 8,2010-02-02,"","",100,2010-02-02 05:24,"","",2740500,"","","As reported by THomas Fritz:
+<pre>
+developer@wda ~/vhosts/flow3/www $ ./flow3 kickstart package Blog
+
+Uncaught Exception in FLOW3 #1166550023: Object ""F3\Fluid\Core\Rendering\RenderingConfiguration"" is not registered.
+thrown in file Packages/Framework/FLOW3/Classes/Object/ObjectFactory.php in line 97
+</pre>"
+6778,TYPO3.Kickstart,Bug,"",Resolved,Should have,Model Doc Comment incorrect,Michael Sauter,Christopher Hlubek,2010-10-20 05:48,"",1.0 alpha 13,2010-03-13,"","",0,2010-03-10 16:57,"","",2740550,"","","When creating models, the doc comment of the attribute accessors looks like this:
+@* Get/Set the ModelName propertyName>@
+
+Attached patch removes the erroneous &gt; sign in the template."
+7676,TYPO3.Kickstart,Bug,"",Resolved,Must have,repository kickstarter create invalid PHP,Soren Malling,Karsten Dambekalns,2010-10-20 05:48,"","","","","",100,2010-05-05 16:10,"","",2740300,"","","Using FLOW3 1.0.0 Alpha 8
+
+<pre>
+./flow3 kickstart PhotoDatabase image
+</pre>
+
+created the following PHP, which is invalid due to missing {}
+
+<pre>
+class ImageRepository extends \F3\FLOW3\Persistence\Repository
+</pre>
+
+It should be 
+
+<pre>
+class ImageRepository extends \F3\FLOW3\Persistence\Repository {
+
+}
+</pre>
+
+Sorry if this is fixed in SVN, but couldn't find any other issue on this one"
+7726,TYPO3.Kickstart,Bug,"",Resolved,Should have,model kickstarter doesn't accept comma seperated model names,Soren Malling,Karsten Dambekalns,2010-10-20 05:48,"","",2010-05-09,"","",0,2010-05-09 11:25,"","",2740250,"","","TurtleJoe:flow3 sorenmalling$ ./flow3 kickstart controller PhotoDatabase Album,Photo
++ .../Packages/Application/PhotoDatabase/Classes/Controller/AlbumController.php
++ .../Templates/Album/index.html
++ .../Packages/Application/PhotoDatabase/Classes/Controller/PhotoController.php
++ .../Templates/Photo/index.html
+TurtleJoe:flow3 sorenmalling$ ./flow3 kickstart model PhotoDatabase Album,Photo
++ .../Packages/Application/PhotoDatabase/Classes/Domain/Model/Album,Photo.php
+
+Using comma seperated value when creating controller works perfectly, but using comma seperated values in model creates a file name [commaseperated values].php (as seen above)"
+8177,TYPO3.Kickstart,Bug,"",Resolved,Must have,Wrong Template name,Patrick Kollodzik,"",2010-10-20 05:48,"","","","","",100,2010-06-11 15:03,"","",2740200,"","","Using FLOW3 Alpha 9
+
+<pre>
+./flow3 kickstart package DummyPackage
+</pre>
+
+The filename of the index template for the StandardController is in lowercase, wich will result in a 404 error.
+
+If you follow the documention ""Getting Started"" the example in chapter 6.2 will not work."
+11091,TYPO3.Kickstart,Bug,"",Resolved,Should have,Missing curly bracket on class statement,Michael Klapper,Karsten Dambekalns,2010-12-21 04:00,"",1.0 alpha 14,2010-11-26,"",1.00,100,2010-11-26 05:46,"","",2740650,"","","The generated class looks like:
+
+<pre>
+...
+
+/**
+ * A repository for TaskLists
+ *
+ * @package GTasks
+ * @subpackage Domain
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ */
+class TaskListRepository extends \F3\FLOW3\Persistence\Repository 
+?>
+</pre>"
+11597,TYPO3.Kickstart,Bug,"",Resolved,Should have,"When used in the Phoenix distributon, an exception is thrown (RenderingContext)",Karsten Dambekalns,Karsten Dambekalns,2010-12-21 04:00,"",1.0 alpha 14,2010-12-20,"","",100,2010-12-20 10:14,"","",2740600,"","","Uncaught Exception in FLOW3 #1264584588: Object ""F3\Fluid\Core\Rendering\RenderingContextInterface"" is not registered (or an interface without default implementation).
+"
+12953,TYPO3.Kickstart,Bug,"",Closed,Must have,Missing '?>' in 2 Files causes ./flow3 kickstart to crash,Regine Rosewich,Karsten Dambekalns,2011-07-06 10:02,"","",2011-02-10,"","",0,2011-02-10 11:37,"","",2740150,"","","There are two files:
+/FLOW3/Packages/Framework/FLOW3/Classes/Resource/Resource.php
+/FLOW3/Packages/Framework/Resources/Private/Configuration/Yaml/Loader.php
+where the '?>' misses at the end.
+
+This causes either an PHP error saying that a '}' is unnecessary in the specific file or saying that PHP has not enough memory."
+26533,TYPO3.Kickstart,Bug,"",Resolved,Should have,Actions are not callable with new CLI controller,Christian Jul Jensen,Christopher Hlubek,2011-07-06 10:14,"",1.0 beta 1,2011-05-01,"","",100,2011-05-01 05:57,"","",104100,"","","The kickstarter is not usable with the new CLI script.
+
+The actions needs to be changed to commands."
+28783,TYPO3.Kickstart,Feature,"",Resolved,Should have,Overwriting existing file,Dawid ,Robert Lemke,2011-08-29 05:46,"",1.0 beta 1,2011-08-05,"","",100,2011-08-05 10:33,"","",211150,"","","When you create new file like controller, model or repo with a name that already exists the old file is overwritten.
+IMO there sould be an extra parameter that gives you possibility to overwrite BUT with out this parameter the new file musn`t overwrite the old one.
+
+For example you can have similar names and misstype and your whole work is out. That is not good"
+29406,TYPO3.Kickstart,Bug,"",Resolved,Should have,kickstart:commandcontroller renders appendContent() code,Robert Lemke,Karsten Dambekalns,2011-09-09 03:38,"",1.0 beta 2,2011-09-01,"","",100,2011-09-01 03:46,"","",241750,"","","The code rendered by this kickstart command renders 
+
+   $this->response->appendContent(sprintf('You called the example command and passed ""%s"" as the first argument.', $requiredArgument));
+
+but should render
+
+   $this->outputLine('You called the example command and passed ""%s"" as the first argument.', array($requiredArgument));"
+29791,TYPO3.Kickstart,Bug,"",Resolved,Must have,"When kickstarting models with collections, invalid code is generated",Karsten Dambekalns,Bastian Waidelich,2012-12-12 16:12,"","",2011-09-14,"","",100,2011-09-14 16:49,"","",260250,"",FLOW3 1.0.0,"Not in all cases, but when using collections with element type hints, the generated code is wrong:
+
+@./flow3 kickstart:model TYPO3.Blog Blog 'posts:\Doctrine\Common\Collections\Collection<\TYPO3\Blog\Domain\Model\Post>'@
+
+results in setter code like
+
+<pre>	/**
+	 * Sets this Blog's posts
+	 *
+	 * @param \Doctrine\Common\Collections\Collection<\TYPO3\Blog\Domain\Model\Post> $posts The Blog's posts
+	 * @return void
+	 */
+	public function setPosts(\Doctrine\Common\Collections\Collection<\TYPO3\Blog\Domain\Model\Post> $posts) {
+		$this->posts = $posts;
+	}</pre>
+
+which results in a nasty error like
+
+<pre>PHP Parse error:  syntax error, unexpected '<', expecting '&' or T_VARIABLE in .../Model/Blog.php on line xx</pre>"
+29794,TYPO3.Kickstart,Feature,"",New,Should have,Initialize collections in generated models,Karsten Dambekalns,"",2011-09-14 17:23,"","",2011-09-14,"","",0,2011-09-14 17:23,"","",260400,"","",When a model is generated all properties of type @ArrayCollection@ should be initialized in the constructor.
+29883,TYPO3.Kickstart,Feature,"",Resolved,Should have,Display a hint to update database schema,Robert Lemke,Robert Lemke,2011-09-18 16:35,"",1.0.0,2011-09-16,"","",100,2011-09-16 04:05,"","",264700,"","",The kickstart commands which create new models should display a hint that a schema update is necessary.
+30052,TYPO3.Kickstart,Bug,"",Resolved,Should have,No @return annotations rendered on action methods,Karsten Dambekalns,Karsten Dambekalns,2011-09-29 06:32,"",1.0.0,2011-09-19,"","",100,2011-09-19 16:26,"","",273150,"","","The default should be @return void, as we assume Fluid is used."
+30253,TYPO3.Kickstart,Feature,"",Resolved,Should have,Make views aware of already existing properties on models,Christian Jul Jensen,Christian Jul Jensen,2011-09-30 06:28,"",1.0.0,2011-09-24,"","",100,2011-09-23 19:23,"","",283150,"","","Currently the generate always just have one property 'name', even if the model already exist and has other properties. The kickstarter should inspect the models and generate appropriate fields in the views for model properties."
+30526,TYPO3.Kickstart,Bug,"",Resolved,Should have,When kickstarting models with DateTime properties invalid templates are generated,Bastian Waidelich,"",2011-10-06 03:36,"","",2011-10-03,"","",100,2011-10-03 09:52,"","",296550,"","","When kickstarting models that contain properties of type
+DateTime, CRUD Views throw exceptions because the property
+can't be converted to string implicitly.
+This can be fixed by wrapping DateTime properties in
+format.date ViewHelpers in the affected templates."
+30980,TYPO3.Kickstart,Bug,"",Resolved,Could have,Generating ActionControllers using a comma separated list creates wrong Models and Repositories,Julian Wachholz,Karsten Dambekalns,2011-10-19 05:05,"",1.0.0,2011-10-16,"","",100,2011-10-16 11:55,"","",318700,"","","Using the following command:
+
+    ./flow3 kickstart:actioncontroller --generate-related --generate-actions Acme.Demo Animal,Zoo
+
+One would expect the Kickstarter to create 2 Models and 2 corresponding Repositories:
+
+Model/Animal.php
+Model/Zoo.php
+Repository/AnimalRepository.php
+Repository/ZooRepository.php
+
+Instead, the following Model and Repository are created:
+
+Model/Animal,Zoo.php
+Repository/Animal,ZooRepository.php
+
+"
+31082,TYPO3.Kickstart,Bug,"",Resolved,Must have,Kickstarter does not use addFlashMessage(),Bernhard Fischer,Karsten Dambekalns,2011-10-19 04:33,"",1.0.0,2011-10-18,"","",100,2011-10-18 13:53,"","",323550,"","",acording to ID: 1f9a0e65 the kickstarter should also use addFlashMessage() instead of flashMessageContainer->add()
+31482,TYPO3.Kickstart,Feature,"",Resolved,Should have,"Usage of ""./flow3 kickstart:model"" should be better",Dietrich Heise,Bastian Waidelich,2012-11-21 06:14,"","",2011-11-01,"","",100,2011-11-01 06:27,"","",343300,"","","./flow3 help kickstart:model 
+
+Outputs
+
+USAGE:
+  ./flow3 kickstart:model [<options>] <package key> <model name>
+
+
+Should be something like
+
+USAGE:
+  ./flow3 kickstart:model [<options>] <package key> <model name> [<argument:type>]..."
+31494,TYPO3.Kickstart,Bug,"",Resolved,Should have,Generated create action in CRUD controller has wrong doc comment,Andreas Wolf,Andreas Wolf,2011-11-02 04:36,"",1.0.1,2011-11-01,"","",100,2011-11-01 16:33,"","",343850,"",FLOW3 1.0.0,"In the create action of a CRUD controller, the parameter is $newSomething, while the docblock says it's $something. This leads to e.g. a warning in PHPstorm."
+32656,TYPO3.Kickstart,Bug,"",Resolved,Should have,"Generated Entities should contain ""use Doctrine\ORM\Mapping as ORM;"" statement",Sebastian Kurfuerst,Sebastian Kurfuerst,2011-12-21 06:38,"",1.1 beta 1,2011-12-18,"","",100,2011-12-18 04:03,"","",401050,"",FLOW3 1.0.1,"Generated Entities should contain ""use Doctrine\ORM\Mapping as ORM;"" statement, as the user most probably needs this later when adjusting the kickstarter output."
+32657,TYPO3.Kickstart,Bug,"",Resolved,Should have,Kickstarter should not generate scope prototype in models,Sebastian Kurfuerst,Sebastian Kurfuerst,2011-12-21 06:38,"",1.1 beta 1,2011-12-18,"","",100,2011-12-18 04:20,"","",401100,"",FLOW3 1.0.1,"Kickstarter should not generate scope prototype in models, as prototype is the default scope."
+32660,TYPO3.Kickstart,Feature,"",Resolved,Should have,Create empty test case when creating a domain model,Sebastian Kurfuerst,Sebastian Kurfuerst,2012-01-29 20:45,"",1.1,2011-12-18,"","",100,2011-12-18 05:54,"","",401250,"","","In order to encourage TDD, we should create an empty base test case when creating a domain model."
+34322,TYPO3.Kickstart,Bug,"",Resolved,Should have,./flow3 kickstart:package produces Uncaught Exception,ToBe ,Christian Müller,2012-07-09 12:05,"","",2012-02-27,"","",100,2012-02-27 08:35,"","",482150,"",FLOW3 1.0.0,"./flow3 kickstart:package MyCompany.Dummy1 
+ends in an Uncaught Exception Class MyCompany\Dummy1\Controller\StandardController does not exist
+
+>>
+tobe@DebianSamsungP400:/mnt/iscsi_shared/www/flow3$ ./flow3 kickstart:package MyCompany.Dummy1
+Created .../MyCompany.Dummy1/Classes/Controller/StandardController.php
+Created .../MyCompany.Dummy1/Resources/Private/Templates/Standard/Index.html
+
+tobe@DebianSamsungP400:/mnt/iscsi_shared/www/flow3$ ./flow3 package:list
+Uncaught Exception
+  Class MyCompany\Dummy1\Controller\StandardController does not exist
+
+More Information
+  Exception code      #-1
+  File                /mnt/iscsi_shared_local/www/flow3/Packages/Framework/TYPO3.FLOW3/Classes/Reflection/ReflectionService.php line 962
+
+ACTIVE PACKAGES:
+ Doctrine.Common          2.2.0          Doctrine Common
+ Doctrine.DBAL            2.2.1          Doctrine DBAL
+ Doctrine.ORM             2.2.0          Doctrine ORM
+ MyCompany.Dummy1
+ Symfony.Component.Yaml   2.1.0          Symfony Components YAML Library
+ TYPO3.FLOW3              1.0.0          FLOW3
+ TYPO3.Fluid              1.0.0          Fluid Templating Framework
+ TYPO3.Kickstart          1.0.0          FLOW3 Kickstarter
+ TYPO3.Party              1.0.0          Party Information Framework
+ TYPO3.Welcome            1.0.0          Welcome package with default view for FLOW3
+<<
+
+I tried it many times at different symstems and hardware, and yes the file is created and filled with content...
+
+The bug happens often, my workaround is to
+>>
+kickstart:package MyCompany:Dymmy1
+kickstart:package MyCompany:Dymmy2
+package:delete MyCompany:Dymmy2
+<<
+and now ./flow3 package:list runs without failures.
+
+"
+34467,TYPO3.Kickstart,Bug,"",Closed,Should have,Less Backslashes in the Annotation,Matthias Witte,Karsten Dambekalns,2012-03-07 11:49,"","",2012-03-02,"","",0,2012-03-02 11:18,"","",489250,"",FLOW3 1.0.3,"I've done the guide on http://flow3.typo3.org/documentation/guide/partii.html
+
+So i wanted to add a Comment model to enhance the blog.
+
+Ive used kickstarter to add a new model with this command:
+
+@./flow3 kickstart:model TYPO3.Blog Comment author:string text:string post:\TYPO3\Blog\Domain\Model\Post@
+
+The annotation for the get and set method gone wrong:
+
+	/**
+	 * Get the Comment's post
+	 *
+	 * @return \TYPO3\Blog\Domain\Model\TYPO3BlogDomainModelPost The Comment's post
+	 */
+	public function getPost() {
+		return $this->post;
+	}
+
+	/**
+	 * Sets this Comment's post
+	 *
+	 * @param \TYPO3\Blog\Domain\Model\TYPO3BlogDomainModelPost $post The Comment's post
+	 * @return void
+	 */
+	public function setPost($post) {
+		$this->post = $post;
+	}
+
+In my opinion there have to be more backslashes in dhe @param annotations.
+
+Hope someone will understand this :D"
+34660,TYPO3.Kickstart,Bug,"",Resolved,Should have,variable annotations missing prepending backslash,Bernhard Fischer,Bernhard Fischer,2012-03-08 08:38,"",1.1,2012-03-08,"","",100,2012-03-08 01:17,"","",498500,"",Git master,Automated scan found some incorrect annotations.
+34751,TYPO3.Kickstart,Feature,"",Resolved,Should have,Kickstarting a package should generate a layout with base viewhelper,Christian Müller,Christian Müller,2012-04-26 20:38,"","",2012-03-12,"","",100,2012-03-12 07:50,"","",503000,"","",Without that any work based on the original template will not work out as you miss the base tag and it is in line with the kickstart:action command.
+35963,TYPO3.Kickstart,Bug,"",Resolved,Should have,Kickstarting a command controller produces invalid code,Henrik Møller Rasmussen,"",2012-04-26 08:38,"","",2012-04-13,"","",100,2012-04-13 08:00,"","",562600,"",Git master,"The generated command controller extends a non-existing class.
+
+Patch attached."
+36155,TYPO3.Kickstart,Bug,"",Resolved,Should have,kickstart:model example for property creation is wrong,Christian Müller,Christian Müller,2012-04-25 08:38,"",1.0.5,2012-04-16,"","",100,2012-04-16 08:28,"","",572150,"",Git 1.0,"<pre>
+(for example ""title:string size:int type:MyType"").
+</pre>
+
+should be
+
+<pre>
+(for example ""title:string"" ""size:int"" ""type:MyType"").
+</pre>"
+36185,TYPO3.Kickstart,Bug,"",Closed,Should have,Creation of packages fails or they cannot be called later ,Sven Leuschner,Sven Leuschner,2012-05-21 11:25,"",1.0.5,2012-04-16,"","",50,2012-04-16 17:47,"","",573650,"",FLOW3 1.0.3,"I followed exactly the Quickstart-Guide provided with flow3 1.04 
+I managed to get it running out of the box to the welcome-screen, then followed the written lines about setting some environment-variables and creating a basic package 
+> ""flow3 kickstart:package MyCompany.MyPackage""
+That seems to work as intended as 2 lines indicate the creation of directories in Installation-Path->Package->Application
+
+But when I call them in my browser (Opera and Mozilla Firefox ) -> http://localhost/flow3/Web/MyCompany.MyPackage  ,
+I get a nice error message: 
+
+Uncaught Exception in FLOW3
+#1218473352: The action name must start with a lower case letter, ""MyCompany"" does not match this criteria. (More information)
+
+TYPO3\FLOW3\MVC\Exception\InvalidActionNameException thrown in file
+E:\xampp\htdocs\flow3\Data\Temporary\Development\Cache\Code\FLOW3_Object_Classes\TYPO3_FLOW3_MVC_Web_Request_Original.php in line 331.
+Reference code: 20120416232925d34ff1
+
+Unfortunately the ""More information""-Link in the error-page leads to an empty page (There is currently no text in this page ......)
+
+the same happens when I follow the Quickstart further and create Acme.Demo 
+
+When I try to ""circumvent"" the error by simply creating the packages using lowercase, I get an error from kickstart telling me I have to use uppercase ... so a nice circular error-connection - or not so nice
+"
+38999,TYPO3.Kickstart,Bug,"",Resolved,Must have,Kickstarter shows wrong hint for use of underscore,Simon Schaufelberger,Simon Schaufelberger,2012-07-25 10:35,"",1.1,2012-07-16,"","",100,2012-07-16 11:33,"","",711800,"",(any),"When kicktarting a new package and an underscore is used, an error message is shown that an underscore can be used which is wrong."
+39790,TYPO3.Kickstart,Feature,"",New,Should have,Allow forward slashes where backslashes need to be specified,Robert Lemke,"",2012-08-14 03:28,"","",2012-08-14,"","",0,2012-08-14 03:28,"","",751000,"","","Typing backslashes on the command line is cumbersome because each of them needs to be escaped with an additional backslash. Therefore it would be convenient if the kickstarter would allow forward slashes as well and convert them to backslashes internally.
+
+This should be implemented especially for the kickstart:model command (property types are often class names) but may apply to other commands as well."
+41180,TYPO3.Kickstart,Bug,"",Resolved,Should have,Kickstart generates classes in wrong path in 1.2 (PSR-0 issue),Christian Jul Jensen,Christian Jul Jensen,2012-09-25 07:35,"",2.0 beta 1,2012-09-21,"","",100,2012-09-21 10:42,"","",816450,"",Git 1.2 (master),FLOW3 1.2 is fully PSR-0 so classes path should be prefixed with namespace-path
+43144,TYPO3.Kickstart,Feature,"",Resolved,Should have,Fix case of class names to generate,Bastian Waidelich,Bastian Waidelich,2012-12-12 02:32,"",2.0 beta 1,2012-11-20,"","",100,2012-11-20 05:52,"","",911250,"","","When specifying a model name starting with a lower case character, the generated code throws an exception.
+Example from the mailing list:
+<pre>
+./flow3 kickstart:actioncontroller --generate-actions --generate-related Fritdrop.Webpage golfEquipment
+</pre>
+leads to:
+<pre>
+12-11-18 19:56:33 11136      DEBUG     FLOW3                Reflected class names did not match class names to reflect
+12-11-18 19:56:33 11136      DEBUG     FLOW3                Reflecting class Fritdrop\Webpage\Controller\GolfEquipmentController
+12-11-18 19:56:33 11136      DEBUG     FLOW3                Reflecting class Fritdrop\Webpage\Domain\Model\GolfEquipment
+12-11-18 19:56:33 11136      DEBUG     FLOW3                Reflecting class Fritdrop\Webpage\Domain\Repository\GolfEquipmentRepository
+12-11-18 19:56:33 11136      INFO      FLOW3                Reflected 3 emerged classes.
+12-11-18 19:56:36 11136      DEBUG     FLOW3                Built AOP proxy for class ""Fritdrop\Webpage\Domain\Model\GolfEquipment"".
+12-11-18 19:56:36 11136      DEBUG     FLOW3                Building DI proxy for ""Fritdrop\Webpage\Controller\GolfEquipmentController"".
+12-11-18 19:56:36 11136      CRITICAL  FLOW3                Uncaught exception #1265213849 in line 142 of Packages/Framework/TYPO3.FLOW3/Classes/Object/DependencyInjection/ProxyClassBuilder.php: The object ""Fritdrop\Webpage\Domain\Repository\golfEquipmentRepository"" which was specified as a property in the object configuration of object ""Fritdrop\Webpage\Controller\GolfEquipmentController"" (automatically registered class) does not exist. Check for spelling mistakes and if that dependency is correctly configured. - See also: 20121118195633ff72d8.txt 
+</pre>
+
+Instead the exception should be thrown while executing the command or the kickstarter should automatically convert class names to UpperCamelCase"
+43143,TYPO3.Kickstart,Feature,"",Closed,Should have,Fix case of class names to generate,Bastian Waidelich,Bastian Waidelich,2012-11-21 06:16,"","",2012-11-20,"","",0,2012-11-20 05:52,"","",911200,"","","When specifying a model name starting with a lower case character, the generated code throws an exception.
+Example from the mailing list:
+<pre>
+./flow3 kickstart:actioncontroller --generate-actions --generate-related Fritdrop.Webpage golfEquipment
+</pre>
+leads to:
+<pre>
+12-11-18 19:56:33 11136      DEBUG     FLOW3                Reflected class names did not match class names to reflect
+12-11-18 19:56:33 11136      DEBUG     FLOW3                Reflecting class Fritdrop\Webpage\Controller\GolfEquipmentController
+12-11-18 19:56:33 11136      DEBUG     FLOW3                Reflecting class Fritdrop\Webpage\Domain\Model\GolfEquipment
+12-11-18 19:56:33 11136      DEBUG     FLOW3                Reflecting class Fritdrop\Webpage\Domain\Repository\GolfEquipmentRepository
+12-11-18 19:56:33 11136      INFO      FLOW3                Reflected 3 emerged classes.
+12-11-18 19:56:36 11136      DEBUG     FLOW3                Built AOP proxy for class ""Fritdrop\Webpage\Domain\Model\GolfEquipment"".
+12-11-18 19:56:36 11136      DEBUG     FLOW3                Building DI proxy for ""Fritdrop\Webpage\Controller\GolfEquipmentController"".
+12-11-18 19:56:36 11136      CRITICAL  FLOW3                Uncaught exception #1265213849 in line 142 of Packages/Framework/TYPO3.FLOW3/Classes/Object/DependencyInjection/ProxyClassBuilder.php: The object ""Fritdrop\Webpage\Domain\Repository\golfEquipmentRepository"" which was specified as a property in the object configuration of object ""Fritdrop\Webpage\Controller\GolfEquipmentController"" (automatically registered class) does not exist. Check for spelling mistakes and if that dependency is correctly configured. - See also: 20121118195633ff72d8.txt 
+</pre>
+
+Instead the exception should be thrown while executing the command or the kickstarter should automatically convert class names to UpperCamelCase"
+43194,TYPO3.Kickstart,Bug,"",Resolved,Should have,Error message about invalid package key is misleading,Bastian Waidelich,Bastian Waidelich,2012-11-21 10:35,"",2.0 beta 1,2012-11-21,"","",100,2012-11-21 06:19,"","",913750,"",(any),"When specifying an invalid package key of ""Test"" in the kickstart commands, the error message is
+<pre>
+Package key ""Test"" is not valid. Only UpperCamelCase with alphanumeric characters, please!
+</pre>
+
+This is misleading, the actual issue is the missing Vendor namespace"
+43423,TYPO3.Kickstart,Bug,"",Resolved,Should have,Reverse use of strpos() parameters in actionControllerCommand(),Karsten Dambekalns,Karsten Dambekalns,2012-11-29 09:36,"",2.0 beta 1,2012-11-29,"","",100,2012-11-29 03:41,"","",925150,"",FLOW3 1.1.0,""
+43424,TYPO3.Kickstart,Feature,"",Under Review,Should have,Support subpackage when kickstarting model & repository,Karsten Dambekalns,Karsten Dambekalns,2014-11-20 16:35,"",2.0.1,2012-11-29,"","",0,2012-11-29 04:06,"","",925200,"","","The kickstart for controllers allows the use of subpackages, this is missing for model and repository."
+43908,TYPO3.Kickstart,Bug,"",Resolved,Must have,wrong class name of kickstarted Command controllers,Thomas Mammitzsch,Karsten Dambekalns,2013-03-19 11:37,"",2.0,2012-12-12,"","",100,2012-12-12 05:28,"","",949200,"",Git master,"./flow kickstart:commandcontroller Acme.Demo Dosomething
+
+results in creating DosomethingController.php with class DosomethingController 
+but it must be DosomethingCommandController.php with class DosomethingCommandController"
+45647,TYPO3.Kickstart,Bug,"",Resolved,Must have,Controllers must not be of scope singleton,Bastian Waidelich,Bastian Waidelich,2013-06-24 12:36,"",2.0,2013-02-20,"","",100,2013-02-20 08:14,"","",1034200,"",Git master,"Currently all the controllers of Flow (and the ones that you create via the kickstarter) are of scope singleton (e.g. contain the @Flow\Scope(""singleton"") annotation).
+Usually that doesn't really make a difference, because controllers are only instantiated once.
+But if we start using the same controller multiple times (say two plugin instances on one page) we'll get really weird effects..
+
+BTW: For command controllers it's obviously OK to be singletons, but there is no advantage in doing so"
+48028,TYPO3.Kickstart,Bug,"",Resolved,Should have,"Kickstarter creates ""delete links""",Bastian Waidelich,Bastian Waidelich,2013-06-25 04:36,"",2.0,2013-05-07,"","",100,2013-05-07 13:50,"","",1151500,"",Git master,"The kickstarter still creates a ""nasty delete link"" in the generated Index.html.
+Those don't work any longer (see #47252)."
+48030,TYPO3.Kickstart,Bug,"",Resolved,Should have,Kickstarter creates superfluous code,Bastian Waidelich,Bastian Waidelich,2013-06-24 07:37,"",2.0,2013-05-07,"","",100,2013-05-07 13:56,"","",1151600,"",Git master,The kickstarter creates a lot of code that is not needed (especially redundant doc comments)
+48763,TYPO3.Kickstart,Bug,"",Resolved,Must have,kickstarter creates not valid code,Simon Schaufelberger,"",2014-08-22 04:04,"","",2013-06-02,"","",100,2013-06-01 19:34,"","",1187950,"",(any),"i just wanted to create a class named ""List"" which was possible but then the next action crashed with an exeption since you cannot create a class named ""List"".
+
+I found out that you cannot use those key words:
+http://www.php.net/manual/en/reserved.keywords.php
+so i would suggest to write a validator, that checks if a keyword is used when creating a new class via the command line."
+53971,TYPO3.Kickstart,Feature,"",New,Should have,Login functionality,Mario Rimann,"",2013-12-16 04:39,"","",2013-11-26,"","",0,2013-11-26 05:03,"","",1445650,"","","Almost every time I start a small project and want to base it on Flow, I need authentication and login functionality to be able to render user-based content. So I thought of the following scenarios on how to improve this:
+
+- build a generic package that provides a login form, a user model and the controller to login/logout the user
+- just document the needed steps, copy-paste the needed code templates in case one needs it
+- add this to the Kickstarter-Package
+
+At the moment I prefer the last of the ideas as it would just help to quickly set-up the needed stuff in a new package - which then can easily be extended or modified for the specific use-case of that application.
+
+Any veto on adding this to the Kickstarter? Any better ideas? Any inputs from the maintainer(s) on how to prepare that feature, stuff that shouldn't be forgotten?"
+56555,TYPO3.Kickstart,Bug,"",New,Should have,Kickstart creates wrong labels in New.html,Rik Willems,"",2014-03-04 15:33,"","",2014-03-04,"","",0,2014-03-04 15:31,"","",1571900,"",Git master,"
+Kickstart produces New.html templates, all field labels are equal with have the model name. The Edit.html templates are fine. 
+
+The NewTemplate.html file has a wrong reference. See attached diff."
+59858,TYPO3.Kickstart,Bug,"",New,Must have,Property <Path>\CoffeeBean::$Persistence_Object_Identifier does not exist,Leandro Anthonioz,"",2015-01-13 06:20,"",2.x,2014-06-25,"","",0,2014-06-24 23:11,"","",1736250,"",Flow 2.0.0,"Hi, I'm a Yii developer trying to migrate to a DDD oriented PHP framework like Typo3 Flow :)
+
+I downloaded Typo3 Flow 2.2 this week and followed the QuickStart guide step by step (http://docs.typo3.org/flow/TYPO3FlowDocumentation/Quickstart/Index.html).
+
+However, after execute this command: 
+
+./flow kickstart:actioncontroller --generate-actions --generate-related Acme.Demo CoffeeBean
+
+I executed the following command:
+
+./flow doctrine:update
+
+And I received the following error:
+
+""Property Acme\Demo\Domain\Model\CoffeeBean::$Persistence_Object_Identifier does not exist""
+
+I manually added that property to the CoffeeBean model and that has solved this issue (I was able to do CRUD operations with that model) but I'm not sure if this is an expected manual change before execute ""doctrine:update"". Even if that property should be added manually, I guess will be useful include that step in the QuickStart steps for newbies like me.
+
+By the way, I like a lot the design of this framework, good job!
+
+Thank you!
+Leandro
+
+
+
+"
